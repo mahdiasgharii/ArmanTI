@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-08T19:10:00Z",
+  "title": "Design System: ArmanCTI",
+  "extensions": {
+    "colorMeta": {
+      "electric-blue": {
+        "role": "primary",
+        "displayName": "Electric Blue",
+        "canonical": "#019BE5",
+        "tonalRamp": ["#001F33", "#003D66", "#005C99", "#007ACC", "#009BE5", "#33B0ED", "#66C4F2", "#99D9F8"]
+      },
+      "signal-red": {
+        "role": "secondary",
+        "displayName": "Signal Red",
+        "canonical": "#F20F0F",
+        "tonalRamp": ["#330000", "#660000", "#990000", "#CC0A0A", "#F20F0F", "#FF3D3D", "#FF6B6B", "#FF9999"]
+      },
+      "violet-accent": {
+        "role": "tertiary",
+        "displayName": "Violet Accent",
+        "canonical": "#860EFE",
+        "tonalRamp": ["#1A0033", "#330066", "#4D0099", "#6600CC", "#860EFE", "#9D3DFF", "#B266FF", "#CC99FF"]
+      },
+      "black-canvas": {
+        "role": "neutral",
+        "displayName": "Black Canvas",
+        "canonical": "#0A0A0A",
+        "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#333333", "#4D4D4D", "#666666"]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "canonical": "#141414",
+        "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#333333", "#4D4D4D", "#666666"]
+      },
+      "dark-elevated": {
+        "role": "neutral",
+        "displayName": "Dark Elevated",
+        "canonical": "#1A1A1A",
+        "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#333333", "#4D4D4D", "#666666"]
+      },
+      "dark-border": {
+        "role": "neutral",
+        "displayName": "Dark Border",
+        "canonical": "#262626",
+        "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#333333", "#4D4D4D", "#666666"]
+      },
+      "white-text": {
+        "role": "neutral",
+        "displayName": "White Text",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#FFFFFF", "#E6E6E6", "#CCCCCC", "#B3B3B3", "#999999", "#808080", "#666666", "#4D4D4D"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level headings (h1). Geologica. Lowercase with first-letter uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings (h2, h5). Geologica."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Subsection headings (h6), dialog titles. Geologica."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary body text. IBM Plex Sans. Max 65-75ch."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Compact body text for tables, metadata. IBM Plex Sans."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Overlines, captions, small UI labels. IBM Plex Sans."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code blocks, STIX bundles, technical identifiers. Consolas."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating",
+        "value": "0 0 rgba(200, 200, 200, 0.15)",
+        "purpose": "Dialogs, menus, popovers — subtle ambient depth for floating elements only."
+      },
+      {
+        "name": "focus-glow",
+        "value": "0 0 0 2px #019BE5",
+        "purpose": "Focus ring on interactive elements. Sharp, precise, never blurred."
+      },
+      {
+        "name": "gradient-glow",
+        "value": "1px 0px 6px -1px #019BE5, -1px 0px 6px -1px #860EFE",
+        "purpose": "Hover/active glow on gradient-bordered buttons. Dual-color ambient."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "all 0.2s ease-in-out",
+        "purpose": "Default transition for solid button variants and general state changes."
+      },
+      {
+        "name": "ease-gradient",
+        "value": "box-shadow 0.3s ease-out",
+        "purpose": "Gradient border button transitions — slower for the glow effect."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid electric blue button for primary actions. White text, 4px radius, 36px height.",
+      "html": "<button class=\"ds-btn-primary\">Create report</button>",
+      "css": ".ds-btn-primary { background: #019BE5; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-primary:hover { background: #006699; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-primary:active { background: #006699; } .ds-btn-primary:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined button with blue text and 1px blue border. Transparent background.",
+      "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #019BE5; border: 1px solid #019BE5; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-secondary:hover { background: rgba(1, 155, 229, 0.15); } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-secondary:active { background: rgba(1, 155, 229, 0.25); } .ds-btn-secondary:disabled { color: #75829A; border-color: #262626; cursor: not-allowed; }"
+    },
+    {
+      "name": "Tertiary Button",
+      "kind": "button",
+      "refersTo": "button-tertiary",
+      "description": "Text-only button with blue text, no border, transparent background.",
+      "html": "<button class=\"ds-btn-tertiary\">View details</button>",
+      "css": ".ds-btn-tertiary { background: transparent; color: #019BE5; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-tertiary:hover { background: rgba(1, 155, 229, 0.15); color: #006699; } .ds-btn-tertiary:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(102, 184, 240, 0.4); } .ds-btn-tertiary:active { background: rgba(1, 155, 229, 0.15); } .ds-btn-tertiary:disabled { color: #75829A; cursor: not-allowed; }"
+    },
+    {
+      "name": "Destructive Button",
+      "kind": "button",
+      "refersTo": "button-destructive",
+      "description": "Solid red button for destructive actions. White text, 4px radius.",
+      "html": "<button class=\"ds-btn-destructive\">Delete</button>",
+      "css": ".ds-btn-destructive { background: #F14337; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-destructive:hover { background: #881106; } .ds-btn-destructive:focus-visible { outline: none; box-shadow: 0 0 0 2px #F8958C; } .ds-btn-destructive:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Standard text input with dark surface background and underline focus.",
+      "html": "<input class=\"ds-input\" placeholder=\"Search threats...\" />",
+      "css": ".ds-input { background: #141414; color: #FFFFFF; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px; padding: 8px 12px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; transition: border-bottom 0.2s ease-in-out; } .ds-input::placeholder { color: #AFB0B6; } .ds-input:focus { outline: none; border-bottom: 2px solid #019BE5; } .ds-input:disabled { background: #363B46; color: #75829A; }"
+    },
+    {
+      "name": "Navigation Item",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Sidebar navigation item with transparent background, blue active state.",
+      "html": "<div class=\"ds-nav-item ds-nav-item-active\">Analyses</div>",
+      "css": ".ds-nav-item { background: transparent; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; cursor: pointer; transition: background 0.2s ease-in-out; } .ds-nav-item:hover { background: #1A1A1A; } .ds-nav-item-active { background: rgba(1, 155, 229, 0.24); box-shadow: 2px 0 #019BE5 inset; color: #019BE5; } .ds-nav-item-active:hover { background: rgba(1, 155, 229, 0.32); }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip-default",
+      "description": "Default chip with transparent background, lowercase first-letter uppercase text.",
+      "html": "<span class=\"ds-chip\">threat-actor</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; background: transparent; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 4px 8px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 12px; text-transform: lowercase; } .ds-chip::first-letter { text-transform: uppercase; }"
+    },
+    {
+      "name": "Card Surface",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Flat card with dark surface background, no shadow, 4px radius.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Recent reports</h3><p class=\"ds-card-body\">12 new threat intelligence reports this week.</p></div>",
+      "css": ".ds-card { background: #141414; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 16px; box-shadow: none; } .ds-card-title { margin: 0 0 8px 0; font-family: \"Geologica\", sans-serif; font-size: 16px; font-weight: 500; color: #FFFFFF; text-transform: lowercase; } .ds-card-title::first-letter { text-transform: uppercase; } .ds-card-body { margin: 0; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; line-height: 1.5; color: #FFFFFF; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument Panel",
+    "overview": "ArmanCTI is a precision instrument panel for cyber threat intelligence. Every element is calibrated — dark surfaces with electric accents, where blue is the operational frequency, red is the threat indicator, and purple is the intelligence layer. The interface speaks with expert confidence: no hand-holding, no decorative softness, no ornamentation without purpose.\n\nThe system is dark-first. The black canvas (#0A0A0A) is not a background — it is the instrument's housing. Surfaces layer upward through a tight grey scale (#141414 → #1A1A1A → #262626 → #333333), each step a deliberate elevation. Borders are thin and functional, never decorative. The Ravin Style palette — electric blue, signal red, violet accent — carries the brand through conviction, not coverage.\n\nThis system explicitly rejects the original OpenCTI aesthetic (dark navy with cyan/teal accents). The departure must be unmistakable. It also rejects generic SaaS dashboards — bland blue/gray, cookie-cutter card grids, no personality. ArmanCTI is not a template; it is an instrument.",
+    "keyCharacteristics": [
+      "Dark-first, black canvas with tight grey-scale tonal layering",
+      "Three accent colors with surgical application (blue = action, red = alert, purple = intelligence)",
+      "IBM Plex Sans for body, Geologica for headings — clean, technical, no-nonsense",
+      "4px border radius throughout — sharp, not rounded; precise, not soft",
+      "Lowercase typography with first-letter uppercase as a signature voice",
+      "Gradient borders for premium/feature actions (blue→purple, purple→red)",
+      "Flat by default with subtle ambient shadows on elevated/floating elements only",
+      "Dual register: brand identity is the primary lens, but product UI (dashboards, tables, forms) receives equal craft",
+      "AI features feel like professional instruments, not novelty demos — no gradient-washed AI badges or glassmorphism"
+    ],
+    "rules": [
+      {
+        "name": "The Surgical Accent Rule",
+        "body": "Accent colors (blue, red, purple) are used on ≤15% of any given screen. Their rarity is their power. The black canvas and grey scale carry 85%+ of the visual weight.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Teal Rule",
+        "body": "The original OpenCTI cyan/teal palette (#0fbcff, #00f18d, #00F1BD) is prohibited. If a color reads as 'OpenCTI with a paint job,' it's wrong. The departure is the point.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gradient Border Rule",
+        "body": "Gradient borders (blue→purple for focus, purple→red for intelligence analysis) are reserved for premium feature actions and AI-related elements. Never use gradients on standard buttons or surfaces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lowercase Voice Rule",
+        "body": "Headings (h1–h6), chips, tabs, and tooltips use text-transform: lowercase with &::first-letter { text-transform: uppercase }. This is a signature brand voice element — never override it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Font Rule",
+        "body": "Geologica for headings, IBM Plex Sans for everything else. No third font. No exceptions. If a new context needs a different feel, use weight and size, not a new family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear only on floating elements (menus, dialogs, popovers) and as response to state (hover, focus). Never apply shadows to cards, list items, or static surfaces to 'elevate' them — use the tonal background scale instead.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Card-Shadow Rule",
+        "body": "Cards and containers convey depth through background color, not shadows. A card on the canvas uses #141414; a card on a surface uses #1A1A1A. No box-shadow on static cards.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the black canvas (#0A0A0A) as the primary background. It is the instrument's housing.",
+      "Do layer surfaces through the tonal scale (#0A0A0A → #141414 → #1A1A1A → #262626) for depth, not shadows.",
+      "Do use Electric Blue (#019BE5) for primary actions, focus, and interactive emphasis.",
+      "Do use Signal Red (#F20F0F) exclusively for destructive actions, danger, and critical severity.",
+      "Do use Violet Accent (#860EFE) for AI features and intelligence analysis highlights.",
+      "Do apply the lowercase + first-letter uppercase pattern to all headings, chips, tabs, and tooltips.",
+      "Do use Geologica for headings and IBM Plex Sans for body — no other font families.",
+      "Do keep accent colors to ≤15% of any screen surface. The black canvas carries the design.",
+      "Do verify ≥4.5:1 contrast for all text on dark surfaces, especially muted/secondary text.",
+      "Do use gradient borders (blue→purple) only for premium feature actions and AI elements.",
+      "Do pair severity colors with icons or labels — never rely on color alone to convey status."
+    ],
+    "donts": [
+      "Don't use the original OpenCTI palette — navy (#070d19), cyan (#0fbcff), teal (#00f18d), or green (#00F1BD). The departure from OpenCTI must be unmistakable.",
+      "Don't use shadows on static cards or surfaces. Depth comes from tonal layering, not box-shadow.",
+      "Don't use border-left or border-right greater than 1px as a colored stripe accent on cards or list items.",
+      "Don't use gradient text (background-clip: text with gradient) except in gradient-bordered buttons where it is the component's defining feature.",
+      "Don't use glassmorphism — blurs and glass cards as decoration. The instrument is solid, not translucent.",
+      "Don't introduce rounded corners beyond 4px. The system is sharp and precise, not soft.",
+      "Don't use generic SaaS patterns — cookie-cutter card grids, hero-metric templates, identical icon+heading+text cards repeated endlessly.",
+      "Don't use tiny uppercase tracked eyebrows above every section. The lowercase + first-letter uppercase pattern is the voice; all-caps eyebrows are a different, rejected aesthetic.",
+      "Don't apply shadows to cards to 'elevate' them. Use the background tonal scale.",
+      "Don't use a third font family. Weight and size create hierarchy, not new fonts.",
+      "Don't use accent colors for decoration. Blue is action, red is danger, purple is intelligence — each has a job.",
+      "Don't use the AI-generated aesthetic — purple gradients everywhere, glassmorphism as default, rounded cards with emoji icons, 'powered by AI' badges. AI features (Ask Arman, Twitter Monitor) must feel like professional instruments, not novelty demos.",
+      "Don't ship the Ravin Style as a paint job over OpenCTI defaults. The theme files must be fully updated — no residual OpenCTI color DNA in any token."
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "files": ["opencti-platform/opencti-front/index.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

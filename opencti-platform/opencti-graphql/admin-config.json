@@ -1,0 +1,11 @@
+{
+  "app": {
+    "admin": {
+      "email": "admin@opencti.io",
+      "password": "ArmanCTI2026!",
+      "token": "53fdcf63-8ee2-4905-8e3d-fe757435e35b",
+      "externally_managed": false
+    },
+    "encryption_key": "ty+h038wSOZBIt9o5ed41UqWh+wnfbIqjyDdOalBilE="
+  }
+}

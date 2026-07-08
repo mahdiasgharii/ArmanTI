@@ -14,9 +14,6 @@ ArmanCTI extends OpenCTI with:
 - **Twitter Monitoring Dashboard** — a new sidebar section + Home dashboard widgets that connect to an external FastAPI backend (`arman-twitter-monitoring-engine`)
 - **Rebranded Chatbot** — "Ask Arman" (formerly "Ask Ariane") with Twitter monitoring context awareness
 
-### Editions
-- **Community Edition (CE)** — Apache 2.0 license
-- **Enterprise Edition (EE)** — Enterprise license (enable in Settings)
 
 ---
 
@@ -696,3 +693,14 @@ Docker Compose configs in `opencti-platform/opencti-dev/`:
 | MUI Twitter icon missing | Use `RssFeedOutlined` or custom SVG (MUI v6+ removed Twitter icon) |
 | localStorage migration | Chatbot keys `arianeChat*` → `armanChat*` with migration logic |
 | Brand text in wrong places | Do NOT replace in license headers, API paths, GraphQL types, NPM package names |
+
+---
+
+## Design Context
+
+This project has an Impeccable design system. Two root-level files govern all visual and strategic decisions:
+
+- **`PRODUCT.md`** — Strategic context: register (brand, dual with product), target users, product purpose, brand personality (bold, precise, modern), anti-references (generic SaaS, original OpenCTI look, AI-generated aesthetic), design principles, current state (rebranding in progress), and accessibility target (WCAG 2.1 AA).
+- **`DESIGN.md`** — Visual system: Ravin Style color palette (Electric Blue `#019BE5`, Signal Red `#F20F0F`, Violet Accent `#860EFE`), typography (Geologica headings, IBM Plex Sans body), elevation (flat + tonal layering), component specs, and Do's/Don'ts. Includes machine-readable YAML frontmatter with design tokens. Note: the Ravin Style palette is the target spec — theme files still contain original OpenCTI colors and must be updated.
+
+When making UI changes, consult these files first. `DESIGN.md` wins on visual decisions; `PRODUCT.md` wins on strategic/voice decisions. Run `/impeccable live` to iterate visually in the browser.
