@@ -4,7 +4,7 @@ import { useQueryLoader } from 'react-relay';
 import { LogsOrdering, OrderingMode, UserHistoryLinesQuery, UserHistoryLinesQuery$variables } from '@components/settings/users/__generated__/UserHistoryLinesQuery.graphql';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { StorageOutlined } from '@mui/icons-material';
+import { Database as StorageOutlined } from 'lucide-react';
 import { VectorRadius } from 'mdi-material-ui';
 import { Stack } from '@mui/material';
 import { Link } from 'react-router-dom';

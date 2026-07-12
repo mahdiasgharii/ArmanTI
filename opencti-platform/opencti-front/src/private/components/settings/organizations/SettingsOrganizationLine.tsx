@@ -3,7 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Skeleton from '@mui/material/Skeleton';
 import ListItemText from '@mui/material/ListItemText';
-import { KeyboardArrowRightOutlined, MoreVertOutlined } from '@mui/icons-material';
+import { ChevronRight as KeyboardArrowRightOutlined, MoreVertical as MoreVertOutlined } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
 import { graphql, useFragment } from 'react-relay';

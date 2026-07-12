@@ -1,7 +1,7 @@
 import ApexCharts, { ApexOptions } from 'apexcharts';
 import { useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import { FileDownloadOutlined } from '@mui/icons-material';
+import { Download as FileDownloadOutlined } from 'lucide-react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useFormatter } from '../../../../components/i18n';

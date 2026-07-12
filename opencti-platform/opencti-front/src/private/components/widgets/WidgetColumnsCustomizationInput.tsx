@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { List, ListItem, ListItemIcon, ListItemText, IconButton, Checkbox, Typography, Box, AccordionDetails } from '@mui/material';
-import { Close, DragIndicatorOutlined } from '@mui/icons-material';
+import { X as Close, GripVertical as DragIndicatorOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import Button from '@common/button/Button';
 import type { Theme } from '../../../components/Theme';

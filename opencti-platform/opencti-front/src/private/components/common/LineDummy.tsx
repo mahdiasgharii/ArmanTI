@@ -2,7 +2,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Skeleton from '@mui/material/Skeleton';
 import ListItemText from '@mui/material/ListItemText';
-import { MoreVertOutlined } from '@mui/icons-material';
+import { MoreVertical as MoreVertOutlined } from 'lucide-react';
 import React from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import { DataColumns } from '../../../components/list_lines';
@@ -35,7 +35,7 @@ const LineDummy = ({ dataColumns }: { dataColumns: DataColumns }) => {
     <ListItem
       classes={{ root: classes.item }}
       divider={true}
-      secondaryAction={<MoreVertOutlined classes={classes.itemIconDisabled} />}
+      secondaryAction={<MoreVertOutlined className={classes.itemIconDisabled} />}
     >
       <ListItemIcon classes={{ root: classes.itemIconDisabled }}>
         <Skeleton animation="wave" variant="circular" width={30} height={30} />

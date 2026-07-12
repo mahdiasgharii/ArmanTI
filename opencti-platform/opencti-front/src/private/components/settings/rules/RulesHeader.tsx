@@ -2,7 +2,7 @@ import { graphql, useFragment } from 'react-relay';
 import { Grid2 as Grid } from '@mui/material';
 import { AutoFix, Database, GraphOutline } from 'mdi-material-ui';
 import { useTheme } from '@mui/material/styles';
-import { SettingsSuggestOutlined } from '@mui/icons-material';
+import { Wrench as SettingsSuggestOutlined } from 'lucide-react';
 import Chart from '@components/common/charts/Chart';
 import { ApexOptions } from 'apexcharts';
 import { RULES_LOCAL_STORAGE_KEY } from './rules-utils';

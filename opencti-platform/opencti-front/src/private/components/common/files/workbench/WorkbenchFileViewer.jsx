@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import withStyles from '@mui/styles/withStyles';
 import List from '@mui/material/List';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Card from '@common/card/Card';
 import { TEN_SECONDS } from '../../../../../utils/Time';
 import inject18n from '../../../../../components/i18n';

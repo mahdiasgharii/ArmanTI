@@ -1,5 +1,5 @@
 import React from 'react';
-import { HubOutlined, PolylineOutlined } from '@mui/icons-material';
+import { Network as HubOutlined, Spline as PolylineOutlined } from 'lucide-react';
 import { useFormatter } from '../../i18n';
 import GraphToolbarItem from './GraphToolbarItem';
 import { useGraphContext } from '../GraphContext';

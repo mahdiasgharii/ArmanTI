@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import Tooltip from '@mui/material/Tooltip';
-import { LibraryBooksOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { Library as LibraryBooksOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import { FormatListGroup, Group, RelationManyToMany, VectorPolygon } from 'mdi-material-ui';
 import { ToggleButtonGroup } from '@mui/material';
 import FiligranIcon from '@components/common/FiligranIcon';
@@ -40,7 +40,7 @@ const ViewSwitchingButtons: FunctionComponent<ViewSwitchingButtonsProps> = ({
       {typeof handleChangeView === 'function' && !disableCards && (
         <Tooltip title={t_i18n('Cards view')}>
           <ToggleButton value="cards" aria-label="cards">
-            <ViewModuleOutlined fontSize="small" color="primary" />
+            <ViewModuleOutlined size={16} className="text-primary" />
           </ToggleButton>
         </Tooltip>
       )}
@@ -49,7 +49,7 @@ const ViewSwitchingButtons: FunctionComponent<ViewSwitchingButtonsProps> = ({
         <Tooltip title={t_i18n('Entities view')}>
           <ToggleButton value="entities" aria-label="entities">
             <LibraryBooksOutlined
-              fontSize="small"
+              size={16}
             />
           </ToggleButton>
         </Tooltip>

@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import Tag from '@common/tag/Tag';
 import TextList from '@common/text/TextList';
 import { IndicatorDetails_indicator$data } from '@components/observations/indicators/__generated__/IndicatorDetails_indicator.graphql';
-import { TroubleshootOutlined } from '@mui/icons-material';
+import { Stethoscope as TroubleshootOutlined } from 'lucide-react';
 import { Stack, Tooltip } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';

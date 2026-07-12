@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { graphql } from 'react-relay';
 import { requestSubscription } from '../../../relay/environment';
 import { Box, IconButton, Tooltip, Typography } from '@mui/material';
-import { Close, OpenInNewOutlined } from '@mui/icons-material';
+import { X as Close, ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import useAuth from '../../../utils/hooks/useAuth';
 import NewsFeedToastItem, { NewsFeedToastData, NEWS_FEED_TOAST_WIDTH } from './NewsFeedToastItem';

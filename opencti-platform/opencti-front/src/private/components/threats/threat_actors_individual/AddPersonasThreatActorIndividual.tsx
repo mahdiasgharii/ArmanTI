@@ -1,5 +1,5 @@
 import Drawer from '@components/common/drawer/Drawer';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import React, { FunctionComponent, useState } from 'react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import SearchInput from 'src/components/SearchInput';

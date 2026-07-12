@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import FormButtonContainer from '@common/form/FormButtonContainer';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import MenuItem from '@mui/material/MenuItem';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';

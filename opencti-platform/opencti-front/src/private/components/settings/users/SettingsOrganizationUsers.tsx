@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Grid from '@mui/material/Grid';
-import { AccountCircleOutlined, AdminPanelSettingsOutlined, ManageAccountsOutlined, PersonOutlined } from '@mui/icons-material';
+import { CircleUser as AccountCircleOutlined, ShieldCheck as AdminPanelSettingsOutlined, UserCog as ManageAccountsOutlined, User as PersonOutlined } from 'lucide-react';
 import SettingsOrganizationUserCreation from '@components/settings/users/SettingsOrganizationUserCreation';
 import { SettingsOrganization_organization$data } from '@components/settings/organizations/__generated__/SettingsOrganization_organization.graphql';
 import { graphql } from 'react-relay';

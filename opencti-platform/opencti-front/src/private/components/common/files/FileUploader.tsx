@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { graphql } from 'react-relay';
-import { CloudUploadOutlined } from '@mui/icons-material';
+import { CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';

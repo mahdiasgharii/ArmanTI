@@ -3,7 +3,7 @@ import { SecurityCoveragesLinesPaginationQuery$variables } from '@components/ana
 import Drawer, { DrawerControlledDialProps } from '@components/common/drawer/Drawer';
 import ConfidenceField from '@components/common/form/ConfidenceField';
 import OpenVocabField from '@components/common/form/OpenVocabField';
-import { AutoModeOutlined, EditOutlined } from '@mui/icons-material';
+import { Wand2 as AutoModeOutlined, Pencil as EditOutlined } from 'lucide-react';
 import { Box, CardContent, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { Theme } from '@mui/material/styles/createTheme';

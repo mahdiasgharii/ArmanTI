@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import {
   AddLocationsThreatActorIndividualLinesQuery,

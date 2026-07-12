@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { HelpOutlined, MoreVertOutlined } from '@mui/icons-material';
+import { HelpCircle as HelpOutlined, MoreVertical as MoreVertOutlined } from 'lucide-react';
 import Chip from '@mui/material/Chip';
 import { Link } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';

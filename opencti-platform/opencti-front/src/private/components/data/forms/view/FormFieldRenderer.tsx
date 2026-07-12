@@ -3,7 +3,7 @@ import { Field, FieldInputProps, FormikProps } from 'formik';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import IconButton from '@common/button/IconButton';
-import { CloudUploadOutlined } from '@mui/icons-material';
+import { CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';

@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, FunctionComponent, useRef, useState } from 'react';
 import VisuallyHiddenInput from '@components/common/VisuallyHiddenInput';
 import { graphql } from 'react-relay';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import ToggleButton from '@mui/material/ToggleButton/ToggleButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import XtmHubDialogConnectivityLost from '@components/xtm_hub/dialog/connectivity-lost';

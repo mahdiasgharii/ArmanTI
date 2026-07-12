@@ -21,7 +21,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Checkbox from '@mui/material/Checkbox';
-import { AccountBalanceOutlined } from '@mui/icons-material';
+import { Landmark as AccountBalanceOutlined } from 'lucide-react';
 import EnterpriseEdition from '../../../common/entreprise_edition/EnterpriseEdition';
 import useEnterpriseEdition from '../../../../../utils/hooks/useEnterpriseEdition';
 import { useFormatter } from '../../../../../components/i18n';

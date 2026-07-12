@@ -3,7 +3,7 @@ import { graphql, PreloadedQuery } from 'react-relay';
 import Typography from '@mui/material/Typography';
 import { FormikConfig, FormikHelpers } from 'formik/dist/types';
 import * as Yup from 'yup';
-import { ExpandLessOutlined, ExpandMoreOutlined, RateReviewOutlined } from '@mui/icons-material';
+import { ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined, MessageSquare as RateReviewOutlined } from 'lucide-react';
 import { Field, Formik } from 'formik';
 import Button from '@common/button/Button';
 import { Stack, Box } from '@mui/material';

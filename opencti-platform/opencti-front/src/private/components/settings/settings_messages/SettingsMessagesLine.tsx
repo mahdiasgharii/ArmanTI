@@ -1,4 +1,4 @@
-import { MessageOutlined, MoreVert } from '@mui/icons-material';
+import { MessageSquare as MessageOutlined, MoreVertical as MoreVert } from 'lucide-react';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';

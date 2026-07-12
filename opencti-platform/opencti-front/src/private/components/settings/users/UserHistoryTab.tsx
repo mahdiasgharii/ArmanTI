@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { DeleteOutlined, StorageOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Database as StorageOutlined } from 'lucide-react';
 import { Avatar, DialogActions, IconButton, Tooltip } from '@mui/material';
 import { deepOrange, green, indigo, lightGreen, orange, pink, red, teal, yellow } from '@mui/material/colors';
 import { useTheme } from '@mui/styles';

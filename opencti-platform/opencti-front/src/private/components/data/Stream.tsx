@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
-import { Stream as StreamIcon } from '@mui/icons-material';
+import { Waves as StreamIcon } from 'lucide-react';
 import { useFormatter } from '../../../components/i18n';
 import SharingMenu from './SharingMenu';
 import Breadcrumbs from '../../../components/Breadcrumbs';

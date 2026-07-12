@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 */
 
 import IconButton from '@common/button/IconButton';
-import { AddOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import { Grid2 as Grid, Stack } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import { Field, FieldArray, useFormikContext } from 'formik';

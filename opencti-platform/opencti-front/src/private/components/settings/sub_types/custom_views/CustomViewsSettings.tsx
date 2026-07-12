@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Card from '@common/card/Card';
 import Tooltip from '@mui/material/Tooltip';
-import { Add as AddIcon, CloudUploadOutlined } from '@mui/icons-material';
+import { Plus as AddIcon, CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import { useFormatter } from '../../../../../components/i18n';
 import DashboardHiddenImportInput from '../../../../../components/dashboard/import-export/DashboardHiddenImportInput';

@@ -1,5 +1,5 @@
 import { IconButton, Tooltip } from '@mui/material';
-import { ReadMoreOutlined } from '@mui/icons-material';
+import { BookOpenText as ReadMoreOutlined } from 'lucide-react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import { stixNestedRefRelationshipCreationResolveQuery } from '@components/common/stix_nested_ref_relationships/StixNestedRefRelationshipCreation';
 import {

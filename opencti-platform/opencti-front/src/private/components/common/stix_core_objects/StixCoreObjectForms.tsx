@@ -1,6 +1,6 @@
 import { StixCoreObjectFormsFormsQuery, StixCoreObjectFormsFormsQuery$variables } from '@components/common/stix_core_objects/__generated__/StixCoreObjectFormsFormsQuery.graphql';
 import StixCoreObjectFormSelector from '@components/common/stix_core_objects/StixCoreObjectFormSelector';
-import { AssignmentOutlined } from '@mui/icons-material';
+import { ClipboardList as AssignmentOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import { FunctionComponent, Suspense, useEffect, useState } from 'react';
 import { graphql, PreloadedQuery, usePreloadedQuery, useQueryLoader } from 'react-relay';

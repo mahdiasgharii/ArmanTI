@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { Box, Checkbox, FormControlLabel, IconButton, List, ListItem, ListItemIcon, ListItemText, Radio, RadioGroup, Typography } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { Close, DragIndicatorOutlined } from '@mui/icons-material';
+import { X as Close, GripVertical as DragIndicatorOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import Button from '@common/button/Button';
 import type { Theme } from '../../../components/Theme';

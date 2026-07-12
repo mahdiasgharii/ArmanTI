@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { FileOutline } from 'mdi-material-ui';
 import IconButton from '@common/button/IconButton';
-import { DeleteOutlined, DownloadingOutlined, GetAppOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, LoaderCircle as DownloadingOutlined, Download as GetAppOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import { RecordSourceSelectorProxy } from 'relay-runtime';
 import CircularProgress from '@mui/material/CircularProgress';

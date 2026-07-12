@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { AddTaskOutlined, AssistantOutlined } from '@mui/icons-material';
+import { ListPlus as AddTaskOutlined, Sparkles as AssistantOutlined } from 'lucide-react';
 import { Badge, CircularProgress, DialogActions, IconButton, List, ListItem, ListItemText, MenuItem, Select, ToggleButton, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import MarkdownDisplay from '../../../../components/markdownDisplay/MarkdownDisplay';

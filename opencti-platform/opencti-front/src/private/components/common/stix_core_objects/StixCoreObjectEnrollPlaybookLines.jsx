@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import { createRefetchContainer, graphql } from 'react-relay';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { PlayCircleOutlined } from '@mui/icons-material';
+import { PlayCircle as PlayCircleOutlined } from 'lucide-react';
 import withStyles from '@mui/styles/withStyles';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';

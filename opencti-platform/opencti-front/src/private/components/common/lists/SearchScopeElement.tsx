@@ -1,6 +1,6 @@
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@common/button/IconButton';
-import { PaletteOutlined } from '@mui/icons-material';
+import { Palette as PaletteOutlined } from 'lucide-react';
 import Popover, { PopoverProps } from '@mui/material/Popover';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';

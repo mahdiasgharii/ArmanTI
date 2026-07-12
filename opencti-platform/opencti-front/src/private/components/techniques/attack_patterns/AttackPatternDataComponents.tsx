@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import { Link } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@common/button/IconButton';
-import { Delete } from '@mui/icons-material';
+import { Trash2 as Delete } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import { ListItemButton, Tooltip } from '@mui/material';
 import ListItem from '@mui/material/ListItem';

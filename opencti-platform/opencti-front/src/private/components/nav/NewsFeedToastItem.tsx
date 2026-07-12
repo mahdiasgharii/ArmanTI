@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Box, IconButton, Tooltip, Typography } from '@mui/material';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import type { Theme } from '../../../components/Theme';
 import { useFormatter } from '../../../components/i18n';

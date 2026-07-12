@@ -5,7 +5,7 @@ import { graphql } from 'react-relay';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import withStyles from '@mui/styles/withStyles';
-import { DescriptionOutlined, DeviceHubOutlined } from '@mui/icons-material';
+import { FileText as DescriptionOutlined, Network as DeviceHubOutlined } from 'lucide-react';
 import { HexagonMultipleOutline } from 'mdi-material-ui';
 import StixCoreObjectReportsHorizontalBar from '../../analyses/reports/StixCoreObjectReportsHorizontalBar';
 import { QueryRenderer } from '../../../../relay/environment';

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { BackupTableOutlined, AlarmOnOutlined, MoreVert } from '@mui/icons-material';
+import { Table as BackupTableOutlined, AlarmClock as AlarmOnOutlined, MoreVertical as MoreVert } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import { graphql, useFragment } from 'react-relay';
 import makeStyles from '@mui/styles/makeStyles';

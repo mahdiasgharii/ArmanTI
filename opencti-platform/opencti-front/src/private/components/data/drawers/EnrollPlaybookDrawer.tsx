@@ -1,4 +1,4 @@
-import { PlayCircleOutlined } from '@mui/icons-material';
+import { PlayCircle as PlayCircleOutlined } from 'lucide-react';
 import { Alert, CircularProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 import Drawer from '@components/common/drawer/Drawer';

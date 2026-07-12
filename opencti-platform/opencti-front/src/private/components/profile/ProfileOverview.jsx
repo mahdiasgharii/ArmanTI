@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Card from '@common/card/Card';
-import { LockOutlined, NoEncryptionOutlined } from '@mui/icons-material';
+import { Lock as LockOutlined, Unlock as NoEncryptionOutlined } from 'lucide-react';
 import { ListItem, ListItemText, Stack, Switch } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Dialog from '@common/dialog/Dialog';

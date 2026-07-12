@@ -1,7 +1,7 @@
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import { CardActions, Stack, Typography } from '@mui/material';
-import { VerifiedOutlined } from '@mui/icons-material';
+import { Verified as VerifiedOutlined } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 import { IngestionConnector } from '@components/data/IngestionCatalog';

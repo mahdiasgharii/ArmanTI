@@ -17,7 +17,7 @@ import React, { CSSProperties, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import { graphql, useFragment } from 'react-relay';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import PirThreatMapTooltip from './PirThreatMapTooltip';
 import useBuildScatterData from './useBuildScatterData';

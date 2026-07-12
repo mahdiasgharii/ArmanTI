@@ -1,4 +1,4 @@
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import React, { useRef, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';

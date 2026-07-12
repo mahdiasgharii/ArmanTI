@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import { ParsedWorkMessage, ResolvedEntity } from '@components/data/connectors/parseWorkErrors';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Paper from '@mui/material/Paper';

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, SyntheticEvent, useState } from 'r
 import { graphql } from 'react-relay';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import { fetchQuery } from '../../../../relay/environment';
 import AutocompleteField, { AutocompleteFieldProps } from '../../../../components/AutocompleteField';

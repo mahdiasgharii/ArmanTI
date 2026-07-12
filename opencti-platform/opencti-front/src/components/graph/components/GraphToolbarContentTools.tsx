@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DeleteOutlined, LinkOutlined, VisibilityOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Link as LinkOutlined, Eye as VisibilityOutlined } from 'lucide-react';
 import { GraphQLTaggedNode } from 'relay-runtime/lib/query/RelayModernGraphQLTag';
 import StixCoreRelationshipCreation from '@components/common/stix_core_relationships/StixCoreRelationshipCreation';
 import StixNestedRefRelationshipCreationFromKnowledgeGraph from '@components/common/stix_nested_ref_relationships/StixNestedRefRelationshipCreationFromKnowledgeGraph';

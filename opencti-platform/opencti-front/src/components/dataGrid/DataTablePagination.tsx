@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import React, { type Dispatch, type SetStateAction, Suspense, useCallback, useEffect } from 'react';
-import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { ButtonGroup } from '@mui/material';
 import IconButton from '@common/button/IconButton';
 import { TableTuneIcon } from 'filigran-icon';

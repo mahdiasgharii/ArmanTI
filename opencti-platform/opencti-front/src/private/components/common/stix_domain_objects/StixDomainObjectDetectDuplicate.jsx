@@ -1,6 +1,6 @@
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { VisibilityOutlined } from '@mui/icons-material';
+import { Eye as VisibilityOutlined } from 'lucide-react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, LinearProgress, List, ListItem, Typography } from '@mui/material';
-import { CancelOutlined, CheckCircleOutlined, UploadFileOutlined } from '@mui/icons-material';
+import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as UploadFileOutlined } from 'lucide-react';
 import { useImportFilesContext } from '@components/common/files/import_files/ImportFilesContext';
 
 interface ImportFilesUploadProgressProps {
@@ -38,15 +38,15 @@ const ImportFilesUploadProgress: React.FC<ImportFilesUploadProgressProps> = ({
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 {
                   file.status === 'error' ? (
-                    <CancelOutlined fontSize="small" color="error" />
+                    <CancelOutlined size={16} className="text-error" />
                   ) : (
-                    <CheckCircleOutlined fontSize="small" color={file.status ?? 'inherit'} />
+                    <CheckCircleOutlined size={16} className={file.status === 'success' ? 'text-success' : ''} />
                   )
                 }
               </Box>
             )}
           >
-            <UploadFileOutlined color="primary" sx={{ marginRight: 2 }} />
+            <UploadFileOutlined className="text-primary" style={{ marginRight: 8 }} />
             {file.name}
           </ListItem>
         ))}

@@ -1,5 +1,5 @@
 import ToggleButton from '@mui/material/ToggleButton';
-import { LockPersonOutlined } from '@mui/icons-material';
+import { Lock as LockPersonOutlined } from 'lucide-react';
 import React, { useState } from 'react';
 import FormAuthorizedMembers, { FormAuthorizedMembersInputs } from '@components/common/form/FormAuthorizedMembers';
 import { FormikHelpers } from 'formik/dist/types';

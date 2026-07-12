@@ -1,5 +1,5 @@
 import { Tooltip } from '@mui/material';
-import { CheckOutlined, CloseOutlined } from '@mui/icons-material';
+import { Check as CheckOutlined, X as CloseOutlined } from 'lucide-react';
 import React from 'react';
 import { useFormatter } from '../../../../../components/i18n';
 

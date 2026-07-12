@@ -10,7 +10,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { ArchitectureOutlined, CheckCircleOutlined, DeleteOutlined, WarningOutlined } from '@mui/icons-material';
+import { Compass as ArchitectureOutlined, CheckCircle as CheckCircleOutlined, Trash2 as DeleteOutlined, AlertTriangle as WarningOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Slide from '@mui/material/Slide';

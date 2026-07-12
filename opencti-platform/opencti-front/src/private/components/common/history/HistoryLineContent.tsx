@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { OpenInBrowserOutlined } from '@mui/icons-material';
+import { Globe as OpenInBrowserOutlined } from 'lucide-react';
 import { ListItemButton } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import DialogActions from '@mui/material/DialogActions';

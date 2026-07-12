@@ -4,7 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import withStyles from '@mui/styles/withStyles';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import { AddOutlined, CancelOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, XCircle as CancelOutlined } from 'lucide-react';
 import * as Yup from 'yup';
 import { createFragmentContainer, graphql } from 'react-relay';
 import * as R from 'ramda';

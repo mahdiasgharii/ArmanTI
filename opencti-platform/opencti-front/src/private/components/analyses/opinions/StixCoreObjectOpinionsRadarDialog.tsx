@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { ThumbsUpDownOutlined } from '@mui/icons-material';
+import { ThumbsUp as ThumbsUpDownOutlined } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import Slider from '@mui/material/Slider';
 import { Field, Form, Formik } from 'formik';
@@ -173,7 +173,7 @@ const StixCoreObjectOpinionsDialogComponent: FunctionComponent<
           aria-label="Label"
           onClick={handleOpen}
         >
-          <ThumbsUpDownOutlined fontSize="small" />
+          <ThumbsUpDownOutlined size={16} />
         </IconButton>
         {opinionOptions.length > 0 && (
           <Dialog

@@ -2,7 +2,7 @@ import { PreloadedQuery, useFragment, usePreloadedQuery, useQueryLoader, graphql
 import React, { FunctionComponent, useRef } from 'react';
 import { useTheme } from '@mui/styles';
 import ToggleButton from '@mui/material/ToggleButton';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import Drawer, { DrawerControlledDialProps } from '@components/common/drawer/Drawer';
 import { FormEditionContainerQuery } from './__generated__/FormEditionContainerQuery.graphql';
 import { formEditionContainerQuery } from './FormEditionContainer';

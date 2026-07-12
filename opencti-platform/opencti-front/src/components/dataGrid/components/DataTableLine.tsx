@@ -1,6 +1,6 @@
 import React, { CSSProperties, useMemo } from 'react';
 import { Skeleton, Checkbox, IconButton, Box } from '@mui/material';
-import { KeyboardArrowRightOutlined } from '@mui/icons-material';
+import { ChevronRight as KeyboardArrowRightOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import type { DataTableCellProps, DataTableLineProps } from '../dataTableTypes';

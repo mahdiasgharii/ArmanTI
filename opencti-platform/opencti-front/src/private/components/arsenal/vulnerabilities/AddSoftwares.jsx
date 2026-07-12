@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 import { compose } from 'ramda';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import inject18n from '../../../../components/i18n';
 import SearchInput from '../../../../components/SearchInput';
 import { QueryRenderer } from '../../../../relay/environment';
@@ -40,7 +40,7 @@ class AddSoftwares extends Component {
           aria-label="Add"
           onClick={this.handleOpen.bind(this)}
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
         <Drawer
           open={this.state.open}

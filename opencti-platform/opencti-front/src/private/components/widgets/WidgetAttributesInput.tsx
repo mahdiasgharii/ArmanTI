@@ -6,7 +6,7 @@ import MuiTextField from '@mui/material/TextField';
 import IconButton from '@common/button/IconButton';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
-import { DeleteOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import * as Yup from 'yup';
 import { Field, FieldArray, Form, Formik } from 'formik';

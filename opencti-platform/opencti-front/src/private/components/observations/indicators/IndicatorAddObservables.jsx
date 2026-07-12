@@ -1,5 +1,5 @@
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';

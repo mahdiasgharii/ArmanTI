@@ -1,5 +1,5 @@
 import type { ElementType } from 'react';
-import { AddOutlined, DeleteOutlined, EditOutlined, HelpOutlined, LinkOffOutlined, LinkOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as DeleteOutlined, Pencil as EditOutlined, HelpCircle as HelpOutlined, Link2Off as LinkOffOutlined, Link2 as LinkOutlined } from 'lucide-react';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange, deepPurple, green, indigo, pink, red, teal, yellow } from '@mui/material/colors';
 import { LinkVariantPlus, LinkVariantRemove, Merge } from 'mdi-material-ui';

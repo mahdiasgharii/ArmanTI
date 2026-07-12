@@ -1,5 +1,5 @@
 import Button from '@common/button/Button';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import { Field, Form, Formik } from 'formik';
 import { FormikConfig } from 'formik/dist/types';
 import { useContext } from 'react';

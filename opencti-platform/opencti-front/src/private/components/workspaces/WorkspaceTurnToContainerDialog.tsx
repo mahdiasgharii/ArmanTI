@@ -4,7 +4,7 @@ import Dialog from '@common/dialog/Dialog';
 import type { FilterOption } from '@components/common/lists/FilterAutocomplete';
 import StixDomainObjectCreation from '@components/common/stix_domain_objects/StixDomainObjectCreation';
 import { WorkspaceTurnToContainerDialogMutation } from '@components/workspaces/__generated__/WorkspaceTurnToContainerDialogMutation.graphql';
-import { AddOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined } from 'lucide-react';
 import Autocomplete from '@mui/material/Autocomplete';
 import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';

@@ -4,7 +4,7 @@ import StixCoreObjectLabels from '@components/common/stix_core_objects/StixCoreO
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/styles';
 import { DraftChip, DraftStatusChip } from '@components/common/draft/DraftChip';
-import { HorizontalRule, Security } from '@mui/icons-material';
+import { Minus as HorizontalRule, Shield as Security } from 'lucide-react';
 import { Pirs_PirFragment$data } from '@components/pir/__generated__/Pirs_PirFragment.graphql';
 import SecurityCoverageScores from '@components/analyses/security_coverages/SecurityCoverageScores';
 import ItemCvssScore from '../ItemCvssScore';
@@ -883,9 +883,9 @@ const defaultColumns: DataTableProps['dataColumns'] = {
     render: (user) => (
       <>
         {user.otp_activated ? (
-          <Security fontSize="small" color="secondary" />
+          <Security size={16} className="text-secondary" />
         ) : (
-          <HorizontalRule fontSize="small" color="primary" />
+          <HorizontalRule size={16} className="text-primary" />
         )}
       </>
     ),

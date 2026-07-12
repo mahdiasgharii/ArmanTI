@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import { DialogActions, Typography } from '@mui/material';
 import { FunctionComponent } from 'react';
 import { useFormatter } from './i18n';
@@ -48,7 +48,7 @@ const ExternalLinkPopover: FunctionComponent<ExternalLinkPopoverProps> = ({
       <DialogActions>
         <Button variant="secondary" onClick={handleCloseExternalLink}>{t_i18n('Cancel')}</Button>
         <Button
-          startIcon={<OpenInNewOutlined fontSize="small" />}
+          startIcon={<OpenInNewOutlined size={16} />}
           onClick={handleBrowseExternalLink}
         >
           {t_i18n('Browse the link')}

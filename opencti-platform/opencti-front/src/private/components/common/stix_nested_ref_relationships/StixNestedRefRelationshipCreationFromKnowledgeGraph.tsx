@@ -1,6 +1,6 @@
 import { stixNestedRefRelationshipCreationResolveQuery } from '@components/common/stix_nested_ref_relationships/StixNestedRefRelationshipCreation';
 import IconButton from '@common/button/IconButton';
-import { ReadMoreOutlined } from '@mui/icons-material';
+import { BookOpenText as ReadMoreOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import React from 'react';
 import {

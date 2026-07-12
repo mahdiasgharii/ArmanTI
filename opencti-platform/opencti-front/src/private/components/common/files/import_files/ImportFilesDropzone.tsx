@@ -1,5 +1,5 @@
 import { alpha } from '@mui/material/styles';
-import { CloudUploadOutlined } from '@mui/icons-material';
+import { CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import { Box, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import Button from '@common/button/Button';

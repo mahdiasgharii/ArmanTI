@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import makeStyles from '@mui/styles/makeStyles';
 import Tooltip from '@mui/material/Tooltip';
 import { Accordion, AccordionDetails } from '@mui/material';
-import { DeleteOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import Typography from '@mui/material/Typography';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import classNames from 'classnames';

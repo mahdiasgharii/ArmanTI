@@ -1,5 +1,5 @@
 import Button from '@common/button/Button';
-import { Add, AddCircleOutlined, ArrowDownward, ArrowUpward, DeleteOutlined, ExpandMore } from '@mui/icons-material';
+import { Plus as Add, CirclePlus as AddCircleOutlined, ArrowDown as ArrowDownward, ArrowUp as ArrowUpward, Trash2 as DeleteOutlined, ChevronDown as ExpandMore } from 'lucide-react';
 import {
   Accordion,
   AccordionDetails,

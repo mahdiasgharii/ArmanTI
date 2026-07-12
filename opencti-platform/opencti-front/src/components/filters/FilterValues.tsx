@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import { ChipOwnProps } from '@mui/material/Chip/Chip';
-import { WarningOutlined } from '@mui/icons-material';
+import { AlertTriangle as WarningOutlined } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useFormatter } from '../i18n';
 import { FiltersRestrictions, isFilterEditable, isFilterGroupNotEmpty, isRegardingOfFilterWarning, useFilterDefinition } from '../../utils/filters/filtersUtils';

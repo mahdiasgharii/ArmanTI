@@ -3,7 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import * as Yup from 'yup';
 import { FormikErrors, FormikValues } from 'formik';
 import { clone } from 'ramda';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { FormControl, IconButton, InputLabel, MenuItem, Paper, Select, Typography } from '@mui/material';
 import { useFormatter } from '../../../../../components/i18n';
 import type { Theme } from '../../../../../components/Theme';

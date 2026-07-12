@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'ramda';
 import * as PropTypes from 'prop-types';
 import withStyles from '@mui/styles/withStyles';
-import { ArrowUpward, ArrowDownward, ArrowForward } from '@mui/icons-material';
+import { ArrowUp as ArrowUpward, ArrowDown as ArrowDownward, ArrowRight as ArrowForward } from 'lucide-react';
 
 import inject18n from './i18n';
 import { alpha } from '@mui/material';

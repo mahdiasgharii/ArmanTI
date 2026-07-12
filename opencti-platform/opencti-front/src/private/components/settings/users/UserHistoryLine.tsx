@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import { UserHistoryLine_node$key } from '@components/settings/users/__generated__/UserHistoryLine_node.graphql';
-import { DeleteOutlined, LinkOffOutlined, LinkOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Unlink as LinkOffOutlined, Link as LinkOutlined } from 'lucide-react';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange, deepPurple, green, indigo, lightGreen, orange, pink, red, teal, yellow } from '@mui/material/colors';
 import DialogActions from '@mui/material/DialogActions';

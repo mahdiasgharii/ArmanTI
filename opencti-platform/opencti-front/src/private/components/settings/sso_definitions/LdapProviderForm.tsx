@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { Add, Delete, ExpandMoreOutlined } from '@mui/icons-material';
+import { Plus as Add, Trash2 as Delete, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import SwitchField from '../../../../components/fields/SwitchField';
 import TextField from '../../../../components/TextField';
 import SelectField from '../../../../components/fields/SelectField';

@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback } from 'react';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { Autocomplete, AutocompleteProps, AutocompleteValue, TextField, TextFieldProps } from '@mui/material';
 import { FieldProps, useField } from 'formik';
 import { FieldOption } from '../utils/field';
@@ -178,7 +178,7 @@ const AutocompleteField = <
           }}
           title={t_i18n('Add')}
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
       )}
     </div>

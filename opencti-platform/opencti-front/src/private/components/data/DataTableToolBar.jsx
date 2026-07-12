@@ -2,26 +2,26 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import {
-  AddOutlined,
-  AutoFixHighOutlined,
-  BrushOutlined,
-  CancelOutlined,
-  CenterFocusStrong,
-  CheckCircleOutlined,
-  ClearOutlined,
-  ContentCopyOutlined,
-  DeleteOutlined,
-  DeleteSweepOutlined,
-  LanguageOutlined,
-  LinkOffOutlined,
-  LockOpenOutlined,
-  MergeOutlined,
-  MoveToInboxOutlined,
-  PrecisionManufacturingOutlined,
-  RestoreOutlined,
-  TransformOutlined,
-  UnpublishedOutlined,
-} from '@mui/icons-material';
+  Plus as AddOutlined,
+  Wand2 as AutoFixHighOutlined,
+  Brush as BrushOutlined,
+  XCircle as CancelOutlined,
+  Crosshair as CenterFocusStrong,
+  CheckCircle as CheckCircleOutlined,
+  X as ClearOutlined,
+  Copy as ContentCopyOutlined,
+  Trash2 as DeleteOutlined,
+  FileX as DeleteSweepOutlined,
+  Globe as LanguageOutlined,
+  Link2Off as LinkOffOutlined,
+  LockOpen as LockOpenOutlined,
+  Merge as MergeOutlined,
+  Inbox as MoveToInboxOutlined,
+  Bot as PrecisionManufacturingOutlined,
+  RotateCcw as RestoreOutlined,
+  Repeat as TransformOutlined,
+  CircleSlash as UnpublishedOutlined,
+} from 'lucide-react';
 import { DialogContentText, FormControlLabel, Switch } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';

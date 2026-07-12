@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import Tooltip from '@mui/material/Tooltip';
-import { FileDownloadOutlined, ViewListOutlined } from '@mui/icons-material';
+import { Download as FileDownloadOutlined, List as ViewListOutlined } from 'lucide-react';
 import { VectorPolygon } from 'mdi-material-ui';
 import { useInitCreateRelationshipContext } from '../stix_core_relationships/CreateRelationshipContextProvider';
 import { QueryRenderer } from '../../../../relay/environment';

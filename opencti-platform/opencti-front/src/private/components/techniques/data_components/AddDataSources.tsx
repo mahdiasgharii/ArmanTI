@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Drawer from '@components/common/drawer/Drawer';
 import { DataSourcesLinesPaginationQuery$variables } from '@components/techniques/__generated__/DataSourcesLinesPaginationQuery.graphql';
 import { useFormatter } from '../../../../components/i18n';

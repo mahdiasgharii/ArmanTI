@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import StixCoreRelationshipCreationFromEntity, { TargetEntity } from '@components/common/stix_core_relationships/StixCoreRelationshipCreationFromEntity';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
-import { ViewListOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { List as ViewListOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -172,10 +172,10 @@ const SecurityCoverageAttackPatterns = ({
             }}
           >
             <ToggleButton value="matrix" aria-label="matrix view">
-              <ViewModuleOutlined fontSize="small" />
+              <ViewModuleOutlined size={16} />
             </ToggleButton>
             <ToggleButton value="lines" aria-label="lines view">
-              <ViewListOutlined fontSize="small" />
+              <ViewListOutlined size={16} />
             </ToggleButton>
           </ToggleButtonGroup>
           {showKillChainSelector && viewMode === 'matrix' && (

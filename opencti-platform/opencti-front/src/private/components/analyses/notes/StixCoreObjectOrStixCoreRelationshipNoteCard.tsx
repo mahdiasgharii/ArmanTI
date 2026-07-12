@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import { Link } from 'react-router-dom';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid2';
 import IconButton from '@common/button/IconButton';
@@ -117,7 +117,7 @@ const StixCoreObjectOrStixCoreRelationshipNoteCard: FunctionComponent<
             to={`/dashboard/analyses/notes/${note.id}`}
             sx={{ mr: 1 }}
           >
-            <OpenInNewOutlined fontSize="small" />
+            <OpenInNewOutlined size={16} />
           </IconButton>
           <CollaborativeSecurity data={note} needs={[KNOWLEDGE_KNUPDATE]}>
             <NotePopover

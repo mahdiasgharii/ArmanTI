@@ -6,7 +6,7 @@ import Popover from '@mui/material/Popover';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useField } from 'formik';
 import { fieldToTextField } from 'formik-mui';
-import { ColorLens } from '@mui/icons-material';
+import { Palette as ColorLens } from 'lucide-react';
 import { isNil } from 'ramda';
 
 const ColorPickerField = (props) => {

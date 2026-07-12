@@ -11,7 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import { ExpandMore } from '@mui/icons-material';
+import { ChevronDown as ExpandMore } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ListItemButton } from '@mui/material';
 import { truncate } from '../../../../utils/String';

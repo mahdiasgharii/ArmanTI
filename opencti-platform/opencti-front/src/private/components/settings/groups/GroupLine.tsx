@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
-import { CheckCircleOutlined, DoNotDisturbOnOutlined, KeyboardArrowRightOutlined, ReportGmailerrorred } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, MinusCircle as DoNotDisturbOnOutlined, ChevronRight as KeyboardArrowRightOutlined, MailWarning as ReportGmailerrorred } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';

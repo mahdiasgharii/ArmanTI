@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material';
-import { AddCircleOutlineOutlined, InfoOutlined } from '@mui/icons-material';
+import { PlusCircle as AddCircleOutlineOutlined, Info as InfoOutlined } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
 import { graphql, PreloadedQuery, useFragment, usePreloadedQuery } from 'react-relay';
 import { Link } from 'react-router-dom';

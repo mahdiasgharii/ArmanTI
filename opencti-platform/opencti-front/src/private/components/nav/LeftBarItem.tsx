@@ -1,4 +1,4 @@
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
 import { alpha, Collapse, ListItemIcon, ListItemText, MenuItem, MenuList, Popover, SxProps, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import React, { useRef } from 'react';

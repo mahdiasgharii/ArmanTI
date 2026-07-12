@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Collapse from '@mui/material/Collapse';
 import { Launch } from 'mdi-material-ui';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { ChevronUp as ExpandLess, ChevronDown as ExpandMore } from 'lucide-react';
 import { createRefetchContainer, graphql } from 'react-relay';
 import ListItem from '@mui/material/ListItem';
 import { yearFormat } from '../../../../utils/Time';

@@ -1,6 +1,6 @@
 import React, { ReactNode, UIEvent, useState } from 'react';
 import { PopoverProps } from '@mui/material/Popover/Popover';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import ToggleButton from '@mui/material/ToggleButton';
 import Menu from '@mui/material/Menu';
 import { useFormatter } from './i18n';
@@ -40,7 +40,7 @@ const PopoverMenu = ({ children }: PopoverMenuProps) => {
         size="small"
         color="primary"
       >
-        <MoreVert fontSize="small" color="primary" />
+        <MoreVert size={16} className="text-primary" />
       </ToggleButton>
       <Menu
         anchorEl={anchorPopover}

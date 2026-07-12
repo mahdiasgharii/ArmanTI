@@ -7,7 +7,7 @@ import { ListItemButton } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Chip from '@mui/material/Chip';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { DatabaseImportOutline } from 'mdi-material-ui';
 import { compose } from 'ramda';
 import Slide from '@mui/material/Slide';

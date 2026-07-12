@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import { Edit } from '@mui/icons-material';
+import { Pencil as Edit } from 'lucide-react';
 import { InformationOutline } from 'mdi-material-ui';
 import { Stack, Tooltip } from '@mui/material';
 import Loader, { LoaderVariant } from '../../../../components/Loader';

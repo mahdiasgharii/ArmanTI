@@ -1,7 +1,7 @@
 import React from 'react';
 import { filter } from 'ramda';
 import IconButton from '@common/button/IconButton';
-import { Domain, Delete } from '@mui/icons-material';
+import { Building2 as Domain, Trash2 as Delete } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import { AutoFix } from 'mdi-material-ui';
 import ListItem from '@mui/material/ListItem';

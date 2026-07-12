@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import EditOutlined from '@mui/icons-material/EditOutlined';
 import ListOutlined from '@mui/icons-material/ListOutlined';
-import { WarningAmberOutlined } from '@mui/icons-material';
+import { TriangleAlert as WarningAmberOutlined } from 'lucide-react';
 import IconButton from '@mui/material/IconButton';
 import ItemBoolean from '../../../../components/ItemBoolean';
 import { useFormatter } from '../../../../components/i18n';

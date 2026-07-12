@@ -5,7 +5,7 @@ import { CONTENT_MAX_MARKINGS_HELPERTEXT, CONTENT_MAX_MARKINGS_TITLE } from '@co
 import FiligranIcon from '@components/common/FiligranIcon';
 import ObjectMarkingField from '@components/common/form/ObjectMarkingField';
 import { BUILT_IN_FROM_TEMPLATE, BUILT_IN_HTML_TO_PDF } from '@components/common/stix_core_objects/StixCoreObjectFileExport';
-import { AbcOutlined, DataObjectOutlined, HtmlOutlined, NumbersOutlined } from '@mui/icons-material';
+import { Type as AbcOutlined, Braces as DataObjectOutlined, Code as HtmlOutlined, Hash as NumbersOutlined } from 'lucide-react';
 import { Stack } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import DialogActions from '@mui/material/DialogActions';

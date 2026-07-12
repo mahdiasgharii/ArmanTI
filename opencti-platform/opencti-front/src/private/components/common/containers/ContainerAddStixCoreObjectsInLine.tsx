@@ -1,5 +1,5 @@
 import Button from '@common/button/Button';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { IconButton, Stack, Tooltip } from '@mui/material';
 import { FunctionComponent, Suspense, useState } from 'react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';

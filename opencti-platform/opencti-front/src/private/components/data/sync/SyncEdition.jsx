@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { Field, Form, Formik } from 'formik';
 import Typography from '@mui/material/Typography';
-import { CheckCircleOutlined, WarningOutlined } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, AlertTriangle as WarningOutlined } from 'lucide-react';
 import * as Yup from 'yup';
 import Button from '@common/button/Button';
 import Alert from '@mui/material/Alert';

@@ -6,7 +6,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
 import Card from '@common/card/Card';
 import { QueryRenderer } from '../../../../relay/environment';
 import inject18n from '../../../../components/i18n';

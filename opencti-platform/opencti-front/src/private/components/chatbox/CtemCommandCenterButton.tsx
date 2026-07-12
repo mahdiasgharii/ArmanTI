@@ -1,4 +1,4 @@
-import { RadarOutlined } from '@mui/icons-material';
+import { Radar as RadarOutlined } from 'lucide-react';
 import { Box, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import IconButton from '@common/button/IconButton';
@@ -68,7 +68,7 @@ const CtemCommandCenterButton = () => {
         onClick={() => window.open(safeXtmOneUrl, '_blank', 'noopener,noreferrer')}
         aria-label={t_i18n('CTEM Command Center')}
       >
-        <RadarOutlined fontSize="medium" sx={{ color: theme.palette.ai.main }} />
+        <RadarOutlined size={24} style={{ color: theme.palette.ai.main }} />
       </IconButton>
     </Tooltip>
   );

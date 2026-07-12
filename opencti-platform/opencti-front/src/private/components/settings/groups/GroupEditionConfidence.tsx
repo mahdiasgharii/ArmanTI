@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import Typography from '@mui/material/Typography';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import * as Yup from 'yup';
 import ConfidenceOverrideField from '@components/settings/users/edition/ConfidenceOverrideField';
 import { createFragmentContainer, graphql } from 'react-relay';

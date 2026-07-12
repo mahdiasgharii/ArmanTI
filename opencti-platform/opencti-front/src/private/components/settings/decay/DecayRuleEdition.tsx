@@ -3,7 +3,7 @@ import { graphql } from 'react-relay';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import Drawer from '@components/common/drawer/Drawer';
 import * as R from 'ramda';
-import { AddOutlined, Delete } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as Delete } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';

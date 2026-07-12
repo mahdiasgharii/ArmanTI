@@ -1,6 +1,6 @@
 import React, { UIEvent, useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { graphql } from 'react-relay';
 import { PopoverProps } from '@mui/material/Popover';
 import { ImportWorkbenchesContentFileLine_file$data } from '@components/data/import/__generated__/ImportWorkbenchesContentFileLine_file.graphql';

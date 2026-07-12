@@ -3,7 +3,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Field } from 'formik';
 import MenuItem from '@mui/material/MenuItem';
-import { Delete, InfoOutlined } from '@mui/icons-material';
+import { Trash2 as Delete, Info as InfoOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import { Tooltip } from '@mui/material';
 import React from 'react';

@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import UserConfidenceLevel from '@components/settings/users/UserConfidenceLevel';
-import { Add, DeleteForeverOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Plus as Add, Trash2 as DeleteForeverOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import { ListItemButton, Stack } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

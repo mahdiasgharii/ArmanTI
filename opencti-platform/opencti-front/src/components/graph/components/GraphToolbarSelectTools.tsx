@@ -1,5 +1,5 @@
 import { SelectAll, SelectGroup, SelectionDrag } from 'mdi-material-ui';
-import { GestureOutlined, SwipeDown, SwipeUp, SwipeVertical, TouchApp } from '@mui/icons-material';
+import { Hand as GestureOutlined, ArrowDown as SwipeDown, ArrowUp as SwipeUp, MoveVertical as SwipeVertical, Hand as TouchApp } from 'lucide-react';
 import React, { useState } from 'react';
 import GraphToolbarOptionsList from './GraphToolbarOptionsList';
 import GraphToolbarItem from './GraphToolbarItem';

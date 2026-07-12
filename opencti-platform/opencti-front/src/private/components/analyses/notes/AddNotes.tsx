@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import { NotesLinesPaginationQuery$variables } from '@components/analyses/__generated__/NotesLinesPaginationQuery.graphql';
 import Drawer from '@components/common/drawer/Drawer';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { IconButton, List, ListItem, ListItemIcon, ListItemText, Skeleton } from '@mui/material';
 import { FunctionComponent, useState } from 'react';
 import { RecordSourceSelectorProxy } from 'relay-runtime';

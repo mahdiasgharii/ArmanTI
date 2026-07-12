@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import ToggleButton from '@mui/material/ToggleButton';
 import Tooltip from '@mui/material/Tooltip';
-import { ViewListOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { List as ViewListOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import { ThreatActorIndividualCardFragment } from '@components/threats/threat_actors_individual/ThreatActorIndividualCard';
 import { ThreatActorsIndividualCards_data$data } from '@components/threats/threat_actors_individual/__generated__/ThreatActorsIndividualCards_data.graphql';
 import StixCoreObjectForms from '@components/common/stix_core_objects/StixCoreObjectForms';

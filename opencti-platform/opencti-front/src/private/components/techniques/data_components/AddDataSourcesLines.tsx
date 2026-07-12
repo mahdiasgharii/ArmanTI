@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
-import { StreamOutlined } from '@mui/icons-material';
+import { Waves as StreamOutlined } from 'lucide-react';
 import { ListItemButton } from '@mui/material';
 import { truncate } from '../../../../utils/String';
 import { AddDataSourcesLines_data$key } from './__generated__/AddDataSourcesLines_data.graphql';

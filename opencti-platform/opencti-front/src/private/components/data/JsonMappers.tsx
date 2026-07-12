@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, Suspense, useRef, useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import JsonMapperLines from '@components/data/jsonMapper/JsonMapperLines';
-import { CancelOutlined, CheckCircleOutlined, FileUploadOutlined } from '@mui/icons-material';
+import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as FileUploadOutlined } from 'lucide-react';
 import ProcessingMenu from '@components/data/ProcessingMenu';
 import JsonMappersProvider, { mappersQuery } from '@components/data/jsonMapper/jsonMappers.data';
 import VisuallyHiddenInput from '@components/common/VisuallyHiddenInput';

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import { graphql } from 'relay-runtime';
 import { useFragment } from 'react-relay';
-import { LockOutlined } from '@mui/icons-material';
+import { Lock as LockOutlined } from 'lucide-react';
 import { KNOWLEDGE_KNUPDATE_KNMANAGEAUTHMEMBERS } from '../../../utils/hooks/useGranted';
 import Security from '../../../utils/Security';
 import IconButton from '../../../components/common/button/IconButton';

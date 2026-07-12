@@ -1,4 +1,4 @@
-import { ArrowRightAltOutlined } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAltOutlined } from 'lucide-react';
 import { Stack } from '@mui/material';
 import React, { ReactElement } from 'react';
 import { hexToRGB } from '../utils/Colors';

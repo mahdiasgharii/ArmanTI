@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { ArrowRightAlt, EditOutlined, ExpandLessOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt, Pencil as EditOutlined, ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import { Stack, Tooltip, Typography, Box } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';

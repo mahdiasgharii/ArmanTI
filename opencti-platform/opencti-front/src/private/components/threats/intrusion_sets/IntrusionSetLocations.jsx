@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 import IconButton from '@common/button/IconButton';
-import { Delete } from '@mui/icons-material';
+import { Trash2 as Delete } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import * as R from 'ramda';
 import { ListItemButton, Tooltip } from '@mui/material';

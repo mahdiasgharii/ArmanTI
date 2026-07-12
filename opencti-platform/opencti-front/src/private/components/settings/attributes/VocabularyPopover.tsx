@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import { MoreVertOutlined } from '@mui/icons-material';
+import { MoreVertical as MoreVertOutlined } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import { PopoverProps } from '@mui/material/Popover';
 import { graphql } from 'react-relay';

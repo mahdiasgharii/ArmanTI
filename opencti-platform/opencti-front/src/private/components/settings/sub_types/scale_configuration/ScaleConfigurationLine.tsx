@@ -1,7 +1,7 @@
 import { Field, Form, Formik, FormikErrors } from 'formik';
 import React, { FunctionComponent } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
-import { DeleteOutline } from '@mui/icons-material';
+import { Trash2 as DeleteOutline } from 'lucide-react';
 import Grid from '@mui/material/Grid';
 import IconButton from '@common/button/IconButton';
 import { ObjectSchema } from 'yup';

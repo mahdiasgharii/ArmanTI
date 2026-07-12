@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTheme } from '@mui/styles';
 import { Avatar, Tooltip } from '@mui/material';
-import { BugReportOutlined, HourglassEmpty, Person, ShieldOutlined, TrackChangesOutlined } from '@mui/icons-material';
+import { Bug as BugReportOutlined, Hourglass as HourglassEmpty, User as Person, Shield as ShieldOutlined, Target as TrackChangesOutlined } from 'lucide-react';
 import Chart from '@components/common/charts/Chart';
 import { ApexOptions } from 'apexcharts';
 import { useFormatter } from '../../../../components/i18n';

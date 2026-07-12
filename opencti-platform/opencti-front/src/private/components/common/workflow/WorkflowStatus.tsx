@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useFragment } from 'react-relay';
 import { Box, Popover, Typography } from '@mui/material';
-import { CommentOutlined } from '@mui/icons-material';
+import { MessageSquare as CommentOutlined } from 'lucide-react';
 import ItemStatus from '../../../../components/ItemStatus';
 import { workflowStatusFragment } from './WorkflowStatus.graphql';
 import { WorkflowStatus_data$key } from './__generated__/WorkflowStatus_data.graphql';

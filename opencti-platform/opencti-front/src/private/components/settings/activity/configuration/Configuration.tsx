@@ -21,7 +21,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import IconButton from '@common/button/IconButton';
 import List from '@mui/material/List';
 import Grid from '@mui/material/Grid';
-import { Delete } from '@mui/icons-material';
+import { Trash2 as Delete } from 'lucide-react';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Alert from '@mui/material/Alert';

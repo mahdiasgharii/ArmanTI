@@ -5,7 +5,7 @@ import IngestionCatalogCard from '@components/data/IngestionCatalog/IngestionCat
 import useIngestionCatalogFilters from '@components/data/IngestionCatalog/hooks/useIngestionCatalogFilters';
 import { useSearchParams } from 'react-router-dom';
 import { Stack } from '@mui/material';
-import { Search } from '@mui/icons-material';
+import { Search } from 'lucide-react';
 import Grid from '@mui/material/Grid2';
 import { ConnectorManagerStatusProvider, useConnectorManagerStatus } from '@components/data/connectors/ConnectorManagerStatusContext';
 import ConnectorDeploymentBanner from '@components/data/connectors/ConnectorDeploymentBanner';

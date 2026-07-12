@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { IconButton, Radio, RadioGroup, Typography } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { InformationOutline } from 'mdi-material-ui';
 import Tooltip from '@mui/material/Tooltip';
 import { FormikHelpers } from 'formik/dist/types';

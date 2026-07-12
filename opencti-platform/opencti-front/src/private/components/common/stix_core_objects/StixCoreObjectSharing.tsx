@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import EETooltip from '@components/common/entreprise_edition/EETooltip';
-import { AccountBalanceOutlined } from '@mui/icons-material';
+import { Landmark as AccountBalanceOutlined } from 'lucide-react';
 import Chip from '@mui/material/Chip';
 import DialogActions from '@mui/material/DialogActions';
 import ToggleButton from '@mui/material/ToggleButton';

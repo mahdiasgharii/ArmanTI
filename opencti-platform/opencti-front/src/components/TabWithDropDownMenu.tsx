@@ -2,7 +2,7 @@ import { MouseEvent, ReactElement, useState } from 'react';
 import { Box, type MenuItemProps, type PopoverProps, MenuItem } from '@mui/material';
 import Tab, { TabProps } from '@mui/material/Tab';
 import Menu from '@mui/material/Menu';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
 
 export const useDropDownMenuState = () => {
   const [anchorEl, setAnchorEl] = useState<PopoverProps['anchorEl']>(null);
@@ -61,7 +61,7 @@ export const TabWithDropDownMenu = ({ isOpen, onOpen, label, ...tabProps }: TabW
         >
           {label}
         </Box>
-        {isOpen ? <ArrowDropUp sx={{ fontSize: '20px' }} /> : <ArrowDropDown sx={{ fontSize: '20px' }} />}
+        {isOpen ? <ArrowDropUp size={20} /> : <ArrowDropDown size={20} />}
       </>
     )}
     onClick={onOpen}

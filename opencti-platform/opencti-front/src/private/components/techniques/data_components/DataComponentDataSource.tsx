@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { ListItemButton } from '@mui/material';
 import IconButton from '@common/button/IconButton';
-import { LinkOff, StreamOutlined } from '@mui/icons-material';
+import { Unlink as LinkOff, Waves as StreamOutlined } from 'lucide-react';
 import ListItem from '@mui/material/ListItem';
 import { useFormatter } from '../../../../components/i18n';
 import AddDataSources from './AddDataSources';

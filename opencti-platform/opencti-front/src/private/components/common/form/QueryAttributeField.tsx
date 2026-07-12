@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import { Field, FieldArray } from 'formik';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import { AddOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import Paper from '@mui/material/Paper';
 import MenuItem from '@mui/material/MenuItem';
 import { useFormatter } from '../../../../components/i18n';

@@ -5,7 +5,7 @@ import StixDomainObjectCreation from '../stix_domain_objects/StixDomainObjectCre
 import StixCyberObservableCreation from '../../observations/stix_cyber_observables/StixCyberObservableCreation';
 import { PaginationOptions } from '../../../../components/list_lines';
 import { Menu, MenuItem } from '@mui/material';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import { Theme } from '../../../../components/Theme';
 

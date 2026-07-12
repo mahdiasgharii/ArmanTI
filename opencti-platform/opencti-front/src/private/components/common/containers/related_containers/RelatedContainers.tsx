@@ -1,6 +1,6 @@
 import React, { useMemo, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { NorthEastOutlined, LoupeOutlined } from '@mui/icons-material';
+import { MoveUpRight as NorthEastOutlined, ZoomIn as LoupeOutlined } from 'lucide-react';
 import { VectorLink } from 'mdi-material-ui';
 import IconButton from '@common/button/IconButton';
 import { graphql, useFragment } from 'react-relay';

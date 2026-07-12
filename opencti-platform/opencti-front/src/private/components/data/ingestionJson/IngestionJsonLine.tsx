@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import IngestionJsonPopover from '@components/data/ingestionJson/IngestionJsonPopover';
 import TableViewIcon from '@mui/icons-material/TableView';
 import { IngestionJsonLine_node$key } from '@components/data/ingestionJson/__generated__/IngestionJsonLine_node.graphql';

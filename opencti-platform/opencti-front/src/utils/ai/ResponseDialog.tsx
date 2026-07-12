@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { RefreshOutlined } from '@mui/icons-material';
+import { RefreshCw as RefreshOutlined } from 'lucide-react';
 import Alert from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
@@ -272,7 +272,7 @@ const ResponseDialog: FunctionComponent<ResponseDialogProps> = ({
         disabled={agentLoading || !selectedAgent}
         sx={{ position: 'absolute', top: 2, right: 2, zIndex: 1 }}
       >
-        <RefreshOutlined fontSize="small" />
+        <RefreshOutlined size={16} />
       </IconButton>
     );
   };

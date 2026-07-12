@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { CenterFocusStrongOutlined, ClearOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Crosshair as CenterFocusStrongOutlined, X as ClearOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Drawer from '@mui/material/Drawer';

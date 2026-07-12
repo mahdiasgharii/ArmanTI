@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import { ManageSearchOutlined, Search, TuneOutlined, KeyboardArrowDownOutlined } from '@mui/icons-material';
+import { SearchCheck as ManageSearchOutlined, Search, SlidersHorizontal as TuneOutlined, ChevronDown as KeyboardArrowDownOutlined } from 'lucide-react';
 import { LogoXtmOneIcon } from 'filigran-icon';
 import { useNavigate } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
@@ -370,7 +370,7 @@ const SearchInput = (props) => {
           slotProps={{
             input: {
               startAdornment: (
-                <Search fontSize="small" sx={{ mr: 0.5 }} />
+                <Search size={16} style={{ marginRight: 2 }} />
               ),
               classes: {
                 root: classRoot,
@@ -469,10 +469,10 @@ const SearchInput = (props) => {
             input: {
               startAdornment: (
                 <Search
-                  fontSize="small"
-                  sx={{
+                  size={16}
+                  style={{
                     color: isNLQActivated ? theme.palette.ai.main : 'inherit',
-                    mr: 0.5,
+                    marginRight: 2,
                   }}
                 />
               ),
@@ -512,14 +512,14 @@ const SearchInput = (props) => {
           {/* Search mode */}
           <Tooltip title={t_i18n('Advanced search')}>
             <ToggleButton value={MODE_SEARCH} sx={{ ...toggleButtonSx, mr: 0.75 }}>
-              <TuneOutlined sx={{ fontSize: 18 }} />
+              <TuneOutlined size={18} />
             </ToggleButton>
           </Tooltip>
 
           {/* Bulk mode */}
           <Tooltip title={t_i18n('Bulk search')}>
             <ToggleButton value={MODE_BULK} sx={{ ...toggleButtonSx, mr: 0.75 }}>
-              <ManageSearchOutlined sx={{ fontSize: 18 }} />
+              <ManageSearchOutlined size={18} />
             </ToggleButton>
           </Tooltip>
 
@@ -566,7 +566,7 @@ const SearchInput = (props) => {
                           handleOpenNlqMenu(e);
                         }}
                       >
-                        <KeyboardArrowDownOutlined sx={{ fontSize: 18, color: 'inherit' }} />
+                        <KeyboardArrowDownOutlined size={18} style={{ color: 'inherit' }} />
                       </Box>
                     )}
                   </Stack>

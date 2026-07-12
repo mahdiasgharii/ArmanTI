@@ -40,7 +40,7 @@ import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloade
 import { SearchIndexedFiles_data$data } from './__generated__/SearchIndexedFiles_data.graphql';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import { resolveLink } from '../../../utils/Entity';
 import { getFileUri } from '../../../utils/utils';
 import { defaultRender } from '../../../components/dataGrid/dataTableUtils';

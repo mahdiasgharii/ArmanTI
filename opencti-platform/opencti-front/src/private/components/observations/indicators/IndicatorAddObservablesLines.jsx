@@ -9,7 +9,7 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import { CheckCircle, ExpandMore } from '@mui/icons-material';
+import { CheckCircle, ChevronDown as ExpandMore } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import { ListItemButton } from '@mui/material';
 import { commitMutation } from '../../../../relay/environment';

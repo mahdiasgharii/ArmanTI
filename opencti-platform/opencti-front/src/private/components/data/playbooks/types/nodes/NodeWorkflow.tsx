@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { MoreVert, LoginOutlined } from '@mui/icons-material';
+import { MoreVertical as MoreVert, LogIn as LoginOutlined } from 'lucide-react';
 import ItemIcon from '../../../../../../components/ItemIcon';
 import { useFormatter } from '../../../../../../components/i18n';
 import { truncate } from '../../../../../../utils/String';

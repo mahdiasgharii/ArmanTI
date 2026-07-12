@@ -1,4 +1,4 @@
-import { InsertChartOutlined, LibraryBooksOutlined, NotificationsOutlined } from '@mui/icons-material';
+import { BarChart3 as InsertChartOutlined, Library as LibraryBooksOutlined, Bell as NotificationsOutlined } from 'lucide-react';
 import type { ElementType } from 'react';
 
 interface NewsFeedTypeDefinition {

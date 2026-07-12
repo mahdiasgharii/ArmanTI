@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Card from '@common/card/Card';
 import Dialog from '@common/dialog/Dialog';
-import { BrushOutlined, Delete } from '@mui/icons-material';
+import { Brush as BrushOutlined, Trash2 as Delete } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';

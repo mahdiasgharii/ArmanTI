@@ -4,7 +4,7 @@ import { createFragmentContainer } from 'react-relay';
 import withStyles from '@mui/styles/withStyles';
 import IconButton from '@common/button/IconButton';
 import { FileOutline } from 'mdi-material-ui';
-import { DeleteOutlined, GetAppOutlined, WarningOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Download as GetAppOutlined, AlertTriangle as WarningOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';

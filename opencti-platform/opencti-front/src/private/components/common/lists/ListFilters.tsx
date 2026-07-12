@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent, ReactNode } from 'react';
 import Button from '@common/button/Button';
-import { FilterListOffOutlined, FilterListOutlined } from '@mui/icons-material';
+import { FilterX as FilterListOffOutlined, Filter as FilterListOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import Popover from '@mui/material/Popover';
 import Tooltip from '@mui/material/Tooltip';

@@ -4,7 +4,7 @@ import DangerZoneBlock from '@components/common/danger_zone/DangerZoneBlock';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
 import { useFormatter } from '../../../../components/i18n';
 import { Rule, Task } from './RulesList';

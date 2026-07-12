@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Checkbox from '@mui/material/Checkbox';
-import { GroupOutlined, ReportGmailerrorred } from '@mui/icons-material';
+import { Group as GroupOutlined, MailWarning as ReportGmailerrorred } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import { commitMutation, QueryRenderer } from '../../../../../relay/environment';
 import { groupsSearchQuery } from '../../Groups';

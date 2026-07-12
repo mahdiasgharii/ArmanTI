@@ -5,7 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
-import { PersonOutlined, AccountCircleOutlined, KeyboardArrowRightOutlined, HorizontalRule, Security, ReportGmailerrorred, ManageAccountsOutlined } from '@mui/icons-material';
+import { User as PersonOutlined, CircleUser as AccountCircleOutlined, ChevronRight as KeyboardArrowRightOutlined, Minus as HorizontalRule, Shield as Security, MailWarning as ReportGmailerrorred, UserCog as ManageAccountsOutlined } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
 import { UserLine_node$data } from '@components/settings/users/__generated__/UserLine_node.graphql';

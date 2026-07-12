@@ -1,4 +1,4 @@
-import { OpenWithOutlined, Undo } from '@mui/icons-material';
+import { Move as OpenWithOutlined, Undo2 as Undo } from 'lucide-react';
 import React, { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import { graphql } from 'react-relay';

@@ -5,7 +5,7 @@ import * as R from 'ramda';
 import IconButton from '@common/button/IconButton';
 import withStyles from '@mui/styles/withStyles';
 import Typography from '@mui/material/Typography';
-import { Add, Close } from '@mui/icons-material';
+import { Plus as Add, X as Close } from 'lucide-react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';

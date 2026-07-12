@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 import { GraphQLSubscriptionConfig } from 'relay-runtime';
-import { AutoModeOutlined, ContentCopyOutlined } from '@mui/icons-material';
+import { Wand2 as AutoModeOutlined, Copy as ContentCopyOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
@@ -168,12 +168,12 @@ const AISummaryContainersComponent = ({
             <Typography variant="caption">Generated on {nsdt(result?.containersAskAiSummary?.updated_at)}.</Typography>
             <Tooltip title={t_i18n('Copy to clipboard')}>
               <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
-                <ContentCopyOutlined fontSize="small" />
+                <ContentCopyOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Retry')}>
               <IconButton size="small" color="primary" onClick={() => refetch(first, relative)}>
-                <AutoModeOutlined fontSize="small" />
+                <AutoModeOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>

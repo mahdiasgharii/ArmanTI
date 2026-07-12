@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { ArrowDropDownOutlined, ArrowDropUpOutlined } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDownOutlined, ChevronUp as ArrowDropUpOutlined } from 'lucide-react';
 import Box from '@mui/material/Box';
 import { useFormatter } from '../../../../components/i18n';
 
@@ -63,9 +63,9 @@ const SortConnectorsHeader: React.FC<SortConnectorsHeaderProps> = ({ field, labe
   const { t_i18n } = useFormatter();
 
   const sortComponent = orderAsc ? (
-    <ArrowDropDownOutlined sx={sortHeaderStyle.iconSort} />
+    <ArrowDropDownOutlined style={sortHeaderStyle.iconSort} />
   ) : (
-    <ArrowDropUpOutlined sx={sortHeaderStyle.iconSort} />
+    <ArrowDropUpOutlined style={sortHeaderStyle.iconSort} />
   );
 
   if (isSortable) {

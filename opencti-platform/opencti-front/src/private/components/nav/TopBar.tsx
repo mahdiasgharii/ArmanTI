@@ -1,6 +1,6 @@
 import IconButton from '@common/button/IconButton';
 import { OPEN_BAR_WIDTH, SMALL_BAR_WIDTH } from '@components/nav/LeftBar';
-import { AccountCircleOutlined, AlarmOnOutlined, NotificationsOutlined } from '@mui/icons-material';
+import { CircleUser as AccountCircleOutlined, AlarmClock as AlarmOnOutlined, Bell as NotificationsOutlined } from 'lucide-react';
 import { alpha, Badge, Divider, Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';

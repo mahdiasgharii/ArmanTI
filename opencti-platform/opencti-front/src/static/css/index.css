@@ -20,6 +20,97 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS Specificity: Tailwind vs MUI ──────────────────────────── */
+/* Tailwind utilities are in @layer utilities, which gives them lower     */
+/* specificity than MUI's inline styles and JSS-injected styles.          */
+/* When a Tailwind class needs to override MUI, use the `!` prefix        */
+/* (e.g. `!bg-surface`) or the `.tw-override` wrapper class.              */
+/* The `.tw-override` class increases specificity so descendant Tailwind  */
+/* utilities win over MUI in tricky cases.                                */
+.tw-override [class*="bg-"],
+.tw-override [class*="text-"],
+.tw-override [class*="border-"] {
+  /* Ensure Tailwind classes inside .tw-override win over MUI */
+  /* Intentionally empty — specificity boost via selector nesting */
+}
+
+/* ── Ravin Style CSS Variables ────────────────────────────────── */
+/* The data-theme attribute is set on <body> by useDocumentThemeModifier. */
+/* Custom user themes override these via inline style injection in AppThemeProvider. */
+
+body[data-theme='dark'] {
+  --ravin-bg: #0A0A0A;
+  --ravin-surface: #141414;
+  --ravin-elevated: #1A1A1A;
+  --ravin-surface-2: #262626;
+  --ravin-border: #262626;
+  --ravin-border-strong: #404040;
+  --ravin-primary: #019BE5;
+  --ravin-primary-light: #66C4F5;
+  --ravin-primary-dark: #0073A8;
+  --ravin-secondary: #860EFE;
+  --ravin-secondary-light: #B88DFF;
+  --ravin-secondary-dark: #4A08A0;
+  --ravin-danger: #F20F0F;
+  --ravin-danger-light: #FF6B6B;
+  --ravin-danger-dark: #881106;
+  --ravin-success: #17AB1F;
+  --ravin-success-dark: #094E0B;
+  --ravin-warning: #E6700F;
+  --ravin-text: #FFFFFF;
+  --ravin-text-muted: #848592;
+  --ravin-text-light: #AFB0B6;
+}
+
+body[data-theme='light'] {
+  --ravin-bg: #F5F5F5;
+  --ravin-surface: #FFFFFF;
+  --ravin-elevated: #FFFFFF;
+  --ravin-surface-2: #E5E5E5;
+  --ravin-border: #E5E5E5;
+  --ravin-border-strong: #D4D4D4;
+  --ravin-primary: #019BE5;
+  --ravin-primary-light: #66C4F5;
+  --ravin-primary-dark: #0073A8;
+  --ravin-secondary: #860EFE;
+  --ravin-secondary-light: #B88DFF;
+  --ravin-secondary-dark: #4A08A0;
+  --ravin-danger: #F20F0F;
+  --ravin-danger-light: #FF6B6B;
+  --ravin-danger-dark: #881106;
+  --ravin-success: #17AB1F;
+  --ravin-success-dark: #094E0B;
+  --ravin-warning: #E6700F;
+  --ravin-text: #0A0A0A;
+  --ravin-text-muted: #666666;
+  --ravin-text-light: #999999;
+}
+
+/* Fallback: if no data-theme is set yet, default to dark */
+:root {
+  --ravin-bg: #0A0A0A;
+  --ravin-surface: #141414;
+  --ravin-elevated: #1A1A1A;
+  --ravin-surface-2: #262626;
+  --ravin-border: #262626;
+  --ravin-border-strong: #404040;
+  --ravin-primary: #019BE5;
+  --ravin-primary-light: #66C4F5;
+  --ravin-primary-dark: #0073A8;
+  --ravin-secondary: #860EFE;
+  --ravin-secondary-light: #B88DFF;
+  --ravin-secondary-dark: #4A08A0;
+  --ravin-danger: #F20F0F;
+  --ravin-danger-light: #FF6B6B;
+  --ravin-danger-dark: #881106;
+  --ravin-success: #17AB1F;
+  --ravin-success-dark: #094E0B;
+  --ravin-warning: #E6700F;
+  --ravin-text: #FFFFFF;
+  --ravin-text-muted: #848592;
+  --ravin-text-light: #AFB0B6;
+}
+
 * {
   scrollbar-width: thin;
 }

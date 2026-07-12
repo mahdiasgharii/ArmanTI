@@ -1,5 +1,5 @@
 import HeaderMainEntityLayout from '@common/header/HeaderMainEntityLayout';
-import { ViewColumnOutlined } from '@mui/icons-material';
+import { Columns3 as ViewColumnOutlined } from 'lucide-react';
 import { Box, Stack } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import ToggleButton from '@mui/material/ToggleButton';

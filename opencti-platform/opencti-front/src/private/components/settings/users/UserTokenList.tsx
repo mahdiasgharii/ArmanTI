@@ -1,4 +1,4 @@
-import { Delete } from '@mui/icons-material';
+import { Trash2 as Delete } from 'lucide-react';
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { useState } from 'react';

@@ -4,7 +4,7 @@ import { graphql, useFragment } from 'react-relay';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { CloseOutlined, MoreVert } from '@mui/icons-material';
+import { X as CloseOutlined, MoreVertical as MoreVert } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import makeStyles from '@mui/styles/makeStyles';
 import Chip from '@mui/material/Chip';

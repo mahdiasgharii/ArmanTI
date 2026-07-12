@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import { NotesLinesPaginationQuery$variables } from '@components/analyses/__generated__/NotesLinesPaginationQuery.graphql';
 import Drawer, { DrawerControlledDialProps } from '@components/common/drawer/Drawer';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Fab from '@mui/material/Fab';
 import makeStyles from '@mui/styles/makeStyles';
 import { Field, Form, Formik } from 'formik';

@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { ListItemButton, Tooltip } from '@mui/material';
 import IconButton from '@common/button/IconButton';
-import { Delete, SourceOutlined } from '@mui/icons-material';
+import { Trash2 as Delete, SquareMousePointer as SourceOutlined } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import ListItem from '@mui/material/ListItem';
 import { useFormatter } from '../../../../components/i18n';

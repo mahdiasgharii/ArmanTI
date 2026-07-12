@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import Drawer from '@components/common/drawer/Drawer';
-import { AddOutlined, ContentPasteGoOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, ClipboardPaste as ContentPasteGoOutlined } from 'lucide-react';
 import { GridTypeMap } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import { Form, Formik } from 'formik';
@@ -189,7 +189,7 @@ const CaseTasksLines: FunctionComponent<CaseTasksLinesProps> = ({
                 aria-label="Add"
                 onClick={handleOpen}
               >
-                <AddOutlined fontSize="small" />
+                <AddOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Apply a new case template')}>
@@ -197,7 +197,7 @@ const CaseTasksLines: FunctionComponent<CaseTasksLinesProps> = ({
                 aria-label="Apply"
                 onClick={() => setOpenCaseTemplate(true)}
               >
-                <ContentPasteGoOutlined fontSize="small" />
+                <ContentPasteGoOutlined size={16} />
               </IconButton>
             </Tooltip>
           </>

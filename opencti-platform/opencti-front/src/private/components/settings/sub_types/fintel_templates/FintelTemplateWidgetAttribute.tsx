@@ -1,5 +1,5 @@
 import React from 'react';
-import { WarningAmber, ContentCopy, Edit, DeleteOutline } from '@mui/icons-material';
+import { TriangleAlert as WarningAmber, Copy as ContentCopy, Pencil as Edit, Trash2 as DeleteOutline } from 'lucide-react';
 import { Tooltip, IconButton, ListItemText, ListItem, Typography } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import { useFintelTemplateContext } from './FintelTemplateContext';

@@ -17,7 +17,7 @@ import React, { FunctionComponent, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@common/button/Button';
-import { ClearOutlined, FolderOutlined, PauseOutlined, PlayArrowOutlined, StorageOutlined, SyncDisabledOutlined, SyncOutlined } from '@mui/icons-material';
+import { X as ClearOutlined, Folder as FolderOutlined, Pause as PauseOutlined, Play as PlayArrowOutlined, Database as StorageOutlined, RefreshCcw as SyncDisabledOutlined, RefreshCw as SyncOutlined } from 'lucide-react';
 import { graphql, PreloadedQuery, usePreloadedQuery, useQueryLoader } from 'react-relay';
 import { fileIndexingConfigurationFieldPatch, fileIndexingResetMutation } from '@components/settings/file_indexing/FileIndexing';
 import { FileIndexingMonitoringQuery } from '@components/settings/file_indexing/__generated__/FileIndexingMonitoringQuery.graphql';

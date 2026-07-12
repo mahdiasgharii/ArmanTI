@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Box, Modal, SxProps } from '@mui/material';
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
+import { ChevronLeft as KeyboardArrowLeft, ChevronRight as KeyboardArrowRight } from 'lucide-react';
 import IconButton from '../common/button/IconButton';
 import type { MarkdownPreviewImage } from './markdownPreviewImageUtils';
 

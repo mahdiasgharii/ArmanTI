@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import Fab from '@mui/material/Fab';
 import makeStyles from '@mui/styles/makeStyles';

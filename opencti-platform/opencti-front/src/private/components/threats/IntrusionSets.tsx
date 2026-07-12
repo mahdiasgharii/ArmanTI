@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import { GenericAttackCardDummy } from '@components/common/cards/GenericAttackCard';
 import ToggleButton from '@mui/material/ToggleButton';
 import Tooltip from '@mui/material/Tooltip';
-import { ViewListOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { List as ViewListOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import { IntrusionSetCardFragment } from '@components/threats/intrusion_sets/IntrusionSetCard';
 import { IntrusionSetsCards_data$data } from '@components/threats/intrusion_sets/__generated__/IntrusionSetsCards_data.graphql';
 import StixCoreObjectForms from '@components/common/stix_core_objects/StixCoreObjectForms';

@@ -5,7 +5,7 @@ import { graphql, useLazyLoadQuery } from 'react-relay';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import SwitchField from '../../../../components/fields/SwitchField';
 import TextField from '../../../../components/TextField';
@@ -165,12 +165,12 @@ const LocalStrategyForm = ({ onCancel }: LocalStrategyFormProps) => {
             />
             {isConfigurationFromEnv && (
               <Tooltip title={t_i18n('Local authentication cannot be changed when authentication is managed by environment configuration')}>
-                <InfoOutlined fontSize="small" color="primary" sx={{ ml: 1, cursor: 'default' }} />
+                <InfoOutlined size={16} color="currentColor" style={{ marginLeft: 4, cursor: 'default', color: 'var(--mui-palette-primary-main)' }} />
               </Tooltip>
             )}
             {!canDisableLocal && initialValues.enabled && (
               <Tooltip title={t_i18n('Local authentication cannot be disabled when no other authentication provider is enabled')}>
-                <InfoOutlined fontSize="small" color="primary" sx={{ ml: 1, cursor: 'default' }} />
+                <InfoOutlined size={16} color="currentColor" style={{ marginLeft: 4, cursor: 'default', color: 'var(--mui-palette-primary-main)' }} />
               </Tooltip>
             )}
           </Box>

@@ -1,4 +1,4 @@
-import { Close } from '@mui/icons-material';
+import { X as Close } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import makeStyles from '@mui/styles/makeStyles';
 import * as R from 'ramda';

@@ -11,7 +11,7 @@ import { commitMutation, fetchQuery, MESSAGING$ } from 'src/relay/environment';
 import Typography from '@mui/material/Typography';
 import { useFormatter } from 'src/components/i18n';
 import useAuth from 'src/utils/hooks/useAuth';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt } from 'lucide-react';
 import MenuItem from '@mui/material/MenuItem';
 import { Select, SelectChangeEvent } from '@mui/material';
 import TextField from '@mui/material/TextField';

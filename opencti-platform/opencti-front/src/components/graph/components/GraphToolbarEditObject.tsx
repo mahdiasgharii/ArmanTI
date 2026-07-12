@@ -1,4 +1,4 @@
-import { EditOutlined } from '@mui/icons-material';
+import { Pencil as EditOutlined } from 'lucide-react';
 import React, { useState } from 'react';
 import StixDomainObjectEdition from '@components/common/stix_domain_objects/StixDomainObjectEdition';
 import StixCyberObservableEdition from '@components/observations/stix_cyber_observables/StixCyberObservableEdition';

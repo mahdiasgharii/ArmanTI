@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import TextField from '@mui/material/TextField';
-import { ClearOutlined, DateRangeOutlined } from '@mui/icons-material';
+import { X as ClearOutlined, Calendar as DateRangeOutlined } from 'lucide-react';
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
@@ -127,7 +127,7 @@ const RelativeDateInput: FunctionComponent<RelativeDateInputProps> = ({
                     sx={{ marginRight: -1 }}
                     aria-label="clear"
                   >
-                    <ClearOutlined fontSize="small" />
+                    <ClearOutlined size={16} />
                   </IconButton>
                 )}
                 <IconButton
@@ -140,7 +140,7 @@ const RelativeDateInput: FunctionComponent<RelativeDateInputProps> = ({
                   onClick={() => setIsDatePickerOpen(true)}
                   aria-label="open date picker"
                 >
-                  <DateRangeOutlined fontSize="small" />
+                  <DateRangeOutlined size={16} />
                 </IconButton>
               </>
             ),

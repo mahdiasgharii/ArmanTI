@@ -17,7 +17,7 @@ import SecurityCoverageScores from '@components/analyses/security_coverages/Secu
 import Tooltip from '@mui/material/Tooltip';
 import { useFormatter } from '../../../../components/i18n';
 import IconButton from '@common/button/IconButton';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
 
 interface SecurityCoverageResultProps {

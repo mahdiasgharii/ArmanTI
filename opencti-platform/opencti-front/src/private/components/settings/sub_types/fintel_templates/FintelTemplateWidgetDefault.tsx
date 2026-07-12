@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentCopy, Edit, DeleteOutline, WarningAmber } from '@mui/icons-material';
+import { Copy as ContentCopy, Pencil as Edit, Trash2 as DeleteOutline, TriangleAlert as WarningAmber } from 'lucide-react';
 import { ListItemText, Tooltip, Typography, IconButton, ListItem } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import { renderWidgetIcon } from '../../../../../utils/widget/widgetUtils';

@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
-import { CheckCircleOutlined, CircleOutlined } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, Circle as CircleOutlined } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import { InvestigationAddStixCoreObjectsLine_node$data } from '@components/workspaces/investigations/__generated__/InvestigationAddStixCoreObjectsLine_node.graphql';
 import { ListItemButton } from '@mui/material';
@@ -72,11 +72,11 @@ const InvestigationAddStixCoreObjectsLineComponent = ({
       <ListItemIcon style={{ paddingLeft: 10 }}>
         {node.id in (addedElements || {}) ? (
           <CheckCircleOutlined
-            classes={{ root: classes.icon }}
-            color="primary"
+            className={classes.icon}
+            style={{ color: 'var(--mui-palette-primary-main)' }}
           />
         ) : (
-          <CircleOutlined classes={{ root: classes.icon }} />
+          <CircleOutlined className={classes.icon} />
         )}
       </ListItemIcon>
       <ListItemIcon classes={{ root: classes.itemIcon }}>

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { IconButton } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Eye as Visibility, EyeOff as VisibilityOff } from 'lucide-react';
 import { Field, useField, useFormikContext } from 'formik';
 import { useFormatter } from './i18n';
 import { fieldSpacingContainerStyle } from '../utils/field';

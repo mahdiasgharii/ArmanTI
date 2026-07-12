@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { KeyboardArrowRightOutlined } from '@mui/icons-material';
+import { ChevronRight as KeyboardArrowRightOutlined } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import { useTheme } from '@mui/material/styles';
 import StixCoreObjectLabels from '@components/common/stix_core_objects/StixCoreObjectLabels';

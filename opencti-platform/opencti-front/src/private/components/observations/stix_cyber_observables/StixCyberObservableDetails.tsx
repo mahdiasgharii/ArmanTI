@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import Grid from '@mui/material/Grid2';
-import { GetAppOutlined } from '@mui/icons-material';
+import { Download as GetAppOutlined } from 'lucide-react';
 import Button from '@common/button/Button';
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';

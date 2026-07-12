@@ -3,7 +3,7 @@ import { graphql } from 'react-relay';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { ExpandMore, InfoOutlined } from '@mui/icons-material';
+import { ChevronDown as ExpandMore, Info as InfoOutlined } from 'lucide-react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';

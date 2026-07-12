@@ -1,4 +1,4 @@
-import { AddPhotoAlternateOutlined } from '@mui/icons-material';
+import { ImagePlus as AddPhotoAlternateOutlined } from 'lucide-react';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { isNil } from 'ramda';
@@ -289,7 +289,7 @@ const MarkdownFieldBase = ({
           onMouseLeave={handleUploadButtonMouseLeave}
           onClick={handleUploadButtonClickInternal}
           disabled={disabled}
-          startIcon={<AddPhotoAlternateOutlined fontSize="small" />}
+          startIcon={<AddPhotoAlternateOutlined size={16} />}
           sx={{ marginTop: '4px' }}
         >
           {t_i18n('Paste, drop, or click to add images')}

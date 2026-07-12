@@ -1,5 +1,5 @@
 import IconButton from '@common/button/IconButton';
-import { AddOutlined, CancelOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, XCircle as CancelOutlined } from 'lucide-react';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import { InformationOutline } from 'mdi-material-ui';

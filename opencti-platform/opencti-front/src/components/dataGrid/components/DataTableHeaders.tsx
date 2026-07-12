@@ -1,6 +1,6 @@
 import React, { CSSProperties, FunctionComponent, useMemo, useRef, useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import { DragIndicatorOutlined } from '@mui/icons-material';
+import { GripVertical as DragIndicatorOutlined } from 'lucide-react';
 import Menu from '@mui/material/Menu';
 import { DragDropContext, Draggable, DraggableLocation, Droppable } from '@hello-pangea/dnd';
 import MenuItem from '@mui/material/MenuItem';
@@ -142,7 +142,7 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
                                 {...item.draggableProps}
                                 {...item.dragHandleProps}
                               >
-                                <DragIndicatorOutlined fontSize="small" />
+                                <DragIndicatorOutlined size={16} />
                                 <Checkbox
                                   onClick={() => handleToggleVisibility(c.id)}
                                   checked={c.visible}

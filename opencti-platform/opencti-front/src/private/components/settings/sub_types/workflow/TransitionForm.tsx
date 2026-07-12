@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { FlagOutlined } from '@mui/icons-material';
+import { Flag as FlagOutlined } from 'lucide-react';
 import { Alert, Box, FormControlLabel, Icon, Switch, Typography } from '@mui/material';
 import { Field, useFormikContext } from 'formik';
 import TextField from '../../../../../components/TextField';

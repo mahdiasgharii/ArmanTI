@@ -1,6 +1,6 @@
 import { Accordion, AccordionDetails } from '@mui/material';
 import React, { FunctionComponent, useState } from 'react';
-import { DeleteOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';

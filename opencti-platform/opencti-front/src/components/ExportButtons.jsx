@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CSVLink } from 'react-csv';
-import { ExploreOutlined, GetAppOutlined, ImageOutlined } from '@mui/icons-material';
+import { Compass as ExploreOutlined, Download as GetAppOutlined, Image as ImageOutlined } from 'lucide-react';
 import { FileDelimitedOutline, FileExportOutline, FilePdfBox } from 'mdi-material-ui';
 import withTheme from '@mui/styles/withTheme';
 import withStyles from '@mui/styles/withStyles';
@@ -225,7 +225,7 @@ export class ExportButtons extends Component {
                 <Security needs={[KNOWLEDGE_KNFRONTENDEXPORT]}>
                   <Tooltip title={t('Export to image')}>
                     <ToggleButton size="small" onClick={this.handleOpenImage.bind(this)} value="Export-to-image">
-                      <ImageOutlined fontSize="small" color="primary" />
+                      <ImageOutlined size={16} className="text-primary" />
                     </ToggleButton>
                   </Tooltip>
                 </Security>
@@ -261,14 +261,14 @@ export class ExportButtons extends Component {
                       navigate,
                     )}
                   >
-                    <ExploreOutlined fontSize="small" color={!isInDraft ? 'primary' : 'disabled'} />
+                    <ExploreOutlined size={16} className={!isInDraft ? 'text-primary' : 'text-text-light'} />
                   </ToggleButton>
                 </Tooltip>
               )}
               {type === 'investigation' && handleDownloadAsStixReport && (
                 <Tooltip title={t('Download as STIX report')}>
                   <ToggleButton size="small" onClick={handleDownloadAsStixReport.bind(this)} value="Download-as-STIX-report">
-                    <GetAppOutlined fontSize="small" color="primary" />
+                    <GetAppOutlined size={16} className="text-primary" />
                   </ToggleButton>
                 </Tooltip>
               )}

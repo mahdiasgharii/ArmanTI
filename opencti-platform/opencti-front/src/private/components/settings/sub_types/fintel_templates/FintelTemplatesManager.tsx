@@ -1,7 +1,7 @@
 import IconButton from '@common/button/IconButton';
 import EEChip from '@components/common/entreprise_edition/EEChip';
 import VisuallyHiddenInput from '@components/common/VisuallyHiddenInput';
-import { Add as AddIcon, CloudUploadOutlined } from '@mui/icons-material';
+import { Plus as AddIcon, CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import { BaseSyntheticEvent, useRef, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';

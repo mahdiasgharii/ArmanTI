@@ -4,7 +4,7 @@ import Button from '@common/button/Button';
 import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from 'yup';
 import { IconButton, Typography } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { FormikHelpers } from 'formik/dist/types';
 import JsonMapperRepresentationForm, { RepresentationFormEntityOption } from '@components/data/jsonMapper/representations/JsonMapperRepresentationForm';
 import { JsonMapperFormData } from '@components/data/jsonMapper/JsonMapper';

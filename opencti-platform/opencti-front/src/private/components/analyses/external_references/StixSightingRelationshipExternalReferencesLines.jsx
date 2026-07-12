@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Card from '@common/card/Card';
-import { ExpandLessOutlined, ExpandMoreOutlined, OpenInBrowserOutlined } from '@mui/icons-material';
+import { ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined, Globe as OpenInBrowserOutlined } from 'lucide-react';
 import { ListItemButton } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

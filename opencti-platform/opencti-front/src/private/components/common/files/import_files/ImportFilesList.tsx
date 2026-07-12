@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Alert, Box, Collapse, Grid, IconButton, List, ListItem, MenuItem, Select, Tooltip, Typography } from '@mui/material';
 import { TransitionGroup } from 'react-transition-group';
-import { DeleteOutlined, UploadFileOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, FileUp as UploadFileOutlined } from 'lucide-react';
 import { CSV_MAPPER_NAME } from '@components/common/files/import_files/ImportFilesDialog';
 import { useTheme } from '@mui/styles';
 import { useImportFilesContext } from '@components/common/files/import_files/ImportFilesContext';

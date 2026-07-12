@@ -3,7 +3,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import CsvMapperLines from '@components/data/csvMapper/CsvMapperLines';
 import CsvMapperCreationContainer from '@components/data/csvMapper/CsvMapperCreationContainer';
 import { CsvMapperLine_csvMapper$data } from '@components/data/csvMapper/__generated__/CsvMapperLine_csvMapper.graphql';
-import { CancelOutlined, CheckCircleOutlined, FileUploadOutlined } from '@mui/icons-material';
+import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as FileUploadOutlined } from 'lucide-react';
 import ProcessingMenu from '@components/data/ProcessingMenu';
 import CsvMappersProvider, { mappersQuery, schemaAttributesQuery } from '@components/data/csvMapper/csvMappers.data';
 import { csvMappers_MappersQuery, csvMappers_MappersQuery$variables } from '@components/data/csvMapper/__generated__/csvMappers_MappersQuery.graphql';

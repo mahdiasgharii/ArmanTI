@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import FormButtonContainer from '@common/form/FormButtonContainer';
 import Drawer from '@components/common/drawer/Drawer';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Alert from '@mui/lab/Alert';
 import { ListItemButton, Stack } from '@mui/material';
 import Fab from '@mui/material/Fab';

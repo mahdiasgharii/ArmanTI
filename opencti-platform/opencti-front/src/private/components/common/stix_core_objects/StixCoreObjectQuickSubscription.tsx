@@ -1,4 +1,4 @@
-import { ExpandLess, ExpandMore, KeyboardArrowRightOutlined, NotificationsOutlined } from '@mui/icons-material';
+import { ChevronUp as ExpandLess, ChevronDown as ExpandMore, ChevronRight as KeyboardArrowRightOutlined, Bell as NotificationsOutlined } from 'lucide-react';
 
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';

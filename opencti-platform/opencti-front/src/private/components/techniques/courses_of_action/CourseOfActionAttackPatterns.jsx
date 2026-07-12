@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import IconButton from '@common/button/IconButton';
-import { ExpandLessOutlined, ExpandMoreOutlined, LinkOff } from '@mui/icons-material';
+import { ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined, Unlink as LinkOff } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import * as R from 'ramda';
 import { Box, ListItemButton } from '@mui/material';

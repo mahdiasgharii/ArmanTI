@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import makeStyles from '@mui/styles/makeStyles';
-import { CheckCircle, SourceOutlined } from '@mui/icons-material';
+import { CheckCircle, SquareMousePointer as SourceOutlined } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import { ListItemButton } from '@mui/material';
 import { truncate } from '../../../../utils/String';
@@ -160,7 +160,7 @@ const AddDataComponentsLines: FunctionComponent<
           >
             <ListItemIcon>
               {alreadyAdded ? (
-                <CheckCircle classes={{ root: classes.icon }} />
+                <CheckCircle className={classes.icon} />
               ) : (
                 <SourceOutlined />
               )}

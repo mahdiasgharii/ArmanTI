@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from 'react';
 import IconButton from '@common/button/IconButton';
 import { Tooltip } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { Disposable, graphql } from 'relay-runtime';
 import Box from '@mui/material/Box';
 import { ThemeManagerQuery, ThemeManagerQuery$variables } from '@components/settings/themes/__generated__/ThemeManagerQuery.graphql';

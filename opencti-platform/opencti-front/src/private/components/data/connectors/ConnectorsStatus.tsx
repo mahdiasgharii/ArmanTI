@@ -11,7 +11,7 @@ import { Connector_connector$data } from '@components/data/connectors/__generate
 import { ConnectorsListQuery } from '@components/data/connectors/__generated__/ConnectorsListQuery.graphql';
 import { ConnectorsStateQuery } from '@components/data/connectors/__generated__/ConnectorsStateQuery.graphql';
 import useConnectorsStatusFilters from '@components/data/connectors/hooks/useConnectorsStatusFilters';
-import { DeleteOutlined, DeveloperBoardOutlined, ExtensionOutlined, PlaylistRemoveOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Cpu as DeveloperBoardOutlined, Puzzle as ExtensionOutlined, ListMinus as PlaylistRemoveOutlined } from 'lucide-react';
 import { ListItemButton } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';

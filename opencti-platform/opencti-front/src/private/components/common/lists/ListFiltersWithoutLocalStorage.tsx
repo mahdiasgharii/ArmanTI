@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import { FilterListOutlined } from '@mui/icons-material';
+import { Filter as FilterListOutlined } from 'lucide-react';
 import Popover from '@mui/material/Popover';
 import Tooltip from '@mui/material/Tooltip';
 import { RayEndArrow, RayStartArrow } from 'mdi-material-ui';

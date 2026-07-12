@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEvent, RefObject, useRef } from 'react';
-import { ArrowDropDown, ArrowDropUp, MoreVert } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp, MoreVertical as MoreVert } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import SimpleDraggrable from 'react-draggable';
 import makeStyles from '@mui/styles/makeStyles';

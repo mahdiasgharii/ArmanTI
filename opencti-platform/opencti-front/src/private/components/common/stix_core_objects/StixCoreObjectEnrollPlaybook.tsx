@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
-import { PrecisionManufacturingOutlined } from '@mui/icons-material';
+import { Bot as PrecisionManufacturingOutlined } from 'lucide-react';
 import { StixCoreObjectEnrollPlaybookLinesQuery$data } from '@components/common/stix_core_objects/__generated__/StixCoreObjectEnrollPlaybookLinesQuery.graphql';
 import EETooltip from '../entreprise_edition/EETooltip';
 import Drawer from '../drawer/Drawer';

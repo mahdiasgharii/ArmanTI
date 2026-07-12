@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { ClearOutlined, FileOpenOutlined, LocalOfferOutlined, VisibilityOffOutlined } from '@mui/icons-material';
+import { X as ClearOutlined, FileSearch as FileOpenOutlined, Tag as LocalOfferOutlined, EyeOff as VisibilityOffOutlined } from 'lucide-react';
 import Alert from '@mui/material/Alert';
 import DialogActions from '@mui/material/DialogActions';
 import Drawer from '@mui/material/Drawer';

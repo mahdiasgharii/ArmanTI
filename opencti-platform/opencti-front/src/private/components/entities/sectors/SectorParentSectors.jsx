@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { ListItemButton } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Domain } from '@mui/icons-material';
+import { Building2 as Domain } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import { truncate } from '../../../../utils/String';
 import inject18n from '../../../../components/i18n';

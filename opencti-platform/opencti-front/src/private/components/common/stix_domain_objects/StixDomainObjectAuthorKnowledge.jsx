@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import withStyles from '@mui/styles/withStyles';
 import withTheme from '@mui/styles/withTheme';
-import { DescriptionOutlined, DeviceHubOutlined } from '@mui/icons-material';
+import { FileText as DescriptionOutlined, Network as DeviceHubOutlined } from 'lucide-react';
 import { HexagonMultipleOutline } from 'mdi-material-ui';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';

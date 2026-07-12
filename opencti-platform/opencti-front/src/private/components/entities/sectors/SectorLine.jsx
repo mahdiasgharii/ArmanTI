@@ -5,7 +5,7 @@ import withStyles from '@mui/styles/withStyles';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { KeyboardArrowRightOutlined } from '@mui/icons-material';
+import { ChevronRight as KeyboardArrowRightOutlined } from 'lucide-react';
 import { compose, map } from 'ramda';
 import List from '@mui/material/List';
 import { ListItemButton } from '@mui/material';

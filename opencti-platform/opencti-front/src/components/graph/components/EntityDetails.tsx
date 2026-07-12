@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
-import { ExpandLessOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+import { ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';

@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { AutoModeOutlined, ContentCopyOutlined } from '@mui/icons-material';
+import { Wand2 as AutoModeOutlined, Copy as ContentCopyOutlined } from 'lucide-react';
 import parse from 'html-react-parser';
 import { useFormatter } from '../../../../components/i18n';
 import { copyToClipboard } from '../../../../utils/utils';
@@ -62,12 +62,12 @@ const XtmOneAISummaryDisplay: FunctionComponent<XtmOneAISummaryDisplayProps> = (
                 )}
                 <Tooltip title={t_i18n('Copy to clipboard')}>
                   <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
-                    <ContentCopyOutlined fontSize="small" />
+                    <ContentCopyOutlined size={16} />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={t_i18n('Retry')}>
                   <IconButton size="small" color="primary" onClick={onRetry}>
-                    <AutoModeOutlined fontSize="small" />
+                    <AutoModeOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               </div>

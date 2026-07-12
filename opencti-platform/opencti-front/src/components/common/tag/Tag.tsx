@@ -1,4 +1,4 @@
-import { CloseOutlined } from '@mui/icons-material';
+import { X as CloseOutlined } from 'lucide-react';
 import { Chip, ChipProps, SxProps, Theme, Tooltip, alpha, lighten, useTheme } from '@mui/material';
 import React, { CSSProperties, ReactElement } from 'react';
 

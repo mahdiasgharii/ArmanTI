@@ -3,7 +3,7 @@ import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import HeaderMainEntityLayout from '@common/header/HeaderMainEntityLayout';
 import Tag from '@common/tag/Tag';
-import { Add, Close, Delete } from '@mui/icons-material';
+import { Plus as Add, X as Close, Trash2 as Delete } from 'lucide-react';
 import { Box } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import FormControl from '@mui/material/FormControl';

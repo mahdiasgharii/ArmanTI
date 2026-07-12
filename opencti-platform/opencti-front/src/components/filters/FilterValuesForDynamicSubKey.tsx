@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import { ChipOwnProps } from '@mui/material/Chip/Chip';
 import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
-import { WarningOutlined } from '@mui/icons-material';
+import { AlertTriangle as WarningOutlined } from 'lucide-react';
 import TasksFilterValueContainer from '../TasksFilterValueContainer';
 import { FilterGroup } from '../../utils/filters/filtersHelpers-types';
 import { useFormatter } from '../i18n';

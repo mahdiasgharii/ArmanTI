@@ -3,7 +3,7 @@ import UserConfidenceLevelField from '@components/settings/users/edition/UserCon
 import { UserEdition_user$data } from '@components/settings/users/__generated__/UserEdition_user.graphql';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import * as Yup from 'yup';
 import { userMutationFieldPatch } from '@components/settings/users/edition/UserEditionOverview';
 import ConfidenceOverrideField from '@components/settings/users/edition/ConfidenceOverrideField';

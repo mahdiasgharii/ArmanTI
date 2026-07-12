@@ -4,7 +4,7 @@ import { isNotEmptyField } from '../utils/utils';
 import { SYSTEM_BANNER_HEIGHT } from '../public/components/SystemBanners';
 import { UserContext } from '../utils/hooks/useAuth';
 import { IconButton, SxProps } from '@mui/material';
-import { ChevronRight, Close } from '@mui/icons-material';
+import { ChevronRight, X as Close } from 'lucide-react';
 import useBus, { dispatch } from '../utils/hooks/useBus';
 
 export const TOP_BANNER_HEIGHT = 30;
@@ -115,7 +115,7 @@ const TopBanner = ({
           onClick={handleDismiss}
           style={{ position: 'absolute', right: 8, color: '#000000' }}
         >
-          <Close fontSize="inherit" />
+          <Close size={16} />
         </IconButton>
       )}
     </div>

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import { Field, FieldArray } from 'formik';
 import Button from '@common/button/Button';
 import { IconButton } from '@mui/material';
-import { DeleteOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined } from 'lucide-react';
 import Typography from '@mui/material/Typography';
 import { graphql } from 'react-relay';
 import OpenVocabField from '@components/common/form/OpenVocabField';

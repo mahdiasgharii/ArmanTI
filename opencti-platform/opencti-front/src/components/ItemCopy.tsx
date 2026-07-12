@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react';
-import { ContentCopyOutlined, Check } from '@mui/icons-material';
+import { Copy as ContentCopyOutlined, Check } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
@@ -127,9 +127,9 @@ const ItemCopy: FunctionComponent<ItemCopyProps> = ({
             color={copied ? 'success' : 'primary'}
           >
             {copied ? (
-              <Check sx={{ fontSize: variant === 'inLine' ? 12 : 16 }} />
+              <Check size={variant === 'inLine' ? 12 : 16} />
             ) : (
-              <ContentCopyOutlined sx={{ fontSize: variant === 'inLine' ? 12 : 16 }} />
+              <ContentCopyOutlined size={variant === 'inLine' ? 12 : 16} />
             )}
           </IconButton>
         </Tooltip>

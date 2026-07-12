@@ -1,4 +1,4 @@
-import { Edit } from '@mui/icons-material';
+import { Pencil as Edit } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import React, { FunctionComponent, useState } from 'react';
 import RequestAccessConfigurationEdition from '@components/settings/sub_types/global_workflow_request_access/RequestAccessConfigurationEdition';

@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { Add, ArrowDropDown, ArrowDropUp, DeleteOutlined, DoubleArrow } from '@mui/icons-material';
+import { Plus as Add, ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp, Trash2 as DeleteOutlined, ChevronsRight as DoubleArrow } from 'lucide-react';
 import { ListItemButton, Stack } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';

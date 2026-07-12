@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { DeleteOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined } from 'lucide-react';
 import ListItemText from '@mui/material/ListItemText';
 import { interval } from 'rxjs';
 import IconButton from '@common/button/IconButton';

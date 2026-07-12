@@ -9,7 +9,7 @@ import {
   EntityStixCoreRelationshipsIndicatorsEntitiesView_data$data,
 } from '@components/common/stix_core_relationships/views/indicators/__generated__/EntityStixCoreRelationshipsIndicatorsEntitiesView_data.graphql';
 import Tooltip from '@mui/material/Tooltip';
-import { LibraryBooksOutlined } from '@mui/icons-material';
+import { Library as LibraryBooksOutlined } from 'lucide-react';
 import ToggleButton from '@mui/material/ToggleButton';
 import { Group, RelationManyToMany } from 'mdi-material-ui';
 import Security from '../../../../../../utils/Security';

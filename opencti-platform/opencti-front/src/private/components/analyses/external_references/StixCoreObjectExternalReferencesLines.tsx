@@ -5,7 +5,7 @@ import { FileLine_file$data } from '@components/common/files/__generated__/FileL
 import { CsvMapperFieldOption } from '@components/common/form/CsvMapperField';
 import ObjectMarkingField from '@components/common/form/ObjectMarkingField';
 import ManageImportConnectorMessage from '@components/data/import/ManageImportConnectorMessage';
-import { ExpandLessOutlined, ExpandMoreOutlined, OpenInBrowserOutlined } from '@mui/icons-material';
+import { ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined, Globe as OpenInBrowserOutlined } from 'lucide-react';
 import { ListItemButton, Stack } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';

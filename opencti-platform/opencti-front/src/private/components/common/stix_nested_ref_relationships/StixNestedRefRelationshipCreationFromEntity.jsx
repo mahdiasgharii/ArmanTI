@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import MenuItem from '@mui/material/MenuItem';
-import { Add, ArrowRightAlt, ChevronRightOutlined } from '@mui/icons-material';
+import { Plus as Add, ArrowRight as ArrowRightAlt, ChevronRight as ChevronRightOutlined } from 'lucide-react';
 import Fab from '@mui/material/Fab';
 import CircularProgress from '@mui/material/CircularProgress';
 import { ConnectionHandler } from 'relay-runtime';

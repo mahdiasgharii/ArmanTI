@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt } from 'lucide-react';
 import Button from '@common/button/Button';
 import { Field, Form, Formik } from 'formik';
 import makeStyles from '@mui/styles/makeStyles';

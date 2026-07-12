@@ -5,7 +5,7 @@ import Drawer from '@components/common/drawer/Drawer';
 import LaunchImportDialog from '@components/common/files/LaunchImportDialog';
 import { ImportFilesContentFileLine_file$data } from '@components/data/import/__generated__/ImportFilesContentFileLine_file.graphql';
 import { ImportWorkbenchesContentFileLine_file$data } from '@components/data/import/__generated__/ImportWorkbenchesContentFileLine_file.graphql';
-import { ArchitectureOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Compass as ArchitectureOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import { DrawerProps, Tooltip } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Chip from '@mui/material/Chip';

@@ -28,7 +28,7 @@ import FileImportViewer from './FileImportViewer';
 import PictureManagementViewer from './PictureManagementViewer';
 import WorkbenchFileViewer from './workbench/WorkbenchFileViewer';
 import { Stack, Tooltip } from '@mui/material';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 
 const styles = (theme) => ({
   container: {

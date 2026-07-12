@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useFragment } from 'react-relay';
-import { CheckCircleOutlined, DoNotDisturbOnOutlined } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, MinusCircle as DoNotDisturbOnOutlined } from 'lucide-react';
 import ListLines from '../../../../../components/list_lines/ListLines';
 import ErrorNotFound from '../../../../../components/ErrorNotFound';
 import { EntitySettingAttributeLine_attribute$data } from './__generated__/EntitySettingAttributeLine_attribute.graphql';

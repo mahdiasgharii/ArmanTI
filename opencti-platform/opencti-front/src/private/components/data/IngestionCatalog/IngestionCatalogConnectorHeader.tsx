@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography';
-import { VerifiedOutlined } from '@mui/icons-material';
+import { Verified as VerifiedOutlined } from 'lucide-react';
 import Button from '@common/button/Button';
 import React from 'react';
 import { useTheme } from '@mui/styles';

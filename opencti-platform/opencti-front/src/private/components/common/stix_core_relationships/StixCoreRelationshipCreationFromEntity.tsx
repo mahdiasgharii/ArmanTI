@@ -9,7 +9,7 @@ import {
 import {
   StixCoreRelationshipCreationFromEntityStixCoreObjectsLines_data$data,
 } from '@components/common/stix_core_relationships/__generated__/StixCoreRelationshipCreationFromEntityStixCoreObjectsLines_data.graphql';
-import { Add, ChevronRightOutlined } from '@mui/icons-material';
+import { Plus as Add, ChevronRight as ChevronRightOutlined } from 'lucide-react';
 import CircularProgress from '@mui/material/CircularProgress';
 import makeStyles from '@mui/styles/makeStyles';
 import { FormikConfig } from 'formik/dist/types';

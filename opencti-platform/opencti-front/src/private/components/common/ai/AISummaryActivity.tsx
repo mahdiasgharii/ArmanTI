@@ -7,7 +7,7 @@ import { GraphQLSubscriptionConfig } from 'relay-runtime';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import IconButton from '@common/button/IconButton';
-import { AutoModeOutlined, ContentCopyOutlined, HistoryOutlined } from '@mui/icons-material';
+import { Wand2 as AutoModeOutlined, Copy as ContentCopyOutlined, History as HistoryOutlined } from 'lucide-react';
 import { AISummaryActivityStixCoreObjectAskAiActivityQuery$data } from '@components/common/ai/__generated__/AISummaryActivityStixCoreObjectAskAiActivityQuery.graphql';
 import Tooltip from '@mui/material/Tooltip';
 import { AISummaryActivitySubscription, AISummaryActivitySubscription$data } from './__generated__/AISummaryActivitySubscription.graphql';
@@ -126,12 +126,12 @@ const AISummaryActivityComponent = ({
             <Typography variant="caption">Generated on {nsdt(result?.stixCoreObjectAskAiActivity?.updated_at)}.</Typography>
             <Tooltip title={t_i18n('Copy to clipboard')}>
               <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
-                <ContentCopyOutlined fontSize="small" />
+                <ContentCopyOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Retry')}>
               <IconButton size="small" color="primary" onClick={() => refetch()}>
-                <AutoModeOutlined fontSize="small" />
+                <AutoModeOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>

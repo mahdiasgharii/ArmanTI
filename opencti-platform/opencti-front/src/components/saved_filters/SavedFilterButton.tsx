@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import { SaveOutlined } from '@mui/icons-material';
+import { Save as SaveOutlined } from 'lucide-react';
 import { useFormatter } from 'src/components/i18n';
 import Tooltip from '@mui/material/Tooltip';
 import SavedFilterCreateDialog from 'src/components/saved_filters/SavedFilterCreateDialog';

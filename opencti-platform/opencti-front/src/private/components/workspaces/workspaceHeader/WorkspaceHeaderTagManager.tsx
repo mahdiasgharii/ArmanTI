@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import Tag from '@common/tag/Tag';
-import { AddOutlined, CloseOutlined, Delete } from '@mui/icons-material';
+import { Plus as AddOutlined, X as CloseOutlined, Trash2 as Delete } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';

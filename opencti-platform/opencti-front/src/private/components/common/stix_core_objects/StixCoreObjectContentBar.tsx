@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import IconButton from '@common/button/IconButton';
-import { ZoomInOutlined, ZoomOutOutlined, SaveOutlined } from '@mui/icons-material';
+import { ZoomIn as ZoomInOutlined, ZoomOut as ZoomOutOutlined, Save as SaveOutlined } from 'lucide-react';
 import Drawer from '@mui/material/Drawer';
 import Slide, { SlideProps } from '@mui/material/Slide';
 import makeStyles from '@mui/styles/makeStyles';

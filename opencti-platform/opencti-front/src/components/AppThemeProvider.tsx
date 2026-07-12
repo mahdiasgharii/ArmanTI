@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ThemeOptions } from '@mui/material/styles/createTheme';
@@ -121,6 +121,34 @@ const AppThemeProvider: FunctionComponent<AppThemeProviderProps> = ({
   // (e.g. CKEditor theming) apply on the very first render.
   const themeMode = (themeToUse?.name ?? defaultTheme.name) === 'Light' ? 'light' : 'dark';
   useDocumentThemeModifier(themeMode);
+
+  // Inject custom user theme colors as CSS variables for shadcn components.
+  // This keeps the Tailwind/CSS variable side in sync with the MUI theme.
+  useEffect(() => {
+    const appTheme: AppThemeType = {
+      name: themeToUse?.name ?? defaultTheme.name,
+      theme_accent: themeToUse?.theme_accent ?? defaultTheme.theme_accent,
+      theme_background: themeToUse?.theme_background ?? defaultTheme.theme_background,
+      theme_logo: themeToUse?.theme_logo ?? defaultTheme.theme_logo,
+      theme_logo_collapsed: themeToUse?.theme_logo_collapsed ?? defaultTheme.theme_logo_collapsed,
+      theme_logo_login: themeToUse?.theme_logo_login ?? defaultTheme.theme_logo_login,
+      theme_nav: themeToUse?.theme_nav ?? defaultTheme.theme_nav,
+      theme_paper: themeToUse?.theme_paper ?? defaultTheme.theme_paper,
+      theme_primary: themeToUse?.theme_primary ?? defaultTheme.theme_primary,
+      theme_secondary: themeToUse?.theme_secondary ?? defaultTheme.theme_secondary,
+      theme_text_color: themeToUse?.theme_text_color ?? defaultTheme.theme_text_color,
+    };
+    const root = document.documentElement;
+    if (appTheme.theme_background) root.style.setProperty('--ravin-bg', appTheme.theme_background);
+    if (appTheme.theme_paper) {
+      root.style.setProperty('--ravin-surface', appTheme.theme_paper);
+      root.style.setProperty('--ravin-elevated', appTheme.theme_paper);
+    }
+    if (appTheme.theme_primary) root.style.setProperty('--ravin-primary', appTheme.theme_primary);
+    if (appTheme.theme_secondary) root.style.setProperty('--ravin-secondary', appTheme.theme_secondary);
+    if (appTheme.theme_accent) root.style.setProperty('--ravin-warning', appTheme.theme_accent);
+    if (appTheme.theme_text_color) root.style.setProperty('--ravin-text', appTheme.theme_text_color);
+  }, [themeToUse]);
 
   return <ThemeProvider theme={muiTheme}>{children}</ThemeProvider>;
 };

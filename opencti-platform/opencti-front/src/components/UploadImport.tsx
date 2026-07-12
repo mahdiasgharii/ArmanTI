@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import ImportFilesDialog from '@components/common/files/import_files/ImportFilesDialog';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import React, { useState } from 'react';
 import { useGetCurrentUserAccessRight } from '../utils/authorizedMembers';
@@ -51,7 +51,7 @@ const UploadImport = ({
             aria-haspopup="true"
             onClick={() => setOpenImportFilesDialog(true)}
           >
-            <FileUploadOutlined fontSize={fontSize} />
+            <FileUploadOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 24 : 20} />
           </IconButton>
         </Tooltip>
       ) : (

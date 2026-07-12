@@ -7,7 +7,7 @@ import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocum
 import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
 import DataTableWithoutFragment from '../../../components/dataGrid/DataTableWithoutFragment';
 import { defaultRender } from '../../../components/dataGrid/dataTableUtils';
-import { ShortTextOutlined } from '@mui/icons-material';
+import { Type as ShortTextOutlined } from 'lucide-react';
 import SearchInput from '../../../components/SearchInput';
 import { usePaginationLocalStorage } from '../../../utils/hooks/useLocalStorage';
 

@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { BackupTableOutlined, CampaignOutlined } from '@mui/icons-material';
+import { Table as BackupTableOutlined, Megaphone as CampaignOutlined } from 'lucide-react';
 import React, { FunctionComponent, useRef, useState } from 'react';
 import { Stack } from '@mui/material';
 import TriggerLiveCreation from '../../profile/triggers/TriggerLiveCreation';

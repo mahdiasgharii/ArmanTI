@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import { DatabaseOutline, FlaskOutline } from 'mdi-material-ui';
 import Typography from '@mui/material/Typography';
-import { LibraryBooksOutlined } from '@mui/icons-material';
+import { Library as LibraryBooksOutlined } from 'lucide-react';
 import { v4 as uuid } from 'uuid';
 import { getDefaultWidgetColumns } from '@components/widgets/WidgetListsDefaultColumns';
 import useAttributes from '../../../utils/hooks/useAttributes';

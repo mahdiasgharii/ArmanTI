@@ -2,7 +2,7 @@ import React, { FormEvent, FunctionComponent } from 'react';
 import { Disposable, graphql, RecordSourceSelectorProxy } from 'relay-runtime';
 import { Tooltip } from '@mui/material';
 import IconButton from '@common/button/IconButton';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import useApiMutation from '../../../../utils/hooks/useApiMutation';
 import VisuallyHiddenInput from '../../common/VisuallyHiddenInput';

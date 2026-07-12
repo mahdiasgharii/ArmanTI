@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import { getDraftModeColor } from '@components/common/draft/DraftChip';
-import { DeleteOutlined, DocumentScannerOutlined, GetAppOutlined, WarningOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, FileScan as DocumentScannerOutlined, Download as GetAppOutlined, AlertTriangle as WarningOutlined } from 'lucide-react';
 import { ListItem, ListItemButton, Stack } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';

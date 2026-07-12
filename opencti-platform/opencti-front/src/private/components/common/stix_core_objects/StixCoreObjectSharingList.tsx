@@ -6,7 +6,7 @@ import useApiMutation from '../../../../utils/hooks/useApiMutation';
 import { StixCoreObjectSharingListDeleteMutation } from './__generated__/StixCoreObjectSharingListDeleteMutation.graphql';
 import { StixCoreObjectSharingListFragment$key } from './__generated__/StixCoreObjectSharingListFragment.graphql';
 import Tag from '@common/tag/Tag';
-import { AccountBalanceOutlined } from '@mui/icons-material';
+import { Landmark as AccountBalanceOutlined } from 'lucide-react';
 import TagsOverflow from '@common/tag/TagsOverflow';
 
 const objectOrganizationFragment = graphql`

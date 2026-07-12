@@ -14,7 +14,7 @@ import { useTheme } from '@mui/styles';
 import Label from '../../../../components/common/label/Label';
 import FieldOrEmpty from '../../../../components/FieldOrEmpty';
 import { EMPTY_VALUE } from '../../../../utils/String';
-import { ContentCopyOutlined, OpenInNewOutlined, ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import { Copy as ContentCopyOutlined, ExternalLink as OpenInNewOutlined, ArrowUp as ArrowUpward, ArrowDown as ArrowDownward } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { Theme } from '../../../../components/Theme';
@@ -255,7 +255,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
                             sx={{ flexShrink: 0, padding: 0.25 }}
                             aria-label={t_i18n('View full details')}
                           >
-                            <OpenInNewOutlined sx={{ fontSize: '1rem' }} />
+                            <OpenInNewOutlined size={16} />
                           </IconButton>
                         </Tooltip>
                       </Box>
@@ -369,7 +369,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
                     aria-label={t_i18n('Copy')}
                     disabled={detailsOpen.entry.meta == null || Object.keys(detailsOpen.entry.meta).length === 0}
                   >
-                    <ContentCopyOutlined sx={{ fontSize: '1rem' }} />
+                    <ContentCopyOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               </Box>

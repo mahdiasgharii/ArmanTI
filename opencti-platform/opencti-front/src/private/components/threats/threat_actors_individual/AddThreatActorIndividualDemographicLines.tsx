@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import { List, ListItemButton, ListItemIcon, ListItemText, useTheme } from '@mui/material';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckCircle } from 'lucide-react';
 import ItemIcon from 'src/components/ItemIcon';
 import useApiMutation from 'src/utils/hooks/useApiMutation';
 import {

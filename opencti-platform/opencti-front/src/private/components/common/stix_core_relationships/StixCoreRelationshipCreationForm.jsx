@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import MenuItem from '@mui/material/MenuItem';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import Button from '@common/button/Button';
 import * as Yup from 'yup';

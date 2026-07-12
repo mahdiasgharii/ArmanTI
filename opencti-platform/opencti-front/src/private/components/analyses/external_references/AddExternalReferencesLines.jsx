@@ -6,7 +6,7 @@ import withStyles from '@mui/styles/withStyles';
 import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckCircle } from 'lucide-react';
 import { ConnectionHandler } from 'relay-runtime';
 import { ListItemButton } from '@mui/material';
 import { truncate } from '../../../../utils/String';

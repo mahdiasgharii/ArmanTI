@@ -11,7 +11,7 @@ import { Field, Form, Formik } from 'formik';
 import Dialog from '@common/dialog/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@common/button/Button';
-import { InfoOutlined } from '@mui/icons-material';
+import { Info as InfoOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import DraftWorkspaceViewer from '../files/draftWorkspace/DraftWorkspaceViewer';
 import { CONTENT_MAX_MARKINGS_HELPERTEXT, CONTENT_MAX_MARKINGS_TITLE, fileManagerCreateDraftAskJobImportMutation } from '../files/FileManager';

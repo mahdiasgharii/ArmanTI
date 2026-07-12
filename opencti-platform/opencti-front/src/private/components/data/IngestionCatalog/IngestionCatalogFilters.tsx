@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useMemo, useState } from 'react';
 import { Autocomplete, Stack, TextField } from '@mui/material';
-import { FilterListOffOutlined } from '@mui/icons-material';
+import { FilterX as FilterListOffOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
 import { getConnectorMetadata, IngestionConnectorType } from '@components/data/IngestionCatalog/utils/ingestionConnectorTypeMetadata';

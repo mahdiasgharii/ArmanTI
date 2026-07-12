@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { Checklist, FormatShapesOutlined, MapOutlined, PieChartOutlined, ViewQuiltOutlined } from '@mui/icons-material';
+import { ListChecks as Checklist, Shapes as FormatShapesOutlined, MapPin as MapOutlined, PieChart as PieChartOutlined, LayoutDashboard as ViewQuiltOutlined } from 'lucide-react';
 import {
   AlignHorizontalLeft,
   ChartAreasplineVariant,
@@ -261,11 +261,11 @@ export const isWidgetListOrTimeline = (type: string) => {
 export const renderWidgetIcon = (key: string, fontSize: 'large' | 'small' | 'medium') => {
   switch (key) {
     case 'custom-attributes':
-      return <Checklist fontSize={fontSize} color="primary" />;
+      return <Checklist size={fontSize === 'small' ? 16 : fontSize === 'large' ? 32 : 24} className="text-primary" />;
     case 'attribute':
       return <TagTextOutline fontSize={fontSize} color="primary" />;
     case 'map':
-      return <MapOutlined fontSize={fontSize} color="primary" />;
+      return <MapOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 32 : 24} className="text-primary" />;
     case 'horizontal-bar':
       return <AlignHorizontalLeft fontSize={fontSize} color="primary" />;
     case 'vertical-bar':
@@ -283,7 +283,7 @@ export const renderWidgetIcon = (key: string, fontSize: 'large' | 'small' | 'med
     case 'number':
       return <Counter fontSize={fontSize} color="primary" />;
     case 'text':
-      return <FormatShapesOutlined fontSize={fontSize} color="primary" />;
+      return <FormatShapesOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 32 : 24} className="text-primary" />;
     case 'heatmap':
       return <ChartBubble fontSize={fontSize} color="primary" />;
     case 'line':
@@ -291,13 +291,13 @@ export const renderWidgetIcon = (key: string, fontSize: 'large' | 'small' | 'med
     case 'radar':
       return <Radar fontSize={fontSize} color="primary" />;
     case 'polar-area':
-      return <PieChartOutlined fontSize={fontSize} color="primary" />;
+      return <PieChartOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 32 : 24} className="text-primary" />;
     case 'tree':
       return <ChartTree fontSize={fontSize} color="primary" />;
     case 'bookmark':
       return <StarSettingsOutline fontSize={fontSize} color="primary" />;
     case 'wordcloud':
-      return <ViewQuiltOutlined fontSize={fontSize} color="primary" />;
+      return <ViewQuiltOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 32 : 24} className="text-primary" />;
     default:
       return <div />;
   }

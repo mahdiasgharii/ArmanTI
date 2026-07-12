@@ -3,10 +3,10 @@ import { graphql } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import { MoreVertOutlined } from '@mui/icons-material';
+import { MoreVertical as MoreVertOutlined } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ToggleButton from '@mui/material/ToggleButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import { QueryRenderer } from '../../../../relay/environment';
 import ExternalReferenceEditionContainer from './ExternalReferenceEditionContainer';
@@ -109,7 +109,7 @@ const ExternalReferencePopover: FunctionComponent<
           size="small"
           onClick={handleOpen}
         >
-          <MoreVert fontSize="small" color="primary" />
+          <MoreVert size={16} className="text-primary" />
         </ToggleButton>
       )}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

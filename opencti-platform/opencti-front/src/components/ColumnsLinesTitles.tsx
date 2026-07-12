@@ -3,7 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import makeStyles from '@mui/styles/makeStyles';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
 import { toPairs } from 'ramda';
 import { useFormatter } from './i18n';
 import { DataColumns } from './list_lines';
@@ -64,11 +64,11 @@ const ColumnsLinesTitles: FunctionComponent<TriggerLineTitlesProps> = ({
     if (isSortable) {
       const orderComponent = orderAsc ? (
         <ArrowDropDown
-          classes={{ root: classes.sortIcon }}
+          className={classes.sortIcon}
           style={{ top: 0 }}
         />
       ) : (
-        <ArrowDropUp classes={{ root: classes.sortIcon }} style={{ top: 0 }} />
+        <ArrowDropUp className={classes.sortIcon} style={{ top: 0 }} />
       );
       return (
         <div

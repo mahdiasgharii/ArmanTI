@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/styles';
 import IconButton from '@common/button/IconButton';
 import { Link } from 'react-router-dom';
-import { OpenInNewOutlined } from '@mui/icons-material';
+import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import EntityDetails from './EntityDetails';
 import RelationshipDetails from './RelationshipDetails';
@@ -159,7 +159,7 @@ const EntitiesDetailsRightsBar = () => {
                 target="_blank"
                 to={entityUrl}
               >
-                <OpenInNewOutlined fontSize="medium" />
+                <OpenInNewOutlined size={24} />
               </IconButton>
             </div>
           </Tooltip>

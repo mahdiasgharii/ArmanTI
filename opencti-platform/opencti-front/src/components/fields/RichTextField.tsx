@@ -1,7 +1,7 @@
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import TextFieldAskAI from '@components/common/form/TextFieldAskAI';
-import { FullscreenOutlined } from '@mui/icons-material';
+import { Maximize as FullscreenOutlined } from 'lucide-react';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import { useTheme } from '@mui/styles';
@@ -143,7 +143,7 @@ const RichTextField = ({
           )}
           {hasFullScreen && (
             <IconButton size="small" onClick={() => setFullScreen(true)}>
-              <FullscreenOutlined fontSize="small" />
+              <FullscreenOutlined size={16} />
             </IconButton>
           )}
         </div>

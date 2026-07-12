@@ -6,7 +6,7 @@ import {
   type BackgroundTaskActionInput,
   type StixCoreObjectContainerTaskAddMutation,
 } from '@components/common/stix_core_objects/__generated__/StixCoreObjectContainerTaskAddMutation.graphql';
-import { AddOutlined, MoveToInboxOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Inbox as MoveToInboxOutlined } from 'lucide-react';
 import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
 import DialogActions from '@mui/material/DialogActions';

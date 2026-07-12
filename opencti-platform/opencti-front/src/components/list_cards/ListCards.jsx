@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ArrowDownward, ArrowUpward, FileDownloadOutlined, ViewListOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { ArrowDown as ArrowDownward, ArrowUp as ArrowUpward, Download as FileDownloadOutlined, List as ViewListOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import { UserContext } from '../../utils/hooks/useAuth';
@@ -140,9 +140,9 @@ class ListCards extends Component {
                     size="small"
                   >
                     {orderAsc ? (
-                      <ArrowDownward fontSize="small" />
+                      <ArrowDownward size={16} />
                     ) : (
-                      <ArrowUpward fontSize="small" />
+                      <ArrowUpward size={16} />
                     )}
                   </IconButton>
                 </div>
@@ -171,14 +171,14 @@ class ListCards extends Component {
                       {typeof handleChangeView === 'function' && (
                         <Tooltip title={t('Cards view')}>
                           <ToggleButton value="cards" aria-label="cards">
-                            <ViewModuleOutlined fontSize="small" color="primary" />
+                            <ViewModuleOutlined size={16} className="text-primary" />
                           </ToggleButton>
                         </Tooltip>
                       )}
                       {typeof handleChangeView === 'function' && (
                         <Tooltip title={t('Lines view')}>
                           <ToggleButton value="lines" aria-label="lines">
-                            <ViewListOutlined fontSize="small" color="primary" />
+                            <ViewListOutlined size={16} className="text-primary" />
                           </ToggleButton>
                         </Tooltip>
                       )}
@@ -187,8 +187,8 @@ class ListCards extends Component {
                         <Tooltip title={t('Open export panel')}>
                           <ToggleButton value="export" aria-label="export">
                             <FileDownloadOutlined
-                              color="primary"
-                              fontSize="small"
+                              className="text-primary"
+                              size={16}
                             />
                           </ToggleButton>
                         </Tooltip>
@@ -209,7 +209,7 @@ class ListCards extends Component {
                               aria-label="export"
                               disabled={true}
                             >
-                              <FileDownloadOutlined fontSize="small" />
+                              <FileDownloadOutlined size={16} />
                             </ToggleButton>
                           </span>
                         </Tooltip>

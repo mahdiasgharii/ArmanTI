@@ -1,5 +1,5 @@
 import IconButton from '@common/button/IconButton';
-import { RestartAlt } from '@mui/icons-material';
+import { RotateCcw as RestartAlt } from 'lucide-react';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';

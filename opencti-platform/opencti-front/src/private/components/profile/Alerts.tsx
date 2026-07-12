@@ -5,7 +5,7 @@ import { AlertsLine_node$data } from '@components/profile/__generated__/AlertsLi
 import { AlertsLines_data$data } from '@components/profile/__generated__/AlertsLines_data.graphql';
 import { AlertsLinesPaginationQuery, AlertsLinesPaginationQuery$variables } from '@components/profile/__generated__/AlertsLinesPaginationQuery.graphql';
 import DigestNotificationDrawer from '@components/profile/notifications/DigestNotificationDrawer';
-import { CheckCircleOutlined, DeleteOutlined, UnpublishedOutlined } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, Trash2 as DeleteOutlined, CircleSlash as UnpublishedOutlined } from 'lucide-react';
 import { Badge, Tooltip } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import { indigo } from '@mui/material/colors';

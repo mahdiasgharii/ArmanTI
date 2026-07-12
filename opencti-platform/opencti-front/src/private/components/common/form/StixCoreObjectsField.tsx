@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Field, useFormikContext } from 'formik';
 import { graphql } from 'react-relay';
 import InputAdornment from '@mui/material/InputAdornment';
-import { Add, PaletteOutlined } from '@mui/icons-material';
+import { Plus as Add, Palette as PaletteOutlined } from 'lucide-react';
 import Popover from '@mui/material/Popover';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';

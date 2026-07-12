@@ -1,4 +1,4 @@
-import { CheckCircle, WorkOutline } from '@mui/icons-material';
+import { CheckCircle, Briefcase as WorkOutline } from 'lucide-react';
 import ListItemButton from '@mui/material/ListItemButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -147,11 +147,11 @@ class AddNotesLinesContainer extends Component {
                   <TableCell sx={{ width: 48, paddingY: 1, paddingX: 2 }}>
                     {alreadyAdded ? (
                       <CheckCircle
-                        color="primary"
-                        sx={{ marginTop: 0.5 }}
+                        className="text-primary"
+                        style={{ marginTop: 2 }}
                       />
                     ) : (
-                      <WorkOutline sx={{ marginTop: 0.5 }} />
+                      <WorkOutline style={{ marginTop: 2 }} />
                     )}
                   </TableCell>
                   <TableCell sx={{ paddingY: 1, paddingX: 2 }}>

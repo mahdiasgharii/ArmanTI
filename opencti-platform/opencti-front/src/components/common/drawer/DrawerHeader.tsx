@@ -2,7 +2,7 @@ import { useTheme } from '@mui/styles';
 import { Theme } from '../../Theme';
 import { Stack, Typography } from '@mui/material';
 import IconButton from '../button/IconButton';
-import { Close } from '@mui/icons-material';
+import { X as Close } from 'lucide-react';
 import React from 'react';
 
 interface DrawerHeaderProps {

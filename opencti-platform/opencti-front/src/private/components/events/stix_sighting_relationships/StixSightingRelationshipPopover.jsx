@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import { MoreVertOutlined } from '@mui/icons-material';
+import { MoreVertical as MoreVertOutlined } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';

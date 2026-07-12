@@ -2,7 +2,7 @@ import { Alert, Drawer, IconButton, ListItem, ListItemText, SxProps, Toolbar, To
 import React from 'react';
 import { useSettingsMessagesBannerHeight } from '@components/settings/settings_messages/SettingsMessagesBanner';
 import { useTheme } from '@mui/styles';
-import { ContentCopy } from '@mui/icons-material';
+import { Copy as ContentCopy } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import type { Theme } from '../../../../components/Theme';
 import { renderWidgetIcon } from '../../../../utils/widget/widgetUtils';

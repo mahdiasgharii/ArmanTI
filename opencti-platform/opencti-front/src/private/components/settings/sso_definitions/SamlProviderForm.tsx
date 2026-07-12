@@ -15,7 +15,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Tooltip from '@mui/material/Tooltip';
-import { Add, Delete, ErrorOutlined, ExpandMoreOutlined } from '@mui/icons-material';
+import { Plus as Add, Trash2 as Delete, AlertCircle as ErrorOutlined, ChevronDown as ExpandMoreOutlined } from 'lucide-react';
 import SwitchField from '../../../../components/fields/SwitchField';
 import TextField from '../../../../components/TextField';
 import SelectField from '../../../../components/fields/SelectField';
@@ -550,7 +550,7 @@ const SamlProviderForm = ({
                             <Tooltip
                               title={t_i18n('The callback URL does not contain the expected identifier path. The authentication callback will not work unless the URL includes "/auth/{identifier}/callback" where {identifier} matches the provider identifier.')}
                             >
-                              <ErrorOutlined color="error" sx={{ mb: 0.5, fontSize: 20 }} />
+                              <ErrorOutlined size={20} style={{ marginBottom: 2, color: 'var(--mui-palette-error-main)' }} />
                             </Tooltip>
                           )}
                         </Box>

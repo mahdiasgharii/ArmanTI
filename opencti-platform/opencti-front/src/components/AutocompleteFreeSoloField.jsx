@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import MUIAutocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { fieldToTextField } from 'formik-mui';
 import { useField } from 'formik';

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Chip from '@mui/material/Chip';
 import { BulkEntityTypeInfo, entityNameHeaderWidth, entityTypeHeaderWidth, matchHeaderWidth } from '@components/common/bulk/dialog/BulkRelationDialog';
-import { DeleteOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import { Autocomplete } from '@mui/material';
 import Box from '@mui/material/Box';

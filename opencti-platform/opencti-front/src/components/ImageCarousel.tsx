@@ -5,7 +5,7 @@ import { ImageListItem, ImageListItemBar, Modal } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import Paper from '@mui/material/Paper';
 import IconButton from '@common/button/IconButton';
-import { ZoomOutMapOutlined } from '@mui/icons-material';
+import { Maximize as ZoomOutMapOutlined } from 'lucide-react';
 import Box from '@mui/material/Box';
 import { convertImagesToCarousel } from '../utils/edition';
 import type { Theme } from './Theme';
@@ -133,7 +133,7 @@ const ImageCarousel: FunctionComponent<ImageCarouselProps> = ({ data }) => {
                     size="small"
                     onClick={() => setCurrentImage(file)}
                   >
-                    <ZoomOutMapOutlined fontSize="small" />
+                    <ZoomOutMapOutlined size={16} />
                   </IconButton>
                 )}
               />

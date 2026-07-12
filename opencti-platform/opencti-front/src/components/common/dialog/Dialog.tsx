@@ -1,4 +1,4 @@
-import { CloseOutlined } from '@mui/icons-material';
+import { X as CloseOutlined } from 'lucide-react';
 import { Box, DialogActionsProps, DialogContent, DialogContentProps, DialogTitle } from '@mui/material';
 import MUIDialog, { DialogProps as MUIDialogProps } from '@mui/material/Dialog';
 import { ReactNode } from 'react';
@@ -70,7 +70,7 @@ const Dialog = ({
               onClick={(event) => onClose?.(event, 'escapeKeyDown')}
               size="default"
             >
-              <CloseOutlined fontSize="medium" />
+              <CloseOutlined size={24} />
             </IconButton>
           )}
         </DialogTitle>

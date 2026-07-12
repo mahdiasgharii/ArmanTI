@@ -20,7 +20,7 @@ import * as Yup from 'yup';
 import { graphql } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
 import ToggleButton from '@mui/material/ToggleButton';
-import { FileUploadOutlined } from '@mui/icons-material';
+import { FileUp as FileUploadOutlined } from 'lucide-react';
 import { useTheme } from '@mui/styles';
 import { FormikConfig } from 'formik/dist/types';
 import VisuallyHiddenInput from '../../common/VisuallyHiddenInput';

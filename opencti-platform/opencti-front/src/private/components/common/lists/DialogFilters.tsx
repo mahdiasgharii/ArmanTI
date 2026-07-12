@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import { BiotechOutlined } from '@mui/icons-material';
+import { Microscope as BiotechOutlined } from 'lucide-react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import Tooltip from '@mui/material/Tooltip';

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import { Field, FieldArray } from 'formik';
 import Button from '@common/button/Button';
 import { IconButton } from '@mui/material';
-import { AddOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import { graphql } from 'react-relay';
 import {
   ThreatActorIndividualEditionBiographics_ThreatActorIndividual$data,

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import IconButton from '@common/button/IconButton';
 import Fab from '@mui/material/Fab';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';

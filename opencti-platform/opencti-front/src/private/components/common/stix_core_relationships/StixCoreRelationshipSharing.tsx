@@ -3,7 +3,7 @@ import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import EEChip from '@components/common/entreprise_edition/EEChip';
 import EETooltip from '@components/common/entreprise_edition/EETooltip';
-import { AccountBalanceOutlined } from '@mui/icons-material';
+import { Landmark as AccountBalanceOutlined } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import Tooltip from '@mui/material/Tooltip';
 import { Form, Formik } from 'formik';

@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 import IconButton from '@common/button/IconButton';
-import { Delete } from '@mui/icons-material';
+import { Trash2 as Delete } from 'lucide-react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { ListItemButton, Tooltip } from '@mui/material';
 import AddCoursesOfAction from './AddCoursesOfAction';

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 import { Field, FieldArray } from 'formik';
-import { AddOutlined, DeleteOutlined } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as DeleteOutlined } from 'lucide-react';
 import { graphql } from 'react-relay';
 import { MeasureInput } from '@components/threats/threat_actors_individual/__generated__/ThreatActorIndividualCreationMutation.graphql';
 import {

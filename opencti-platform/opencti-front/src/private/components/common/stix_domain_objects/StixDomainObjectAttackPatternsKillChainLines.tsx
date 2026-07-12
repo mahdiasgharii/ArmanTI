@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Collapse from '@mui/material/Collapse';
 import { Launch, LockPattern, ProgressWrench } from 'mdi-material-ui';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { ChevronUp as ExpandLess, ChevronDown as ExpandMore } from 'lucide-react';
 import {
   StixDomainObjectAttackPatternsKillChainContainer_data$data,
 } from '@components/common/stix_domain_objects/__generated__/StixDomainObjectAttackPatternsKillChainContainer_data.graphql';

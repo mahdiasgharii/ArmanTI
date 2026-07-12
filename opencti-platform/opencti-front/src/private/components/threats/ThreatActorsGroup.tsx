@@ -8,7 +8,7 @@ import {
 import { ThreatActorGroupCardFragment } from '@components/threats/threat_actors_group/ThreatActorGroupCard';
 import { ThreatActorsGroupCards_data$data } from '@components/threats/threat_actors_group/__generated__/ThreatActorsGroupCards_data.graphql';
 import Tooltip from '@mui/material/Tooltip';
-import { ViewListOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { List as ViewListOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import ToggleButton from '@mui/material/ToggleButton';
 import StixCoreObjectForms from '@components/common/stix_core_objects/StixCoreObjectForms';
 import ListCards from '../../../components/list_cards/ListCards';

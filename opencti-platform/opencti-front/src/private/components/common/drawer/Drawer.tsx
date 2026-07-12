@@ -1,5 +1,5 @@
 import DrawerHeader from '@common/drawer/DrawerHeader';
-import { Add, Edit } from '@mui/icons-material';
+import { Plus as Add, Pencil as Edit } from 'lucide-react';
 import DrawerMUI from '@mui/material/Drawer';
 import Fab from '@mui/material/Fab';
 import { createStyles, useTheme } from '@mui/styles';

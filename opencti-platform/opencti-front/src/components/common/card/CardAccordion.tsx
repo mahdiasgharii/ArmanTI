@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { ExpandMore } from '@mui/icons-material';
+import { ChevronDown as ExpandMore } from 'lucide-react';
 import { Accordion, AccordionDetails, AccordionSummary, SxProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import type { Theme } from '../../Theme';
@@ -66,7 +66,7 @@ const CardAccordion = ({
       >
         <AccordionSummary
           sx={summarySx}
-          expandIcon={<ExpandMore sx={{ color: theme.palette.primary.main }} />}
+          expandIcon={<ExpandMore style={{ color: theme.palette.primary.main }} />}
         >
           {preview}
         </AccordionSummary>

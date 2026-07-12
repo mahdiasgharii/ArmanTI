@@ -3,7 +3,7 @@ import { graphql } from 'react-relay';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import { HexagonMultipleOutline, ShieldSearch } from 'mdi-material-ui';
-import { DescriptionOutlined, DeviceHubOutlined, SettingsOutlined } from '@mui/icons-material';
+import { FileText as DescriptionOutlined, Network as DeviceHubOutlined, Settings as SettingsOutlined } from 'lucide-react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import IconButton from '@common/button/IconButton';

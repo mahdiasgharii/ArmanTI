@@ -1,4 +1,4 @@
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import React, { FunctionComponent, useContext, useState } from 'react';
 import { Disposable, graphql, RecordSourceSelectorProxy } from 'relay-runtime';

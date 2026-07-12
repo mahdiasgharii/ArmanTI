@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext, useEffect, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import { CircularProgress, Fab } from '@mui/material';
-import { ChevronRightOutlined } from '@mui/icons-material';
+import { ChevronRight as ChevronRightOutlined } from 'lucide-react';
 import {
   stixCoreRelationshipCreationFromEntityStixCoreObjectsLineFragment,
   stixCoreRelationshipCreationFromEntityStixCoreObjectsLinesFragment,

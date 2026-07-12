@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import { List, ListItemButton, ListItemIcon, ListItemText, useTheme } from '@mui/material';
 import ItemIcon from 'src/components/ItemIcon';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckCircle } from 'lucide-react';
 import useApiMutation from 'src/utils/hooks/useApiMutation';
 import { defaultCommitMutation } from 'src/relay/environment';
 import { scoRelationshipAdd, scoRelationshipDelete } from '@components/threats/threat_actors_individual/AddIndividualsThreatActorIndividualLines';

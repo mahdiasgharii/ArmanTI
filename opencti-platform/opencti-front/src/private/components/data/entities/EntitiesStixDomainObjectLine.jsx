@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Skeleton from '@mui/material/Skeleton';
 import { Link } from 'react-router-dom';
-import { KeyboardArrowRight } from '@mui/icons-material';
+import { ChevronRight as KeyboardArrowRight } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import { ListItemButton } from '@mui/material';
 import { useFormatter } from '../../../../components/i18n';

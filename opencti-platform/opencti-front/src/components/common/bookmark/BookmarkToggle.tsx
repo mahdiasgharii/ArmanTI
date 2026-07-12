@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { Star, StarBorder } from '@mui/icons-material';
+import { Star, StarOff as StarBorder } from 'lucide-react';
 import { graphql } from 'react-relay';
 import useApiMutation from '../../../utils/hooks/useApiMutation';
 import { deleteNode, insertNode } from '../../../utils/store';

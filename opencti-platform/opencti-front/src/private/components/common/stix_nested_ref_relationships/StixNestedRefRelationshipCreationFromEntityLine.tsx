@@ -5,7 +5,7 @@ import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
 import React, { FunctionComponent } from 'react';
-import { CircleOutlined } from '@mui/icons-material';
+import { Circle as CircleOutlined } from 'lucide-react';
 import Skeleton from '@mui/material/Skeleton';
 import {
   StixNestedRefRelationshipCreationFromEntityLine_node$data,

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@common/button/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';
-import { ArrowRightAlt, Close } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt, X as Close } from 'lucide-react';
 import { MESSAGING$, commitMutation, fetchQuery } from '../../../../relay/environment';
 import inject18n, { isNone } from '../../../../components/i18n';
 import { itemColor } from '../../../../utils/Colors';

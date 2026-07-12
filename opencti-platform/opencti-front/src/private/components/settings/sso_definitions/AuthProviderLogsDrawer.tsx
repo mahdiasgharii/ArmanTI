@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import { RefreshOutlined } from '@mui/icons-material';
+import { RefreshCw as RefreshOutlined } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import type { AuthProviderLogsDrawerQuery } from './__generated__/AuthProviderLogsDrawerQuery.graphql';
 import AuthProviderLogTab from './AuthProviderLogTab';
@@ -105,7 +105,7 @@ const AuthProviderLogsDrawerContent: React.FC<{
               disabled={refreshing}
               aria-label={t_i18n('Refresh')}
             >
-              <RefreshOutlined fontSize="small" sx={{ opacity: refreshing ? 0.6 : 1 }} />
+              <RefreshOutlined size={16} style={{ opacity: refreshing ? 0.6 : 1 }} />
             </IconButton>
           </span>
         </Tooltip>

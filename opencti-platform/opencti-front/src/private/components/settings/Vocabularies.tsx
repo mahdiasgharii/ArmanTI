@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { graphql } from 'react-relay';
-import { ShortTextOutlined } from '@mui/icons-material';
+import { Type as ShortTextOutlined } from 'lucide-react';
 import VocabularyPopover from '@components/settings/attributes/VocabularyPopover';
 import { VocabulariesLinesPaginationQuery, VocabulariesLinesPaginationQuery$variables } from '@components/settings/__generated__/VocabulariesLinesPaginationQuery.graphql';
 import { useTheme } from '@mui/material';
@@ -185,7 +185,7 @@ const Vocabularies = () => {
           preloadedPaginationProps={preloadedPaginationProps}
           actions={(vocab) => <VocabularyPopover vocab={vocab} paginationOptions={queryPaginationOptions} />}
           searchContextFinal={{ entityTypes: ['Vocabulary'] }}
-          icon={() => <ShortTextOutlined sx={{ color: theme.palette.primary.main }} />}
+          icon={() => <ShortTextOutlined style={{ color: theme.palette.primary.main }} />}
           createButton={(
             <VocabularyCreation
               category={category}

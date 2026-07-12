@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckCircle } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';

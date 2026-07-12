@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFormatter } from '../../../../../components/i18n';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import { FormikHelpers, useFormikContext } from 'formik';
 import { WorkflowEditionFormValues } from './WorkflowEditionDrawer';
 

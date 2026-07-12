@@ -8,7 +8,7 @@ import { GraphQLSubscriptionConfig } from 'relay-runtime';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import IconButton from '@common/button/IconButton';
-import { AutoModeOutlined, ContentCopyOutlined } from '@mui/icons-material';
+import { Wand2 as AutoModeOutlined, Copy as ContentCopyOutlined } from 'lucide-react';
 import { AISummaryHistoryStixCoreObjectAskAiHistoryQuery$data } from '@components/common/ai/__generated__/AISummaryHistoryStixCoreObjectAskAiHistoryQuery.graphql';
 import { useFormatter } from '../../../../components/i18n';
 import { getDefaultAiLanguage } from '../../../../utils/ai/Common';
@@ -65,12 +65,12 @@ const AISummaryHistoryComponent = ({
             <Typography variant="caption">Generated on {nsdt(result?.stixCoreObjectAskAiHistory?.updated_at)}.</Typography>
             <Tooltip title={t_i18n('Copy to clipboard')}>
               <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
-                <ContentCopyOutlined fontSize="small" />
+                <ContentCopyOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Retry')}>
               <IconButton size="small" color="primary" onClick={() => refetch()}>
-                <AutoModeOutlined fontSize="small" />
+                <AutoModeOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>

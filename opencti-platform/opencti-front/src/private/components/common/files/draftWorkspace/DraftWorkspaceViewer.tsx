@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Drafts from '@components/drafts/Drafts';
 import useGranted, { hasCapabilitiesInDraft, KNOWLEDGE_KNASKIMPORT, KNOWLEDGE_KNUPDATE } from '../../../../../utils/hooks/useGranted';
 import useDraftContext from '../../../../../utils/hooks/useDraftContext';

@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import Card from '@common/card/Card';
 import Dialog from '@common/dialog/Dialog';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRight as ArrowRightAlt } from 'lucide-react';
 import { alpha, Stack } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import DialogActions from '@mui/material/DialogActions';

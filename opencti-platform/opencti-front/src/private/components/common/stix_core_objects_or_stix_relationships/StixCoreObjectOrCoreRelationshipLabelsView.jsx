@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Tag from '@common/tag/Tag';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Dialog from '@common/dialog/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import { Box, Stack } from '@mui/material';

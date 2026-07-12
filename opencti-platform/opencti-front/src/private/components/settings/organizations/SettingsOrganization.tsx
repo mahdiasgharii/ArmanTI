@@ -1,4 +1,4 @@
-import { WarningOutlined } from '@mui/icons-material';
+import { TriangleAlert as WarningOutlined } from 'lucide-react';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';

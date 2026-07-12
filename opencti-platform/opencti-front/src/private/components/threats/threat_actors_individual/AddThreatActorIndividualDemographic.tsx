@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { ThreatActorIndividual_ThreatActorIndividual$data } from '@components/threats/threat_actors_individual/__generated__/ThreatActorIndividual_ThreatActorIndividual.graphql';
 import IconButton from '@common/button/IconButton';
-import { Add } from '@mui/icons-material';
+import { Plus as Add } from 'lucide-react';
 import Drawer from '@components/common/drawer/Drawer';
 import CountryCreation from '@components/locations/countries/CountryCreation';
 import AddThreatActorIndividualDemographicLines, {

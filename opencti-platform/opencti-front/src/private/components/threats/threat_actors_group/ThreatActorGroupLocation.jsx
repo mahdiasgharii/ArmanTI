@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 import IconButton from '@common/button/IconButton';
-import { LinkOff } from '@mui/icons-material';
+import { Unlink as LinkOff } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import * as R from 'ramda';
 import { AutoFix } from 'mdi-material-ui';

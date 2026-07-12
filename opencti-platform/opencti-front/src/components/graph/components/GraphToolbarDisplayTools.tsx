@@ -1,5 +1,5 @@
 import { AutoFix, FamilyTree, Video3d } from 'mdi-material-ui';
-import { AspectRatioOutlined, ScatterPlotOutlined } from '@mui/icons-material';
+import { Maximize2 as AspectRatioOutlined, ScatterChart as ScatterPlotOutlined } from 'lucide-react';
 import React from 'react';
 import GraphToolbarItem from './GraphToolbarItem';
 import { useFormatter } from '../../i18n';

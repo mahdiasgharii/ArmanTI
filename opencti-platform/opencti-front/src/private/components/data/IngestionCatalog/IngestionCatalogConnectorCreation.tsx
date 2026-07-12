@@ -23,7 +23,7 @@ import {
 import IngestionCreationUserHandling, { BasicUserHandlingValues } from '@components/data/IngestionCreationUserHandling';
 import { IngestionConnector, IngestionTypedProperty } from '@components/data/IngestionCatalog';
 import { Launch } from 'mdi-material-ui';
-import { HubOutlined, LibraryBooksOutlined } from '@mui/icons-material';
+import { Network as HubOutlined, Library as LibraryBooksOutlined } from 'lucide-react';
 import ConnectorDeploymentBanner from '@components/data/connectors/ConnectorDeploymentBanner';
 import Tooltip from '@mui/material/Tooltip';
 import JsonFormArrayRenderer, { jsonFormArrayTester } from '@components/data/IngestionCatalog/utils/JsonFormArrayRenderer';

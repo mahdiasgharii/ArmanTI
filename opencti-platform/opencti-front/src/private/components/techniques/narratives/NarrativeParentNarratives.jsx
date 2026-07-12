@@ -5,7 +5,7 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
-import { SpeakerNotesOutlined } from '@mui/icons-material';
+import { MessageSquare as SpeakerNotesOutlined } from 'lucide-react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import { ListItemButton } from '@mui/material';
 import { truncate } from '../../../../utils/String';

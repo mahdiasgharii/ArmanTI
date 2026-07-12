@@ -10,36 +10,58 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Ravin Style design tokens
-        canvas: '#0A0A0A',
-        surface: '#141414',
-        elevated: '#1A1A1A',
-        'surface-2': '#262626',
+        // Ravin Style design tokens — using CSS variables for runtime theme switching
+        canvas: 'var(--ravin-bg)',
+        surface: 'var(--ravin-surface)',
+        elevated: 'var(--ravin-elevated)',
+        'surface-2': 'var(--ravin-surface-2)',
         border: {
-          DEFAULT: '#262626',
-          strong: '#404040',
+          DEFAULT: 'var(--ravin-border)',
+          strong: 'var(--ravin-border-strong)',
         },
         primary: {
-          DEFAULT: '#019BE5',
-          light: '#66C4F5',
-          dark: '#0073A8',
+          DEFAULT: 'var(--ravin-primary)',
+          light: 'var(--ravin-primary-light)',
+          dark: 'var(--ravin-primary-dark)',
         },
         signal: {
-          DEFAULT: '#F20F0F',
-          light: '#FF6B6B',
-          dark: '#881106',
+          DEFAULT: 'var(--ravin-danger)',
+          light: 'var(--ravin-danger-light)',
+          dark: 'var(--ravin-danger-dark)',
+        },
+        danger: {
+          DEFAULT: 'var(--ravin-danger)',
+          light: 'var(--ravin-danger-light)',
+          dark: 'var(--ravin-danger-dark)',
         },
         violet: {
-          DEFAULT: '#860EFE',
-          light: '#B88DFF',
-          dark: '#4A08A0',
+          DEFAULT: 'var(--ravin-secondary)',
+          light: 'var(--ravin-secondary-light)',
+          dark: 'var(--ravin-secondary-dark)',
+        },
+        secondary: {
+          DEFAULT: 'var(--ravin-secondary)',
+          light: 'var(--ravin-secondary-light)',
+          dark: 'var(--ravin-secondary-dark)',
         },
         success: {
-          DEFAULT: '#17AB1F',
-          dark: '#094E0B',
+          DEFAULT: 'var(--ravin-success)',
+          dark: 'var(--ravin-success-dark)',
         },
         warning: {
-          DEFAULT: '#E6700F',
+          DEFAULT: 'var(--ravin-warning)',
+        },
+        // Text colors
+        'text-base': 'var(--ravin-text)',
+        'text-muted': 'var(--ravin-text-muted)',
+        'text-light': 'var(--ravin-text-light)',
+        // Severity colors
+        severity: {
+          DEFAULT: 'var(--ravin-warning)',
+          danger: 'var(--ravin-danger)',
+          success: 'var(--ravin-success)',
+          warning: 'var(--ravin-warning)',
+          info: 'var(--ravin-primary)',
         },
       },
       fontFamily: {

@@ -1,4 +1,4 @@
-import { AccountBalanceOutlined, CenterFocusStrongOutlined, DateRangeOutlined, FilterAltOffOutlined, FilterListOutlined } from '@mui/icons-material';
+import { Landmark as AccountBalanceOutlined, Crosshair as CenterFocusStrongOutlined, Calendar as DateRangeOutlined, FilterX as FilterAltOffOutlined, Filter as FilterListOutlined } from 'lucide-react';
 import Badge from '@mui/material/Badge';
 import React, { useState } from 'react';
 import GraphToolbarOptionsList from './GraphToolbarOptionsList';

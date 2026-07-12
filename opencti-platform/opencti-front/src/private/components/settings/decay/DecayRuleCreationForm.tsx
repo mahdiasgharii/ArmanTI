@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import { InformationOutline } from 'mdi-material-ui';
 import IconButton from '@common/button/IconButton';
-import { AddOutlined, Delete } from '@mui/icons-material';
+import { Plus as AddOutlined, Trash2 as Delete } from 'lucide-react';
 import SwitchField from '../../../../components/fields/SwitchField';
 import { fieldSpacingContainerStyle } from '../../../../utils/field';
 import FormButtonContainer from '@common/form/FormButtonContainer';

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { ChevronUp as ExpandLess, ChevronDown as ExpandMore } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import { emptyFilled, truncate } from '../utils/String';
 import MarkdownDisplay from './markdownDisplay/MarkdownDisplay';

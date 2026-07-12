@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { FileExportOutline, FileOutline, InformationOutline } from 'mdi-material-ui';
 import IconButton from '@common/button/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { AddOutlined, MoreVert } from '@mui/icons-material';
+import { Plus as AddOutlined, MoreVertical as MoreVert } from 'lucide-react';
 import { graphql } from 'react-relay';
 import ListItemButton from '@mui/material/ListItemButton';
 import Typography from '@mui/material/Typography';

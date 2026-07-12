@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import { Launch } from 'mdi-material-ui';
 import Grid from '@mui/material/Grid2';
 import { IngestionConnector } from '@components/data/IngestionCatalog';
-import { LibraryBooksOutlined } from '@mui/icons-material';
+import { Library as LibraryBooksOutlined } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import MarkdownDisplay from '../../../../components/markdownDisplay/MarkdownDisplay';
 import Card from '../../../../components/common/card/Card';

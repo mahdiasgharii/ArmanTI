@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@common/button/IconButton';
-import { DeleteOutlined, EditOutlined } from '@mui/icons-material';
+import { Trash2 as DeleteOutlined, Pencil as EditOutlined } from 'lucide-react';
 import { SavedFiltersAutocompleteOptionType, SavedFiltersSelectionData } from 'src/components/saved_filters/SavedFilterSelection';
 import { Autocomplete, useTheme } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -74,7 +74,7 @@ const SavedFiltersAutocomplete = ({
                   size="small"
                   sx={{ padding: '4px' }}
                 >
-                  <EditOutlined sx={{ fontSize: 18 }} />
+                  <EditOutlined size={18} />
                 </IconButton>
               </Tooltip>
               <Tooltip title={t_i18n('Delete this saved filter')}>
@@ -84,7 +84,7 @@ const SavedFiltersAutocomplete = ({
                   size="small"
                   sx={{ padding: '4px' }}
                 >
-                  <DeleteOutlined sx={{ fontSize: 18 }} />
+                  <DeleteOutlined size={18} />
                 </IconButton>
               </Tooltip>
             </div>

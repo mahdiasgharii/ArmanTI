@@ -3,7 +3,7 @@ import StixCoreObjectsExports from '@components/common/stix_core_objects/StixCor
 import StixCoreRelationshipsExports from '@components/common/stix_core_relationships/StixCoreRelationshipsExports';
 import StixDomainObjectsExports from '@components/common/stix_domain_objects/StixDomainObjectsExports';
 import StixCyberObservablesExports from '@components/observations/stix_cyber_observables/StixCyberObservablesExports';
-import { FileDownloadOutlined } from '@mui/icons-material';
+import { Download as FileDownloadOutlined } from 'lucide-react';
 import { Stack, ToggleButtonGroup } from '@mui/material';
 import { Theme } from '@mui/material/styles/createTheme';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -172,7 +172,7 @@ const DataTableFilters = ({
               <ToggleButton value="export" aria-label="export">
                 <Tooltip title={t_i18n('Open export panel')}>
                   <FileDownloadOutlined
-                    fontSize="small"
+                    size={16}
                   />
                 </Tooltip>
               </ToggleButton>

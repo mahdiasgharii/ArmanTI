@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReportGmailerrorred } from '@mui/icons-material';
+import { MailWarning as ReportGmailerrorred } from 'lucide-react';
 import Tooltip from '@mui/material/Tooltip';
 import { InformationOutline } from 'mdi-material-ui';
 import Box from '@mui/material/Box';

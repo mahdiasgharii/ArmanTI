@@ -1,6 +1,6 @@
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
-import { Add, InfoOutlined } from '@mui/icons-material';
+import { Plus as Add, Info as InfoOutlined } from 'lucide-react';
 import { Stack } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import Fab from '@mui/material/Fab';

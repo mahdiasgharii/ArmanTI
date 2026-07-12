@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import { CheckCircleOutlined, RadioButtonUnchecked } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, Circle as RadioButtonUnchecked } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
 import { useFormatter } from './i18n';
 
@@ -58,8 +58,8 @@ const PasswordPoliciesAlert: FunctionComponent<PasswordPoliciesAlertProps> = ({ 
     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
       {isLive
         ? met
-          ? <CheckCircleOutlined fontSize="small" style={{ color: theme.palette.success.main }} />
-          : <RadioButtonUnchecked fontSize="small" style={{ color: theme.palette.text.disabled }} />
+          ? <CheckCircleOutlined size={16} style={{ color: theme.palette.success.main }} />
+          : <RadioButtonUnchecked size={16} style={{ color: theme.palette.text.disabled }} />
         : null}
       <span style={{ color: isLive ? (met ? theme.palette.success.main : theme.palette.text.disabled) : 'inherit' }}>
         {label}

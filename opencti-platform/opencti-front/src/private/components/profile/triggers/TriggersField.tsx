@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { union } from 'ramda';
 import { Field } from 'formik';
-import { CampaignOutlined } from '@mui/icons-material';
+import { Megaphone as CampaignOutlined } from 'lucide-react';
 import makeStyles from '@mui/styles/makeStyles';
 import { fetchQuery } from '../../../../relay/environment';
 import AutocompleteField from '../../../../components/AutocompleteField';

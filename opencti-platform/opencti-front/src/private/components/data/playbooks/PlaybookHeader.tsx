@@ -16,7 +16,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 import Dialog from '@common/dialog/Dialog';
 import Tag from '@common/tag/Tag';
 import PlaybookEdition from '@components/data/playbooks/PlaybookEdition';
-import { CheckCircleOutlined, ErrorOutlined, ExpandLessOutlined, ExpandMoreOutlined, ManageHistoryOutlined } from '@mui/icons-material';
+import { CheckCircle as CheckCircleOutlined, AlertCircle as ErrorOutlined, ChevronUp as ExpandLessOutlined, ChevronDown as ExpandMoreOutlined, History as ManageHistoryOutlined } from 'lucide-react';
 import { Stack } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import Collapse from '@mui/material/Collapse';

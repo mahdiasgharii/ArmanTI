@@ -2,7 +2,7 @@ import Button from '@common/button/Button';
 import React, { useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import EnterpriseEditionAgreement from '@components/common/entreprise_edition/EnterpriseEditionAgreement';
-import { RocketLaunchOutlined } from '@mui/icons-material';
+import { Rocket as RocketLaunchOutlined } from 'lucide-react';
 import FeedbackCreation from '@components/cases/feedbacks/FeedbackCreation';
 import classNames from 'classnames';
 import { useTheme } from '@mui/styles';

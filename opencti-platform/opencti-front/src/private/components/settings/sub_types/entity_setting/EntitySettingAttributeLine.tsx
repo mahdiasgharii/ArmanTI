@@ -6,7 +6,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { ListItemButton } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { LockPersonOutlined, NorthEastOutlined, ShortTextOutlined } from '@mui/icons-material';
+import { Lock as LockPersonOutlined, ArrowUpRight as NorthEastOutlined, Type as ShortTextOutlined } from 'lucide-react';
 import EEChip from '@components/common/entreprise_edition/EEChip';
 import Box from '@mui/material/Box';
 import { DataColumns } from '../../../../../components/list_lines';

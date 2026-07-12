@@ -3,7 +3,7 @@ import { graphql, useFragment } from 'react-relay';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { MoreVert } from '@mui/icons-material';
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { AccessPoint } from 'mdi-material-ui';
 import Skeleton from '@mui/material/Skeleton';
 import makeStyles from '@mui/styles/makeStyles';
@@ -146,7 +146,7 @@ export const IngestionTaxiiLineDummy = ({ dataColumns }: { dataColumns: DataColu
     <ListItem
       classes={{ root: classes.item }}
       divider={true}
-      secondaryAction={<MoreVert classes={classes.itemIconDisabled} />}
+      secondaryAction={<MoreVert className={classes.itemIconDisabled} />}
     >
       <ListItemIcon classes={{ root: classes.itemIcon }}>
         <Skeleton

@@ -1,6 +1,6 @@
 import { graphql, PreloadedQuery, usePreloadedQuery, UseQueryLoaderLoadQueryOptions } from 'react-relay';
 import React, { FunctionComponent, useEffect } from 'react';
-import { EventRepeatOutlined, UpdateOutlined } from '@mui/icons-material';
+import { Repeat as EventRepeatOutlined, RefreshCw as UpdateOutlined } from 'lucide-react';
 import Grid from '@mui/material/Grid';
 import { interval } from 'rxjs';
 import CircularProgress from '@mui/material/CircularProgress';

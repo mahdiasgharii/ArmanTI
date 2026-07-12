@@ -1,5 +1,5 @@
 import Button from '@common/button/Button';
-import { ArrowDropDown, ArrowDropUp, FileDownloadOutlined, LibraryBooksOutlined, SettingsOutlined, ViewModuleOutlined } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp, Download as FileDownloadOutlined, Library as LibraryBooksOutlined, Settings as SettingsOutlined, LayoutGrid as ViewModuleOutlined } from 'lucide-react';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
@@ -291,7 +291,7 @@ class ListLines extends Component {
                   {typeof handleChangeView === 'function' && !disableCards && (
                     <ToggleButton value="cards" aria-label="cards">
                       <Tooltip title={t('Cards view')}>
-                        <ViewModuleOutlined fontSize="small" color="primary" />
+                        <ViewModuleOutlined size={16} className="text-primary" />
                       </Tooltip>
                     </ToggleButton>
                   )}
@@ -300,7 +300,7 @@ class ListLines extends Component {
                     <ToggleButton value="entities" aria-label="entities">
                       <Tooltip title={t('Entities view')}>
                         <LibraryBooksOutlined
-                          fontSize="small"
+                          size={16}
                         />
                       </Tooltip>
                     </ToggleButton>
@@ -366,7 +366,7 @@ class ListLines extends Component {
                         value="settings"
                         aria-label="settings"
                       >
-                        <SettingsOutlined fontSize="small" />
+                        <SettingsOutlined size={16} />
                       </ToggleButton>
                     </Tooltip>
                   )}
@@ -375,7 +375,7 @@ class ListLines extends Component {
                     <Tooltip title={t('Open export panel')}>
                       <ToggleButton value="export" aria-label="export">
                         <FileDownloadOutlined
-                          fontSize="small"
+                          size={16}
                         />
                       </ToggleButton>
                     </Tooltip>
@@ -409,7 +409,7 @@ class ListLines extends Component {
                           aria-label="export"
                           disabled={true}
                         >
-                          <FileDownloadOutlined fontSize="small" />
+                          <FileDownloadOutlined size={16} />
                         </ToggleButton>
                       </span>
                     </Tooltip>

@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import {
-  AccountBalanceOutlined,
-  AlternateEmailOutlined,
-  CenterFocusStrongOutlined,
-  EmailOutlined,
-  KeyOutlined,
-  LocalPoliceOutlined,
-  PermIdentityOutlined,
-  ReceiptOutlined,
-  SecurityOutlined,
-} from '@mui/icons-material';
+  Landmark as AccountBalanceOutlined,
+  AtSign as AlternateEmailOutlined,
+  Crosshair as CenterFocusStrongOutlined,
+  Mail as EmailOutlined,
+  KeyRound as KeyOutlined,
+  ShieldCheck as LocalPoliceOutlined,
+  UserPen as PermIdentityOutlined,
+  Receipt as ReceiptOutlined,
+  Shield as SecurityOutlined,
+} from 'lucide-react';
 import { AccountGroupOutline } from 'mdi-material-ui';
 import NavToolbarMenu, { MenuEntry } from '../common/menus/NavToolbarMenu';
 import useGranted, { SETTINGS_SETACCESSES, SETTINGS_SETAUTH, SETTINGS_SETDISSEMINATION, SETTINGS_SETMARKINGS, VIRTUAL_ORGANIZATION_ADMIN } from '../../../utils/hooks/useGranted';

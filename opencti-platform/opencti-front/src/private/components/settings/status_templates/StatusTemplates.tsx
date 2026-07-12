@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-relay';
 import StatusTemplatePopover from '@components/settings/status_templates/StatusTemplatePopover';
-import { FactCheckOutlined } from '@mui/icons-material';
+import { ListChecks as FactCheckOutlined } from 'lucide-react';
 import { StatusTemplatesLine_node$data } from '@components/settings/status_templates/__generated__/StatusTemplatesLine_node.graphql';
 import StatusTemplateCreation from './StatusTemplateCreation';
 import { usePaginationLocalStorage } from '../../../../utils/hooks/useLocalStorage';
@@ -149,7 +149,7 @@ const StatusTemplates = () => {
           preloadedPaginationProps={preloadedPaginationProps}
           actions={(row) => <StatusTemplatePopover data={row} paginationOptions={paginationOptions} />}
           searchContextFinal={{ entityTypes: ['StatusTemplates'] }}
-          icon={(data) => <FactCheckOutlined sx={{ color: data.color }} />}
+          icon={(data) => <FactCheckOutlined style={{ color: data.color }} />}
           createButton={(
             <StatusTemplateCreation
               paginationOptions={paginationOptions}

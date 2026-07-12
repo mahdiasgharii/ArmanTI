@@ -7,7 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import Switch from '@mui/material/Switch';
-import { DragIndicatorOutlined } from '@mui/icons-material';
+import { GripVertical as DragIndicatorOutlined } from 'lucide-react';
 import { Form, Formik } from 'formik';
 import { useTheme } from '@mui/styles';
 import { useFormatter } from '../../../../../components/i18n';

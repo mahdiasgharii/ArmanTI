@@ -1,5 +1,5 @@
 import IconButton from '@common/button/IconButton';
-import { ArrowDropDown, OpenInNew } from '@mui/icons-material';
+import { ChevronDown as ArrowDropDown, ExternalLink as OpenInNew } from 'lucide-react';
 import { Box, Divider, List, ListItemButton, ListItemIcon, Popover, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import React, { useState } from 'react';
