@@ -413,7 +413,7 @@ const StixCoreRelationshipCreationFromEntityList = ({
                     >
                       <ListItemIcon>
                         {alreadyAdded ? (
-                          <CheckCircle classes={{ root: classes.icon }} />
+                          <CheckCircle className={classes.icon} />
                         ) : (
                           <>
                             {flag ? (

@@ -1683,9 +1683,9 @@ const WorkbenchFileContentComponent = ({
   };
   const sortHeader = (field, label, isSortable) => {
     const sortComponent = orderAsc ? (
-      <ArrowDropDown classes={{ root: classes.sortIcon }} style={{ top: 7 }} />
+      <ArrowDropDown className={classes.sortIcon} style={{ top: 7 }} />
     ) : (
-      <ArrowDropUp classes={{ root: classes.sortIcon }} style={{ top: 7 }} />
+      <ArrowDropUp className={classes.sortIcon} style={{ top: 7 }} />
     );
     if (isSortable) {
       return (
@@ -1710,9 +1710,9 @@ const WorkbenchFileContentComponent = ({
   };
   const sortHeaderContainer = (field, label, isSortable) => {
     const sortComponent = containerOrderAsc ? (
-      <ArrowDropDown classes={{ root: classes.sortIcon }} style={{ top: 7 }} />
+      <ArrowDropDown className={classes.sortIcon} style={{ top: 7 }} />
     ) : (
-      <ArrowDropUp classes={{ root: classes.sortIcon }} style={{ top: 7 }} />
+      <ArrowDropUp className={classes.sortIcon} style={{ top: 7 }} />
     );
     if (isSortable) {
       return (

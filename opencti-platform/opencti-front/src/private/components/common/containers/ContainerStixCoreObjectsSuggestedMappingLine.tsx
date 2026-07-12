@@ -199,7 +199,7 @@ export const ContainerStixCoreObjectsSuggestedMappingLineDummy = (props: Contain
       classes={{ root: classes.item }}
       divider={true}
       secondaryAction={(
-        <IconButton disabled={true} aria-haspopup="true" classes={classes.itemIconDisabled}>
+        <IconButton disabled={true} aria-haspopup="true" className={classes.itemIconDisabled}>
           <MoreVert />
         </IconButton>
       )}

@@ -241,7 +241,7 @@ class AddExternalReferencesLinesContainer extends Component {
               >
                 <ListItemIcon>
                   {alreadyAdded ? (
-                    <CheckCircle classes={{ root: classes.icon }} />
+                    <CheckCircle className={classes.icon} />
                   ) : (
                     <ItemIcon type="External-Reference" />
                   )}

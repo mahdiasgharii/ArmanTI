@@ -229,7 +229,7 @@ const IndicatorAddObservablesLinesContainer = (props) => {
                               >
                                 <ListItemIcon>
                                   {alreadyAdded ? (
-                                    <CheckCircle classes={{ root: classes.icon }} />
+                                    <CheckCircle className={classes.icon} />
                                   ) : (
                                     <ItemIcon type={type} />
                                   )}
