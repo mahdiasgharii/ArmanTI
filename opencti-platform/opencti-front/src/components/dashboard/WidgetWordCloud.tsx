@@ -24,7 +24,7 @@ const WidgetWordCloud = ({ data, groupBy }: WidgetWordCloudProps) => {
     const wordCloudColors = colors(theme.palette.mode === 'dark' ? 400 : 600);
     return {
       colors: wordCloudColors,
-      fontFamily: 'IBM Plex Sans',
+      fontFamily: 'Peyda',
       spiral: 'rectangular',
       rotations: 1,
       rotationAngles: [0, 0],

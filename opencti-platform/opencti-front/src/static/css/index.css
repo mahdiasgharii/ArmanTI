@@ -2,6 +2,7 @@
 @import '@filigran/rich-text-editor/styles.css';
 @import '@fontsource/geologica';
 @import '@fontsource/ibm-plex-sans';
+@import './peyda.css';
 @import 'ckeditor5/ckeditor5.css';
 @import 'graphiql/style.css';
 @import 'react-grid-layout/css/styles.css';

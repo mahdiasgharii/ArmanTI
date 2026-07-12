@@ -232,7 +232,7 @@ const ThemeDark = (
     overflowColor: primary || THEME_DARK_DEFAULT_PRIMARY,
   },
   typography: {
-    fontFamily: '"IBM Plex Sans", sans-serif',
+    fontFamily: '"Peyda", sans-serif',
     body2: {
       fontSize: '0.8rem',
       lineHeight: '1.2rem',
@@ -251,7 +251,7 @@ const ThemeDark = (
       padding: 0,
       fontWeight: 400,
       fontSize: 22,
-      fontFamily: '"Geologica", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       color: text_color,
       textTransform: 'lowercase',
       '&::first-letter': {
@@ -263,7 +263,7 @@ const ThemeDark = (
       padding: 0,
       fontWeight: 500,
       fontSize: 16,
-      fontFamily: '"Geologica", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       color: text_color,
       textTransform: 'lowercase',
       '&::first-letter': {
@@ -275,7 +275,7 @@ const ThemeDark = (
       padding: 0,
       fontWeight: 400,
       fontSize: 13,
-      fontFamily: '"Geologica", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       color: text_color,
       textTransform: 'lowercase',
       '&::first-letter': {
@@ -298,7 +298,7 @@ const ThemeDark = (
       fontWeight: 700,
       fontSize: 16,
       color: text_color,
-      fontFamily: '"Geologica", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       textTransform: 'lowercase',
       '&::first-letter': {
         textTransform: 'uppercase',
@@ -308,7 +308,7 @@ const ThemeDark = (
       fontWeight: 600,
       fontSize: 14,
       color: text_color,
-      fontFamily: '"Geologica", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       textTransform: 'lowercase',
       '&::first-letter': {
         textTransform: 'uppercase',
@@ -575,15 +575,15 @@ const ThemeDark = (
             color: `${text_color} !important`,
           },
           '.mde-header-item button': {
-            fontFamily: '"IBM Plex Sans", sans-serif',
+            fontFamily: '"Peyda", sans-serif',
             color: `${text_color} !important`,
           },
           '.mde-tabs button': {
-            fontFamily: '"IBM Plex Sans", sans-serif',
+            fontFamily: '"Peyda", sans-serif',
             color: `${text_color} !important`,
           },
           '.mde-textarea-wrapper textarea': {
-            fontFamily: '"IBM Plex Sans", sans-serif',
+            fontFamily: '"Peyda", sans-serif',
             fontSize: 13,
             color: text_color,
             background: 'transparent',

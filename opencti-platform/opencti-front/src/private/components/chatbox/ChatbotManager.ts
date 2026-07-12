@@ -44,7 +44,7 @@ class ChatbotManager {
     const totalOffset = 68 + this.bannerHeight;
     return `
       * {
-        font-family: "IBM Plex Sans" !important;
+        font-family: "Peyda" !important;
       }
       div[part="bot"] {
         height: calc(100% - ${totalOffset}px) !important;

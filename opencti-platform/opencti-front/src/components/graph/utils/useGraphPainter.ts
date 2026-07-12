@@ -79,7 +79,7 @@ const useGraphPainter = (args?: UseGraphPainterArgs) => {
 
     const size = 8;
     ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
-    ctx.font = '4px IBM Plex Sans';
+    ctx.font = '4px Peyda';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = disabled ? colors.disabled : colors.text;
@@ -103,7 +103,7 @@ const useGraphPainter = (args?: UseGraphPainterArgs) => {
       if (numberLabel !== '?') {
         numberLabel = (numberOfConnectedElement ?? 0) > 99 ? '99+' : `${numberLabel}+`;
       }
-      ctx.font = '1.5px IBM Plex Sans';
+      ctx.font = '1.5px Peyda';
       ctx.fillText(numberLabel, x + 4, y - 2.9);
     }
   };
@@ -126,7 +126,7 @@ const useGraphPainter = (args?: UseGraphPainterArgs) => {
     ctx.fillStyle = color;
     ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
     ctx.fill();
-    ctx.font = '4px IBM Plex Sans';
+    ctx.font = '4px Peyda';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(name, x, y + 10);
@@ -184,7 +184,7 @@ const useGraphPainter = (args?: UseGraphPainterArgs) => {
     if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
     if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
     const fontSize = 3;
-    ctx.font = `${fontSize}px IBM Plex Sans`;
+    ctx.font = `${fontSize}px Peyda`;
     ctx.save();
     ctx.translate(textPos.x, textPos.y);
     ctx.rotate(textAngle);

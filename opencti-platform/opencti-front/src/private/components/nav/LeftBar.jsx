@@ -824,7 +824,7 @@ const LeftBarComponent = ({ queryRef }) => {
                   <Typography
                     component="span"
                     sx={{
-                      fontFamily: 'IBM Plex Sans',
+                      fontFamily: 'Peyda',
                       fontSize: '10px',
                       lineHeight: '16px',
                       opacity: 0.8,

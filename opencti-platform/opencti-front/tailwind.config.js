@@ -65,8 +65,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Geologica"', 'sans-serif'],
-        body: ['"IBM Plex Sans"', 'sans-serif'],
+        display: ['"Peyda"', 'sans-serif'],
+        body: ['"Peyda"', 'sans-serif'],
         mono: ['Consolas', 'monaco', 'monospace'],
       },
       borderRadius: {

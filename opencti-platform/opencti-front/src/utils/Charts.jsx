@@ -141,7 +141,7 @@ export const lineChartOptions = (
       formatter: (value) => (xFormatter ? xFormatter(value) : value),
       style: {
         fontSize: '12px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -153,7 +153,7 @@ export const lineChartOptions = (
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
         fontSize: '14px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -249,7 +249,7 @@ export const areaChartOptions = (
       formatter: (value) => (xFormatter ? xFormatter(value) : value),
       style: {
         fontSize: '12px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -261,7 +261,7 @@ export const areaChartOptions = (
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
         fontSize: '14px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -342,7 +342,7 @@ export const verticalBarsChartOptions = (
       formatter: (value) => (xFormatter ? xFormatter(value) : value),
       style: {
         fontSize: '12px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -353,7 +353,7 @@ export const verticalBarsChartOptions = (
     labels: {
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -533,7 +533,7 @@ export const horizontalBarsChartOptions = (
       show: stackType !== '100%',
       formatter: (value) => (xFormatter ? xFormatter(value) : value),
       style: {
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -550,7 +550,7 @@ export const horizontalBarsChartOptions = (
       show: stackType !== '100%',
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -572,7 +572,7 @@ export const horizontalBarsChartOptions = (
           style: {
             fontSize: '13px',
             fontWeight: 900,
-            fontFamily: '"IBM Plex Sans", sans-serif',
+            fontFamily: '"Peyda", sans-serif',
           },
         },
       },
@@ -656,7 +656,7 @@ export const radarChartOptions = (
       show: legend,
       formatter: (value) => truncate(value, 25),
       style: {
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
         colors: chartColors,
       },
     },
@@ -738,7 +738,7 @@ export const polarAreaChartOptions = (
       show: true,
       position: legendPosition,
       floating: false,
-      fontFamily: '"IBM Plex Sans", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
       markers: { strokeWidth: 0 },
     },
     tooltip: {
@@ -752,7 +752,7 @@ export const polarAreaChartOptions = (
       labels: {
         formatter: (value) => (formatter ? formatter(value) : value),
         style: {
-          fontFamily: '"IBM Plex Sans", sans-serif',
+          fontFamily: '"Peyda", sans-serif',
         },
       },
       axisBorder: {
@@ -867,13 +867,13 @@ export const donutChartOptions = (
     legend: {
       show: displayLegend,
       position: legendPosition,
-      fontFamily: '"IBM Plex Sans", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
     },
     dataLabels: {
       enabled: displayLabels,
       style: {
         fontSize: '10px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
         fontWeight: 600,
         colors: dataLabelsColors,
       },
@@ -950,14 +950,14 @@ export const treeMapOptions = (
     legend: {
       show: true,
       position: legendPosition,
-      fontFamily: '"IBM Plex Sans", sans-serif',
+      fontFamily: '"Peyda", sans-serif',
     },
     tooltip: {
       theme: theme.palette.mode,
     },
     dataLabels: {
       style: {
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
         fontWeight: 600,
         colors: [theme.palette.text.primary, theme.palette.text.secondary],
       },
@@ -1040,7 +1040,7 @@ export const heatMapOptions = (
       formatter: (value) => (xFormatter ? xFormatter(value) : value),
       style: {
         fontSize: '12px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {
@@ -1052,7 +1052,7 @@ export const heatMapOptions = (
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
         fontSize: '14px',
-        fontFamily: '"IBM Plex Sans", sans-serif',
+        fontFamily: '"Peyda", sans-serif',
       },
     },
     axisBorder: {

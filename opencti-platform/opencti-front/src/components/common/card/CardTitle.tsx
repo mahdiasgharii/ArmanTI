@@ -31,7 +31,7 @@ const CardTitle = ({
     lineHeight: '19px',
     fontSize: '12px',
     fontWeight: 400,
-    fontFamily: '"IBM Plex Sans", sans-serif',
+    fontFamily: '"Peyda", sans-serif',
   };
 
   return (

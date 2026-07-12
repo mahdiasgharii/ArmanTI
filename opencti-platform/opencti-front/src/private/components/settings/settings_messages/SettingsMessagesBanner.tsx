@@ -229,7 +229,7 @@ const SettingsMessagesBannerComponent = ({
           style={{ color }}
           onClick={handleDismiss}
         >
-          <Close fontSize="inherit" />
+          <Close />
         </IconButton>
       )}
     </div>

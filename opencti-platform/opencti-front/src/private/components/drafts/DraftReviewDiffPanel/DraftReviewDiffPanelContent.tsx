@@ -59,7 +59,7 @@ const DraftReviewDiffPanelContentComponent: FunctionComponent<DraftReviewDiffPan
     const link = resolveLink(entity.entity_type);
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 1 }}>
-        <Typography sx={{ fontFamily: 'Geologica, sans-serif', fontSize: 14, fontWeight: 600, color: 'text.primary', letterSpacing: '0.0075em' }}>
+        <Typography sx={{ fontFamily: '"Peyda", sans-serif', fontSize: 14, fontWeight: 600, color: 'text.primary', letterSpacing: '0.0075em' }}>
           {entity.representative_main}
         </Typography>
         {link && (

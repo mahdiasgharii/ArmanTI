@@ -136,7 +136,7 @@ const DangerZoneBlock: FunctionComponent<DangerZoneBlockProps> = ({
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
             fontSize: 10,
-            fontFamily: '"Geologica", sans-serif',
+            fontFamily: '"Peyda", sans-serif',
             fontWeight: 700,
             width: 'fit-content',
             ...(sx?.title ?? {}),

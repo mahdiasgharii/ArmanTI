@@ -8,7 +8,7 @@ body[data-theme="light"] {
   /* Overrides the default font size in the theme. */
   --ck-font-size-base: 14px !important;
   --ck-content-font-size: 0.9rem !important;
-  --ck-content-font-family: "IBM Plex Sans", sans-serif !important;
+  --ck-content-font-family: "Peyda", sans-serif !important;
   --ck-content-font-color: #151515 !important;
 
   /* Helper variables to avoid duplication in the colors. */

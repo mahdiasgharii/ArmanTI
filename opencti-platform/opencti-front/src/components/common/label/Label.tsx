@@ -32,7 +32,7 @@ const Label = ({
     lineHeight: '21px',
     fontSize: '12px',
     fontWeight: 400,
-    fontFamily: '"IBM Plex Sans", sans-serif',
+    fontFamily: '"Peyda", sans-serif',
     ...titleStyle,
   };
 
