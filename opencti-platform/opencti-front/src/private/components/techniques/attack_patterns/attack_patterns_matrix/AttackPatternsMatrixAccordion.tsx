@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import IconButton from '@common/button/IconButton';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import { ChevronRight as ArrowForwardIosSharpIcon } from 'lucide-react';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { Box } from '@mui/material';
@@ -154,7 +154,7 @@ const AccordionAttackPattern = ({
           '.MuiAccordionSummary-content': { justifyContent: 'space-between', marginBlock: 1.25, alignItems: 'center' },
         }}
       >
-        <Typography variant="body2" fontSize={10}>
+        <Typography variant="body2" size={10}>
           {attackPattern.name}
         </Typography>
 

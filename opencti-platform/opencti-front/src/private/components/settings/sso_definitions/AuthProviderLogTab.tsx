@@ -183,7 +183,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
                   <TableCell sx={{ width: LEVEL_WIDTH, minWidth: LEVEL_WIDTH, overflow: 'visible', whiteSpace: 'nowrap' }}>
                     <Tag
                       label={entry.level}
-                      color={levelTagColor(entry.level, theme)}
+                      style={{ color: levelTagColor(entry.level, theme) }}
                       labelTextTransform="uppercase"
                     />
                   </TableCell>
@@ -291,7 +291,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
                     disabled={detailsOpen.index <= 0}
                     aria-label={t_i18n('Previous log')}
                   >
-                    <ArrowUpward fontSize="small" />
+                    <ArrowUpward size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -308,7 +308,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
                     disabled={detailsOpen.index >= authLogHistory.length - 1}
                     aria-label={t_i18n('Next log')}
                   >
-                    <ArrowDownward fontSize="small" />
+                    <ArrowDownward size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -338,7 +338,7 @@ const AuthProviderLogTab: React.FC<AuthProviderLogTabProps> = ({ name, authLogHi
               <Box sx={{ mt: 0.5 }}>
                 <Tag
                   label={detailsOpen.entry.level}
-                  color={levelTagColor(detailsOpen.entry.level, theme)}
+                  style={{ color: levelTagColor(detailsOpen.entry.level, theme) }}
                   labelTextTransform="uppercase"
                 />
               </Box>

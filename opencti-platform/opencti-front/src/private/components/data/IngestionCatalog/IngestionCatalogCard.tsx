@@ -175,7 +175,7 @@ const IngestionCatalogCard = ({
           <>
             <Typography
               variant="body2"
-              color={theme.palette.primary.main}
+              style={{ color: theme.palette.primary.main }}
               gutterBottom
             >
               {connectorMetadata.label}
@@ -188,7 +188,7 @@ const IngestionCatalogCard = ({
             title={connector.verified ? t_i18n('Verified by Filigran') : t_i18n('Not verified by Filigran')}
             slotProps={{ popper: { sx: { textTransform: 'none' } } }}
           >
-            <VerifiedOutlined color={connector.verified ? 'success' : 'disabled'} />
+            <VerifiedOutlined style={{ color: connector.verified ? 'success' : 'disabled' }} />
           </Tooltip>
         )}
       />

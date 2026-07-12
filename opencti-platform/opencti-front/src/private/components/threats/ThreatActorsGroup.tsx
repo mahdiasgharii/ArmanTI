@@ -180,12 +180,12 @@ const ThreatActorsGroup = () => {
             additionalHeaderToggleButtons={[
               <Tooltip key="cards" title={t_i18n('Cards view')}>
                 <ToggleButton value="cards" aria-label="cards">
-                  <ViewModuleOutlined fontSize="small" />
+                  <ViewModuleOutlined size={16} />
                 </ToggleButton>
               </Tooltip>,
               <Tooltip key="lines" title={t_i18n('Lines view')}>
                 <ToggleButton value="lines" aria-label="lines">
-                  <ViewListOutlined fontSize="small" />
+                  <ViewListOutlined size={16} />
                 </ToggleButton>
               </Tooltip>,
             ]}

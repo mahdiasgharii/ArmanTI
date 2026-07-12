@@ -260,7 +260,7 @@ const StixDomainObjectAttackPatternsKillChain: FunctionComponent<StixDomainObjec
         value="matrix"
       >
         <ViewColumnOutlined
-          fontSize="small"
+          size={16}
         />
       </ToggleButton>
     </Tooltip>
@@ -283,14 +283,14 @@ const StixDomainObjectAttackPatternsKillChain: FunctionComponent<StixDomainObjec
   const courseOfActionView = (
     <Tooltip title={t_i18n('Courses of action view')} key="courses-of-action">
       <ToggleButton value="courses-of-action" aria-label="courses-of-action" onClick={() => handleChangeView('courses-of-action')}>
-        <ProgressWrench fontSize="small" />
+        <ProgressWrench size={16} />
       </ToggleButton>
     </Tooltip>
   );
   const relationshipsView = (
     <Tooltip title={t_i18n('Relationships view')} key="relationships">
       <ToggleButton value="relationships" aria-label="relationships" onClick={() => handleChangeView('relationships')}>
-        <RelationManyToMany fontSize="small" />
+        <RelationManyToMany size={16} />
       </ToggleButton>
     </Tooltip>
   );
@@ -348,7 +348,7 @@ const StixDomainObjectAttackPatternsKillChain: FunctionComponent<StixDomainObjec
                 >
                   <span>
                     <IconButton
-                      color={isModeOnlyActive ? 'secondary' : 'primary'}
+                      style={{ color: isModeOnlyActive ? 'secondary' : 'primary' }}
                       onClick={() => setIsModeOnlyActive((value) => !value)}
                     >
                       <VisibilityOutlined />
@@ -414,7 +414,7 @@ const StixDomainObjectAttackPatternsKillChain: FunctionComponent<StixDomainObjec
                   >
                     <ToggleButtonGroup
                       size="small"
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       exclusive={true}
                       value={currentView}
                     >
@@ -436,8 +436,8 @@ const StixDomainObjectAttackPatternsKillChain: FunctionComponent<StixDomainObjec
                             disabled={exportDisabled}
                           >
                             <FileDownloadOutlined
-                              fontSize="small"
-                              color={!exportDisabled && openExports ? 'secondary' : 'primary'}
+                              size={16}
+                              style={{ color: !exportDisabled && openExports ? 'secondary' : 'primary' }}
                             />
                           </ToggleButton>
                         </Tooltip>

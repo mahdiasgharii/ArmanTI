@@ -230,7 +230,7 @@ export const NarrativeLineDummy = ({
         )}
       />
       <ListItemIcon style={{ position: 'absolute', right: -10 }}>
-        <KeyboardArrowRightOutlined color="disabled" />
+        <KeyboardArrowRightOutlined style={{ color: 'var(--mui-palette-text-disabled)' }} />
       </ListItemIcon>
     </ListItem>
   );

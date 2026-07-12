@@ -305,7 +305,7 @@ const AttackPatternsMatrixColumns = ({
                             <AttackPatternsMatrixBadge
                               key={ap.attack_pattern_id}
                               attackPattern={ap}
-                              color={badgeColor}
+                              style={{ color: badgeColor }}
                               textColor={badgeTextColor}
                             >
                               <AccordionAttackPattern
@@ -346,11 +346,11 @@ const AttackPatternsMatrixColumns = ({
                     to={`/dashboard/techniques/attack_patterns/${selectedAttackPattern?.attack_pattern_id}`}
                     target="_blank"
                   >
-                    <ListItemIcon><InfoOutlined fontSize="small" /></ListItemIcon>
+                    <ListItemIcon><InfoOutlined size={16} /></ListItemIcon>
                     <ListItemText>View</ListItemText>
                   </MenuItem>
                   <MenuItem onClick={() => handleAddAttackPattern(selectedAttackPattern)}>
-                    <ListItemIcon><AddCircleOutlineOutlined fontSize="small" /></ListItemIcon>
+                    <ListItemIcon><AddCircleOutlineOutlined size={16} /></ListItemIcon>
                     <ListItemText>Add</ListItemText>
                   </MenuItem>
                 </>

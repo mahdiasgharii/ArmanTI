@@ -2,9 +2,9 @@ import React, { Suspense, useState } from 'react';
 import { graphql, useLazyLoadQuery } from 'react-relay';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import EditOutlined from '@mui/icons-material/EditOutlined';
-import ListOutlined from '@mui/icons-material/ListOutlined';
-import { TriangleAlert as WarningAmberOutlined } from 'lucide-react';
+;
+;
+import { import { TriangleAlert as WarningAmberOutlined, Pencil as EditOutlined, List as ListOutlined } from 'lucide-react';
 import IconButton from '@mui/material/IconButton';
 import ItemBoolean from '../../../../components/ItemBoolean';
 import { useFormatter } from '../../../../components/i18n';
@@ -113,7 +113,7 @@ const SSOSingletonStrategiesContent = () => {
                       '&.Mui-disabled': { color: 'warning.main', opacity: 1 },
                     }}
                   >
-                    <WarningAmberOutlined fontSize="small" />
+                    <WarningAmberOutlined size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -160,7 +160,7 @@ const SSOSingletonStrategiesContent = () => {
                   }}
                   aria-label={t_i18n('Update')}
                 >
-                  <EditOutlined fontSize="small" />
+                  <EditOutlined size={16} />
                 </IconButton>
               </Tooltip>
               {showLogs && (
@@ -176,7 +176,7 @@ const SSOSingletonStrategiesContent = () => {
                     }}
                     aria-label={t_i18n('Logs')}
                   >
-                    <ListOutlined fontSize="small" />
+                    <ListOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               )}

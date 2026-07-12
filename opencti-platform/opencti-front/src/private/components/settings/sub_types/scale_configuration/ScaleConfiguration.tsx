@@ -270,12 +270,12 @@ const ScaleConfiguration: FunctionComponent<EntitySettingScaleProps> = ({
               {t_i18n('Ticks')}
             </Typography>
             <IconButton
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               aria-label="Add"
               onClick={addTickRow}
               classes={{ root: classes.createButton }}
             >
-              <Add fontSize="small" />
+              <Add size={16} />
             </IconButton>
           </div>
           {tickDefinition.ticks.map((tick, index) => (

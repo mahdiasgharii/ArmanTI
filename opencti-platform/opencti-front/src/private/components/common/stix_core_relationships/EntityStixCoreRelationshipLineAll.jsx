@@ -97,7 +97,7 @@ class EntityStixCoreRelationshipLineAllComponent extends Component {
               + R.head(node.x_opencti_inferences).rule.name
             }
           >
-            <AutoFix fontSize="small" style={{ marginLeft: -30 }} />
+            <AutoFix size={16} style={{ marginLeft: -30 }} />
           </Tooltip>
         ) : (
           <StixCoreRelationshipPopover
@@ -132,7 +132,7 @@ class EntityStixCoreRelationshipLineAllComponent extends Component {
             />
           </ListItemIcon>
           <ListItemIcon classes={{ root: classes.itemIcon }}>
-            <ItemIcon type={node.entity_type} isReversed={isReversed} color={node.draftVersion ? getDraftModeColor(theme) : null} />
+            <ItemIcon type={node.entity_type} isReversed={isReversed} style={{ color: node.draftVersion ? getDraftModeColor(theme) : null }} />
           </ListItemIcon>
           <ListItemText
             classes={{ root: classes.listItemText }}
@@ -598,7 +598,7 @@ class EntityStixCoreRelationshipLineAllDummyComponent extends Component {
       <ListItem
         classes={{ root: classes.item }}
         divider={true}
-        secondaryAction={<MoreVertOutlined classes={classes.itemIconDisabled} />}
+        secondaryAction={<MoreVertOutlined className={classes.itemIconDisabled} />}
       >
         <ListItemIcon
           classes={{ root: classes.itemIconDisabled }}

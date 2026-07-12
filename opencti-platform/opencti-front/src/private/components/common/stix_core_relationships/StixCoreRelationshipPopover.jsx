@@ -125,7 +125,7 @@ class StixCoreRelationshipPopover extends Component {
           onClick={this.handleOpen.bind(this)}
           aria-haspopup="true"
           disabled={disabled}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVertOutlined />
         </IconButton>

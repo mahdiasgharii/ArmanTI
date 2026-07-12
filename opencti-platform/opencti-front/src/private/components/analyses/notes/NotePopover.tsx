@@ -1,7 +1,8 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { FunctionComponent, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { graphql, useFragment } from 'react-relay';
 import StixCoreObjectEnrollPlaybook from '@components/common/stix_core_objects/StixCoreObjectEnrollPlaybook';
 import StixCoreObjectEnrichment from '@components/common/stix_core_objects/StixCoreObjectEnrichment';
@@ -125,7 +126,7 @@ const NotePopover: FunctionComponent<NotePopoverProps> = ({
   return (
     <>
       <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
-        <MoreVert fontSize="small" color="primary" />
+        <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </IconButton>
 
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={closeMenu}>

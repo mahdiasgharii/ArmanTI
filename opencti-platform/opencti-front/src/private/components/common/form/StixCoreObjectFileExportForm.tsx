@@ -84,22 +84,22 @@ export const renderIcon = (key: string) => {
     case 'ai':
       return <FiligranIcon icon={LogoXtmOneIcon} size="large" />;
     case 'application/pdf':
-      return <FilePdfBox fontSize="large" color="primary" />;
+      return <FilePdfBox size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     case 'application/json':
     case 'application/vnd.mitre.navigator+json':
     case 'application/vnd.oasis.stix+json':
-      return <DataObjectOutlined fontSize="large" color="primary" />;
+      return <DataObjectOutlined size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     case 'text/html':
-      return <HtmlOutlined fontSize="large" color="primary" />;
+      return <HtmlOutlined size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     case 'text/markdown':
-      return <LanguageMarkdownOutline fontSize="large" color="primary" />;
+      return <LanguageMarkdownOutline size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     case 'text/plain':
-      return <AbcOutlined fontSize="large" color="primary" />;
+      return <AbcOutlined size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     case 'text/csv':
-      return <NumbersOutlined fontSize="large" color="primary" />;
+      return <NumbersOutlined size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
 
     default:
-      return <FileExportOutline fontSize="large" color="primary" />;
+      return <FileExportOutline size={24} style={{ color: 'var(--mui-palette-primary-main)' }} />;
   }
 };
 
@@ -272,7 +272,7 @@ const StixCoreObjectFileExportForm = ({
                   {t_i18n('Generate an export')}
                 </Typography>
                 <Tooltip title={t_i18n('Your max shareable markings will be applied to the content max markings')}>
-                  <InformationOutline fontSize="small" color="primary" />
+                  <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </Tooltip>
               </Stack>
             )}

@@ -71,7 +71,7 @@ const ExclusionListsStatusComponent: FunctionComponent<ExclusionListsStatusCompo
             <CircularProgress
               size={40}
               thickness={2}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             />
           )}
         </Card>
@@ -82,7 +82,7 @@ const ExclusionListsStatusComponent: FunctionComponent<ExclusionListsStatusCompo
           sx={statusSx}
         >
           <div>{fldt(refreshDate)}</div>
-          <UpdateOutlined color="primary" style={{ fontSize: 40 }} />
+          <UpdateOutlined style={{ color: 'var(--mui-palette-primary-main)' }} style={{ fontSize: 40 }} />
         </Card>
       </Grid>
       <Grid item xs={4}>
@@ -91,7 +91,7 @@ const ExclusionListsStatusComponent: FunctionComponent<ExclusionListsStatusCompo
           sx={statusSx}
         >
           <div>{fldt(cacheDate)}</div>
-          <EventRepeatOutlined color="primary" style={{ fontSize: 40 }} />
+          <EventRepeatOutlined style={{ color: 'var(--mui-palette-primary-main)' }} style={{ fontSize: 40 }} />
         </Card>
       </Grid>
     </Grid>

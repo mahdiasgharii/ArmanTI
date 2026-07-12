@@ -36,11 +36,11 @@ const ActionMenuButton = ({ onAddObject, type }: ActionMenuButtonProps) => {
   return (
     <div>
       <IconButton
-        color="secondary"
+        style={{ color: 'var(--mui-palette-secondary-main)' }}
         aria-label="Add"
         onClick={handleClick}
       >
-        <Add fontSize="small" />
+        <Add size={16} />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

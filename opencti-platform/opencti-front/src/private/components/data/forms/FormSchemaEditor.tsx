@@ -595,7 +595,7 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
               updateFormData((prev) => ({ ...prev, relationships: updatedRelationships }));
             }}
           >
-            <DeleteOutlined color="primary" />
+            <DeleteOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
         </div>
 
@@ -788,7 +788,7 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
               disabled={isFirstInEntity}
               title={t_i18n('Move up')}
             >
-              <ArrowUpward fontSize="small" color={isFirstInEntity ? 'disabled' : 'primary'} />
+              <ArrowUpward size={16} style={{ color: isFirstInEntity ? 'disabled' : 'primary' }} />
             </IconButton>
             <IconButton
               size="small"
@@ -796,14 +796,14 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
               disabled={isLastInEntity}
               title={t_i18n('Move down')}
             >
-              <ArrowDownward fontSize="small" color={isLastInEntity ? 'disabled' : 'primary'} />
+              <ArrowDownward size={16} style={{ color: isLastInEntity ? 'disabled' : 'primary' }} />
             </IconButton>
             {(!field.isMandatory || isInParsedMode) && (
               <IconButton
                 size="small"
                 onClick={() => handleRemoveField(field.id)}
               >
-                <DeleteOutlined fontSize="small" color="primary" />
+                <DeleteOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </IconButton>
             )}
           </div>
@@ -989,7 +989,7 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
                       handleFieldChange(`fields.${fieldIndex}.options`, newOptions);
                     }}
                   >
-                    <DeleteOutlined fontSize="small" color="primary" />
+                    <DeleteOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                   </IconButton>
                 </Box>
               ))}
@@ -1137,7 +1137,7 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
             onClick={() => handleRemoveAdditionalEntity(entity.id)}
             style={{ alignSelf: 'flex-start' }}
           >
-            <DeleteOutlined color="primary" />
+            <DeleteOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
         </div>
 
@@ -1463,7 +1463,7 @@ const FormSchemaEditor: FunctionComponent<FormSchemaEditorProps> = ({
             size="small"
             onClick={() => handleRemoveRelationship(relationship.id)}
           >
-            <DeleteOutlined color="primary" />
+            <DeleteOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
         </div>
 

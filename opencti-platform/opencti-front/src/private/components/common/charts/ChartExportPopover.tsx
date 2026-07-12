@@ -55,9 +55,9 @@ const ChartExportPopover = ({
         aria-haspopup="true"
         size="small"
         className="noDrag"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
-        <FileDownloadOutlined fontSize="small" />
+        <FileDownloadOutlined size={16} />
       </IconButton>
 
       <Menu

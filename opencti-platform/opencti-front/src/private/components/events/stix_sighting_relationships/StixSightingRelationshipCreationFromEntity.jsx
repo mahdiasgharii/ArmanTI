@@ -399,19 +399,19 @@ const StixSightingRelationshipCreationFromEntity = ({
       case 'inLine':
         return (
           <IconButton
-            color="secondary"
+            style={{ color: 'var(--mui-palette-secondary-main)' }}
             aria-label="Label"
             onClick={handleOpen}
             style={{ float: 'left', margin: '-15px 0 0 -2px' }}
           >
-            <Add fontSize="small" />
+            <Add size={16} />
           </IconButton>
         );
       default:
         return (
           <Fab
             onClick={handleOpen}
-            color="secondary"
+            style={{ color: 'var(--mui-palette-secondary-main)' }}
             aria-label="Add"
             className={classes.createButton}
             style={{ right: paddingRight || 30 }}

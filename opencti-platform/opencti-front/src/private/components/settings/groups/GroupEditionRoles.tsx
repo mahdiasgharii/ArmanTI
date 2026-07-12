@@ -114,7 +114,7 @@ const GroupEditionRolesComponent: FunctionComponent<GroupEditionRolesComponentPr
               />
             )}
           >
-            <ListItemIcon color="primary">
+            <ListItemIcon style={{ color: 'var(--mui-palette-primary-main)' }}>
               <Security />
             </ListItemIcon>
             <ListItemText

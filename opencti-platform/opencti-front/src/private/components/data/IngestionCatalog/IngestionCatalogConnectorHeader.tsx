@@ -63,8 +63,8 @@ const IngestionCatalogConnectorHeader = ({ connector, isEnterpriseEdition, onCli
               label={(
                 <Stack direction="row" alignItems="center" gap={theme.spacing(1)}>
                   <VerifiedOutlined
-                    color={connector.verified ? 'success' : 'disabled'}
-                    fontSize="small"
+                    style={{ color: connector.verified ? 'success' : 'disabled' }}
+                    size={16}
                   />
                   {connector.verified ? t_i18n('Verified') : t_i18n('Not verified')}
                 </Stack>
@@ -76,12 +76,12 @@ const IngestionCatalogConnectorHeader = ({ connector, isEnterpriseEdition, onCli
             <IngestionCatalogChip
               isInlist
               label={connectorMetadata.label}
-              color={connectorMetadata.color}
+              style={{ color: connectorMetadata.color }}
             />
 
             {
               connector.use_cases.map((useCase: string) => (
-                <IngestionCatalogChip key={useCase} label={useCase} isInlist color="primary" />
+                <IngestionCatalogChip key={useCase} label={useCase} isInlist style={{ color: 'var(--mui-palette-primary-main)' }} />
               ))
             }
           </Stack>

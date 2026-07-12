@@ -185,7 +185,7 @@ class StixCyberObservableOverview extends Component {
                         'In OpenCTI, a predictable STIX ID is generated based on one or multiple attributes of the entity.',
                       )}
                     >
-                      <InformationOutline fontSize="small" color="primary" />
+                      <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </Tooltip>
                     <Security needs={[KNOWLEDGE_KNUPDATE]}>
                       <IconButton
@@ -196,8 +196,8 @@ class StixCyberObservableOverview extends Component {
                         onClick={this.handleToggleOpenStixIds.bind(this)}
                       >
                         <BrushOutlined
-                          fontSize="small"
-                          color={stixIds.length === 0 ? 'inherit' : 'secondary'}
+                          size={16}
+                          style={{ color: stixIds.length === 0 ? 'inherit' : 'secondary' }}
                         />
                       </IconButton>
                     </Security>

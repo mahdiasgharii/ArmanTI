@@ -182,8 +182,8 @@ const StixCoreObjectSharing: FunctionComponent<ContainerHeaderSharedProps> = ({
                 disabled={disabled}
               >
                 <BankPlus
-                  fontSize="small"
-                  color={!disabled && isEnterpriseEdition ? 'primary' : 'disabled'}
+                  size={16}
+                  style={{ color: !disabled && isEnterpriseEdition ? 'primary' : 'disabled' }}
                 />
               </ToggleButton>
             </EETooltip>
@@ -233,13 +233,13 @@ const StixCoreObjectSharing: FunctionComponent<ContainerHeaderSharedProps> = ({
           <>
             <EETooltip title={t_i18n('Share with an organization')}>
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 aria-label="Label"
                 onClick={isEnterpriseEdition ? handleOpenSharing : () => {}}
                 style={{ float: 'left', margin: '-15px 0 0 -2px' }}
                 disabled={disabled}
               >
-                <BankPlus fontSize="small" color={!disabled && isEnterpriseEdition ? 'primary' : 'disabled'} />
+                <BankPlus size={16} style={{ color: !disabled && isEnterpriseEdition ? 'primary' : 'disabled' }} />
               </IconButton>
             </EETooltip>
             <div className="clearfix" />
@@ -248,7 +248,7 @@ const StixCoreObjectSharing: FunctionComponent<ContainerHeaderSharedProps> = ({
                 <Chip
                   icon={<AccountBalanceOutlined />}
                   classes={{ root: classes.organization }}
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   variant="outlined"
                   label={truncate(edge.name, 15)}
                   onDelete={() => removeOrganization(edge.id)}

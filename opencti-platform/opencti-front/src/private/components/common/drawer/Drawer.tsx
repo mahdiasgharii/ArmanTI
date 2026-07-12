@@ -190,7 +190,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
       {variant && (
         <Fab
           onClick={() => setOpen(true)}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label={update ? 'Edit' : 'Add'}
           disabled={disabled}
           className={classNames({

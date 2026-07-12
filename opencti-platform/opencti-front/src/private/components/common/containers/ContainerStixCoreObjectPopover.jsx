@@ -1,7 +1,8 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Alert from '@mui/material/Alert';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -279,7 +280,7 @@ class ContainerStixCoreObjectPopover extends Component {
     return (
       <div className={classes.container}>
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           onClick={this.handleOpen.bind(this)}
           disabled={this.props.menuDisable ?? false}
           aria-haspopup="true"

@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { UIEvent, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
 import Box from '@mui/material/Box';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { useNavigate } from 'react-router-dom';
 import { graphql, useFragment } from 'react-relay';
 import { RecordSourceSelectorProxy } from 'relay-runtime';
@@ -161,7 +162,7 @@ const WorkspacePopover = ({ data, paginationOptions }: WorkspacePopoverProps) =>
         onClick={handleOpen}
         aria-haspopup="true"
         size="small"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label={t_i18n('Workspace popover of actions')}
       >
         <MoreVert />

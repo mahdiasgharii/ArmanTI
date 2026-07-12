@@ -164,7 +164,7 @@ class StixDomainObjectsExportCreation extends Component {
                       <Stack direction="row" gap={1} alignContent="center">
                         {t('Generate an export')}
                         <Tooltip title={t('Your max shareable markings will be applied to the content max markings')}>
-                          <InfoOutlined color="primary" />
+                          <InfoOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                         </Tooltip>
                       </Stack>
                     )}

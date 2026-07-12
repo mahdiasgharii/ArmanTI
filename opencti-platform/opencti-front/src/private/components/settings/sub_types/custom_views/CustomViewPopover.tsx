@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { UIEvent, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import IconButton from '@common/button/IconButton';
 import { useFormatter } from '../../../../../components/i18n';
 import stopEvent from '../../../../../utils/domEvent';
@@ -65,7 +66,7 @@ const CustomViewPopover = ({ data, paginationOptions }: CustomViewPopoverProps) 
         onClick={handleOpen}
         aria-haspopup="true"
         size="small"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label={t_i18n('Custom view popover of actions')}
       >
         <MoreVert />

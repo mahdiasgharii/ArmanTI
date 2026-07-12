@@ -1,5 +1,6 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import { PublicDashboards_PublicDashboard$data } from '@components/workspaces/dashboards/public_dashboards/__generated__/PublicDashboards_PublicDashboard.graphql';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { IconButton, Menu, MenuItem, MenuProps } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -89,7 +90,7 @@ const PublicDashboardLineActions = ({ publicDashboard, paginationOptions }: Publ
     <>
       <IconButton
         onClick={(event) => setAnchor(event.currentTarget)}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

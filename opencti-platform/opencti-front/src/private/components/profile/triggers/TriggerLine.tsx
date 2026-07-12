@@ -119,9 +119,9 @@ export const TriggerLineComponent: FunctionComponent<TriggerLineProps> = ({
     >
       <ListItemIcon>
         {data.trigger_type === 'live' ? (
-          <AlarmOnOutlined color="warning" />
+          <AlarmOnOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
         ) : (
-          <BackupTableOutlined color="secondary" />
+          <BackupTableOutlined style={{ color: 'var(--mui-palette-secondary-main)' }} />
         )}
       </ListItemIcon>
       <ListItemText
@@ -132,7 +132,7 @@ export const TriggerLineComponent: FunctionComponent<TriggerLineProps> = ({
               style={{ width: dataColumns.trigger_type.width }}
             >
               <Tag
-                color={data.trigger_type === 'live' ? theme.palette.severity?.high : theme.palette.severity?.low}
+                style={{ color: data.trigger_type === 'live' ? theme.palette.severity?.high : theme.palette.severity?.low }}
                 label={
                   data.trigger_type === 'live'
                     ? t_i18n('Live trigger')
@@ -172,7 +172,7 @@ export const TriggerLineComponent: FunctionComponent<TriggerLineProps> = ({
                 && data.triggers.map((n) => (
                   <Tag
                     key={n?.id}
-                    color={theme.palette.severity?.high}
+                    style={{ color: theme.palette.severity?.high }}
                     label={n?.name}
                   />
                 ))}

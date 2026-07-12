@@ -92,7 +92,7 @@ const ScaleConfigurationLine: FunctionComponent<
                   <div className={classes.button}>
                     {handleDelete && (
                       <IconButton onClick={() => handleDelete()}>
-                        <DeleteOutline fontSize="small" style={{ color: '#00b1ff' }} />
+                        <DeleteOutline size={16} style={{ color: '#00b1ff' }} />
                       </IconButton>
                     )}
                   </div>

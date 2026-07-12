@@ -616,7 +616,7 @@ const SimpleStixObjectOrStixRelationshipStixCoreRelationshipLine = ({
             + (data.x_opencti_inferences?.[0]?.rule.name ?? '')
           }
         >
-          <AutoFix fontSize="small" sx={{ mt: 1 }} />
+          <AutoFix size={16} sx={{ mt: 1 }} />
         </Tooltip>
       ) : (
         <Security needs={[KNOWLEDGE_KNUPDATE]}>
@@ -634,7 +634,7 @@ const SimpleStixObjectOrStixRelationshipStixCoreRelationshipLine = ({
         to={link}
       >
         <ListItemIcon sx={{ minWidth: '40px' }}>
-          <ItemIcon type={data.entity_type} isReversed={isReversed} color={data.draftVersion ? draftColor : null} />
+          <ItemIcon type={data.entity_type} isReversed={isReversed} style={{ color: data.draftVersion ? draftColor : null }} />
         </ListItemIcon>
         <ListItemText
           primary={(
@@ -663,7 +663,7 @@ const SimpleStixObjectOrStixRelationshipStixCoreRelationshipLine = ({
               >
                 <Stack direction="row" gap={0.5} alignItems="center" className={classes.bodyItemText}>
                   <Tooltip title={element.representative?.main}>
-                    <Typography fontSize={13}>{element.representative?.main}</Typography>
+                    <Typography size={13}>{element.representative?.main}</Typography>
                   </Tooltip>
                   {element.draftVersion && (<DraftChip />)}
                 </Stack>

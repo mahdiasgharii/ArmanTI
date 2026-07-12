@@ -161,7 +161,7 @@ class StixCoreRelationshipsExportCreationComponent extends Component {
                               <>
                                 {t('Generate an export')}
                                 <Tooltip title={t('Your max shareable markings will be applied to the content max markings')}>
-                                  <InfoOutlined sx={{ paddingLeft: 1 }} fontSize="small" />
+                                  <InfoOutlined style={{ paddingLeft: 4 }} size={16} />
                                 </Tooltip>
                               </>
                             )}

@@ -51,7 +51,7 @@ const StixCoreObjectFormsComponent: FunctionComponent<StixCoreObjectFormsCompone
             value="formIntake"
             onClick={() => setIsFormSelectorOpen(true)}
           >
-            <AssignmentOutlined color="primary" />
+            <AssignmentOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
         </Tooltip>
       )}

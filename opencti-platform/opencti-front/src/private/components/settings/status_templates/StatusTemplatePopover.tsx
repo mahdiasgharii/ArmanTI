@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { FunctionComponent, useState } from 'react';
 import { graphql } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { RecordSourceSelectorProxy } from 'relay-runtime';
 import { PopoverProps } from '@mui/material/Popover';
 import Drawer from '@components/common/drawer/Drawer';
@@ -85,7 +86,7 @@ const StatusTemplatePopover: FunctionComponent<StatusTemplatePopoverProps> = ({
 
   return (
     <>
-      <IconButton onClick={handleOpen} aria-haspopup="true" color="primary">
+      <IconButton onClick={handleOpen} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
         <MoreVert />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

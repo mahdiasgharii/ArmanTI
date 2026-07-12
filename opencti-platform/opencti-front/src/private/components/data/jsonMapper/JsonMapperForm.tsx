@@ -173,11 +173,11 @@ const JsonMapperForm: FunctionComponent<JsonMapperFormProps> = ({ jsonMapper, on
                   {t_i18n('Representations for entity')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddEntityRepresentation(setFieldValue, values)}
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </div>
               <FieldArray
@@ -210,11 +210,11 @@ const JsonMapperForm: FunctionComponent<JsonMapperFormProps> = ({ jsonMapper, on
                   {t_i18n('Representations for relationship')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddRelationshipRepresentation(setFieldValue, values)}
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </div>
               <FieldArray
@@ -244,14 +244,14 @@ const JsonMapperForm: FunctionComponent<JsonMapperFormProps> = ({ jsonMapper, on
 
               <FormButtonContainer>
                 <Button
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   onClick={() => setOpen(true)}
                   disabled={hasError}
                 >
                   {t_i18n('Test')}
                 </Button>
                 <Button
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   onClick={submitForm}
                   disabled={isSubmitting}
                 >

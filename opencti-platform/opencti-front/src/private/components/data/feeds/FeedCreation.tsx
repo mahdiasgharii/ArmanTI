@@ -550,8 +550,8 @@ const FeedCreation: FunctionComponent<FeedCreationFormProps> = (props) => {
                                   )}
                                 >
                                   <InformationOutline
-                                    fontSize="small"
-                                    color="primary"
+                                    size={16}
+                                    style={{ color: 'var(--mui-palette-primary-main)' }}
                                     style={{ cursor: 'default' }}
                                   />
                                 </Tooltip>
@@ -632,7 +632,7 @@ const FeedCreation: FunctionComponent<FeedCreationFormProps> = (props) => {
                                   className={classes.stepCloseButton}
                                   onClick={() => handleRemoveAttribute(i)}
                                 >
-                                  <CancelOutlined fontSize="small" />
+                                  <CancelOutlined size={16} />
                                 </IconButton>
                                 <Box sx={{ width: '100%' }}>
                                   <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-end', mb: 2 }}>
@@ -685,7 +685,7 @@ const FeedCreation: FunctionComponent<FeedCreationFormProps> = (props) => {
                                           <Chip
                                             label={isNeighborMode ? t_i18n('Relationship') : t_i18n('Direct')}
                                             size="small"
-                                            color={isNeighborMode ? 'secondary' : 'default'}
+                                            style={{ color: isNeighborMode ? 'secondary' : 'default' }}
                                             variant="outlined"
                                             onClick={() => handleToggleNeighborMode(i, selectedType)}
                                             sx={{ cursor: 'pointer', fontSize: '0.75rem', height: 22 }}
@@ -815,7 +815,7 @@ const FeedCreation: FunctionComponent<FeedCreationFormProps> = (props) => {
                               onClick={() => handleAddAttribute()}
                               classes={{ root: classes.buttonAdd }}
                             >
-                              <AddOutlined fontSize="small" />
+                              <AddOutlined size={16} />
                             </IconButton>
                           </div>
                         </div>

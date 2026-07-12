@@ -64,12 +64,12 @@ const AISummaryForecastComponent = ({
           <div style={{ float: 'right', marginTop: 20, display: 'flex', alignItems: 'center', gap: '5px' }}>
             <Typography variant="caption">Generated on {nsdt(result?.stixCoreObjectAskAiForecast?.updated_at)}.</Typography>
             <Tooltip title={t_i18n('Copy to clipboard')}>
-              <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
+              <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }} onClick={() => copyToClipboard(t_i18n, content)}>
                 <ContentCopyOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Retry')}>
-              <IconButton size="small" color="primary" onClick={() => refetch()}>
+              <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }} onClick={() => refetch()}>
                 <AutoModeOutlined size={16} />
               </IconButton>
             </Tooltip>

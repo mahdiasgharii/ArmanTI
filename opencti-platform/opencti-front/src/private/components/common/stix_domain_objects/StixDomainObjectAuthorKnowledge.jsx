@@ -171,8 +171,8 @@ const StixDomainObjectAuthorKnowledge = ({ t, fsd, n, classes, stixDomainObjectI
                       <ItemNumberDifference difference={difference} />
                       <div className={classes.icon}>
                         <DescriptionOutlined
-                          color="inherit"
-                          fontSize="large"
+                          style={{ color: 'currentColor' }}
+                          size={24}
                         />
                       </div>
                     </CardContent>
@@ -211,8 +211,8 @@ const StixDomainObjectAuthorKnowledge = ({ t, fsd, n, classes, stixDomainObjectI
                       <ItemNumberDifference difference={difference} />
                       <div className={classes.icon}>
                         <HexagonMultipleOutline
-                          color="inherit"
-                          fontSize="large"
+                          style={{ color: 'currentColor' }}
+                          size={24}
                         />
                       </div>
                     </CardContent>
@@ -250,7 +250,7 @@ const StixDomainObjectAuthorKnowledge = ({ t, fsd, n, classes, stixDomainObjectI
                       <div className={classes.number}>{n(total)}</div>
                       <ItemNumberDifference difference={difference} />
                       <div className={classes.icon}>
-                        <DeviceHubOutlined color="inherit" fontSize="large" />
+                        <DeviceHubOutlined style={{ color: 'currentColor' }} size={24} />
                       </div>
                     </CardContent>
                   );

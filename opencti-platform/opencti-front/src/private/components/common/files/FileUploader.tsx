@@ -155,7 +155,7 @@ const FileUploader: FunctionComponent<FileUploaderProps> = ({
             <CircularProgress
               size={24}
               thickness={2}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             />
           </IconButton>
         </Tooltip>
@@ -164,11 +164,11 @@ const FileUploader: FunctionComponent<FileUploaderProps> = ({
           <IconButton
             onClick={handleOpenUpload}
             aria-haspopup="true"
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             size="small"
             variant="tertiary"
           >
-            <CloudUploadOutlined fontSize="small" />
+            <CloudUploadOutlined size={16} />
           </IconButton>
         </Tooltip>
       )}

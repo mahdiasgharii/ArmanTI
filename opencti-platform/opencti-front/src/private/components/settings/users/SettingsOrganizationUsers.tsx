@@ -230,15 +230,15 @@ const SettingsOrganizationUsers: FunctionComponent<MembersListContainerProps> = 
                 .includes(organization.id);
               const userServiceAccount = user.user_service_account;
               if (userServiceAccount) {
-                return <ManageAccountsOutlined color="primary" />;
+                return <ManageAccountsOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
               }
               if (external) {
-                return <AccountCircleOutlined color="primary" />;
+                return <AccountCircleOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
               }
               if (memberIsOrganizationAdmin) {
-                return <AdminPanelSettingsOutlined color="success" />;
+                return <AdminPanelSettingsOutlined style={{ color: 'var(--mui-palette-success-main)' }} />;
               }
-              return <PersonOutlined color="primary" />;
+              return <PersonOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
             }}
             taskScope="USER"
           />

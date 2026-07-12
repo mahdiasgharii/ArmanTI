@@ -93,7 +93,7 @@ const VocabularyPopover: FunctionComponent<VocabularyPopoverProps> = ({
   };
   return (
     <div className={classes.container}>
-      <IconButton onClick={handleOpen} aria-haspopup="true" color="primary">
+      <IconButton onClick={handleOpen} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
         <MoreVertOutlined />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

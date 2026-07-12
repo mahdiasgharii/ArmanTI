@@ -83,7 +83,7 @@ const StixCoreObjectSharingList = ({ data, disabled, inContainer, children }: St
           label={organization.name}
           onDelete={() => removeOrganization(organization.id)}
           disabled={disabled || disabledOrgs.includes(organization.id)}
-          icon={<AccountBalanceOutlined fontSize="small" />}
+          icon={<AccountBalanceOutlined size={16} />}
           maxWidth={150}
         />
       )}

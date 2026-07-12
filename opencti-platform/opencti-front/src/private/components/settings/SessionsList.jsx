@@ -162,7 +162,7 @@ const SessionsListComponent = ({ relay, data, keyword }) => {
                       <IconButton
                         aria-label="Kill"
                         onClick={() => handleOpenKillSession(userSession.id)}
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                       >
                         <DeleteOutlined />
                       </IconButton>

@@ -49,8 +49,8 @@ const EntityTypeSelectAdornment = ({
         // edge="end"
       >
         <PaletteOutlined
-          fontSize="small"
-          color={value.length > 0 ? 'secondary' : 'primary'}
+          size={16}
+          style={{ color: value.length > 0 ? 'secondary' : 'primary' }}
         />
       </IconButton>
       <Popover

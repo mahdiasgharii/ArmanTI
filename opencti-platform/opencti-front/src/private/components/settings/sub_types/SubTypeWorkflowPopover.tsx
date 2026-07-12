@@ -32,19 +32,19 @@ const SubTypeStatusPopover: FunctionComponent<SubTypeStatusPopoverProps> = ({ su
             title={t_i18n('RFI of type "request access" are subject to a specific workflow, that you can configure here. Request Access cases have 2 actions, Validate and Decline, that change the status automatically according to your configuration. Only specific groups of users are authorized to validate and decline Request Access cases.')}
           >
             <InformationOutline
-              fontSize="small"
-              color="primary"
+              size={16}
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             />
           </Tooltip>
         )}
 
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Workflow"
           onClick={handleOpenUpdate}
           aria-haspopup="true"
         >
-          <Edit fontSize="small" />
+          <Edit size={16} />
         </IconButton>
       </Stack>
 

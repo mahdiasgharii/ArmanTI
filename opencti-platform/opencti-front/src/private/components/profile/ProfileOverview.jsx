@@ -504,7 +504,7 @@ const ProfileOverviewComponent = (props) => {
           {!useOtp && (
             <Button
               type="button"
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               startIcon={<LockOutlined />}
               onClick={() => setDisplay2FA(true)}
               classes={{ root: classes.button }}

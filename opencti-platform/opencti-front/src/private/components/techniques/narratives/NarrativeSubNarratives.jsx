@@ -81,7 +81,7 @@ class NarrativeSubNarrativesComponent extends Component {
                   to={`/dashboard/techniques/narratives/${subNarrative.id}`}
                 >
                   <ListItemIcon>
-                    <SpeakerNotesOutlined color="primary" />
+                    <SpeakerNotesOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                   </ListItemIcon>
                   <ListItemText primary={subNarrative.name} />
                 </ListItemButton>

@@ -1,3 +1,4 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 /*
 Copyright (c) 2021-2025 Filigran SAS
 
@@ -18,7 +19,7 @@ import { graphql } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from 'react-router-dom';
 import fileDownload from 'js-file-download';
@@ -178,12 +179,12 @@ const PlaybookPopover = ({
         onClick={handleOpen}
         aria-haspopup="true"
         value="popover"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         size="small"
       >
         {paginationOptions
           ? <MoreVert />
-          : <MoreVert fontSize="small" color="primary" />}
+          : <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />}
       </MoreVertButton>
       <Menu
         anchorEl={anchorEl}

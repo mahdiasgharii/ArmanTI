@@ -39,7 +39,7 @@ const MaxConfidenceSource: React.FC<UserConfidenceLevelProps> = ({ user }) => {
             </>
           )}
         >
-          <InformationOutline fontSize="small" color="info" />
+          <InformationOutline size={16} style={{ color: 'var(--mui-palette-info-main)' }} />
         </Tooltip>
       );
     }
@@ -55,7 +55,7 @@ const MaxConfidenceSource: React.FC<UserConfidenceLevelProps> = ({ user }) => {
             </div>
           )}
         >
-          <InformationOutline fontSize="small" color="info" />
+          <InformationOutline size={16} style={{ color: 'var(--mui-palette-info-main)' }} />
         </Tooltip>
       );
     }
@@ -66,7 +66,7 @@ const MaxConfidenceSource: React.FC<UserConfidenceLevelProps> = ({ user }) => {
           sx={{ marginLeft: 1 }}
           title={t_i18n('The user has BYPASS capability, their max confidence level is set to 100.')}
         >
-          <InformationOutline fontSize="small" color="info" />
+          <InformationOutline size={16} style={{ color: 'var(--mui-palette-info-main)' }} />
         </Tooltip>
       );
     }
@@ -82,7 +82,7 @@ const UserConfidenceLevel: React.FC<UserConfidenceLevelProps> = ({ user }) => {
       <Tooltip
         title={t_i18n("No confidence level found in this user's groups, and no confidence level defined at the user level.")}
       >
-        <ReportGmailerrorred fontSize="small" color="error" />
+        <ReportGmailerrorred size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
       </Tooltip>
     );
   }

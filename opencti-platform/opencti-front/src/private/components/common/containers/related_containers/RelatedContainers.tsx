@@ -151,11 +151,11 @@ const RelatedContainers: React.FC<RelatedContainersProps> = ({
       <Label action={(
         <Tooltip title={t_i18n('Display the correlation graph')} placement="top">
           <IconButton
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             component={Link}
             to={`${resolveLink(entityType)}/${containerId}/knowledge/correlation`}
           >
-            <VectorLink fontSize="small" />
+            <VectorLink size={16} />
           </IconButton>
         </Tooltip>
       )}
@@ -182,7 +182,7 @@ const RelatedContainers: React.FC<RelatedContainersProps> = ({
               <div>
                 <Tooltip title={t_i18n('Open the correlation details')} placement="top">
                   <IconButton
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     aria-haspopup="true"
                     style={{ marginTop: 3 }}
                     onClick={(event) => {
@@ -191,7 +191,7 @@ const RelatedContainers: React.FC<RelatedContainersProps> = ({
                       handleOpenDetails(row);
                     }}
                   >
-                    <LoupeOutlined fontSize="small" />
+                    <LoupeOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               </div>

@@ -1,4 +1,5 @@
-import MoreVert from '@mui/icons-material/MoreVert';
+import { MoreVertical as MoreVert } from 'lucide-react';
+;
 import React, { UIEvent, useState } from 'react';
 import { Menu, MenuItem, PopoverProps } from '@mui/material';
 import IconButton from '@common/button/IconButton';
@@ -76,8 +77,8 @@ const FintelTemplatePopover = ({
   return (
     <>
       {inline ? (
-        <IconButton onClick={onOpenMenu} aria-haspopup="true" color="primary">
-          <MoreVert fontSize="small" />
+        <IconButton onClick={onOpenMenu} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
+          <MoreVert size={16} />
         </IconButton>
       ) : (
         <IconButton
@@ -87,7 +88,7 @@ const FintelTemplatePopover = ({
           variant="secondary"
           size="default"
         >
-          <MoreVert fontSize="small" />
+          <MoreVert size={16} />
         </IconButton>
       )}
 

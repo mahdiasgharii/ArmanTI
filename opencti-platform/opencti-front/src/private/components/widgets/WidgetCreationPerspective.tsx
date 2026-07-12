@@ -137,7 +137,7 @@ const WidgetCreationPerspective = () => {
             }}
           >
             <CardContent>
-              <DatabaseOutline style={{ fontSize: 40 }} color="primary" />
+              <DatabaseOutline style={{ fontSize: 40 }} style={{ color: 'var(--mui-palette-primary-main)' }} />
               <Typography
                 gutterBottom
                 variant="h2"
@@ -165,7 +165,7 @@ const WidgetCreationPerspective = () => {
             }}
           >
             <CardContent>
-              <FlaskOutline style={{ fontSize: 40 }} color="primary" />
+              <FlaskOutline style={{ fontSize: 40 }} style={{ color: 'var(--mui-palette-primary-main)' }} />
               <Typography
                 gutterBottom
                 variant="h2"
@@ -197,7 +197,7 @@ const WidgetCreationPerspective = () => {
             <CardContent>
               <LibraryBooksOutlined
                 style={{ fontSize: 40 }}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               />
               <Typography
                 gutterBottom

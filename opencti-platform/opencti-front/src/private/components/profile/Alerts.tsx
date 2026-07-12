@@ -170,11 +170,11 @@ const AlertsLineActions: FunctionComponent<AlertsLineActionsProps> = ({
             handleRead(data.id, !data.is_read);
           }}
           size="small"
-          color={data.is_read ? 'primary' : 'success'}
+          style={{ color: data.is_read ? 'primary' : 'success' }}
         >
           {data.is_read
-            ? <UnpublishedOutlined fontSize="small" />
-            : <CheckCircleOutlined fontSize="small" />
+            ? <UnpublishedOutlined size={16} />
+            : <CheckCircleOutlined size={16} />
           }
         </IconButton>
       </Tooltip>
@@ -188,9 +188,9 @@ const AlertsLineActions: FunctionComponent<AlertsLineActionsProps> = ({
               handleOpenDelete();
             }}
             size="small"
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
           >
-            <DeleteOutlined fontSize="small" />
+            <DeleteOutlined size={16} />
           </IconButton>
         </span>
       </Tooltip>
@@ -355,9 +355,9 @@ const AlertsComponent: FunctionComponent<AlertsComponentProps> = ({
                   width: 100,
                   marginRight: 10,
                 }}
-                color={notification_type === 'live'
+                style={{ color: notification_type === 'live'
                   ? 'warning'
-                  : 'secondary'}
+                  : 'secondary' }}
                 variant="outlined"
                 label={name ?? EMPTY_VALUE}
                 onClick={(e) => {
@@ -393,7 +393,7 @@ const AlertsComponent: FunctionComponent<AlertsComponentProps> = ({
         icon={(data) => {
           const operation = getFirstOperation(data);
           return (
-            <Badge color="warning" variant="dot" invisible={data.is_read}>
+            <Badge style={{ color: 'var(--mui-palette-warning-main)' }} variant="dot" invisible={data.is_read}>
               {iconSelector(operation)}
             </Badge>
           );

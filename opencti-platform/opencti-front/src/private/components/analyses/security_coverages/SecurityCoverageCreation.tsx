@@ -539,7 +539,7 @@ const SecurityCoverageCreationFormInner: FunctionComponent<SecurityCoverageFormI
                 }}
               >
                 <CardContent>
-                  <EditOutlined sx={{ fontSize: 40 }} color="primary" />
+                  <EditOutlined size={40} style={{ color: 'var(--mui-palette-primary-main)' }} />
                   <Typography
                     gutterBottom
                     variant="h2"
@@ -567,19 +567,19 @@ const SecurityCoverageCreationFormInner: FunctionComponent<SecurityCoverageFormI
                 }}
               >
                 <CardContent>
-                  <AutoModeOutlined sx={{ fontSize: 40 }} color={hasEnrichmentConnectors ? 'primary' : 'disabled'} />
+                  <AutoModeOutlined size={40} style={{ color: hasEnrichmentConnectors ? 'var(--mui-palette-primary-main)' : 'var(--mui-palette-text-disabled)' }} />
                   <Typography
                     gutterBottom
                     variant="h2"
                     style={{ marginTop: 20 }}
-                    color={hasEnrichmentConnectors ? 'textPrimary' : 'textSecondary'}
+                    style={{ color: hasEnrichmentConnectors ? 'textPrimary' : 'textSecondary' }}
                   >
                     {t_i18n('Automated using enrichment')}
                   </Typography>
                   <br />
                   <Typography
                     variant="body1"
-                    color={hasEnrichmentConnectors ? 'textPrimary' : 'textSecondary'}
+                    style={{ color: hasEnrichmentConnectors ? 'textPrimary' : 'textSecondary' }}
                   >
                     {hasEnrichmentConnectors
                       ? t_i18n('OpenAEV (or other AEV platforms) can be used to automate security coverage assessment')

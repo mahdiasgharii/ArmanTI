@@ -44,12 +44,12 @@ const AuthProviderOrganizationsFields = () => {
               <Box sx={{ px: 2, py: 1, backgroundColor: 'action.hover', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h4" sx={{ m: 0 }}>{t_i18n('Default organizations')}</Typography>
                 <IconButton
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   aria-label={t_i18n('Add')}
                   size="default"
                   onClick={() => push('')}
                 >
-                  <Add fontSize="small" color="primary" />
+                  <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </IconButton>
               </Box>
               <Box sx={{ px: 2, pb: entries.length > 0 ? 1 : 0 }}>
@@ -63,12 +63,12 @@ const AuthProviderOrganizationsFields = () => {
                       fullWidth
                     />
                     <IconButton
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       aria-label={t_i18n('Delete')}
                       onClick={() => remove(index)}
                       style={{ marginTop: 10 }}
                     >
-                      <Delete fontSize="small" />
+                      <Delete size={16} />
                     </IconButton>
                   </div>
                 ))}
@@ -87,12 +87,12 @@ const AuthProviderOrganizationsFields = () => {
               <Box sx={{ px: 2, py: 1, backgroundColor: 'action.hover', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h4" sx={{ m: 0 }}>{t_i18n('Organizations expressions')}</Typography>
                 <IconButton
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   aria-label={t_i18n('Add')}
                   size="default"
                   onClick={() => push('')}
                 >
-                  <Add fontSize="small" color="primary" />
+                  <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </IconButton>
               </Box>
               <Box sx={{ px: 2, pb: entries.length > 0 ? 1 : 0 }}>
@@ -106,12 +106,12 @@ const AuthProviderOrganizationsFields = () => {
                       fullWidth
                     />
                     <IconButton
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       aria-label={t_i18n('Delete')}
                       onClick={() => remove(index)}
                       style={{ marginTop: 10 }}
                     >
-                      <Delete fontSize="small" />
+                      <Delete size={16} />
                     </IconButton>
                   </div>
                 ))}
@@ -140,12 +140,12 @@ const AuthProviderOrganizationsFields = () => {
               <Box sx={{ px: 2, py: 1, backgroundColor: 'action.hover', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h4" sx={{ m: 0 }}>{t_i18n('Organizations mapping')}</Typography>
                 <IconButton
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   aria-label={t_i18n('Add')}
                   size="default"
                   onClick={() => push({ provider: '', platform: '' })}
                 >
-                  <Add fontSize="small" color="primary" />
+                  <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </IconButton>
               </Box>
               <Box sx={{ px: 2, pb: entries.length > 0 ? 1 : 0 }}>
@@ -166,12 +166,12 @@ const AuthProviderOrganizationsFields = () => {
                       fullWidth
                     />
                     <IconButton
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       aria-label={t_i18n('Delete')}
                       onClick={() => remove(index)}
                       style={{ marginTop: 10 }}
                     >
-                      <Delete fontSize="small" />
+                      <Delete size={16} />
                     </IconButton>
                   </div>
                 ))}

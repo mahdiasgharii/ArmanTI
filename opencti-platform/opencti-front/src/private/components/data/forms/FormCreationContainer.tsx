@@ -103,7 +103,7 @@ const CreateFormControlledDial = (props: CreateFormControlledDialProps) => {
         sx={{ marginLeft: theme.spacing(1) }}
         title={t_i18n('Import form intake')}
       >
-        <FileUploadOutlined fontSize="small" color="primary" />
+        <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
       <CreateEntityControlledDial entityType="Form" {...props} />
     </>

@@ -115,9 +115,9 @@ const CsvMappers = () => {
       isSortable: false,
       render: (data: CsvMapperLine_csvMapper$data) => {
         return data.errors === null ? (
-          <CheckCircleOutlined fontSize="small" color="success" />
+          <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
         ) : (
-          <CancelOutlined fontSize="small" color="error" />
+          <CancelOutlined size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
         );
       },
     },
@@ -177,7 +177,7 @@ const CsvMappers = () => {
                       data-testid="ImporCsvMapper"
                       title={t_i18n('Import a CSV mapper')}
                     >
-                      <FileUploadOutlined fontSize="small" color="primary" />
+                      <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </ToggleButton>
                     <Button
                       disableElevation

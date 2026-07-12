@@ -150,7 +150,7 @@ class StixCyberObservablesExportCreationComponent extends Component {
               >
                 <Fab
                   onClick={this.handleOpen.bind(this)}
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   aria-label="Add"
                   className={classes.createButton}
                   disabled={!isExportPossible}
@@ -184,7 +184,7 @@ class StixCyberObservablesExportCreationComponent extends Component {
                         <Stack direction="row" alignItems="center" gap={1}>
                           {t('Generate an export')}
                           <Tooltip title={t('Your max shareable markings will be applied to the content max markings')}>
-                            <InfoOutlined fontSize="small" color="primary" />
+                            <InfoOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                           </Tooltip>
                         </Stack>
                       )}

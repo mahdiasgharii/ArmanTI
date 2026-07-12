@@ -173,13 +173,13 @@ const GroupEditionConfidenceComponent: FunctionComponent<GroupEditionConfidenceP
                     {t_i18n('Add a specific max confidence level for an entity type')}
                   </Typography>
                   <IconButton
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     aria-label="Add"
                     onClick={() => arrayHelpers.push({ entity_type: '', max_confidence: group.group_confidence_level?.max_confidence })}
                     style={{ marginTop: '5px' }}
                     disabled={values.overrides.some((o) => o.entity_type === '')}
                   >
-                    <Add fontSize="small" />
+                    <Add size={16} />
                   </IconButton>
                   {values.overrides.map((_, idx) => (
                     <Field

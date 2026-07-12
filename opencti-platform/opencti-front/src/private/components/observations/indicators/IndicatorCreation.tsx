@@ -445,7 +445,7 @@ const IndicatorCreation: FunctionComponent<IndicatorCreationProps> = ({ paginati
       <div style={{ visibility: !display ? 'hidden' : 'visible' }}>
         <Fab
           onClick={handleOpen}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Add"
           className={classes.createButtonContextual}
           sx={{ zIndex: 1203 }}

@@ -1,10 +1,11 @@
+import { ExternalLink as LaunchIcon } from 'lucide-react';
 import React, { FunctionComponent, Suspense } from 'react';
 import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
-import LaunchIcon from '@mui/icons-material/Launch';
+;
 import { Link } from 'react-router-dom';
 import { useFormatter } from '../../../../components/i18n';
 import { useComputeLink } from '../../../../utils/hooks/useAppData';
@@ -73,7 +74,7 @@ const ContainerObjectsTabComponent: FunctionComponent<ContainerObjectsTabCompone
               <Box sx={{ width: 120 }}>
                 <Chip
                   label={isAdd ? t_i18n('Added') : t_i18n('Removed')}
-                  color={isAdd ? 'success' : 'error'}
+                  style={{ color: isAdd ? 'success' : 'error' }}
                   size="small"
                   sx={{ borderRadius: '4px', height: 24, fontSize: 12, fontWeight: 600 }}
                 />
@@ -96,7 +97,7 @@ const ContainerObjectsTabComponent: FunctionComponent<ContainerObjectsTabCompone
                     size="small"
                     sx={{ width: 26, height: 26, borderRadius: '4px', color: 'primary.main', backgroundColor: 'action.hover', flexShrink: 0 }}
                   >
-                    <LaunchIcon sx={{ fontSize: 18 }} />
+                    <LaunchIcon size={18} />
                   </IconButton>
                 )}
               </Box>

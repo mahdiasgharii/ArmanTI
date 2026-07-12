@@ -1,6 +1,7 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -154,7 +155,7 @@ const IngestionTaxiiPopover: FunctionComponent<IngestionTaxiiPopoverProps> = ({
         onClick={handleOpen}
         aria-haspopup="true"
         style={{ marginTop: 3 }}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

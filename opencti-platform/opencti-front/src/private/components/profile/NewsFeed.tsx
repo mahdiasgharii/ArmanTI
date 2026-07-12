@@ -185,7 +185,7 @@ const NewsFeedLineActions: FunctionComponent<{ data: NewsFeedLine_node$data }> =
         rel="noopener noreferrer"
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
-        <OpenInNewOutlined fontSize="small" color="primary" />
+        <OpenInNewOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </IconButton>
     </Tooltip>
   );
@@ -284,7 +284,7 @@ const NewsFeedComponent: FunctionComponent<NewsFeedComponentProps> = ({ queryRef
         dataColumns={dataColumns}
         icon={(row: NewsFeedLine_node$data) => {
           const Icon = getNewsFeedIcon(row.news_feed_type);
-          return <Icon fontSize="small" color="primary" />;
+          return <Icon size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />;
         }}
         actions={(row: NewsFeedLine_node$data) => <NewsFeedLineActions data={row} />}
         lineFragment={newsFeedLineFragment}

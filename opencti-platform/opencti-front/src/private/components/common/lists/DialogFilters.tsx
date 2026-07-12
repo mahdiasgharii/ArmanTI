@@ -49,7 +49,7 @@ const DialogFilters: FunctionComponent<DialogFiltersProps> = ({
           onClick={handleOpenFilters}
           disabled={disabled}
         >
-          <BiotechOutlined fontSize="medium" />
+          <BiotechOutlined size={20} />
         </IconButton>
       </Tooltip>
       <Dialog

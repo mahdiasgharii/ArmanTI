@@ -76,9 +76,9 @@ const GroupLineComponent: React.FC<GroupLineProps> = (props) => {
               style={{ width: dataColumns.default_assignation.width }}
             >
               {node.default_assignation ? (
-                <CheckCircleOutlined fontSize="small" color="success" />
+                <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
               ) : (
-                <DoNotDisturbOnOutlined fontSize="small" color="primary" />
+                <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               )}
             </div>
             <div
@@ -86,9 +86,9 @@ const GroupLineComponent: React.FC<GroupLineProps> = (props) => {
               style={{ width: dataColumns.auto_new_marking.width }}
             >
               {node.auto_new_marking ? (
-                <CheckCircleOutlined fontSize="small" color="success" />
+                <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
               ) : (
-                <DoNotDisturbOnOutlined fontSize="small" color="primary" />
+                <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               )}
             </div>
             <div
@@ -96,9 +96,9 @@ const GroupLineComponent: React.FC<GroupLineProps> = (props) => {
               style={{ width: dataColumns.no_creators.width }}
             >
               {node.no_creators ? (
-                <CheckCircleOutlined fontSize="small" color="success" />
+                <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
               ) : (
-                <DoNotDisturbOnOutlined fontSize="small" color="primary" />
+                <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               )}
             </div>
             <div
@@ -109,7 +109,7 @@ const GroupLineComponent: React.FC<GroupLineProps> = (props) => {
                 <Tooltip
                   title={t_i18n('This group does not have a Max Confidence Level, members might not be able to create data.')}
                 >
-                  <ReportGmailerrorred fontSize="small" color="error" />
+                  <ReportGmailerrorred size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
                 </Tooltip>
               )}
             </div>

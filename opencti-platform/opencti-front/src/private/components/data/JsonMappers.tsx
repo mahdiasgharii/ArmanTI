@@ -84,9 +84,9 @@ const JsonMappers = () => {
       isSortable: false,
       render: (data: JsonMapperLine_jsonMapper$data) => {
         return data.errors === null ? (
-          <CheckCircleOutlined fontSize="small" color="success" />
+          <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
         ) : (
-          <CancelOutlined fontSize="small" color="error" />
+          <CancelOutlined size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
         );
       },
     },
@@ -139,7 +139,7 @@ const JsonMappers = () => {
                     data-testid="ImporJsonMapper"
                     title={t_i18n('Import a JSON mapper')}
                   >
-                    <FileUploadOutlined fontSize="small" color="primary" />
+                    <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                   </ToggleButton>
                   <Button
                     disableElevation

@@ -96,7 +96,7 @@ const IngestionRssImport: FunctionComponent<IngestionRssImportProps> = ({ pagina
         title={t_i18n('Import a RSS Feed')}
         onClick={() => inputFileRef?.current?.click()}
       >
-        <FileUploadOutlined fontSize="small" color="primary" />
+        <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
       <VisuallyHiddenInput
         ref={inputFileRef}

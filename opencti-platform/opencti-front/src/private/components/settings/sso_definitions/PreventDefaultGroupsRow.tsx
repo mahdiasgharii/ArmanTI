@@ -71,7 +71,7 @@ const PreventDefaultGroupsRow = ({ fieldName }: PreventDefaultGroupsRowProps) =>
         <Tooltip
           title={t_i18n('When enabled, platform default groups (groups with default assignation) will not be automatically assigned to users authenticated through this provider.')}
         >
-          <InfoOutlined fontSize="small" color="info" sx={{ ml: 0.5, flexShrink: 0, cursor: 'help' }} />
+          <InfoOutlined size={16} style={{ marginLeft: 2, flexShrink: 0, cursor: 'help', color: 'var(--mui-palette-info-main)' }} />
         </Tooltip>
       </Box>
     </Box>

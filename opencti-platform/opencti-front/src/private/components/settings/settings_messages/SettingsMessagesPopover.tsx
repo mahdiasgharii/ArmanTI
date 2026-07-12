@@ -1,5 +1,6 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import React, { useState } from 'react';
@@ -69,7 +70,7 @@ const SettingsMessagesPopover = ({
 
   return (
     <div>
-      <IconButton onClick={handleOpen} aria-haspopup="true" color="primary">
+      <IconButton onClick={handleOpen} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
         <MoreVert />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

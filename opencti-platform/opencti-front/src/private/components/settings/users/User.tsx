@@ -334,12 +334,12 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                   <Grid item xs={4}>
                     <Label action={user.otp_activated && (
                       <IconButton
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         onClick={otpUserDeactivation}
                         aria-label="Delete all"
                         size="small"
                       >
-                        <DeleteForeverOutlined fontSize="small" />
+                        <DeleteForeverOutlined size={16} />
                       </IconButton>
                     )}
                     >
@@ -390,7 +390,7 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                         variant="tertiary"
                         size="small"
                         onClick={() => setOpenTokenCreationDrawer(true)}
-                        startIcon={<Add fontSize="small" />}
+                        startIcon={<Add size={16} />}
                         aria-label="generate-token"
                       >
                         {t_i18n('Generate Token')}
@@ -543,7 +543,7 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                         <ListItemIcon>
                           <ItemIcon
                             type="Organization"
-                            color={
+                            style={{ color: 
                               (
                                 organizationEdge.node.authorized_authorities
                                 ?? []
@@ -553,7 +553,7 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                                       .warning as SimplePaletteColorOptions
                                   ).main
                                 : theme.palette.primary.main
-                            }
+                             }}
                           />
                         </ListItemIcon>
                         <ListItemText primary={organizationEdge.node.name} />
@@ -567,12 +567,12 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                   <Security needs={[SETTINGS_SETACCESSES]}>
                     <Tooltip title={t_i18n('Kill all sessions')}>
                       <IconButton
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         aria-label={t_i18n('Delete all')}
                         onClick={handleOpenKillSessions}
                         size="small"
                       >
-                        <DeleteForeverOutlined fontSize="small" />
+                        <DeleteForeverOutlined size={16} />
                       </IconButton>
                     </Tooltip>
                   </Security>
@@ -594,7 +594,7 @@ const User: FunctionComponent<UserProps> = ({ data, refetch }) => {
                               onClick={() => handleOpenKillSession(session.id)}
                               size="small"
                             >
-                              <DeleteOutlined fontSize="small" />
+                              <DeleteOutlined size={16} />
                             </IconButton>
                           )}
                         >

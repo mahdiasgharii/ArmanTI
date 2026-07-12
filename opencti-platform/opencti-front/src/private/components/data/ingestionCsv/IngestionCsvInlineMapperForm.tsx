@@ -170,8 +170,8 @@ const IngestionCsvInlineMapperForm: FunctionComponent<CsvMapperFormProps> = ({ c
                   )}
                 >
                   <InformationOutline
-                    fontSize="small"
-                    color="primary"
+                    size={16}
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     style={{ cursor: 'default' }}
                   />
                 </Tooltip>
@@ -231,8 +231,8 @@ const IngestionCsvInlineMapperForm: FunctionComponent<CsvMapperFormProps> = ({ c
                   )}
                 >
                   <InformationOutline
-                    fontSize="small"
-                    color="primary"
+                    size={16}
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     style={{ cursor: 'default' }}
                   />
                 </Tooltip>
@@ -248,12 +248,12 @@ const IngestionCsvInlineMapperForm: FunctionComponent<CsvMapperFormProps> = ({ c
                   {t_i18n('Representations for entity')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddEntityRepresentation(setFieldValue, values)
                   }
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </Box>
               <FieldArray
@@ -293,12 +293,12 @@ const IngestionCsvInlineMapperForm: FunctionComponent<CsvMapperFormProps> = ({ c
                   {t_i18n('Representations for relationship')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddRelationshipRepresentation(setFieldValue, values)
                   }
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </Box>
               <FieldArray

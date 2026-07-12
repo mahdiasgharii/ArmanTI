@@ -68,14 +68,14 @@ const ThemeImporter: FunctionComponent<ThemeImporterProps> = ({
   return (
     <Tooltip title={t_i18n('Import a theme')}>
       <IconButton
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label={t_i18n('Import')}
         size="small"
         component="label"
         onChange={handleImport}
         data-testid="import-theme-btn"
       >
-        <FileUploadOutlined fontSize="small" />
+        <FileUploadOutlined size={16} />
         <VisuallyHiddenInput type="file" accept="application/json" onClick={handleClick} />
       </IconButton>
     </Tooltip>

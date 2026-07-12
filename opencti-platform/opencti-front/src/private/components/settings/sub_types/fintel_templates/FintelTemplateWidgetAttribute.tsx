@@ -61,10 +61,10 @@ const FintelTemplateWidgetAttribute = ({
             <Tooltip title={t_i18n('Change which data to retrieve in this widget')}>
               <IconButton
                 aria-haspopup="true"
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 onClick={onUpdate}
               >
-                <Edit fontSize="small" />
+                <Edit size={16} />
               </IconButton>
             </Tooltip>
           )}
@@ -73,10 +73,10 @@ const FintelTemplateWidgetAttribute = ({
             <Tooltip title={t_i18n('Delete widget')}>
               <IconButton
                 aria-haspopup="true"
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 onClick={onDelete}
               >
-                <DeleteOutline fontSize="small" />
+                <DeleteOutline size={16} />
               </IconButton>
             </Tooltip>
           )}
@@ -96,17 +96,17 @@ const FintelTemplateWidgetAttribute = ({
 
               {!isUsed && (
                 <Tooltip title={t_i18n('The attribute is not called in the content')}>
-                  <WarningAmber fontSize="small" color="warning" />
+                  <WarningAmber size={16} style={{ color: 'var(--mui-palette-warning-main)' }} />
                 </Tooltip>
               )}
 
               <Tooltip title={t_i18n('Copy attribute name to clipboard')}>
                 <IconButton
                   aria-haspopup="true"
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   onClick={() => copyAttributeToClipboard(column.variableName ?? '')}
                 >
-                  <ContentCopy fontSize="small" />
+                  <ContentCopy size={16} />
                 </IconButton>
               </Tooltip>
             </div>

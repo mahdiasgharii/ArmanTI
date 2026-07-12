@@ -174,12 +174,12 @@ const Campaigns = () => {
             additionalHeaderToggleButtons={[
               <ToggleButton key="cards" value="cards" aria-label="cards">
                 <Tooltip title={t_i18n('Cards view')}>
-                  <ViewModuleOutlined fontSize="small" />
+                  <ViewModuleOutlined size={16} />
                 </Tooltip>
               </ToggleButton>,
               <ToggleButton key="lines" value="lines" aria-label="lines">
                 <Tooltip title={t_i18n('Lines view')}>
-                  <ViewListOutlined fontSize="small" />
+                  <ViewListOutlined size={16} />
                 </Tooltip>
               </ToggleButton>,
             ]}

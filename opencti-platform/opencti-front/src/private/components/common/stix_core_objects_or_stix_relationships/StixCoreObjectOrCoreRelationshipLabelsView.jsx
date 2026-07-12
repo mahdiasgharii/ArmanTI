@@ -158,7 +158,7 @@ const StixCoreObjectOrCoreRelationshipLabelsView = (props) => {
               title={t_i18n('Add new labels')}
               onClick={handleOpenAdd}
             >
-              <Add fontSize="small" />
+              <Add size={16} />
             </IconButton>
           </Security>
         )}
@@ -172,7 +172,7 @@ const StixCoreObjectOrCoreRelationshipLabelsView = (props) => {
               <Tag
                 key={label.id}
                 label={label.value}
-                color={label.color}
+                style={{ color: label.color }}
                 onDelete={canUpdateKnowledge ? () => (
                   enableReferences
                     ? handleOpenCommitDelete(label)
@@ -202,7 +202,7 @@ const StixCoreObjectOrCoreRelationshipLabelsView = (props) => {
                     <Tag
                       key={label.id}
                       label={label.value}
-                      color={label.color}
+                      style={{ color: label.color }}
                       onDelete={canUpdateKnowledge ? () => (
                         enableReferences
                           ? handleOpenCommitDelete(label)

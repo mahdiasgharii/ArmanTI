@@ -114,7 +114,7 @@ const DraftBasicInformation: FunctionComponent<DraftBasicInformationProps> = ({ 
                       title={t_i18n('Add new assignees')}
                       onClick={handleToggleAddAssignee}
                     >
-                      <Add fontSize="small" />
+                      <Add size={16} />
                     </IconButton>
                   </Security>
                 )}
@@ -138,7 +138,7 @@ const DraftBasicInformation: FunctionComponent<DraftBasicInformationProps> = ({ 
                       title={t_i18n('Add new participants')}
                       onClick={handleToggleAddParticipant}
                     >
-                      <Add fontSize="small" />
+                      <Add size={16} />
                     </IconButton>
                   </Security>
                 )}

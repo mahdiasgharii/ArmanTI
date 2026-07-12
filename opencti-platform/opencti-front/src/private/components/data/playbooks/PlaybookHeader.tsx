@@ -99,7 +99,7 @@ const PlaybookHeaderComponent = ({
         </Stack>
         <ToggleButtonGroup
           size="small"
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           value={openLastExecutions}
           exclusive={true}
           onChange={() => setOpenLastExecutions(!openLastExecutions)}
@@ -117,9 +117,9 @@ const PlaybookHeaderComponent = ({
               <Tooltip title={t_i18n('Open last execution traces')}>
                 <Badge
                   badgeContent={(playbook.last_executions ?? []).length}
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                 >
-                  <ManageHistoryOutlined fontSize="small" color="primary" />
+                  <ManageHistoryOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </Badge>
               </Tooltip>
             </Stack>
@@ -147,7 +147,7 @@ const PlaybookHeaderComponent = ({
                   }
                 >
                   <ListItemIcon style={{ marginLeft: 10 }}>
-                    <ItemIcon type="Playbook" color={theme.palette.primary.main} />
+                    <ItemIcon type="Playbook" style={{ color: theme.palette.primary.main }} />
                   </ListItemIcon>
                   <ListItemText
                     primary={`${t_i18n('Execution at')} ${nsdt(
@@ -180,11 +180,11 @@ const PlaybookHeaderComponent = ({
                           <Tooltip title={t_i18n(step.status)}>
                             {step.status === 'success' ? (
                               <CheckCircleOutlined
-                                fontSize="small"
-                                color="success"
+                                size={16}
+                                style={{ color: 'var(--mui-palette-success-main)' }}
                               />
                             ) : (
-                              <ErrorOutlined fontSize="small" color="error" />
+                              <ErrorOutlined size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
                             )}
                           </Tooltip>
                         </ListItemIcon>

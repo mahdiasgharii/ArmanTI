@@ -83,7 +83,7 @@ const HistoryLineContent = ({
       }}
       >
         <Badge
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           overlap="circular"
           badgeContent="M"
           invisible={data.commit == null}
@@ -160,7 +160,7 @@ const HistoryLineContent = ({
                         <Tooltip title={t_i18n('Browse the link')}>
                           <IconButton
                             onClick={() => handleOpenExternalLink(externalReference.url!)}
-                            color="primary"
+                            style={{ color: 'var(--mui-palette-primary-main)' }}
                           >
                             <OpenInBrowserOutlined />
                           </IconButton>

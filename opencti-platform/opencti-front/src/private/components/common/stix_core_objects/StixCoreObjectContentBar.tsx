@@ -97,7 +97,7 @@ const StixCoreObjectContentBar: FunctionComponent<
               <FormControlLabel
                 control={(
                   <IconButton
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     onClick={handleSave}
                     disabled={!changed}
                     aria-label={t_i18n('Save')}
@@ -117,7 +117,7 @@ const StixCoreObjectContentBar: FunctionComponent<
           )}
           {enableZoom && (
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               onClick={handleZoomOut}
               disabled={currentZoom <= 0.6}
               aria-label={t_i18n('Zoom out')}
@@ -127,7 +127,7 @@ const StixCoreObjectContentBar: FunctionComponent<
           )}
           {enableZoom && (
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               onClick={handleZoomIn}
               disabled={currentZoom >= 2}
               aria-label={t_i18n('Zoom in')}

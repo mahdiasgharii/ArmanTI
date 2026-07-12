@@ -36,7 +36,7 @@ const CustomViewsSettings = () => {
                 onClick={() => setDrawerOpen(true)}
                 size="small"
               >
-                <AddIcon fontSize="small" color="primary" />
+                <AddIcon size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('Import a custom view')}>
@@ -45,7 +45,7 @@ const CustomViewsSettings = () => {
                 onClick={importHelpers.handleImport}
                 size="small"
               >
-                <CloudUploadOutlined fontSize="small" color="primary" />
+                <CloudUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </IconButton>
             </Tooltip>
           </>

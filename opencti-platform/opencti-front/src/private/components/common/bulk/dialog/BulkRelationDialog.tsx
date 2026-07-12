@@ -504,7 +504,7 @@ const BulkRelationDialog: FunctionComponent<BulkRelationDialogProps> = ({
                     </MenuItem>
                   ))}
                 </Select>
-                <ArrowRightAlt sx={{ alignSelf: 'center', margin: '10px' }} fontSize="large" />
+                <ArrowRightAlt sx={{ alignSelf: 'center', margin: '10px' }} size={24} />
               </Box>
             </Box>
           </Box>

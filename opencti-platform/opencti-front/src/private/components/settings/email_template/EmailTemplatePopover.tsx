@@ -1,4 +1,5 @@
-import MoreVert from '@mui/icons-material/MoreVert';
+import { MoreVertical as MoreVert } from 'lucide-react';
+;
 import React, { UIEvent, useState } from 'react';
 import { Menu, MenuItem, PopoverProps, ToggleButton } from '@mui/material';
 import IconButton from '@common/button/IconButton';
@@ -71,7 +72,7 @@ const EmailTemplatePopover = ({
           aria-haspopup="true"
           value="Popover of actions"
         >
-          <MoreVert fontSize="small" color="primary" />
+          <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
         </ToggleButton>
       ) : (
         <IconButton
@@ -80,7 +81,7 @@ const EmailTemplatePopover = ({
           className="icon-outlined"
           variant="secondary"
         >
-          <MoreVert fontSize="small" />
+          <MoreVert size={16} />
         </IconButton>
       )}
 

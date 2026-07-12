@@ -1982,7 +1982,7 @@ class DataTableToolBar extends Component {
               <Switch
                 onChange={(event) => this.handleChangeSwitchInput(i, 'values', event.target.checked)}
                 name={`actions-${i}-value`}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               />
             )}
             label={t('Value')}
@@ -2302,7 +2302,7 @@ class DataTableToolBar extends Component {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <Typography
                     className={classes.title}
-                    color="inherit"
+                    style={{ color: 'currentColor' }}
                     variant="subtitle1"
                   >
                     <strong>{numberOfSelectedElements}</strong> {t('selected')}{' '}
@@ -2327,7 +2327,7 @@ class DataTableToolBar extends Component {
                               aria-label={t('Mark as read')}
                               disabled={numberOfSelectedElements === 0 || this.state.processing}
                               onClick={this.handleLaunchRead.bind(this, true)}
-                              color="success"
+                              style={{ color: 'var(--mui-palette-success-main)' }}
                               size="small"
                             >
                               <CheckCircleOutlined />
@@ -2340,7 +2340,7 @@ class DataTableToolBar extends Component {
                               aria-label={t('Mark as unread')}
                               disabled={numberOfSelectedElements === 0 || this.state.processing}
                               onClick={this.handleLaunchRead.bind(this, false)}
-                              color="error"
+                              style={{ color: 'var(--mui-palette-error-main)' }}
                               size="small"
                             >
                               <UnpublishedOutlined />
@@ -2353,7 +2353,7 @@ class DataTableToolBar extends Component {
                       <Security needs={[BYPASS]}>
                         <Tooltip title={t('Remove access restriction')}>
                           <IconButton
-                            color="primary"
+                            style={{ color: 'var(--mui-palette-primary-main)' }}
                             aria-label="input"
                             data-testid="remove-auth-members-button"
                             onClick={this.handleLaunchRemoveAuthMembers.bind(this)}
@@ -2446,7 +2446,7 @@ class DataTableToolBar extends Component {
                               onClick={this.handleOpenEnrichment.bind(this, stixCyberObservableSubTypes, stixDomainObjectSubTypes)}
                               size="small"
                             >
-                              <CloudRefreshOutline fontSize="small" />
+                              <CloudRefreshOutline size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2460,7 +2460,7 @@ class DataTableToolBar extends Component {
                               onClick={this.handleOpenPromote.bind(this)}
                               size="small"
                             >
-                              <TransformOutlined fontSize="small" />
+                              <TransformOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2483,7 +2483,7 @@ class DataTableToolBar extends Component {
                               onClick={this.handleOpenMerge.bind(this)}
                               size="small"
                             >
-                              <MergeOutlined fontSize="small" />
+                              <MergeOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2502,7 +2502,7 @@ class DataTableToolBar extends Component {
                               onClick={this.handleOpenAddInContainer.bind(this)}
                               size="small"
                             >
-                              <MoveToInboxOutlined fontSize="small" />
+                              <MoveToInboxOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2521,7 +2521,7 @@ class DataTableToolBar extends Component {
                               onClick={this.handleLaunchRemove.bind(this)}
                               size="small"
                             >
-                              <LinkOffOutlined fontSize="small" />
+                              <LinkOffOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2540,7 +2540,7 @@ class DataTableToolBar extends Component {
                                 || this.state.processing
                               }
                             >
-                              <BankPlus fontSize="small" color={isEnterpriseEdition ? 'primary' : 'disabled'} />
+                              <BankPlus size={16} style={{ color: isEnterpriseEdition ? 'primary' : 'disabled' }} />
                             </IconButton>
                           </EETooltip>
                         </Security>
@@ -2555,7 +2555,7 @@ class DataTableToolBar extends Component {
                                 || this.state.processing
                               }
                             >
-                              <BankMinus fontSize="small" color={isEnterpriseEdition ? 'primary' : 'disabled'} />
+                              <BankMinus size={16} style={{ color: isEnterpriseEdition ? 'primary' : 'disabled' }} />
                             </IconButton>
                           </EETooltip>
                         </Security>
@@ -2574,7 +2574,7 @@ class DataTableToolBar extends Component {
                                 onClick={this.handleOpenEnrollPlaybook.bind(this)}
                                 size="small"
                               >
-                                <PrecisionManufacturingOutlined fontSize="small" />
+                                <PrecisionManufacturingOutlined size={16} />
                               </IconButton>
                             </span>
                           </Tooltip>
@@ -2592,10 +2592,10 @@ class DataTableToolBar extends Component {
                                 || selectedElementsList.find((element) => element.currentUserAccessRight === 'view')
                               }
                               onClick={this.handleLaunchDelete.bind(this)}
-                              color={warning ? 'error' : 'primary'}
+                              style={{ color: warning ? 'error' : 'primary' }}
                               size="small"
                             >
-                              <DeleteOutlined fontSize="small" />
+                              <DeleteOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2605,7 +2605,7 @@ class DataTableToolBar extends Component {
                       <Security needs={[KNOWLEDGE_KNUPDATE]}>
                         <Tooltip title={t('Remove from draft')}>
                           <IconButton
-                            color="primary"
+                            style={{ color: 'var(--mui-palette-primary-main)' }}
                             aria-label="input"
                             onClick={this.handleLaunchRemoveFromDraft.bind(this)}
                             size="small"
@@ -2614,7 +2614,7 @@ class DataTableToolBar extends Component {
                               || this.state.processing
                             }
                           >
-                            <DeleteSweepOutlined fontSize="small" color="primary" />
+                            <DeleteSweepOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                           </IconButton>
                         </Tooltip>
                       </Security>
@@ -2630,10 +2630,10 @@ class DataTableToolBar extends Component {
                                 || this.state.processing
                               }
                               onClick={this.handleLaunchRestore.bind(this)}
-                              color={warning ? 'error' : 'primary'}
+                              style={{ color: warning ? 'error' : 'primary' }}
                               size="small"
                             >
-                              <RestoreOutlined fontSize="small" />
+                              <RestoreOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2646,10 +2646,10 @@ class DataTableToolBar extends Component {
                                 || this.state.processing
                               }
                               onClick={this.handleLaunchCompleteDelete.bind(this)}
-                              color={warning ? 'error' : 'primary'}
+                              style={{ color: warning ? 'error' : 'primary' }}
                               size="small"
                             >
-                              <DeleteOutlined fontSize="small" />
+                              <DeleteOutlined size={16} />
                             </IconButton>
                           </span>
                         </Tooltip>
@@ -2825,7 +2825,7 @@ class DataTableToolBar extends Component {
                           onClick={this.handleRemoveStep.bind(this, i)}
                           size="small"
                         >
-                          <CancelOutlined fontSize="small" />
+                          <CancelOutlined size={16} />
                         </IconButton>
                         <Grid container={true} spacing={3}>
                           <Grid item xs={3}>
@@ -2868,7 +2868,7 @@ class DataTableToolBar extends Component {
                       onClick={this.handleAddStep.bind(this)}
                       classes={{ root: classes.buttonAdd }}
                     >
-                      <AddOutlined fontSize="small" />
+                      <AddOutlined size={16} />
                     </IconButton>
                   </div>
                   <FormButtonContainer>
@@ -3367,7 +3367,7 @@ class DataTableToolBar extends Component {
                     {t('Cancel')}
                   </Button>
                   <Button
-                    color="secondary"
+                    style={{ color: 'var(--mui-palette-secondary-main)' }}
                     onClick={() => {
                       const shareActions = [
                         { type: 'UNSHARE_MULTIPLE', context: { values: this.state.shareOrganizations } },

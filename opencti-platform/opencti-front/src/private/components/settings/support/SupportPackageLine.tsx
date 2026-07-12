@@ -170,7 +170,7 @@ const SupportPackageLine: FunctionComponent<SupportPackageLineProps> = ({
               <Tooltip title={t_i18n('Force download on this support package')}>
                 <span>
                   <IconButton disabled={!isTooLong} onClick={handleForceZip}>
-                    <DownloadingOutlined fontSize="small" />
+                    <DownloadingOutlined size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -184,7 +184,7 @@ const SupportPackageLine: FunctionComponent<SupportPackageLineProps> = ({
                       data.package_url || '',
                     )}`}
                   >
-                    <GetAppOutlined fontSize="small" />
+                    <GetAppOutlined size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -197,7 +197,7 @@ const SupportPackageLine: FunctionComponent<SupportPackageLineProps> = ({
                   onClick={handleOpenDelete}
                   size="small"
                 >
-                  <DeleteOutlined fontSize="small" />
+                  <DeleteOutlined size={16} />
                 </IconButton>
               </span>
             </Tooltip>
@@ -208,17 +208,17 @@ const SupportPackageLine: FunctionComponent<SupportPackageLineProps> = ({
           {isProgress && !isTimeout && (
             <CircularProgress
               size={20}
-              color="inherit"
+              style={{ color: 'currentColor' }}
             />
           )}
           {isProgress && isTimeout && (
             <FileOutline
-              color="inherit"
+              style={{ color: 'currentColor' }}
             />
           )}
           {!isProgress && (
             <FileOutline
-              color="inherit"
+              style={{ color: 'currentColor' }}
             />
           )}
         </ListItemIcon>

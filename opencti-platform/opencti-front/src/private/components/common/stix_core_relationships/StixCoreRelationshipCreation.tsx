@@ -435,7 +435,7 @@ const StixCoreRelationshipCreation = ({
                   className={classes.closeButton}
                   onClick={handleClose}
                 >
-                  <Close fontSize="small" color="primary" />
+                  <Close size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </IconButton>
                 <Typography variant="h6">{t_i18n('Create a relationship')}</Typography>
               </div>
@@ -469,7 +469,7 @@ const StixCoreRelationshipCreation = ({
             className={classes.closeButton}
             onClick={handleClose}
           >
-            <Close fontSize="small" color="primary" />
+            <Close size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
           <Typography variant="h6">{t_i18n('Select a relationship')}</Typography>
         </div>
@@ -499,7 +499,7 @@ const StixCoreRelationshipCreation = ({
                   <div className={classes.icon}>
                     <ItemIcon
                       type={fromObjects[0].entity_type}
-                      color={itemColor(fromObjects[0].entity_type)}
+                      style={{ color: itemColor(fromObjects[0].entity_type) }}
                       size="small"
                     />
                   </div>
@@ -520,7 +520,7 @@ const StixCoreRelationshipCreation = ({
                 </div>
               </div>
               <div className={classes.middle}>
-                <ArrowRightAlt fontSize="small" />
+                <ArrowRightAlt size={16} />
                 <br />
                 <Tooltip
                   title={relation.node.description}
@@ -563,7 +563,7 @@ const StixCoreRelationshipCreation = ({
                   <div className={classes.icon}>
                     <ItemIcon
                       type={toObjects[0].entity_type}
-                      color={itemColor(toObjects[0].entity_type)}
+                      style={{ color: itemColor(toObjects[0].entity_type) }}
                       size="small"
                     />
                   </div>
@@ -621,7 +621,7 @@ const StixCoreRelationshipCreation = ({
               </div>
             </div>
             <div className={classes.middle} style={{ paddingTop: 15 }}>
-              <ArrowRightAlt fontSize="small" />
+              <ArrowRightAlt size={16} />
               <br />
               <div
                 style={{

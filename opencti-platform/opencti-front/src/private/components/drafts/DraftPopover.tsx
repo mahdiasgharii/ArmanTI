@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import { DraftPopoverDeleteMutation } from '@components/drafts/__generated__/DraftPopoverDeleteMutation.graphql';
 import { DraftsLinesPaginationQuery$variables } from '@components/drafts/__generated__/DraftsLinesPaginationQuery.graphql';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';
@@ -136,10 +137,10 @@ const DraftPopover: React.FC<DraftPopoverProps> = ({
         <IconButton
           onClick={handleOpen}
           aria-haspopup="true"
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label={t_i18n('Draft popover of actions')}
         >
-          <MoreVert fontSize="small" />
+          <MoreVert size={16} />
         </IconButton>
         <Menu
           anchorEl={anchorEl}

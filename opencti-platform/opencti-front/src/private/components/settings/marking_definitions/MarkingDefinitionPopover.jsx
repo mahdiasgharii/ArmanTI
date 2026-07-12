@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { useState } from 'react';
 import { graphql } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { useFormatter } from '../../../../components/i18n';
 import { QueryRenderer } from '../../../../relay/environment';
 import MarkingDefinitionEdition from './MarkingDefinitionEdition';
@@ -85,7 +86,7 @@ const MarkingDefinitionPopover = ({
         onClick={handleOpen}
         aria-haspopup="true"
         disabled={disabled}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

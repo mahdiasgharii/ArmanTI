@@ -18,13 +18,13 @@ const RequestAccessConfigurationPopover: FunctionComponent<RequestAccessWorkflow
   return (
     <>
       <IconButton
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label="Workflow"
         aria-haspopup="true"
         onClick={handleOpenUpdate}
         disabled={requestAccessWorkflowDisabled}
       >
-        <Edit fontSize="small" />
+        <Edit size={16} />
       </IconButton>
 
       <RequestAccessConfigurationEdition

@@ -169,7 +169,7 @@ const StixCoreObjectOpinionsDialogComponent: FunctionComponent<
     <Security needs={[KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNPARTICIPATE]}>
       <>
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Label"
           onClick={handleOpen}
         >

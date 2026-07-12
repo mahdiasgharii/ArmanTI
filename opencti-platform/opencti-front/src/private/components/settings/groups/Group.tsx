@@ -229,7 +229,7 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
                           'You need to authorize this group to access this dashboard in the permissions of the workspace.',
                         )}
                       >
-                        <WarningOutlined color="warning" />
+                        <WarningOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
                       </Tooltip>
                     )}
                   </ListItemButton>
@@ -275,8 +275,8 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
                     )}
                   >
                     <InformationOutline
-                      fontSize="small"
-                      color="primary"
+                      size={16}
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                     />
                   </Tooltip>
                 )}
@@ -293,7 +293,7 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
 
                       >
                         <ListItemIcon>
-                          <MarkingIcon theme={theme} color={marking?.x_opencti_color} />
+                          <MarkingIcon theme={theme} style={{ color: marking?.x_opencti_color }} />
                         </ListItemIcon>
                         <ListItemText
                           primary={truncate(marking?.definition, 40)}
@@ -317,7 +317,7 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
 
                       >
                         <ListItemIcon>
-                          <MarkingIcon theme={theme} color={marking?.x_opencti_color} />
+                          <MarkingIcon theme={theme} style={{ color: marking?.x_opencti_color }} />
                         </ListItemIcon>
                         <ListItemText
                           primary={truncate(marking?.definition, 40)}
@@ -357,7 +357,7 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
                               ? (
                                   <>
                                     <ListItemIcon>
-                                      <MarkingIcon theme={theme} color={marking?.x_opencti_color} />
+                                      <MarkingIcon theme={theme} style={{ color: marking?.x_opencti_color }} />
                                     </ListItemIcon>
                                     <ListItemText
                                       primary={truncate(marking.definition, 40)}
@@ -377,7 +377,7 @@ const Group = ({ groupData }: { groupData: Group_group$key }) => {
                                     'The maximum shareable marking set for this definition type is not allowed for this group, so users can only share their allowed markings independently from the maximum shareable marking set.',
                                   )}
                                 >
-                                  <WarningOutlined color="warning" />
+                                  <WarningOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
                                 </Tooltip>
                               )
                             }

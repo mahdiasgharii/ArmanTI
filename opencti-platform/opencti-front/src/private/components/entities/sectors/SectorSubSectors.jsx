@@ -74,14 +74,14 @@ const SectorSubSectorsComponent = ({ sector }) => {
                   </IconButton>
                 </Tooltip>
               </Security>
-            ) : <AutoFix fontSize="small" style={{ marginRight: 13 }} />}
+            ) : <AutoFix size={16} style={{ marginRight: 13 }} />}
           >
             <ListItemButton
               component={Link}
               to={`/dashboard/entities/sectors/${subSector.id}`}
             >
               <ListItemIcon>
-                <Domain color="primary" />
+                <Domain style={{ color: 'var(--mui-palette-primary-main)' }} />
               </ListItemIcon>
               <ListItemText primary={subSector.name} />
             </ListItemButton>

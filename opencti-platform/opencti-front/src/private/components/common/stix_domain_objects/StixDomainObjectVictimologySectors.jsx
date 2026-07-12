@@ -314,7 +314,7 @@ class StixDomainObjectVictimologySectorsComponent extends Component {
             <div style={{ float: 'right', marginTop: -10 }}>
               <ToggleButtonGroup
                 size="small"
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 value="nested"
                 exclusive={true}
                 onChange={(_, value) => {
@@ -329,27 +329,27 @@ class StixDomainObjectVictimologySectorsComponent extends Component {
                 <ToggleButton value="entities" aria-label="entities">
                   <Tooltip title={t('Entities view')}>
                     <LibraryBooksOutlined
-                      fontSize="small"
-                      color="primary"
+                      size={16}
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                     />
                   </Tooltip>
                 </ToggleButton>
                 <ToggleButton value="relationships" aria-label="lines">
                   <Tooltip title={t('Relationships view')}>
-                    <RelationManyToMany fontSize="small" color="primary" />
+                    <RelationManyToMany size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                   </Tooltip>
                 </ToggleButton>
                 <ToggleButton value="nested" aria-label="nested">
                   <Tooltip title={t('Nested view')}>
-                    <FormatListGroup fontSize="small" />
+                    <FormatListGroup size={16} />
                   </Tooltip>
                 </ToggleButton>
                 {!exportDisabled && (
                   <ToggleButton value="export" aria-label="export">
                     <Tooltip title={t('Open export panel')}>
                       <FileDownloadOutlined
-                        fontSize="small"
-                        color={openExports ? 'secondary' : 'primary'}
+                        size={16}
+                        style={{ color: openExports ? 'secondary' : 'primary' }}
                       />
                     </Tooltip>
                   </ToggleButton>
@@ -367,7 +367,7 @@ class StixDomainObjectVictimologySectorsComponent extends Component {
                         aria-label="export"
                         disabled={true}
                       >
-                        <FileDownloadOutlined fontSize="small" />
+                        <FileDownloadOutlined size={16} />
                       </ToggleButton>
                     </span>
                   </Tooltip>
@@ -432,7 +432,7 @@ class StixDomainObjectVictimologySectorsComponent extends Component {
                               }
                             >
                               <AutoFix
-                                fontSize="small"
+                                size={16}
                                 style={{ marginLeft: -30 }}
                               />
                             </Tooltip>
@@ -553,7 +553,7 @@ class StixDomainObjectVictimologySectorsComponent extends Component {
                                           }
                                         >
                                           <AutoFix
-                                            fontSize="small"
+                                            size={16}
                                             style={{ marginLeft: -30 }}
                                           />
                                         </Tooltip>

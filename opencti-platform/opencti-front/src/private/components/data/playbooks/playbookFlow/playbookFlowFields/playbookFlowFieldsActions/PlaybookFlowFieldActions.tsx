@@ -188,8 +188,8 @@ const PlaybookFlowFieldActions = ({
           <Stack alignItems="center">
             <Button
               variant="tertiary"
-              color="secondary"
-              startIcon={<AddOutlined fontSize="small" />}
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
+              startIcon={<AddOutlined size={16} />}
               disabled={!actionsAreValid}
               onClick={() => {
                 arrayHelpers.push({});

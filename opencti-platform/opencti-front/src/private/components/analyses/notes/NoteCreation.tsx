@@ -356,7 +356,7 @@ const NoteCreation: FunctionComponent<NoteCreationProps> = ({
       <div style={{ display: display ? 'block' : 'none' }}>
         <Fab
           onClick={() => setOpen(true)}
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           aria-label="Add"
           className={classes.createButtonContextual}
         >

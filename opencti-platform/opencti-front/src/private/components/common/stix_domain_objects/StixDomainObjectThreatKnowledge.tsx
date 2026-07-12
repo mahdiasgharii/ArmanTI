@@ -279,7 +279,7 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
                           color: theme.palette.text.secondary,
                           opacity: 0.35,
                         }}
-                        fontSize="large"
+                        size={24}
                       />
                     )}
                   />
@@ -328,7 +328,7 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
                             style={{
                               color: theme.palette.text.secondary,
                               opacity: 0.35 }}
-                            fontSize="large"
+                            size={24}
                           />
                         )
                       : (
@@ -336,7 +336,7 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
                             style={{
                               color: theme.palette.text.secondary,
                               opacity: 0.35 }}
-                            fontSize="large"
+                            size={24}
                           />
                         )
                     }
@@ -380,7 +380,7 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
                           color: theme.palette.text.secondary,
                           opacity: 0.35,
                         }}
-                        fontSize="large"
+                        size={24}
                       />
                     )}
                   />
@@ -426,8 +426,8 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
             handleAddFilter={helpers.handleAddFilter}
             searchContext={{ entityTypes: ['stix-core-relationship'] }}
           />
-          <IconButton color="primary" onClick={handleOpenTimeField} size="small">
-            <SettingsOutlined fontSize="small" />
+          <IconButton style={{ color: 'var(--mui-palette-primary-main)' }} onClick={handleOpenTimeField} size="small">
+            <SettingsOutlined size={16} />
           </IconButton>
           <Popover
             classes={{ paper: classes.container }}
@@ -463,7 +463,7 @@ const StixDomainObjectThreatKnowledge: FunctionComponent<
                   checked={nestedRelationships}
                   onChange={handleChangeNestedRelationships}
                   name="nested-relationships"
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                 />
               )}
               label={t_i18n('Display nested relationships')}

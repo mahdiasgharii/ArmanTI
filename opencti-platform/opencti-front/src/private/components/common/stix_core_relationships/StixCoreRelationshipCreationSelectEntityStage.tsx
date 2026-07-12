@@ -222,7 +222,7 @@ const StixCoreRelationshipCreationSelectEntityStage: FunctionComponent<
       <Fab
         variant="extended"
         size="small"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         onClick={handleNextStep}
         disabled={targetEntities.length < 1}
         style={{

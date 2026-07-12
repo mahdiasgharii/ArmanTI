@@ -64,7 +64,7 @@ const ExternalReferenceDetailsComponent = ({
             <Tooltip title={t_i18n('Browse the link')}>
               <IconButton
                 onClick={() => handleOpenExternalLink(externalReference.url ?? '')}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 disabled={!externalReference.url}
               >
                 <OpenInBrowserOutlined />

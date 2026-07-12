@@ -166,7 +166,7 @@ export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
 
         {navOpen && (
           <IconButton
-            color={draftContext ? 'warn' : 'default'}
+            style={{ color: draftContext ? 'warn' : 'default' }}
             onClick={handleClickPopover}
           >
             <ArrowDropDown

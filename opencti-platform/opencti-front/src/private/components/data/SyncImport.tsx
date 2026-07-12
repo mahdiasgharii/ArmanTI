@@ -94,7 +94,7 @@ const SyncImport: FunctionComponent<SyncImportProps> = ({ paginationOptions }) =
         title={t_i18n('Import an OpenCTI Stream')}
         onClick={() => inputFileRef?.current?.click()}
       >
-        <FileUploadOutlined fontSize="small" color="primary" />
+        <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
       <VisuallyHiddenInput
         ref={inputFileRef}

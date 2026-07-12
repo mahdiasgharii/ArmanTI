@@ -108,8 +108,8 @@ const EntitySettingAttributeLine: FunctionComponent<EntitySettingAttributeLinePr
           {attribute.name === INPUT_AUTHORIZED_MEMBERS
             ? (
                 <LockPersonOutlined
-                  fontSize="small"
-                  color={!needEE ? 'warning' : 'ee'}
+                  size={16}
+                  style={{ color: !needEE ? 'warning' : 'ee' }}
                 />
               )
             : <ShortTextOutlined />

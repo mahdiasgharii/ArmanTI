@@ -630,8 +630,8 @@ const ContainerHeader = (props) => {
                               selected={currentMode === 'graph'}
                             >
                               <VectorPolygon
-                                fontSize="small"
-                                color={currentMode === 'graph' ? 'primary' : 'inherit'}
+                                size={16}
+                                style={{ color: currentMode === 'graph' ? 'primary' : 'inherit' }}
                               />
                             </ToggleButton>
                           </Tooltip>
@@ -645,8 +645,8 @@ const ContainerHeader = (props) => {
                               selected={currentMode === 'timeline'}
                             >
                               <ChartTimeline
-                                fontSize="small"
-                                color={currentMode === 'timeline' ? 'primary' : 'inherit'}
+                                size={16}
+                                style={{ color: currentMode === 'timeline' ? 'primary' : 'inherit' }}
                               />
                             </ToggleButton>
                           </Tooltip>
@@ -660,10 +660,10 @@ const ContainerHeader = (props) => {
                               selected={currentMode === 'correlation'}
                             >
                               <VectorLink
-                                fontSize="small"
-                                color={
+                                size={16}
+                                style={{ color: 
                                   currentMode === 'correlation' ? 'primary' : 'inherit'
-                                }
+                                 }}
                               />
                             </ToggleButton>
                           </Tooltip>
@@ -677,8 +677,8 @@ const ContainerHeader = (props) => {
                               selected={currentMode === 'matrix'}
                             >
                               <ViewColumnOutlined
-                                fontSize="small"
-                                color={currentMode === 'matrix' ? 'primary' : 'inherit'}
+                                size={16}
+                                style={{ color: currentMode === 'matrix' ? 'primary' : 'inherit' }}
                               />
                             </ToggleButton>
                           </Tooltip>

@@ -32,7 +32,7 @@ class NarrativeParentNarrativesComponent extends Component {
                 to={`/dashboard/techniques/narratives/${parentNarrative.id}`}
               >
                 <ListItemIcon>
-                  <SpeakerNotesOutlined color="primary" />
+                  <SpeakerNotesOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </ListItemIcon>
                 <ListItemText
                   primary={parentNarrative.name}

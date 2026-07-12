@@ -288,7 +288,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                   <Security needs={[KNOWLEDGE_KNASKIMPORT]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
                     <UploadImport
                       variant="icon"
-                      fontSize="medium"
+                      size={20}
                       size="default"
                     />
                   </Security>
@@ -300,7 +300,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                       to="/dashboard/profile/triggers"
                       selected={location.pathname === '/dashboard/profile/triggers'}
                     >
-                      <AlarmOnOutlined fontSize="medium" />
+                      <AlarmOnOutlined size={20} />
                     </IconButton>
                   </Tooltip>
                   <Tooltip title={t_i18n('Notifications')}>
@@ -312,11 +312,11 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                       selected={location.pathname.startsWith('/dashboard/profile/notifications')}
                     >
                       <Badge
-                        color="secondary"
+                        style={{ color: 'var(--mui-palette-secondary-main)' }}
                         variant="dot"
                         invisible={!hasUnread}
                       >
-                        <NotificationsOutlined fontSize="medium" />
+                        <NotificationsOutlined size={20} />
                       </Badge>
                     </IconButton>
                   </Tooltip>
@@ -332,7 +332,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
               onClick={handleOpenMenu}
               selected={location.pathname === '/dashboard/profile/me'}
             >
-              <AccountCircleOutlined fontSize="medium" />
+              <AccountCircleOutlined size={20} />
             </IconButton>
             <Menu
               id="menu-appbar"

@@ -204,7 +204,7 @@ const EntityStixCoreRelationshipsIndicatorsEntitiesView: FunctionComponent<Entit
     <Tooltip title={t_i18n('Entities view')}>
       <ToggleButton value="entities" aria-label="entities" onClick={() => storageHelpers.handleChangeView('entities')}>
         <LibraryBooksOutlined
-          fontSize="small"
+          size={16}
         />
       </ToggleButton>
     </Tooltip>
@@ -213,7 +213,7 @@ const EntityStixCoreRelationshipsIndicatorsEntitiesView: FunctionComponent<Entit
     <Tooltip title={t_i18n('Relationships view')}>
       <ToggleButton value="relationships" aria-label="relationships" onClick={() => storageHelpers.handleChangeView('relationships')}>
         <RelationManyToMany
-          fontSize="small"
+          size={16}
         />
       </ToggleButton>
     </Tooltip>
@@ -222,7 +222,7 @@ const EntityStixCoreRelationshipsIndicatorsEntitiesView: FunctionComponent<Entit
     <Tooltip title={t_i18n('Knowledge from related containers view')}>
       <ToggleButton value="contextual" aria-label="contextual" onClick={() => storageHelpers.handleChangeView('contextual')}>
         <Group
-          fontSize="small"
+          size={16}
         />
       </ToggleButton>
     </Tooltip>

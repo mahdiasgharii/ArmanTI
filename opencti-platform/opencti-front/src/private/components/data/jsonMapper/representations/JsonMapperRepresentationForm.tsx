@@ -168,8 +168,8 @@ const JsonMapperRepresentationForm: FunctionComponent<JsonMapperRepresentationFo
               {representationLabel(index, value, t_i18n)}
             </Typography>
             <Tooltip title={t_i18n('Delete')}>
-              <IconButton color="error" onClick={handleOpenDelete}>
-                <DeleteOutlined fontSize="small" />
+              <IconButton style={{ color: 'var(--mui-palette-error-main)' }} onClick={handleOpenDelete}>
+                <DeleteOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>
@@ -216,7 +216,7 @@ const JsonMapperRepresentationForm: FunctionComponent<JsonMapperRepresentationFo
             </div>
             <div style={{ textAlign: 'right', marginTop: '20px' }}>
               <Button
-                color="error"
+                style={{ color: 'var(--mui-palette-error-main)' }}
                 onClick={handleOpenDelete}
               >
                 {t_i18n('Delete')}

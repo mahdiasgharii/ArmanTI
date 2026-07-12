@@ -135,10 +135,10 @@ const StixCyberObservableIndicatorsComponent = ({ stixCyberObservable }) => {
           <IconButton
             ref={AddOrCreateIndicatorsButtonRef}
             aria-label="Add or create indicators button"
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             onClick={handleOpenAddOrCreateIndicatorMenu}
           >
-            <Add fontSize="small" />
+            <Add size={16} />
           </IconButton>
           <Menu
             anchorEl={AddOrCreateIndicatorsButtonRef.current}

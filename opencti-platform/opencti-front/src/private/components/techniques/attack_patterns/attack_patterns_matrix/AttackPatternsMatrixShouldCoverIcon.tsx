@@ -19,8 +19,8 @@ const AttackPatternsMatrixShouldCoverIcon = ({ isOverlapping }: AttackPatternsMa
       }}
     >
       {isOverlapping
-        ? <CheckOutlined fontSize="medium" color="success" />
-        : <CloseOutlined fontSize="medium" color="error" />
+        ? <CheckOutlined size={20} style={{ color: 'var(--mui-palette-success-main)' }} />
+        : <CloseOutlined size={20} style={{ color: 'var(--mui-palette-error-main)' }} />
       }
     </Tooltip>
   );

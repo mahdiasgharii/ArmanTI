@@ -257,11 +257,11 @@ class StixCoreRelationshipContainer extends Component {
               action={!stixCoreRelationship.is_inferred && (
                 <Security needs={[KNOWLEDGE_KNUPDATE]}>
                   <IconButton
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     onClick={this.handleOpenEdition.bind(this)}
                     size="small"
                   >
-                    <EditOutlined fontSize="small" />
+                    <EditOutlined size={16} />
                   </IconButton>
                   <StixCoreRelationshipEdition
                     open={this.state.openEdit}
@@ -294,9 +294,9 @@ class StixCoreRelationshipContainer extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={!fromRestricted ? from.entity_type : 'Restricted'}
-                        color={itemColor(
+                        style={{ color: itemColor(
                           !fromRestricted ? from.entity_type : 'Restricted',
-                        )}
+                        ) }}
                         size="small"
                       />
                     </div>
@@ -322,7 +322,7 @@ class StixCoreRelationshipContainer extends Component {
                 </div>
               </Link>
               <div className={classes.middle}>
-                <ArrowRightAlt fontSize="large" />
+                <ArrowRightAlt size={24} />
                 <Typography sx={{ fontSize: '14px', fontWeight: 400 }}>
                   {capitalizeFirstLetter(t(`relationship_${stixCoreRelationship.relationship_type}`))}
                 </Typography>
@@ -349,9 +349,9 @@ class StixCoreRelationshipContainer extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={!toRestricted ? to.entity_type : 'Unknown'}
-                        color={itemColor(
+                        style={{ color: itemColor(
                           !toRestricted ? to.entity_type : 'Restricted',
-                        )}
+                        ) }}
                         size="small"
                       />
                     </div>
@@ -584,7 +584,7 @@ class StixCoreRelationshipContainer extends Component {
               {t('Cancel')}
             </Button>
             <Button
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               onClick={this.submitDelete.bind(this)}
               disabled={this.state.deleting}
             >

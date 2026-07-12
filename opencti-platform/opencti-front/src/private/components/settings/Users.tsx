@@ -240,12 +240,12 @@ const Users = () => {
                 const external = user.external === true;
                 const userServiceAccount = user.user_service_account;
                 if (userServiceAccount) {
-                  return <ManageAccountsOutlined color="primary" />;
+                  return <ManageAccountsOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
                 }
                 if (external) {
-                  return <AccountCircleOutlined color="primary" />;
+                  return <AccountCircleOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
                 }
-                return <PersonOutlined color="primary" />;
+                return <PersonOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />;
               }}
               taskScope="USER"
               entityTypes={['User']}

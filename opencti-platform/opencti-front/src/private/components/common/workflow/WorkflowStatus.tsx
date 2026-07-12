@@ -35,7 +35,7 @@ const WorkflowStatus: FunctionComponent<WorkflowStatusProps> = ({ data }) => {
             onClick={(e) => setCommentAnchorEl(e.currentTarget)}
             sx={{ marginRight: 0.5 }}
           >
-            <CommentOutlined fontSize="small" />
+            <CommentOutlined size={16} />
           </IconButton>
           <Popover
             open={Boolean(commentAnchorEl)}

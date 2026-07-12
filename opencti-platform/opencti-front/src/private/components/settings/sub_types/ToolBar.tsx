@@ -181,7 +181,7 @@ const ToolBar: FunctionComponent<{
       <Toolbar style={{ minHeight: 54 }}>
         <Typography
           className={classes.title}
-          color="inherit"
+          style={{ color: 'currentColor' }}
           variant="subtitle1"
         >
           <span className={classes.titleNumber}>
@@ -194,7 +194,7 @@ const ToolBar: FunctionComponent<{
             onClick={handleClearSelectedElements}
             size="small"
           >
-            <ClearOutlined fontSize="small" />
+            <ClearOutlined size={16} />
           </IconButton>
         </Typography>
         <Tooltip title={t_i18n('Automatic references at file upload')}>
@@ -208,10 +208,10 @@ const ToolBar: FunctionComponent<{
                   .length
               }
               onClick={handleOpenFilesRef}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               size="small"
             >
-              <FileOpenOutlined fontSize="small" />
+              <FileOpenOutlined size={16} />
             </IconButton>
           </span>
         </Tooltip>
@@ -225,10 +225,10 @@ const ToolBar: FunctionComponent<{
                 === retrieveNotAvailableSetting('platform_hidden_type').length
               }
               onClick={handleOpenHidden}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               size="small"
             >
-              <VisibilityOffOutlined fontSize="small" />
+              <VisibilityOffOutlined size={16} />
             </IconButton>
           </span>
         </Tooltip>
@@ -242,10 +242,10 @@ const ToolBar: FunctionComponent<{
                 === retrieveNotAvailableSetting('enforce_reference').length
               }
               onClick={handleOpenEnforceRef}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               size="small"
             >
-              <LocalOfferOutlined fontSize="small" />
+              <LocalOfferOutlined size={16} />
             </IconButton>
           </span>
         </Tooltip>

@@ -96,7 +96,7 @@ const ContainerStixDomainObjectLineComponent = (props) => {
       disablePadding
       secondaryAction={isOnlyThroughInference ? (
         <Tooltip title={t_i18n('Inferred knowledge')}>
-          <AutoFix fontSize="small" style={{ marginLeft: -30 }} />
+          <AutoFix size={16} style={{ marginLeft: -30 }} />
         </Tooltip>
       ) : (
         <Security needs={[KNOWLEDGE_KNUPDATE]}>

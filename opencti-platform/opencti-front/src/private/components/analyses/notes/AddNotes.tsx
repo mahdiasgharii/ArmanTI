@@ -58,13 +58,13 @@ const AddNotes: FunctionComponent<AddNotesProps> = ({
   return (
     <>
       <IconButton
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label={t_i18n('Add')}
         onClick={handleOpen}
         size="small"
       >
         <Add
-          fontSize="small"
+          size={16}
         />
       </IconButton>
       <Drawer

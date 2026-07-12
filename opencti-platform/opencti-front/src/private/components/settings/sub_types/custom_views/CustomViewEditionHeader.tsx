@@ -1,3 +1,4 @@
+import { Eye as VisibilityIcon, EyeOff as VisibilityOffIcon } from 'lucide-react';
 import { useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import Box from '@mui/material/Box';
@@ -5,8 +6,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@common/button/Button';
 import Tag from '@common/tag/Tag';
 import { useTheme } from '@mui/styles';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+;
+;
 import IconButton from '@common/button/IconButton';
 import TitleMainEntity from '../../../../../components/common/typography/TitleMainEntity';
 import Breadcrumbs from '../../../../../components/Breadcrumbs';
@@ -78,11 +79,11 @@ const CustomViewEditionHeader = ({ data, onCreateWidget, onImportWidget, host }:
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <TitleMainEntity>{customView.name}</TitleMainEntity>
         <Tag
-          color={
+          style={{ color: 
             customView.enabled
               ? theme.palette.severity.low
               : theme.palette.severity.critical
-          }
+           }}
           label={
             customView.enabled
               ? t_i18n('View is enabled')

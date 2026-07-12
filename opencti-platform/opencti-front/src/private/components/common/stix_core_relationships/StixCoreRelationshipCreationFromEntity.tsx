@@ -874,7 +874,7 @@ const StixCoreRelationshipCreationFromEntity: FunctionComponent<StixCoreRelation
           onClick={() => setOpen(true)}
           size="small"
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
       )}
       <Drawer

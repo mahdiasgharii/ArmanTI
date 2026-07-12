@@ -206,7 +206,7 @@ const Stream = () => {
           : (
               <Tag
                 label={health.label}
-                color={health.hexColor}
+                style={{ color: health.hexColor }}
               />
             );
       },

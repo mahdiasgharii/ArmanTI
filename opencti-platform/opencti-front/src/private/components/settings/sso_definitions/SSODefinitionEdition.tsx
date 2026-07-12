@@ -1,3 +1,4 @@
+import { Trash2 as DeleteOutlined } from 'lucide-react';
 import React from 'react';
 import { graphql, useFragment } from 'react-relay';
 import Drawer from '@components/common/drawer/Drawer';
@@ -5,7 +6,7 @@ import { useFormatter } from '../../../../components/i18n';
 import SSODefinitionDeletion from '@components/settings/sso_definitions/SSODefinitionDeletion';
 import { SSODefinitionEditionFragment$key } from '@components/settings/sso_definitions/__generated__/SSODefinitionEditionFragment.graphql';
 import IconButton from '@mui/material/IconButton';
-import DeleteOutlined from '@mui/icons-material/DeleteOutlined';
+;
 import OidcProviderForm from './OidcProviderForm';
 import SamlProviderForm from './SamlProviderForm';
 import LdapProviderForm from './LdapProviderForm';
@@ -263,11 +264,11 @@ const SSODefinitionEdition = ({
             <IconButton
               onClick={handleOpenDelete}
               disabled={deleting}
-              color="error"
+              style={{ color: 'var(--mui-palette-error-main)' }}
               size="small"
               aria-label={t_i18n('Delete')}
             >
-              <DeleteOutlined fontSize="small" />
+              <DeleteOutlined size={16} />
             </IconButton>
           )}
         </SSODefinitionDeletion>

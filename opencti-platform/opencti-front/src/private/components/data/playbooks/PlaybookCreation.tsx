@@ -125,7 +125,7 @@ const PlaybookCreation = () => {
         data-testid="ImporPlaybook"
         title={t_i18n('Import playbook')}
       >
-        <FileUploadOutlined fontSize="small" color="primary" />
+        <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
       {isXTMHubAccessible && isNotEmptyField(importFromHubUrl) && (
         <Button
@@ -193,7 +193,7 @@ const PlaybookCreation = () => {
                     {t_i18n('Cancel')}
                   </Button>
                   <Button
-                    color="secondary"
+                    style={{ color: 'var(--mui-palette-secondary-main)' }}
                     onClick={submitForm}
                     disabled={isSubmitting}
                   >

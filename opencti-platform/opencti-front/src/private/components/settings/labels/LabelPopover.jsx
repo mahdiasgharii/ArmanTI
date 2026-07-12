@@ -1,7 +1,8 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';
@@ -94,7 +95,7 @@ class LabelPopover extends Component {
         <IconButton
           onClick={this.handleOpen.bind(this)}
           aria-haspopup="true"
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert />
         </IconButton>

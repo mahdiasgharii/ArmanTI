@@ -299,10 +299,10 @@ const FileLineComponent: FunctionComponent<FileLineComponentProps> = ({
                       }
                     }}
                     aria-haspopup="true"
-                    // color={nested ? 'inherit' : 'primary'}
+                    // style={{ color: nested ? 'inherit' : 'primary' }}
                     size="small"
                   >
-                    <ProgressUpload fontSize="small" />
+                    <ProgressUpload size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -323,10 +323,10 @@ const FileLineComponent: FunctionComponent<FileLineComponentProps> = ({
                         }
                       }}
                       aria-haspopup="true"
-                      // color={nested ? 'inherit' : 'primary'}
+                      // style={{ color: nested ? 'inherit' : 'primary' }}
                       size="small"
                     >
-                      <GetAppOutlined fontSize="small" />
+                      <GetAppOutlined size={16} />
                     </IconButton>
                   </span>
                 </Tooltip>
@@ -374,7 +374,7 @@ const FileLineComponent: FunctionComponent<FileLineComponentProps> = ({
                           }}
                           size="small"
                         >
-                          <DeleteOutlined fontSize="small" color={deleteFileColor} />
+                          <DeleteOutlined size={16} style={{ color: deleteFileColor }} />
                         </IconButton>
                       </span>
                     </Tooltip>
@@ -393,7 +393,7 @@ const FileLineComponent: FunctionComponent<FileLineComponentProps> = ({
                           }}
                           size="small"
                         >
-                          <DeleteOutlined fontSize="small" color={deleteFileColor} />
+                          <DeleteOutlined size={16} style={{ color: deleteFileColor }} />
                         </IconButton>
                       </span>
                     </Tooltip>
@@ -416,13 +416,13 @@ const FileLineComponent: FunctionComponent<FileLineComponentProps> = ({
             {isProgress && (
               <CircularProgress
                 size={20}
-                color={nested ? 'primary' : 'inherit'}
+                style={{ color: nested ? 'primary' : 'inherit' }}
               />
             )}
             {!isProgress && (isFail || isOutdated) && (
               <Tooltip title={toolTip !== 'null' ? toolTip : ''}>
                 <WarningOutlined
-                  color={nested ? 'primary' : 'inherit'}
+                  style={{ color: nested ? 'primary' : 'inherit' }}
                   style={{ fontSize: 15, color: theme.palette.error.main, marginLeft: 4 }}
                 />
               </Tooltip>

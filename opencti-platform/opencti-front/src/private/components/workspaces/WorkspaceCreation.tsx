@@ -134,7 +134,7 @@ const WorkspaceCreation = ({ paginationOptions, type }: WorkspaceCreationProps) 
           data-testid="ImportDashboard"
           title={t_i18n('Import dashboard')}
         >
-          <FileUploadOutlined fontSize="small" color="primary" />
+          <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
         </IconButton>
         {isXTMHubAccessible && isNotEmptyField(importFromHubUrl) && (
           <Button

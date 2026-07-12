@@ -1,6 +1,7 @@
+import { Circle as CircleIcon } from 'lucide-react';
 import { Tooltip } from '@mui/material';
 import Button from '@common/button/Button';
-import CircleIcon from '@mui/icons-material/Circle';
+;
 import { useFormatter } from '../../../../../components/i18n';
 
 interface ValidationError {
@@ -37,7 +38,7 @@ const PublishButton = ({ validationStatus, onPublish, disabled }: PublishButtonP
       <Tooltip title={t_i18n('Workflow is published')}>
         <span>
           <Button
-            startIcon={<CircleIcon color="success" />}
+            startIcon={<CircleIcon style={{ color: 'var(--mui-palette-success-main)' }} />}
             variant="secondary"
             disabled
             sx={{ width: BUTTON_WIDTH }}
@@ -55,7 +56,7 @@ const PublishButton = ({ validationStatus, onPublish, disabled }: PublishButtonP
       <Tooltip title={t_i18n('Click to see validation errors')}>
         <span>
           <Button
-            startIcon={<CircleIcon color="error" />}
+            startIcon={<CircleIcon style={{ color: 'var(--mui-palette-error-main)' }} />}
             variant="secondary"
             onClick={onPublish}
             disabled={disabled}
@@ -73,7 +74,7 @@ const PublishButton = ({ validationStatus, onPublish, disabled }: PublishButtonP
     <Tooltip title={t_i18n('Click to publish this workflow version')}>
       <span>
         <Button
-          startIcon={<CircleIcon color="warning" />}
+          startIcon={<CircleIcon style={{ color: 'var(--mui-palette-warning-main)' }} />}
           variant="secondary"
           onClick={onPublish}
           disabled={disabled}

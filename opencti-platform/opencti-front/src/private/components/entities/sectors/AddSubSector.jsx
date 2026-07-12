@@ -36,11 +36,11 @@ class AddSubSector extends Component {
     return (
       <div>
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Add"
           onClick={this.handleOpen.bind(this)}
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
         <Drawer
           open={this.state.open}

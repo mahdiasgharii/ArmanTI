@@ -1,3 +1,4 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import DangerZoneBlock from '@components/common/danger_zone/DangerZoneBlock';
@@ -5,7 +6,7 @@ import DangerZoneChip from '@components/common/danger_zone/DangerZoneChip';
 import { connectorDeletionMutation, connectorResetStateMutation, connectorWorkDeleteMutation } from '@components/data/connectors/Connector';
 import ManagedConnectorEdition from '@components/data/connectors/ManagedConnectorEdition';
 import { Connector_connector$data } from '@components/data/connectors/__generated__/Connector_connector.graphql';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Alert from '@mui/material/Alert';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -150,10 +151,10 @@ const ConnectorPopover = ({ connector, onRefreshData }: ConnectorPopoverProps) =
         onClick={handleOpen}
         aria-haspopup="true"
         value="popover"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         size="small"
       >
-        <MoreVert fontSize="small" color="primary" />
+        <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
 
       <Menu
@@ -237,7 +238,7 @@ const ConnectorPopover = ({ connector, onRefreshData }: ConnectorPopoverProps) =
           <Alert
             severity={isSensitive ? 'warning' : 'info'}
             variant="outlined"
-            color={isSensitive ? 'dangerZone' : undefined}
+            style={{ color: isSensitive ? 'dangerZone' : undefined }}
             style={isSensitive ? {
               borderColor: theme.palette.dangerZone.main,
             } : {}}

@@ -112,12 +112,12 @@ const SettingsMessages = ({
         title={t_i18n('Platform announcement')}
         action={(
           <IconButton
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             aria-label="Add"
             onClick={handleOpenCreate}
             size="small"
           >
-            <Add fontSize="small" />
+            <Add size={16} />
           </IconButton>
         )}
       >

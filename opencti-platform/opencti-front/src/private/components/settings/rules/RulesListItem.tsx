@@ -85,7 +85,7 @@ const RulesListItem = ({ rule, task, toggle }: RulesListItemProps) => {
                       label={ruleStatus}
                       control={(
                         <Switch
-                          color="secondary"
+                          style={{ color: 'var(--mui-palette-secondary-main)' }}
                           disabled={!isEngineEnabled || disabled}
                           checked={isEngineEnabled && rule.activated}
                           onChange={toggle}
@@ -110,16 +110,16 @@ const RulesListItem = ({ rule, task, toggle }: RulesListItemProps) => {
               {(rule.display?.if ?? []).map((step, index) => (
                 <div key={index} style={styleStep}>
                   <span style={{ width: '30px', flexShrink: 0 }}>{t_i18n('IF')}</span>
-                  <RuleTag color={step?.source_color} label={step?.source} />
+                  <RuleTag style={{ color: step?.source_color }} label={step?.source} />
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <span>{t_i18n(step?.relation)}</span>
                   </div>
-                  <RuleTag color={step?.target_color} label={step?.target} />
+                  <RuleTag style={{ color: step?.target_color }} label={step?.target} />
                 </div>
               ))}
             </div>
             <div style={{ textAlign: 'center' }}>
-              <ArrowRightAlt fontSize="large" />
+              <ArrowRightAlt size={24} />
               <br />
               <span style={{ width: '80px' }}>{t_i18n('THEN')}</span>
             </div>
@@ -128,13 +128,13 @@ const RulesListItem = ({ rule, task, toggle }: RulesListItemProps) => {
                 return (
                   <div key={index} style={styleStep}>
                     <RuleTag action label={step?.action} />
-                    <RuleTag color={step?.source_color} label={step?.source} />
+                    <RuleTag style={{ color: step?.source_color }} label={step?.source} />
                     {step?.relation && (
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <span>{t_i18n(step?.relation)}</span>
                       </div>
                     )}
-                    {step?.target && <RuleTag color={step?.target_color} label={step?.target} />}
+                    {step?.target && <RuleTag style={{ color: step?.target_color }} label={step?.target} />}
                   </div>
                 );
               })}

@@ -120,7 +120,7 @@ const MetricRow: FunctionComponent<MetricRowProps> = ({ label, value, tooltip, t
         </Typography>
         {tooltip && (
           <Tooltip title={tooltip} arrow>
-            <InfoOutlined sx={{ fontSize: 16, color: theme?.palette?.text?.secondary, cursor: 'pointer' }} />
+            <InfoOutlined size={16} style={{ color: 'var(--mui-palette-text-secondary)', cursor: 'pointer' }} />
           </Tooltip>
         )}
       </Box>

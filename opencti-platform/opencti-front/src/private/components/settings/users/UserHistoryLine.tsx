@@ -123,7 +123,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            <LinkOutlined fontSize="small" />
+            <LinkOutlined size={16} />
           </Avatar>
         );
       }
@@ -140,7 +140,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            <LinkOffOutlined fontSize="small" />
+            <LinkOffOutlined size={16} />
           </Avatar>
         );
       }
@@ -158,7 +158,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+            {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
             <ItemIcon type={eventScope} size="small" />
           </Avatar>
         );
@@ -176,7 +176,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            <Merge fontSize="small" />
+            <Merge size={16} />
           </Avatar>
         );
       }
@@ -196,7 +196,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+            {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
             <ItemIcon type={eventScope} size="small" />
           </Avatar>
         );
@@ -214,7 +214,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+            {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
             <ItemIcon type={eventScope} size="small" />
           </Avatar>
         );
@@ -232,7 +232,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            <LinkVariantPlus fontSize="small" />
+            <LinkVariantPlus size={16} />
           </Avatar>
         );
       }
@@ -249,7 +249,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
             }}
             onClick={() => commit && handleOpen()}
           >
-            <LinkVariantRemove fontSize="small" />
+            <LinkVariantRemove size={16} />
           </Avatar>
         );
       }
@@ -264,7 +264,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
               color: theme.palette.text?.primary,
             }}
           >
-            <DeleteOutlined fontSize="small" />
+            <DeleteOutlined size={16} />
           </Avatar>
         );
       }
@@ -280,7 +280,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
               cursor: commit ? 'pointer' : 'auto',
             }}
           >
-            {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+            {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
             <ItemIcon type={eventScope} size="small" />
           </Avatar>
         );
@@ -297,7 +297,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
               cursor: commit ? 'pointer' : 'auto',
             }}
           >
-            {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+            {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
             <ItemIcon type={eventScope} size="small" />
           </Avatar>
         );
@@ -314,7 +314,7 @@ const UserHistoryLine: FunctionComponent<UserHistoryLineProps> = ({ node }) => {
         }}
         onClick={() => commit && handleOpen()}
       >
-        {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+        {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
         <ItemIcon type={eventScope} size="small" />
       </Avatar>
     );

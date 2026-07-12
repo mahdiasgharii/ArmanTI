@@ -169,7 +169,7 @@ export const AdministrativeAreaLineDummy = ({
         )}
       />
       <ListItemIcon classes={{ root: classes.goIcon }}>
-        <KeyboardArrowRightOutlined color="disabled" />
+        <KeyboardArrowRightOutlined style={{ color: 'var(--mui-palette-text-disabled)' }} />
       </ListItemIcon>
     </ListItem>
   );

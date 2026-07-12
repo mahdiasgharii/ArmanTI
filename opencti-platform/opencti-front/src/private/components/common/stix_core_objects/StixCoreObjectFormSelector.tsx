@@ -38,7 +38,7 @@ const StixCoreObjectFormSelector: FunctionComponent<StixCoreObjectFormSelectorPr
                 divider
               >
                 <ListItemIcon>
-                  <AssignmentOutlined color="primary" />
+                  <AssignmentOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </ListItemIcon>
                 <ListItemText
                   primary={formEdge.node.name}

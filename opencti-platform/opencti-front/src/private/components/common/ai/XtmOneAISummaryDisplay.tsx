@@ -61,12 +61,12 @@ const XtmOneAISummaryDisplay: FunctionComponent<XtmOneAISummaryDisplayProps> = (
                   </Typography>
                 )}
                 <Tooltip title={t_i18n('Copy to clipboard')}>
-                  <IconButton size="small" color="primary" onClick={() => copyToClipboard(t_i18n, content)}>
+                  <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }} onClick={() => copyToClipboard(t_i18n, content)}>
                     <ContentCopyOutlined size={16} />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={t_i18n('Retry')}>
-                  <IconButton size="small" color="primary" onClick={onRetry}>
+                  <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }} onClick={onRetry}>
                     <AutoModeOutlined size={16} />
                   </IconButton>
                 </Tooltip>

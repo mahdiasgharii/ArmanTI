@@ -47,7 +47,7 @@ const AddIndividualsThreatActorIndividualComponent: FunctionComponent<
         size="small"
         onClick={handleOpen}
       >
-        <Add fontSize="small" />
+        <Add size={16} />
       </IconButton>
       <Drawer
         open={open}

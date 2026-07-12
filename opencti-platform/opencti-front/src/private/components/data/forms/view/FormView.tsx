@@ -1,7 +1,8 @@
+import { Plus as AddIcon, Trash2 as DeleteIcon } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
+;
+;
 import Alert from '@mui/material/Alert';
 import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -694,7 +695,7 @@ const FormViewInner: FunctionComponent<FormViewInnerProps> = ({ queryRef, embedd
                                       className={classes.deleteButton}
                                       onClick={() => remove(index)}
                                       size="small"
-                                      color="primary"
+                                      style={{ color: 'var(--mui-palette-primary-main)' }}
                                     >
                                       <DeleteIcon />
                                     </IconButton>
@@ -860,7 +861,7 @@ const FormViewInner: FunctionComponent<FormViewInnerProps> = ({ queryRef, embedd
                                               className={classes.deleteButton}
                                               onClick={() => remove(index)}
                                               size="small"
-                                              color="primary"
+                                              style={{ color: 'var(--mui-palette-primary-main)' }}
                                             >
                                               <DeleteIcon />
                                             </IconButton>

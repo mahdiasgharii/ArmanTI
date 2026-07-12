@@ -295,10 +295,10 @@ const FileWorksComponent = ({
               {work?.draft_context && !draftContext && (
                 <Tooltip title={t_i18n('Navigate to draft')}>
                   <IconButton
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     onClick={() => work.draft_context && navigateToDraft(work.draft_context)}
                   >
-                    <ArchitectureOutlined fontSize="small" />
+                    <ArchitectureOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               )}
@@ -306,10 +306,10 @@ const FileWorksComponent = ({
               <Tooltip title={t_i18n('Delete this work')}>
                 <IconButton
                   disabled={work?.status === 'deleting'}
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   onClick={() => setDisplayDelete(work?.id)}
                 >
-                  <DeleteOutlined fontSize="small" />
+                  <DeleteOutlined size={16} />
                 </IconButton>
               </Tooltip>
             </div>

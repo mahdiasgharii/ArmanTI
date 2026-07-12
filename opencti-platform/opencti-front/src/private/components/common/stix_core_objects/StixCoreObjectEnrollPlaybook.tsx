@@ -45,7 +45,7 @@ const StixCoreObjectEnrollPlaybook: FunctionComponent<StixCoreObjectEnrollPlaybo
               size="small"
               style={{ height: '100%' }}
             >
-              <PrecisionManufacturingOutlined fontSize="small" color={disabledInDraft ? 'disabled' : 'primary'} />
+              <PrecisionManufacturingOutlined size={16} style={{ color: disabledInDraft ? 'disabled' : 'primary' }} />
             </ToggleButton>
           </EETooltip>
         )}

@@ -64,10 +64,10 @@ const EntitySettingCustomOverview = () => {
               onClick={() => resetLayout()}
               aria-haspopup="true"
               size="small"
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             >
               <Tooltip title={t_i18n('Reset to default layout')}>
-                <RestartAlt fontSize="small" color="primary" />
+                <RestartAlt size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </Tooltip>
             </IconButton>
           )}

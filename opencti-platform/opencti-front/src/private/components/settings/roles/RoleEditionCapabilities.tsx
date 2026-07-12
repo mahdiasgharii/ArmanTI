@@ -1,3 +1,4 @@
+import { ShieldCheck as LocalPoliceOutlined } from 'lucide-react';
 import React, { FunctionComponent } from 'react';
 import { createFragmentContainer, graphql, usePreloadedQuery } from 'react-relay';
 import ListItem from '@mui/material/ListItem';
@@ -6,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import List from '@mui/material/List';
 import { PreloadedQuery } from 'react-relay/relay-hooks/EntryPointTypes';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import LocalPoliceOutlined from '@mui/icons-material/LocalPoliceOutlined';
+;
 import { useTheme } from '@mui/styles';
 import DangerZoneChip from '@components/common/danger_zone/DangerZoneChip';
 import Loader, { LoaderVariant } from '../../../../components/Loader';
@@ -171,7 +172,7 @@ const RoleEditionCapabilitiesComponent: FunctionComponent<RoleEditionCapabilitie
             )}
           >
             <ListItemIcon style={{ minWidth: 32 }}>
-              <LocalPoliceOutlined fontSize="small" />
+              <LocalPoliceOutlined size={16} />
             </ListItemIcon>
             <ListItemText
               primary={(
@@ -214,7 +215,7 @@ const RoleEditionCapabilitiesComponent: FunctionComponent<RoleEditionCapabilitie
                 )}
               >
                 <ListItemIcon style={{ minWidth: 32 }}>
-                  <LocalPoliceOutlined fontSize="small" />
+                  <LocalPoliceOutlined size={16} />
                 </ListItemIcon>
                 <ListItemText primary={t_i18n(capability.description)} />
               </ListItem>

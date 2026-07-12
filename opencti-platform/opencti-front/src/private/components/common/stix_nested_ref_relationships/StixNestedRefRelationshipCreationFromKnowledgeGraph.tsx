@@ -56,7 +56,7 @@ const StixNestedRefRelationshipCreationFromKnowledgeGraph = ({
             <Tooltip title={t_i18n('Create a nested relationship')}>
               <span>
                 <IconButton
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   disabled={true}
                 >
                   <ReadMoreOutlined />

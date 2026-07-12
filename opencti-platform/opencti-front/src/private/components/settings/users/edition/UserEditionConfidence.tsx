@@ -189,12 +189,12 @@ const UserEditionConfidence: FunctionComponent<UserEditionConfidenceProps> = ({ 
                     variant="primary"
                     action={(
                       <IconButton
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         aria-label="Add"
                         onClick={() => arrayHelpers.push({ entity_type: '', max_confidence: defaultOverrideConfidence })}
                         disabled={values.overrides.some((o) => o.entity_type === '')}
                       >
-                        <Add fontSize="small" />
+                        <Add size={16} />
                       </IconButton>
                     )}
                   >

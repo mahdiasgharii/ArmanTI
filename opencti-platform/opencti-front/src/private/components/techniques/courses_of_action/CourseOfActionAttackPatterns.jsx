@@ -89,7 +89,7 @@ class CourseOfActionAttackPatternComponent extends Component {
             />
             {expandable && (
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 onClick={this.handleToggleExpand.bind(this)}
               >
                 {expanded ? <ExpandLessOutlined /> : <ExpandMoreOutlined />}

@@ -1,3 +1,4 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 /*
 Copyright (c) 2021-2025 Filigran SAS
 
@@ -14,7 +15,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 */
 
 import React, { UIEvent, useState } from 'react';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { Menu, MenuItem, PopoverProps, ToggleButton } from '@mui/material';
 import { graphql, useFragment } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
@@ -58,7 +59,7 @@ const PirPopover = ({ data }: PirPopoverProps) => {
         size="small"
         aria-label={t_i18n('Popover of actions')}
       >
-        <MoreVert fontSize="small" color="primary" />
+        <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
 
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={onCloseMenu}>

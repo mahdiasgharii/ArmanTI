@@ -32,7 +32,7 @@ class SectorParentSectorsComponent extends Component {
                 to={`/dashboard/entities/sectors/${parentSector.id}`}
               >
                 <ListItemIcon>
-                  <Domain color="primary" />
+                  <Domain style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </ListItemIcon>
                 <ListItemText
                   primary={parentSector.name}

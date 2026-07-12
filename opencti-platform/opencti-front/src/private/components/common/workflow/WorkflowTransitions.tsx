@@ -117,9 +117,9 @@ export const WorkflowTransitions: FunctionComponent<WorkflowTransitionsProps> = 
         <Divider orientation="vertical" flexItem sx={{ marginRight: 1 }} />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Tooltip title={workflowInstance.pendingError ?? t_i18n('One or more async workflow actions failed')}>
-            <ErrorOutline color="error" fontSize="small" />
+            <ErrorOutline style={{ color: 'var(--mui-palette-error-main)' }} size={16} />
           </Tooltip>
-          <Typography variant="caption" color="error">
+          <Typography variant="caption" style={{ color: 'var(--mui-palette-error-main)' }}>
             {t_i18n('Transition failed')}
           </Typography>
           <Tooltip title={t_i18n('Force-unlock this transition (admin only). The background task will be orphaned.')}>

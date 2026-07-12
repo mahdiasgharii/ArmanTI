@@ -48,10 +48,10 @@ const AddThreatActorIndividualDemographicComponent: FunctionComponent<
   return (
     <div>
       <IconButton
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         onClick={handleOpen}
       >
-        <Add fontSize="small" />
+        <Add size={16} />
       </IconButton>
       <Drawer
         open={open}

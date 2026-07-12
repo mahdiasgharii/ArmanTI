@@ -124,12 +124,12 @@ const SettingsOrganizationUserCreation = ({
             />
           ) : (
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               aria-label="Add"
               onClick={() => setOpenAddUser(true)}
               size="small"
             >
-              <Add fontSize="small" />
+              <Add size={16} />
             </IconButton>
           )
       }

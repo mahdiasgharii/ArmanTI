@@ -86,9 +86,9 @@ const UserHistory: FunctionComponent<UserHistoryProps> = ({
                 component={Link}
                 to={`/dashboard/search/knowledge/?filters=${encodeURIComponent(technicalCreatorFilters)}`}
                 size="small"
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               >
-                <StorageOutlined fontSize="small" />
+                <StorageOutlined size={16} />
               </IconButton>
             </Tooltip>
             <Tooltip title={t_i18n('View all relationships created by user')}>
@@ -96,9 +96,9 @@ const UserHistory: FunctionComponent<UserHistoryProps> = ({
                 component={Link}
                 to={`/dashboard/data/relationships/?filters=${encodeURIComponent(technicalCreatorFilters)}`}
                 size="small"
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               >
-                <VectorRadius fontSize="small" />
+                <VectorRadius size={16} />
               </IconButton>
             </Tooltip>
           </div>

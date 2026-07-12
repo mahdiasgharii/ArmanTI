@@ -1091,7 +1091,7 @@ const StixCyberObservableCreation = ({
         {!speeddial && (
           <Fab
             onClick={handleOpen}
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             aria-label="Add"
             className={classes.createButtonContextual}
           >

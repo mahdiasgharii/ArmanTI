@@ -94,10 +94,10 @@ const EmailTemplateAttributesSidebar = () => {
                   <Tooltip title={t_i18n('Copy attribute name to clipboard')}>
                     <IconButton
                       aria-haspopup="true"
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       onClick={() => copyAttributeToClipboard(column.variableName ?? '')}
                     >
-                      <ContentCopy fontSize="small" />
+                      <ContentCopy size={16} />
                     </IconButton>
                   </Tooltip>
                 </div>
@@ -141,10 +141,10 @@ const EmailTemplateAttributesSidebar = () => {
                   <Tooltip title={t_i18n('Copy attribute name to clipboard')}>
                     <IconButton
                       aria-haspopup="true"
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       onClick={() => copyAttributeToClipboard(column.variableName ?? '')}
                     >
-                      <ContentCopy fontSize="small" />
+                      <ContentCopy size={16} />
                     </IconButton>
                   </Tooltip>
                 </div>

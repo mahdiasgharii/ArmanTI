@@ -209,8 +209,8 @@ const SyncEditionContainer = ({ synchronizer }) => {
               )}
             >
               <InformationOutline
-                fontSize="small"
-                color="primary"
+                size={16}
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 style={{ position: 'absolute', top: 10, right: 18 }}
               />
             </Tooltip>
@@ -325,7 +325,7 @@ const SyncEditionContainer = ({ synchronizer }) => {
           </Accordion>
           <div className={classes.buttons}>
             <Button
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               onClick={() => handleVerify(values)}
               classes={{ root: classes.button }}
             >

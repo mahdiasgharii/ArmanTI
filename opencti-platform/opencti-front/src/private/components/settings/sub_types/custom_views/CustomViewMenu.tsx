@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { UIEvent, useState } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import IconButton from '@common/button/IconButton';
 import { useFormatter } from '../../../../../components/i18n';
 import useDeletion from '../../../../../utils/hooks/useDeletion';
@@ -78,7 +79,7 @@ const CustomViewMenu = ({ data }: CustomViewMenuProps) => {
       <IconButton
         aria-label={t_i18n('Popover of custom view actions')}
         value="popover"
-        color="secondary"
+        style={{ color: 'var(--mui-palette-secondary-main)' }}
         id="custom-view-menu-button"
         aria-controls={open ? 'custom-view-menu' : undefined}
         aria-haspopup="true"
@@ -87,7 +88,7 @@ const CustomViewMenu = ({ data }: CustomViewMenuProps) => {
         variant="secondary"
         size="default"
       >
-        <MoreVert color="primary" fontSize="small" />
+        <MoreVert style={{ color: 'var(--mui-palette-primary-main)' }} size={16} />
       </IconButton>
       <Menu
         id="custom-view-kebab-menu"

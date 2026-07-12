@@ -81,7 +81,7 @@ const DataSourceDataComponentsComponent: FunctionComponent<{
                   >
                     <ListItemIcon>
                       <ListItemIcon>
-                        <SourceOutlined color="primary" />
+                        <SourceOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                       </ListItemIcon>
                     </ListItemIcon>
                     <ListItemText primary={dataComponent.name} />

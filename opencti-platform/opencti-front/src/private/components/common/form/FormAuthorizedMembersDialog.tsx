@@ -92,8 +92,8 @@ const FormAuthorizedMembersDialog = ({
             size="small"
           >
             <LockPersonOutlined
-              fontSize="small"
-              color={!disabledInDraft && isEnterpriseEdition ? lockColor : 'disabled'}
+              size={16}
+              style={{ color: !disabledInDraft && isEnterpriseEdition ? lockColor : 'disabled' }}
             />
           </ToggleButton>
         </EETooltip>

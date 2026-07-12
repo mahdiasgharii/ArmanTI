@@ -403,14 +403,14 @@ const ContainerAddStixCoreObjects = (props) => {
           variant="tertiary"
           size="small"
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
       );
     }
     return (
       <Fab
         onClick={() => setOpen(true)}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         aria-label="Add"
         className={withPadding ? classes.createButtonWithPadding : classes.createButton}
       >

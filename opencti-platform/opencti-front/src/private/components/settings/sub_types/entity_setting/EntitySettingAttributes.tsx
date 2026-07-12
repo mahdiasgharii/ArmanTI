@@ -74,17 +74,17 @@ const EntitySettingAttributes = ({
         <>
           {attributesMandatory.includes(data.name) ? (
             <CheckCircleOutlined
-              fontSize="small"
-              color={
+              size={16}
+              style={{ color: 
                 data.mandatoryType === 'customizable' ? 'success' : 'disabled'
-              }
+               }}
             />
           ) : (
             <DoNotDisturbOnOutlined
-              fontSize="small"
-              color={
+              size={16}
+              style={{ color: 
                 data.mandatoryType === 'customizable' ? 'primary' : 'disabled'
-              }
+               }}
             />
           )}
         </>
@@ -105,13 +105,13 @@ const EntitySettingAttributes = ({
         }
         return isDefaultValuesSet ? (
           <CheckCircleOutlined
-            fontSize="small"
-            color={data.editDefault ? 'success' : 'disabled'}
+            size={16}
+            style={{ color: data.editDefault ? 'success' : 'disabled' }}
           />
         ) : (
           <DoNotDisturbOnOutlined
-            fontSize="small"
-            color={data.editDefault ? 'primary' : 'disabled'}
+            size={16}
+            style={{ color: data.editDefault ? 'primary' : 'disabled' }}
           />
         );
       },

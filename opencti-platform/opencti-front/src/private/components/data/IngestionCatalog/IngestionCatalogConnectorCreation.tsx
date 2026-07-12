@@ -449,7 +449,7 @@ const IngestionCatalogConnectorCreation = ({
                     {
                       hasActiveManagers && (
                         <Button
-                        // color="secondary"
+                        // style={{ color: 'var(--mui-palette-secondary-main)' }}
                           style={{ marginLeft: theme.spacing(2) }}
                           onClick={handleCreate}
                           disabled={disableCreate}

@@ -243,7 +243,7 @@ const SecurityCoverageAttackPatterns = ({
                       style={{ width: '100%' }}
                     >
                       <ListItemIcon>
-                        <ItemIcon color={theme.palette.primary.main} type="attack-pattern" />
+                        <ItemIcon style={{ color: theme.palette.primary.main }} type="attack-pattern" />
                       </ListItemIcon>
                       <ListItemText
                         primary={(

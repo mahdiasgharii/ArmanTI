@@ -86,23 +86,23 @@ const WorkspaceHeaderTagManager = ({ tags, workspaceId, canEdit }: WorkspaceHead
         <>
           {tags.length > 1 ? (
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               aria-label="More"
               onClick={toggleTagDialog}
             >
-              <DotsHorizontalCircleOutline fontSize="small" />
+              <DotsHorizontalCircleOutline size={16} />
             </IconButton>
           ) : (
             <Tooltip title={isTagInputOpen ? t_i18n('Cancel') : t_i18n('Add tag')}>
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 aria-label="Add tag"
                 onClick={toggleTagInput}
               >
                 {isTagInputOpen ? (
-                  <CloseOutlined fontSize="small" />
+                  <CloseOutlined size={16} />
                 ) : (
-                  <AddOutlined fontSize="small" />
+                  <AddOutlined size={16} />
                 )}
               </IconButton>
             </Tooltip>

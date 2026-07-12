@@ -329,7 +329,7 @@ const StixCoreObjectQuickSubscription: FunctionComponent<
             <Typography variant="h6">{t_i18n('Subscribe')}</Typography>
             <Tag
               label={instanceTrigger ? t_i18n('Subscribed') : t_i18n('Not subscribed')}
-              color={instanceTrigger ? theme.palette.designSystem.tertiary.green[600] : undefined}
+              style={{ color: instanceTrigger ? theme.palette.designSystem.tertiary.green[600] : undefined }}
             />
           </Stack>
 
@@ -566,15 +566,15 @@ const StixCoreObjectQuickSubscription: FunctionComponent<
         title={tooltip}
         placement="bottom-start"
       >
-        <Badge badgeContent={triggersKnowledgeCount} color="primary">
+        <Badge badgeContent={triggersKnowledgeCount} style={{ color: 'var(--mui-palette-primary-main)' }}>
           <ToggleButton
             onClick={() => !disabledInDraft && handleOpen()}
             value="quick-subscription"
             size="small"
           >
             <NotificationsOutlined
-              fontSize="small"
-              color={disabledInDraft ? 'disabled' : 'primary'}
+              size={16}
+              style={{ color: disabledInDraft ? 'disabled' : 'primary' }}
             />
           </ToggleButton>
         </Badge>

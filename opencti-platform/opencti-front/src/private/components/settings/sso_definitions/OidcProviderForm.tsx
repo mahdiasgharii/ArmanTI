@@ -496,7 +496,7 @@ const OidcProviderForm = ({
                             <Tooltip
                               title={t_i18n('The callback URL does not contain the expected identifier path. The authentication callback will not work unless the URL includes "/auth/{identifier}/callback" where {identifier} matches the provider identifier.')}
                             >
-                              <ErrorOutlined color="error" sx={{ mb: 0.5, fontSize: 20 }} />
+                              <ErrorOutlined size={20} style={{ marginBottom: 2, color: 'var(--mui-palette-error-main)' }} />
                             </Tooltip>
                           )}
                         </Box>
@@ -611,12 +611,12 @@ const OidcProviderForm = ({
                             <Typography variant="body2" color="textSecondary" style={{ flex: 1 }}>{t_i18n('Key')}</Typography>
                             <Typography variant="body2" color="textSecondary" style={{ flex: 1 }}>{t_i18n('Value')}</Typography>
                             <IconButton
-                              color="primary"
+                              style={{ color: 'var(--mui-palette-primary-main)' }}
                               aria-label={t_i18n('Add')}
                               size="default"
                               onClick={() => push({ type: 'String', key: '', value: '' })}
                             >
-                              <Add fontSize="small" color="primary" />
+                              <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                             </IconButton>
                           </div>
                           {values.extra_conf.length === 0 && (
@@ -660,12 +660,12 @@ const OidcProviderForm = ({
                                 fullWidth
                               />
                               <IconButton
-                                color="primary"
+                                style={{ color: 'var(--mui-palette-primary-main)' }}
                                 aria-label={t_i18n('Delete')}
                                 onClick={() => remove(index)}
                                 style={{ marginTop: 10 }}
                               >
-                                <Delete fontSize="small" />
+                                <Delete size={16} />
                               </IconButton>
                             </div>
                           ))}

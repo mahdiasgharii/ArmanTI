@@ -706,7 +706,7 @@ const StixNestedRefRelationshipCreationFromEntity = ({
                     <div className={classes.icon}>
                       <ItemIcon
                         type={fromEntityType}
-                        color={itemColor(fromEntityType)}
+                        style={{ color: itemColor(fromEntityType) }}
                         size="small"
                       />
                     </div>
@@ -721,7 +721,7 @@ const StixNestedRefRelationshipCreationFromEntity = ({
                   </div>
                 </div>
                 <div className={classes.middle} style={{ paddingTop: 25 }}>
-                  <ArrowRightAlt fontSize="large" />
+                  <ArrowRightAlt size={24} />
                 </div>
                 <div
                   className={classes.item}
@@ -742,7 +742,7 @@ const StixNestedRefRelationshipCreationFromEntity = ({
                     <div className={classes.icon}>
                       <ItemIcon
                         type={toEntityType}
-                        color={itemColor(toEntityType)}
+                        style={{ color: itemColor(toEntityType) }}
                         size="small"
                       />
                     </div>
@@ -850,17 +850,17 @@ const StixNestedRefRelationshipCreationFromEntity = ({
     <>
       {variant === 'inLine' ? (
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Label"
           onClick={handleOpen}
           size="small"
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
       ) : (
         <Fab
           onClick={handleOpen}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Add"
           className={classes.createButton}
         >

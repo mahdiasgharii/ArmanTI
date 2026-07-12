@@ -36,7 +36,7 @@ class AddSoftwares extends Component {
     return (
       <div>
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Add"
           onClick={this.handleOpen.bind(this)}
         >

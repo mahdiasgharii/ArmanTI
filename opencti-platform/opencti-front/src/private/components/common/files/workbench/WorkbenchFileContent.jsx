@@ -1953,7 +1953,7 @@ const WorkbenchFileContentComponent = ({
                       </Button>
                       <Button
                         startIcon={<DoubleArrow />}
-                        // color="secondary"
+                        // style={{ color: 'var(--mui-palette-secondary-main)' }}
                         onClick={submitForm}
                         disabled={isSubmitting}
                         classes={{ root: classes.button }}
@@ -2223,7 +2223,7 @@ const WorkbenchFileContentComponent = ({
                 {t_i18n('Cancel')}
               </Button>
               <Button
-                color="secondary"
+                style={{ color: 'var(--mui-palette-secondary-main)' }}
                 onClick={() => submitForm(false)}
                 disabled={isSubmitting}
                 classes={{ root: classes.button }}
@@ -2401,7 +2401,7 @@ const WorkbenchFileContentComponent = ({
                         {t_i18n('Cancel')}
                       </Button>
                       <Button
-                        // color="secondary"
+                        // style={{ color: 'var(--mui-palette-secondary-main)' }}
                         onClick={submitForm}
                         disabled={isSubmitting}
                         classes={{ root: classes.button }}
@@ -2681,7 +2681,7 @@ const WorkbenchFileContentComponent = ({
                         {t_i18n('Cancel')}
                       </Button>
                       <Button
-                        // color="secondary"
+                        // style={{ color: 'var(--mui-palette-secondary-main)' }}
                         onClick={submitForm}
                         disabled={isSubmitting}
                         classes={{ root: classes.button }}
@@ -3320,7 +3320,7 @@ const WorkbenchFileContentComponent = ({
         </List>
         <Fab
           onClick={() => handleOpenEntity(null, null)}
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           aria-label="Add"
           className={classes.createButton}
         >
@@ -3561,7 +3561,7 @@ const WorkbenchFileContentComponent = ({
         </List>
         <Fab
           onClick={() => handleOpenObservable(null, null)}
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           aria-label="Add"
           className={classes.createButton}
         >
@@ -4104,7 +4104,7 @@ const WorkbenchFileContentComponent = ({
         </List>
         <Fab
           onClick={() => handleOpenContainer(null, null)}
-          color="secondary"
+          style={{ color: 'var(--mui-palette-secondary-main)' }}
           aria-label="Add"
           className={classes.createButton}
         >
@@ -4305,7 +4305,7 @@ const WorkbenchFileContentComponent = ({
                   {t_i18n('Cancel')}
                 </Button>
                 <Button
-                  // color="secondary"
+                  // style={{ color: 'var(--mui-palette-secondary-main)' }}
                   onClick={submitForm}
                   disabled={isSubmitting || connectors.filter((n) => n.active).length === 0}
                 >

@@ -27,13 +27,13 @@ const ListFiltersWithoutLocalStorage = ({
   type,
 }: ListFiltersWithoutLocalStorageProps) => {
   const { t_i18n } = useFormatter();
-  let icon = <FilterListOutlined fontSize="medium" />;
+  let icon = <FilterListOutlined size={20} />;
   let tooltip = t_i18n('Filters');
   if (type === 'from') {
-    icon = <RayStartArrow fontSize="medium" />;
+    icon = <RayStartArrow size={20} />;
     tooltip = t_i18n('Dynamic source filters');
   } else if (type === 'to') {
-    icon = <RayEndArrow fontSize="medium" />;
+    icon = <RayEndArrow size={20} />;
     tooltip = t_i18n('Dynamic target filters');
   }
   return (

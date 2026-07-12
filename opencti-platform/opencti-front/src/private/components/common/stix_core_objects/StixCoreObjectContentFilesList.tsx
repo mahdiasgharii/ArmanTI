@@ -150,11 +150,11 @@ const StixCoreObjectContentFilesList = ({
                             <IconButton
                               onClick={(e) => handleDisseminate(e, file)}
                               size="small"
-                              color={isEnterpriseEdition ? 'primary' : 'ee'}
+                              style={{ color: isEnterpriseEdition ? 'primary' : 'ee' }}
                               aria-label="disseminate"
                               disabled={!isEnterpriseEdition}
                             >
-                              <SendOutlined fontSize="small" />
+                              <SendOutlined size={16} />
                             </IconButton>
                           </EETooltip>
                         </>
@@ -163,10 +163,10 @@ const StixCoreObjectContentFilesList = ({
                     <IconButton
                       onClick={(e) => openPopover(e, file)}
                       aria-haspopup="true"
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       size="small"
                     >
-                      <MoreVert fontSize="small" />
+                      <MoreVert size={16} />
                     </IconButton>
                   </>
                 )}

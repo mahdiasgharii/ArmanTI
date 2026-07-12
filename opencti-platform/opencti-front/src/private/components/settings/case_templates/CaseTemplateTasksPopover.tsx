@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import Drawer from '@components/common/drawer/Drawer';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';
@@ -134,7 +135,7 @@ const CaseTemplateTasksPopover: FunctionComponent<CaseTemplateTasksPopoverProps>
 
   return (
     <div className={classes.container}>
-      <IconButton onClick={handleOpen} aria-haspopup="true" color="primary">
+      <IconButton onClick={handleOpen} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
         <MoreVert />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

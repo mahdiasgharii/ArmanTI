@@ -105,9 +105,9 @@ const Triggers: FunctionComponent<TriggersProps> = ({
                   aria-label="Add"
                   onClick={() => setOpenLive(true)}
                   size="small"
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                 >
-                  <CampaignOutlined fontSize="small" />
+                  <CampaignOutlined size={16} />
                 </IconButton>
               </Tooltip>
               <TriggerLiveCreation
@@ -121,9 +121,9 @@ const Triggers: FunctionComponent<TriggersProps> = ({
                   aria-label="Add"
                   onClick={() => setOpenDigest(true)}
                   size="small"
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                 >
-                  <BackupTableOutlined fontSize="small" />
+                  <BackupTableOutlined size={16} />
                 </IconButton>
               </Tooltip>
             </div>

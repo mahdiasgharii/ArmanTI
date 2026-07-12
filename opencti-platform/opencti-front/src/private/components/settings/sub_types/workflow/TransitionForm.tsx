@@ -200,7 +200,7 @@ const TransitionForm = () => {
             label={(
               <Box style={{ display: 'flex', alignItems: 'center' }}>
                 {t_i18n('Validate draft')}
-                <Icon color="primary" fontSize="small" style={{ marginLeft: 8 }}><FlagOutlined /></Icon>
+                <Icon style={{ color: 'var(--mui-palette-primary-main)' }} size={16} style={{ marginLeft: 8 }}><FlagOutlined /></Icon>
               </Box>
             )}
           />

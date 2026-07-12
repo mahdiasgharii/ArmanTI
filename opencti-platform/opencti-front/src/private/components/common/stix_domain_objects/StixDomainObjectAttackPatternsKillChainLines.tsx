@@ -151,7 +151,7 @@ const StixDomainObjectAttackPatternsKillChainLines: FunctionComponent<StixDomain
                   onClick={() => handleToggleLine(element.id)}
                 >
                   <ListItemIcon>
-                    <Launch color="primary" role="img" />
+                    <Launch style={{ color: 'var(--mui-palette-primary-main)' }} role="img" />
                   </ListItemIcon>
                   <ListItemText primary={`[${element.kill_chain_name}]  ${element.phase_name}`} />
                 </ListItemButton>
@@ -203,7 +203,7 @@ const StixDomainObjectAttackPatternsKillChainLines: FunctionComponent<StixDomain
                               }
                             >
                               <ListItemIcon>
-                                <LockPattern color="primary" role="img" />
+                                <LockPattern style={{ color: 'var(--mui-palette-primary-main)' }} role="img" />
                               </ListItemIcon>
                               <ListItemText
                                 primary={(
@@ -252,7 +252,7 @@ const StixDomainObjectAttackPatternsKillChainLines: FunctionComponent<StixDomain
                                         >
                                           <ListItemIcon>
                                             <ProgressWrench
-                                              color="primary"
+                                              style={{ color: 'var(--mui-palette-primary-main)' }}
                                               role="img"
                                             />
                                           </ListItemIcon>

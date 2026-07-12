@@ -161,10 +161,10 @@ const WorkbenchFileLineComponent = ({ classes, file, dense, directDownload, nest
                       file.id,
                     )}`}
                     aria-haspopup="true"
-                    color={nested ? 'inherit' : 'primary'}
+                    style={{ color: nested ? 'inherit' : 'primary' }}
                     size="small"
                   >
-                    <GetAppOutlined fontSize="small" />
+                    <GetAppOutlined size={16} />
                   </IconButton>
                 </span>
               </Tooltip>
@@ -173,11 +173,11 @@ const WorkbenchFileLineComponent = ({ classes, file, dense, directDownload, nest
               <span>
                 <IconButton
                   disabled={isProgress}
-                  color={nested ? 'inherit' : 'primary'}
+                  style={{ color: nested ? 'inherit' : 'primary' }}
                   onClick={handleOpenDelete}
                   size="small"
                 >
-                  <DeleteOutlined fontSize="small" />
+                  <DeleteOutlined size={16} />
                 </IconButton>
               </span>
             </Tooltip>
@@ -194,17 +194,17 @@ const WorkbenchFileLineComponent = ({ classes, file, dense, directDownload, nest
             {isProgress && (
               <CircularProgress
                 size={20}
-                color={nested ? 'primary' : 'inherit'}
+                style={{ color: nested ? 'primary' : 'inherit' }}
               />
             )}
             {!isProgress && (isFail || isOutdated) && (
               <WarningOutlined
-                color={nested ? 'primary' : 'inherit'}
+                style={{ color: nested ? 'primary' : 'inherit' }}
                 style={{ fontSize: 15, color: theme.palette.error.main }}
               />
             )}
             {!isProgress && !isFail && !isOutdated && (
-              <FileOutline color={nested ? 'primary' : 'inherit'} />
+              <FileOutline style={{ color: nested ? 'primary' : 'inherit' }} />
             )}
           </ListItemIcon>
           <ListItemText
@@ -223,7 +223,7 @@ const WorkbenchFileLineComponent = ({ classes, file, dense, directDownload, nest
                     <Chip
                       key={index}
                       classes={{ root: classes.chipInList }}
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       variant="outlined"
                       label={label.trim()}
                     />

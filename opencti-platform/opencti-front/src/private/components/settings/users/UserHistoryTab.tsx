@@ -135,7 +135,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+          {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
           <ItemIcon type={eventScope} size="small" />
         </Avatar>
       );
@@ -153,7 +153,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          <Merge fontSize="small" />
+          <Merge size={16} />
         </Avatar>
       );
     }
@@ -173,7 +173,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+          {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
           <ItemIcon type={eventScope} size="small" />
         </Avatar>
       );
@@ -191,7 +191,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+          {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
           <ItemIcon type={eventScope} size="small" />
         </Avatar>
       );
@@ -209,7 +209,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          <LinkVariantPlus fontSize="small" />
+          <LinkVariantPlus size={16} />
         </Avatar>
       );
     }
@@ -226,7 +226,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
           }}
           onClick={() => commit && handleOpen()}
         >
-          <LinkVariantRemove fontSize="small" />
+          <LinkVariantRemove size={16} />
         </Avatar>
       );
     }
@@ -241,7 +241,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
             color: theme.palette.text?.primary,
           }}
         >
-          <DeleteOutlined fontSize="small" />
+          <DeleteOutlined size={16} />
         </Avatar>
       );
     }
@@ -257,7 +257,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
             cursor: commit ? 'pointer' : 'auto',
           }}
         >
-          {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+          {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
           <ItemIcon type={eventScope} size="small" />
         </Avatar>
       );
@@ -274,7 +274,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
             cursor: commit ? 'pointer' : 'auto',
           }}
         >
-          {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+          {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
           <ItemIcon type={eventScope} size="small" />
         </Avatar>
       );
@@ -290,7 +290,7 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
         }}
         onClick={() => commit && handleOpen()}
       >
-        {/* <ItemIcon type={eventScope} color="inherit" size="small" /> */}
+        {/* <ItemIcon type={eventScope} style={{ color: 'currentColor' }} size="small" /> */}
         <ItemIcon type={eventScope} size="small" />
       </Avatar>
     );
@@ -315,18 +315,18 @@ const UserHistoryTab: FunctionComponent<UserHistoryTabProps> = ({
               <IconButton
                 component={Link}
                 to={`/dashboard/search/knowledge/?filters=${encodeURIComponent(technicalCreatorFilters)}`}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               >
-                <StorageOutlined fontSize="small" />
+                <StorageOutlined size={16} />
               </IconButton>
             </Tooltip>,
             <Tooltip title={t_i18n('View all relationships created by user')} key="relations">
               <IconButton
                 component={Link}
                 to={`/dashboard/data/relationships/?filters=${encodeURIComponent(technicalCreatorFilters)}`}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
               >
-                <VectorRadius fontSize="small" />
+                <VectorRadius size={16} />
               </IconButton>
             </Tooltip>,
           ]}

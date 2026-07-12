@@ -1,11 +1,12 @@
+import { ExternalLink as OpenInNewOutlined, MoreVertical as MoreVert } from 'lucide-react';
 import React, { FunctionComponent, useState } from 'react';
 import { graphql } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import OpenInNewOutlined from '@mui/icons-material/OpenInNewOutlined';
+;
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import IconButton from '@common/button/IconButton';
 import { PopoverProps } from '@mui/material/Popover';
 import { useFormatter } from '../../../../components/i18n';
@@ -109,7 +110,7 @@ const StreamCollectionPopover: FunctionComponent<StreamCollectionPopoverProps> =
         onClick={handleOpen}
         aria-haspopup="true"
         style={{ marginTop: 3 }}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>
@@ -133,7 +134,7 @@ const StreamCollectionPopover: FunctionComponent<StreamCollectionPopoverProps> =
         </Security>
         <MenuItem onClick={handleOpenStream} disabled={!streamCollection.stream_live}>
           <ListItemIcon>
-            <OpenInNewOutlined fontSize="small" />
+            <OpenInNewOutlined size={16} />
           </ListItemIcon>
           <ListItemText>{t_i18n('Open stream')}</ListItemText>
         </MenuItem>

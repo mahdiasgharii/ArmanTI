@@ -10,7 +10,7 @@ import { MoreVertical as MoreVert } from 'lucide-react';
 import IngestionCsvPopover from '@components/data/ingestionCsv/IngestionCsvPopover';
 import { IngestionCsvLinesPaginationQuery$variables } from '@components/data/ingestionCsv/__generated__/IngestionCsvLinesPaginationQuery.graphql';
 import { IngestionCsvLine_node$key } from '@components/data/ingestionCsv/__generated__/IngestionCsvLine_node.graphql';
-import TableViewIcon from '@mui/icons-material/TableView';
+import { TableProperties as TableViewIcon } from 'lucide-react';
 import ItemBoolean from '../../../../components/ItemBoolean';
 import { useFormatter } from '../../../../components/i18n';
 import { DataColumns } from '../../../../components/list_lines';
@@ -143,7 +143,7 @@ export const IngestionCsvLineDummy = ({ dataColumns }: { dataColumns: DataColumn
     <ListItem
       classes={{ root: classes.item }}
       divider={true}
-      secondaryAction={<MoreVert classes={classes.itemIconDisabled} />}
+      secondaryAction={<MoreVert className={classes.itemIconDisabled} />}
     >
       <ListItemIcon classes={{ root: classes.itemIcon }}>
         <Skeleton

@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
 import { MoreVertical as MoreVert } from 'lucide-react';
 import IngestionJsonPopover from '@components/data/ingestionJson/IngestionJsonPopover';
-import TableViewIcon from '@mui/icons-material/TableView';
+import { TableProperties as TableViewIcon } from 'lucide-react';
 import { IngestionJsonLine_node$key } from '@components/data/ingestionJson/__generated__/IngestionJsonLine_node.graphql';
 import { IngestionJsonLinesPaginationQuery$variables } from '@components/data/ingestionJson/__generated__/IngestionJsonLinesPaginationQuery.graphql';
 import { Link } from 'react-router-dom';
@@ -135,7 +135,7 @@ export const IngestionJsonLineDummy = ({ dataColumns }: { dataColumns: DataColum
     <ListItem
       classes={{ root: classes.item }}
       divider={true}
-      secondaryAction={<MoreVert classes={classes.itemIconDisabled} />}
+      secondaryAction={<MoreVert className={classes.itemIconDisabled} />}
     >
       <ListItemIcon classes={{ root: classes.itemIcon }}>
         <Skeleton

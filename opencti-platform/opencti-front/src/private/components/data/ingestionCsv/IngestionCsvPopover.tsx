@@ -1,3 +1,4 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
@@ -6,7 +7,7 @@ import { IngestionCsvLinesPaginationQuery$variables } from '@components/data/ing
 import { IngestionCsvCreationContainer } from '@components/data/ingestionCsv/IngestionCsvCreation';
 import { ingestionCsvEditionPatch } from '@components/data/ingestionCsv/IngestionCsvEdition';
 import IngestionCsvEditionContainer, { ingestionCsvEditionContainerQuery } from '@components/data/ingestionCsv/IngestionCsvEditionContainer';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';
@@ -311,7 +312,7 @@ const IngestionCsvPopover: FunctionComponent<IngestionCsvPopoverProps> = ({
             </Button>
             <Button
               onClick={submitStart}
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               disabled={starting}
             >
               {t_i18n('Confirm')}
@@ -335,7 +336,7 @@ const IngestionCsvPopover: FunctionComponent<IngestionCsvPopoverProps> = ({
             </Button>
             <Button
               onClick={submitStop}
-              color="secondary"
+              style={{ color: 'var(--mui-palette-secondary-main)' }}
               disabled={stopping}
             >
               {t_i18n('Confirm')}

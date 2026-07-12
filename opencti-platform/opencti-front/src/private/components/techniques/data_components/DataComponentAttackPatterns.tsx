@@ -94,7 +94,7 @@ const DataComponentAttackPatternsComponent: FunctionComponent<{
                   >
                     <ListItemIcon>
                       <ListItemIcon>
-                        <LockPattern color="primary" />
+                        <LockPattern style={{ color: 'var(--mui-palette-primary-main)' }} />
                       </ListItemIcon>
                     </ListItemIcon>
                     <ListItemText primary={attackPattern.name} />

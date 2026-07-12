@@ -114,7 +114,7 @@ const NewsFeedToastManager: FunctionComponent = () => {
           <IconButton
             onClick={handleDismissAll}
             aria-label={t_i18n('Dismiss all')}
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             sx={{ ...glassStyle, padding: '10px' }}
           >
             <Close sx={{ fontSize: 14, strokeWidth: 2, stroke: 'currentColor' }} />
@@ -149,10 +149,10 @@ const NewsFeedToastManager: FunctionComponent = () => {
               target="_blank"
               rel="noopener noreferrer"
               size="small"
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               aria-label={t_i18n('View all on XTM Hub')}
             >
-              <OpenInNewOutlined fontSize="small" />
+              <OpenInNewOutlined size={16} />
             </IconButton>
           </Tooltip>
         </Box>

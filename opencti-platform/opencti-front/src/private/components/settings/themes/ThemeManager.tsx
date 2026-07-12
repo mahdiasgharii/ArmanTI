@@ -178,13 +178,13 @@ const ThemeManager: FunctionComponent<ThemeManagerProps> = ({
           <Box>
             <Tooltip title={t_i18n('Create a custom theme')}>
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 aria-label={t_i18n('Create a custom theme')}
                 onClick={handleOpenCreation}
                 size="small"
                 data-testid="create-theme-btn"
               >
-                <Add fontSize="small" />
+                <Add size={16} />
               </IconButton>
             </Tooltip>
 

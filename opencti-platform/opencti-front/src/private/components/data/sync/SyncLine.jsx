@@ -252,7 +252,7 @@ class SyncDummyComponent extends Component {
         classes={{ root: classes.item }}
         divider={true}
         secondaryAction={
-          <MoreVert classes={classes.itemIconDisabled} />
+          <MoreVert className={classes.itemIconDisabled} />
         }
       >
         <ListItemIcon classes={{ root: classes.itemIcon }}>

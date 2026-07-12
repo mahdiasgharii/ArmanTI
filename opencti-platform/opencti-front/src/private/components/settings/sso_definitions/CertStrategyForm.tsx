@@ -285,7 +285,7 @@ const CertStrategyForm = ({ onCancel }: CertStrategyFormProps) => {
                           '&.Mui-disabled': { color: 'warning.main', opacity: 1 },
                         }}
                       >
-                        <WarningAmberOutlined fontSize="small" />
+                        <WarningAmberOutlined size={16} />
                       </IconButton>
                     </span>
                   </Tooltip>

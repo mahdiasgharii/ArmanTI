@@ -28,13 +28,13 @@ const DraftWorkspaceViewer = ({ entityId }: DraftWorkspaceViewerProps) => {
           <>
             {canAskImport || canCreateKnowledgeInDraft ? (
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 aria-label="Add"
                 onClick={() => setOpenCreate(true)}
                 size="small"
                 variant="tertiary"
               >
-                <Add fontSize="small" />
+                <Add size={16} />
               </IconButton>
             ) : (
               <span />

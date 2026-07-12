@@ -105,7 +105,7 @@ const UserEditionOrganizationsAdminComponent = ({ user }) => {
             divider={true}
             secondaryAction={<Checkbox onChange={(event) => handleToggle(organization.id, event)} checked={isAdmin} />}
           >
-            <ListItemIcon color="primary">
+            <ListItemIcon style={{ color: 'var(--mui-palette-primary-main)' }}>
               <AccountBalanceOutlined />
             </ListItemIcon>
             <ListItemText primary={organization.name} secondary={organization.description ?? ''} />

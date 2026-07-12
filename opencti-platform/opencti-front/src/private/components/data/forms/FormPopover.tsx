@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { FunctionComponent, useState } from 'react';
 import { graphql, useQueryLoader } from 'react-relay';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import makeStyles from '@mui/styles/makeStyles';
 import { FormLinesPaginationQuery$variables } from '@components/data/forms/__generated__/FormLinesPaginationQuery.graphql';
 import { ConnectionHandler } from 'relay-runtime';
@@ -121,7 +122,7 @@ const FormPopover: FunctionComponent<FormPopoverProps> = ({
       <IconButton
         onClick={handleOpen}
         aria-haspopup="true"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

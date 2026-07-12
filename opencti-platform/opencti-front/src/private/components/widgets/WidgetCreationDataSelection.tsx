@@ -125,7 +125,7 @@ const WidgetCreationDataSelection = () => {
                 }}
                 onClick={() => handleRemoveDataSelection(i)}
               >
-                <CancelOutlined fontSize="small" />
+                <CancelOutlined size={16} />
               </IconButton>
 
               <Stack direction="row" sx={{ width: '100%' }}>
@@ -144,8 +144,8 @@ const WidgetCreationDataSelection = () => {
                       )}
                     >
                       <InformationOutline
-                        fontSize="small"
-                        color="primary"
+                        size={16}
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         style={{ marginRight: 5, marginTop: 20 }}
                       />
                     </Tooltip>
@@ -168,7 +168,7 @@ const WidgetCreationDataSelection = () => {
         <div style={{ display: 'flex' }}>
           <IconButton
             disabled={getCurrentDataSelectionLimit(type) === dataSelection.length}
-            color="secondary"
+            style={{ color: 'var(--mui-palette-secondary-main)' }}
             size="small"
             onClick={() => handleAddDataSelection('entities')}
             style={{
@@ -177,7 +177,7 @@ const WidgetCreationDataSelection = () => {
               flex: 1,
             }}
           >
-            <AddOutlined fontSize="small" />
+            <AddOutlined size={16} />
           </IconButton>
         </div>
       )}
@@ -195,11 +195,11 @@ const WidgetCreationDataSelection = () => {
               marginRight: 20,
             }}
           >
-            <AddOutlined fontSize="small" /> {t_i18n('Relationships')}
+            <AddOutlined size={16} /> {t_i18n('Relationships')}
           </Button>
           <Button
             disabled={getCurrentDataSelectionLimit(type) === dataSelection.length}
-            color="secondary"
+            style={{ color: 'var(--mui-palette-secondary-main)' }}
             size="small"
             onClick={() => handleAddDataSelection('entities')}
             style={{
@@ -208,7 +208,7 @@ const WidgetCreationDataSelection = () => {
               flex: 1,
             }}
           >
-            <AddOutlined fontSize="small" /> {t_i18n('Entities')}
+            <AddOutlined size={16} /> {t_i18n('Entities')}
           </Button>
         </Stack>
       )}
@@ -220,7 +220,7 @@ const WidgetCreationDataSelection = () => {
               getCurrentDataSelectionLimit(type) === dataSelection.length
               || getCurrentCategory(type) === 'distribution'
             }
-            color="secondary"
+            style={{ color: 'var(--mui-palette-secondary-main)' }}
             size="small"
             onClick={() => handleAddDataSelection('audits')}
             style={{
@@ -229,7 +229,7 @@ const WidgetCreationDataSelection = () => {
               flex: 1,
             }}
           >
-            <AddOutlined fontSize="small" />
+            <AddOutlined size={16} />
           </Button>
         </Stack>
       )}
@@ -237,7 +237,7 @@ const WidgetCreationDataSelection = () => {
       <div style={{ marginTop: 20, textAlign: 'center' }}>
         <Button
           disabled={!isDataSelectionFiltersValid()}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           style={{
             marginTop: 20,
             textAlign: 'center',

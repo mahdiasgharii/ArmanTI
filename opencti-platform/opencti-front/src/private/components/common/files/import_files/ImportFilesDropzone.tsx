@@ -76,7 +76,7 @@ const ImportFilesDropzone = ({
         transition: 'height 0.2s, background 0.1s, border 0.1s, padding 0.1s',
       }}
     >
-      <CloudUploadOutlined color="primary" fontSize="large" />
+      <CloudUploadOutlined style={{ color: 'var(--mui-palette-primary-main)' }} size={24} />
       <Typography variant="h3" sx={{ marginBlock: 2 }}>
         {t_i18n('Drag and drop files to import')}
       </Typography>

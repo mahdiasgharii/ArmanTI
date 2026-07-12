@@ -181,7 +181,7 @@ class WorkbenchFileToolbar extends Component {
             <Toolbar style={{ minHeight: 54 }}>
               <Typography
                 className={classes.title}
-                color="inherit"
+                style={{ color: 'currentColor' }}
                 variant="subtitle1"
               >
                 <span
@@ -239,7 +239,7 @@ class WorkbenchFileToolbar extends Component {
                         {t('Cancel')}
                       </Button>
                       <Button
-                        color="secondary"
+                        style={{ color: 'var(--mui-palette-secondary-main)' }}
                         onClick={submitForm}
                         disabled={isSubmitting}
                         classes={{ root: classes.button }}
@@ -266,7 +266,7 @@ class WorkbenchFileToolbar extends Component {
                   {t('Cancel')}
                 </Button>
                 <Button
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   onClick={() => {
                     this.handleCloseDelete();
                     submitDelete();

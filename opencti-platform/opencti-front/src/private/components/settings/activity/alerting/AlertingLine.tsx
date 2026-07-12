@@ -100,9 +100,9 @@ export const AlertingLineComponent: FunctionComponent<AlertingLineProps> = ({
     <ListItem classes={{ root: classes.item }} divider={true}>
       <ListItemIcon>
         {data.trigger_type === 'live' ? (
-          <CampaignOutlined color="warning" />
+          <CampaignOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
         ) : (
-          <BackupTableOutlined color="secondary" />
+          <BackupTableOutlined style={{ color: 'var(--mui-palette-secondary-main)' }} />
         )}
       </ListItemIcon>
       <ListItemText
@@ -113,7 +113,7 @@ export const AlertingLineComponent: FunctionComponent<AlertingLineProps> = ({
               style={{ width: dataColumns.trigger_type.width }}
             >
               <Tag
-                color={data.trigger_type === 'live' ? theme.palette.severity.high : theme.palette.severity.low}
+                style={{ color: data.trigger_type === 'live' ? theme.palette.severity.high : theme.palette.severity.low }}
                 label={
                   data.trigger_type === 'live'
                     ? t_i18n('Live trigger')

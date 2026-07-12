@@ -140,12 +140,12 @@ const StixSightingRelationshipSharing: FunctionComponent<
         <Label action={(
           <EETooltip title={disabledInDraft ? t_i18n('Not available in draft') : t_i18n('Share with an organization')}>
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               aria-label="Label"
               onClick={isEnterpriseEdition && !disabledInDraft ? handleOpenSharing : () => {}}
               size="small"
             >
-              <BankPlus fontSize="small" color={isEnterpriseEdition && !disabledInDraft ? 'primary' : 'disabled'} />
+              <BankPlus size={16} style={{ color: isEnterpriseEdition && !disabledInDraft ? 'primary' : 'disabled' }} />
             </IconButton>
           </EETooltip>
         )}
@@ -158,7 +158,7 @@ const StixSightingRelationshipSharing: FunctionComponent<
           {edges.map((edge) => (
             <Tooltip key={edge.id} title={edge.name}>
               <Tag
-                icon={<AccountBalanceOutlined fontSize="small" />}
+                icon={<AccountBalanceOutlined size={16} />}
                 label={truncate(edge.name, 15)}
                 onDelete={() => removeOrganization(edge.id)}
               />

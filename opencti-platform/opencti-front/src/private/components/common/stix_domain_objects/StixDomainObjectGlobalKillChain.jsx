@@ -143,7 +143,7 @@ class StixDomainObjectGlobalKillChainComponent extends Component {
                     )}
                   >
                     <ListItemIcon>
-                      <Launch color="primary" role="img" />
+                      <Launch style={{ color: 'var(--mui-palette-primary-main)' }} role="img" />
                     </ListItemIcon>
                     <ListItemText primary={stixRelationship.phase_name} />
                   </ListItemButton>

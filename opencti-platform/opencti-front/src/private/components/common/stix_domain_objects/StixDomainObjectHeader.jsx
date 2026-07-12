@@ -650,12 +650,12 @@ const StixDomainObjectHeader = (props) => {
                 )}
               >
                 <Button
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   aria-label="Alias"
                   onClick={handleToggleOpenAliases}
                   size="small"
                   variant="tertiary"
-                  startIcon={openAlias ? <Close fontSize="small" /> : <Add fontSize="small" />}
+                  startIcon={openAlias ? <Close size={16} /> : <Add size={16} />}
                 >
                   {t_i18n('add alias')}
                 </Button>

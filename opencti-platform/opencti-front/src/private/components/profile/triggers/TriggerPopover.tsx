@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { graphql, useQueryLoader } from 'react-relay';
 import Tooltip from '@mui/material/Tooltip';
 import Drawer from '@components/common/drawer/Drawer';
@@ -71,7 +72,7 @@ const TriggerPopover = ({
           aria-haspopup="true"
           style={{ marginTop: 3 }}
           disabled={disabled}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert />
         </IconButton>

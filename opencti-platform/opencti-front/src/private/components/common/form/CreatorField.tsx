@@ -83,9 +83,9 @@ const CreatorField: FunctionComponent<CreatorFieldProps> = ({
               component={Link}
               to={`/dashboard/settings/accesses/users/${node.id}`}
               sx={{ marginLeft: 1 }}
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             >
-              <OpenInNewOutlined fontSize="small" />
+              <OpenInNewOutlined size={16} />
             </IconButton>
           </span>
         );

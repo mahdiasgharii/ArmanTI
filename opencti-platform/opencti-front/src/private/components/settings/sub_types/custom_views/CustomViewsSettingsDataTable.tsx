@@ -1,5 +1,5 @@
 import { graphql } from 'relay-runtime';
-import Insights from '@mui/icons-material/Insights';
+import { Lightbulb as Insights } from 'lucide-react';
 import useQueryLoading from '../../../../../utils/hooks/useQueryLoading';
 import DataTable from '../../../../../components/dataGrid/DataTable';
 import { DataTableVariant } from '../../../../../components/dataGrid/dataTableTypes';

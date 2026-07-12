@@ -172,7 +172,7 @@ const ThemePopover: FunctionComponent<ThemePopoverProps> = ({
           onClick={handleOpen}
           aria-haspopup="true"
           data-testid={`${theme.name}-popover`}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert />
         </IconButton>

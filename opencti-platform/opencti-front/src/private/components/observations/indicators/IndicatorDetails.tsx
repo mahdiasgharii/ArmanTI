@@ -76,7 +76,7 @@ const IndicatorDetailsComponent: FunctionComponent<IndicatorDetailsComponentProp
                     'This score is updated with the decay rule applied to this indicator.',
                   )}
                 >
-                  <InformationOutline fontSize="small" color="primary" />
+                  <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </Tooltip>
               )}
             >
@@ -92,7 +92,7 @@ const IndicatorDetailsComponent: FunctionComponent<IndicatorDetailsComponentProp
                     variant="secondary"
                     onClick={openLifecycleDialog}
                     startIcon={<TroubleshootOutlined />}
-                    color={indicator.decay_exclusion_applied_rule ? 'warn' : 'primary'}
+                    style={{ color: indicator.decay_exclusion_applied_rule ? 'warn' : 'primary' }}
                   >
                     {t_i18n('Lifecycle')}
                   </Button>

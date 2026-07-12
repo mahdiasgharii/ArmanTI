@@ -89,7 +89,7 @@ const VocabularyCategories = () => {
           getComputeLink={({ category }: { category: VocabularyDefinition }) => (category.key)}
           globalCount={categories.length}
           pageSize={categories.length.toString()}
-          icon={() => (<ShortTextOutlined color="primary" />)}
+          icon={() => (<ShortTextOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />)}
           onSort={onSort}
         />
       </div>

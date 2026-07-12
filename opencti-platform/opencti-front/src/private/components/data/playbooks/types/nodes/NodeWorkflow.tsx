@@ -68,7 +68,7 @@ const NodeWorkflow = ({ id, data }: NodeProps) => {
           onClick={(event) => setAnchorEl(event.currentTarget)}
           aria-haspopup="true"
           size="small"
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert style={{ fontSize: 12 }} />
         </IconButton>

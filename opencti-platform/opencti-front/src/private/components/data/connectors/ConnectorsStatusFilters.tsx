@@ -110,12 +110,12 @@ const ConnectorsStatusFilters: React.FC<ConnectorsStatusFiltersProps> = ({
             <Tooltip title={t_i18n('Clear filters')}>
               <span>
                 <IconButton
-                  color={hasActiveFilters ? 'primary' : 'default'}
+                  style={{ color: hasActiveFilters ? 'primary' : 'default' }}
                   onClick={handleClearFilters}
                   size="small"
                   disabled={!hasActiveFilters}
                 >
-                  <FilterListOffOutlined fontSize="small" />
+                  <FilterListOffOutlined size={16} />
                 </IconButton>
               </span>
             </Tooltip>

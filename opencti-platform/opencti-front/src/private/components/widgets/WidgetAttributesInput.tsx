@@ -218,8 +218,8 @@ const WidgetAttributesInput: FunctionComponent<WidgetCreationAttributesProps> = 
           )}
           >
             <InformationOutline
-              fontSize="small"
-              color="primary"
+              size={16}
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               style={{ margin: '0 0 -5px 8px' }}
             />
           </Tooltip>
@@ -296,7 +296,7 @@ const WidgetAttributesInput: FunctionComponent<WidgetCreationAttributesProps> = 
                           <Tooltip title={t_i18n('Remove attribute')}>
                             <IconButton
                               size="small"
-                              color="primary"
+                              style={{ color: 'var(--mui-palette-primary-main)' }}
                               sx={{ alignSelf: 'center' }}
                               onClick={() => {
                                 if (isWidgetUsedInTemplate(values.attributes[index].variableName ?? '')) {
@@ -307,7 +307,7 @@ const WidgetAttributesInput: FunctionComponent<WidgetCreationAttributesProps> = 
                                 }
                               }}
                             >
-                              <DeleteOutlined fontSize="small" />
+                              <DeleteOutlined size={16} />
                             </IconButton>
                           </Tooltip>
                         </div>
@@ -358,8 +358,8 @@ const WidgetAttributesInput: FunctionComponent<WidgetCreationAttributesProps> = 
                             },
                           }}
                         />
-                        <IconButton size="small" color="primary" disabled>
-                          <DeleteOutlined fontSize="small" />
+                        <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }} disabled>
+                          <DeleteOutlined size={16} />
                         </IconButton>
                       </div>
 

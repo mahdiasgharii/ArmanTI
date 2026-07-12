@@ -159,11 +159,11 @@ export const TokenListBase: React.FC<TokenListProps> = ({ node }) => {
                   <Tooltip title={t_i18n('Revoke')}>
                     <IconButton
                       aria-label="revoke"
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       onClick={() => handleOpenDelete({ id: token.id, name: token.name || '' })}
                       size="small"
                     >
-                      <Delete fontSize="small" />
+                      <Delete size={16} />
                     </IconButton>
                   </Tooltip>
                 </TableCell>

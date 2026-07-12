@@ -195,7 +195,7 @@ const StixCoreRelationshipCreationForm = ({
                   <div className={classes.icon}>
                     <ItemIcon
                       type={fromEntity.entity_type}
-                      color={itemColor(fromEntity.entity_type)}
+                      style={{ color: itemColor(fromEntity.entity_type) }}
                       size="small"
                     />
                   </div>
@@ -214,7 +214,7 @@ const StixCoreRelationshipCreationForm = ({
                 </div>
               </div>
               <div className={classes.middle} style={{ paddingTop: 25 }}>
-                <ArrowRightAlt fontSize="large" />
+                <ArrowRightAlt size={24} />
                 <br />
                 {typeof handleReverseRelation === 'function' && (
                   <Button
@@ -243,7 +243,7 @@ const StixCoreRelationshipCreationForm = ({
                   <div className={classes.icon}>
                     <ItemIcon
                       type={toEntity.entity_type}
-                      color={itemColor(toEntity.entity_type)}
+                      style={{ color: itemColor(toEntity.entity_type) }}
                       size="small"
                     />
                   </div>

@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { graphql, useQueryLoader } from 'react-relay';
 import Drawer from '@components/common/drawer/Drawer';
 import { useFormatter } from '../../../../components/i18n';
@@ -63,7 +64,7 @@ const NotifierPopover = ({ data, paginationOptions }: { data: NotifierLine_node$
         onClick={handleOpen}
         aria-haspopup="true"
         style={{ marginTop: 3 }}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

@@ -119,7 +119,7 @@ class StixDomainObjectKnowledge extends Component {
                             color: theme.palette.text.secondary,
                             opacity: 0.35,
                           }}
-                          fontSize="large"
+                          size={24}
                         />
                       )}
                     />
@@ -159,7 +159,7 @@ class StixDomainObjectKnowledge extends Component {
                             color: theme.palette.text.secondary,
                             opacity: 0.35,
                           }}
-                          fontSize="large"
+                          size={24}
                         />
                       )}
                     />
@@ -198,7 +198,7 @@ class StixDomainObjectKnowledge extends Component {
                             color: theme.palette.text.secondary,
                             opacity: 0.35,
                           }}
-                          fontSize="large"
+                          size={24}
                         />
                       )}
                     />

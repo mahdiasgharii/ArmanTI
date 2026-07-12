@@ -259,9 +259,9 @@ class StixSightingRelationshipContainer extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={!fromRestricted ? from.entity_type : 'Restricted'}
-                        color={itemColor(
+                        style={{ color: itemColor(
                           !fromRestricted ? from.entity_type : 'Restricted',
-                        )}
+                        ) }}
                         size="small"
                       />
                     </div>
@@ -291,12 +291,12 @@ class StixSightingRelationshipContainer extends Component {
                 </div>
               </Link>
               <div className={classes.middle}>
-                <ArrowRightAlt fontSize="large" />
+                <ArrowRightAlt size={24} />
                 <br />
                 <Chip
                   variant="outlined"
                   classes={{ root: classes.chipInList }}
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   label={t('sighted in/at')}
                 />
               </div>
@@ -322,9 +322,9 @@ class StixSightingRelationshipContainer extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={!toRestricted ? to.entity_type : 'Unknown'}
-                        color={itemColor(
+                        style={{ color: itemColor(
                           !toRestricted ? to.entity_type : 'Restricted',
-                        )}
+                        ) }}
                         size="small"
                       />
                     </div>

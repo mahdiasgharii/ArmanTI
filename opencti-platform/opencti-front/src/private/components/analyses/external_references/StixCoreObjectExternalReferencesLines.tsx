@@ -299,7 +299,7 @@ const StixCoreObjectExternalReferencesLinesContainer: FunctionComponent<
                                     onClick={() => handleOpenExternalLink(
                                       externalReference.url ?? '',
                                     )}
-                                    color="primary"
+                                    style={{ color: 'var(--mui-palette-primary-main)' }}
                                   >
                                     <OpenInBrowserOutlined />
                                   </IconButton>

@@ -119,14 +119,14 @@ const ContainerStixCoreObjectsMappingHeader: FunctionComponent<ContainerStixCore
             <Tooltip
               title={t_i18n('An analysis connector needs to be available to ask for a mapping suggestion.')}
             >
-              <InformationOutline fontSize="small" color="primary" />
+              <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
             </Tooltip>
           )}
           {askingSuggestion && (
             <Tooltip
               title={t_i18n('An analysis is ongoing, waiting for results.')}
             >
-              <InformationOutline fontSize="small" color="primary" />
+              <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
             </Tooltip>
           )}
           <Tooltip title={t_i18n('Ask new mapping')}>

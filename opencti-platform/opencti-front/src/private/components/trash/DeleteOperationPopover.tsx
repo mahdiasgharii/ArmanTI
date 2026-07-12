@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import { TrashDeleteOperationsLinesPaginationQuery$variables } from '@components/trash/__generated__/TrashDeleteOperationsLinesPaginationQuery.graphql';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Alert from '@mui/material/Alert';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -135,16 +136,16 @@ const DeleteOperationPopover: React.FC<DeleteOperationPopoverProps> = ({ mainEnt
   return (
     <>
       <IconButton
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         onClick={handleOpen}
         disabled={disabled}
         aria-haspopup="true"
       >
-        <MoreVert fontSize="small" color="primary" />
+        <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </IconButton>
       <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={handleClose}>
         <MenuItem onClick={handleOpenRestore}>{t_i18n('Restore')}</MenuItem>
-        <MenuItem color="secondary" onClick={handleOpenDelete}>{t_i18n('Delete permanently')}</MenuItem>
+        <MenuItem style={{ color: 'var(--mui-palette-secondary-main)' }} onClick={handleOpenDelete}>{t_i18n('Delete permanently')}</MenuItem>
       </Menu>
 
       <Dialog

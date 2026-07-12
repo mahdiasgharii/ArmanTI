@@ -172,15 +172,15 @@ const DecayRuleCreationForm = ({ updater, onReset, onCompleted }: DecayRuleCreat
                   <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                     <span>{t_i18n('Reaction points')}</span>
                     <Tooltip title={t_i18n('Define at which score thresholds the indicator is updated.')}>
-                      <InformationOutline fontSize="small" color="primary" />
+                      <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </Tooltip>
                     <Tooltip title={t_i18n('Add a reaction point')}>
                       <IconButton
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         aria-label="add"
                         onClick={() => arrayHelpers.push(0)}
                       >
-                        <AddOutlined fontSize="small" />
+                        <AddOutlined size={16} />
                       </IconButton>
                     </Tooltip>
                   </Box>
@@ -200,11 +200,11 @@ const DecayRuleCreationForm = ({ updater, onReset, onCompleted }: DecayRuleCreat
                       <div style={{ marginLeft: 10 }}>
                         <Tooltip title={t_i18n('Remove this reaction point')}>
                           <IconButton
-                            color="primary"
+                            style={{ color: 'var(--mui-palette-primary-main)' }}
                             aria-label="delete"
                             onClick={() => arrayHelpers.remove(index)}
                           >
-                            <Delete fontSize="small" />
+                            <Delete size={16} />
                           </IconButton>
                         </Tooltip>
                       </div>

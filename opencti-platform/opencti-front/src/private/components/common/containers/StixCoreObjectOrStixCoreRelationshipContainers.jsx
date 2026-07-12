@@ -233,7 +233,7 @@ const StixCoreObjectOrStixCoreRelationshipContainers = ({
             )}
             <ToggleButtonGroup
               size="small"
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               value="graph"
               exclusive={true}
               onChange={(_, value) => {
@@ -246,12 +246,12 @@ const StixCoreObjectOrStixCoreRelationshipContainers = ({
             >
               <ToggleButton value="lines" aria-label="lines">
                 <Tooltip title={t_i18n('Lines view')}>
-                  <ViewListOutlined fontSize="small" color="primary" />
+                  <ViewListOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </Tooltip>
               </ToggleButton>
               <ToggleButton value="graph" aria-label="graph">
                 <Tooltip title={t_i18n('Graph view')}>
-                  <VectorPolygon fontSize="small" />
+                  <VectorPolygon size={16} />
                 </Tooltip>
               </ToggleButton>
               <ToggleButton
@@ -260,7 +260,7 @@ const StixCoreObjectOrStixCoreRelationshipContainers = ({
                 disabled={true}
               >
                 <Tooltip title={t_i18n('Open export panel')}>
-                  <FileDownloadOutlined fontSize="small" />
+                  <FileDownloadOutlined size={16} />
                 </Tooltip>
               </ToggleButton>
             </ToggleButtonGroup>

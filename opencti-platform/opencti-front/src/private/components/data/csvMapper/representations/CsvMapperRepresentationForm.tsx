@@ -147,7 +147,7 @@ const CsvMapperRepresentationForm: FunctionComponent<
                 intent="destructive"
                 onClick={handleOpenDelete}
               >
-                <DeleteOutlined fontSize="small" />
+                <DeleteOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>
@@ -200,7 +200,7 @@ const CsvMapperRepresentationForm: FunctionComponent<
             </div>
             <div style={{ textAlign: 'right', marginTop: '20px' }}>
               <Button
-                color="error"
+                style={{ color: 'var(--mui-palette-error-main)' }}
                 onClick={handleOpenDelete}
               >
                 {t_i18n('Delete')}

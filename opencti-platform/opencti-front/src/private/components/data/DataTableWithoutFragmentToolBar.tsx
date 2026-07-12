@@ -37,7 +37,7 @@ const DataTableWithoutFragmentToolBar = ({
               fontSize: '12px',
               marginBottom: '1px',
             }}
-            color="inherit"
+            style={{ color: 'currentColor' }}
             variant="subtitle1"
           >
             <strong>{numberOfElements}</strong> {t_i18n('selected')}{' '}
@@ -47,9 +47,9 @@ const DataTableWithoutFragmentToolBar = ({
             disabled={numberOfElements === 0}
             onClick={handleClearSelectedElements}
             size="small"
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
           >
-            <ClearOutlined fontSize="small" />
+            <ClearOutlined size={16} />
           </IconButton>
         </div>
         {taskScope === 'UNKNOWN_ENTITIES'
@@ -60,10 +60,10 @@ const DataTableWithoutFragmentToolBar = ({
                   aria-label={t_i18n('Create unknown entities')}
                   disabled={numberOfElements === 0}
                   onClick={handleLaunchCreateUnknownEntities}
-                  color="primary"
+                  style={{ color: 'var(--mui-palette-primary-main)' }}
                   size="small"
                 >
-                  <AddBoxOutlined fontSize="small" />
+                  <AddBoxOutlined size={16} />
                 </IconButton>
               </span>
             </Tooltip>

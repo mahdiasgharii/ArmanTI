@@ -133,7 +133,7 @@ const RulesHeader = ({ data }: RulesHeaderProps) => {
               icon={(
                 <Database
                   sx={{ opacity: 0.35 }}
-                  fontSize="large"
+                  size={24}
                 />
               )}
             />
@@ -147,7 +147,7 @@ const RulesHeader = ({ data }: RulesHeaderProps) => {
               icon={(
                 <GraphOutline
                   sx={{ opacity: 0.35 }}
-                  fontSize="large"
+                  size={24}
                 />
               )}
             />
@@ -158,7 +158,7 @@ const RulesHeader = ({ data }: RulesHeaderProps) => {
               icon={(
                 <AutoFix
                   sx={{ opacity: 0.35 }}
-                  fontSize="large"
+                  size={24}
                 />
               )}
               value={(
@@ -175,7 +175,7 @@ const RulesHeader = ({ data }: RulesHeaderProps) => {
               icon={(
                 <SettingsSuggestOutlined
                   sx={{ opacity: 0.35 }}
-                  fontSize="large"
+                  size={24}
                 />
               )}
               value={(

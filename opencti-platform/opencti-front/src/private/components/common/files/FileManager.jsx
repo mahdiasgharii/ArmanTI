@@ -474,7 +474,7 @@ const FileManager = ({
                   <Stack direction="row" alignItems="center" gap={1}>
                     {t_i18n('Generate an export')}
                     <Tooltip title={t_i18n('Your max shareable markings will be applied to the content max markings')}>
-                      <InfoOutlined fontSize="small" color="primary" />
+                      <InfoOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </Tooltip>
                   </Stack>
                 )}
@@ -559,7 +559,7 @@ const FileManager = ({
                     {t('Cancel')}
                   </Button>
                   <Button
-                    color="secondary"
+                    style={{ color: 'var(--mui-palette-secondary-main)' }}
                     onClick={submitForm}
                     disabled={isSubmitting}
                   >

@@ -90,13 +90,13 @@ const ImportActionsPopover = ({
             setOpenWorks(true);
           }}
           aria-haspopup="true"
-          // color={file.works?.length ? 'primary' : 'inherit'}
+          // style={{ color: file.works?.length ? 'primary' : 'inherit' }}
         >
-          <ProgressUpload fontSize="small" />
+          <ProgressUpload size={16} />
         </IconButton>
       </Tooltip>
-      <IconButton onClick={handleOpen} color="primary">
-        <MoreVert fontSize="small" />
+      <IconButton onClick={handleOpen} style={{ color: 'var(--mui-palette-primary-main)' }}>
+        <MoreVert size={16} />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem

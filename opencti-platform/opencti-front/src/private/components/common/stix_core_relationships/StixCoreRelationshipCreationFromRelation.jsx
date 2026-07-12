@@ -500,7 +500,7 @@ class StixCoreRelationshipCreationFromRelation extends Component {
                   className={classes.closeButton}
                   onClick={this.handleClose.bind(this)}
                 >
-                  <Close fontSize="small" color="primary" />
+                  <Close size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                 </IconButton>
                 <Typography variant="h6">{t('Create a relationship')}</Typography>
               </div>
@@ -552,7 +552,7 @@ class StixCoreRelationshipCreationFromRelation extends Component {
         ) : (
           <Fab
             onClick={this.handleOpen.bind(this)}
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             aria-label="Add"
             className={
               paddingRight

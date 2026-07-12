@@ -655,13 +655,13 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
           <InputAdornment position="end" style={{ position: 'absolute', right: 0 }}>
             {!disableCreation && (
               <IconButton onClick={handleOpenCreation} size="small" disabled={disabled} title={t_i18n('Create')}>
-                <Add fontSize="small" color="primary" />
+                <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </IconButton>
             )}
             <IconButton onClick={handleOpenSearchScope} size="small" disabled={disabled}>
               <PaletteOutlined
-                fontSize="small"
-                color={searchScope[name] && searchScope[name].length > 0 ? 'secondary' : 'primary'}
+                size={16}
+                style={{ color: searchScope[name] && searchScope[name].length > 0 ? 'secondary' : 'primary' }}
               />
             </IconButton>
             <Popover

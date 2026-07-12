@@ -450,7 +450,7 @@ const FormFieldRenderer: FunctionComponent<FormFieldRendererProps> = ({
                     onChange={handleFileUpload}
                   />
                   <label htmlFor={`file-upload-${fieldName}`}>
-                    <IconButton color="primary" component="span">
+                    <IconButton style={{ color: 'var(--mui-palette-primary-main)' }} component="span">
                       <CloudUploadOutlined />
                     </IconButton>
                   </label>
@@ -516,7 +516,7 @@ const FormFieldRenderer: FunctionComponent<FormFieldRendererProps> = ({
         <Chip
           size="small"
           variant="outlined"
-          color="warning"
+          style={{ color: 'var(--mui-palette-warning-main)' }}
           label={t_i18n('Read-Only')}
           style={{ position: 'absolute', top: -10, right: 0, zIndex: 1, backgroundColor: theme.palette.background.paper }}
         />

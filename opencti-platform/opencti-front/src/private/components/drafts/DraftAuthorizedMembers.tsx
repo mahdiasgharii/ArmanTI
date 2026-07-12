@@ -73,7 +73,7 @@ const DraftAuthorizedMembers = ({ data }: DraftAuthorizedMembersProps) => {
               onClick={() => setOpen(true)}
               variant="secondary"
             >
-              <LockOutlined fontSize="small" />
+              <LockOutlined size={16} />
             </IconButton>
           </Tooltip>
         </Security>

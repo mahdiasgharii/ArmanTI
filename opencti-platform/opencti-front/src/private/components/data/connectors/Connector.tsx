@@ -1,6 +1,6 @@
 import ConnectorPopover from '@components/data/connectors/ConnectorPopover';
 import ConnectorStatusChip from '@components/data/connectors/ConnectorStatusChip';
-import UpdateIcon from '@mui/icons-material/Update';
+import { RefreshCw as UpdateIcon } from 'lucide-react';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@common/button/Button';
@@ -318,7 +318,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
                     <Tooltip
                       title={t_i18n('Trigger filters can be used to trigger automatically this connector on entities matching the filters and scope.')}
                     >
-                      <InformationOutline fontSize="small" color="primary" />
+                      <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </Tooltip>
                   )}
                   >
@@ -365,7 +365,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
                         to={`/dashboard/settings/accesses/users/${connector.connector_user.id}`}
                       >
                         <ListItemIcon>
-                          <ItemIcon type="user" color={theme.palette.primary.main} />
+                          <ItemIcon type="user" style={{ color: theme.palette.primary.main }} />
                         </ListItemIcon>
                         <ListItemText primary={connector.connector_user.name} />
                       </ListItemButton>
@@ -476,7 +476,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
                               <ListItemIcon>
                                 <ItemIcon
                                   type="Organization"
-                                  color={theme.palette.primary.main}
+                                  style={{ color: theme.palette.primary.main }}
                                 />
                               </ListItemIcon>
                               <ListItemText primary={organizationEdge.node.name} />
@@ -498,7 +498,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
             <Grid container={true} spacing={2}>
               {connector.connector_info?.buffering && (
                 <Grid item xs={12}>
-                  <Alert severity="warning" icon={<UpdateIcon color="warning" />} style={{ alignItems: 'center' }}>
+                  <Alert severity="warning" icon={<UpdateIcon style={{ color: 'var(--mui-palette-warning-main)' }} />} style={{ alignItems: 'center' }}>
                     <div>
                       <strong>{t_i18n('Buffering: ')}</strong>
                       {t_i18n('Server ingestion is not accepting new work, waiting for current messages in ingestion to be processed until message count go back under threshold')}
@@ -748,7 +748,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
               {connector.is_managed && (
                 <Button
                   disabled={computeConnectorStatus(connector).processing}
-                  color={connector.manager_current_status === 'started' ? 'error' : 'primary'}
+                  style={{ color: connector.manager_current_status === 'started' ? 'error' : 'primary' }}
                   onClick={() => commitUpdateStatus({
                     variables: {
                       input: {

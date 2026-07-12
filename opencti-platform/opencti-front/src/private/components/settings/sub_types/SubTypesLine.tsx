@@ -98,26 +98,26 @@ const SubTypeLine: FunctionComponent<SubTypeLineProps> = ({
 
   const renderOptionIcon = (option: string) => {
     if (!nodeSubType.settings?.availableSettings?.includes(option)) {
-      return <DoNotDisturbOnOutlined fontSize="small" color="disabled" />;
+      return <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-text-disabled)' }} />;
     }
     if ((nodeSubType.settings as never)?.[option] === true) {
-      return <CheckCircleOutlined fontSize="small" color="success" />;
+      return <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />;
     }
-    return <DoNotDisturbOnOutlined fontSize="small" color="primary" />;
+    return <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />;
   };
   const renderWorkflowStatus = () => {
     if (!nodeSubType.settings?.availableSettings?.includes('workflow_configuration')) {
-      return <DoNotDisturbOnOutlined fontSize="small" color="disabled" />;
+      return <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-text-disabled)' }} />;
     }
     if (nodeSubType.label === 'DraftWorkspace' && isFeatureEnable('DRAFT_WORKFLOW')) {
       return nodeSubType.settings?.workflow_published_version_id
-        ? <CheckCircleOutlined fontSize="small" color="success" />
-        : <DoNotDisturbOnOutlined fontSize="small" color="primary" />;
+        ? <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />
+        : <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />;
     }
     if (nodeSubType.workflowEnabled) {
-      return <CheckCircleOutlined fontSize="small" color="success" />;
+      return <CheckCircleOutlined size={16} style={{ color: 'var(--mui-palette-success-main)' }} />;
     }
-    return <DoNotDisturbOnOutlined fontSize="small" color="primary" />;
+    return <DoNotDisturbOnOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />;
   };
   return (
     <ListItemButton

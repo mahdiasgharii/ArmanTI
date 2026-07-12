@@ -241,7 +241,7 @@ const StixDomainObjectOverview = ({
                         title={t_i18n('Add new assignees')}
                         onClick={handleToggleAddAssignee}
                       >
-                        <Add fontSize="small" />
+                        <Add size={16} />
                       </IconButton>
                     </Security>
                   )}
@@ -267,7 +267,7 @@ const StixDomainObjectOverview = ({
                         title={t_i18n('Add new participants')}
                         onClick={handleToggleAddParticipant}
                       >
-                        <Add fontSize="small" />
+                        <Add size={16} />
                       </IconButton>
                     </Security>
                   )}
@@ -314,7 +314,7 @@ const StixDomainObjectOverview = ({
                         'In OpenCTI, a predictable STIX ID is generated based on one or multiple attributes of the entity.',
                       )}
                     >
-                      <InformationOutline fontSize="small" color="primary" />
+                      <InformationOutline size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                     </Tooltip>
                     <Security needs={[KNOWLEDGE_KNUPDATE]}>
                       <IconButton
@@ -325,8 +325,8 @@ const StixDomainObjectOverview = ({
                         onClick={handleToggleOpenStixIds}
                       >
                         <BrushOutlined
-                          fontSize="small"
-                          color={stixIds.length === 0 ? 'inherit' : 'primary'}
+                          size={16}
+                          style={{ color: stixIds.length === 0 ? 'inherit' : 'primary' }}
                         />
                       </IconButton>
                     </Security>

@@ -19,46 +19,46 @@ const AccessesMenu: FunctionComponent = () => {
     {
       path: '/dashboard/settings/accesses/users',
       label: 'Users',
-      icon: <PermIdentityOutlined fontSize="medium" />,
+      icon: <PermIdentityOutlined size={20} />,
     },
     {
       path: '/dashboard/settings/accesses/groups',
       label: 'Groups',
-      icon: <AccountGroupOutline fontSize="medium" />,
+      icon: <AccountGroupOutline size={20} />,
     },
     {
       path: '/dashboard/settings/accesses/organizations',
       label: 'Organizations',
-      icon: <AccountBalanceOutlined fontSize="medium" />,
+      icon: <AccountBalanceOutlined size={20} />,
     },
     {
       path: '/dashboard/settings/accesses/roles',
       label: 'Roles',
-      icon: <SecurityOutlined fontSize="medium" />,
+      icon: <SecurityOutlined size={20} />,
     },
     {
       path: '/dashboard/settings/accesses/sessions',
       label: 'Sessions',
-      icon: <ReceiptOutlined fontSize="medium" />,
+      icon: <ReceiptOutlined size={20} />,
     },
     {
       path: '/dashboard/settings/accesses/policies',
       label: 'Policies',
-      icon: <LocalPoliceOutlined fontSize="medium" />,
+      icon: <LocalPoliceOutlined size={20} />,
     },
   ];
   const markingEntries: MenuEntry[] = [
     {
       path: '/dashboard/settings/accesses/marking',
       label: 'Marking definitions',
-      icon: <CenterFocusStrongOutlined fontSize="medium" />,
+      icon: <CenterFocusStrongOutlined size={20} />,
     },
   ];
   const disseminationEntries: MenuEntry[] = [
     {
       path: '/dashboard/settings/accesses/dissemination_list',
       label: 'Dissemination list',
-      icon: <AlternateEmailOutlined fontSize="medium" />,
+      icon: <AlternateEmailOutlined size={20} />,
       isEE: true,
     },
   ];
@@ -66,7 +66,7 @@ const AccessesMenu: FunctionComponent = () => {
     {
       path: '/dashboard/settings/accesses/email_templates',
       label: 'Email templates',
-      icon: <EmailOutlined fontSize="medium" />,
+      icon: <EmailOutlined size={20} />,
       isEE: true,
     },
   ];
@@ -74,7 +74,7 @@ const AccessesMenu: FunctionComponent = () => {
     {
       path: '/dashboard/settings/accesses/authentications',
       label: 'Authentications',
-      icon: <KeyOutlined fontSize="medium" />,
+      icon: <KeyOutlined size={20} />,
     },
   ];
   const setAccess = useGranted([SETTINGS_SETACCESSES]);
@@ -104,12 +104,12 @@ const AccessesMenu: FunctionComponent = () => {
         {
           path: '/dashboard/settings/accesses/users',
           label: 'Users',
-          icon: <PermIdentityOutlined fontSize="medium" />,
+          icon: <PermIdentityOutlined size={20} />,
         },
         {
           path: '/dashboard/settings/accesses/organizations',
           label: 'Organizations',
-          icon: <AccountBalanceOutlined fontSize="medium" />,
+          icon: <AccountBalanceOutlined size={20} />,
         },
       ],
     );

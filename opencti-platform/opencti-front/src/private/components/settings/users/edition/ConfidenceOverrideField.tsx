@@ -120,8 +120,8 @@ const ConfidenceOverrideField: FunctionComponent<UserConfidenceOverridesFieldCom
               {overrideLabel(index, value)}
             </Typography>
             <Tooltip title={t_i18n('Delete')}>
-              <IconButton color="error" onClick={handleDeleteOverride}>
-                <DeleteOutlined fontSize="small" />
+              <IconButton style={{ color: 'var(--mui-palette-error-main)' }} onClick={handleDeleteOverride}>
+                <DeleteOutlined size={16} />
               </IconButton>
             </Tooltip>
           </div>
@@ -185,7 +185,7 @@ const ConfidenceOverrideField: FunctionComponent<UserConfidenceOverridesFieldCom
             )}
             <div style={{ textAlign: 'right', marginTop: '20px' }}>
               <Button
-                color="error"
+                style={{ color: 'var(--mui-palette-error-main)' }}
                 onClick={handleOpenDelete}
               >
                 {t_i18n('Delete')}

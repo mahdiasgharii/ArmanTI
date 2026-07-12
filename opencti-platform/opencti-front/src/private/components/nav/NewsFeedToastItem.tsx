@@ -94,11 +94,11 @@ const NewsFeedToastItem: FunctionComponent<NewsFeedToastItemProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             size="small"
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             aria-label={t_i18n('Open in XTM Hub')}
             sx={{ flexShrink: 0 }}
           >
-            <OpenInNewOutlined fontSize="small" />
+            <OpenInNewOutlined size={16} />
           </IconButton>
         </Tooltip>
       )}

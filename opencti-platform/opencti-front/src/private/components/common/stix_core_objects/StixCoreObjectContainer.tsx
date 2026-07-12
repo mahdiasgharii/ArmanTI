@@ -166,7 +166,7 @@ const StixCoreObjectContainer = ({ elementId }: StixCoreObjectContainerProps) =>
           value="container"
           size="small"
         >
-          <MoveToInboxOutlined color="primary" fontSize="small" />
+          <MoveToInboxOutlined style={{ color: 'var(--mui-palette-primary-main)' }} size={16} />
         </ToggleButton>
       </Tooltip>
       <Dialog

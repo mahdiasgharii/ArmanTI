@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import { OpinionEditionContainerQuery$data } from '@components/analyses/opinions/__generated__/OpinionEditionContainerQuery.graphql';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import DialogActions from '@mui/material/DialogActions';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -96,7 +97,7 @@ const OpinionPopover: FunctionComponent<OpinionPopoverProps> = ({ opinion, varia
           onClick={handleOpen}
           aria-haspopup="true"
           style={{ marginTop: 3 }}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert />
         </IconButton>
@@ -106,7 +107,7 @@ const OpinionPopover: FunctionComponent<OpinionPopoverProps> = ({ opinion, varia
           size="small"
           onClick={handleOpen}
         >
-          <MoreVert fontSize="small" color="primary" />
+          <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
         </ToggleButton>
       )}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

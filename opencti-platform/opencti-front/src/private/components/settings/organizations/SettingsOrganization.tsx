@@ -233,7 +233,7 @@ const SettingsOrganization = ({
                             'You need to authorize this organization to access this dashboard in the permissions of the workspace.',
                           )}
                         >
-                          <WarningOutlined color="warning" />
+                          <WarningOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
                         </Tooltip>
                       )}
                     >
@@ -284,7 +284,7 @@ const SettingsOrganization = ({
                               'This Group allows the user to bypass restriction. It should not be added here.',
                             )}
                           >
-                            <WarningOutlined color="warning" />
+                            <WarningOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
                           </Tooltip>
                         )}
                       </ListItemButton>
@@ -305,7 +305,7 @@ const SettingsOrganization = ({
                               'This Group allows the user to bypass restriction. It should not be added here.',
                             )}
                           >
-                            <WarningOutlined color="warning" />
+                            <WarningOutlined style={{ color: 'var(--mui-palette-warning-main)' }} />
                           </Tooltip>
                         )}
                       </ListItem>

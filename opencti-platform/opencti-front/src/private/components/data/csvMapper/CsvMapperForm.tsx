@@ -185,8 +185,8 @@ const CsvMapperForm: FunctionComponent<CsvMapperFormProps> = ({ csvMapper, onSub
                   )}
                 >
                   <InformationOutline
-                    fontSize="small"
-                    color="primary"
+                    size={16}
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     style={{ cursor: 'default' }}
                   />
                 </Tooltip>
@@ -234,8 +234,8 @@ const CsvMapperForm: FunctionComponent<CsvMapperFormProps> = ({ csvMapper, onSub
                   )}
                 >
                   <InformationOutline
-                    fontSize="small"
-                    color="primary"
+                    size={16}
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     style={{ cursor: 'default' }}
                   />
                 </Tooltip>
@@ -246,12 +246,12 @@ const CsvMapperForm: FunctionComponent<CsvMapperFormProps> = ({ csvMapper, onSub
                   {t_i18n('Representations for entity')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddEntityRepresentation(setFieldValue, values)
                   }
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </div>
               <FieldArray
@@ -283,12 +283,12 @@ const CsvMapperForm: FunctionComponent<CsvMapperFormProps> = ({ csvMapper, onSub
                   {t_i18n('Representations for relationship')}
                 </Typography>
                 <IconButton
-                  color="secondary"
+                  style={{ color: 'var(--mui-palette-secondary-main)' }}
                   aria-label="Add"
                   onClick={() => onAddRelationshipRepresentation(setFieldValue, values)
                   }
                 >
-                  <Add fontSize="small" />
+                  <Add size={16} />
                 </IconButton>
               </div>
               <FieldArray

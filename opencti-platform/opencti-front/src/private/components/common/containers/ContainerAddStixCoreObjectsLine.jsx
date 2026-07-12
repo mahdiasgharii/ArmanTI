@@ -56,11 +56,11 @@ const ContainerAddStixCoreObjectsLineComponent = ({
       <ListItemIcon style={{ paddingLeft: 10 }}>
         {node.id in (addedElements || {}) ? (
           <CheckCircleOutlined
-            classes={{ root: classes.icon }}
-            color="primary"
+            className={classes.icon}
+            style={{ color: 'var(--mui-palette-primary-main)' }}
           />
         ) : (
-          <CircleOutlined classes={{ root: classes.icon }} />
+          <CircleOutlined className={classes.icon} />
         )}
       </ListItemIcon>
       <ListItemIcon classes={{ root: classes.itemIcon }}>

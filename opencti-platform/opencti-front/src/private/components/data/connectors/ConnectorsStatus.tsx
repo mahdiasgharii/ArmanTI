@@ -372,7 +372,7 @@ const ConnectorsStatusContent: FunctionComponent<ConnectorsStatusContentProps> =
                                     setConnectorMessages(connector.messages);
                                   }}
                                   aria-haspopup="true"
-                                  color="primary"
+                                  style={{ color: 'var(--mui-palette-primary-main)' }}
                                   disabled={!canDeleteConnector(connector as unknown as Connector_connector$data)}
                                   size="default"
                                 >
@@ -388,7 +388,7 @@ const ConnectorsStatusContent: FunctionComponent<ConnectorsStatusContentProps> =
                                   if (connector.id) handleDelete(connector.id);
                                 }}
                                 aria-haspopup="true"
-                                color="primary"
+                                style={{ color: 'var(--mui-palette-primary-main)' }}
                                 disabled={!canDeleteConnector(connector as unknown as Connector_connector$data)}
                                 size="default"
                               >

@@ -766,12 +766,12 @@ const SamlProviderForm = ({
                             <Typography variant="body2" color="textSecondary" style={{ flex: 1 }}>{t_i18n('Key')}</Typography>
                             <Typography variant="body2" color="textSecondary" style={{ flex: 1 }}>{t_i18n('Value')}</Typography>
                             <IconButton
-                              color="primary"
+                              style={{ color: 'var(--mui-palette-primary-main)' }}
                               aria-label={t_i18n('Add')}
                               size="default"
                               onClick={() => push({ type: 'String', key: '', value: '' })}
                             >
-                              <Add fontSize="small" color="primary" />
+                              <Add size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
                             </IconButton>
                           </div>
                           {values.extra_conf.length === 0 && (
@@ -815,12 +815,12 @@ const SamlProviderForm = ({
                                 fullWidth
                               />
                               <IconButton
-                                color="primary"
+                                style={{ color: 'var(--mui-palette-primary-main)' }}
                                 aria-label={t_i18n('Delete')}
                                 onClick={() => remove(index)}
                                 style={{ marginTop: 10 }}
                               >
-                                <Delete fontSize="small" />
+                                <Delete size={16} />
                               </IconButton>
                             </div>
                           ))}

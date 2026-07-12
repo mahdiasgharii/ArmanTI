@@ -252,7 +252,7 @@ const SearchIndexedFilesComponent = () => {
                     <IconButton
                       onClick={() => window.open(entityLink, '_blank')}
                     >
-                      <OpenInNewOutlined fontSize="medium" />
+                      <OpenInNewOutlined size={20} />
                     </IconButton>
                   </Tooltip>
                 );

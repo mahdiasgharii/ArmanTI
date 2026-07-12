@@ -94,7 +94,7 @@ const IngestionTaxiiImport: FunctionComponent<IngestionTaxiiImportProps> = ({ pa
         title={t_i18n('Import a Taxii Feed')}
         onClick={() => inputFileRef?.current?.click()}
       >
-        <FileUploadOutlined fontSize="small" color="primary" />
+        <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
       </ToggleButton>
       <VisuallyHiddenInput
         ref={inputFileRef}

@@ -1,7 +1,8 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from 'react-router-dom';
 import { graphql, useFragment } from 'react-relay';
@@ -149,7 +150,7 @@ const WorkspaceKebabMenu = ({ data }: WorkspaceKebabMenuProps) => {
         aria-label={t_i18n('Popover of actions workspace')}
         value="popover"
         size="small"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
         id="workspace-kebab-button"
         aria-controls={open ? 'workspace-kebab-menu' : undefined}
         aria-haspopup="true"
@@ -157,7 +158,7 @@ const WorkspaceKebabMenu = ({ data }: WorkspaceKebabMenuProps) => {
         onClick={handleClick}
         sx={{ height: '100%' }}
       >
-        <MoreVert color="primary" fontSize="small" />
+        <MoreVert style={{ color: 'var(--mui-palette-primary-main)' }} size={16} />
       </ToggleButton>
       <Menu
         id="workspace-kebab-menu"

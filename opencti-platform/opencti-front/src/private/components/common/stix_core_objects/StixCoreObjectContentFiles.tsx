@@ -193,7 +193,7 @@ const StixCoreObjectContentFiles: FunctionComponent<StixCoreObjectContentFilesPr
                       setAnchorEl(e.currentTarget);
                     }}
                     aria-haspopup="true"
-                    color="primary"
+                    style={{ color: 'var(--mui-palette-primary-main)' }}
                     size="small"
                   >
                     <MoreVert />
@@ -207,7 +207,7 @@ const StixCoreObjectContentFiles: FunctionComponent<StixCoreObjectContentFilesPr
                 onClick={handleSelectContent}
               >
                 <ListItemIcon>
-                  <FileOutline fontSize="small" />
+                  <FileOutline size={16} />
                 </ListItemIcon>
                 <ListItemText
                   primary={t_i18n('Description & Main content')}
@@ -254,11 +254,11 @@ const StixCoreObjectContentFiles: FunctionComponent<StixCoreObjectContentFilesPr
               />
               <IconButton
                 onClick={() => setDisplayCreate(true)}
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 size="small"
                 aria-label={t_i18n('Add a file')}
               >
-                <AddOutlined fontSize="small" />
+                <AddOutlined size={16} />
               </IconButton>
             </Stack>
           </Security>
@@ -286,8 +286,8 @@ const StixCoreObjectContentFiles: FunctionComponent<StixCoreObjectContentFilesPr
                     title={t_i18n('Files generated from a template')}
                   >
                     <InformationOutline
-                      fontSize="small"
-                      color="primary"
+                      size={16}
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       style={{ marginLeft: 5 }}
                     />
                   </Tooltip>
@@ -309,7 +309,7 @@ const StixCoreObjectContentFiles: FunctionComponent<StixCoreObjectContentFilesPr
                   <Tooltip title={t_i18n('Generate an export based on a template')}>
                     <IconButton
                       onClick={onOpen}
-                      color="primary"
+                      style={{ color: 'var(--mui-palette-primary-main)' }}
                       size="small"
                       aria-label={t_i18n('Generate an export based on a template')}
                     >

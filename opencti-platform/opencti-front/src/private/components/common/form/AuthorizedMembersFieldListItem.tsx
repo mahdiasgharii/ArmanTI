@@ -96,8 +96,8 @@ const AuthorizedMembersFieldListItem = ({
                   {' '}({t_i18n('Groups restriction')})
                 </span>
                 <Tooltip title={`Groups restriction: ${groupsLabel}`}>
-                  <IconButton size="small" color="primary">
-                    <InfoOutlined fontSize="small" />
+                  <IconButton size="small" style={{ color: 'var(--mui-palette-primary-main)' }}>
+                    <InfoOutlined size={16} />
                   </IconButton>
                 </Tooltip>
               </>
@@ -134,12 +134,12 @@ const AuthorizedMembersFieldListItem = ({
       )
         ? (
             <IconButton
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
               aria-label={t_i18n('Delete')}
               onClick={() => onRemove?.()}
               disabled={disabled}
             >
-              <Delete fontSize="small" />
+              <Delete size={16} />
             </IconButton>
           )
         : <div style={{ width: 36 }}></div>

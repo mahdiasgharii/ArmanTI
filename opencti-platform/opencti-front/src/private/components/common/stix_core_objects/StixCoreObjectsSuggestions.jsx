@@ -304,19 +304,19 @@ const StixCoreObjectsSuggestionsComponent = (props) => {
                             (n) => !appliedSuggestions.includes(n.type),
                           ).length
                         }
-                        color="secondary"
+                        style={{ color: 'var(--mui-palette-secondary-main)' }}
                       >
                         <AssistantOutlined
-                          fontSize="small"
+                          size={16}
                           disabled={suggestions.length === 0}
-                          color={
+                          style={{ color: 
 
                             suggestions.length === 0
                               ? 'disabled'
                               : displaySuggestions
                                 ? 'secondary'
                                 : 'primary'
-                          }
+                           }}
                         />
                       </Badge>
                     </ToggleButton>
@@ -347,21 +347,21 @@ const StixCoreObjectsSuggestionsComponent = (props) => {
                                   ),
                                 )
                                 }
-                                color={
+                                style={{ color: 
                                   applied.some(
                                     (a) => a[suggestion.type]
                                       === selectedEntity[suggestion.type],
                                   )
                                     ? 'success'
                                     : 'primary'
-                                }
+                                 }}
                                 disabled={
                                   applying.includes(suggestion.type)
                                   || !selectedEntity[suggestion.type]
                                 }
                               >
                                 {applying.includes(suggestion.type) ? (
-                                  <CircularProgress size={20} color="inherit" />
+                                  <CircularProgress size={20} style={{ color: 'currentColor' }} />
                                 ) : (
                                   <AddTaskOutlined />
                                 )}

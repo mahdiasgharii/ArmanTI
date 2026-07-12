@@ -1,9 +1,10 @@
+import { ExternalLink as LaunchIcon } from 'lucide-react';
 import React, { FunctionComponent, Suspense } from 'react';
 import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import LaunchIcon from '@mui/icons-material/Launch';
+;
 import { Link } from 'react-router-dom';
 import Loader from '../../../../components/Loader';
 import { useFormatter } from '../../../../components/i18n';
@@ -70,7 +71,7 @@ const DraftReviewDiffPanelContentComponent: FunctionComponent<DraftReviewDiffPan
             size="small"
             sx={{ width: 26, height: 26, borderRadius: '4px', color: 'primary.main', backgroundColor: 'action.hover' }}
           >
-            <LaunchIcon sx={{ fontSize: 18 }} />
+            <LaunchIcon size={18} />
           </IconButton>
         )}
       </Box>

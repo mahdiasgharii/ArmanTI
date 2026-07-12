@@ -1,9 +1,10 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
 import ToggleButton from '@mui/material/ToggleButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { graphql } from 'react-relay';
 import makeStyles from '@mui/styles/makeStyles';
 import { useNavigate } from 'react-router-dom';
@@ -105,7 +106,7 @@ const TaskPopover = ({
           onClick={handleOpen}
           aria-haspopup="true"
           style={{ marginTop: 3 }}
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
         >
           <MoreVert />
         </IconButton>
@@ -115,7 +116,7 @@ const TaskPopover = ({
           size="small"
           onClick={handleOpen}
         >
-          <MoreVert fontSize="small" color="primary" />
+          <MoreVert size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
         </ToggleButton>
       )}
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

@@ -222,7 +222,7 @@ class StixSightingRelationshipExternalReferencesLinesContainer extends Component
                                     this,
                                     externalReference.url,
                                   )}
-                                  color="primary"
+                                  style={{ color: 'var(--mui-palette-primary-main)' }}
                                 >
                                   <OpenInBrowserOutlined />
                                 </IconButton>

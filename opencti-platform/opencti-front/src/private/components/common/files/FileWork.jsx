@@ -186,11 +186,11 @@ const FileWorkComponent = (props) => {
                   <Tooltip title={t('Navigate to draft')}>
                     <span>
                       <IconButton
-                        color="primary"
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         onClick={() => navigateToDraft(work.draft_context)}
                         size="small"
                       >
-                        <ArchitectureOutlined fontSize="small" />
+                        <ArchitectureOutlined size={16} />
                       </IconButton>
                     </span>
                   </Tooltip>
@@ -202,7 +202,7 @@ const FileWorkComponent = (props) => {
                       disabled={work.status === 'deleting'}
                       size="small"
                     >
-                      <DeleteOutlined fontSize="small" color={isCurrentContextWork ? 'primary' : 'disabled'} />
+                      <DeleteOutlined size={16} style={{ color: isCurrentContextWork ? 'primary' : 'disabled' }} />
                     </IconButton>
                   </span>
                 </Tooltip>

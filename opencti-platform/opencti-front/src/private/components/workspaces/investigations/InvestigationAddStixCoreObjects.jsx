@@ -147,7 +147,7 @@ const InvestigationAddStixCoreObjects = (props) => {
       {!mapping && (
         <Tooltip title={t_i18n('Add an entity to this investigation')}>
           <IconButton
-            color="primary"
+            style={{ color: 'var(--mui-palette-primary-main)' }}
             aria-label="Add"
             onClick={() => setOpen(true)}
           >

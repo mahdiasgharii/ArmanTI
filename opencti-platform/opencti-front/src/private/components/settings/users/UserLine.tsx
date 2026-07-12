@@ -101,7 +101,7 @@ const UserLineComponent: React.FC<UserLineComponentProps> = (props) => {
                 <Tooltip
                   title={t_i18n("No confidence level found in this user's groups, and no confidence level defined at the user level.")}
                 >
-                  <ReportGmailerrorred fontSize="small" color="error" />
+                  <ReportGmailerrorred size={16} style={{ color: 'var(--mui-palette-error-main)' }} />
                 </Tooltip>
               )}
             </div>
@@ -110,9 +110,9 @@ const UserLineComponent: React.FC<UserLineComponentProps> = (props) => {
               style={{ width: dataColumns.otp.width }}
             >
               {node.otp_activated ? (
-                <Security fontSize="small" color="secondary" />
+                <Security size={16} style={{ color: 'var(--mui-palette-secondary-main)' }} />
               ) : (
-                <HorizontalRule fontSize="small" color="primary" />
+                <HorizontalRule size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               )}
             </div>
             <div

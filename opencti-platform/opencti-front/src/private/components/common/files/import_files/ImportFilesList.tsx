@@ -226,7 +226,7 @@ const ImportFilesList: React.FC<ImportFilesListProps> = ({ connectorsForImport }
                 <Grid container alignItems="center" columnSpacing={2}>
                   {/* Column 1: File Icon */}
                   <Grid item xs={0.5} sx={{ display: 'flex' }}>
-                    <UploadFileOutlined color="primary" />
+                    <UploadFileOutlined style={{ color: 'var(--mui-palette-primary-main)' }} />
                   </Grid>
 
                   {/* Column 2: File Name */}
@@ -361,7 +361,7 @@ const ImportFilesList: React.FC<ImportFilesListProps> = ({ connectorsForImport }
                   )}
                   {/* Column 5: Delete Button */}
                   <Grid item xs={0.5}>
-                    <IconButton edge="end" onClick={() => removeFile(file.name)} color="primary">
+                    <IconButton edge="end" onClick={() => removeFile(file.name)} style={{ color: 'var(--mui-palette-primary-main)' }}>
                       <DeleteOutlined />
                     </IconButton>
                   </Grid>

@@ -1,3 +1,4 @@
+import { Pencil as EditOutlined, List as ListOutlined } from 'lucide-react';
 import { useFormatter } from '../../../../components/i18n';
 import useConnectedDocumentModifier from '../../../../utils/hooks/useConnectedDocumentModifier';
 import React, { useEffect, useState } from 'react';
@@ -24,8 +25,8 @@ import AuthenticationGlobalSettings from '@components/settings/sso_definitions/A
 import IpWhitelistSettings from '@components/settings/sso_definitions/IpWhitelistSettings';
 import useEnterpriseEdition from '../../../../utils/hooks/useEnterpriseEdition';
 import EEChip from '@components/common/entreprise_edition/EEChip';
-import EditOutlined from '@mui/icons-material/EditOutlined';
-import ListOutlined from '@mui/icons-material/ListOutlined';
+;
+;
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import SSODefinitionEdition from '@components/settings/sso_definitions/SSODefinitionEdition';
@@ -369,7 +370,7 @@ const SSODefinitions = () => {
                   <>
                     <Tooltip title={t_i18n('Update')}>
                       <IconButton size="small" aria-label={t_i18n('Update')}>
-                        <EditOutlined fontSize="small" />
+                        <EditOutlined size={16} />
                       </IconButton>
                     </Tooltip>
                     <Tooltip title={t_i18n('Logs')}>
@@ -378,7 +379,7 @@ const SSODefinitions = () => {
                         onClick={(e) => handleOpenLogs(e, node)}
                         aria-label={t_i18n('Logs')}
                       >
-                        <ListOutlined fontSize="small" />
+                        <ListOutlined size={16} />
                       </IconButton>
                     </Tooltip>
                   </>

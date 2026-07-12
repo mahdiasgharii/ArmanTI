@@ -1,8 +1,9 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { FunctionComponent, UIEvent, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import { graphql, useQueryLoader } from 'react-relay';
 import { PopoverProps } from '@mui/material/Popover';
 import fileDownload from 'js-file-download';
@@ -114,7 +115,7 @@ const JsonMapperPopover: FunctionComponent<JsonMapperPopoverProps> = ({
 
   return (
     <>
-      <IconButton onClick={handleOpen} aria-haspopup="true" color="primary">
+      <IconButton onClick={handleOpen} aria-haspopup="true" style={{ color: 'var(--mui-palette-primary-main)' }}>
         <MoreVert />
       </IconButton>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>

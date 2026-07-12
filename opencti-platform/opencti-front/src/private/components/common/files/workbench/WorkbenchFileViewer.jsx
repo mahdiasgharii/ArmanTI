@@ -63,13 +63,13 @@ const WorkbenchFileViewerBase = ({
           action={(
             <Security needs={[KNOWLEDGE_KNASKIMPORT]} hasAccess={!draftContext}>
               <IconButton
-                color="primary"
+                style={{ color: 'var(--mui-palette-primary-main)' }}
                 aria-label="Add"
                 onClick={() => setOpenCreate(true)}
                 classes={{ root: classes.createButton }}
                 size="small"
               >
-                <Add fontSize="small" />
+                <Add size={16} />
               </IconButton>
             </Security>
           )}

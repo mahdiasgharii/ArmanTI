@@ -133,7 +133,7 @@ export const RetentionLine: FunctionComponent<RetentionLineProps> = ({ dataColum
               style={{ width: dataColumns.scope.width }}
             >
               <Chip
-                color={scopeColor as 'success' | 'secondary' | 'primary' | 'error' | 'warning'}
+                style={{ color: scopeColor as 'success' | 'secondary' | 'primary' | 'error' | 'warning' }}
                 classes={{ root: classes.chipInList }}
                 label={t_i18n(data.scope)}
                 variant="outlined"
@@ -166,8 +166,8 @@ export const RetentionLine: FunctionComponent<RetentionLineProps> = ({ dataColum
                       title={`${t_i18n('Files contained in')} ${t_i18n('Data')}/${t_i18n('Import')}`}
                     >
                       <InformationOutline
-                        fontSize="small"
-                        color="primary"
+                        size={16}
+                        style={{ color: 'var(--mui-palette-primary-main)' }}
                         style={{ position: 'absolute', marginLeft: 10 }}
                       />
                     </Tooltip>

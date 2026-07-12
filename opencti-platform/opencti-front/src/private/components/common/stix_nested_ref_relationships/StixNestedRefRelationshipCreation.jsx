@@ -418,7 +418,7 @@ class StixNestedRefRelationshipCreation extends Component {
                 className={classes.closeButton}
                 onClick={this.handleClose.bind(this)}
               >
-                <Close fontSize="small" color="primary" />
+                <Close size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
               </IconButton>
               <Typography variant="h6">{t('Create a relationship')}</Typography>
             </div>
@@ -445,7 +445,7 @@ class StixNestedRefRelationshipCreation extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={fromObjects[0].entity_type}
-                        color={itemColor(fromObjects[0].entity_type)}
+                        style={{ color: itemColor(fromObjects[0].entity_type) }}
                         size="small"
                       />
                     </div>
@@ -469,7 +469,7 @@ class StixNestedRefRelationshipCreation extends Component {
                   </div>
                 </div>
                 <div className={classes.middle} style={{ paddingTop: 25 }}>
-                  <ArrowRightAlt fontSize="large" />
+                  <ArrowRightAlt size={24} />
                   <br />
                   {canReverseRelation && (
                     <Button
@@ -500,7 +500,7 @@ class StixNestedRefRelationshipCreation extends Component {
                     <div className={classes.icon}>
                       <ItemIcon
                         type={toObjects[0].entity_type}
-                        color={itemColor(toObjects[0].entity_type)}
+                        style={{ color: itemColor(toObjects[0].entity_type) }}
                         size="small"
                       />
                     </div>
@@ -604,7 +604,7 @@ class StixNestedRefRelationshipCreation extends Component {
             className={classes.closeButton}
             onClick={this.handleClose.bind(this)}
           >
-            <Close fontSize="small" color="primary" />
+            <Close size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
           </IconButton>
           <Typography variant="h6">{t('Select a relationship')}</Typography>
         </div>
@@ -634,7 +634,7 @@ class StixNestedRefRelationshipCreation extends Component {
                   <div className={classes.icon}>
                     <ItemIcon
                       type={fromObjects[0].entity_type}
-                      color={itemColor(fromObjects[0].entity_type)}
+                      style={{ color: itemColor(fromObjects[0].entity_type) }}
                       size="small"
                     />
                   </div>
@@ -655,7 +655,7 @@ class StixNestedRefRelationshipCreation extends Component {
                 </div>
               </div>
               <div className={classes.middle}>
-                <ArrowRightAlt fontSize="small" />
+                <ArrowRightAlt size={16} />
                 <br />
                 <Tooltip
                   title={relation.node.description}
@@ -698,7 +698,7 @@ class StixNestedRefRelationshipCreation extends Component {
                   <div className={classes.icon}>
                     <ItemIcon
                       type={toObjects[0].entity_type}
-                      color={itemColor(toObjects[0].entity_type)}
+                      style={{ color: itemColor(toObjects[0].entity_type) }}
                       size="small"
                     />
                   </div>
@@ -757,7 +757,7 @@ class StixNestedRefRelationshipCreation extends Component {
               </div>
             </div>
             <div className={classes.middle} style={{ paddingTop: 15 }}>
-              <ArrowRightAlt fontSize="small" />
+              <ArrowRightAlt size={16} />
               <br />
               <div
                 style={{

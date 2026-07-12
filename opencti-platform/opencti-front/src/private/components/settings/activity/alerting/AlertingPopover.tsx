@@ -1,5 +1,6 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import React, { useState } from 'react';
@@ -75,7 +76,7 @@ const AlertingPopover = ({ data, paginationOptions }: { data: AlertingLine_node$
         onClick={handleOpen}
         aria-haspopup="true"
         style={{ marginTop: 3 }}
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

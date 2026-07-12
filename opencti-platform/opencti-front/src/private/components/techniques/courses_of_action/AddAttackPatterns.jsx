@@ -37,11 +37,11 @@ class AddAttackPatterns extends Component {
     return (
       <div>
         <IconButton
-          color="primary"
+          style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label="Attack Pattern"
           onClick={this.handleOpen.bind(this)}
         >
-          <Add fontSize="small" />
+          <Add size={16} />
         </IconButton>
         <Drawer
           open={this.state.open}

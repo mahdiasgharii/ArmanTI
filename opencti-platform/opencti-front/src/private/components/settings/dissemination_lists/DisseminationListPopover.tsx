@@ -1,6 +1,7 @@
+import { MoreVertical as MoreVert } from 'lucide-react';
 import React, { FunctionComponent, useState } from 'react';
 import IconButton from '@common/button/IconButton';
-import MoreVert from '@mui/icons-material/MoreVert';
+;
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { graphql } from 'react-relay';
@@ -77,7 +78,7 @@ const DisseminationListPopover: FunctionComponent<DisseminationListPopoverProps>
       <IconButton
         onClick={handleOpen}
         aria-haspopup="true"
-        color="primary"
+        style={{ color: 'var(--mui-palette-primary-main)' }}
       >
         <MoreVert />
       </IconButton>

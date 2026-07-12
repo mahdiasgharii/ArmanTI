@@ -76,7 +76,7 @@ const ConnectorWorksErrorLine: FunctionComponent<ConnectorWorksErrorLineProps> =
             <IconButton
               onClick={handleToggleModalError}
               aria-haspopup="true"
-              color="primary"
+              style={{ color: 'var(--mui-palette-primary-main)' }}
             >
               <InfoOutlined />
             </IconButton>

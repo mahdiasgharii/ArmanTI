@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import makeStyles from '@mui/styles/makeStyles';
 import { graphql, useFragment } from 'react-relay';
-import TableViewIcon from '@mui/icons-material/TableView';
+import { TableProperties as TableViewIcon } from 'lucide-react';
 import JsonMapperPopover from '@components/data/jsonMapper/JsonMapperPopover';
 import { JsonMapperLine_jsonMapper$key } from '@components/data/jsonMapper/__generated__/JsonMapperLine_jsonMapper.graphql';
 import { jsonMappers_MappersQuery$variables } from '@components/data/jsonMapper/__generated__/jsonMappers_MappersQuery.graphql';
