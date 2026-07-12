@@ -154,6 +154,8 @@ const DefaultDashboard = ({ timeField }) => {
       needs={[KNOWLEDGE]}
       placeholder={<MarkdownDisplay content={noAccessMessage} />}
     >
+
+
       <div className="grid grid-cols-12 gap-2 pb-6">
         <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <StixCoreObjectsNumber
@@ -473,6 +475,8 @@ const DefaultDashboard = ({ timeField }) => {
           />
         </div>
       </div>
+
+
     </Security>
   );
 };

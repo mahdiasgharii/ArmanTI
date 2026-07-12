@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-12T11:38:00Z",
+  "title": "Design System: ArmanCTI",
+  "extensions": {
+    "colorMeta": {
+      "canvas": { "role": "neutral", "displayName": "Black Canvas", "canonical": "#0A0A0A", "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#404040", "#666666", "#999999"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#141414", "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#404040", "#666666", "#999999"] },
+      "elevated": { "role": "neutral", "displayName": "Elevated", "canonical": "#1A1A1A", "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#404040", "#666666", "#999999"] },
+      "surface-2": { "role": "neutral", "displayName": "Surface-2", "canonical": "#262626", "tonalRamp": ["#000000", "#0A0A0A", "#141414", "#1A1A1A", "#262626", "#404040", "#666666", "#999999"] },
+      "primary": { "role": "primary", "displayName": "Electric Blue", "canonical": "#019BE5", "tonalRamp": ["#003A5C", "#005C8A", "#0073A8", "#019BE5", "#33B0EA", "#66C4F5", "#99D9FA", "#CCEDFD"] },
+      "secondary": { "role": "secondary", "displayName": "Violet Accent", "canonical": "#860EFE", "tonalRamp": ["#2A0440", "#4A08A0", "#6B0DD0", "#860EFE", "#A14AFE", "#B88DFF", "#D4B8FF", "#E9D9FF"] },
+      "danger": { "role": "tertiary", "displayName": "Signal Red", "canonical": "#F20F0F", "tonalRamp": ["#330303", "#5C0606", "#881106", "#F20F0F", "#FF3B3B", "#FF6B6B", "#FF9E9E", "#FFD0D0"] },
+      "success": { "role": "tertiary", "displayName": "Success Green", "canonical": "#17AB1F", "tonalRamp": ["#032706", "#094E0B", "#0E7A14", "#17AB1F", "#3FC947", "#6FE077", "#9FF0A7", "#CFFAD7"] },
+      "warning": { "role": "tertiary", "displayName": "Warning Orange", "canonical": "#E6700F", "tonalRamp": ["#4D2303", "#7A3A06", "#B0540B", "#E6700F", "#FF8C2E", "#FFA85C", "#FFC189", "#FFDDB6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display / Metric", "purpose": "Dashboard numbers, KPI values, headline metrics." },
+      "body": { "displayName": "Body", "purpose": "Default text, descriptions, form labels, UI text." },
+      "mono": { "displayName": "Mono", "purpose": "Code snippets, IDs, technical values." },
+      "metric": { "displayName": "Metric", "purpose": "Large numeric displays on dashboards." }
+    },
+    "shadows": [
+      { "name": "floating", "value": "0 4px 12px rgba(0,0,0,0.4)", "purpose": "Menus, dialogs, popovers — floating elements only." },
+      { "name": "hover-lift", "value": "0 2px 8px rgba(0,0,0,0.3)", "purpose": "Hover state on interactive cards. Never on static surfaces." }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for hover, focus, and state transitions. 150-250ms duration." },
+      { "name": "instant", "value": "0ms", "purpose": "No animation for state changes that should feel immediate (toggle, select)." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "960px" },
+      { "name": "lg", "value": "1280px" },
+      { "name": "xl", "value": "1920px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button — Electric Blue, white text, 4px radius.",
+      "html": "<button class=\"ds-btn-primary\">Save</button>",
+      "css": ".ds-btn-primary { background: #019BE5; color: #FFFFFF; font-family: Peyda, sans-serif; font-weight: 500; font-size: 14px; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: #0073A8; } .ds-btn-primary:focus-visible { outline: 2px solid #019BE5; outline-offset: 2px; } .ds-btn-primary:active { background: #0073A8; } .ds-btn-primary:disabled { background: #262626; color: #848592; cursor: not-allowed; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary/ghost button — Surface-2 background, tonal text.",
+      "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
+      "css": ".ds-btn-secondary { background: #262626; color: #FFFFFF; font-family: Peyda, sans-serif; font-weight: 500; font-size: 14px; border: 1px solid #262626; border-radius: 4px; padding: 8px 16px; cursor: pointer; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-secondary:hover { background: #1A1A1A; } .ds-btn-secondary:focus-visible { outline: 2px solid #019BE5; outline-offset: 2px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive action button — Signal Red, white text.",
+      "html": "<button class=\"ds-btn-danger\">Delete</button>",
+      "css": ".ds-btn-danger { background: #F20F0F; color: #FFFFFF; font-family: Peyda, sans-serif; font-weight: 500; font-size: 14px; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-danger:hover { background: #881106; } .ds-btn-danger:focus-visible { outline: 2px solid #F20F0F; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Standard text input — Surface-2 background, 4px radius, blue focus border.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Enter value...\" />",
+      "css": ".ds-input { background: #262626; color: #FFFFFF; font-family: Peyda, sans-serif; font-size: 14px; border: 1px solid #262626; border-radius: 4px; padding: 8px 12px; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: #AFB0B6; } .ds-input:focus { border-color: #019BE5; outline: none; } .ds-input:disabled { color: #AFB0B6; cursor: not-allowed; }"
+    },
+    {
+      "name": "Surface Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Default card on canvas — Surface background, 4px radius, no shadow.",
+      "html": "<div class=\"ds-card-surface\"><h3 class=\"ds-card-title\">Threat report</h3><p class=\"ds-card-body\">Analysis summary text here.</p></div>",
+      "css": ".ds-card-surface { background: #141414; border: 1px solid #262626; border-radius: 4px; padding: 16px 20px; } .ds-card-title { font-family: Peyda, sans-serif; font-weight: 500; font-size: 16px; color: #FFFFFF; margin: 0 0 8px 0; text-transform: lowercase; } .ds-card-title::first-letter { text-transform: uppercase; } .ds-card-body { font-family: Peyda, sans-serif; font-weight: 400; font-size: 14px; color: #848592; line-height: 1.5; margin: 0; }"
+    },
+    {
+      "name": "Elevated Card",
+      "kind": "card",
+      "refersTo": "card-elevated",
+      "description": "Card on a surface — Elevated background for secondary layering.",
+      "html": "<div class=\"ds-card-elevated\"><p class=\"ds-card-body\">Nested content on a surface card.</p></div>",
+      "css": ".ds-card-elevated { background: #1A1A1A; border: 1px solid #262626; border-radius: 4px; padding: 16px 20px; } .ds-card-body { font-family: Peyda, sans-serif; font-weight: 400; font-size: 14px; color: #848592; line-height: 1.5; margin: 0; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip-default",
+      "description": "Status chip — Surface-2 background, muted text, lowercase voice.",
+      "html": "<span class=\"ds-chip\">active</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; background: #262626; color: #848592; font-family: Peyda, sans-serif; font-weight: 500; font-size: 12px; border-radius: 4px; padding: 4px 10px; text-transform: lowercase; } .ds-chip::first-letter { text-transform: uppercase; }"
+    },
+    {
+      "name": "Sidebar Navigation",
+      "kind": "nav",
+      "refersTo": "button-secondary",
+      "description": "Sidebar nav item — Canvas background, active state with Electric Blue accent.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\" href=\"#\">Dashboard</a><a class=\"ds-nav-item\" href=\"#\">Analyses</a><a class=\"ds-nav-item\" href=\"#\">Observations</a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 2px; background: #0A0A0A; padding: 8px; } .ds-nav-item { display: block; font-family: Peyda, sans-serif; font-weight: 400; font-size: 14px; color: #848592; text-decoration: none; border-radius: 4px; padding: 8px 12px; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s; } .ds-nav-item:hover { background: #1A1A1A; color: #FFFFFF; } .ds-nav-active { background: #262626; color: #019BE5; font-weight: 500; } .ds-nav-active::first-letter { text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument Panel",
+    "overview": "ArmanCTI is a cyber threat intelligence platform built for security analysts who need precision, density, and speed. The interface feels like a professional instrument — a dark control panel where every pixel earns its place. The black canvas is the housing; tonal greys create depth without shadows; accent colors appear surgically, never decoratively.\n\nThe system rejects the SaaS aesthetic entirely. No cream backgrounds, no card shadows, no gradient hero metrics, no emoji icons. The departure from default OpenCTI cyan/teal is intentional — Electric Blue replaces it as the single primary accent, used on ≤15% of any screen. Violet marks AI features exclusively. The grey scale carries 85%+ of visual weight.\n\nTypography uses a single family — Peyda — across all roles. Weight and size create hierarchy, not font pairing. The signature voice pattern is lowercase with first-letter uppercase on headings, chips, tabs, and tooltips.",
+    "keyCharacteristics": [
+      "Black canvas (#0A0A0A) as the dominant surface; tonal layering for depth",
+      "Surgical accent usage (≤15% of screen); grey scale carries the rest",
+      "Single-font system (Peyda) with weight-based hierarchy",
+      "4px border radius throughout — sharp, precise, not soft",
+      "Flat by default; shadows only on floating elements and state responses",
+      "Dual theme support (dark default, light available) via CSS variables"
+    ],
+    "rules": [
+      { "name": "The Surgical Accent Rule", "body": "Accent colors appear on ≤15% of any screen. The black canvas and grey scale carry 85%+ of visual weight. If an accent feels decorative, remove it.", "section": "colors" },
+      { "name": "The No-Teal Rule", "body": "Original OpenCTI cyan/teal palette is prohibited. Electric Blue (#019BE5) is the replacement. No exceptions.", "section": "colors" },
+      { "name": "The Gradient Border Rule", "body": "Gradient borders (blue→purple) are reserved for premium feature actions and AI elements only. Never on standard UI.", "section": "colors" },
+      { "name": "The One-Font Rule", "body": "Peyda is the only family. No Geologica, no IBM Plex Sans, no third family. Weight and size create hierarchy; font pairing does not.", "section": "typography" },
+      { "name": "The Lowercase Voice Rule", "body": "text-transform: lowercase with &::first-letter { text-transform: uppercase } on headings, chips, tabs, and tooltips. This is the signature voice pattern — not optional.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "No box-shadow on static cards or surfaces. Use the tonal scale (--ravin-bg → --ravin-surface → --ravin-elevated → --ravin-surface-2) for depth.", "section": "elevation" },
+      { "name": "The No-Card-Shadow Rule", "body": "Cards convey depth through background color, not shadows. A card on canvas is #141414; a card on a surface is #1A1A1A. That's the entire elevation system.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the tonal grey scale (#0A0A0A → #141414 → #1A1A1A → #262626) for all depth and layering.",
+      "Do keep accent colors to ≤15% of any screen. The grey scale is the system.",
+      "Do use Peyda as the single font family. Weight creates hierarchy.",
+      "Do apply the lowercase voice pattern (text-transform: lowercase + &::first-letter { text-transform: uppercase }) on headings, chips, tabs, and tooltips.",
+      "Do use 4px border radius everywhere. Sharp, precise, not soft.",
+      "Do use Electric Blue (#019BE5) for primary actions and focus states only.",
+      "Do use Violet (#860EFE) for AI features exclusively.",
+      "Do support both dark (default) and light themes via the --ravin-* CSS variables."
+    ],
+    "donts": [
+      "Don't use the original OpenCTI cyan/teal palette. The departure is intentional.",
+      "Don't add box-shadows to static cards or surfaces. Tonal layering is the elevation system.",
+      "Don't use Geologica or IBM Plex Sans. Peyda is the only family.",
+      "Don't use cream, sand, beige, or any warm-neutral background. The canvas is black (#0A0A0A).",
+      "Don't use cookie-cutter card grids, hero-metric templates, or emoji icons — this is a professional instrument, not a SaaS product.",
+      "Don't use purple gradients everywhere, glassmorphism, or \"powered by AI\" badges.",
+      "Don't use gradient borders (blue→purple) outside of premium feature actions and AI elements.",
+      "Don't introduce a third font family. Weight and size create hierarchy, not font pairing."
+    ]
+  }
+}
