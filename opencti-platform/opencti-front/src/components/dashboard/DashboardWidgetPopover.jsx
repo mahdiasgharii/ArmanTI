@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import MoreVert from '@mui/icons-material/MoreVert';
+import { MoreVertical } from 'lucide-react';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import Menu from '@mui/material/Menu';
@@ -55,7 +55,7 @@ const DashboardWidgetPopover = ({
         color="primary"
         aria-label={t_i18n('Widget popover of actions')}
       >
-        <MoreVert fontSize="small" />
+        <MoreVertical size={16} />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

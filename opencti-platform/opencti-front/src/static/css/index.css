@@ -16,6 +16,10 @@
 @import './leaflet.css';
 @import './timerange.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   scrollbar-width: thin;
 }

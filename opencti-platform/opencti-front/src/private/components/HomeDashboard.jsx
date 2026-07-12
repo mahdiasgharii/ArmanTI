@@ -1,5 +1,3 @@
-import Grid from '@mui/material/Grid';
-import { makeStyles } from '@mui/styles';
 import { assoc, head, last, map, pluck } from 'ramda';
 import React, { Suspense, useMemo } from 'react';
 import { graphql, useFragment, usePreloadedQuery } from 'react-relay';
@@ -25,15 +23,6 @@ import useConnectedDocumentModifier from '../../utils/hooks/useConnectedDocument
 import MarkdownDisplay from '../../components/markdownDisplay/MarkdownDisplay';
 
 // region styles
-// Deprecated - https://mui.com/system/styles/basics/
-// Do not use it for new code.
-const useStyles = makeStyles(() => ({
-  root: {
-    marginRight: -20,
-    paddingRight: 20,
-    paddingBottom: 30,
-  },
-}));
 // endregion
 
 // region inner components
@@ -165,8 +154,8 @@ const DefaultDashboard = ({ timeField }) => {
       needs={[KNOWLEDGE]}
       placeholder={<MarkdownDisplay content={noAccessMessage} />}
     >
-      <Grid container={true} spacing={3}>
-        <Grid item xs={3}>
+      <div className="grid grid-cols-12 gap-2 pb-6">
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <StixCoreObjectsNumber
             entityType="Intrusion-Set"
             config={config}
@@ -187,8 +176,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <StixCoreObjectsNumber
             entityType="Malware"
             config={config}
@@ -209,8 +198,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <StixCoreObjectsNumber
             entityType="Report"
             config={config}
@@ -231,8 +220,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <StixCoreObjectsNumber
             entityType="Indicator"
             config={config}
@@ -253,8 +242,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'created' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 md:col-span-3">
           <StixRelationshipsHorizontalBars
             height={300}
             config={{
@@ -285,8 +274,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 md:col-span-3">
           <StixRelationshipsHorizontalBars
             height={300}
             config={{
@@ -317,8 +306,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={6}>
+        </div>
+        <div className="col-span-12 md:col-span-6">
           <StixRelationshipsMultiAreaChart
             height={300}
             config={{
@@ -345,8 +334,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 md:col-span-3">
           <StixRelationshipsPolarArea
             height={400}
             config={{
@@ -376,8 +365,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={3}>
+        </div>
+        <div className="col-span-12 md:col-span-3">
           <StixRelationshipsDistributionList
             overflow="hidden"
             parameters={{
@@ -409,8 +398,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-        <Grid item xs={6}>
+        </div>
+        <div className="col-span-12 md:col-span-6">
           <Suspense
             fallback={(
               <LocationMiniMapTargets
@@ -422,8 +411,8 @@ const DefaultDashboard = ({ timeField }) => {
           >
             <TargetedCountries timeField={timeField} />
           </Suspense>
-        </Grid>
-        <Grid item xs={8}>
+        </div>
+        <div className="col-span-12 md:col-span-8">
           <StixCoreObjectsList
             title={t_i18n('Latest reports')}
             config={config}
@@ -453,8 +442,8 @@ const DefaultDashboard = ({ timeField }) => {
               ],
             }]}
           />
-        </Grid>
-        <Grid item xs={4}>
+        </div>
+        <div className="col-span-12 md:col-span-4">
           <StixRelationshipsHorizontalBars
             height={410}
             config={{
@@ -482,8 +471,8 @@ const DefaultDashboard = ({ timeField }) => {
               date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
             }]}
           />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Security>
   );
 };
@@ -558,7 +547,6 @@ const dashboardMeFragment = graphql`
 const LOCAL_STORAGE_KEY = 'dashboard';
 
 const HomeDashboardComponent = ({ queryRef }) => {
-  const classes = useStyles();
   const { t_i18n } = useFormatter();
   const authContext = useAuth();
   const currentMe = authContext.me;
@@ -587,7 +575,7 @@ const HomeDashboardComponent = ({ queryRef }) => {
 
   return (
     <UserContext.Provider value={dashboardContextValue}>
-      <div className={classes.root} data-testid="dashboard-page">
+      <div data-testid="dashboard-page">
         {defaultDashboard !== PLATFORM_DASHBOARD ? (
           <CustomHomeDashboard
             dashboard={defaultDashboard}

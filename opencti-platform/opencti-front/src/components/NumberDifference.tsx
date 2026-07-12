@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpward, ArrowDownward, ArrowForward } from '@mui/icons-material';
+import { ArrowUp, ArrowDown, ArrowRight } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
 import type { Theme } from './Theme';
 import { useFormatter } from './i18n';
@@ -28,9 +28,9 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
   if (value < 0) color = inlineStyles.red;
   if (value === 0) color = inlineStyles.blueGrey;
 
-  let Icon = ArrowUpward;
-  if (value < 0) Icon = ArrowDownward;
-  if (value === 0) Icon = ArrowForward;
+  let Icon = ArrowUp;
+  if (value < 0) Icon = ArrowDown;
+  if (value === 0) Icon = ArrowRight;
 
   return (
     <div style={{
@@ -42,7 +42,7 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
       whiteSpace: 'nowrap',
     }}
     >
-      <Icon color="inherit" style={{ fontSize: 13 }} />
+      <Icon size={13} />
       <span>{value}</span>
       {description && (
         <span>

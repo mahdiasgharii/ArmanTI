@@ -1,10 +1,15 @@
 import { ReactNode } from 'react';
-import { useTheme } from '@mui/styles';
-import { Stack, Typography } from '@mui/material';
 import { useFormatter } from '../i18n';
-import { Theme } from '../Theme';
 import NumberDifference from '../NumberDifference';
-import ItemIcon from '../ItemIcon';
+import { Bug, FileText, Flag, Radar, ShieldAlert } from 'lucide-react';
+
+const entityTypeIconMap: Record<string, ReactNode> = {
+  'Intrusion-Set': <Radar size={28} className="text-white/35" />,
+  'Malware': <Bug size={28} className="text-white/35" />,
+  'Report': <FileText size={28} className="text-white/35" />,
+  'Indicator': <Flag size={28} className="text-white/35" />,
+  'Threat-Actor': <ShieldAlert size={28} className="text-white/35" />,
+};
 
 export interface WidgetNumberProps {
   label: string;
@@ -26,57 +31,33 @@ const WidgetNumber = ({
   action,
 }: WidgetNumberProps) => {
   const { n } = useFormatter();
-  const theme = useTheme<Theme>();
-
-  const valueStyle = {
-    fontSize: 32,
-    lineHeight: 1,
-    fontWeight: 600,
-  };
 
   return (
-    <Stack height="100%" justifyContent="space-between">
-      <Stack direction="row" alignItems="start">
-        <Stack direction="row" alignItems="start" gap={1} flex={1}>
-          <Typography
-            color={theme.palette.text.light}
-            variant="body2"
-            gutterBottom
-          >
-            {label}
-          </Typography>
+    <div className="flex h-full flex-col justify-between">
+      <div className="flex flex-row items-start">
+        <div className="flex flex-1 flex-row items-start gap-1">
+          <span className="font-body text-sm text-white/70">{label}</span>
           {diffValue !== undefined && diffLabel && (
             <NumberDifference
               value={diffValue}
               description={diffLabel}
             />
           )}
-        </Stack>
+        </div>
         {action}
-      </Stack>
+      </div>
 
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <div className="flex flex-row items-center justify-between">
         <div
           data-testid={`card-number-${label}`}
-          style={valueStyle}
+          className="font-display text-[32px] font-semibold leading-none text-primary"
         >
           {n(value)}
         </div>
-        {entityType && (
-          <ItemIcon
-            type={entityType}
-            size="large"
-            color={theme.palette.text.secondary}
-            style={{ opacity: 0.35 }}
-          />
-        )}
+        {entityType && (entityTypeIconMap[entityType] ?? null)}
         {icon}
-      </Stack>
-    </Stack>
+      </div>
+    </div>
   );
 };
 

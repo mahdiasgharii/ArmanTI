@@ -167,6 +167,8 @@ services:
   opencti-dev-telemetry-grafana:
     image: grafana/grafana:13.1.0-25893932881
     container_name: opencti-dev-telemetry-grafana
+    profiles:
+      - "telemetry"
     ports:
       - "3100:3000"
     environment:

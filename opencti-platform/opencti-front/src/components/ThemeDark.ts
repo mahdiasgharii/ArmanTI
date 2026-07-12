@@ -8,15 +8,15 @@ import { alpha, darken, lighten } from '@mui/material';
 
 const EE_COLOR = '#00f18d';
 
-export const THEME_DARK_DEFAULT_BACKGROUND = '#070d19';
-const THEME_DARK_DEFAULT_BODY_END_GRADIENT = '#08101D';
-export const THEME_DARK_DEFAULT_PRIMARY = '#0fbcff';
-export const THEME_DARK_DEFAULT_SECONDARY = '#00f18d';
-export const THEME_DARK_DEFAULT_ACCENT = '#0f1e38';
-export const THEME_DARK_DEFAULT_PAPER = '#09101e';
-export const THEME_DARK_DEFAULT_TEXT = '#F2F2F3';
-const THEME_DARK_DEFAULT_NAV = '#070d19';
-export const THEME_DARK_DIALOG_BACKGROUND = '#0F1D34';
+export const THEME_DARK_DEFAULT_BACKGROUND = '#0A0A0A';
+const THEME_DARK_DEFAULT_BODY_END_GRADIENT = '#141414';
+export const THEME_DARK_DEFAULT_PRIMARY = '#019BE5';
+export const THEME_DARK_DEFAULT_SECONDARY = '#860EFE';
+export const THEME_DARK_DEFAULT_ACCENT = '#1A1A1A';
+export const THEME_DARK_DEFAULT_PAPER = '#141414';
+export const THEME_DARK_DEFAULT_TEXT = '#FFFFFF';
+const THEME_DARK_DEFAULT_NAV = '#0A0A0A';
+export const THEME_DARK_DIALOG_BACKGROUND = '#1A1A1A';
 
 const getAppBodyGradientEndColor = (background: string | null): string => {
   if (background && background !== THEME_DARK_DEFAULT_BACKGROUND) {
@@ -43,7 +43,7 @@ const ThemeDark = (
     mode: 'dark',
     common: { white: '#ffffff', grey: '#95969D', lightGrey: '#E4E5E7' },
     error: {
-      main: '#F14337',
+      main: '#F20F0F',
       dark: '#881106',
     },
     warn: {
@@ -58,24 +58,24 @@ const ThemeDark = (
     success: { main: '#17AB1F', dark: '#094E0B' },
     primary: { main: primary || THEME_DARK_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#B2ECFF' },
     secondary: { main: secondary || THEME_DARK_DEFAULT_SECONDARY },
-    gradient: { main: '#00f18d' },
+    gradient: { main: '#860EFE' },
     border: {
       primary: hexToRGB((primary || THEME_DARK_DEFAULT_PRIMARY), 0.3),
-      secondary: '#424751',
+      secondary: '#262626',
       pagination: hexToRGB('#ffffff', 0.5),
       paper: hexToRGB('#ffffff', 0.12),
-      main: '#252A35',
+      main: '#262626',
     },
     pagination: {
       main: '#ffffff',
     },
     chip: { main: '#ffffff' },
     ai: {
-      main: '#B286FF',
-      light: '#D6C2FA',
-      dark: '#5E1AD5',
+      main: '#860EFE',
+      light: '#B88DFF',
+      dark: '#4A08A0',
       contrastText: '#000000',
-      background: 'rgba(28, 47, 73, 0.94)',
+      background: 'rgba(134, 14, 254, 0.08)',
     },
     ee: {
       main: EE_COLOR,
@@ -88,16 +88,15 @@ const ThemeDark = (
       paper: paper || THEME_DARK_DEFAULT_PAPER,
       nav: nav || THEME_DARK_DEFAULT_NAV,
       accent: accent || THEME_DARK_DEFAULT_ACCENT,
-      shadow: 'rgba(200, 200, 200, 0.15)',
-      // the only way for now to know if we should apply the paper color or not
+      shadow: 'rgba(0, 0, 0, 0.4)',
       secondary: paper === THEME_DARK_DEFAULT_PAPER
-        ? '#0C1524'
-        : (paper ?? '#0C1524'),
+        ? '#1A1A1A'
+        : (paper ?? '#1A1A1A'),
       drawer: nav === THEME_DARK_DEFAULT_NAV
-        ? '#0f1d34'
-        : (darken(nav ?? '#0f1d34', 0.5)),
+        ? '#141414'
+        : (darken(nav ?? '#141414', 0.5)),
 
-      disabled: '#363B46',
+      disabled: '#262626',
       gradient: {
         start: background || THEME_DARK_DEFAULT_BACKGROUND,
         end: getAppBodyGradientEndColor(background),
@@ -107,15 +106,15 @@ const ThemeDark = (
       secondary: THEME_DARK_DEFAULT_TEXT,
       tertiary: '#848592',
       light: '#AFB0B6',
-      disabled: '#75829A',
+      disabled: '#555555',
     },
     leftBar: {
       header: {
-        itemBackground: '#253348',
+        itemBackground: '#1A1A1A',
       },
-      popoverItem: '#070D19',
-      hover: '#253348',
-      text: '#F2F2F3',
+      popoverItem: '#0A0A0A',
+      hover: '#1A1A1A',
+      text: '#FFFFFF',
     },
     severity: {
       critical: '#EE3838',
@@ -128,47 +127,47 @@ const ThemeDark = (
     },
     designSystem: {
       primary: {
-        main: '#0FBCFF',
-        light: '#B2ECFF',
-        dark: '#007399',
+        main: '#019BE5',
+        light: '#66C4F5',
+        dark: '#0073A8',
       },
       secondary: {
-        main: '#00F1BD',
-        light: '#BDFFED',
-        dark: '#009474',
+        main: '#860EFE',
+        light: '#B88DFF',
+        dark: '#4A08A0',
       },
       destructive: {
-        main: '#F44336',
-        light: '#F8958C',
+        main: '#F20F0F',
+        light: '#FF6B6B',
         dark: '#881106',
       },
       ia: {
-        main: '#B286FF',
-        light: '#D6C2FA',
-        dark: '#5E1AD5',
+        main: '#860EFE',
+        light: '#B88DFF',
+        dark: '#4A08A0',
       },
       background: {
-        main: '#070D19',
-        bg1: '#0C1524',
-        bg2: '#0D182A',
-        bg3: '#253348',
-        bg4: '#1C2F49',
-        disabled: '#363B46',
+        main: '#0A0A0A',
+        bg1: '#141414',
+        bg2: '#1A1A1A',
+        bg3: '#262626',
+        bg4: '#333333',
+        disabled: '#262626',
       },
       border: {
-        main: '#2B3447',
-        border1: '#424751',
-        border2: '#1C253A',
+        main: '#262626',
+        border1: '#333333',
+        border2: '#1A1A1A',
       },
       gradient: {
-        background: 'linear-gradient(100.35deg, #070D19 0%, #08101d 100%)',
-        ia: 'linear-gradient(90deg, #D6C2FA 0.67%, #B286FF 100.67%)',
-        focus: 'linear-gradient(90deg, #0FBCFF -3.68%, #00F1BD 106.62%)',
+        background: 'linear-gradient(180deg, #0A0A0A 0%, #141414 100%)',
+        ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
+        focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
       },
       alert: {
         info: {
-          primary: '#4DCCFF',
-          secondary: '#004C66',
+          primary: '#019BE5',
+          secondary: '#003A5C',
         },
         success: {
           primary: '#17AB1F',
@@ -184,23 +183,23 @@ const ThemeDark = (
           secondary: '#884106',
         },
         error: {
-          primary: '#F14337',
+          primary: '#F20F0F',
           secondary: '#881106',
         },
       },
       tertiary: {
         grey: {
-          400: '#95969D',
-          700: '#494A50',
-          800: '#313235',
+          400: '#848592',
+          700: '#3A3A3A',
+          800: '#262626',
         },
         blue: {
-          500: '#0099CC',
-          900: '#003242',
+          500: '#019BE5',
+          900: '#003A5C',
         },
         darkBlue: {
-          300: '#7587FF',
-          500: '#0F2DFF',
+          300: '#66C4F5',
+          500: '#019BE5',
         },
         turquoise: {
           600: '#00BD94',
@@ -213,10 +212,10 @@ const ThemeDark = (
         },
         red: {
           100: '#FBCBC5',
-          200: '#F8958C',
-          400: '#F14337',
-          500: '#E51E10',
-          600: '#B8180A',
+          200: '#FF6B6B',
+          400: '#F20F0F',
+          500: '#D00D0D',
+          600: '#A00A0A',
           700: '#881106',
         },
         orange: {
@@ -382,8 +381,8 @@ const ThemeDark = (
         paper: {
           backgroundImage: 'none',
           backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-            ? '#0F1D34'
-            : (paper ?? '#0F1D34'),
+            ? '#1A1A1A'
+            : (paper ?? '#1A1A1A'),
           borderRadius: 4,
         },
       },
@@ -421,12 +420,12 @@ const ThemeDark = (
             display: 'none',
           },
           '& .MuiToggleButton-root': {
-            border: '1px solid #2B3447',
+            border: '1px solid #262626',
             color: primary,
 
             '&:focus-visible': {
               outline: 'none',
-              boxShadow: '0 0 0 2px #BDFFED',
+              boxShadow: '0 0 0 2px #66C4F5',
             },
 
             '&.Mui-selected': {
@@ -493,8 +492,8 @@ const ThemeDark = (
         },
         outlined: {
           backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-            ? '#0C1524'
-            : (paper ?? '#0C1524'),
+            ? '#1A1A1A'
+            : (paper ?? '#1A1A1A'),
         },
       },
     },
@@ -510,12 +509,12 @@ const ThemeDark = (
         html: {
           scrollbarColor: `${background || THEME_DARK_DEFAULT_BACKGROUND} ${accent || THEME_DARK_DEFAULT_ACCENT}`,
           scrollbarWidth: 'thin',
-          background: `linear-gradient(100deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
+          background: `linear-gradient(180deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
           backgroundAttachment: 'fixed',
           backgroundColor: background || THEME_DARK_DEFAULT_BACKGROUND,
         },
         body: {
-          background: `linear-gradient(100deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
+          background: `linear-gradient(180deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
           backgroundAttachment: 'fixed',
           scrollbarColor: `${background || THEME_DARK_DEFAULT_BACKGROUND} ${accent || THEME_DARK_DEFAULT_ACCENT}`,
           scrollbarWidth: 'thin',
@@ -531,7 +530,7 @@ const ThemeDark = (
             WebkitTextFillColor: '#ffffff !important',
             caretColor: 'transparent !important',
             WebkitBoxShadow:
-              '0 0 0 1000px rgba(4, 8, 17, 0.88) inset !important',
+              '0 0 0 1000px rgba(10, 10, 10, 0.92) inset !important',
             borderTopLeftRadius: 'inherit',
             borderTopRightRadius: 'inherit',
           },
@@ -560,14 +559,14 @@ const ThemeDark = (
           },
           '.error .react-mde textarea': {
             border: '0 !important',
-            borderBottom: '2px solid #F14337 !important',
+            borderBottom: '2px solid #F20F0F !important',
             '&:hover': {
               border: '0 !important',
-              borderBottom: '2px solid #F14337 !important',
+              borderBottom: '2px solid #F20F0F !important',
             },
             '&:focus': {
               border: '0 !important',
-              borderBottom: '2px solid #F14337 !important',
+              borderBottom: '2px solid #F20F0F !important',
             },
           },
           '.mde-header': {
@@ -604,12 +603,12 @@ const ThemeDark = (
             backgroundColor: `${accent || THEME_DARK_DEFAULT_ACCENT} !important`,
           },
           '.react_time_range__track': {
-            backgroundColor: 'rgba(1, 226, 255, 0.1) !important',
-            borderLeft: '1px solid #00bcd4 !important',
-            borderRight: '1px solid #00bcd4 !important',
+            backgroundColor: 'rgba(1, 155, 229, 0.1) !important',
+            borderLeft: '1px solid #019BE5 !important',
+            borderRight: '1px solid #019BE5 !important',
           },
           '.react_time_range__handle_marker': {
-            backgroundColor: '#00bcd4 !important',
+            backgroundColor: '#019BE5 !important',
           },
           '.leaflet-container': {
             backgroundColor: `${paper || THEME_DARK_DEFAULT_PAPER} !important`,
@@ -706,8 +705,8 @@ const ThemeDark = (
           '& .MuiOutlinedInput-root': {
             // the only way for now to know if we should apply the paper color or not
             backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-              ? '#0C1524'
-              : (paper ?? '#0C1524'),
+              ? '#1A1A1A'
+              : (paper ?? '#1A1A1A'),
             '& fieldset': {
               borderColor: 'transparent',
             },

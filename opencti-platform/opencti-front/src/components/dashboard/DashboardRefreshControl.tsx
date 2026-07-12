@@ -1,4 +1,4 @@
-import RefreshIcon from '@mui/icons-material/Refresh';
+import { RefreshCw } from 'lucide-react';
 import { ButtonGroup, CircularProgress, MenuItem, Select, useTheme } from '@mui/material';
 import Button from '@common/button/Button';
 import type { SelectChangeEvent } from '@mui/material/Select';
@@ -78,7 +78,7 @@ const DashboardRefreshControl = ({
   return (
     <ButtonGroup id="dashboard-refresh-control" size="small" variant="outlined">
       <Button
-        startIcon={spinning ? <CircularProgress size={16} color="inherit" /> : <RefreshIcon />}
+        startIcon={spinning ? <CircularProgress size={16} color="inherit" /> : <RefreshCw size={16} />}
         onClick={handleRefreshClick}
         variant="secondary"
       >

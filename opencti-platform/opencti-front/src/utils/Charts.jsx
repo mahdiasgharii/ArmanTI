@@ -1,4 +1,3 @@
-import * as C from '@mui/material/colors';
 import { resolveLink } from './Entity';
 import { truncate } from './String';
 import { isColorCloseToWhite } from './Colors';
@@ -6,25 +5,25 @@ import { alpha } from '@mui/material/styles';
 import { shouldOpenInNewTabMouseEvent } from './domEvent';
 
 export const colors = (temp) => [
-  C.red[temp],
-  C.purple[temp],
-  C.pink[temp],
-  C.deepPurple[temp],
-  C.indigo[temp],
-  C.blue[temp],
-  C.cyan[temp],
-  C.blueGrey[temp],
-  C.lightBlue[temp],
-  C.green[temp],
-  C.teal[temp],
-  C.lightGreen[temp],
-  C.amber[temp],
-  C.deepOrange[temp],
-  C.lime[temp],
-  C.yellow[temp],
-  C.brown[temp],
-  C.orange[temp],
-  C.grey[temp],
+  '#019BE5', // electric blue
+  '#860EFE', // violet accent
+  '#F20F0F', // signal red
+  '#00BD94', // turquoise
+  '#F2933A', // orange
+  '#F2BE3A', // yellow
+  '#66C4F5', // light blue
+  '#B88DFF', // light violet
+  '#FF6B6B', // light red
+  '#41E149', // green
+  '#7587FF', // periwinkle
+  '#00F1BD', // teal
+  '#E6700F', // dark orange
+  '#17AB1F', // dark green
+  '#D6C2FA', // pale violet
+  '#B2ECFF', // pale blue
+  '#848592', // grey
+  '#4A08A0', // dark violet
+  '#3A3A3A', // dark grey
 ];
 
 const toolbarOptions = {
@@ -708,9 +707,9 @@ export const polarAreaChartOptions = (
   if (chartFinalColors.length === 0) {
     chartFinalColors = colors(temp);
     if (labels.length === 2 && labels[0] === 'true') {
-      chartFinalColors = [C.green[temp], C.red[temp]];
+      chartFinalColors = ['#17AB1F', '#F20F0F'];
     } else if (labels.length === 2 && labels[0] === 'false') {
-      chartFinalColors = [C.red[temp], C.green[temp]];
+      chartFinalColors = ['#F20F0F', '#17AB1F'];
     }
   }
   return {
@@ -818,15 +817,15 @@ export const donutChartOptions = (
     chartFinalColors = colors(temp);
     if (labels.length === 2 && labels[0] === 'true') {
       if (reversed) {
-        chartFinalColors = [C.red[temp], C.green[temp]];
+        chartFinalColors = ['#F20F0F', '#17AB1F'];
       } else {
-        chartFinalColors = [C.green[temp], C.red[temp]];
+        chartFinalColors = ['#17AB1F', '#F20F0F'];
       }
     } else if (labels.length === 2 && labels[0] === 'false') {
       if (reversed) {
-        chartFinalColors = [C.green[temp], C.red[temp]];
+        chartFinalColors = ['#17AB1F', '#F20F0F'];
       } else {
-        chartFinalColors = [C.red[temp], C.green[temp]];
+        chartFinalColors = ['#F20F0F', '#17AB1F'];
       }
     }
   }

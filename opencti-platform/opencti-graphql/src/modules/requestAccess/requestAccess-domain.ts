@@ -280,10 +280,10 @@ export const getRequestAccessConfiguration = async (
     }
   }
   const requestAccessConfigResult: RequestAccessConfiguration = {
-    declined_status: declinedStatus,
-    approved_status: approvedStatus,
+    declined_status: declinedStatus ?? null,
+    approved_status: approvedStatus ?? null,
     approval_admin: allAdmins,
-    id: REQUEST_ACCESS_CONFIGURATION_ID,
+    id: `${REQUEST_ACCESS_CONFIGURATION_ID}-${entitySetting.id}`,
   };
   logApp.debug('[OPENCTI-MODULE][Request Access] getRequestAccessConfiguration result:', requestAccessConfigResult);
   return requestAccessConfigResult;
@@ -364,10 +364,10 @@ export const configureRequestAccess = async (context: AuthContext, user: AuthUse
     }
   }
   const requestAccessConfigResult: RequestAccessConfiguration = {
-    declined_status: declinedStatusData,
-    approved_status: approvedStatusData,
+    declined_status: declinedStatusData ?? null,
+    approved_status: approvedStatusData ?? null,
     approval_admin: approvalAdminsMembers,
-    id: REQUEST_ACCESS_CONFIGURATION_ID,
+    id: `${REQUEST_ACCESS_CONFIGURATION_ID}-${rfiEntitySettings.id}`,
   };
   logApp.debug('[OPENCTI-MODULE][Request access] - requestAccessConfigResult', { requestAccessConfigResult });
   return requestAccessConfigResult;

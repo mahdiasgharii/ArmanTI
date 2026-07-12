@@ -152,6 +152,7 @@ export const getPublicSettings = async (context) => {
   const { platform_enterprise_edition, ...settings } = await getSettings(context);
   return {
     ...settings,
+    id: `public-${settings.id}`,
     platform_enterprise_edition_license_validated: platform_enterprise_edition.license_validated,
   };
 };
