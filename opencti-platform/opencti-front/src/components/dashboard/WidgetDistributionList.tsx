@@ -81,6 +81,17 @@ const WidgetDistributionList = ({
                 maxHeight: 50,
                 paddingRight: 0,
                 cursor: cursorStyle,
+                fontFamily: '"Peyda", sans-serif',
+                '& .MuiListItemText-primary': {
+                  fontSize: '0.875rem',
+                  color: 'var(--ravin-text)',
+                },
+                '&.MuiListItemButton-root': {
+                  borderBottom: '1px solid var(--ravin-border)',
+                },
+                '&.MuiListItemButton-root:hover': {
+                  backgroundColor: 'var(--ravin-surface-2)',
+                },
                 ...hoverStyle,
               }}
               style={overflow === 'hidden' && key === data.length - 1 ? { borderBottom: 0 } : {}}
@@ -116,7 +127,7 @@ const WidgetDistributionList = ({
                   marginRight: 20,
                   fontSize: 18,
                   fontWeight: 600,
-                  color: theme.palette.primary.main,
+                  color: 'var(--ravin-primary)',
                 }}
               >
                 {n(entry.value)}

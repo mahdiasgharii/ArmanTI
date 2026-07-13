@@ -19,7 +19,7 @@ const WidgetNoData = ({ message }: WidgetNoDataProps) => {
         justifyContent: 'center',
       }}
     >
-      <p>{message ?? t_i18n(NO_DATA_WIDGET_MESSAGE)}</p>
+      <p className="font-body text-sm text-text-muted lowercase first-letter:uppercase">{message ?? t_i18n(NO_DATA_WIDGET_MESSAGE)}</p>
     </div>
   );
 };

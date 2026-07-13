@@ -33,37 +33,37 @@ colors:
   severity-low: "#16AD34"
 typography:
   display:
-    fontFamily: '"Geologica", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "22px"
-    fontWeight: 400
+    fontWeight: 600
     lineHeight: "1.3"
     letterSpacing: "normal"
   headline:
-    fontFamily: '"Geologica", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "16px"
-    fontWeight: 500
+    fontWeight: 600
     lineHeight: "1.4"
     letterSpacing: "normal"
   title:
-    fontFamily: '"Geologica", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "14px"
     fontWeight: 600
     lineHeight: "1.4"
     letterSpacing: "normal"
   body:
-    fontFamily: '"IBM Plex Sans", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "0.9rem"
     fontWeight: 400
     lineHeight: "1.5"
     letterSpacing: "normal"
   body-small:
-    fontFamily: '"IBM Plex Sans", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "0.8rem"
     fontWeight: 400
     lineHeight: "1.2rem"
     letterSpacing: "normal"
   label:
-    fontFamily: '"IBM Plex Sans", sans-serif'
+    fontFamily: '"Peyda", sans-serif'
     fontSize: "12px"
     fontWeight: 500
     lineHeight: "1.4"
@@ -162,7 +162,7 @@ This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d1
 **Key Characteristics:**
 - Dark-first, black canvas with tight grey-scale tonal layering
 - Three accent colors with surgical application (blue = action, red = alert, purple = intelligence)
-- IBM Plex Sans for body, Geologica for headings — clean, technical, no-nonsense
+- Peyda for all typography — clean, technical, no-nonsense
 - 4px border radius throughout — sharp, not rounded; precise, not soft
 - Lowercase typography with first-letter uppercase as a signature voice
 - Gradient borders for premium/feature actions (blue→purple, purple→red)
@@ -213,25 +213,25 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 
 ## 3. Typography
 
-**Display Font:** Geologica (sans-serif fallback)
-**Body Font:** IBM Plex Sans (sans-serif fallback)
+**Display Font:** Peyda (sans-serif fallback)
+**Body Font:** Peyda (sans-serif fallback)
 **Mono Font:** Consolas, monaco, monospace
 
-**Character:** Two sans-serifs on a contrast axis — Geologica is geometric and technical for headings, IBM Plex Sans is humanist and readable for body. The pairing reads as "engineered precision, human clarity." No serif, no display script. The system is an instrument, not a magazine.
+**Character:** A single geometric sans — Peyda — carries the entire system. Weight and size create hierarchy, not font pairing. No serif, no display script. The system is an instrument, not a magazine.
 
 ### Hierarchy
-- **Display** (400, 22px, 1.3): Page-level headings (h1). Geologica. Lowercase with first-letter uppercase — a signature voice element.
-- **Headline** (500, 16px, 1.4): Section headings (h2, h5). Geologica. Lowercase with first-letter uppercase.
-- **Title** (600, 14px, 1.4): Subsection headings (h6), dialog titles (h5). Geologica. Lowercase with first-letter uppercase.
-- **Body** (400, 0.9rem, 1.5): Primary body text (body1). IBM Plex Sans. Max line length 65–75ch for readability in data-dense contexts.
-- **Body Small** (400, 0.8rem, 1.2rem): Compact body text (body2). IBM Plex Sans. Used in tables, metadata, secondary information.
-- **Label** (500, 12px, 1.4): Overlines, captions, small UI labels (h4). IBM Plex Sans. Lowercase with first-letter uppercase.
+- **Display** (600, 22px, 1.3): Page-level headings (h1). Peyda. Lowercase with first-letter uppercase — a signature voice element.
+- **Headline** (600, 16px, 1.4): Section headings (h2, h5). Peyda. Lowercase with first-letter uppercase.
+- **Title** (600, 14px, 1.4): Subsection headings (h6), dialog titles (h5). Peyda. Lowercase with first-letter uppercase.
+- **Body** (400, 0.9rem, 1.5): Primary body text (body1). Peyda. Max line length 65–75ch for readability in data-dense contexts.
+- **Body Small** (400, 0.8rem, 1.2rem): Compact body text (body2). Peyda. Used in tables, metadata, secondary information.
+- **Label** (500, 12px, 1.4): Overlines, captions, small UI labels (h4). Peyda. Lowercase with first-letter uppercase.
 - **Mono** (400, 12px, 1.5): Code blocks, STIX bundles, technical identifiers. Consolas/monaco/monospace.
 
 ### Named Rules
 **The Lowercase Voice Rule.** Headings (h1–h6), chips, tabs, and tooltips use `text-transform: lowercase` with `&::first-letter { text-transform: uppercase }`. This is a signature brand voice element — never override it with uppercase or all-lowercase without the first-letter correction.
 
-**The Two-Font Rule.** Geologica for headings, IBM Plex Sans for everything else. No third font. No exceptions. If a new context needs a different feel, use weight and size, not a new family.
+**The One-Font Rule.** Peyda for everything — headings and body alike. No second or third font. No exceptions. If a new context needs a different feel, use weight and size, not a new family.
 
 ## 4. Elevation
 
@@ -293,7 +293,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ### Dialogs
 - **Background:** Dark Elevated (`#1A1A1A`) — not paper, not canvas. One step above.
 - **Radius:** 4px
-- **Title:** h5 variant (Geologica, 16px, 700 weight, lowercase first-letter uppercase)
+- **Title:** h5 variant (Peyda, 16px, 700 weight, lowercase first-letter uppercase)
 - **Actions:** Right-aligned, gap 16px, no left margin. Buttons use `textTransform: none`.
 
 ### Tooltips
@@ -313,7 +313,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Do** use Signal Red (`#F20F0F`) exclusively for destructive actions, danger, and critical severity.
 - **Do** use Violet Accent (`#860EFE`) for AI features and intelligence analysis highlights.
 - **Do** apply the lowercase + first-letter uppercase pattern to all headings, chips, tabs, and tooltips.
-- **Do** use Geologica for headings and IBM Plex Sans for body — no other font families.
+- **Do** use Peyda for all typography — headings and body alike. No other font families.
 - **Do** keep accent colors to ≤15% of any screen surface. The black canvas carries the design.
 - **Do** verify ≥4.5:1 contrast for all text on dark surfaces, especially muted/secondary text.
 - **Do** use gradient borders (blue→purple) only for premium feature actions and AI elements.
@@ -329,7 +329,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Don't** use generic SaaS patterns — cookie-cutter card grids, hero-metric templates, identical icon+heading+text cards repeated endlessly.
 - **Don't** use tiny uppercase tracked eyebrows above every section. The lowercase + first-letter uppercase pattern is the voice; all-caps eyebrows are a different, rejected aesthetic.
 - **Don't** apply shadows to cards to "elevate" them. Use the background tonal scale.
-- **Don't** use a third font family. Weight and size create hierarchy, not new fonts.
+- **Don't** use a second or third font family. Weight and size create hierarchy, not new fonts.
 - **Don't** use accent colors for decoration. Blue is action, red is danger, purple is intelligence — each has a job.
 - **Don't** use the AI-generated aesthetic — purple gradients everywhere, glassmorphism as default, rounded cards with emoji icons, "powered by AI" badges. AI features (Ask Arman, Twitter Monitor) must feel like professional instruments, not novelty demos.
 - **Don't** ship the Ravin Style as a paint job over OpenCTI defaults. The theme files must be fully updated — no residual OpenCTI color DNA in any token.

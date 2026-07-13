@@ -156,323 +156,393 @@ const DefaultDashboard = ({ timeField }) => {
     >
 
 
-      <div className="grid grid-cols-12 gap-2 pb-6">
-        <div className="col-span-12 sm:col-span-6 md:col-span-3">
-          <StixCoreObjectsNumber
-            entityType="Intrusion-Set"
-            config={config}
-            parameters={{
-              title: 'Intrusion-Set',
-            }}
-            dataSelection={[{
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['Intrusion-Set'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
+      <div className="flex flex-col gap-8 pb-8">
+        <div className="flex flex-col gap-1">
+          <h1 className="font-display text-[22px] font-semibold lowercase first-letter:uppercase text-text-base">
+            {t_i18n('Dashboard')}
+          </h1>
+          <div className="flex items-center gap-3 text-text-muted">
+            <span className="font-body text-xs lowercase first-letter:uppercase">
+              {timeField === 'functional' ? t_i18n('Functional time') : t_i18n('Technical time')}
+            </span>
+            <span className="text-border-strong">·</span>
+            <span className="font-body text-xs lowercase first-letter:uppercase">
+              {t_i18n('Auto-refresh')}
+            </span>
+          </div>
         </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-3">
-          <StixCoreObjectsNumber
-            entityType="Malware"
-            config={config}
-            parameters={{
-              title: 'Malware',
-            }}
-            dataSelection={[{
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['Malware'],
+
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+              {t_i18n('Threat metrics')}
+            </h2>
+            <span className="text-border-strong">·</span>
+            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
+              {t_i18n('All time')}
+            </span>
+          </div>
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 sm:col-span-6 md:col-span-3">
+              <StixCoreObjectsNumber
+                entityType="Intrusion-Set"
+                config={config}
+                parameters={{
+                  title: 'Intrusion-Set',
+                }}
+                dataSelection={[{
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['Intrusion-Set'],
+                      },
+                    ],
+                    filterGroups: [],
                   },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-3">
-          <StixCoreObjectsNumber
-            entityType="Report"
-            config={config}
-            parameters={{
-              title: 'Report',
-            }}
-            dataSelection={[{
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['Report'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-3">
-          <StixCoreObjectsNumber
-            entityType="Indicator"
-            config={config}
-            parameters={{
-              title: 'Indicator',
-            }}
-            dataSelection={[{
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['Indicator'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'created' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-3">
-          <StixRelationshipsHorizontalBars
-            height={300}
-            config={{
-              startDate: monthsAgo(3),
-              endDate: null,
-            }}
-            parameters={{
-              title: t_i18n('Most active threats (Last 3 months)'),
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: false,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'fromTypes',
-                    mode: 'or',
-                    values: ['Threat-Actor', 'Intrusion-Set', 'Campaign'],
-                  },
-                  {
-                    key: 'entity_type',
-                    values: ['stix-core-relationship'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-3">
-          <StixRelationshipsHorizontalBars
-            height={300}
-            config={{
-              startDate: monthsAgo(3),
-              endDate: null,
-            }}
-            parameters={{
-              title: t_i18n('Most targeted victims (Last 3 months)'),
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: true,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'toTypes',
-                    mode: 'or',
-                    values: ['Identity', 'Location', 'Event'],
-                  },
-                  {
-                    key: 'relationship_type',
-                    values: ['targets'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-6">
-          <StixRelationshipsMultiAreaChart
-            height={300}
-            config={{
-              startDate: yearsAgo(1),
-              endDate: lastDayOfThePreviousMonth(),
-            }}
-            parameters={{
-              title: t_i18n('Relationships created'),
-              interval: 'month',
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: true,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['stix-core-relationship'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-3">
-          <StixRelationshipsPolarArea
-            height={400}
-            config={{
-              startDate: monthsAgo(3),
-              endDate: null,
-            }}
-            parameters={{
-              title: t_i18n('Most active malware (Last 3 months)'),
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: false,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'fromTypes',
-                    values: ['Malware'],
-                  },
-                  {
-                    key: 'entity_type',
-                    values: ['uses'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-3">
-          <StixRelationshipsDistributionList
-            overflow="hidden"
-            parameters={{
-              title: t_i18n('Most active vulnerabilities (Last 3 months)'),
-            }}
-            height={400}
-            config={{
-              startDate: monthsAgo(3),
-              endDate: null,
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: true,
-              number: 8,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['targets'],
-                  },
-                  {
-                    key: 'toTypes',
-                    values: ['Vulnerability'],
-                  },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-6">
-          <Suspense
-            fallback={(
-              <LocationMiniMapTargets
-                title={t_i18n('Targeted countries (Last 3 months)')}
-                center={[48.8566969, 2.3514616]}
-                zoom={2}
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
               />
-            )}
-          >
-            <TargetedCountries timeField={timeField} />
-          </Suspense>
-        </div>
-        <div className="col-span-12 md:col-span-8">
-          <StixCoreObjectsList
-            title={t_i18n('Latest reports')}
-            config={config}
-            height={410}
-            widgetId="default_latest_reports_widget"
-            dataSelection={[{
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'entity_type',
-                    values: ['Report'],
+            </div>
+            <div className="col-span-12 sm:col-span-6 md:col-span-3">
+              <StixCoreObjectsNumber
+                entityType="Malware"
+                config={config}
+                parameters={{
+                  title: 'Malware',
+                }}
+                dataSelection={[{
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['Malware'],
+                      },
+                    ],
+                    filterGroups: [],
                   },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-              sort_mode: 'desc',
-              columns: [
-                { attribute: 'name', label: 'Name' },
-                { attribute: 'created', label: 'Original creation date' },
-                { attribute: 'createdBy' },
-                { attribute: 'creators', label: 'Creators' },
-                { attribute: 'x_opencti_workflow_id' },
-                { attribute: 'objectLabel' },
-                { attribute: 'objectMarking' },
-              ],
-            }]}
-          />
-        </div>
-        <div className="col-span-12 md:col-span-4">
-          <StixRelationshipsHorizontalBars
-            height={410}
-            config={{
-              startDate: monthsAgo(3),
-              endDate: null,
-            }}
-            parameters={{
-              title: t_i18n('Most active labels (Last 3 months)'),
-              number: 15,
-            }}
-            dataSelection={[{
-              attribute: 'internal_id',
-              isTo: true,
-              filters: {
-                mode: 'and',
-                filters: [
-                  {
-                    key: 'toTypes',
-                    mode: 'or',
-                    values: ['Label'],
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 sm:col-span-6 md:col-span-3">
+              <StixCoreObjectsNumber
+                entityType="Report"
+                config={config}
+                parameters={{
+                  title: 'Report',
+                }}
+                dataSelection={[{
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['Report'],
+                      },
+                    ],
+                    filterGroups: [],
                   },
-                ],
-                filterGroups: [],
-              },
-              date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
-            }]}
-          />
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 sm:col-span-6 md:col-span-3">
+              <StixCoreObjectsNumber
+                entityType="Indicator"
+                config={config}
+                parameters={{
+                  title: 'Indicator',
+                }}
+                dataSelection={[{
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['Indicator'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'created' : 'created_at',
+                }]}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 pt-8 border-t border-border">
+          <div className="flex items-center gap-2">
+            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+              {t_i18n('Threat activity')}
+            </h2>
+            <span className="text-border-strong">·</span>
+            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
+              {t_i18n('Last 3 months')}
+            </span>
+          </div>
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 md:col-span-3">
+              <StixRelationshipsHorizontalBars
+                height={300}
+                config={{
+                  startDate: monthsAgo(3),
+                  endDate: null,
+                }}
+                parameters={{
+                  title: t_i18n('Most active threats (Last 3 months)'),
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: false,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'fromTypes',
+                        mode: 'or',
+                        values: ['Threat-Actor', 'Intrusion-Set', 'Campaign'],
+                      },
+                      {
+                        key: 'entity_type',
+                        values: ['stix-core-relationship'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <StixRelationshipsHorizontalBars
+                height={300}
+                config={{
+                  startDate: monthsAgo(3),
+                  endDate: null,
+                }}
+                parameters={{
+                  title: t_i18n('Most targeted victims (Last 3 months)'),
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: true,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'toTypes',
+                        mode: 'or',
+                        values: ['Identity', 'Location', 'Event'],
+                      },
+                      {
+                        key: 'relationship_type',
+                        values: ['targets'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <StixRelationshipsMultiAreaChart
+                height={300}
+                config={{
+                  startDate: yearsAgo(1),
+                  endDate: lastDayOfThePreviousMonth(),
+                }}
+                parameters={{
+                  title: t_i18n('Relationships created'),
+                  interval: 'month',
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: true,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['stix-core-relationship'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 pt-8 border-t border-border">
+          <div className="flex items-center gap-2">
+            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+              {t_i18n('Intelligence overview')}
+            </h2>
+            <span className="text-border-strong">·</span>
+            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
+              {t_i18n('Last 3 months')}
+            </span>
+          </div>
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 md:col-span-3">
+              <StixRelationshipsPolarArea
+                height={400}
+                config={{
+                  startDate: monthsAgo(3),
+                  endDate: null,
+                }}
+                parameters={{
+                  title: t_i18n('Most active malware (Last 3 months)'),
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: false,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'fromTypes',
+                        values: ['Malware'],
+                      },
+                      {
+                        key: 'entity_type',
+                        values: ['uses'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <StixRelationshipsDistributionList
+                overflow="hidden"
+                parameters={{
+                  title: t_i18n('Most active vulnerabilities (Last 3 months)'),
+                }}
+                height={400}
+                config={{
+                  startDate: monthsAgo(3),
+                  endDate: null,
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: true,
+                  number: 8,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['targets'],
+                      },
+                      {
+                        key: 'toTypes',
+                        values: ['Vulnerability'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <Suspense
+                fallback={(
+                  <LocationMiniMapTargets
+                    title={t_i18n('Targeted countries (Last 3 months)')}
+                    center={[48.8566969, 2.3514616]}
+                    zoom={2}
+                  />
+                )}
+              >
+                <TargetedCountries timeField={timeField} />
+              </Suspense>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 pt-8 border-t border-border">
+          <div className="flex items-center gap-2">
+            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+              {t_i18n('Latest intelligence')}
+            </h2>
+            <span className="text-border-strong">·</span>
+            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
+              {t_i18n('Recent')}
+            </span>
+          </div>
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12 md:col-span-8">
+              <StixCoreObjectsList
+                title={t_i18n('Latest reports')}
+                config={config}
+                height={410}
+                widgetId="default_latest_reports_widget"
+                dataSelection={[{
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'entity_type',
+                        values: ['Report'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                  sort_mode: 'desc',
+                  columns: [
+                    { attribute: 'name', label: 'Name' },
+                    { attribute: 'created', label: 'Original creation date' },
+                    { attribute: 'createdBy' },
+                    { attribute: 'creators', label: 'Creators' },
+                    { attribute: 'x_opencti_workflow_id' },
+                    { attribute: 'objectLabel' },
+                    { attribute: 'objectMarking' },
+                  ],
+                }]}
+              />
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <StixRelationshipsHorizontalBars
+                height={410}
+                config={{
+                  startDate: monthsAgo(3),
+                  endDate: null,
+                }}
+                parameters={{
+                  title: t_i18n('Most active labels (Last 3 months)'),
+                  number: 15,
+                }}
+                dataSelection={[{
+                  attribute: 'internal_id',
+                  isTo: true,
+                  filters: {
+                    mode: 'and',
+                    filters: [
+                      {
+                        key: 'toTypes',
+                        mode: 'or',
+                        values: ['Label'],
+                      },
+                    ],
+                    filterGroups: [],
+                  },
+                  date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
+                }]}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

@@ -33,6 +33,7 @@
 .tw-override [class*="border-"] {
   /* Ensure Tailwind classes inside .tw-override win over MUI */
   /* Intentionally empty — specificity boost via selector nesting */
+  opacity: 1;
 }
 
 /* ── Ravin Style CSS Variables ────────────────────────────────── */
@@ -66,10 +67,10 @@ body[data-theme='dark'] {
 body[data-theme='light'] {
   --ravin-bg: #F5F5F5;
   --ravin-surface: #FFFFFF;
-  --ravin-elevated: #FFFFFF;
-  --ravin-surface-2: #E5E5E5;
-  --ravin-border: #E5E5E5;
-  --ravin-border-strong: #D4D4D4;
+  --ravin-elevated: #FAFAFA;
+  --ravin-surface-2: #EBEBEB;
+  --ravin-border: #E0E0E0;
+  --ravin-border-strong: #CCCCCC;
   --ravin-primary: #019BE5;
   --ravin-primary-light: #66C4F5;
   --ravin-primary-dark: #0073A8;

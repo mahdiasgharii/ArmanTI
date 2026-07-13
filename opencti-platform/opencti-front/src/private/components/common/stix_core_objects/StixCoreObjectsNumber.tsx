@@ -153,7 +153,7 @@ const StixCoreObjectsNumber = ({
     <WidgetContainer
       padding="medium"
       height={height}
-      title={t_i18n('Entities number')}
+      title={translatedTitle}
       variant={variant}
       action={popover}
       showPreviewTag={isPreviewMode}

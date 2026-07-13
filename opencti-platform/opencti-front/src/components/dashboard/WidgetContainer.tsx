@@ -54,15 +54,15 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
         </div>
       )
     : title;
-  const paddingClass = padding === 'none' ? '' : padding === 'small' ? 'p-2' : padding === 'horizontal' ? 'px-4 py-1' : padding === 'medium' ? 'px-4 py-3' : 'p-4';
+  const contentPaddingClass = padding === 'none' ? '' : padding === 'small' ? 'p-2' : padding === 'horizontal' ? 'px-4' : padding === 'medium' ? 'px-4 py-3' : 'p-4';
   return (
     <div style={{ height: height || '100%' }}>
       {variant !== 'inLine' && variant !== 'inEntity'
         ? (
-            <ShadcnCard className="flex h-full flex-col p-4">
+            <ShadcnCard className="flex h-full flex-col overflow-hidden">
               {(title || action) && (
-                <div className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle>
+                <div className="flex flex-row items-center justify-between px-4 pt-3 pb-2 border-b border-border">
+                  <CardTitle className="font-semibold text-text-base">
                     {showPreviewTag ? (
                       <Stack direction="row" alignItems="center" gap={1}>
                         {formattedTitle}
@@ -86,7 +86,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
                   </div>
                 </div>
               )}
-              <div className={`flex-1 ${paddingClass}`}>
+              <div className={`flex-1 ${contentPaddingClass}`}>
                 <ErrorBoundary resNotFoundDisplay={<WidgetNoData />}>
                   {children}
                 </ErrorBoundary>
