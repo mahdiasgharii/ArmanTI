@@ -150,6 +150,7 @@ const Index = ({ settings }: IndexProps) => {
               </Routes>
             </Suspense>
           </Box>
+          <div className="ravin-blur-footer" />
           <DraftToolbar />
         </Stack>
       </Box>

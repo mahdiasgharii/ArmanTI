@@ -37,7 +37,8 @@ const WidgetNumber = ({
       <div className="flex flex-row items-center justify-between">
         <div className="flex items-center gap-2">
           {entityType && (entityTypeIconMap[entityType] ?? null) && (
-            <span className="flex items-center justify-center w-8 h-8 rounded-[4px] bg-surface-2 text-text-light">
+            <span className="relative flex items-center justify-center w-8 h-8 rounded-[4px] bg-surface-2 text-text-light">
+              <span className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[4px] bg-primary" />
               {entityTypeIconMap[entityType]}
             </span>
           )}
@@ -50,7 +51,7 @@ const WidgetNumber = ({
         <div className="flex flex-col gap-1">
           <div
             data-testid={`card-number-${label}`}
-            className="font-display text-[32px] font-semibold leading-none text-text-base"
+            className="font-display text-metric text-text-base"
           >
             {n(value)}
           </div>

@@ -21,7 +21,7 @@ const LogoBaseline = () => {
   return (
     <img
       src={logoBaseline}
-      alt="Made by Filigran logo"
+      alt="ArmanCTI Logo"
       width={130}
       style={{
         userSelect: 'none',
@@ -44,7 +44,7 @@ const LogoFiligran = () => {
   return (
     <img
       src={logoGradient}
-      alt="Filigran Logo"
+      alt="ArmanCTI Logo"
       style={{
         userSelect: 'none',
         pointerEvents: 'none',

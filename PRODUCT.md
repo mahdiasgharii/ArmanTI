@@ -16,7 +16,7 @@ ArmanCTI is a rebranded fork of OpenCTI — an open-source cyber threat intellig
 
 ## Brand Personality
 
-Bold, precise, modern. The interface speaks with expert confidence — no hand-holding, no decorative softness. Every element earns its place through function or identity. The Ravin Style palette (black canvas, electric blue, signal red, violet accent) conveys command-center authority without military cliché. Typography is clean and direct (IBM Plex Sans body, Geologica headings). The brand is carried through color conviction, typographic clarity, and deliberate contrast — not through ornamentation.
+Bold, precise, modern. The interface speaks with expert confidence — no hand-holding, no decorative softness. Every element earns its place through function or identity. The Ravin Style palette (black canvas, electric blue, signal red, violet accent) conveys command-center authority without military cliché. Typography is clean and direct (Peyda single-font system with weight-based hierarchy). The brand is carried through color conviction, typographic clarity, and deliberate contrast — not through ornamentation.
 
 ## Anti-references
 

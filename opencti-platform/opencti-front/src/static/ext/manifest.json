@@ -1,6 +1,6 @@
 {
-  "short_name": "OpenCTI dashboard",
-  "name": "The OpenCTI web interface frontend.",
+  "short_name": "ArmanCTI",
+  "name": "ArmanCTI Platform",
   "icons": [
     {
       "src": "favicon.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#019BE5",
   "background_color": "#ffffff"
 }

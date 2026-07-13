@@ -6,14 +6,14 @@ import LogoCollapsed from '../static/images/logo_light.svg';
 import { hexToRGB } from '../utils/Colors';
 import { alpha, darken, lighten } from '@mui/material';
 
-const EE_COLOR = '#00BD94';
+const EE_COLOR = '#019BE5';
 
-export const THEME_LIGHT_DEFAULT_BACKGROUND = '#ececf2';
-export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#F7F7F7';
-export const THEME_LIGHT_DEFAULT_PRIMARY = '#0015a8';
-const THEME_LIGHT_DEFAULT_SECONDARY = '#00BD94';
-const THEME_LIGHT_DEFAULT_ACCENT = '#dfdfdf';
-const THEME_LIGHT_DEFAULT_TEXT = '#18191B';
+export const THEME_LIGHT_DEFAULT_BACKGROUND = '#F5F5F5';
+export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#FFFFFF';
+export const THEME_LIGHT_DEFAULT_PRIMARY = '#019BE5';
+const THEME_LIGHT_DEFAULT_SECONDARY = '#860EFE';
+const THEME_LIGHT_DEFAULT_ACCENT = '#E5E5E5';
+const THEME_LIGHT_DEFAULT_TEXT = '#0A0A0A';
 export const THEME_LIGHT_DEFAULT_PAPER = '#ffffff';
 const THEME_LIGHT_DEFAULT_NAV = '#ffffff';
 export const THEME_LIGHT_DIALOG_BACKGROUND = '#FFFFFF';
@@ -41,43 +41,43 @@ const ThemeLight = (
   borderRadius: 4,
   palette: {
     mode: 'light',
-    common: { white: '#ffffff', grey: '#494A50', lightGrey: '#AFB0B6' },
+    common: { white: '#ffffff', grey: '#666666', lightGrey: '#999999' },
     error: {
-      main: '#F14337',
+      main: '#F20F0F',
       dark: '#881106',
     },
     warn: {
       main: '#E6700F',
     },
     dangerZone: {
-      main: '#E51E10',
-      light: '#F8958C',
+      main: '#F20F0F',
+      light: '#FF6B6B',
       dark: '#881106',
       contrastText: '#000000',
       text: { primary: '#881106' },
     },
-    success: { main: '#1CA55E', dark: '#0D7E39' },
-    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#7587FF' },
+    success: { main: '#17AB1F', dark: '#094E0B' },
+    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#66C4F5' },
     secondary: { main: secondary || THEME_LIGHT_DEFAULT_SECONDARY },
-    gradient: { main: '#00BD94' },
+    gradient: { main: '#860EFE' },
     border: {
-      lightBackground: hexToRGB('#000000', 0.15),
+      lightBackground: hexToRGB('#000000', 0.12),
       primary: hexToRGB((primary || THEME_LIGHT_DEFAULT_PRIMARY), 0.3),
-      secondary: '#C2C2C2',
+      secondary: '#CCCCCC',
       pagination: hexToRGB('#000000', 0.5),
       paper: hexToRGB('#000000', 0.12),
-      main: '#D2D2D2',
+      main: '#E0E0E0',
     },
     pagination: {
       main: '#000000',
     },
     chip: { main: '#000000' },
     ai: {
-      main: '#5E1AD5',
-      light: '#D6C2FA',
-      dark: '#3C108C',
+      main: '#860EFE',
+      light: '#B88DFF',
+      dark: '#4A08A0',
       contrastText: '#000000',
-      background: 'rgba(221, 225, 254, 0.94)',
+      background: 'rgba(134, 14, 254, 0.08)',
     },
     ee: {
       main: EE_COLOR,
@@ -90,15 +90,15 @@ const ThemeLight = (
       paper: paper || THEME_LIGHT_DEFAULT_PAPER,
       nav: nav || THEME_LIGHT_DEFAULT_NAV,
       accent: accent || THEME_LIGHT_DEFAULT_ACCENT,
-      shadow: alpha('#000000', 0.15),
+      shadow: alpha('#000000', 0.08),
       // the only way for now to know if we should apply the paper color or not
       secondary: paper === THEME_LIGHT_DEFAULT_PAPER
-        ? '#FFFFFF'
-        : (paper ?? '#FFFFFF'),
+        ? '#FAFAFA'
+        : (paper ?? '#FAFAFA'),
       drawer: nav === THEME_LIGHT_DEFAULT_PAPER
-        ? '#FFFFFF'
-        : (darken(nav ?? '#FFFFFF', 0.5)),
-      disabled: '#DFDFDF',
+        ? '#FAFAFA'
+        : (darken(nav ?? '#FAFAFA', 0.5)),
+      disabled: '#EBEBEB',
       gradient: {
         start: background || THEME_LIGHT_DEFAULT_BACKGROUND,
         end: getAppBodyGradientEndColor(background),
@@ -106,17 +106,17 @@ const ThemeLight = (
     },
     text: {
       secondary: THEME_LIGHT_DEFAULT_TEXT,
-      tertiary: '#717172',
-      light: '#494A50',
-      disabled: '#6E7788',
+      tertiary: '#666666',
+      light: '#999999',
+      disabled: '#B3B3B3',
     },
     leftBar: {
       header: {
-        itemBackground: '#ECECF2',
+        itemBackground: '#F5F5F5',
       },
-      popoverItem: '#ECECF2',
-      hover: '#0015A81A',
-      text: '#18191B',
+      popoverItem: '#F5F5F5',
+      hover: 'rgba(1, 155, 229, 0.08)',
+      text: '#0A0A0A',
     },
     severity: {
       critical: '#EE3838',
@@ -125,56 +125,56 @@ const ThemeLight = (
       low: '#16AD34',
       info: '#1565c0',
       none: '#424242',
-      default: '#DDE1FE',
+      default: '#EBEBEB',
     },
     designSystem: {
       primary: {
-        main: '#0015A8',
-        light: '#7587FF',
-        dark: '#000842',
+        main: '#019BE5',
+        light: '#66C4F5',
+        dark: '#0073A8',
       },
       secondary: {
-        main: '#00BD94',
-        light: '#74E9CA',
-        dark: '#0A8268',
+        main: '#860EFE',
+        light: '#B88DFF',
+        dark: '#4A08A0',
       },
       destructive: {
-        main: '#E51E10',
-        light: '#F8958C',
+        main: '#F20F0F',
+        light: '#FF6B6B',
         dark: '#881106',
       },
       ia: {
-        main: '#5E1AD5',
-        light: '#D6C2FA',
-        dark: '#3C108C',
+        main: '#860EFE',
+        light: '#B88DFF',
+        dark: '#4A08A0',
       },
       background: {
-        main: '#ECECF2',
-        bg1: '#F7F7F7',
-        bg2: '#FFFFFF',
-        bg3: '#E4E4E4',
-        bg4: '#DDE1FE',
-        disabled: '#DFDFDF',
+        main: '#F5F5F5',
+        bg1: '#FFFFFF',
+        bg2: '#FAFAFA',
+        bg3: '#EBEBEB',
+        bg4: '#E0E0E0',
+        disabled: '#EBEBEB',
       },
       border: {
-        main: '#D2D2D2',
-        border1: '#C2C2C2',
-        border2: '#999797',
+        main: '#E0E0E0',
+        border1: '#CCCCCC',
+        border2: '#E5E5E5',
       },
       gradient: {
-        background: 'linear-gradient(100.35deg, #ECECF2 0%, #F7F7F7 100%)',
-        ia: 'linear-gradient(90deg, #3C108C 0.67%, #5E1AD5 100.67%)',
-        focus: 'linear-gradient(90deg, #0015A8 -3.68%, #00BD94 106.62%)',
+        background: 'linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%)',
+        ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
+        focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
       },
       alert: {
         info: {
-          primary: '#00719E',
-          secondary: '#2AB3E0',
+          primary: '#019BE5',
+          secondary: '#66C4F5',
         },
         success: {
-          primary: '#1CA55E',
-          secondary: '#4CD990',
-          tertiary: '#0D7E39',
+          primary: '#17AB1F',
+          secondary: '#41E149',
+          tertiary: '#094E0B',
         },
         alert: {
           primary: '#F2BE3A',
@@ -185,27 +185,27 @@ const ThemeLight = (
           secondary: '#F8C08C',
         },
         error: {
-          primary: '#F14337',
-          secondary: '#F8958C',
+          primary: '#F20F0F',
+          secondary: '#FF6B6B',
         },
       },
       tertiary: {
         grey: {
-          400: '#95969D',
-          700: '#494A50',
-          800: '#313235',
+          400: '#666666',
+          700: '#999999',
+          800: '#B3B3B3',
         },
         blue: {
-          500: '#0099CC',
-          900: '#003242',
+          500: '#019BE5',
+          900: '#003A5C',
         },
         darkBlue: {
-          300: '#7587FF',
-          500: '#0F2DFF',
+          300: '#66C4F5',
+          500: '#019BE5',
         },
         turquoise: {
-          600: '#00BD94',
-          800: '#005744',
+          600: '#860EFE',
+          800: '#4A08A0',
         },
         green: {
           400: '#41E149',
@@ -214,10 +214,10 @@ const ThemeLight = (
         },
         red: {
           100: '#FBCBC5',
-          200: '#F8958C',
-          400: '#F14337',
-          500: '#E51E10',
-          600: '#B8180A',
+          200: '#FF6B6B',
+          400: '#F20F0F',
+          500: '#D00D0D',
+          600: '#A00A0A',
           700: '#881106',
         },
         orange: {
@@ -421,12 +421,12 @@ const ThemeLight = (
             display: 'none',
           },
           '& .MuiToggleButton-root': {
-            border: '1px solid #D2D2D2',
+            border: '1px solid #E0E0E0',
             color: primary,
 
             '&:focus-visible': {
               outline: 'none',
-              boxShadow: '0 0 0 2px #74E9CA',
+              boxShadow: '0 0 0 2px #66C4F5',
             },
 
             '&.Mui-selected': {
@@ -475,7 +475,7 @@ const ThemeLight = (
           color: text_color,
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#494A50',
+            color: '#999999',
           },
         },
       },
@@ -531,7 +531,7 @@ const ThemeLight = (
             WebkitTextFillColor: '#000000 !important',
             caretColor: 'transparent !important',
             WebkitBoxShadow:
-                '0 0 0 1000px rgba(4, 8, 17, 0.88) inset !important',
+                '0 0 0 1000px rgba(245, 245, 245, 0.92) inset !important',
             borderTopLeftRadius: 'inherit',
             borderTopRightRadius: 'inherit',
           },
@@ -560,14 +560,14 @@ const ThemeLight = (
           },
           '.error .react-mde textarea': {
             border: '0 !important',
-            borderBottom: '2px solid #F14337 !important',
+            borderBottom: '2px solid #F20F0F !important',
             '&:hover': {
               border: '0 !important',
-              borderBottom: '2px solid #F14337 !important',
+              borderBottom: '2px solid #F20F0F !important',
             },
             '&:focus': {
               border: '0 !important',
-              borderBottom: '2px solid #F14337 !important',
+              borderBottom: '2px solid #F20F0F !important',
             },
           },
           '.mde-header': {
@@ -604,19 +604,19 @@ const ThemeLight = (
             backgroundColor: `${accent || THEME_LIGHT_DEFAULT_ACCENT} !important`,
           },
           '.react_time_range__track': {
-            backgroundColor: 'rgba(1, 226, 255, 0.1) !important',
-            borderLeft: '1px solid #00bcd4 !important',
-            borderRight: '1px solid #00bcd4 !important',
+            backgroundColor: 'rgba(1, 155, 229, 0.1) !important',
+            borderLeft: '1px solid #019BE5 !important',
+            borderRight: '1px solid #019BE5 !important',
           },
           '.react_time_range__handle_marker': {
-            backgroundColor: '#00bcd4 !important',
+            backgroundColor: '#019BE5 !important',
           },
           '.leaflet-container': {
             backgroundColor: `${paper || '#ffffff'} !important`,
           },
           '.react-grid-item .react-resizable-handle::after': {
-            borderRight: '2px solid #AFB0B6 !important',
-            borderBottom: '2px solid #AFB0B6 !important',
+            borderRight: '2px solid #999999 !important',
+            borderBottom: '2px solid #999999 !important',
           },
         },
       },
@@ -624,11 +624,11 @@ const ThemeLight = (
     MuiTableCell: {
       styleOverrides: {
         head: {
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
         },
         body: {
-          borderTop: '1px solid rgba(255, 255, 255, 0.15)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          borderTop: '1px solid rgba(0, 0, 0, 0.12)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
         },
       },
     },
@@ -704,7 +704,7 @@ const ThemeLight = (
         root: {
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#494A50',
+            color: '#999999',
           },
           '& .MuiOutlinedInput-root': {
             // the only way for now to know if we should apply the paper color or not

@@ -256,3 +256,29 @@ input[type="file"] {
 .paper-for-grid {
   height: calc(100% - 25px); /* H4 size + 10 margin in MOST case, should be override sometimes */
 }
+
+@keyframes ravin-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.ravin-pulse-dot {
+  animation: ravin-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ravin-pulse-dot {
+    animation: none;
+  }
+}
+
+.ravin-blur-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent 0%, var(--ravin-bg) 100%);
+}

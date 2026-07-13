@@ -61,8 +61,8 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
         ? (
             <ShadcnCard className="flex h-full flex-col overflow-hidden">
               {(title || action) && (
-                <div className="flex flex-row items-center justify-between px-4 pt-3 pb-2 border-b border-border">
-                  <CardTitle className="font-semibold text-text-base">
+                <div className="flex flex-row items-center justify-between px-4 pt-2.5 pb-1.5 border-b border-border">
+                  <CardTitle className="font-medium text-text-muted">
                     {showPreviewTag ? (
                       <Stack direction="row" alignItems="center" gap={1}>
                         {formattedTitle}

@@ -126,8 +126,8 @@ const WidgetDistributionList = ({
                   float: 'right',
                   marginRight: 20,
                   fontSize: 18,
-                  fontWeight: 600,
-                  color: 'var(--ravin-primary)',
+                  fontWeight: 500,
+                  color: 'var(--ravin-text)',
                 }}
               >
                 {n(entry.value)}

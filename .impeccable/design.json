@@ -56,27 +56,27 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Page-level headings (h1). Geologica. Lowercase with first-letter uppercase."
+        "purpose": "Page-level headings (h1). Peyda. Lowercase with first-letter uppercase."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section headings (h2, h5). Geologica."
+        "purpose": "Section headings (h2, h5). Peyda."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Subsection headings (h6), dialog titles. Geologica."
+        "purpose": "Subsection headings (h6), dialog titles. Peyda."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Primary body text. IBM Plex Sans. Max 65-75ch."
+        "purpose": "Primary body text. Peyda. Max 65-75ch."
       },
       "body-small": {
         "displayName": "Body Small",
-        "purpose": "Compact body text for tables, metadata. IBM Plex Sans."
+        "purpose": "Compact body text for tables, metadata. Peyda."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Overlines, captions, small UI labels. IBM Plex Sans."
+        "purpose": "Overlines, captions, small UI labels. Peyda."
       },
       "mono": {
         "displayName": "Mono",
@@ -126,7 +126,7 @@
       "refersTo": "button-primary",
       "description": "Solid electric blue button for primary actions. White text, 4px radius, 36px height.",
       "html": "<button class=\"ds-btn-primary\">Create report</button>",
-      "css": ".ds-btn-primary { background: #019BE5; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-primary:hover { background: #006699; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-primary:active { background: #006699; } .ds-btn-primary:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
+      "css": ".ds-btn-primary { background: #019BE5; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"Peyda\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-primary:hover { background: #006699; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-primary:active { background: #006699; } .ds-btn-primary:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
     },
     {
       "name": "Secondary Button",
@@ -134,7 +134,7 @@
       "refersTo": "button-secondary",
       "description": "Outlined button with blue text and 1px blue border. Transparent background.",
       "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
-      "css": ".ds-btn-secondary { background: transparent; color: #019BE5; border: 1px solid #019BE5; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-secondary:hover { background: rgba(1, 155, 229, 0.15); } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-secondary:active { background: rgba(1, 155, 229, 0.25); } .ds-btn-secondary:disabled { color: #75829A; border-color: #262626; cursor: not-allowed; }"
+      "css": ".ds-btn-secondary { background: transparent; color: #019BE5; border: 1px solid #019BE5; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"Peyda\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-secondary:hover { background: rgba(1, 155, 229, 0.15); } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 2px #66B8F0; } .ds-btn-secondary:active { background: rgba(1, 155, 229, 0.25); } .ds-btn-secondary:disabled { color: #75829A; border-color: #262626; cursor: not-allowed; }"
     },
     {
       "name": "Tertiary Button",
@@ -142,7 +142,7 @@
       "refersTo": "button-tertiary",
       "description": "Text-only button with blue text, no border, transparent background.",
       "html": "<button class=\"ds-btn-tertiary\">View details</button>",
-      "css": ".ds-btn-tertiary { background: transparent; color: #019BE5; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-tertiary:hover { background: rgba(1, 155, 229, 0.15); color: #006699; } .ds-btn-tertiary:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(102, 184, 240, 0.4); } .ds-btn-tertiary:active { background: rgba(1, 155, 229, 0.15); } .ds-btn-tertiary:disabled { color: #75829A; cursor: not-allowed; }"
+      "css": ".ds-btn-tertiary { background: transparent; color: #019BE5; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"Peyda\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-tertiary:hover { background: rgba(1, 155, 229, 0.15); color: #006699; } .ds-btn-tertiary:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(102, 184, 240, 0.4); } .ds-btn-tertiary:active { background: rgba(1, 155, 229, 0.15); } .ds-btn-tertiary:disabled { color: #75829A; cursor: not-allowed; }"
     },
     {
       "name": "Destructive Button",
@@ -150,7 +150,7 @@
       "refersTo": "button-destructive",
       "description": "Solid red button for destructive actions. White text, 4px radius.",
       "html": "<button class=\"ds-btn-destructive\">Delete</button>",
-      "css": ".ds-btn-destructive { background: #F14337; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-destructive:hover { background: #881106; } .ds-btn-destructive:focus-visible { outline: none; box-shadow: 0 0 0 2px #F8958C; } .ds-btn-destructive:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
+      "css": ".ds-btn-destructive { background: #F14337; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; height: 36px; font-family: \"Peyda\", sans-serif; font-size: 14px; font-weight: 600; text-transform: none; cursor: pointer; transition: all 0.2s ease-in-out; } .ds-btn-destructive:hover { background: #881106; } .ds-btn-destructive:focus-visible { outline: none; box-shadow: 0 0 0 2px #F8958C; } .ds-btn-destructive:disabled { background: #363B46; color: #75829A; cursor: not-allowed; }"
     },
     {
       "name": "Input Field",
@@ -158,7 +158,7 @@
       "refersTo": "input-field",
       "description": "Standard text input with dark surface background and underline focus.",
       "html": "<input class=\"ds-input\" placeholder=\"Search threats...\" />",
-      "css": ".ds-input { background: #141414; color: #FFFFFF; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px; padding: 8px 12px; height: 36px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; transition: border-bottom 0.2s ease-in-out; } .ds-input::placeholder { color: #AFB0B6; } .ds-input:focus { outline: none; border-bottom: 2px solid #019BE5; } .ds-input:disabled { background: #363B46; color: #75829A; }"
+      "css": ".ds-input { background: #141414; color: #FFFFFF; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px; padding: 8px 12px; height: 36px; font-family: \"Peyda\", sans-serif; font-size: 14px; transition: border-bottom 0.2s ease-in-out; } .ds-input::placeholder { color: #AFB0B6; } .ds-input:focus { outline: none; border-bottom: 2px solid #019BE5; } .ds-input:disabled { background: #363B46; color: #75829A; }"
     },
     {
       "name": "Navigation Item",
@@ -166,7 +166,7 @@
       "refersTo": "nav-item",
       "description": "Sidebar navigation item with transparent background, blue active state.",
       "html": "<div class=\"ds-nav-item ds-nav-item-active\">Analyses</div>",
-      "css": ".ds-nav-item { background: transparent; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; cursor: pointer; transition: background 0.2s ease-in-out; } .ds-nav-item:hover { background: #1A1A1A; } .ds-nav-item-active { background: rgba(1, 155, 229, 0.24); box-shadow: 2px 0 #019BE5 inset; color: #019BE5; } .ds-nav-item-active:hover { background: rgba(1, 155, 229, 0.32); }"
+      "css": ".ds-nav-item { background: transparent; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; font-family: \"Peyda\", sans-serif; font-size: 14px; cursor: pointer; transition: background 0.2s ease-in-out; } .ds-nav-item:hover { background: #1A1A1A; } .ds-nav-item-active { background: rgba(1, 155, 229, 0.24); box-shadow: 2px 0 #019BE5 inset; color: #019BE5; } .ds-nav-item-active:hover { background: rgba(1, 155, 229, 0.32); }"
     },
     {
       "name": "Chip",
@@ -174,7 +174,7 @@
       "refersTo": "chip-default",
       "description": "Default chip with transparent background, lowercase first-letter uppercase text.",
       "html": "<span class=\"ds-chip\">threat-actor</span>",
-      "css": ".ds-chip { display: inline-flex; align-items: center; background: transparent; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 4px 8px; font-family: \"IBM Plex Sans\", sans-serif; font-size: 12px; text-transform: lowercase; } .ds-chip::first-letter { text-transform: uppercase; }"
+      "css": ".ds-chip { display: inline-flex; align-items: center; background: transparent; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 4px 8px; font-family: \"Peyda\", sans-serif; font-size: 12px; text-transform: lowercase; } .ds-chip::first-letter { text-transform: uppercase; }"
     },
     {
       "name": "Card Surface",
@@ -182,7 +182,7 @@
       "refersTo": "card-surface",
       "description": "Flat card with dark surface background, no shadow, 4px radius.",
       "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Recent reports</h3><p class=\"ds-card-body\">12 new threat intelligence reports this week.</p></div>",
-      "css": ".ds-card { background: #141414; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 16px; box-shadow: none; } .ds-card-title { margin: 0 0 8px 0; font-family: \"Geologica\", sans-serif; font-size: 16px; font-weight: 500; color: #FFFFFF; text-transform: lowercase; } .ds-card-title::first-letter { text-transform: uppercase; } .ds-card-body { margin: 0; font-family: \"IBM Plex Sans\", sans-serif; font-size: 14px; line-height: 1.5; color: #FFFFFF; }"
+      "css": ".ds-card { background: #141414; color: #FFFFFF; border: 1px solid #262626; border-radius: 4px; padding: 16px; box-shadow: none; } .ds-card-title { margin: 0 0 8px 0; font-family: \"Peyda\", sans-serif; font-size: 16px; font-weight: 500; color: #FFFFFF; text-transform: lowercase; } .ds-card-title::first-letter { text-transform: uppercase; } .ds-card-body { margin: 0; font-family: \"Peyda\", sans-serif; font-size: 14px; line-height: 1.5; color: #FFFFFF; }"
     }
   ],
   "narrative": {
@@ -191,7 +191,7 @@
     "keyCharacteristics": [
       "Dark-first, black canvas with tight grey-scale tonal layering",
       "Three accent colors with surgical application (blue = action, red = alert, purple = intelligence)",
-      "IBM Plex Sans for body, Geologica for headings — clean, technical, no-nonsense",
+      "Peyda single-font system — weight and size create hierarchy, not font pairing",
       "4px border radius throughout — sharp, not rounded; precise, not soft",
       "Lowercase typography with first-letter uppercase as a signature voice",
       "Gradient borders for premium/feature actions (blue→purple, purple→red)",
@@ -221,8 +221,8 @@
         "section": "typography"
       },
       {
-        "name": "The Two-Font Rule",
-        "body": "Geologica for headings, IBM Plex Sans for everything else. No third font. No exceptions. If a new context needs a different feel, use weight and size, not a new family.",
+        "name": "The One-Font Rule",
+        "body": "Peyda is the only family. No Geologica, no IBM Plex Sans, no third family. Weight and size create hierarchy; font pairing does not.",
         "section": "typography"
       },
       {
@@ -243,7 +243,7 @@
       "Do use Signal Red (#F20F0F) exclusively for destructive actions, danger, and critical severity.",
       "Do use Violet Accent (#860EFE) for AI features and intelligence analysis highlights.",
       "Do apply the lowercase + first-letter uppercase pattern to all headings, chips, tabs, and tooltips.",
-      "Do use Geologica for headings and IBM Plex Sans for body — no other font families.",
+      "Do use Peyda as the single font family for all roles — weight and size create hierarchy.",
       "Do keep accent colors to ≤15% of any screen surface. The black canvas carries the design.",
       "Do verify ≥4.5:1 contrast for all text on dark surfaces, especially muted/secondary text.",
       "Do use gradient borders (blue→purple) only for premium feature actions and AI elements.",

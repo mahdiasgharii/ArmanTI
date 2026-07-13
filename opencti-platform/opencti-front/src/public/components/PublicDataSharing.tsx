@@ -9,8 +9,8 @@ import type { Theme } from '../../components/Theme';
 import { environment, fileUri } from '../../relay/environment';
 import { LoginRootPublicQuery } from '../__generated__/LoginRootPublicQuery.graphql';
 import { rootPublicQuery } from '../LoginRoot';
-import logoLight from '../../static/images/logo_light.png';
-import logoDark from '../../static/images/logo_dark.png';
+import logoLight from '../../static/images/logo_light.svg';
+import logoDark from '../../static/images/logo_dark.svg';
 
 // Deprecated - https://mui.com/system/styles/basics/
 // Do not use it for new code.

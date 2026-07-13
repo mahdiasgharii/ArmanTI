@@ -19,9 +19,9 @@ interface ChatbotContextType {
 
 const ChatbotContext = createContext<ChatbotContextType | null>(null);
 
-const SIDEBAR_WIDTH_STORAGE_KEY = 'arianeChatSidebarWidth';
-const CHAT_MODE_STORAGE_KEY = 'arianeChatMode';
-const CHAT_OPEN_STORAGE_KEY = 'arianeChatOpen';
+const SIDEBAR_WIDTH_STORAGE_KEY = 'armanChatSidebarWidth';
+const CHAT_MODE_STORAGE_KEY = 'armanChatMode';
+const CHAT_OPEN_STORAGE_KEY = 'armanChatOpen';
 const DEFAULT_SIDEBAR_WIDTH = 400;
 
 interface ChatbotProviderProps {
@@ -29,6 +29,21 @@ interface ChatbotProviderProps {
 }
 
 export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ children }) => {
+  // Migrate old arianeChat* keys to armanChat* for existing users
+  useEffect(() => {
+    const oldKeys = [
+      ['arianeChatSidebarWidth', SIDEBAR_WIDTH_STORAGE_KEY],
+      ['arianeChatMode', CHAT_MODE_STORAGE_KEY],
+      ['arianeChatOpen', CHAT_OPEN_STORAGE_KEY],
+    ];
+    for (const [oldKey, newKey] of oldKeys) {
+      const val = localStorage.getItem(oldKey);
+      if (val !== null && localStorage.getItem(newKey) === null) {
+        localStorage.setItem(newKey, val);
+        localStorage.removeItem(oldKey);
+      }
+    }
+  }, []);
   const [isOpen, setIsOpen] = useState(() => localStorage.getItem(CHAT_OPEN_STORAGE_KEY) === 'true');
   const [xtmOneConfigured, setXtmOneConfigured] = useState<boolean | null>(null);
   const [xtmOneUrl, setXtmOneUrl] = useState<string | null>(null);

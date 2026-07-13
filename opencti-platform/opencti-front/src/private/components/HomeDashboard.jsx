@@ -1,6 +1,7 @@
 import { assoc, head, last, map, pluck } from 'ramda';
 import React, { Suspense, useMemo } from 'react';
 import { graphql, useFragment, usePreloadedQuery } from 'react-relay';
+import { Clock } from 'lucide-react';
 import { PLATFORM_DASHBOARD } from './HomeDashboardSettings';
 import StixRelationshipsDistributionList from './common/stix_relationships/StixRelationshipsDistributionList';
 import StixRelationshipsPolarArea from './common/stix_relationships/StixRelationshipsPolarArea';
@@ -157,30 +158,32 @@ const DefaultDashboard = ({ timeField }) => {
 
 
       <div className="flex flex-col gap-8 pb-8">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2 pb-4 border-b border-border">
           <h1 className="font-display text-[22px] font-semibold lowercase first-letter:uppercase text-text-base">
             {t_i18n('Dashboard')}
           </h1>
           <div className="flex items-center gap-3 text-text-muted">
-            <span className="font-body text-xs lowercase first-letter:uppercase">
+            <span className="flex items-center gap-1.5 font-body text-xs lowercase first-letter:uppercase">
+              <Clock size={12} className="text-text-light" />
               {timeField === 'functional' ? t_i18n('Functional time') : t_i18n('Technical time')}
             </span>
-            <span className="text-border-strong">·</span>
-            <span className="font-body text-xs lowercase first-letter:uppercase">
+            <span className="flex items-center gap-1.5 font-body text-xs lowercase first-letter:uppercase">
+              <span className="ravin-pulse-dot w-1.5 h-1.5 rounded-full bg-success" />
               {t_i18n('Auto-refresh')}
             </span>
           </div>
         </div>
 
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
-              {t_i18n('Threat metrics')}
-            </h2>
-            <span className="text-border-strong">·</span>
-            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-              {t_i18n('All time')}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+                {t_i18n('Threat metrics')}
+              </h2>
+              <span className="font-body text-xs text-text-light lowercase first-letter:uppercase px-2 py-0.5 rounded-[4px] bg-surface-2 border border-border">
+                {t_i18n('All time')}
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 sm:col-span-6 md:col-span-3">
@@ -275,14 +278,15 @@ const DefaultDashboard = ({ timeField }) => {
         </div>
 
         <div className="flex flex-col gap-3 pt-8 border-t border-border">
-          <div className="flex items-center gap-2">
-            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
-              {t_i18n('Threat activity')}
-            </h2>
-            <span className="text-border-strong">·</span>
-            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-              {t_i18n('Last 3 months')}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+                {t_i18n('Threat activity')}
+              </h2>
+              <span className="font-body text-xs text-text-light lowercase first-letter:uppercase px-2 py-0.5 rounded-[4px] bg-surface-2 border border-border">
+                {t_i18n('Last 3 months')}
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 md:col-span-3">
@@ -381,14 +385,15 @@ const DefaultDashboard = ({ timeField }) => {
         </div>
 
         <div className="flex flex-col gap-3 pt-8 border-t border-border">
-          <div className="flex items-center gap-2">
-            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
-              {t_i18n('Intelligence overview')}
-            </h2>
-            <span className="text-border-strong">·</span>
-            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-              {t_i18n('Last 3 months')}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+                {t_i18n('Intelligence overview')}
+              </h2>
+              <span className="font-body text-xs text-text-light lowercase first-letter:uppercase px-2 py-0.5 rounded-[4px] bg-surface-2 border border-border">
+                {t_i18n('Last 3 months')}
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 md:col-span-3">
@@ -472,14 +477,15 @@ const DefaultDashboard = ({ timeField }) => {
         </div>
 
         <div className="flex flex-col gap-3 pt-8 border-t border-border">
-          <div className="flex items-center gap-2">
-            <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
-              {t_i18n('Latest intelligence')}
-            </h2>
-            <span className="text-border-strong">·</span>
-            <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-              {t_i18n('Recent')}
-            </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="font-display text-base font-semibold lowercase first-letter:uppercase text-text-muted">
+                {t_i18n('Latest intelligence')}
+              </h2>
+              <span className="font-body text-xs text-text-light lowercase first-letter:uppercase px-2 py-0.5 rounded-[4px] bg-surface-2 border border-border">
+                {t_i18n('Recent')}
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-12 md:col-span-8">
@@ -546,6 +552,7 @@ const DefaultDashboard = ({ timeField }) => {
         </div>
       </div>
 
+      <div className="ravin-blur-footer" />
 
     </Security>
   );

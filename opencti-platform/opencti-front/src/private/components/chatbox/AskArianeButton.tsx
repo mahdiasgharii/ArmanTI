@@ -89,7 +89,7 @@ const AskArianeButton = () => {
   return (
     <>
       <EETooltip
-        title={isCGUStatusPending && !hasRightToValidateCGU ? t_i18n('Ask Ariane isn\'t activated yet. Please reach out to your administrator to enable this feature.') : 'Open chatbot'}
+        title={isCGUStatusPending && !hasRightToValidateCGU ? t_i18n('Ask Arman isn\'t activated yet. Please reach out to your administrator to enable this feature.') : 'Open chatbot'}
       >
         <Button
           variant="tertiary"
@@ -98,7 +98,7 @@ const AskArianeButton = () => {
           onClick={toggleChatbot}
           startIcon={<FiligranIcon icon={LogoXtmOneIcon} size="small" />}
         >
-          {t_i18n('Ask Ariane')}
+          {t_i18n('Ask Arman')}
           <EEChip />
         </Button>
       </EETooltip>

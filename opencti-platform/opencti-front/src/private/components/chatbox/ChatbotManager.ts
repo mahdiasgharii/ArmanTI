@@ -1,7 +1,7 @@
 import type { Theme } from '../../../components/Theme';
 import { APP_BASE_PATH, fileUri } from '../../../relay/environment';
-import embleme from '../../../static/images/embleme_filigran_white.png';
-import { DARK_BLUE } from '../../../utils/htmlToPdf/utils/constants';
+import embleme from '../../../static/images/logo_arman_emblem_white.svg';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore — legacy v1 package installed under an npm alias
 import type { BubbleProps } from '@filigran/chatbot-legacy';
@@ -110,7 +110,7 @@ class ChatbotManager {
 
     const chatBotTheme = {
       button: {
-        backgroundColor: DARK_BLUE,
+        backgroundColor: '#019BE5',
       },
       tooltip: {
         showTooltip: false,
@@ -119,9 +119,9 @@ class ChatbotManager {
       chatWindow: {
         showTitle: true,
         showAgentMessages: false,
-        title: this.t_i18n('Ask Ariane'),
+        title: this.t_i18n('Ask Arman'),
         titleAvatarSrc: fileUri(embleme),
-        titleBackgroundColor: 'linear-gradient(90deg, #3C108C 0%, #5E1AD5 100%)',
+        titleBackgroundColor: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
         welcomeMessage: this.t_i18n('Hi there 👋 You\'re speaking with an AI Agent. I\'m here to answer your questions, so what brings you here today?'),
         errorMessage: this.t_i18n('Sorry, an error has occurred, please try again later.'),
         backgroundColor: this.theme.palette.ai.background,
@@ -157,8 +157,8 @@ class ChatbotManager {
         footer: {
           textColor: this.theme.palette.text?.primary,
           text: this.t_i18n('Powered by'),
-          company: 'Filigran XTM One',
-          companyLink: 'https://filigran.io',
+          company: 'ArmanCTI',
+          companyLink: 'https://armancti.io',
         },
       },
     };

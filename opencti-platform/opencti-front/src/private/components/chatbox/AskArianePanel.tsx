@@ -67,6 +67,8 @@ const AskArianePanel: React.FC<AskArianePanelProps> = ({
     t_i18n('What are the latest threats?'),
     t_i18n('Show me recent reports'),
     t_i18n('Analyze this indicator'),
+    t_i18n('Show me recent threat tweets'),
+    t_i18n('What are the latest IOCs?'),
   ];
 
   const draftId = me.draftContext?.id;
@@ -104,7 +106,7 @@ const AskArianePanel: React.FC<AskArianePanelProps> = ({
 
   useEffect(() => {
     const div = document.createElement('div');
-    div.id = 'ask-ariane-portal';
+    div.id = 'ask-arman-portal';
     div.className = isDarkMode ? 'dark' : '';
     document.body.appendChild(div);
     setContainer(div);

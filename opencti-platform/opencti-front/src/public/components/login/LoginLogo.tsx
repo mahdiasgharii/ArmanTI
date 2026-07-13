@@ -2,8 +2,8 @@ import { graphql } from 'relay-runtime';
 import { useFragment } from 'react-relay';
 import { useTheme } from '@mui/styles';
 import { LoginLogoFragment$key } from './__generated__/LoginLogoFragment.graphql';
-import logoDark from '../../../static/images/logo_text_dark.png';
-import logoLight from '../../../static/images/logo_text_light.png';
+import logoDark from '../../../static/images/logo_text_dark.svg';
+import logoLight from '../../../static/images/logo_text_light.svg';
 import { isEmptyField } from '../../../utils/utils';
 import { fileUri } from '../../../relay/environment';
 import type { Theme } from '../../../components/Theme';
@@ -31,7 +31,7 @@ const LoginLogo = ({ data }: LoginLogoProps) => {
   return (
     <img
       src={logo}
-      alt="OpenCTI Logo"
+      alt="ArmanCTI Logo"
       width={180}
     />
   );

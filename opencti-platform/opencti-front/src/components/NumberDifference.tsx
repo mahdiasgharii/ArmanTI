@@ -1,7 +1,5 @@
 import React from 'react';
 import { ArrowUp, ArrowDown, ArrowRight } from 'lucide-react';
-import { useTheme } from '@mui/material/styles';
-import type { Theme } from './Theme';
 import { useFormatter } from './i18n';
 interface ItemNumberDifferenceProps {
   value: number;
@@ -9,24 +7,13 @@ interface ItemNumberDifferenceProps {
 }
 
 const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => {
-  const theme = useTheme<Theme>();
   const { t_i18n } = useFormatter();
 
-  const inlineStyles = {
-    green: {
-      color: theme.palette.success.main,
-    },
-    red: {
-      color: theme.palette.error.main,
-    },
-    blueGrey: {
-      color: theme.palette.common.grey,
-    },
-  };
-
-  let color = inlineStyles.green;
-  if (value < 0) color = inlineStyles.red;
-  if (value === 0) color = inlineStyles.blueGrey;
+  const color = value > 0
+    ? { color: 'var(--ravin-success)' }
+    : value < 0
+      ? { color: 'var(--ravin-danger)' }
+      : { color: 'var(--ravin-text-muted)' };
 
   let Icon = ArrowUp;
   if (value < 0) Icon = ArrowDown;
@@ -38,7 +25,7 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
       fontSize: 12,
       display: 'flex',
       alignItems: 'center',
-      gap: theme.spacing(0.25),
+      gap: 2,
       whiteSpace: 'nowrap',
     }}
     >

@@ -207,7 +207,53 @@ Shadows appear only on:
 - **Top Bar:** Surface (`#141414`) background. Border-bottom `#262626`.
 - **Tabs:** Lowercase with first-letter uppercase. Active tab has primary accent underline or background tint.
 
-## 6. Do's and Don'ts
+## 6. App Shell Layout
+
+The app shell follows an inset sidebar pattern. The sidebar is visually recessed (canvas background), while the content area sits on a slightly elevated surface with a subtle gradient. A progressive blur footer at the bottom of the scrollable content area provides a smooth visual fade-off, signaling scroll boundary without a hard line.
+
+### Structure
+- **Sidebar (LeftBar):** Fixed-width, canvas background (`--ravin-bg`). Collapsible: 180px open, 55px collapsed. Active items use Surface-2 background with Electric Blue inset shadow. Contains logo at top, navigation groups with separators, and collapse toggle.
+- **Top Bar:** Fixed, surface background (`--ravin-surface`) with transparent gradient overlay and `backdrop-filter: blur(4px)`. Contains global search (command-style input), AI actions (Ask Arman, CTEM), import, triggers, notifications with badge, and profile menu.
+- **Content Area:** Scrollable, padded (24px horizontal). Sits on the body gradient (`--ravin-bg` → next tonal step). Contains the dashboard or page content.
+- **Progressive Blur Footer:** A fixed-position gradient overlay at the bottom of the content area. Uses `mask-image: linear-gradient(to bottom, transparent 0%, var(--ravin-bg) 100%)` to create a smooth fade. Height: 32px. Non-interactive (pointer-events: none).
+
+### Dashboard Grid
+- **12-column grid** with 16px gap (`gap-4`).
+- **Metric cards:** 4 columns on desktop (`col-span-3`), 6 on tablet, 12 on mobile.
+- **Chart cards:** Variable span (3, 6, or 8 columns) depending on data density.
+- **Section headers:** Full-width, with lowercase title + time-range chip badge.
+- **Section separators:** `border-top` using `--ravin-border` with 32px top padding.
+
+### Named Rules
+**The Inset Sidebar Rule.** The sidebar is always canvas (`--ravin-bg`), never surface. The content area is always lighter (surface or gradient). This creates the inset effect — the sidebar reads as receding, the content as advancing.
+
+**The Progressive Blur Rule.** The content area's bottom edge uses a gradient mask fade, not a hard border or shadow. This signals scroll boundary softly, consistent with the instrument aesthetic.
+
+**The Command Search Rule.** The top bar search is the primary navigation method for power users. It supports NLQ (natural language query) in enterprise mode. The input is styled as a command palette — surface-2 background, 4px radius, Electric Blue focus border.
+
+## 7. Light Theme Specification
+
+The light theme is an equal citizen, not a fallback. It mirrors the dark theme's accent colors on inverted neutrals. The same design rules apply: surgical accents, tonal layering, flat surfaces, 4px radius.
+
+### Light Theme Token Mapping
+| Token | Dark Value | Light Value |
+|-------|-----------|-------------|
+| `--ravin-bg` | `#0A0A0A` | `#F5F5F5` |
+| `--ravin-surface` | `#141414` | `#FFFFFF` |
+| `--ravin-elevated` | `#1A1A1A` | `#FAFAFA` |
+| `--ravin-surface-2` | `#262626` | `#EBEBEB` |
+| `--ravin-border` | `#262626` | `#E0E0E0` |
+| `--ravin-border-strong` | `#404040` | `#CCCCCC` |
+| `--ravin-primary` | `#019BE5` | `#019BE5` |
+| `--ravin-secondary` | `#860EFE` | `#860EFE` |
+| `--ravin-danger` | `#F20F0F` | `#F20F0F` |
+| `--ravin-text` | `#FFFFFF` | `#0A0A0A` |
+| `--ravin-text-muted` | `#848592` | `#666666` |
+| `--ravin-text-light` | `#AFB0B6` | `#999999` |
+
+Accent colors (Electric Blue, Violet, Signal Red) remain identical across both themes. Only neutrals invert. This ensures brand consistency — the instrument's accent signals are the same regardless of theme.
+
+## 8. Do's and Don'ts
 
 ### Do:
 - **Do** use the tonal grey scale (`#0A0A0A → #141414 → #1A1A1A → #262626`) for all depth and layering.
@@ -218,6 +264,8 @@ Shadows appear only on:
 - **Do** use Electric Blue (`#019BE5`) for primary actions and focus states only.
 - **Do** use Violet (`#860EFE`) for AI features exclusively.
 - **Do** support both dark (default) and light themes via the `--ravin-*` CSS variables.
+- **Do** use the progressive blur footer on scrollable content areas for smooth scroll boundary signaling.
+- **Do** keep accent colors identical across themes — only neutrals invert.
 
 ### Don't:
 - **Don't** use the original OpenCTI cyan/teal palette. The departure is intentional.
@@ -228,3 +276,5 @@ Shadows appear only on:
 - **Don't** use purple gradients everywhere, glassmorphism, or "powered by AI" badges.
 - **Don't** use gradient borders (blue→purple) outside of premium feature actions and AI elements.
 - **Don't** introduce a third font family. Weight and size create hierarchy, not font pairing.
+- **Don't** use different accent colors in light vs dark theme. Accents are brand constants, not theme variables.
+- **Don't** use hard borders or shadows at the bottom of scroll areas. Use the progressive blur gradient mask.
