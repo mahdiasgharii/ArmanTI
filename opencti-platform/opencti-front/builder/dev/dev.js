@@ -6,6 +6,7 @@ const esbuild = require("esbuild");
 const chokidar = require("chokidar");
 const compression = require("compression");
 const { RelayPlugin } = require("../plugin/esbuild-relay");
+const { PostcssPlugin } = require("../plugin/esbuild-postcss");
 
 const basePath = "";
 const clients = [];
@@ -60,7 +61,7 @@ const middleware = (target, ws = false) => createProxyMiddleware({
   // Start with an initial build
   const builder = await esbuild.context({
       logLevel: "info",
-      plugins: [RelayPlugin],
+      plugins: [RelayPlugin, PostcssPlugin],
       entryPoints: ["src/front.tsx"],
       publicPath: "/",
       bundle: true,

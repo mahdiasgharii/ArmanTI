@@ -1,14 +1,13 @@
 import IconButton from '@common/button/IconButton';
 import { OPEN_BAR_WIDTH, SMALL_BAR_WIDTH } from '@components/nav/LeftBar';
 import { CircleUser as AccountCircleOutlined, AlarmClock as AlarmOnOutlined, Bell as NotificationsOutlined } from 'lucide-react';
-import { alpha, Badge, Divider, Stack } from '@mui/material';
+import { Badge, Divider, Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/styles';
-import makeStyles from '@mui/styles/makeStyles';
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react';
 import { graphql, PreloadedQuery, usePreloadedQuery, useSubscription } from 'react-relay';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -36,23 +35,7 @@ import useTopBanner from '../../../utils/hooks/useTopBanner';
 import { TopBarNotificationNumberSubscription$data } from './__generated__/TopBarNotificationNumberSubscription.graphql';
 import { TopBarNewsFeedNumberSubscription$data } from './__generated__/TopBarNewsFeedNumberSubscription.graphql';
 import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
-import { THEME_DARK_DEFAULT_BACKGROUND } from '../../../components/ThemeDark';
 import { useAINLQ } from '../common/ai/AINLQ';
-
-// Deprecated - https://mui.com/system/styles/basics/
-// Do not use it for new code.
-const useStyles = makeStyles<Theme>((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer - 1,
-    background: 0,
-    backgroundColor: theme.palette.background.nav,
-    paddingTop: theme.spacing(0.2),
-    borderLeft: 0,
-    borderRight: 0,
-    borderTop: 0,
-    color: theme.palette.text?.primary,
-  },
-}));
 
 const topBarNotificationNumberSubscription = graphql`
   subscription TopBarNotificationNumberSubscription {
@@ -220,25 +203,14 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
   // global search keyword
   const keyword = decodeSearchKeyword(location.pathname.match(/(?:\/dashboard\/search\/(?:knowledge|files)\/(.*))/)?.[1] ?? '');
 
-  const getAppTopBarGradient = (): string => {
-    const defaultGradientDark = `${alpha(THEME_DARK_DEFAULT_BACKGROUND, 0.9)} 0%, ${alpha(theme.palette.designSystem.background.bg1, 0.9)}`;
-    if (theme.palette.background.gradient?.start && theme.palette.background.gradient?.end) {
-      return `${alpha(theme.palette.background.gradient.start, 0.9)} 0%, ${alpha(theme.palette.background.gradient.end, 0.9)}`;
-    }
-    return defaultGradientDark;
-  };
-
-  const appBarGradient = getAppTopBarGradient();
-
   return (
     <AppBar
       position="fixed"
       elevation={0}
+      className="ravin-glass-header"
       sx={{
-        marginLeft: navOpen ? `${OPEN_BAR_WIDTH}px` : `${SMALL_BAR_WIDTH}px`,
-        width: navOpen ? `calc(100% - ${OPEN_BAR_WIDTH}px)` : `calc(100% - ${SMALL_BAR_WIDTH}px)`,
-        backgroundColor: 'transparent',
-        backdropFilter: 'blur(4px)',
+        marginLeft: navOpen ? `${OPEN_BAR_WIDTH + 16}px` : `${SMALL_BAR_WIDTH + 16}px`,
+        width: navOpen ? `calc(100% - ${OPEN_BAR_WIDTH + 16}px)` : `calc(100% - ${SMALL_BAR_WIDTH + 16}px)`,
       }}
     >
       {/* Header and Footer Banners containing classification level of system */}
@@ -252,7 +224,6 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           paddingRight: theme.spacing(3),
           display: 'flex',
           justifyContent: 'space-between',
-          background: `linear-gradient(90deg, ${appBarGradient} 100%)`,
         }}
       >
         {hasKnowledgeAccess && (
@@ -369,7 +340,6 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
 
 const TopBar: FunctionComponent<Omit<TopBarProps, 'queryRef'>> = () => {
   const queryRef = useQueryLoading<TopBarQuery>(topBarQuery, {});
-  const classes = useStyles();
   return (
     <>
       {queryRef && (
@@ -377,9 +347,9 @@ const TopBar: FunctionComponent<Omit<TopBarProps, 'queryRef'>> = () => {
           fallback={(
             <AppBar
               position="fixed"
-              className={classes.appBar}
+              className="ravin-glass-header"
               variant="elevation"
-              elevation={1}
+              elevation={0}
             />
           )}
         >

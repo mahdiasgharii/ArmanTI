@@ -8,15 +8,15 @@ import { alpha, darken, lighten } from '@mui/material';
 
 const EE_COLOR = '#019BE5';
 
-export const THEME_LIGHT_DEFAULT_BACKGROUND = '#F5F5F5';
+export const THEME_LIGHT_DEFAULT_BACKGROUND = '#FFFFFF';
 export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#FFFFFF';
 export const THEME_LIGHT_DEFAULT_PRIMARY = '#019BE5';
 const THEME_LIGHT_DEFAULT_SECONDARY = '#860EFE';
-const THEME_LIGHT_DEFAULT_ACCENT = '#E5E5E5';
-const THEME_LIGHT_DEFAULT_TEXT = '#0A0A0A';
-export const THEME_LIGHT_DEFAULT_PAPER = '#ffffff';
-const THEME_LIGHT_DEFAULT_NAV = '#ffffff';
-export const THEME_LIGHT_DIALOG_BACKGROUND = '#FFFFFF';
+const THEME_LIGHT_DEFAULT_ACCENT = '#F4F4F5';
+const THEME_LIGHT_DEFAULT_TEXT = '#09090B';
+export const THEME_LIGHT_DEFAULT_PAPER = '#FAFAFA';
+const THEME_LIGHT_DEFAULT_NAV = '#FAFAFA';
+export const THEME_LIGHT_DIALOG_BACKGROUND = '#FAFAFA';
 
 const getAppBodyGradientEndColor = (background: string | null): string => {
   if (background && background !== THEME_LIGHT_DEFAULT_BACKGROUND) {
@@ -63,10 +63,10 @@ const ThemeLight = (
     border: {
       lightBackground: hexToRGB('#000000', 0.12),
       primary: hexToRGB((primary || THEME_LIGHT_DEFAULT_PRIMARY), 0.3),
-      secondary: '#CCCCCC',
+      secondary: '#D4D4D8',
       pagination: hexToRGB('#000000', 0.5),
       paper: hexToRGB('#000000', 0.12),
-      main: '#E0E0E0',
+      main: '#E4E4E7',
     },
     pagination: {
       main: '#000000',
@@ -93,12 +93,12 @@ const ThemeLight = (
       shadow: alpha('#000000', 0.08),
       // the only way for now to know if we should apply the paper color or not
       secondary: paper === THEME_LIGHT_DEFAULT_PAPER
-        ? '#FAFAFA'
-        : (paper ?? '#FAFAFA'),
+        ? '#F4F4F5'
+        : (paper ?? '#F4F4F5'),
       drawer: nav === THEME_LIGHT_DEFAULT_PAPER
         ? '#FAFAFA'
         : (darken(nav ?? '#FAFAFA', 0.5)),
-      disabled: '#EBEBEB',
+      disabled: '#F4F4F5',
       gradient: {
         start: background || THEME_LIGHT_DEFAULT_BACKGROUND,
         end: getAppBodyGradientEndColor(background),
@@ -106,17 +106,17 @@ const ThemeLight = (
     },
     text: {
       secondary: THEME_LIGHT_DEFAULT_TEXT,
-      tertiary: '#666666',
-      light: '#999999',
+      tertiary: '#71717A',
+      light: '#A1A1AA',
       disabled: '#B3B3B3',
     },
     leftBar: {
       header: {
-        itemBackground: '#F5F5F5',
+        itemBackground: '#F4F4F5',
       },
-      popoverItem: '#F5F5F5',
-      hover: 'rgba(1, 155, 229, 0.08)',
-      text: '#0A0A0A',
+      popoverItem: '#FAFAFA',
+      hover: '#F4F4F5',
+      text: '#09090B',
     },
     severity: {
       critical: '#EE3838',
@@ -149,20 +149,20 @@ const ThemeLight = (
         dark: '#4A08A0',
       },
       background: {
-        main: '#F5F5F5',
-        bg1: '#FFFFFF',
-        bg2: '#FAFAFA',
-        bg3: '#EBEBEB',
-        bg4: '#E0E0E0',
-        disabled: '#EBEBEB',
+        main: '#FFFFFF',
+        bg1: '#FAFAFA',
+        bg2: '#F4F4F5',
+        bg3: '#E4E4E7',
+        bg4: '#D4D4D8',
+        disabled: '#F4F4F5',
       },
       border: {
-        main: '#E0E0E0',
-        border1: '#CCCCCC',
-        border2: '#E5E5E5',
+        main: '#E4E4E7',
+        border1: '#D4D4D8',
+        border2: '#E4E4E7',
       },
       gradient: {
-        background: 'linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%)',
         ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
         focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
       },
@@ -191,9 +191,9 @@ const ThemeLight = (
       },
       tertiary: {
         grey: {
-          400: '#666666',
-          700: '#999999',
-          800: '#B3B3B3',
+          400: '#71717A',
+          700: '#A1A1AA',
+          800: '#D4D4D8',
         },
         blue: {
           500: '#019BE5',
@@ -383,8 +383,8 @@ const ThemeLight = (
         paper: {
           backgroundImage: 'none',
           backgroundColor: paper === THEME_LIGHT_DEFAULT_PAPER
-            ? '#FFFFFF'
-            : (paper ?? '#FFFFFF'),
+            ? '#FAFAFA'
+            : (paper ?? '#FAFAFA'),
           borderRadius: 4,
         },
       },
@@ -421,7 +421,7 @@ const ThemeLight = (
             display: 'none',
           },
           '& .MuiToggleButton-root': {
-            border: '1px solid #E0E0E0',
+            border: '1px solid #E4E4E7',
             color: primary,
 
             '&:focus-visible': {
@@ -475,7 +475,7 @@ const ThemeLight = (
           color: text_color,
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#999999',
+            color: '#A1A1AA',
           },
         },
       },
@@ -493,8 +493,8 @@ const ThemeLight = (
         },
         outlined: {
           backgroundColor: paper === THEME_LIGHT_DEFAULT_PAPER
-            ? '#FFFFFF'
-            : (paper ?? '#FFFFFF'),
+            ? '#FAFAFA'
+            : (paper ?? '#FAFAFA'),
         },
       },
     },
@@ -531,7 +531,7 @@ const ThemeLight = (
             WebkitTextFillColor: '#000000 !important',
             caretColor: 'transparent !important',
             WebkitBoxShadow:
-                '0 0 0 1000px rgba(245, 245, 245, 0.92) inset !important',
+                '0 0 0 1000px rgba(255, 255, 255, 0.92) inset !important',
             borderTopLeftRadius: 'inherit',
             borderTopRightRadius: 'inherit',
           },
@@ -704,13 +704,13 @@ const ThemeLight = (
         root: {
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#999999',
+            color: '#A1A1AA',
           },
           '& .MuiOutlinedInput-root': {
             // the only way for now to know if we should apply the paper color or not
             backgroundColor: paper === THEME_LIGHT_DEFAULT_PAPER
-              ? '#FFFFFF'
-              : (paper ?? '#FFFFFF'),
+              ? '#FAFAFA'
+              : (paper ?? '#FAFAFA'),
             '& fieldset': {
               borderColor: 'transparent',
             },

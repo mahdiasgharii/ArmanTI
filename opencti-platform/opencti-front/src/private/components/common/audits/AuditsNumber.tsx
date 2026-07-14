@@ -184,6 +184,7 @@ const AuditsNumber: FunctionComponent<AuditsNumberProps> = ({
       action={popover}
       showPreviewTag={isPreviewMode}
       warning={warning}
+      kpi
     >
       {isMissingHostEntity ? (
         <WidgetNoHostEntity host={host} />

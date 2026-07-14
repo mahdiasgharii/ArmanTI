@@ -8,15 +8,15 @@ import { alpha, darken, lighten } from '@mui/material';
 
 const EE_COLOR = '#00f18d';
 
-export const THEME_DARK_DEFAULT_BACKGROUND = '#0A0A0A';
-const THEME_DARK_DEFAULT_BODY_END_GRADIENT = '#141414';
+export const THEME_DARK_DEFAULT_BACKGROUND = '#0a0a0a';
+const THEME_DARK_DEFAULT_BODY_END_GRADIENT = '#0a0a0a';
 export const THEME_DARK_DEFAULT_PRIMARY = '#019BE5';
 export const THEME_DARK_DEFAULT_SECONDARY = '#860EFE';
-export const THEME_DARK_DEFAULT_ACCENT = '#1A1A1A';
-export const THEME_DARK_DEFAULT_PAPER = '#141414';
-export const THEME_DARK_DEFAULT_TEXT = '#FFFFFF';
-const THEME_DARK_DEFAULT_NAV = '#0A0A0A';
-export const THEME_DARK_DIALOG_BACKGROUND = '#1A1A1A';
+export const THEME_DARK_DEFAULT_ACCENT = '#171717';
+export const THEME_DARK_DEFAULT_PAPER = '#171717';
+export const THEME_DARK_DEFAULT_TEXT = '#FAFAFA';
+const THEME_DARK_DEFAULT_NAV = '#0a0a0a';
+export const THEME_DARK_DIALOG_BACKGROUND = '#171717';
 
 const getAppBodyGradientEndColor = (background: string | null): string => {
   if (background && background !== THEME_DARK_DEFAULT_BACKGROUND) {
@@ -61,10 +61,10 @@ const ThemeDark = (
     gradient: { main: '#860EFE' },
     border: {
       primary: hexToRGB((primary || THEME_DARK_DEFAULT_PRIMARY), 0.3),
-      secondary: '#262626',
+      secondary: '#27272A',
       pagination: hexToRGB('#ffffff', 0.5),
       paper: hexToRGB('#ffffff', 0.12),
-      main: '#262626',
+      main: '#27272A',
     },
     pagination: {
       main: '#ffffff',
@@ -90,13 +90,13 @@ const ThemeDark = (
       accent: accent || THEME_DARK_DEFAULT_ACCENT,
       shadow: 'rgba(0, 0, 0, 0.4)',
       secondary: paper === THEME_DARK_DEFAULT_PAPER
-        ? '#1A1A1A'
-        : (paper ?? '#1A1A1A'),
+        ? '#27272A'
+        : (paper ?? '#27272A'),
       drawer: nav === THEME_DARK_DEFAULT_NAV
-        ? '#141414'
-        : (darken(nav ?? '#141414', 0.5)),
+        ? '#18181B'
+        : (darken(nav ?? '#18181B', 0.5)),
 
-      disabled: '#262626',
+      disabled: '#27272A',
       gradient: {
         start: background || THEME_DARK_DEFAULT_BACKGROUND,
         end: getAppBodyGradientEndColor(background),
@@ -104,17 +104,17 @@ const ThemeDark = (
     },
     text: {
       secondary: THEME_DARK_DEFAULT_TEXT,
-      tertiary: '#848592',
-      light: '#AFB0B6',
+      tertiary: '#A1A1AA',
+      light: '#A1A1AA',
       disabled: '#555555',
     },
     leftBar: {
       header: {
-        itemBackground: '#1A1A1A',
+        itemBackground: '#27272A',
       },
-      popoverItem: '#0A0A0A',
-      hover: '#1A1A1A',
-      text: '#FFFFFF',
+      popoverItem: '#18181B',
+      hover: '#27272A',
+      text: '#FAFAFA',
     },
     severity: {
       critical: '#EE3838',
@@ -147,20 +147,20 @@ const ThemeDark = (
         dark: '#4A08A0',
       },
       background: {
-        main: '#0A0A0A',
-        bg1: '#141414',
-        bg2: '#1A1A1A',
-        bg3: '#262626',
-        bg4: '#333333',
-        disabled: '#262626',
+        main: '#09090B',
+        bg1: '#18181B',
+        bg2: '#27272A',
+        bg3: '#3F3F46',
+        bg4: '#52525B',
+        disabled: '#27272A',
       },
       border: {
-        main: '#262626',
-        border1: '#333333',
-        border2: '#1A1A1A',
+        main: '#27272A',
+        border1: '#3F3F46',
+        border2: '#27272A',
       },
       gradient: {
-        background: 'linear-gradient(180deg, #0A0A0A 0%, #141414 100%)',
+        background: 'linear-gradient(180deg, #09090B 0%, #18181B 100%)',
         ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
         focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
       },
@@ -189,9 +189,9 @@ const ThemeDark = (
       },
       tertiary: {
         grey: {
-          400: '#848592',
+          400: '#A1A1AA',
           700: '#3A3A3A',
-          800: '#262626',
+          800: '#27272A',
         },
         blue: {
           500: '#019BE5',
@@ -381,8 +381,8 @@ const ThemeDark = (
         paper: {
           backgroundImage: 'none',
           backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-            ? '#1A1A1A'
-            : (paper ?? '#1A1A1A'),
+            ? '#18181B'
+            : (paper ?? '#18181B'),
           borderRadius: 4,
         },
       },
@@ -420,7 +420,7 @@ const ThemeDark = (
             display: 'none',
           },
           '& .MuiToggleButton-root': {
-            border: '1px solid #262626',
+            border: '1px solid #27272A',
             color: primary,
 
             '&:focus-visible': {
@@ -474,7 +474,7 @@ const ThemeDark = (
           color: text_color,
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#AFB0B6',
+            color: '#A1A1AA',
           },
         },
       },
@@ -492,8 +492,8 @@ const ThemeDark = (
         },
         outlined: {
           backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-            ? '#1A1A1A'
-            : (paper ?? '#1A1A1A'),
+            ? '#18181B'
+            : (paper ?? '#18181B'),
         },
       },
     },
@@ -530,7 +530,7 @@ const ThemeDark = (
             WebkitTextFillColor: '#ffffff !important',
             caretColor: 'transparent !important',
             WebkitBoxShadow:
-              '0 0 0 1000px rgba(10, 10, 10, 0.92) inset !important',
+              '0 0 0 1000px rgba(9, 9, 11, 0.92) inset !important',
             borderTopLeftRadius: 'inherit',
             borderTopRightRadius: 'inherit',
           },
@@ -700,13 +700,13 @@ const ThemeDark = (
         root: {
           // Shrink = when at the top of the input in small size.
           '& .MuiFormLabel-root:not(.MuiInputLabel-shrink):not(.Mui-error)': {
-            color: '#AFB0B6',
+            color: '#A1A1AA',
           },
           '& .MuiOutlinedInput-root': {
             // the only way for now to know if we should apply the paper color or not
             backgroundColor: paper === THEME_DARK_DEFAULT_PAPER
-              ? '#1A1A1A'
-              : (paper ?? '#1A1A1A'),
+              ? '#18181B'
+              : (paper ?? '#18181B'),
             '& fieldset': {
               borderColor: 'transparent',
             },

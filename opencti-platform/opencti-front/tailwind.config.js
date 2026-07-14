@@ -12,6 +12,7 @@ export default {
       colors: {
         // Ravin Style design tokens — using CSS variables for runtime theme switching
         canvas: 'var(--ravin-bg)',
+        background: 'var(--ravin-bg)',
         surface: 'var(--ravin-surface)',
         elevated: 'var(--ravin-elevated)',
         'surface-2': 'var(--ravin-surface-2)',
@@ -71,9 +72,16 @@ export default {
       },
       borderRadius: {
         DEFAULT: '4px',
+        lg: '8px',
+        container: '8px',
+        xl: '12px',
+      },
+      spacing: {
+        container: '8px',
       },
       fontSize: {
-        'metric': ['32px', { lineHeight: '1', fontWeight: '600' }],
+        'metric': ['28px', { lineHeight: '1', fontWeight: '600' }],
+        'display': ['22px', { lineHeight: '1.3', fontWeight: '600' }],
       },
     },
   },

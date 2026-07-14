@@ -28,6 +28,7 @@ const WidgetDistributionList = ({
   const theme = useTheme<Theme>();
   const { n } = useFormatter();
   const computeLink = useComputeLink();
+  const maxValue = data.length > 0 ? Math.max(...data.map((d) => d.value)) : 0;
 
   return (
     <div
@@ -80,6 +81,7 @@ const WidgetDistributionList = ({
                 minHeight: 50,
                 maxHeight: 50,
                 paddingRight: 0,
+                position: 'relative',
                 cursor: cursorStyle,
                 fontFamily: '"Peyda", sans-serif',
                 '& .MuiListItemText-primary': {
@@ -125,13 +127,26 @@ const WidgetDistributionList = ({
                 style={{
                   float: 'right',
                   marginRight: 20,
-                  fontSize: 18,
+                  fontSize: theme.typography.subtitle2.fontSize,
                   fontWeight: 500,
                   color: 'var(--ravin-text)',
+                  fontVariantNumeric: 'tabular-nums',
                 }}
               >
                 {n(entry.value)}
               </div>
+              {maxValue > 0 && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    height: 1,
+                    width: `${(entry.value / maxValue) * 100}%`,
+                    backgroundColor: 'var(--ravin-border-strong)',
+                  }}
+                />
+              )}
             </ListItemButton>
           );
         })}

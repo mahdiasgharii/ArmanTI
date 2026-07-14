@@ -43,12 +43,13 @@ export const PopoverListItem: React.FC<PopoverListItemProps> = ({
       rel={external ? 'noopener noreferrer' : undefined}
       onClick={onClick}
       sx={{
-        borderRadius: 1,
+        borderRadius: '4px',
         px: 1,
         py: 1.5,
         display: 'flex',
         justifyContent: 'space-between',
-        backgroundColor: theme.palette.leftBar.header.itemBackground,
+        backgroundColor: 'var(--ravin-elevated)',
+        border: '1px solid var(--ravin-border)',
       }}
     >
       <ListItemIcon sx={{ width: 132, p: 1 }}>
@@ -141,8 +142,7 @@ export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
           marginTop: `calc(${topBannerHeight}px + ${bannerHeightNumber}px + ${settingsMessagesBannerHeight}px)`,
         }}
         sx={{
-          padding: navOpen ? 2 : '16px 0',
-          paddingRight: navOpen ? 1 : 0,
+          padding: navOpen ? '16px 16px 8px 16px' : '16px 0 8px 0',
           width: '100%',
           flexShrink: 0,
           display: 'flex',
@@ -170,7 +170,8 @@ export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
             onClick={handleClickPopover}
           >
             <ArrowDropDown
-              sx={{
+              size={20}
+              style={{
                 transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
                 transition: 'transform 0.2s',
               }}

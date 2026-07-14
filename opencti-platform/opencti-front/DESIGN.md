@@ -45,6 +45,7 @@ typography:
     lineHeight: 1
 rounded:
   default: "4px"
+  container: "12px"
 spacing:
   default: "4px"
 components:

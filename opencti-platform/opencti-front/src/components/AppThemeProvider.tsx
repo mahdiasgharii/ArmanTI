@@ -139,9 +139,11 @@ const AppThemeProvider: FunctionComponent<AppThemeProviderProps> = ({
       theme_text_color: themeToUse?.theme_text_color ?? defaultTheme.theme_text_color,
     };
     const root = document.documentElement;
-    if (appTheme.theme_background) root.style.setProperty('--ravin-bg', appTheme.theme_background);
+    if (appTheme.theme_background) {
+      root.style.setProperty('--ravin-bg', appTheme.theme_background);
+      root.style.setProperty('--ravin-surface', appTheme.theme_background);
+    }
     if (appTheme.theme_paper) {
-      root.style.setProperty('--ravin-surface', appTheme.theme_paper);
       root.style.setProperty('--ravin-elevated', appTheme.theme_paper);
     }
     if (appTheme.theme_primary) root.style.setProperty('--ravin-primary', appTheme.theme_primary);

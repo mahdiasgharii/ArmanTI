@@ -80,15 +80,24 @@ const Index = ({ settings }: IndexProps) => {
     flexGrow: 1,
     overflowY: 'hidden',
     height: '100vh',
-    paddingTop: `calc(16px + 64px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
+    paddingTop: `calc(8px + 64px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
     marginRight: 'var(--chatbot-sidebar-width, 0px)',
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    backgroundColor: 'var(--ravin-bg)',
   };
 
   const boxSx: SxProps = {
-    px: 3,
+    px: 0,
     flex: 1,
     overflowY: 'auto',
     minHeight: 0,
+    borderRadius: '12px',
+    border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    position: 'relative',
+    backgroundColor: 'var(--ravin-elevated)',
   };
 
   return (

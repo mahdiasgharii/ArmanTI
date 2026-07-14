@@ -20,19 +20,20 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
   if (value === 0) Icon = ArrowRight;
 
   return (
-    <div style={{
+    <div
+      className="text-xs"
+      style={{
       ...color,
-      fontSize: 12,
       display: 'flex',
       alignItems: 'center',
-      gap: 2,
+      gap: 3,
       whiteSpace: 'nowrap',
     }}
     >
       <Icon size={13} />
-      <span>{value}</span>
+      <span style={{ fontVariantNumeric: 'tabular-nums' }}>{value}</span>
       {description && (
-        <span>
+        <span style={{ color: 'var(--ravin-text-muted)' }}>
           ({t_i18n(description)})
         </span>
       )}

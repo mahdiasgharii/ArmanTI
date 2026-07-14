@@ -71,7 +71,6 @@ import {
 import React, { useRef, useState } from 'react';
 import { graphql, usePreloadedQuery } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
-import { THEME_LIGHT_DEFAULT_BACKGROUND, THEME_LIGHT_DEFAULT_PAPER } from '../../../components/ThemeLight';
 import { useFormatter } from '../../../components/i18n';
 import { MESSAGING$ } from '../../../relay/environment';
 import logoFiligranDark from '../../../static/images/logo_filigran_full.svg';
@@ -123,24 +122,24 @@ import LogoTextOrange from '../../../static/images/logo_text_orange.svg';
 import LogoCollapsedOrange from '../../../static/images/logo_orange.svg';
 import { shouldOpenInNewTabMouseEvent } from 'src/utils/domEvent';
 
-export const SMALL_BAR_WIDTH = 55;
-export const OPEN_BAR_WIDTH = 180;
+export const SMALL_BAR_WIDTH = 56;
+export const OPEN_BAR_WIDTH = 256;
 
 // Deprecated - https://mui.com/system/styles/basics/
 // Do not use it for new code.
 const useStyles = makeStyles((theme) => createStyles({
   drawerPaper: {
-    width: SMALL_BAR_WIDTH,
+    width: SMALL_BAR_WIDTH + 16,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
   drawerPaperOpen: {
-    width: OPEN_BAR_WIDTH,
+    width: OPEN_BAR_WIDTH + 16,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
   menuItemIcon: {
-    color: theme.palette.text.primary,
+    color: 'var(--ravin-text)',
   },
   menuItem: {
     paddingRight: 2,
@@ -217,9 +216,30 @@ const leftBarQuery = graphql`
 `;
 
 const Separator = () => {
-  const theme = useTheme();
   return (
-    <Divider sx={{ border: `1px solid ${theme.palette.designSystem.background.bg2}` }} />
+    <Divider sx={{ border: 'none', borderTop: '1px solid var(--ravin-border)', mx: 2, my: 1 }} />
+  );
+};
+
+const GroupLabel = ({ navOpen, children }) => {
+  if (!navOpen) return null;
+  return (
+    <Typography
+      sx={{
+        px: 3,
+        pt: 2,
+        pb: 0.5,
+        fontSize: '11px',
+        fontWeight: 600,
+        fontFamily: 'Peyda, sans-serif',
+        color: 'var(--ravin-text-muted)',
+        textTransform: 'lowercase',
+        '&::first-letter': { textTransform: 'uppercase' },
+        letterSpacing: '0.02em',
+      }}
+    >
+      {children}
+    </Typography>
   );
 };
 
@@ -402,14 +422,6 @@ const LeftBarComponent = ({ queryRef }) => {
   };
 
   const isLightTheme = theme.palette.mode === 'light';
-  const getBackground = () => {
-    if (isLightTheme) {
-      return `linear-gradient(100deg, ${THEME_LIGHT_DEFAULT_BACKGROUND} 0%, ${THEME_LIGHT_DEFAULT_PAPER} 100%)`;
-    }
-    const start = theme.palette.background?.gradient?.start ?? theme.palette.background?.default;
-    const end = theme.palette.background?.gradient?.end ?? theme.palette.background?.secondary;
-    return `linear-gradient(100deg, ${start} 0%, ${end} 100%)`;
-  };
 
   return (
     <Drawer
@@ -423,13 +435,15 @@ const LeftBarComponent = ({ queryRef }) => {
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            background: getBackground(),
-            borderRight: '1px solid transparent',
+            background: 'transparent',
+            border: 'none',
+            boxShadow: 'none',
+            padding: '8px',
           },
         },
       }}
       sx={{
-        width: navOpen ? OPEN_BAR_WIDTH : SMALL_BAR_WIDTH,
+        width: navOpen ? OPEN_BAR_WIDTH + 16 : SMALL_BAR_WIDTH + 16,
         zIndex: 999,
         top: 0,
         height: '100vh',
@@ -440,6 +454,18 @@ const LeftBarComponent = ({ queryRef }) => {
         }),
       }}
     >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          borderRadius: '12px',
+          backgroundColor: 'var(--ravin-bg)',
+          border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
+          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+          overflow: 'hidden',
+        }}
+      >
       <LeftBarHeader
         logo={logo}
         logoCollapsed={navCloseLogo}
@@ -466,12 +492,13 @@ const LeftBarComponent = ({ queryRef }) => {
           backgroundColor: 'transparent',
         }}
       >
-        <MenuList disablePadding component="nav">
+        <GroupLabel navOpen={navOpen}>{t_i18n('Overview')}</GroupLabel>
+        <MenuList disablePadding component="nav" sx={{ px: 1.5 }}>
           {!draftContext && (
             <LeftBarItem
               {...itemProps}
               label={t_i18n('Home')}
-              icon={<Home />}
+              icon={<Home size={18} />}
               link="/dashboard"
               exact
             />
@@ -482,7 +509,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="dashboards"
-                icon={<InsertChartOutlinedOutlined />}
+                icon={<InsertChartOutlinedOutlined size={18} />}
                 label={t_i18n('Dashboards')}
                 link="/dashboard/workspaces/dashboards"
                 subItems={[
@@ -510,7 +537,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 label={t_i18n('Investigations')}
-                icon={<ExploreOutlined />}
+                icon={<ExploreOutlined size={18} />}
                 link="/dashboard/workspaces/investigations"
               />
             )}
@@ -520,7 +547,7 @@ const LeftBarComponent = ({ queryRef }) => {
             <LeftBarItem
               {...itemProps}
               label={t_i18n('Draft overview')}
-              icon={<ArchitectureOutlined />}
+              icon={<ArchitectureOutlined size={18} />}
               link={`/dashboard/data/import/draft/${draftContext.id}`}
             />
           )}
@@ -530,7 +557,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 label={t_i18n('PIR')}
-                icon={<TrackChanges />}
+                icon={<TrackChanges size={18} />}
                 link="/dashboard/pirs"
               />
             )}
@@ -540,12 +567,13 @@ const LeftBarComponent = ({ queryRef }) => {
         <Separator />
 
         <Security needs={[KNOWLEDGE]}>
-          <MenuList component="nav">
+          <GroupLabel navOpen={navOpen}>{t_i18n('Knowledge')}</GroupLabel>
+          <MenuList component="nav" sx={{ px: 1.5 }}>
             {!hideAnalyses && (
               <LeftBarItem
                 {...itemProps}
                 id="analyses"
-                icon={<AssignmentOutlined />}
+                icon={<AssignmentOutlined size={18} />}
                 label={t_i18n('Analyses')}
                 link="/dashboard/analyses"
                 subItems={[
@@ -563,7 +591,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="cases"
-                icon={<CasesOutlined />}
+                icon={<CasesOutlined size={18} />}
                 label={t_i18n('Cases')}
                 link="/dashboard/cases"
                 subItems={[
@@ -580,7 +608,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="events"
-                icon={<Timetable />}
+                icon={<Timetable size={18} />}
                 label={t_i18n('Events')}
                 link="/dashboard/events"
                 subItems={[
@@ -595,7 +623,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="observations"
-                icon={<Binoculars />}
+                icon={<Binoculars size={18} />}
                 label={t_i18n('Observations')}
                 link="/dashboard/observations"
                 subItems={[
@@ -610,12 +638,12 @@ const LeftBarComponent = ({ queryRef }) => {
 
           <Separator />
 
-          <MenuList component="nav">
+          <MenuList component="nav" sx={{ px: 1.5 }}>
             {!hideThreats && (
               <LeftBarItem
                 {...itemProps}
                 id="threats"
-                icon={<FlaskOutline />}
+                icon={<FlaskOutline size={18} />}
                 label={t_i18n('Threats')}
                 link="/dashboard/threats"
                 subItems={[
@@ -636,7 +664,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="arsenal"
-                icon={<LayersOutlined />}
+                icon={<LayersOutlined size={18} />}
                 label={t_i18n('Arsenal')}
                 link="/dashboard/arsenal"
                 subItems={[
@@ -652,7 +680,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="techniques"
-                icon={<ConstructionOutlined />}
+                icon={<ConstructionOutlined size={18} />}
                 label={t_i18n('Techniques')}
                 link="/dashboard/techniques"
                 subItems={[
@@ -669,7 +697,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="entities"
-                icon={<FolderTableOutline />}
+                icon={<FolderTableOutline size={18} />}
                 label={t_i18n('Entities')}
                 link="/dashboard/entities"
                 subItems={
@@ -689,7 +717,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <LeftBarItem
                 {...itemProps}
                 id="locations"
-                icon={<GlobeModel />}
+                icon={<GlobeModel size={18} />}
                 label={t_i18n('Locations')}
                 link="/dashboard/locations"
                 subItems={[
@@ -707,12 +735,13 @@ const LeftBarComponent = ({ queryRef }) => {
         <Security needs={[MODULES, KNOWLEDGE, TAXIIAPI, CSVMAPPERS, INGESTION]}>
           <Separator />
 
-          <MenuList component="nav">
+          <GroupLabel navOpen={navOpen}>{t_i18n('Data')}</GroupLabel>
+          <MenuList component="nav" sx={{ px: 1.5 }}>
             <Security needs={[MODULES, KNOWLEDGE, TAXIIAPI, CSVMAPPERS, INGESTION]}>
               <LeftBarItem
                 {...itemProps}
                 id="data"
-                icon={<Database />}
+                icon={<Database size={18} />}
                 label={t_i18n('Data')}
                 link="/dashboard/data"
                 subItems={[
@@ -734,7 +763,7 @@ const LeftBarComponent = ({ queryRef }) => {
                     <LeftBarItem
                       {...itemProps}
                       id="trash"
-                      icon={<DeleteOutlined />}
+                      icon={<DeleteOutlined size={18} />}
                       label={t_i18n('Trash')}
                       link="/dashboard/trash"
                     />
@@ -765,12 +794,13 @@ const LeftBarComponent = ({ queryRef }) => {
         ]}
         >
           <Separator />
+          <GroupLabel navOpen={navOpen}>{t_i18n('Settings')}</GroupLabel>
           {!draftContext && (
-            <MenuList component="nav" style={{ marginBottom: 48 }}>
+            <MenuList component="nav" sx={{ px: 1.5, marginBottom: 6 }}>
               <LeftBarItem
                 {...itemProps}
                 id="settings"
-                icon={<CogOutline />}
+                icon={<CogOutline size={18} />}
                 label={t_i18n('Settings')}
                 link="/dashboard/settings"
                 subItems={[
@@ -792,19 +822,18 @@ const LeftBarComponent = ({ queryRef }) => {
       <div
         style={{
           flexShrink: 0,
-          borderRight: theme.palette.mode === 'dark'
-            ? '1px solid rgba(255, 255, 255, 0.12)'
-            : '1px solid rgba(0, 0, 0, 0.12)',
-          width: navOpen ? OPEN_BAR_WIDTH : SMALL_BAR_WIDTH,
+          borderTop: '1px solid var(--ravin-border)',
+          width: '100%',
+          padding: '8px 0',
         }}
       >
         <MenuList
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 2,
-          }}
-        >
+            gap: 1,
+            px: 1.5,
+          }}>
           <LeftBarItem
             {...itemProps}
             icon={navOpen ? <ChevronLeft /> : <ChevronRight />}
@@ -816,7 +845,7 @@ const LeftBarComponent = ({ queryRef }) => {
               direction="row"
               alignItems="center"
               gap={0.5}
-              paddingLeft={2.5}
+              paddingLeft={2}
               marginBottom={1}
               minHeight={16}
             >
@@ -829,7 +858,7 @@ const LeftBarComponent = ({ queryRef }) => {
                       fontSize: '10px',
                       lineHeight: '16px',
                       opacity: 0.8,
-                      color: theme.palette.text.tertiary,
+                      color: 'var(--ravin-text-muted)',
                     }}
                   >
                     {t_i18n('ArmanCTI')}
@@ -850,6 +879,7 @@ const LeftBarComponent = ({ queryRef }) => {
             </Stack>
           )}
         </MenuList>
+      </div>
       </div>
     </Drawer>
   );

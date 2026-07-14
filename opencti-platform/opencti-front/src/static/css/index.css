@@ -41,12 +41,12 @@
 /* Custom user themes override these via inline style injection in AppThemeProvider. */
 
 body[data-theme='dark'] {
-  --ravin-bg: #0A0A0A;
-  --ravin-surface: #141414;
-  --ravin-elevated: #1A1A1A;
-  --ravin-surface-2: #262626;
-  --ravin-border: #262626;
-  --ravin-border-strong: #404040;
+  --ravin-bg: #0a0a0a;
+  --ravin-surface: #0a0a0a;
+  --ravin-elevated: #171717;
+  --ravin-surface-2: #27272A;
+  --ravin-border: #27272A;
+  --ravin-border-strong: #3F3F46;
   --ravin-primary: #019BE5;
   --ravin-primary-light: #66C4F5;
   --ravin-primary-dark: #0073A8;
@@ -59,18 +59,18 @@ body[data-theme='dark'] {
   --ravin-success: #17AB1F;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
-  --ravin-text: #FFFFFF;
-  --ravin-text-muted: #848592;
-  --ravin-text-light: #AFB0B6;
+  --ravin-text: #FAFAFA;
+  --ravin-text-muted: #A1A1AA;
+  --ravin-text-light: #A1A1AA;
 }
 
 body[data-theme='light'] {
-  --ravin-bg: #F5F5F5;
+  --ravin-bg: #FFFFFF;
   --ravin-surface: #FFFFFF;
   --ravin-elevated: #FAFAFA;
-  --ravin-surface-2: #EBEBEB;
-  --ravin-border: #E0E0E0;
-  --ravin-border-strong: #CCCCCC;
+  --ravin-surface-2: #F4F4F5;
+  --ravin-border: #E4E4E7;
+  --ravin-border-strong: #D4D4D8;
   --ravin-primary: #019BE5;
   --ravin-primary-light: #66C4F5;
   --ravin-primary-dark: #0073A8;
@@ -83,19 +83,19 @@ body[data-theme='light'] {
   --ravin-success: #17AB1F;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
-  --ravin-text: #0A0A0A;
-  --ravin-text-muted: #666666;
-  --ravin-text-light: #999999;
+  --ravin-text: #09090B;
+  --ravin-text-muted: #71717A;
+  --ravin-text-light: #71717A;
 }
 
 /* Fallback: if no data-theme is set yet, default to dark */
 :root {
-  --ravin-bg: #0A0A0A;
-  --ravin-surface: #141414;
-  --ravin-elevated: #1A1A1A;
-  --ravin-surface-2: #262626;
-  --ravin-border: #262626;
-  --ravin-border-strong: #404040;
+  --ravin-bg: #0a0a0a;
+  --ravin-surface: #0a0a0a;
+  --ravin-elevated: #171717;
+  --ravin-surface-2: #27272A;
+  --ravin-border: #27272A;
+  --ravin-border-strong: #3F3F46;
   --ravin-primary: #019BE5;
   --ravin-primary-light: #66C4F5;
   --ravin-primary-dark: #0073A8;
@@ -108,9 +108,9 @@ body[data-theme='light'] {
   --ravin-success: #17AB1F;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
-  --ravin-text: #FFFFFF;
-  --ravin-text-muted: #848592;
-  --ravin-text-light: #AFB0B6;
+  --ravin-text: #FAFAFA;
+  --ravin-text-muted: #A1A1AA;
+  --ravin-text-light: #A1A1AA;
 }
 
 * {
@@ -272,13 +272,72 @@ input[type="file"] {
   }
 }
 
+.ravin-glass-header {
+  background-color: color-mix(in srgb, var(--ravin-bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid color-mix(in srgb, var(--ravin-border) 50%, transparent);
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .ravin-glass-header {
+    background-color: var(--ravin-bg);
+  }
+}
+
+.ravin-card-hover {
+  transition: background-color 0.2s ease-out;
+}
+.ravin-card-hover:hover {
+  background-color: var(--ravin-elevated);
+}
+
 .ravin-blur-footer {
-  position: fixed;
+  position: absolute;
+  inset-inline: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 32px;
+  height: 3.5rem;
   pointer-events: none;
   z-index: 1;
-  background: linear-gradient(to bottom, transparent 0%, var(--ravin-bg) 100%);
+  background: linear-gradient(to bottom, transparent 0%, var(--ravin-surface) 100%);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.ravin-blur-footer-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.ravin-blur-footer-layer:nth-child(1) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 11.11%, rgb(255, 255, 255) 22.22%, rgba(255, 255, 255, 0) 33.33%);
+  backdrop-filter: blur(0px);
+}
+.ravin-blur-footer-layer:nth-child(2) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 11.11%, rgb(255, 255, 255) 22.22%, rgb(255, 255, 255) 33.33%, rgba(255, 255, 255, 0) 44.44%);
+  backdrop-filter: blur(0.25px);
+}
+.ravin-blur-footer-layer:nth-child(3) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 22.22%, rgb(255, 255, 255) 33.33%, rgb(255, 255, 255) 44.44%, rgba(255, 255, 255, 0) 55.56%);
+  backdrop-filter: blur(0.5px);
+}
+.ravin-blur-footer-layer:nth-child(4) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 33.33%, rgb(255, 255, 255) 44.44%, rgb(255, 255, 255) 55.56%, rgba(255, 255, 255, 0) 66.67%);
+  backdrop-filter: blur(0.75px);
+}
+.ravin-blur-footer-layer:nth-child(5) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 44.44%, rgb(255, 255, 255) 55.56%, rgb(255, 255, 255) 66.67%, rgba(255, 255, 255, 0) 77.78%);
+  backdrop-filter: blur(1px);
+}
+.ravin-blur-footer-layer:nth-child(6) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 55.56%, rgb(255, 255, 255) 66.67%, rgb(255, 255, 255) 77.78%, rgba(255, 255, 255, 0) 88.89%);
+  backdrop-filter: blur(1.25px);
+}
+.ravin-blur-footer-layer:nth-child(7) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 66.67%, rgb(255, 255, 255) 77.78%, rgb(255, 255, 255) 88.89%, rgba(255, 255, 255, 0) 100%);
+  backdrop-filter: blur(1.5px);
+}
+.ravin-blur-footer-layer:nth-child(8) {
+  mask-image: linear-gradient(rgba(255, 255, 255, 0) 77.78%, rgb(255, 255, 255) 88.89%, rgb(255, 255, 255) 100%, rgba(255, 255, 255, 0) 111.11%);
+  backdrop-filter: blur(1.75px);
 }

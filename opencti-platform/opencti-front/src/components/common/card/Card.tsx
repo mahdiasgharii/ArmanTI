@@ -75,7 +75,7 @@ const Card = ({
     flexGrow: fullHeight ? 1 : 0,
     borderRadius: theme.spacing(0.5),
     border: '1px solid',
-    borderColor: theme.palette.border?.main ?? '#262626',
+    borderColor: theme.palette.border?.main ?? '#27272A',
     background: variant !== 'outlined'
       ? backgroundColor
       : 'transparent',

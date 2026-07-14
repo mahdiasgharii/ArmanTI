@@ -187,6 +187,7 @@ const StixRelationshipsNumber = ({
       variant={variant}
       action={popover}
       showPreviewTag={isPreviewMode}
+      kpi
     >
       {renderContent()}
     </WidgetContainer>

@@ -1,6 +1,7 @@
 const esbuild = require("esbuild");
 const { cp, rename, rm, readdir, writeFile } = require("node:fs/promises")
 const { RelayPlugin } = require("../plugin/esbuild-relay");
+const { PostcssPlugin } = require("../plugin/esbuild-postcss");
 
 // Define args options
 const keep = process.argv.slice(2).includes('--keep');
@@ -37,7 +38,7 @@ const buildPath = "./builder/prod/build";
 
   await esbuild.build({
       logLevel: "info",
-      plugins: [RelayPlugin],
+      plugins: [RelayPlugin, PostcssPlugin],
       entryPoints: ["src/front.tsx"],
       publicPath: '/',
       bundle: true,

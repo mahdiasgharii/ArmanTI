@@ -103,6 +103,7 @@ const DraftsNumber = ({
       variant={variant}
       action={popover}
       showPreviewTag={isPreviewMode}
+      kpi
     >
       {isMissingHostEntity
         ? <WidgetNoHostEntity host={host} />

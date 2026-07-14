@@ -1,5 +1,5 @@
 import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp } from 'lucide-react';
-import { alpha, Collapse, ListItemIcon, ListItemText, MenuItem, MenuList, Popover, SxProps, Tooltip } from '@mui/material';
+import { Collapse, ListItemIcon, ListItemText, MenuItem, MenuList, Popover, SxProps, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import React, { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -100,23 +100,20 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
     forceShowText = false, // For popover items
   ) => {
     const isSubItem = fontSize === 'small';
-    const iconColor = selected ? theme.palette.text.light : theme.palette.text.tertiary;
-    const iconOpacity = isSubItem && selected ? 1 : 0.5;
+    const iconColor = selected ? 'var(--ravin-text-light)' : 'var(--ravin-text-muted)';
+    const iconOpacity = isSubItem && selected ? 1 : 0.7;
 
     const getTextColor = () => {
       if (isSubItem && draftContext && selected) {
-        return theme.palette.designSystem.alert.warning.primary;
+        return 'var(--ravin-warning)';
       }
       if (isSubItem && selected) {
-        return theme.palette.primary.main;
+        return 'var(--ravin-primary)';
       }
-      if (isSubItem && theme.palette.leftBar.text) {
-        return theme.palette.text.light;
+      if (isSubItem) {
+        return 'var(--ravin-text-light)';
       }
-      if (theme.palette.leftBar.text) {
-        return theme.palette.leftBar.text;
-      }
-      return 'inherit';
+      return 'var(--ravin-text)';
     };
 
     return (
@@ -129,7 +126,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
               opacity: iconOpacity,
               color: iconColor,
               '& svg': {
-                fontSize: '16px!important',
+                fontSize: '18px',
               },
             }}
           >
@@ -147,6 +144,13 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
               primary: {
                 fontSize: fontSize === 'default' ? '14px' : '12px',
                 color: getTextColor(),
+                sx: {
+                  fontFamily: 'Peyda, sans-serif',
+                  textTransform: 'lowercase',
+                  '&::first-letter': {
+                    textTransform: 'uppercase',
+                  },
+                },
               },
             }}
           />
@@ -166,10 +170,14 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
         dense
         onClick={inCollapse ? undefined : onMenuClose}
         sx={{
-          px: 2.5,
-          py: 1,
+          px: 2,
+          py: 0.75,
+          height: '34px',
+          borderRadius: '4px',
+          mx: 1,
+          backgroundColor: itemSelected ? 'var(--ravin-surface-2)' : 'transparent',
           '&:hover': {
-            backgroundColor: theme.palette.leftBar.hover,
+            backgroundColor: 'var(--ravin-surface-2)',
           },
         }}
       >
@@ -187,21 +195,18 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
   };
 
   const getMenuStyles = (selected: boolean): SxProps => {
-    const draftBg = theme.palette.designSystem.alert.warning.primary;
-    const defaultBg = draftContext ? draftBg : theme.palette.primary.main;
     return {
-      px: 2,
-      pr: 1,
+      px: 1.5,
       py: 0,
-      height: '36px',
-      borderLeft: selected ? `2px solid ${defaultBg}` : '2px solid transparent',
-      backgroundColor: selected ? alpha(defaultBg || '#00FF00', 0.1) : 'transparent',
+      height: '40px',
+      borderRadius: '4px',
+      mx: 0,
+      backgroundColor: selected ? 'var(--ravin-surface-2)' : 'transparent',
       display: 'flex',
       alignItems: 'center',
+      transition: 'background-color 0.15s ease',
       '&:hover': {
-        backgroundColor: selected
-          ? theme.palette.action?.selected
-          : theme.palette.leftBar.hover,
+        backgroundColor: 'var(--ravin-surface-2)',
       },
     };
   };
@@ -234,11 +239,19 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
           sx={getMenuStyles(isParentSelected)}
         >
           {renderMenuItem(icon, label, isParentSelected)}
-          {isMenuOpen ? <ArrowDropUp sx={{ fontSize: '20px' }} /> : <ArrowDropDown sx={{ fontSize: '20px' }} />}
+          {isMenuOpen ? <ArrowDropUp size={20} /> : <ArrowDropDown size={20} />}
         </MenuItem>
 
         <Collapse in={isMenuOpen} timeout="auto" unmountOnExit>
-          <MenuList component="nav" disablePadding sx={{ backgroundColor: theme.palette.designSystem.background.main }}>
+          <MenuList
+            component="nav"
+            disablePadding
+            sx={{
+              py: 0.5,
+              ml: '22px',
+              borderLeft: '1px solid var(--ravin-border)',
+            }}
+          >
             {visibleSubItems.map((item) => renderSubMenuItem(item, true))}
           </MenuList>
         </Collapse>
@@ -282,8 +295,11 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
             onMouseLeave: onMenuClose,
             sx: {
               pointerEvents: 'auto',
-              width: 180,
-              backgroundColor: theme.palette.leftBar.popoverItem,
+              width: 200,
+              backgroundColor: 'var(--ravin-elevated)',
+              border: '1px solid var(--ravin-border)',
+              borderRadius: '4px',
+              py: 0.5,
             },
           },
         }}

@@ -24,7 +24,7 @@ const WidgetListAudits = ({ data }: WidgetListAuditsProps) => {
 
   const bodyItemStyle: React.CSSProperties = {
     height: 20,
-    fontSize: 13,
+    fontSize: theme.typography.body2.fontSize,
     float: 'left',
     whiteSpace: 'nowrap',
     overflow: 'hidden',

@@ -23,6 +23,7 @@ interface WidgetContainerProps {
   action?: ReactNode;
   showPreviewTag?: boolean;
   warning?: string;
+  kpi?: boolean;
 }
 
 const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
@@ -35,6 +36,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
   action,
   showPreviewTag,
   warning,
+  kpi,
 }) => {
   const theme = useTheme<Theme>();
   const { t_i18n } = useFormatter();
@@ -59,8 +61,8 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
     <div style={{ height: height || '100%' }}>
       {variant !== 'inLine' && variant !== 'inEntity'
         ? (
-            <ShadcnCard className="flex h-full flex-col overflow-hidden">
-              {(title || action) && (
+            <ShadcnCard className={`ravin-card-hover flex h-full flex-col overflow-hidden ${kpi ? 'border-none p-4' : ''}`}>
+              {!kpi && (title || action) && (
                 <div className="flex flex-row items-center justify-between px-4 pt-2.5 pb-1.5 border-b border-border">
                   <CardTitle className="font-medium text-text-muted">
                     {showPreviewTag ? (
@@ -74,7 +76,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
                             color: previewColor,
                             border: `1px solid ${previewColor}`,
                             fontWeight: 700,
-                            fontSize: '0.65rem',
+                            fontSize: theme.typography.overline.fontSize,
                           }}
                         />
                       </Stack>
@@ -86,7 +88,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
                   </div>
                 </div>
               )}
-              <div className={`flex-1 ${contentPaddingClass}`}>
+              <div className={`flex-1 ${kpi ? '' : contentPaddingClass}`}>
                 <ErrorBoundary resNotFoundDisplay={<WidgetNoData />}>
                   {children}
                 </ErrorBoundary>

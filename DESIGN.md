@@ -11,17 +11,18 @@ colors:
   violet-accent: "#860EFE"
   violet-accent-light: "#B266FF"
   violet-accent-dark: "#4D0099"
-  black-canvas: "#0A0A0A"
-  dark-surface: "#141414"
-  dark-elevated: "#1A1A1A"
-  dark-border: "#262626"
-  dark-border-strong: "#404040"
-  light-canvas: "#F5F5F5"
+  black-canvas: "#09090B"
+  dark-surface: "#09090B"
+  dark-elevated: "#18181B"
+  dark-surface-2: "#27272A"
+  dark-border: "#27272A"
+  dark-border-strong: "#3F3F46"
+  light-canvas: "#FFFFFF"
   light-surface: "#FFFFFF"
-  light-text: "#0A0A0A"
-  light-border: "#E5E5E5"
-  light-border-strong: "#D4D4D4"
-  white-text: "#FFFFFF"
+  light-text: "#09090B"
+  light-border: "#E4E4E7"
+  light-border-strong: "#D4D4D8"
+  white-text: "#FAFAFA"
   error: "#F14337"
   error-dark: "#881106"
   success: "#17AB1F"
@@ -68,6 +69,12 @@ typography:
     fontWeight: 500
     lineHeight: "1.4"
     letterSpacing: "normal"
+  metric:
+    fontFamily: '"Peyda", sans-serif'
+    fontSize: "28px"
+    fontWeight: 600
+    lineHeight: "1"
+    letterSpacing: "normal"
   mono:
     fontFamily: "Consolas, monaco, monospace"
     fontSize: "12px"
@@ -77,6 +84,7 @@ typography:
 rounded:
   none: "0px"
   sm: "4px"
+  container: "8px"
 spacing:
   xs: "4px"
   sm: "8px"
@@ -155,7 +163,7 @@ components:
 
 ArmanCTI is a precision instrument panel for cyber threat intelligence. Every element is calibrated — dark surfaces with electric accents, where blue is the operational frequency, red is the threat indicator, and purple is the intelligence layer. The interface speaks with expert confidence: no hand-holding, no decorative softness, no ornamentation without purpose.
 
-The system is dark-first. The black canvas (`#0A0A0A`) is not a background — it is the instrument's housing. Surfaces layer upward through a tight grey scale (`#141414` → `#1A1A1A` → `#262626` → `#333333`), each step a deliberate elevation. Borders are thin and functional (`#262626` → `#404040`), never decorative. The Ravin Style palette — electric blue, signal red, violet accent — carries the brand through conviction, not coverage. Accents are used surgically: blue for action and focus, red for danger and alert, purple for AI and intelligence features.
+The system is dark-first. The canvas (`#09090B`) is not a background — it is the instrument's housing. Surfaces layer upward through a tight grey scale (`#18181B` → `#27272A`), each step a deliberate elevation. Borders are thin and functional (`#27272A` → `#3F3F46`), never decorative. The Ravin Style palette — electric blue, signal red, violet accent — carries the brand through conviction, not coverage. Accents are used surgically: blue for action and focus, red for danger and alert, purple for AI and intelligence features.
 
 This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d19` with cyan/teal accents). The departure must be unmistakable. It also rejects generic SaaS dashboards — bland blue/gray, cookie-cutter card grids, no personality. It rejects the AI-generated aesthetic — purple gradients everywhere, glassmorphism as default, emoji icons in rounded cards, "powered by AI" badges. ArmanCTI uses AI features (Ask Arman, Twitter Monitor) but they must feel like professional instruments, not novelty demos. ArmanCTI is not a template; it is an instrument.
 
@@ -163,12 +171,13 @@ This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d1
 - Dark-first, black canvas with tight grey-scale tonal layering
 - Three accent colors with surgical application (blue = action, red = alert, purple = intelligence)
 - Peyda for all typography — clean, technical, no-nonsense
-- 4px border radius throughout — sharp, not rounded; precise, not soft
+- 4px border radius for components; 8px for cards; 12px for the main content container — sharp but with a subtle frame separation
 - Lowercase typography with first-letter uppercase as a signature voice
 - Gradient borders for premium/feature actions (blue→purple, purple→red)
 - Flat by default with subtle ambient shadows on elevated/floating elements only
 - Dual register: brand identity is the primary lens, but product UI (dashboards, tables, forms) receives equal craft
-- AI features feel like professional instruments, not novelty demos — no gradient-washed AI badges or glassmorphism
+- AI features feel like professional instruments, not novelty demos — no gradient-washed AI badges
+- Subtle edge-fade blur at the content container bottom — a functional scroll boundary cue, not decorative glassmorphism
 
 ## 2. Colors: The Instrument Panel Palette
 
@@ -183,20 +192,24 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 ### Tertiary
 - **Violet Accent** (#860EFE): The intelligence layer. Used for AI features ("Ask Arman"), intelligence analysis highlights, and gradient accents. Light variant `#B266FF` for hover; dark variant `#4D0099` for pressed. Appears in gradient borders (blue→purple for focus, purple→red for intelligence analysis).
 
-### Neutral
-- **Black Canvas** (#0A0A0A): The primary background — the instrument's housing. Pure, confident, not navy, not charcoal.
-- **Dark Surface** (#141414): Paper/card background. One step up from canvas.
-- **Dark Elevated** (#1A1A1A): Elevated surfaces, dialog backgrounds, hover states.
-- **Dark Border** (#262626): Default borders and dividers. Functional, not decorative.
-- **Dark Border Strong** (#404040): Emphasized borders, toggle groups, input outlines on focus.
-- **White Text** (#FFFFFF): Primary text color. Maximum contrast on black canvas.
-- **Muted Text** (#848592 / #AFB0B6): Secondary and tertiary text. Must maintain ≥4.5:1 contrast on dark surfaces.
+### Neutral (shadcn zinc dark)
+- **Canvas** (#09090B): The primary background — the instrument's housing. Pure, confident, not navy, not charcoal.
+- **Surface** (#09090B): Same as canvas. Cards sit on the page background — depth comes from borders, not a different fill.
+- **Elevated** (#18181B): Sidebar background, dialog backgrounds, popover backgrounds. One step up from canvas.
+- **Surface-2** (#27272A): Hover/active states for sidebar items, sub-areas within elevated surfaces.
+- **Border** (#27272A): Default borders and dividers. Functional, not decorative. Same value as surface-2.
+- **Border Strong** (#3F3F46): Emphasized borders, toggle groups, input outlines on focus.
+- **Foreground** (#FAFAFA): Primary text color. Maximum contrast on dark canvas.
+- **Muted Text** (#A1A1AA): Secondary and tertiary text. Must maintain ≥4.5:1 contrast on dark surfaces.
 
-### Light Theme Neutrals
-- **Light Canvas** (#F5F5F5): Light mode background.
-- **Light Surface** (#FFFFFF): Light mode paper/cards.
-- **Light Text** (#0A0A0A): Light mode primary text.
-- **Light Border** (#E5E5E5) / **Light Border Strong** (#D4D4D4): Light mode borders.
+### Light Theme Neutrals (shadcn zinc light)
+- **Light Canvas** (#FFFFFF): Light mode background.
+- **Light Surface** (#FFFFFF): Same as canvas.
+- **Light Elevated** (#FAFAFA): Light mode sidebar, dialogs, popovers.
+- **Light Surface-2** (#F4F4F5): Light mode hover/active states.
+- **Light Border** (#E4E4E7) / **Light Border Strong** (#D4D4D8): Light mode borders.
+- **Light Text** (#09090B): Light mode primary text.
+- **Light Muted Text** (#71717A): Light mode secondary text.
 
 ### Severity Scale
 - **Critical** (#EE3838): Critical severity indicators.
@@ -226,6 +239,7 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 - **Body** (400, 0.9rem, 1.5): Primary body text (body1). Peyda. Max line length 65–75ch for readability in data-dense contexts.
 - **Body Small** (400, 0.8rem, 1.2rem): Compact body text (body2). Peyda. Used in tables, metadata, secondary information.
 - **Label** (500, 12px, 1.4): Overlines, captions, small UI labels (h4). Peyda. Lowercase with first-letter uppercase.
+- **Metric** (600, 28px, 1): Dashboard number widgets, KPI displays. Peyda. Uses `tabular-nums` for aligned digit columns. Lowercase with first-letter uppercase.
 - **Mono** (400, 12px, 1.5): Code blocks, STIX bundles, technical identifiers. Consolas/monaco/monospace.
 
 ### Named Rules
@@ -235,17 +249,23 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 
 ## 4. Elevation
 
-The system uses a hybrid approach: tonal layering as the primary depth mechanism, with subtle ambient shadows reserved for floating elements (menus, dialogs, popovers, tooltips). Cards and surfaces are flat at rest — depth comes from the background scale (`#0A0A0A` → `#141414` → `#1A1A1A` → `#262626`), not from shadows.
+The system uses a hybrid approach: tonal layering as the primary depth mechanism, with subtle ambient shadows reserved for floating elements (menus, dialogs, popovers, tooltips). Cards and surfaces are flat at rest — depth comes from the background scale (`#09090B` → `#18181B` → `#27272A`), not from shadows. In dark mode, the main content container has no border — depth comes from the tonal difference between the sidebar (`#18181B`) and the canvas (`#09090B`).
 
 ### Shadow Vocabulary
 - **Floating Shadow** (`rgba(200, 200, 200, 0.15)`): Applied to dialogs, menus, popovers. Subtle, ambient, never sharp. The shadow is functional — it tells the user "this is above the surface" — not decorative.
 - **Focus Glow** (`0 0 0 2px {color}`): Focus rings on interactive elements. Uses the element's accent color at full opacity. Sharp, precise, never blurred.
 - **Gradient Glow** (`1px 0px 6px -1px {start}, -1px 0px 6px -1px {end}`): Applied on hover/active to gradient-bordered buttons. A subtle dual-color glow that signals interactivity on premium elements.
+- **Edge-Fade Blur** (`backdrop-filter` with layered mask gradients): Applied to the bottom edge of the main content container as a scroll boundary cue. Uses 8 stacked layers with incremental blur (0px → 1.75px) and mask gradients to create a smooth fade. This is a functional signal — not decorative glassmorphism.
+- **Header Glass** (`backdrop-filter: blur(16px) saturate(180%)`): Applied to the fixed TopBar. Content scrolling behind the header is blurred and saturated, creating depth without opacity. Background is 72% canvas color via `color-mix`. A `@supports` fallback renders solid canvas for browsers without `backdrop-filter`.
 
 ### Named Rules
 **The Flat-By-Default Rule.** Surfaces are flat at rest. Shadows appear only on floating elements (menus, dialogs, popovers) and as response to state (hover, focus). Never apply shadows to cards, list items, or static surfaces to "elevate" them — use the tonal background scale instead.
 
-**The No-Card-Shadow Rule.** Cards and containers convey depth through background color, not shadows. A card on the canvas uses `#141414`; a card on a surface uses `#1A1A1A`. No `box-shadow` on static cards.
+**The No-Card-Shadow Rule.** Cards and containers convey depth through borders, not shadows. Cards use the same background as the canvas (`#09090B` in dark, `#FFFFFF` in light) with a 1px border (`#27272A` in dark, `#E4E4E7` in light). No `box-shadow` on static cards.
+
+**The Edge-Fade Blur Exception.** The main content container may use a layered `backdrop-filter` blur at its bottom edge as a scroll boundary cue. This is a functional signal, not decoration. It must not be applied to cards or panels.
+
+**The Header Glass Exception.** The fixed TopBar may use `backdrop-filter: blur(16px) saturate(180%)` with a 72% opaque canvas background. This is functional — content scrolls behind the header and the blur maintains legibility without full opacity. It must not be applied to cards, panels, or any other surface.
 
 ## 5. Components
 
@@ -264,34 +284,48 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **State:** Selected chips use accent color at 15-25% opacity background. Filter chips, status chips, and category chips follow the same pattern.
 
 ### Cards / Containers
-- **Corner Style:** 4px radius
-- **Background:** Dark Surface (`#141414`) on canvas, Dark Elevated (`#1A1A1A`) on surfaces
-- **Shadow Strategy:** None at rest (see Elevation: The No-Card-Shadow Rule)
-- **Border:** 1px Dark Border (`#262626`) when separation is needed; no border when tonal layering is sufficient
+- **Corner Style:** 8px radius for cards and widgets (`rounded-lg`); 12px for the main content container frame (`rounded-xl`)
+- **Background:** Same as canvas (`#09090B` dark / `#FFFFFF` light) — depth from borders, not fill
+- **Shadow Strategy:** None at rest (see Elevation: The No-Card-Shadow Rule). Subtle tonal hover shift on interactive cards.
+- **Border:** 1px `var(--ravin-border)` (`#27272A` dark / `#E4E4E7` light). The main content container has no border in dark mode, 1px border in light mode.
 - **Internal Padding:** 16px default (`spacing.md`)
+- **Hover:** Background transitions from transparent to `var(--ravin-surface-2)` over 150ms ease
 
 ### Inputs / Fields
-- **Style:** Standard variant (underline) by default. Outlined variant uses Dark Surface (`#141414`) background with transparent border. 4px radius.
+- **Style:** Standard variant (underline) by default. Outlined variant uses elevated background (`var(--ravin-elevated)`) with transparent border. 4px radius.
 - **Focus:** Bottom border shifts to Electric Blue (`#019BE5`). 2px solid blue underline.
 - **Error:** Bottom border shifts to Error Red (`#F14337`). 2px solid red underline.
 - **Disabled:** Grey background (`#363B46`), muted text.
-- **Placeholder:** Must maintain ≥4.5:1 contrast. Use `#AFB0B6` on dark surfaces, not pure grey.
+- **Placeholder:** Must maintain ≥4.5:1 contrast. Use `var(--ravin-text-muted)` (`#A1A1AA`) on dark surfaces, not pure grey.
 
 ### Navigation (LeftBar)
-- **Style:** Transparent background on canvas (`#0A0A0A`). White text. 4px radius.
-- **Hover:** Dark Elevated (`#1A1A1A`) background.
-- **Active/Selected:** Left inset shadow (2px Electric Blue) + 24% blue tint background.
-- **Sub-items:** Indented, same hover/active pattern.
-- **Footer:** Brand text, no external logos.
+- **Width:** 240px expanded, 56px collapsed. Smooth width transition.
+- **Background:** Elevated (`var(--ravin-elevated)`, `#18181B` dark / `#FAFAFA` light) — one step above canvas for inset shell feel. 1px right border (`var(--ravin-border)`).
+- **Group labels:** Peyda 11px, 600 weight, `var(--ravin-text-muted)`, lowercase first-letter uppercase. Appear above each nav section (Overview, Knowledge, Data, Settings). Hidden when collapsed.
+- **Item height:** 40px. 4px border radius. No horizontal margin (flush to sidebar padding).
+- **Icons:** 18px. Tertiary color when inactive, light color when active.
+- **Hover:** `var(--ravin-surface-2)` (`#27272A` dark / `#F4F4F5` light) background. 0.15s ease transition.
+- **Active/Selected:** Plain pill with `var(--ravin-surface-2)` (`#27272A` dark / `#F4F4F5` light) background. No colored accent stripe — matches app-shell-7's flat pill pattern.
+- **Sub-menu indent guide:** Expanded sub-items sit under a 1px vertical guide line (`var(--ravin-border)`) offset 22px from the sidebar edge, aligning with the parent icon.
+- **Sub-items:** 34px height, 4px radius, 1px horizontal margin. Indented with 2px left padding. Same hover/active pattern.
+- **Collapsed popover:** 200px width, elevated background, 1px border, 4px radius.
+- **Separators:** 1px `var(--ravin-border)`, 2px horizontal margin, 1px vertical margin.
+- **Footer:** 1px top border. Collapse toggle + brand text. 8px vertical padding.
+
+### Dashboard cards
+- **Container:** `rounded-lg border border-border bg-canvas p-4` — 8px radius, 1px border, same background as canvas, 16px padding.
+- **Grid:** `grid-cols-2 gap-4 p-px lg:grid-cols-4` — 2 columns on small screens, 4 on large. 16px gap. `p-px` prevents border clipping.
+- **No shadows:** Depth comes from borders and tonal layering, not box-shadow.
+- **Main content frame:** 12px border radius (rounded-xl), no border in dark mode (depth from tonal difference), 1px border in light mode. Background same as canvas (`var(--ravin-bg)`).
 
 ### Toggle Button Groups
-- **Style:** 36px height, 1px Dark Border Strong (`#404040`) border between buttons.
+- **Style:** 36px height, 1px Border Strong (`var(--ravin-border-strong)`, `#3F3F46` dark / `#D4D4D8` light) border between buttons.
 - **Selected:** 25% blue tint background.
 - **Hover (unselected):** 15% blue tint background.
 - **Focus:** 2px light blue glow ring.
 
 ### Dialogs
-- **Background:** Dark Elevated (`#1A1A1A`) — not paper, not canvas. One step above.
+- **Background:** Elevated (`var(--ravin-elevated)`, `#18181B` dark / `#FAFAFA` light) — not canvas. One step above.
 - **Radius:** 4px
 - **Title:** h5 variant (Peyda, 16px, 700 weight, lowercase first-letter uppercase)
 - **Actions:** Right-aligned, gap 16px, no left margin. Buttons use `textTransform: none`.
@@ -307,8 +341,8 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** use the black canvas (`#0A0A0A`) as the primary background. It is the instrument's housing.
-- **Do** layer surfaces through the tonal scale (`#0A0A0A` → `#141414` → `#1A1A1A` → `#262626`) for depth, not shadows.
+- **Do** use the black canvas (`#09090B`) as the primary background. It is the instrument's housing.
+- **Do** layer surfaces through the tonal scale (`#09090B` → `#18181B` → `#27272A`) for depth, not shadows.
 - **Do** use Electric Blue (`#019BE5`) for primary actions, focus, and interactive emphasis.
 - **Do** use Signal Red (`#F20F0F`) exclusively for destructive actions, danger, and critical severity.
 - **Do** use Violet Accent (`#860EFE`) for AI features and intelligence analysis highlights.
@@ -324,8 +358,8 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Don't** use shadows on static cards or surfaces. Depth comes from tonal layering, not `box-shadow`.
 - **Don't** use border-left or border-right greater than 1px as a colored stripe accent on cards or list items.
 - **Don't** use gradient text (`background-clip: text` with gradient) except in gradient-bordered buttons where it is the component's defining feature.
-- **Don't** use glassmorphism — blurs and glass cards as decoration. The instrument is solid, not translucent.
-- **Don't** introduce rounded corners beyond 4px. The system is sharp and precise, not soft.
+- **Don't** use glassmorphism on cards, panels, or surfaces — blurs and glass cards as decoration. The instrument is solid, not translucent. (Exceptions: the main content container's edge-fade blur and the fixed TopBar's header glass — see Elevation: Named Rules.)
+- **Don't** introduce rounded corners beyond 4px on components. Cards use 8px (`rounded-lg`) and the main content container uses 12px (`rounded-xl`) as frame separation exceptions.
 - **Don't** use generic SaaS patterns — cookie-cutter card grids, hero-metric templates, identical icon+heading+text cards repeated endlessly.
 - **Don't** use tiny uppercase tracked eyebrows above every section. The lowercase + first-letter uppercase pattern is the voice; all-caps eyebrows are a different, rejected aesthetic.
 - **Don't** apply shadows to cards to "elevate" them. Use the background tonal scale.

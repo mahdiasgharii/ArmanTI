@@ -33,25 +33,24 @@ const WidgetNumber = ({
   const { n } = useFormatter();
 
   return (
-    <div className="flex h-full flex-col justify-between gap-4">
+    <div className="flex h-full flex-col justify-between gap-2">
       <div className="flex flex-row items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           {entityType && (entityTypeIconMap[entityType] ?? null) && (
-            <span className="relative flex items-center justify-center w-8 h-8 rounded-[4px] bg-surface-2 text-text-light">
-              <span className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[4px] bg-primary" />
+            <span className="text-text-light">
               {entityTypeIconMap[entityType]}
             </span>
           )}
-          <span className="font-body text-sm text-text-muted lowercase first-letter:uppercase">{label}</span>
+          <span className="font-body text-xs text-text-muted lowercase first-letter:uppercase">{label}</span>
         </div>
         {action}
       </div>
 
       <div className="flex flex-row items-end justify-between">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5">
           <div
             data-testid={`card-number-${label}`}
-            className="font-display text-metric text-text-base"
+            className="font-display text-metric tabular-nums text-text-base"
           >
             {n(value)}
           </div>
