@@ -1,89 +1,6 @@
-import IconButton from '@common/button/IconButton';
-import { ChevronDown as ArrowDropDown, ExternalLink as OpenInNew } from 'lucide-react';
-import { Box, Divider, List, ListItemButton, ListItemIcon, Popover, Tooltip } from '@mui/material';
-import { useTheme } from '@mui/styles';
-import React, { useState } from 'react';
+import { Box } from '@mui/material';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useFormatter } from '../../../components/i18n';
-import logoOpenAEVDark from '../../../static/images/logo_open_aev_dark.svg';
-import logoOpenAEVLight from '../../../static/images/logo_open_aev_light.svg';
-import logoXTMHubLight from '../../../static/images/logo_xtm_hub_light.svg';
-import logoXTMHubDark from '../../../static/images/logo_xtm_hub_dark.svg';
-import { isNotEmptyField } from '../../../utils/utils';
-import { Theme } from '../../../components/Theme';
-import useDraftContext from '../../../utils/hooks/useDraftContext';
-
-interface PopoverListItemProps {
-  logoSrc: string;
-  href?: string;
-  to?: string;
-  external?: boolean;
-  onClick?: () => void;
-}
-
-const OPENAEV_FALLBACK_URL = 'https://filigran.io/platform/openaev/';
-const XTMHUB_FALLBACK_URL = 'https://hub.filigran.io';
-
-export const PopoverListItem: React.FC<PopoverListItemProps> = ({
-  logoSrc,
-  href,
-  to,
-  external,
-  onClick,
-}) => {
-  const theme = useTheme<Theme>();
-  const Component = href ? 'a' : to ? Link : 'div';
-
-  return (
-    <ListItemButton
-      component={Component}
-      href={href}
-      to={to}
-      target={external ? '_blank' : undefined}
-      rel={external ? 'noopener noreferrer' : undefined}
-      onClick={onClick}
-      sx={{
-        borderRadius: '4px',
-        px: 1,
-        py: 1.5,
-        display: 'flex',
-        justifyContent: 'space-between',
-        backgroundColor: 'var(--ravin-elevated)',
-        border: '1px solid var(--ravin-border)',
-      }}
-    >
-      <ListItemIcon sx={{ width: 132, p: 1 }}>
-        <Box
-          sx={{
-            width: '100%',
-            height: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img
-            src={logoSrc}
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
-          />
-        </Box>
-
-      </ListItemIcon>
-
-      {external && (
-        <OpenInNew
-          style={{
-            fontSize: 16,
-          }}
-        />
-      )}
-    </ListItemButton>
-  );
-};
 
 interface LeftBarHeaderProps {
   logo: string;
@@ -92,10 +9,6 @@ interface LeftBarHeaderProps {
   bannerHeightNumber: number;
   topBannerHeight: number;
   settingsMessagesBannerHeight: number;
-  openAEVUrl?: string;
-  xtmhubUrl?: string;
-  xtmhubStatus?: string;
-  hasXtmHubAccess?: boolean;
 }
 
 export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
@@ -105,134 +18,40 @@ export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
   bannerHeightNumber,
   topBannerHeight,
   settingsMessagesBannerHeight,
-  openAEVUrl,
-  xtmhubUrl,
-  xtmhubStatus,
-  hasXtmHubAccess,
 }) => {
-  const { t_i18n } = useFormatter();
-  const theme = useTheme<Theme>();
-  const draftContext = useDraftContext();
-
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-
   const currentLogo = navOpen ? logo : (logoCollapsed || logo);
 
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
-  };
-
-  const handleClickPopover = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (open) {
-      setAnchorEl(null);
-    } else {
-      setAnchorEl(event.currentTarget);
-    }
-  };
-
   return (
-    <>
-      <Box
-        component={Link}
-        to="/dashboard"
+    <Box
+      component={Link}
+      to="/dashboard"
+      style={{
+        marginTop: `calc(${topBannerHeight}px + ${bannerHeightNumber}px + ${settingsMessagesBannerHeight}px)`,
+      }}
+      sx={{
+        padding: navOpen ? '16px 16px 8px 16px' : '16px 0 8px 0',
+        width: '100%',
+        flexShrink: 0,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+        justifyContent: navOpen ? 'flex-start' : 'center',
+        transition: 'padding 250ms cubic-bezier(0.25, 1, 0.5, 1)',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      }}
+    >
+      <img
+        src={currentLogo}
+        alt="logo"
         style={{
-          marginTop: `calc(${topBannerHeight}px + ${bannerHeightNumber}px + ${settingsMessagesBannerHeight}px)`,
+          height: 60,
+          maxWidth: navOpen ? '120px' : '60px',
+          objectFit: 'contain',
+          transition: 'max-width 250ms cubic-bezier(0.25, 1, 0.5, 1), opacity 200ms cubic-bezier(0.25, 1, 0.5, 1)',
         }}
-        sx={{
-          padding: navOpen ? '16px 16px 8px 16px' : '16px 0 8px 0',
-          width: '100%',
-          flexShrink: 0,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 1,
-          justifyContent: navOpen ? 'space-between' : 'center',
-          '&:hover': {
-            cursor: 'pointer',
-          },
-        }}
-      >
-        <img
-          src={currentLogo}
-          alt="logo"
-          style={{
-            height: 60,
-            maxWidth: navOpen ? '120px' : '60px',
-            objectFit: 'contain',
-          }}
-        />
-
-        {navOpen && (
-          <IconButton
-            style={{ color: draftContext ? 'warn' : 'default' }}
-            onClick={handleClickPopover}
-          >
-            <ArrowDropDown
-              size={20}
-              style={{
-                transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.2s',
-              }}
-            />
-          </IconButton>
-        )}
-      </Box>
-
-      <Popover
-        open={open}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        sx={{
-          transform: 'translateX(-40px)',
-        }}
-        onClose={handleMouseLeave}
-      >
-        <List
-          className="left-bar-header"
-          dense
-          disablePadding
-          sx={{
-            minWidth: 228,
-          }}
-        >
-          <Tooltip title={isNotEmptyField(openAEVUrl) ? t_i18n('Platform connected') : t_i18n('Get OpenAEV now')}>
-            <span>
-              <PopoverListItem
-                logoSrc={theme.palette.mode === 'dark' ? logoOpenAEVDark : logoOpenAEVLight}
-                href={isNotEmptyField(openAEVUrl) ? openAEVUrl : OPENAEV_FALLBACK_URL}
-                external
-                onClick={handleMouseLeave}
-              />
-            </span>
-          </Tooltip>
-
-          <Divider />
-
-          {(xtmhubStatus === 'registered' || !hasXtmHubAccess) ? (
-            <PopoverListItem
-              logoSrc={theme.palette.mode === 'dark' ? logoXTMHubDark : logoXTMHubLight}
-              href={isNotEmptyField(xtmhubUrl) ? xtmhubUrl : XTMHUB_FALLBACK_URL}
-              external
-              onClick={handleMouseLeave}
-            />
-          ) : (
-            <PopoverListItem
-              logoSrc={theme.palette.mode === 'dark' ? logoXTMHubDark : logoXTMHubLight}
-              to="/dashboard/settings/experience"
-              onClick={handleMouseLeave}
-            />
-          )}
-        </List>
-      </Popover>
-    </>
+      />
+    </Box>
   );
 };

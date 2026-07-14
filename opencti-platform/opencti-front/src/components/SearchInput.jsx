@@ -39,10 +39,13 @@ const useStyles = makeStyles((theme) => ({
   },
   searchRootTopBar: {
     borderRadius: '4px',
-    padding: '0 10px 0 10px',
-    marginRight: 5,
+    padding: '0 12px 0 12px',
+    marginRight: 0,
     width: '100%',
     backgroundColor: 'var(--ravin-elevated)',
+    '& .MuiInputBase-input': {
+      fontSize: '0.875rem',
+    },
   },
   searchRootInDrawer: {
     borderRadius: 4,
@@ -95,7 +98,7 @@ export function GradientBorderTextField({
       sx={{
         '& .MuiInputBase-input::placeholder': {
           opacity: 1,
-          color: theme.palette.text.light,
+          color: 'var(--ravin-text-muted)',
         },
         '& .MuiOutlinedInput-root': {
           position: 'relative',
@@ -457,7 +460,7 @@ const SearchInput = (props) => {
         direction="row"
         alignItems="center"
         spacing={1}
-        sx={{ minWidth: 550, width: '50%', maxWidth: 680 }}
+        sx={{ minWidth: 480, width: '50%', maxWidth: 640 }}
       >
         {/* ── Search Input Field (left, fills remaining space) ──── */}
         <GradientBorderTextField

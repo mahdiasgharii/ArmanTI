@@ -273,6 +273,17 @@ input[type="file"] {
   animation: ravin-pulse 2s ease-in-out infinite;
 }
 
+@keyframes ravin-popover-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ravin-pulse-dot {
     animation: none;
@@ -283,18 +294,6 @@ input[type="file"] {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-  }
-}
-
-.ravin-glass-header {
-  background-color: color-mix(in srgb, var(--ravin-bg) 72%, transparent);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid color-mix(in srgb, var(--ravin-border) 50%, transparent);
-}
-@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .ravin-glass-header {
-    background-color: var(--ravin-bg);
   }
 }
 

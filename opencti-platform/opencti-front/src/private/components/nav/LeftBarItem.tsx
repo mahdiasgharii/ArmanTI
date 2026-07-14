@@ -127,8 +127,10 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
               mr: navOpen ? 1 : 0,
               opacity: iconOpacity,
               color: iconColor,
+              transition: 'color 200ms cubic-bezier(0.25, 1, 0.5, 1), opacity 200ms cubic-bezier(0.25, 1, 0.5, 1)',
               '& svg': {
                 fontSize: '18px',
+                transition: 'font-size 200ms cubic-bezier(0.25, 1, 0.5, 1)',
               },
             }}
           >
@@ -149,6 +151,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
                 sx: {
                   fontFamily: 'Peyda, sans-serif',
                   textTransform: 'lowercase',
+                  transition: 'color 200ms cubic-bezier(0.25, 1, 0.5, 1)',
                   '&::first-letter': {
                     textTransform: 'uppercase',
                   },
@@ -207,9 +210,26 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: navOpen ? 'flex-start' : 'center',
-      transition: 'background-color 0.15s ease',
+      transition: 'background-color 150ms cubic-bezier(0.25, 1, 0.5, 1), transform 150ms cubic-bezier(0.25, 1, 0.5, 1)',
+      position: 'relative',
       '&:hover': {
         backgroundColor: 'var(--ravin-surface-2)',
+        transform: 'scale(1.02)',
+      },
+      '&:active': {
+        transform: 'scale(0.98)',
+      },
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        left: 0,
+        top: '50%',
+        transform: selected ? 'translateY(-50%) scaleY(1)' : 'translateY(-50%) scaleY(0)',
+        width: '2px',
+        height: '20px',
+        backgroundColor: 'var(--ravin-primary)',
+        borderRadius: '1px',
+        transition: 'transform 200ms cubic-bezier(0.25, 1, 0.5, 1)',
       },
     };
   };
@@ -304,6 +324,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
               border: '1px solid var(--ravin-border)',
               borderRadius: '4px',
               py: 0.5,
+              animation: 'ravin-popover-in 200ms cubic-bezier(0.25, 1, 0.5, 1)',
             },
           },
         }}

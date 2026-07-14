@@ -71,8 +71,6 @@ import { graphql, usePreloadedQuery } from 'react-relay';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useFormatter } from '../../../components/i18n';
 import { MESSAGING$ } from '../../../relay/environment';
-import logoFiligranDark from '../../../static/images/logo_filigran_full.svg';
-import logoFiligranLight from '../../../static/images/logo_filigran_full_light.svg';
 import Security from '../../../utils/Security';
 import useAuth from '../../../utils/hooks/useAuth';
 import useDimensions from '../../../utils/hooks/useDimensions';
@@ -127,12 +125,12 @@ export const OPEN_BAR_WIDTH = 256;
 // Do not use it for new code.
 const useStyles = makeStyles((theme) => createStyles({
   drawerPaper: {
-    width: SMALL_BAR_WIDTH + 8,
+    width: SMALL_BAR_WIDTH + 4,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
   drawerPaperOpen: {
-    width: OPEN_BAR_WIDTH + 8,
+    width: OPEN_BAR_WIDTH + 4,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
@@ -247,6 +245,7 @@ const LeftBarComponent = ({ queryRef }) => {
   const { t_i18n } = useFormatter();
   const {
     me: { submenu_auto_collapse, submenu_show_icons, draftContext },
+    about,
   } = useAuth();
   const navigate = useNavigate();
   const { hasOnlyAccessToImportDraftTab } = useImportAccess();
@@ -270,7 +269,6 @@ const LeftBarComponent = ({ queryRef }) => {
   const isGrantedToSecurity = useGranted([SETTINGS_SETMARKINGS, SETTINGS_SETACCESSES, SETTINGS_SETDISSEMINATION, SETTINGS_SETAUTH]);
   const isGrantedToAudit = useGranted([SETTINGS_SECURITYACTIVITY]);
   const isGrantedToExplore = useGranted([EXPLORE]);
-  const hasXtmHubAccess = useGranted([SETTINGS_SETMANAGEXTMHUB]);
 
   const [selectedMenu, setSelectedMenu] = useState(
     JSON.parse(localStorage.getItem('selectedMenu') ?? '[]'),
@@ -411,10 +409,7 @@ const LeftBarComponent = ({ queryRef }) => {
   const {
     bannerSettings: { bannerHeightNumber },
     settings: {
-      platform_openaev_url: openAEVUrl,
       // platform_enterprise_edition: ee,
-      platform_xtmhub_url: xtmhubUrl,
-      xtm_hub_registration_status: xtmhubStatus,
     },
   } = useAuth();
   const settingsMessagesBannerHeight = useSettingsMessagesBannerHeight();
@@ -438,9 +433,7 @@ const LeftBarComponent = ({ queryRef }) => {
     submenuShowIcons: submenu_show_icons,
   };
 
-  const isLightTheme = theme.palette.mode === 'light';
-
-  const drawerWidth = isMobile ? OPEN_BAR_WIDTH + 8 : (effectiveNavOpen ? OPEN_BAR_WIDTH + 8 : SMALL_BAR_WIDTH + 8);
+  const drawerWidth = isMobile ? OPEN_BAR_WIDTH + 4 : (effectiveNavOpen ? OPEN_BAR_WIDTH + 4 : SMALL_BAR_WIDTH + 4);
 
   return (
     <Drawer
@@ -460,7 +453,8 @@ const LeftBarComponent = ({ queryRef }) => {
             background: 'transparent',
             border: 'none',
             boxShadow: 'none',
-            padding: '4px',
+            padding: '8px 4px',
+            transition: 'width 250ms cubic-bezier(0.25, 1, 0.5, 1)',
             ...(isMobile ? { width: drawerWidth } : {}),
           },
         },
@@ -471,6 +465,7 @@ const LeftBarComponent = ({ queryRef }) => {
         top: 0,
         height: '100vh',
         overflow: 'hidden',
+        transition: 'width 250ms cubic-bezier(0.25, 1, 0.5, 1)',
       }}
     >
       <div
@@ -482,6 +477,7 @@ const LeftBarComponent = ({ queryRef }) => {
           backgroundColor: 'var(--ravin-bg)',
           border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
           overflow: 'hidden',
+          transition: 'border-radius 250ms cubic-bezier(0.25, 1, 0.5, 1)',
         }}
       >
       <LeftBarHeader
@@ -491,10 +487,6 @@ const LeftBarComponent = ({ queryRef }) => {
         bannerHeightNumber={bannerHeightNumber}
         topBannerHeight={topBannerHeight}
         settingsMessagesBannerHeight={settingsMessagesBannerHeight}
-        openAEVUrl={openAEVUrl}
-        xtmhubUrl={xtmhubUrl}
-        xtmhubStatus={xtmhubStatus}
-        hasXtmHubAccess={hasXtmHubAccess}
       />
 
       <div
@@ -855,42 +847,41 @@ const LeftBarComponent = ({ queryRef }) => {
             onClick={handleToggle}
             ariaLabel={isMobile ? t_i18n('Close sidebar') : (effectiveNavOpen ? t_i18n('Collapse sidebar') : t_i18n('Expand sidebar'))}
           />
-          {!data?.settings?.platform_whitemark && (
+          {!data?.settings?.platform_whitemark && effectiveNavOpen && (
             <Stack
               direction="row"
               alignItems="center"
-              gap={0.5}
-              paddingLeft={2}
+              justifyContent="space-between"
+              px={1.5}
               marginBottom={1}
               minHeight={16}
             >
-              {
-                effectiveNavOpen && (
-                  <Typography
-                    component="span"
-                    sx={{
-                      fontFamily: 'Peyda',
-                      fontSize: '10px',
-                      lineHeight: '16px',
-                      opacity: 0.8,
-                      color: 'var(--ravin-text-muted)',
-                    }}
-                  >
-                    {t_i18n('ArmanCTI')}
-                  </Typography>
-                )
-              }
-              <img
-                alt="logo"
-                src={isLightTheme ? logoFiligranLight : logoFiligranDark}
-                width={effectiveNavOpen ? 48 : 12}
-                height="12"
-                style={{
-                  opacity: 0.8,
-                  objectFit: 'cover',
-                  objectPosition: 'left center',
+              <Typography
+                component="span"
+                sx={{
+                  fontFamily: 'Peyda',
+                  fontSize: '10px',
+                  lineHeight: '16px',
+                  opacity: 0.6,
+                  color: 'var(--ravin-text-muted)',
                 }}
-              />
+              >
+                {t_i18n('Powered by Alpha Company')}
+              </Typography>
+              {about?.version && (
+                <Typography
+                  component="span"
+                  sx={{
+                    fontFamily: 'Peyda',
+                    fontSize: '10px',
+                    lineHeight: '16px',
+                    opacity: 0.6,
+                    color: 'var(--ravin-text-muted)',
+                  }}
+                >
+                  v{about.version}
+                </Typography>
+              )}
             </Stack>
           )}
         </MenuList>

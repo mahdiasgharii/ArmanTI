@@ -215,12 +215,13 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
       position="fixed"
       elevation={0}
       sx={{
-        marginLeft: isMobile ? 0 : (navOpen ? `${OPEN_BAR_WIDTH + 8}px` : `${SMALL_BAR_WIDTH + 8}px`),
-        width: isMobile ? '100%' : (navOpen ? `calc(100% - ${OPEN_BAR_WIDTH + 8}px)` : `calc(100% - ${SMALL_BAR_WIDTH + 8}px)`),
+        marginLeft: isMobile ? 0 : (navOpen ? `${OPEN_BAR_WIDTH + 4}px` : `${SMALL_BAR_WIDTH + 4}px`),
+        width: isMobile ? '100%' : (navOpen ? `calc(100% - ${OPEN_BAR_WIDTH + 4}px)` : `calc(100% - ${SMALL_BAR_WIDTH + 4}px)`),
         backgroundColor: 'transparent',
         boxShadow: 'none',
         border: 'none',
-        padding: '4px 4px 0 4px',
+        padding: '8px 4px 4px 4px',
+        transition: 'margin-left 250ms cubic-bezier(0.25, 1, 0.5, 1), width 250ms cubic-bezier(0.25, 1, 0.5, 1)',
       }}
     >
       <Toolbar
@@ -228,7 +229,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           alignItems: 'center',
           marginTop: bannerHeightNumber + settingsMessagesBannerHeight + topBannerHeight,
           height: '100%',
-          minHeight: 52,
+          minHeight: 48,
           paddingLeft: theme.spacing(1.5),
           paddingRight: theme.spacing(1.5),
           display: 'flex',
@@ -249,7 +250,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           />
         )}
         <div>
-          <Stack direction="row" gap={1} alignItems="center">
+          <Stack direction="row" gap={0.75} alignItems="center">
             {isMobile && (
               <Tooltip title={t_i18n('Open menu')}>
                 <IconButton
@@ -269,7 +270,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                       <CtemCommandCenterButton />
                       {/* Discrete full-height separator between the AI (XTM One)
                           actions and the standard platform actions. */}
-                      <Divider orientation="vertical" flexItem sx={{ mx: 1.5 }} />
+                      <Divider orientation="vertical" flexItem sx={{ mx: 1, borderColor: 'var(--ravin-border)', opacity: 1 }} />
                     </>
                   )
                 }
@@ -332,6 +333,25 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
               anchorEl={menuOpen.anchorEl}
               open={menuOpen.open}
               onClose={handleCloseMenu}
+              slotProps={{
+                paper: {
+                  sx: {
+                    mt: 0.5,
+                    borderRadius: '4px',
+                    backgroundColor: 'var(--ravin-elevated)',
+                    border: '1px solid var(--ravin-border)',
+                    boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.15)',
+                    '& .MuiMenuItem-root': {
+                      fontSize: '0.875rem',
+                      py: 1,
+                      px: 2,
+                      '&:hover': {
+                        backgroundColor: 'var(--ravin-surface-2)',
+                      },
+                    },
+                  },
+                },
+              }}
             >
               <MenuItem
                 component={Link}
@@ -374,7 +394,7 @@ const TopBar: FunctionComponent<Omit<TopBarProps, 'queryRef'>> = () => {
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
                 border: 'none',
-                padding: '4px 4px 0 4px',
+                padding: '8px 4px 4px 4px',
               }}
             />
           )}

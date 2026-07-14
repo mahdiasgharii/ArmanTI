@@ -76,15 +76,15 @@ const Index = ({ settings }: IndexProps) => {
   }, [theme]);
 
   const mainSx: SxProps = {
-    transition: 'margin-right 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'margin-right 250ms cubic-bezier(0.25, 1, 0.5, 1), padding 250ms cubic-bezier(0.25, 1, 0.5, 1)',
     flexGrow: 1,
     overflowY: 'hidden',
     height: '100vh',
-    paddingTop: `calc(4px + 60px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
+    paddingTop: `calc(8px + 60px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
     marginRight: 'var(--chatbot-sidebar-width, 0px)',
     paddingLeft: theme.spacing(0.5),
     paddingRight: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
+    paddingBottom: theme.spacing(1),
   };
 
   const boxSx: SxProps = {
