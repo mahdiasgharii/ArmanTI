@@ -38,10 +38,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 10px 0 10px',
   },
   searchRootTopBar: {
-    borderRadius: 4,
-    padding: '1px 10px 0 10px',
+    borderRadius: '4px',
+    padding: '0 10px 0 10px',
     marginRight: 5,
     width: '100%',
+    backgroundColor: 'var(--ravin-elevated)',
   },
   searchRootInDrawer: {
     borderRadius: 4,
@@ -98,21 +99,28 @@ export function GradientBorderTextField({
         },
         '& .MuiOutlinedInput-root': {
           position: 'relative',
-          borderRadius: 1,
+          borderRadius: '4px',
           borderWidth: '1px',
-          backgroundColor: theme.palette.background.secondary,
+          backgroundColor: 'var(--ravin-elevated)',
           '& input': {
-            height: '19px', // textfield is computing something to make the search equal to 36px
+            height: '19px',
             boxSizing: 'content-box',
           },
 
           '& fieldset': {
-            // default mode without border color
             borderColor: 'transparent',
           },
 
+          '&.Mui-focused fieldset': {
+            borderColor: 'var(--ravin-primary)',
+            borderWidth: '1px',
+          },
+
+          '&:hover fieldset': {
+            borderColor: 'var(--ravin-border-strong)',
+          },
+
           '&.Mui-focused:not(:hover) fieldset': {
-            // when focus and not hover, prevent default mui change borderwidth
             borderWidth: '1px',
           },
 

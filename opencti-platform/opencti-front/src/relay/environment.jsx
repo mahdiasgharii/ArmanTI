@@ -34,6 +34,7 @@ export const MESSAGING$ = {
   notifyNLQ: (text) => MESSENGER$.next([{ type: 'nlq', text }]),
   toggleNav: new Subject(),
   redirect: new Subject(),
+  mobileNav: new Subject(),
 };
 
 // Default application exception.

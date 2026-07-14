@@ -10,7 +10,7 @@ const EE_COLOR = '#00f18d';
 
 export const THEME_DARK_DEFAULT_BACKGROUND = '#0a0a0a';
 const THEME_DARK_DEFAULT_BODY_END_GRADIENT = '#0a0a0a';
-export const THEME_DARK_DEFAULT_PRIMARY = '#019BE5';
+export const THEME_DARK_DEFAULT_PRIMARY = '#29CCB1';
 export const THEME_DARK_DEFAULT_SECONDARY = '#860EFE';
 export const THEME_DARK_DEFAULT_ACCENT = '#171717';
 export const THEME_DARK_DEFAULT_PAPER = '#171717';
@@ -127,9 +127,9 @@ const ThemeDark = (
     },
     designSystem: {
       primary: {
-        main: '#019BE5',
-        light: '#66C4F5',
-        dark: '#0073A8',
+        main: '#29CCB1',
+        light: '#7FE0CC',
+        dark: '#1A8A73',
       },
       secondary: {
         main: '#860EFE',
@@ -162,12 +162,12 @@ const ThemeDark = (
       gradient: {
         background: 'linear-gradient(180deg, #09090B 0%, #18181B 100%)',
         ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
-        focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
+        focus: 'linear-gradient(90deg, #29CCB1 0%, #860EFE 100%)',
       },
       alert: {
         info: {
-          primary: '#019BE5',
-          secondary: '#003A5C',
+          primary: '#29CCB1',
+          secondary: '#155447',
         },
         success: {
           primary: '#17AB1F',
@@ -194,12 +194,12 @@ const ThemeDark = (
           800: '#27272A',
         },
         blue: {
-          500: '#019BE5',
-          900: '#003A5C',
+          500: '#29CCB1',
+          900: '#155447',
         },
         darkBlue: {
-          300: '#66C4F5',
-          500: '#019BE5',
+          300: '#7FE0CC',
+          500: '#29CCB1',
         },
         turquoise: {
           600: '#00BD94',
@@ -425,7 +425,7 @@ const ThemeDark = (
 
             '&:focus-visible': {
               outline: 'none',
-              boxShadow: '0 0 0 2px #66C4F5',
+              boxShadow: '0 0 0 2px #7FE0CC',
             },
 
             '&.Mui-selected': {
@@ -509,13 +509,10 @@ const ThemeDark = (
         html: {
           scrollbarColor: `${background || THEME_DARK_DEFAULT_BACKGROUND} ${accent || THEME_DARK_DEFAULT_ACCENT}`,
           scrollbarWidth: 'thin',
-          background: `linear-gradient(180deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
-          backgroundAttachment: 'fixed',
-          backgroundColor: background || THEME_DARK_DEFAULT_BACKGROUND,
+          backgroundColor: '#171717',
         },
         body: {
-          background: `linear-gradient(180deg, ${background || THEME_DARK_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
-          backgroundAttachment: 'fixed',
+          backgroundColor: '#171717',
           scrollbarColor: `${background || THEME_DARK_DEFAULT_BACKGROUND} ${accent || THEME_DARK_DEFAULT_ACCENT}`,
           scrollbarWidth: 'thin',
           html: {
@@ -603,12 +600,12 @@ const ThemeDark = (
             backgroundColor: `${accent || THEME_DARK_DEFAULT_ACCENT} !important`,
           },
           '.react_time_range__track': {
-            backgroundColor: 'rgba(1, 155, 229, 0.1) !important',
-            borderLeft: '1px solid #019BE5 !important',
-            borderRight: '1px solid #019BE5 !important',
+            backgroundColor: 'rgba(41, 204, 177, 0.1) !important',
+            borderLeft: '1px solid #29CCB1 !important',
+            borderRight: '1px solid #29CCB1 !important',
           },
           '.react_time_range__handle_marker': {
-            backgroundColor: '#019BE5 !important',
+            backgroundColor: '#29CCB1 !important',
           },
           '.leaflet-container': {
             backgroundColor: `${paper || THEME_DARK_DEFAULT_PAPER} !important`,

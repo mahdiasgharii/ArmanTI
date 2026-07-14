@@ -68,7 +68,7 @@ const CtemCommandCenterButton = () => {
         onClick={() => window.open(safeXtmOneUrl, '_blank', 'noopener,noreferrer')}
         aria-label={t_i18n('CTEM Command Center')}
       >
-        <RadarOutlined size={24} style={{ color: theme.palette.ai.main }} />
+        <RadarOutlined size={20} style={{ color: theme.palette.ai.main }} />
       </IconButton>
     </Tooltip>
   );

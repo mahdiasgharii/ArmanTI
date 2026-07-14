@@ -158,8 +158,8 @@ export const LeftBarHeader: React.FC<LeftBarHeaderProps> = ({
           src={currentLogo}
           alt="logo"
           style={{
-            height: 35,
-            maxWidth: navOpen ? '110px' : '23px',
+            height: 60,
+            maxWidth: navOpen ? '120px' : '60px',
             objectFit: 'contain',
           }}
         />

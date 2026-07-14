@@ -1,6 +1,6 @@
 import IconButton from '@common/button/IconButton';
 import { OPEN_BAR_WIDTH, SMALL_BAR_WIDTH } from '@components/nav/LeftBar';
-import { CircleUser as AccountCircleOutlined, AlarmClock as AlarmOnOutlined, Bell as NotificationsOutlined } from 'lucide-react';
+import { CircleUser as AccountCircleOutlined, AlarmClock as AlarmOnOutlined, Bell as NotificationsOutlined, Menu as MenuIcon } from 'lucide-react';
 import { Badge, Divider, Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
@@ -27,7 +27,6 @@ import useQueryLoading from '../../../utils/hooks/useQueryLoading';
 import { decodeSearchKeyword, handleSearchByFilter, handleSearchByKeyword } from '../../../utils/SearchUtils';
 import Security from '../../../utils/Security';
 import FeedbackCreation from '../cases/feedbacks/FeedbackCreation';
-import AskArianeButton from '../chatbox/AskArianeButton';
 import CtemCommandCenterButton from '../chatbox/CtemCommandCenterButton';
 import { CGUStatus } from '../settings/Experience';
 import { useSettingsMessagesBannerHeight } from '../settings/settings_messages/SettingsMessagesBanner';
@@ -136,6 +135,9 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
   const [navOpen, setNavOpen] = useState(
     localStorage.getItem('navOpen') === 'true',
   );
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 768,
+  );
 
   useEffect(() => {
     const sub = MESSAGING$.toggleNav.subscribe({
@@ -145,6 +147,11 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
       sub.unsubscribe();
     };
   });
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   useEffect(() => {
     page();
   }, [location.pathname]);
@@ -207,23 +214,29 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
     <AppBar
       position="fixed"
       elevation={0}
-      className="ravin-glass-header"
       sx={{
-        marginLeft: navOpen ? `${OPEN_BAR_WIDTH + 16}px` : `${SMALL_BAR_WIDTH + 16}px`,
-        width: navOpen ? `calc(100% - ${OPEN_BAR_WIDTH + 16}px)` : `calc(100% - ${SMALL_BAR_WIDTH + 16}px)`,
+        marginLeft: isMobile ? 0 : (navOpen ? `${OPEN_BAR_WIDTH + 8}px` : `${SMALL_BAR_WIDTH + 8}px`),
+        width: isMobile ? '100%' : (navOpen ? `calc(100% - ${OPEN_BAR_WIDTH + 8}px)` : `calc(100% - ${SMALL_BAR_WIDTH + 8}px)`),
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        border: 'none',
+        padding: '4px 4px 0 4px',
       }}
     >
-      {/* Header and Footer Banners containing classification level of system */}
       <Toolbar
         style={{
           alignItems: 'center',
           marginTop: bannerHeightNumber + settingsMessagesBannerHeight + topBannerHeight,
           height: '100%',
-          minHeight: 68,
-          paddingLeft: theme.spacing(3),
-          paddingRight: theme.spacing(3),
+          minHeight: 52,
+          paddingLeft: theme.spacing(1.5),
+          paddingRight: theme.spacing(1.5),
           display: 'flex',
           justifyContent: 'space-between',
+          borderRadius: '12px',
+          backgroundColor: 'var(--ravin-bg)',
+          border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
+          overflow: 'hidden',
         }}
       >
         {hasKnowledgeAccess && (
@@ -237,12 +250,22 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
         )}
         <div>
           <Stack direction="row" gap={1} alignItems="center">
+            {isMobile && (
+              <Tooltip title={t_i18n('Open menu')}>
+                <IconButton
+                  aria-label={t_i18n('Open menu')}
+                  size="default"
+                  onClick={() => MESSAGING$.mobileNav.next(true)}
+                >
+                  <MenuIcon size={20} />
+                </IconButton>
+              </Tooltip>
+            )}
             <Security needs={[KNOWLEDGE]}>
               <>
                 {
                   filigran_chatbot_ai_cgu_status !== CGUStatus.disabled && (
                     <>
-                      <AskArianeButton />
                       <CtemCommandCenterButton />
                       {/* Discrete full-height separator between the AI (XTM One)
                           actions and the standard platform actions. */}
@@ -259,7 +282,6 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                   <Security needs={[KNOWLEDGE_KNASKIMPORT]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
                     <UploadImport
                       variant="icon"
-                      size={20}
                       size="default"
                     />
                   </Security>
@@ -347,9 +369,13 @@ const TopBar: FunctionComponent<Omit<TopBarProps, 'queryRef'>> = () => {
           fallback={(
             <AppBar
               position="fixed"
-              className="ravin-glass-header"
-              variant="elevation"
               elevation={0}
+              sx={{
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                border: 'none',
+                padding: '4px 4px 0 4px',
+              }}
             />
           )}
         >

@@ -110,7 +110,7 @@ class ChatbotManager {
 
     const chatBotTheme = {
       button: {
-        backgroundColor: '#019BE5',
+        backgroundColor: '#29CCB1',
       },
       tooltip: {
         showTooltip: false,
@@ -121,7 +121,7 @@ class ChatbotManager {
         showAgentMessages: false,
         title: this.t_i18n('Ask Arman'),
         titleAvatarSrc: fileUri(embleme),
-        titleBackgroundColor: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
+        titleBackgroundColor: 'linear-gradient(90deg, #29CCB1 0%, #860EFE 100%)',
         welcomeMessage: this.t_i18n('Hi there 👋 You\'re speaking with an AI Agent. I\'m here to answer your questions, so what brings you here today?'),
         errorMessage: this.t_i18n('Sorry, an error has occurred, please try again later.'),
         backgroundColor: this.theme.palette.ai.background,

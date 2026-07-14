@@ -35,6 +35,30 @@ import {
   AppWindow as WebAssetOutlined,
   Wifi as WifiTetheringOutlined,
   Workflow as WorkspacesOutlined,
+  Users as AccountMultipleOutline,
+  Archive as ArchiveOutline,
+  Binoculars,
+  Biohazard,
+  PencilLine as BriefcaseEditOutline,
+  Eye as BriefcaseEyeOutline,
+  Trash2 as BriefcaseRemoveOutline,
+  Search as BriefcaseSearchOutline,
+  ChessKnight,
+  ChevronRight,
+  Building as CityVariantOutline,
+  Cog as CogOutline,
+  Database,
+  Flame as Fire,
+  FlaskConical as FlaskOutline,
+  FolderTree as FolderTableOutline,
+  Globe as GlobeModel,
+  Hexagon,
+  Laptop as LaptopAccount,
+  LockKeyhole as LockPattern,
+  Wrench as ProgressWrench,
+  Network as ServerNetwork,
+  ShieldCheck as ShieldSearch,
+  Timer as Timetable,
 } from 'lucide-react';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -42,35 +66,9 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { createStyles, makeStyles, useTheme } from '@mui/styles';
-import {
-  AccountMultipleOutline,
-  ArchiveOutline,
-  Binoculars,
-  Biohazard,
-  BriefcaseEditOutline,
-  BriefcaseEyeOutline,
-  BriefcaseRemoveOutline,
-  BriefcaseSearchOutline,
-  ChessKnight,
-  ChevronRight,
-  CityVariantOutline,
-  CogOutline,
-  Database,
-  Fire,
-  FlaskOutline,
-  FolderTableOutline,
-  GlobeModel,
-  HexagonOutline,
-  LaptopAccount,
-  LockPattern,
-  ProgressWrench,
-  ServerNetwork,
-  ShieldSearch,
-  Timetable,
-} from 'mdi-material-ui';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { graphql, usePreloadedQuery } from 'react-relay';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useFormatter } from '../../../components/i18n';
 import { MESSAGING$ } from '../../../relay/environment';
 import logoFiligranDark from '../../../static/images/logo_filigran_full.svg';
@@ -129,12 +127,12 @@ export const OPEN_BAR_WIDTH = 256;
 // Do not use it for new code.
 const useStyles = makeStyles((theme) => createStyles({
   drawerPaper: {
-    width: SMALL_BAR_WIDTH + 16,
+    width: SMALL_BAR_WIDTH + 8,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
   drawerPaperOpen: {
-    width: OPEN_BAR_WIDTH + 16,
+    width: OPEN_BAR_WIDTH + 8,
     minHeight: '100vh',
     overflowX: 'hidden',
   },
@@ -217,7 +215,7 @@ const leftBarQuery = graphql`
 
 const Separator = () => {
   return (
-    <Divider sx={{ border: 'none', borderTop: '1px solid var(--ravin-border)', mx: 2, my: 1 }} />
+    <Divider sx={{ border: 'none', borderTop: '1px solid var(--ravin-border)', mx: 1.5, my: 1 }} />
   );
 };
 
@@ -280,7 +278,20 @@ const LeftBarComponent = ({ queryRef }) => {
   const [navOpen, setNavOpen] = useState(
     localStorage.getItem('navOpen') === 'true',
   );
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
   const classes = useStyles({ navOpen });
+
+  useEffect(() => {
+    const sub = MESSAGING$.mobileNav.subscribe({
+      next: (open) => setMobileOpen(open),
+    });
+    return () => { sub.unsubscribe(); };
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   const data = usePreloadedQuery(leftBarQuery, queryRef);
 
@@ -296,6 +307,10 @@ const LeftBarComponent = ({ queryRef }) => {
     return selectedMenu.filter((value) => value !== menu);
   };
   const handleToggle = () => {
+    if (isMobile) {
+      setMobileOpen(false);
+      return;
+    }
     setSelectedMenu([]);
     localStorage.setItem('navOpen', String(!navOpen));
     window.dispatchEvent(new StorageEvent('storage', { key: 'navOpen' }));
@@ -304,7 +319,7 @@ const LeftBarComponent = ({ queryRef }) => {
     MESSAGING$.toggleNav.next('toggle');
   };
   const handleSelectedMenuOpen = (menu) => {
-    const updatedMenu = (navOpen && submenu_auto_collapse) ? addMenuUnique(menu) : [menu];
+    const updatedMenu = (effectiveNavOpen && submenu_auto_collapse) ? addMenuUnique(menu) : [menu];
     setSelectedMenu(updatedMenu);
   };
   const handleSelectedMenuClose = () => {
@@ -408,8 +423,10 @@ const LeftBarComponent = ({ queryRef }) => {
 
   const isMobile = dimension.width < 768;
 
+  const effectiveNavOpen = isMobile ? true : navOpen;
+
   const itemProps = {
-    navOpen,
+    navOpen: effectiveNavOpen,
     selectedMenu,
     isMobile,
     classes,
@@ -423,11 +440,16 @@ const LeftBarComponent = ({ queryRef }) => {
 
   const isLightTheme = theme.palette.mode === 'light';
 
+  const drawerWidth = isMobile ? OPEN_BAR_WIDTH + 8 : (effectiveNavOpen ? OPEN_BAR_WIDTH + 8 : SMALL_BAR_WIDTH + 8);
+
   return (
     <Drawer
-      variant="permanent"
+      variant={isMobile ? 'temporary' : 'permanent'}
+      open={isMobile ? mobileOpen : undefined}
+      onClose={isMobile ? () => MESSAGING$.mobileNav.next(false) : undefined}
+      ModalProps={isMobile ? { keepMounted: true } : undefined}
       classes={{
-        paper: navOpen ? classes.drawerPaperOpen : classes.drawerPaper,
+        paper: effectiveNavOpen ? classes.drawerPaperOpen : classes.drawerPaper,
       }}
       slotProps={{
         paper: {
@@ -438,20 +460,17 @@ const LeftBarComponent = ({ queryRef }) => {
             background: 'transparent',
             border: 'none',
             boxShadow: 'none',
-            padding: '8px',
+            padding: '4px',
+            ...(isMobile ? { width: drawerWidth } : {}),
           },
         },
       }}
       sx={{
-        width: navOpen ? OPEN_BAR_WIDTH + 16 : SMALL_BAR_WIDTH + 16,
-        zIndex: 999,
+        width: drawerWidth,
+        zIndex: isMobile ? 1200 : 999,
         top: 0,
         height: '100vh',
         overflow: 'hidden',
-        transition: theme.transitions.create('width', {
-          easing: theme.transitions.easing.easeInOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
       }}
     >
       <div
@@ -462,14 +481,13 @@ const LeftBarComponent = ({ queryRef }) => {
           borderRadius: '12px',
           backgroundColor: 'var(--ravin-bg)',
           border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
-          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
           overflow: 'hidden',
         }}
       >
       <LeftBarHeader
         logo={logo}
         logoCollapsed={navCloseLogo}
-        navOpen={navOpen}
+        navOpen={effectiveNavOpen}
         bannerHeightNumber={bannerHeightNumber}
         topBannerHeight={topBannerHeight}
         settingsMessagesBannerHeight={settingsMessagesBannerHeight}
@@ -492,8 +510,7 @@ const LeftBarComponent = ({ queryRef }) => {
           backgroundColor: 'transparent',
         }}
       >
-        <GroupLabel navOpen={navOpen}>{t_i18n('Overview')}</GroupLabel>
-        <MenuList disablePadding component="nav" sx={{ px: 1.5 }}>
+        <MenuList disablePadding component="nav" sx={{ px: effectiveNavOpen ? 1.5 : 1 }}>
           {!draftContext && (
             <LeftBarItem
               {...itemProps}
@@ -567,8 +584,7 @@ const LeftBarComponent = ({ queryRef }) => {
         <Separator />
 
         <Security needs={[KNOWLEDGE]}>
-          <GroupLabel navOpen={navOpen}>{t_i18n('Knowledge')}</GroupLabel>
-          <MenuList component="nav" sx={{ px: 1.5 }}>
+          <MenuList component="nav" sx={{ px: effectiveNavOpen ? 1.5 : 1 }}>
             {!hideAnalyses && (
               <LeftBarItem
                 {...itemProps}
@@ -627,7 +643,7 @@ const LeftBarComponent = ({ queryRef }) => {
                 label={t_i18n('Observations')}
                 link="/dashboard/observations"
                 subItems={[
-                  { type: 'Stix-Cyber-Observable', link: '/dashboard/observations/observables', label: t_i18n('Observables'), icon: <HexagonOutline size={16} /> },
+                  { type: 'Stix-Cyber-Observable', link: '/dashboard/observations/observables', label: t_i18n('Observables'), icon: <Hexagon size={16} /> },
                   { type: 'Artifact', link: '/dashboard/observations/artifacts', label: t_i18n('Artifacts'), icon: <ArchiveOutline size={16} /> },
                   { type: 'Indicator', link: '/dashboard/observations/indicators', label: t_i18n('Indicators'), icon: <ShieldSearch size={16} /> },
                   { type: 'Infrastructure', link: '/dashboard/observations/infrastructures', label: t_i18n('Infrastructures'), icon: <ServerNetwork size={16} /> },
@@ -638,7 +654,7 @@ const LeftBarComponent = ({ queryRef }) => {
 
           <Separator />
 
-          <MenuList component="nav" sx={{ px: 1.5 }}>
+          <MenuList component="nav" sx={{ px: effectiveNavOpen ? 1.5 : 1 }}>
             {!hideThreats && (
               <LeftBarItem
                 {...itemProps}
@@ -735,8 +751,7 @@ const LeftBarComponent = ({ queryRef }) => {
         <Security needs={[MODULES, KNOWLEDGE, TAXIIAPI, CSVMAPPERS, INGESTION]}>
           <Separator />
 
-          <GroupLabel navOpen={navOpen}>{t_i18n('Data')}</GroupLabel>
-          <MenuList component="nav" sx={{ px: 1.5 }}>
+          <MenuList component="nav" sx={{ px: effectiveNavOpen ? 1.5 : 1 }}>
             <Security needs={[MODULES, KNOWLEDGE, TAXIIAPI, CSVMAPPERS, INGESTION]}>
               <LeftBarItem
                 {...itemProps}
@@ -794,9 +809,8 @@ const LeftBarComponent = ({ queryRef }) => {
         ]}
         >
           <Separator />
-          <GroupLabel navOpen={navOpen}>{t_i18n('Settings')}</GroupLabel>
           {!draftContext && (
-            <MenuList component="nav" sx={{ px: 1.5, marginBottom: 6 }}>
+            <MenuList component="nav" sx={{ px: effectiveNavOpen ? 1.5 : 1, marginBottom: 6 }}>
               <LeftBarItem
                 {...itemProps}
                 id="settings"
@@ -832,13 +846,14 @@ const LeftBarComponent = ({ queryRef }) => {
             display: 'flex',
             flexDirection: 'column',
             gap: 1,
-            px: 1.5,
+            px: effectiveNavOpen ? 1.5 : 1,
           }}>
           <LeftBarItem
             {...itemProps}
-            icon={navOpen ? <ChevronLeft /> : <ChevronRight />}
-            label={t_i18n('Collapse')}
+            icon={effectiveNavOpen ? <ChevronLeft /> : <ChevronRight />}
+            label={isMobile ? t_i18n('Close') : t_i18n('Collapse')}
             onClick={handleToggle}
+            ariaLabel={isMobile ? t_i18n('Close sidebar') : (effectiveNavOpen ? t_i18n('Collapse sidebar') : t_i18n('Expand sidebar'))}
           />
           {!data?.settings?.platform_whitemark && (
             <Stack
@@ -850,7 +865,7 @@ const LeftBarComponent = ({ queryRef }) => {
               minHeight={16}
             >
               {
-                navOpen && (
+                effectiveNavOpen && (
                   <Typography
                     component="span"
                     sx={{
@@ -868,7 +883,7 @@ const LeftBarComponent = ({ queryRef }) => {
               <img
                 alt="logo"
                 src={isLightTheme ? logoFiligranLight : logoFiligranDark}
-                width={navOpen ? 48 : 12}
+                width={effectiveNavOpen ? 48 : 12}
                 height="12"
                 style={{
                   opacity: 0.8,

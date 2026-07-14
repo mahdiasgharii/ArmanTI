@@ -5,13 +5,13 @@ import { alpha } from '@mui/material/styles';
 import { shouldOpenInNewTabMouseEvent } from './domEvent';
 
 export const colors = (temp) => [
-  '#019BE5', // electric blue
+  '#29CCB1', // electric blue
   '#860EFE', // violet accent
   '#F20F0F', // signal red
   '#00BD94', // turquoise
   '#F2933A', // orange
   '#F2BE3A', // yellow
-  '#66C4F5', // light blue
+  '#7FE0CC', // light blue
   '#B88DFF', // light violet
   '#FF6B6B', // light red
   '#41E149', // green

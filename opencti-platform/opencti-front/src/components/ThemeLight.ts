@@ -6,11 +6,11 @@ import LogoCollapsed from '../static/images/logo_light.svg';
 import { hexToRGB } from '../utils/Colors';
 import { alpha, darken, lighten } from '@mui/material';
 
-const EE_COLOR = '#019BE5';
+const EE_COLOR = '#29CCB1';
 
 export const THEME_LIGHT_DEFAULT_BACKGROUND = '#FFFFFF';
 export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#FFFFFF';
-export const THEME_LIGHT_DEFAULT_PRIMARY = '#019BE5';
+export const THEME_LIGHT_DEFAULT_PRIMARY = '#29CCB1';
 const THEME_LIGHT_DEFAULT_SECONDARY = '#860EFE';
 const THEME_LIGHT_DEFAULT_ACCENT = '#F4F4F5';
 const THEME_LIGHT_DEFAULT_TEXT = '#09090B';
@@ -57,7 +57,7 @@ const ThemeLight = (
       text: { primary: '#881106' },
     },
     success: { main: '#17AB1F', dark: '#094E0B' },
-    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#66C4F5' },
+    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#7FE0CC' },
     secondary: { main: secondary || THEME_LIGHT_DEFAULT_SECONDARY },
     gradient: { main: '#860EFE' },
     border: {
@@ -129,9 +129,9 @@ const ThemeLight = (
     },
     designSystem: {
       primary: {
-        main: '#019BE5',
-        light: '#66C4F5',
-        dark: '#0073A8',
+        main: '#29CCB1',
+        light: '#7FE0CC',
+        dark: '#1A8A73',
       },
       secondary: {
         main: '#860EFE',
@@ -164,12 +164,12 @@ const ThemeLight = (
       gradient: {
         background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%)',
         ia: 'linear-gradient(90deg, #B88DFF 0%, #860EFE 100%)',
-        focus: 'linear-gradient(90deg, #019BE5 0%, #860EFE 100%)',
+        focus: 'linear-gradient(90deg, #29CCB1 0%, #860EFE 100%)',
       },
       alert: {
         info: {
-          primary: '#019BE5',
-          secondary: '#66C4F5',
+          primary: '#29CCB1',
+          secondary: '#7FE0CC',
         },
         success: {
           primary: '#17AB1F',
@@ -196,12 +196,12 @@ const ThemeLight = (
           800: '#D4D4D8',
         },
         blue: {
-          500: '#019BE5',
-          900: '#003A5C',
+          500: '#29CCB1',
+          900: '#155447',
         },
         darkBlue: {
-          300: '#66C4F5',
-          500: '#019BE5',
+          300: '#7FE0CC',
+          500: '#29CCB1',
         },
         turquoise: {
           600: '#860EFE',
@@ -426,7 +426,7 @@ const ThemeLight = (
 
             '&:focus-visible': {
               outline: 'none',
-              boxShadow: '0 0 0 2px #66C4F5',
+              boxShadow: '0 0 0 2px #7FE0CC',
             },
 
             '&.Mui-selected': {
@@ -604,12 +604,12 @@ const ThemeLight = (
             backgroundColor: `${accent || THEME_LIGHT_DEFAULT_ACCENT} !important`,
           },
           '.react_time_range__track': {
-            backgroundColor: 'rgba(1, 155, 229, 0.1) !important',
-            borderLeft: '1px solid #019BE5 !important',
-            borderRight: '1px solid #019BE5 !important',
+            backgroundColor: 'rgba(41, 204, 177, 0.1) !important',
+            borderLeft: '1px solid #29CCB1 !important',
+            borderRight: '1px solid #29CCB1 !important',
           },
           '.react_time_range__handle_marker': {
-            backgroundColor: '#019BE5 !important',
+            backgroundColor: '#29CCB1 !important',
           },
           '.leaflet-container': {
             backgroundColor: `${paper || '#ffffff'} !important`,

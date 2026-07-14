@@ -2,9 +2,9 @@
 name: ArmanCTI
 description: Cyber threat intelligence platform with Ravin Style design system — bold, precise, modern.
 colors:
-  electric-blue: "#019BE5"
-  electric-blue-light: "#66B8F0"
-  electric-blue-dark: "#006699"
+  electric-blue: "#29CCB1"
+  electric-blue-light: "#7FE0CC"
+  electric-blue-dark: "#1A8A73"
   signal-red: "#F20F0F"
   signal-red-light: "#FF6B6B"
   signal-red-dark: "#990000"
@@ -184,7 +184,7 @@ This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d1
 The palette operates as a precision instrument: a black housing, a tight grey scale for depth, and three electric accents that function as signal indicators.
 
 ### Primary
-- **Electric Blue** (#019BE5): The operational frequency. Used for primary actions, focus rings, links, active navigation states, and interactive element emphasis. This is the brand's signature color — confident, technical, never decorative. Light variant `#66B8F0` for hover/focus glows; dark variant `#006699` for pressed/active states.
+- **Electric Blue** (#29CCB1): The operational frequency. Used for primary actions, focus rings, links, active navigation states, and interactive element emphasis. This is the brand's signature color — confident, technical, never decorative. Light variant `#7FE0CC` for hover/focus glows; dark variant `#1A8A73` for pressed/active states.
 
 ### Secondary
 - **Signal Red** (#F20F0F): The threat indicator. Used for destructive actions, danger zones, severity-critical indicators, and error states. Never used for decoration or general emphasis. Light variant `#FF6B6B` for hover; dark variant `#990000` for pressed.
@@ -222,7 +222,7 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 
 **The No-Teal Rule.** The original OpenCTI cyan/teal palette (`#0fbcff`, `#00f18d`, `#00F1BD`) is prohibited. If a color reads as "OpenCTI with a paint job," it's wrong. The departure is the point.
 
-**The Gradient Border Rule.** Gradient borders (`linear-gradient(90deg, #019BE5 0%, #860EFE 100%)` for focus, `linear-gradient(90deg, #860EFE 0%, #F20F0F 100%)` for intelligence analysis) are reserved for premium feature actions and AI-related elements. Never use gradients on standard buttons or surfaces.
+**The Gradient Border Rule.** Gradient borders (`linear-gradient(90deg, #29CCB1 0%, #860EFE 100%)` for focus, `linear-gradient(90deg, #860EFE 0%, #F20F0F 100%)` for intelligence analysis) are reserved for premium feature actions and AI-related elements. Never use gradients on standard buttons or surfaces.
 
 ## 3. Typography
 
@@ -271,7 +271,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 
 ### Buttons
 - **Shape:** Sharp 4px radius (`theme.shape.borderRadius`)
-- **Primary:** Solid Electric Blue (`#019BE5`) background, white text. Hover → dark blue (`#006699`). Focus → 2px blue glow ring. Disabled → grey background, muted text.
+- **Primary:** Solid Electric Blue (`#29CCB1`) background, white text. Hover → dark blue (`#1A8A73`). Focus → 2px blue glow ring. Disabled → grey background, muted text.
 - **Secondary:** Transparent background, blue text, 1px blue border. Hover → 15% blue tint background. Active → 25% blue tint.
 - **Tertiary:** Transparent background, blue text, no border. Hover → 15% blue tint. Active → 15% tint + focus ring.
 - **Destructive:** Solid error red (`#F14337`) background, white text. Hover → dark red (`#881106`).
@@ -293,7 +293,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 
 ### Inputs / Fields
 - **Style:** Standard variant (underline) by default. Outlined variant uses elevated background (`var(--ravin-elevated)`) with transparent border. 4px radius.
-- **Focus:** Bottom border shifts to Electric Blue (`#019BE5`). 2px solid blue underline.
+- **Focus:** Bottom border shifts to Electric Blue (`#29CCB1`). 2px solid blue underline.
 - **Error:** Bottom border shifts to Error Red (`#F14337`). 2px solid red underline.
 - **Disabled:** Grey background (`#363B46`), muted text.
 - **Placeholder:** Must maintain ≥4.5:1 contrast. Use `var(--ravin-text-muted)` (`#A1A1AA`) on dark surfaces, not pure grey.
@@ -343,7 +343,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ### Do:
 - **Do** use the black canvas (`#09090B`) as the primary background. It is the instrument's housing.
 - **Do** layer surfaces through the tonal scale (`#09090B` → `#18181B` → `#27272A`) for depth, not shadows.
-- **Do** use Electric Blue (`#019BE5`) for primary actions, focus, and interactive emphasis.
+- **Do** use Electric Blue (`#29CCB1`) for primary actions, focus, and interactive emphasis.
 - **Do** use Signal Red (`#F20F0F`) exclusively for destructive actions, danger, and critical severity.
 - **Do** use Violet Accent (`#860EFE`) for AI features and intelligence analysis highlights.
 - **Do** apply the lowercase + first-letter uppercase pattern to all headings, chips, tabs, and tooltips.

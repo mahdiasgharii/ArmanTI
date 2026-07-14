@@ -16,10 +16,10 @@ interface SubMenuItem {
 }
 
 interface LeftBarItemProps {
-  id: string;
+  id?: string;
   icon: React.ReactNode;
   label: string;
-  link: string;
+  link?: string;
   exact?: boolean;
   subItems?: SubMenuItem[];
   navOpen: boolean;
@@ -32,6 +32,7 @@ interface LeftBarItemProps {
   isMobile: boolean;
   submenuShowIcons?: boolean;
   hiddenEntities?: string[];
+  ariaLabel?: string;
 }
 
 const LeftBarItem: React.FC<LeftBarItemProps> = ({
@@ -51,6 +52,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
   isMobile,
   submenuShowIcons = false,
   hiddenEntities = [],
+  ariaLabel,
 }) => {
   const location = useLocation();
   const theme = useTheme<Theme>();
@@ -100,14 +102,14 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
     forceShowText = false, // For popover items
   ) => {
     const isSubItem = fontSize === 'small';
-    const iconColor = selected ? 'var(--ravin-text-light)' : 'var(--ravin-text-muted)';
-    const iconOpacity = isSubItem && selected ? 1 : 0.7;
+    const iconColor = selected ? 'var(--ravin-primary)' : 'var(--ravin-text-muted)';
+    const iconOpacity = selected ? 1 : 0.7;
 
     const getTextColor = () => {
       if (isSubItem && draftContext && selected) {
         return 'var(--ravin-warning)';
       }
-      if (isSubItem && selected) {
+      if (selected) {
         return 'var(--ravin-primary)';
       }
       if (isSubItem) {
@@ -122,7 +124,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
           <ListItemIcon
             sx={{
               minWidth: '0px!important',
-              mr: 1,
+              mr: navOpen ? 1 : 0,
               opacity: iconOpacity,
               color: iconColor,
               '& svg': {
@@ -172,7 +174,7 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
         sx={{
           px: 2,
           py: 0.75,
-          height: '34px',
+          height: '40px',
           borderRadius: '4px',
           mx: 1,
           backgroundColor: itemSelected ? 'var(--ravin-surface-2)' : 'transparent',
@@ -196,14 +198,15 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
 
   const getMenuStyles = (selected: boolean): SxProps => {
     return {
-      px: 1.5,
+      px: navOpen ? 1.5 : 1,
       py: 0,
-      height: '40px',
+      height: '44px',
       borderRadius: '4px',
       mx: 0,
       backgroundColor: selected ? 'var(--ravin-surface-2)' : 'transparent',
       display: 'flex',
       alignItems: 'center',
+      justifyContent: navOpen ? 'flex-start' : 'center',
       transition: 'background-color 0.15s ease',
       '&:hover': {
         backgroundColor: 'var(--ravin-surface-2)',
@@ -216,10 +219,11 @@ const LeftBarItem: React.FC<LeftBarItemProps> = ({
     return (
       <Tooltip title={!navOpen ? label : ''} placement="right">
         <MenuItem
-          component={Link}
+          component={link ? Link : undefined}
           to={link}
           dense
           onClick={onClick}
+          aria-label={ariaLabel}
           sx={getMenuStyles(isParentSelected)}
         >
           {renderMenuItem(icon, label, isParentSelected)}

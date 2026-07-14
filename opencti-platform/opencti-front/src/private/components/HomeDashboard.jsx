@@ -1,7 +1,6 @@
 import { assoc, head, last, map, pluck } from 'ramda';
 import React, { Suspense, useMemo } from 'react';
 import { graphql, useFragment, usePreloadedQuery } from 'react-relay';
-import { Clock, Activity } from 'lucide-react';
 import { PLATFORM_DASHBOARD } from './HomeDashboardSettings';
 import StixRelationshipsDistributionList from './common/stix_relationships/StixRelationshipsDistributionList';
 import StixRelationshipsPolarArea from './common/stix_relationships/StixRelationshipsPolarArea';
@@ -158,27 +157,7 @@ const DefaultDashboard = ({ timeField }) => {
 
 
       <div className="flex flex-1 flex-col gap-4 p-4 md:p-6">
-        <div className="flex items-center justify-between border-b border-border pb-4">
-          <h1 className="font-display text-display lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Dashboard')}
-          </h1>
-          <div className="flex items-center gap-3 text-text-muted">
-            <span className="flex items-center gap-1.5 font-body text-xs lowercase first-letter:uppercase">
-              <Clock size={12} className="text-text-light" />
-              {timeField === 'functional' ? t_i18n('Functional time') : t_i18n('Technical time')}
-            </span>
-            <span className="flex items-center gap-1.5 font-body text-xs lowercase first-letter:uppercase">
-              <span className="ravin-pulse-dot w-1.5 h-1.5 rounded-full bg-success" />
-              {t_i18n('Auto-refresh')}
-            </span>
-            <span className="flex items-center gap-1.5 font-body text-xs text-text-light lowercase first-letter:uppercase">
-              <Activity size={12} />
-              <span>{t_i18n('Live')}</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Intrusion-Set"
@@ -264,6 +243,28 @@ const DefaultDashboard = ({ timeField }) => {
                   filterGroups: [],
                 },
                 date_attribute: timeField === 'functional' ? 'created' : 'created_at',
+              }]}
+            />
+          </div>
+          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
+            <StixCoreObjectsNumber
+              entityType="Campaign"
+              config={config}
+              parameters={{
+                title: 'Campaign',
+              }}
+              dataSelection={[{
+                filters: {
+                  mode: 'and',
+                  filters: [
+                    {
+                      key: 'entity_type',
+                      values: ['Campaign'],
+                    },
+                  ],
+                  filterGroups: [],
+                },
+                date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
           </div>
