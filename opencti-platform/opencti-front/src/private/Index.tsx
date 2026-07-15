@@ -82,8 +82,8 @@ const Index = ({ settings }: IndexProps) => {
     height: '100vh',
     paddingTop: `calc(8px + 60px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
     marginRight: 'var(--chatbot-sidebar-width, 0px)',
-    paddingLeft: theme.spacing(0.5),
-    paddingRight: theme.spacing(0.5),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   };
 

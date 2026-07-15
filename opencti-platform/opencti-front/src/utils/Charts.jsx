@@ -182,7 +182,7 @@ export const areaChartOptions = (
 ) => ({
   chart: {
     type: 'area',
-    background: theme.palette.background.secondary,
+    background: 'transparent',
     toolbar: toolbarOptions,
     foreColor: theme.palette.text.secondary,
     stacked: isStacked,
@@ -200,8 +200,8 @@ export const areaChartOptions = (
     width: 2,
   },
   colors: [
-    theme.palette.primary.main,
-    ...colors(theme.palette.mode === 'dark' ? 400 : 600),
+    '#29CCB1',
+    ...colors(theme.palette.mode === 'dark' ? 400 : 600).slice(1),
   ],
   states: {
     hover: {
@@ -212,10 +212,7 @@ export const areaChartOptions = (
     },
   },
   grid: {
-    borderColor:
-      theme.palette.mode === 'dark'
-        ? 'rgba(255, 255, 255, .1)'
-        : 'rgba(0, 0, 0, .1)',
+    borderColor: theme.palette.mode === 'dark' ? '#27272A' : '#E4E4E7',
     strokeDashArray: 3,
   },
   legend: {
@@ -227,18 +224,85 @@ export const areaChartOptions = (
   },
   tooltip: {
     theme: theme.palette.mode,
+    cssClass: 'ravin-chart-tooltip',
+    marker: {
+      show: false,
+    },
+    onDatasetHover: {
+      highlightDataSeries: true,
+    },
+    custom: ({ series, seriesIndex, dataPointIndex, w }) => {
+      const data = w.config.series;
+      const isDark = theme.palette.mode === 'dark';
+      const bg = isDark ? 'rgba(15, 15, 15, 0.82)' : 'rgba(255, 255, 255, 0.82)';
+      const border = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+      const titleBg = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)';
+      const titleBorder = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)';
+      const textColor = isDark ? '#FAFAFA' : '#09090B';
+      const mutedColor = isDark ? '#A1A1AA' : '#71717A';
+      const shadow = isDark ? '0 8px 24px rgba(0,0,0,0.5)' : '0 8px 24px rgba(0,0,0,0.12)';
+
+      // Get x value from categories or time series
+      const xValue = w.globals.categoryLabels?.[dataPointIndex]
+        ?? w.globals.labels?.[dataPointIndex]
+        ?? '';
+      const formattedX = xFormatter ? xFormatter(xValue) : xValue;
+
+      // Build series rows
+      const rows = data.map((s, i) => {
+        const val = s.data?.[dataPointIndex]?.y ?? s.data?.[dataPointIndex] ?? 0;
+        const formattedVal = yFormatter ? yFormatter(val) : val;
+        const seriesColor = w.globals.colors?.[i] ?? '#29CCB1';
+        const isHovered = i === seriesIndex;
+        const opacity = isHovered ? 1 : 0.5;
+        const weight = isHovered ? 600 : 400;
+
+        return `
+          <div style="display:flex;align-items:center;gap:8px;padding:3px 0;opacity:${opacity};transition:opacity 150ms ease;">
+            <span style="width:8px;height:8px;border-radius:50%;background:${seriesColor};flex-shrink:0;"></span>
+            <span style="font-family:'Peyda',sans-serif;font-size:12px;color:${mutedColor};flex:1;">${s.name ?? ''}</span>
+            <span style="font-family:'Peyda',sans-serif;font-size:13px;font-weight:${weight};color:${textColor};font-variant-numeric:tabular-nums;">${formattedVal}</span>
+          </div>`;
+      }).join('');
+
+      return `
+        <div style="
+          background:${bg};
+          backdrop-filter:blur(14px) saturate(160%);
+          -webkit-backdrop-filter:blur(14px) saturate(160%);
+          border:1px solid ${border};
+          border-radius:8px;
+          box-shadow:${shadow};
+          padding:0;
+          min-width:160px;
+          overflow:hidden;
+          font-family:'Peyda',sans-serif;
+        ">
+          ${formattedX ? `
+          <div style="
+            background:${titleBg};
+            border-bottom:1px solid ${titleBorder};
+            padding:6px 12px 5px;
+            font-family:'Peyda',sans-serif;
+            font-size:11px;
+            font-weight:500;
+            color:${mutedColor};
+            letter-spacing:0.02em;
+          ">${formattedX}</div>` : ''}
+          <div style="padding:6px 12px;">
+            ${rows}
+          </div>
+        </div>`;
+    },
   },
   fill: {
     type: 'gradient',
     gradient: {
       shade: theme.palette.mode,
       shadeIntensity: 1,
-      opacityFrom: 0.7,
-      opacityTo: 0.1,
-      gradientToColors: [
-        theme.palette.primary.main,
-        theme.palette.primary.main,
-      ],
+      opacityFrom: 0.4,
+      opacityTo: 0.05,
+      gradientToColors: ['#29CCB1', '#29CCB1'],
     },
   },
   xaxis: {
@@ -260,12 +324,20 @@ export const areaChartOptions = (
     labels: {
       formatter: (value) => (yFormatter ? yFormatter(value) : value),
       style: {
-        fontSize: '14px',
+        fontSize: '12px',
         fontFamily: '"Peyda", sans-serif',
+        colors: ['#29CCB1'],
       },
     },
     axisBorder: {
       show: false,
+    },
+  },
+  markers: {
+    size: 0,
+    hover: {
+      size: 5,
+      sizeOffset: 3,
     },
   },
 });

@@ -305,6 +305,13 @@ input[type="file"] {
   border-color: var(--ravin-border-strong);
 }
 
+.apexcharts-tooltip.ravin-chart-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
 .ravin-blur-footer {
   position: absolute;
   inset-inline: 0;

@@ -232,7 +232,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
         backgroundColor: 'transparent',
         boxShadow: 'none',
         border: 'none',
-        padding: '8px 4px 4px 4px',
+        padding: '8px 8px 4px 4px',
         transition: 'margin-left 250ms cubic-bezier(0.25, 1, 0.5, 1), width 250ms cubic-bezier(0.25, 1, 0.5, 1)',
       }}
     >
@@ -411,7 +411,7 @@ const TopBar: FunctionComponent<Omit<TopBarProps, 'queryRef'>> = () => {
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
                 border: 'none',
-                padding: '8px 4px 4px 4px',
+                padding: '8px 8px 4px 4px',
               }}
             />
           )}
