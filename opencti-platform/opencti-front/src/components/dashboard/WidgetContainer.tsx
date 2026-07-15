@@ -63,7 +63,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
     <div className={className} style={{ height: height || '100%' }}>
       {variant !== 'inLine' && variant !== 'inEntity'
         ? (
-            <ShadcnCard className={`ravin-card-hover flex h-full flex-col overflow-hidden ${kpi ? 'min-h-[120px] border border-border bg-elevated p-4' : ''}`}>
+            <ShadcnCard className={`flex h-full flex-col overflow-hidden ${kpi ? 'ravin-card-hover min-h-[120px] border border-border bg-elevated p-4' : ''}`}>
               {!kpi && (title || action) && (
                 <div className="flex flex-row items-center justify-between px-4 pt-2.5 pb-1.5 border-b border-border">
                   <CardTitle className="font-medium text-text-muted">
