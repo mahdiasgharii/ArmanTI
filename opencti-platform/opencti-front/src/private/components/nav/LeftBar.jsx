@@ -492,6 +492,7 @@ const LeftBarComponent = ({ queryRef }) => {
       <div
         ref={ref}
         aria-label="Main navigation"
+        className={theme.palette.mode === 'dark' ? 'hide-scrollbar' : ''}
         style={{
           overflow: 'auto',
           overflowX: 'hidden',

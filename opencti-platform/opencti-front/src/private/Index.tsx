@@ -120,7 +120,7 @@ const Index = ({ settings }: IndexProps) => {
         <Message />
         <NewsFeedToastManager />
         <Stack component="main" sx={mainSx}>
-          <Box sx={boxSx}>
+          <Box sx={boxSx} className={theme.palette.mode === 'dark' ? 'hide-scrollbar' : ''}>
             <Suspense fallback={<Loader />}>
               <Routes>
                 <Route
