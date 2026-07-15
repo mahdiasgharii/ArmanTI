@@ -1,14 +1,15 @@
 import { ReactNode } from 'react';
 import { useFormatter } from '../i18n';
 import NumberDifference from '../NumberDifference';
-import { Bug, FileText, Flag, Radar, ShieldAlert } from 'lucide-react';
+import { Bug, FileText, Flag, Radar, ShieldAlert, Target } from 'lucide-react';
 
 const entityTypeIconMap: Record<string, ReactNode> = {
-  'Intrusion-Set': <Radar size={20} />,
-  'Malware': <Bug size={20} />,
-  'Report': <FileText size={20} />,
-  'Indicator': <Flag size={20} />,
-  'Threat-Actor': <ShieldAlert size={20} />,
+  'Intrusion-Set': <Radar size={18} />,
+  'Malware': <Bug size={18} />,
+  'Report': <FileText size={18} />,
+  'Indicator': <Flag size={18} />,
+  'Threat-Actor': <ShieldAlert size={18} />,
+  'Campaign': <Target size={18} />,
 };
 
 export interface WidgetNumberProps {
@@ -37,7 +38,7 @@ const WidgetNumber = ({
       <div className="flex flex-row items-center justify-between">
         <div className="flex items-center gap-1.5">
           {entityType && (entityTypeIconMap[entityType] ?? null) && (
-            <span className="text-text-light">
+            <span className="text-primary">
               {entityTypeIconMap[entityType]}
             </span>
           )}

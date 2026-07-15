@@ -411,12 +411,18 @@ const SearchInput = (props) => {
     lineHeight: 1,
     borderRadius: 1,
     border: `1px solid ${theme.palette.divider}`,
+    color: 'var(--ravin-text-muted)',
+    '&:hover': {
+      color: 'var(--ravin-text)',
+      backgroundColor: 'var(--ravin-surface-2)',
+      borderColor: 'var(--ravin-border-strong)',
+    },
     '&.Mui-selected': {
-      backgroundColor: theme.palette.action.selected,
-      color: theme.palette.text.primary,
-      borderColor: theme.palette.divider,
+      backgroundColor: 'var(--ravin-surface-2)',
+      color: 'var(--ravin-text)',
+      borderColor: 'var(--ravin-border-strong)',
       '&:hover': {
-        backgroundColor: theme.palette.action.selected,
+        backgroundColor: 'var(--ravin-surface-2)',
       },
     },
   };
@@ -482,7 +488,7 @@ const SearchInput = (props) => {
                 <Search
                   size={16}
                   style={{
-                    color: isNLQActivated ? theme.palette.ai.main : 'inherit',
+                    color: isNLQActivated ? theme.palette.ai.main : 'var(--ravin-text-muted)',
                     marginRight: 2,
                   }}
                 />

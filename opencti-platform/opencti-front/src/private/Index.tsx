@@ -88,14 +88,16 @@ const Index = ({ settings }: IndexProps) => {
   };
 
   const boxSx: SxProps = {
-    px: 0,
+    px: 0.5,
+    py: 1,
     flex: 1,
     overflowY: 'auto',
     minHeight: 0,
-    borderRadius: '12px',
+    borderRadius: '4px',
     border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
     position: 'relative',
-    backgroundColor: '#0a0a0a',
+    backgroundColor: 'var(--ravin-bg)',
+    transition: 'border-radius 250ms cubic-bezier(0.25, 1, 0.5, 1)',
   };
 
   return (

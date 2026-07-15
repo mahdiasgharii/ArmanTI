@@ -159,9 +159,7 @@ const StixCoreObjectsNumber = ({
       showPreviewTag={isPreviewMode}
       kpi
     >
-      <div style={{ height: '100%' }}>
-        {renderContent()}
-      </div>
+      {renderContent()}
     </WidgetContainer>
   );
 };

@@ -1,10 +1,8 @@
 import { Radar as RadarOutlined } from 'lucide-react';
 import { Box, Tooltip } from '@mui/material';
-import { useTheme } from '@mui/styles';
 import IconButton from '@common/button/IconButton';
 import { CGUStatus } from '@components/settings/Experience';
 import React from 'react';
-import type { Theme } from '../../../components/Theme';
 import { useFormatter } from '../../../components/i18n';
 import useAuth from '../../../utils/hooks/useAuth';
 import { useChatbot } from './ChatbotContext';
@@ -39,7 +37,6 @@ const toSafeHttpUrl = (rawUrl: string | null): string | null => {
  */
 const CtemCommandCenterButton = () => {
   const { t_i18n } = useFormatter();
-  const theme = useTheme<Theme>();
   const { settings: { filigran_chatbot_ai_cgu_status } } = useAuth();
   const { xtmOneConfigured, xtmOneUrl } = useChatbot();
 
@@ -67,8 +64,15 @@ const CtemCommandCenterButton = () => {
         size="default"
         onClick={() => window.open(safeXtmOneUrl, '_blank', 'noopener,noreferrer')}
         aria-label={t_i18n('CTEM Command Center')}
+        sx={{
+          color: 'var(--ravin-primary)',
+          '&:hover': {
+            color: 'var(--ravin-primary)',
+            backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 15%, transparent)',
+          },
+        }}
       >
-        <RadarOutlined size={20} style={{ color: theme.palette.ai.main }} />
+        <RadarOutlined size={20} />
       </IconButton>
     </Tooltip>
   );

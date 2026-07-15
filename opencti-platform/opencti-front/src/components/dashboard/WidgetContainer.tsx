@@ -24,6 +24,7 @@ interface WidgetContainerProps {
   showPreviewTag?: boolean;
   warning?: string;
   kpi?: boolean;
+  className?: string;
 }
 
 const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
@@ -37,6 +38,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
   showPreviewTag,
   warning,
   kpi,
+  className,
 }) => {
   const theme = useTheme<Theme>();
   const { t_i18n } = useFormatter();
@@ -58,10 +60,10 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
     : title;
   const contentPaddingClass = padding === 'none' ? '' : padding === 'small' ? 'p-2' : padding === 'horizontal' ? 'px-4' : padding === 'medium' ? 'px-4 py-3' : 'p-4';
   return (
-    <div style={{ height: height || '100%' }}>
+    <div className={className} style={{ height: height || '100%' }}>
       {variant !== 'inLine' && variant !== 'inEntity'
         ? (
-            <ShadcnCard className={`ravin-card-hover flex h-full flex-col overflow-hidden ${kpi ? 'border-none p-4' : ''}`}>
+            <ShadcnCard className={`ravin-card-hover flex h-full flex-col overflow-hidden ${kpi ? 'min-h-[120px] border border-border bg-elevated p-4' : ''}`}>
               {!kpi && (title || action) && (
                 <div className="flex flex-row items-center justify-between px-4 pt-2.5 pb-1.5 border-b border-border">
                   <CardTitle className="font-medium text-text-muted">

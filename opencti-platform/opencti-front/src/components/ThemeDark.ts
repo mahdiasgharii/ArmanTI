@@ -421,7 +421,7 @@ const ThemeDark = (
           },
           '& .MuiToggleButton-root': {
             border: '1px solid #27272A',
-            color: primary,
+            color: '#A1A1AA',
 
             '&:focus-visible': {
               outline: 'none',
@@ -429,11 +429,13 @@ const ThemeDark = (
             },
 
             '&.Mui-selected': {
-              backgroundColor: hexToRGB(primary || THEME_DARK_DEFAULT_PRIMARY, 0.25),
+              backgroundColor: '#27272A',
+              color: '#FAFAFA',
             },
 
             '&:hover:not(.Mui-selected)': {
-              backgroundColor: hexToRGB(primary || THEME_DARK_DEFAULT_PRIMARY, 0.15),
+              backgroundColor: '#27272A',
+              color: '#FAFAFA',
             },
           },
         },

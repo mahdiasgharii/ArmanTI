@@ -1,4 +1,3 @@
-import { assoc, head, last, map, pluck } from 'ramda';
 import React, { Suspense, useMemo } from 'react';
 import { graphql, useFragment, usePreloadedQuery } from 'react-relay';
 import { PLATFORM_DASHBOARD } from './HomeDashboardSettings';
@@ -12,10 +11,8 @@ import Loader, { LoaderVariant } from '../../components/Loader';
 import useAuth, { UserContext } from '../../utils/hooks/useAuth';
 import { EXPLORE, KNOWLEDGE } from '../../utils/hooks/useGranted';
 import { usePaginationLocalStorage } from '../../utils/hooks/useLocalStorage';
-import { computeLevel } from '../../utils/Number';
 import Security from '../../utils/Security';
 import { lastDayOfThePreviousMonth, monthsAgo, yearsAgo } from '../../utils/Time';
-import LocationMiniMapTargets from './common/location/LocationMiniMapTargets';
 import StixRelationshipsHorizontalBars from './common/stix_relationships/StixRelationshipsHorizontalBars';
 import CustomDashboard from './workspaces/dashboards/CustomDashboard';
 import useQueryLoading from '../../utils/hooks/useQueryLoading';
@@ -26,116 +23,6 @@ import MarkdownDisplay from '../../components/markdownDisplay/MarkdownDisplay';
 // endregion
 
 // region inner components
-
-// TargetedCountries
-const dashboardStixCoreRelationshipsDistributionQuery = graphql`
-  query HomeDashboardStixCoreRelationshipsDistributionQuery(
-    $field: String!
-    $operation: StatsOperation!
-    $relationship_type: [String]
-    $isTo: Boolean
-    $toRole: String
-    $toTypes: [String]
-    $startDate: DateTime
-    $endDate: DateTime
-    $dateAttribute: String
-    $limit: Int
-  ) {
-    stixCoreRelationshipsDistribution(
-      field: $field
-      operation: $operation
-      relationship_type: $relationship_type
-      isTo: $isTo
-      toRole: $toRole
-      toTypes: $toTypes
-      startDate: $startDate
-      endDate: $endDate
-      dateAttribute: $dateAttribute
-      limit: $limit
-    ) {
-      label
-      value
-      entity {
-        ... on BasicObject {
-          entity_type
-        }
-        ... on BasicRelationship {
-          entity_type
-        }
-        ... on StixObject {
-          representative {
-            main
-          }
-        }
-        ... on StixRelationship {
-          representative {
-            main
-          }
-        }
-        ... on Country {
-          # nullable fields, so it will work even if the Country is Restricted
-          x_opencti_aliases
-          latitude
-          longitude
-        }
-      }
-    }
-  }
-`;
-
-const TargetedCountriesComponent = ({ queryRef }) => {
-  const { t_i18n } = useFormatter();
-
-  const data = usePreloadedQuery(
-    dashboardStixCoreRelationshipsDistributionQuery,
-    queryRef,
-  );
-  const values = pluck('value', data.stixCoreRelationshipsDistribution);
-  const countries = map(
-    (x) => assoc(
-      'level',
-      computeLevel(x.value, last(values), head(values) + 1),
-      x.entity,
-    ),
-    data.stixCoreRelationshipsDistribution,
-  );
-  return (
-    <LocationMiniMapTargets
-      title={t_i18n('Targeted countries (Last 3 months)')}
-      center={[48.8566969, 2.3514616]}
-      countries={countries}
-      zoom={2}
-    />
-  );
-};
-
-const TargetedCountries = ({ timeField }) => {
-  const queryOptions = {
-    field: 'internal_id',
-    operation: 'count',
-    relationship_type: 'targets',
-    isTo: true,
-    toRole: 'targets_to',
-    toTypes: ['Country'],
-    startDate: monthsAgo(3),
-    dateAttribute: timeField === 'functional' ? 'start_time' : 'created_at',
-    limit: 100,
-  };
-  const queryRef = useQueryLoading(
-    dashboardStixCoreRelationshipsDistributionQuery,
-    queryOptions,
-  );
-  return (
-    <>
-      {queryRef && (
-        <React.Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>
-          <TargetedCountriesComponent queryRef={queryRef} />
-        </React.Suspense>
-      )}
-    </>
-  );
-};
-// endregion
 
 const DefaultDashboard = ({ timeField }) => {
   const { t_i18n } = useFormatter();
@@ -158,7 +45,6 @@ const DefaultDashboard = ({ timeField }) => {
 
       <div className="flex flex-1 flex-col gap-4 p-4 md:p-6">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
-          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Intrusion-Set"
               config={config}
@@ -179,8 +65,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
-          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Malware"
               config={config}
@@ -201,8 +85,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
-          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Report"
               config={config}
@@ -223,8 +105,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
-          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Indicator"
               config={config}
@@ -245,8 +125,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'created' : 'created_at',
               }]}
             />
-          </div>
-          <div className="min-h-48 rounded-lg border border-border bg-elevated p-4">
             <StixCoreObjectsNumber
               entityType="Campaign"
               config={config}
@@ -267,21 +145,10 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
 
         </div>
 
-        <div className="flex items-center gap-3 border-t border-border pt-6 mt-2">
-          <h2 className="font-display text-base lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Overview')}
-          </h2>
-          <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-            {t_i18n('Last 12 months')}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="col-span-2 min-h-[420px] rounded-lg border border-border bg-elevated p-4 lg:col-span-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
             <StixRelationshipsMultiAreaChart
               height={380}
               config={{
@@ -308,21 +175,7 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
 
-        </div>
-
-        <div className="flex items-center gap-3 border-t border-border pt-6 mt-2">
-          <h2 className="font-display text-base lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Threats')}
-          </h2>
-          <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-            {t_i18n('Last 3 months')}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="col-span-2 min-h-[360px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixRelationshipsHorizontalBars
               height={320}
               config={{
@@ -353,8 +206,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
-          <div className="col-span-2 min-h-[360px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixRelationshipsHorizontalBars
               height={320}
               config={{
@@ -385,21 +236,7 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
 
-        </div>
-
-        <div className="flex items-center gap-3 border-t border-border pt-6 mt-2">
-          <h2 className="font-display text-base lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Arsenal')}
-          </h2>
-          <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-            {t_i18n('Last 3 months')}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="col-span-2 min-h-[400px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixRelationshipsPolarArea
               height={360}
               config={{
@@ -429,8 +266,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
-          <div className="col-span-2 min-h-[400px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixRelationshipsDistributionList
               overflow="hidden"
               parameters={{
@@ -462,52 +297,13 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
 
-        </div>
-
-        <div className="flex items-center gap-3 border-t border-border pt-6 mt-2">
-          <h2 className="font-display text-base lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Geography')}
-          </h2>
-          <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-            {t_i18n('Last 3 months')}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="col-span-2 min-h-[400px] rounded-lg border border-border bg-elevated p-4 lg:col-span-4">
-            <Suspense
-              fallback={(
-                <LocationMiniMapTargets
-                  title={t_i18n('Targeted countries (Last 3 months)')}
-                  center={[48.8566969, 2.3514616]}
-                  zoom={2}
-                />
-              )}
-            >
-              <TargetedCountries timeField={timeField} />
-            </Suspense>
-          </div>
-
-        </div>
-
-        <div className="flex items-center gap-3 border-t border-border pt-6 mt-2">
-          <h2 className="font-display text-base lowercase first-letter:uppercase text-text-base">
-            {t_i18n('Reports')}
-          </h2>
-          <span className="font-body text-xs text-text-light lowercase first-letter:uppercase">
-            {t_i18n('Latest')}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="col-span-2 min-h-[440px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixCoreObjectsList
               title={t_i18n('Latest reports')}
               config={config}
               height={400}
               widgetId="default_latest_reports_widget"
+              className="lg:col-span-3"
               dataSelection={[{
                 filters: {
                   mode: 'and',
@@ -532,8 +328,6 @@ const DefaultDashboard = ({ timeField }) => {
                 ],
               }]}
             />
-          </div>
-          <div className="col-span-2 min-h-[440px] rounded-lg border border-border bg-elevated p-4 lg:col-span-2">
             <StixRelationshipsHorizontalBars
               height={400}
               config={{
@@ -561,7 +355,6 @@ const DefaultDashboard = ({ timeField }) => {
                 date_attribute: timeField === 'functional' ? 'start_time' : 'created_at',
               }]}
             />
-          </div>
         </div>
       </div>
 

@@ -460,6 +460,7 @@ interface StixCoreObjectsListProps {
   host?: WidgetHost;
   config: DashboardConfig;
   refreshRate?: number | null;
+  className?: string;
 }
 
 const DATA_SELECTION_TYPES = ['Stix-Core-Object'];
@@ -499,6 +500,7 @@ const StixCoreObjectsList = ({
   config,
   refreshRate = null,
   host,
+  className,
 }: StixCoreObjectsListProps) => {
   const { t_i18n } = useFormatter();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -539,6 +541,7 @@ const StixCoreObjectsList = ({
       variant={variant}
       action={popover}
       showPreviewTag={isPreviewMode}
+      className={className}
     >
       <div ref={rootRef} style={{ height: '100%' }}>
         {renderContent()}

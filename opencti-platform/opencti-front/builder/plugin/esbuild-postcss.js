@@ -34,16 +34,13 @@ const PostcssPlugin = {
       // Only the entry stylesheet uses @tailwind. Defer library CSS (return
       // undefined) to esbuild's native CSS loader, which also resolves @import.
       if (!css.includes("@tailwind")) {
-        console.log(`[postcss-tailwind] Skipping (no @tailwind): ${args.path}`);
         return undefined;
       }
-      console.log(`[postcss-tailwind] Processing: ${args.path}`);
       const result = await postcss([
         stripBodylessLayers,
         tw,
         ap,
       ]).process(css, { from: args.path });
-      console.log(`[postcss-tailwind] Output length: ${result.css.length}, has grid-cols-2: ${result.css.includes('grid-cols-2')}, has bg-canvas: ${result.css.includes('bg-canvas')}`);
       return {
         contents: result.css,
         loader: "css",

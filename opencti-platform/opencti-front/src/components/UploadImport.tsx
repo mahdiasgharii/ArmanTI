@@ -13,6 +13,7 @@ interface UploadImportProps {
   fontSize?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'contained' | 'outlined' | 'icon';
   style?: React.CSSProperties;
+  sx?: React.CSSProperties;
   onSuccess?: () => void;
   entityId?: string;
 }
@@ -21,6 +22,8 @@ const UploadImport = ({
   size = 'default',
   variant = 'icon',
   fontSize = 'medium',
+  style,
+  sx,
   onSuccess,
   entityId,
 }: UploadImportProps) => {
@@ -50,6 +53,8 @@ const UploadImport = ({
             size={size}
             aria-haspopup="true"
             onClick={() => setOpenImportFilesDialog(true)}
+            style={style}
+            sx={sx}
           >
             <FileUploadOutlined size={fontSize === 'small' ? 16 : fontSize === 'large' ? 24 : 20} />
           </IconButton>

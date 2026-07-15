@@ -36,6 +36,18 @@ import { TopBarNewsFeedNumberSubscription$data } from './__generated__/TopBarNew
 import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
 import { useAINLQ } from '../common/ai/AINLQ';
 
+const headerIconSx = {
+  color: 'var(--ravin-primary)',
+  '&:hover': {
+    color: 'var(--ravin-primary)',
+    backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 15%, transparent)',
+  },
+  '&.Mui-selected': {
+    color: 'var(--ravin-primary)',
+    backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 15%, transparent)',
+  },
+};
+
 const topBarNotificationNumberSubscription = graphql`
   subscription TopBarNotificationNumberSubscription {
     notificationsNumber {
@@ -234,7 +246,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           paddingRight: theme.spacing(1.5),
           display: 'flex',
           justifyContent: 'space-between',
-          borderRadius: '12px',
+          borderRadius: '4px',
           backgroundColor: 'var(--ravin-bg)',
           border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
           overflow: 'hidden',
@@ -257,6 +269,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                   aria-label={t_i18n('Open menu')}
                   size="default"
                   onClick={() => MESSAGING$.mobileNav.next(true)}
+                  sx={headerIconSx}
                 >
                   <MenuIcon size={20} />
                 </IconButton>
@@ -284,6 +297,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                     <UploadImport
                       variant="icon"
                       size="default"
+                      sx={headerIconSx}
                     />
                   </Security>
                   <Tooltip title={t_i18n('Triggers')}>
@@ -293,6 +307,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                       component={Link}
                       to="/dashboard/profile/triggers"
                       selected={location.pathname === '/dashboard/profile/triggers'}
+                      sx={headerIconSx}
                     >
                       <AlarmOnOutlined size={20} />
                     </IconButton>
@@ -304,6 +319,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
                       component={Link}
                       to="/dashboard/profile/notifications/alerts"
                       selected={location.pathname.startsWith('/dashboard/profile/notifications')}
+                      sx={headerIconSx}
                     >
                       <Badge
                         style={{ color: 'var(--mui-palette-secondary-main)' }}
@@ -325,6 +341,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
               id="profile-menu-button"
               onClick={handleOpenMenu}
               selected={location.pathname === '/dashboard/profile/me'}
+              sx={headerIconSx}
             >
               <AccountCircleOutlined size={20} />
             </IconButton>
