@@ -15,7 +15,7 @@ Transition.displayName = 'TransitionSlide';
 
 const styles = (theme) => ({
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
     position: 'fixed',
     transition: theme.transitions.create('width', {

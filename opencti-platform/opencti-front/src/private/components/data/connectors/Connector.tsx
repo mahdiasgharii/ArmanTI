@@ -670,7 +670,7 @@ const ConnectorComponent: FunctionComponent<ConnectorComponentProps> = ({ connec
 
   const connectorLogsContent = useMemo(() => {
     // calculating the full viewport height minus some space for elements above
-    const logsContainerHeight = 'calc(100vh - 280px)';
+    const logsContainerHeight = 'calc(100dvh - 280px)';
     return (
       <Box sx={{ marginBottom: '20px', height: logsContainerHeight }}>
         <pre

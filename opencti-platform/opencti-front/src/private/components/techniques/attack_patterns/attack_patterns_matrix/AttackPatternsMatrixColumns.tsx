@@ -249,7 +249,7 @@ const AttackPatternsMatrixColumns = ({
           <Box
             sx={{
               width: `calc(100vw - ${matrixWidth}px)`,
-              height: `calc(100vh - ${matrixHeight}px)`,
+              height: `calc(100dvh - ${matrixHeight}px)`,
               overflowX: 'auto',
               whiteSpace: 'nowrap',
               paddingBottom: 2,

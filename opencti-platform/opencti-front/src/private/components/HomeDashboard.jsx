@@ -1,10 +1,6 @@
-import React, { Suspense, useMemo } from 'react';
+import React, { Suspense, lazy, useMemo } from 'react';
 import { graphql, useFragment, usePreloadedQuery } from 'react-relay';
 import { PLATFORM_DASHBOARD } from './HomeDashboardSettings';
-import StixRelationshipsDistributionList from './common/stix_relationships/StixRelationshipsDistributionList';
-import StixRelationshipsPolarArea from './common/stix_relationships/StixRelationshipsPolarArea';
-import StixCoreObjectsList from './common/stix_core_objects/StixCoreObjectsList';
-import StixRelationshipsMultiAreaChart from './common/stix_relationships/StixRelationshipsMultiAreaChart';
 import StixCoreObjectsNumber from './common/stix_core_objects/StixCoreObjectsNumber';
 import { useFormatter } from '../../components/i18n';
 import Loader, { LoaderVariant } from '../../components/Loader';
@@ -13,11 +9,16 @@ import { EXPLORE, KNOWLEDGE } from '../../utils/hooks/useGranted';
 import { usePaginationLocalStorage } from '../../utils/hooks/useLocalStorage';
 import Security from '../../utils/Security';
 import { lastDayOfThePreviousMonth, monthsAgo, yearsAgo } from '../../utils/Time';
-import StixRelationshipsHorizontalBars from './common/stix_relationships/StixRelationshipsHorizontalBars';
-import CustomDashboard from './workspaces/dashboards/CustomDashboard';
-import useQueryLoading from '../../utils/hooks/useQueryLoading';
 import useConnectedDocumentModifier from '../../utils/hooks/useConnectedDocumentModifier';
+import useQueryLoading from '../../utils/hooks/useQueryLoading';
 import MarkdownDisplay from '../../components/markdownDisplay/MarkdownDisplay';
+
+const StixRelationshipsDistributionList = lazy(() => import('./common/stix_relationships/StixRelationshipsDistributionList'));
+const StixRelationshipsPolarArea = lazy(() => import('./common/stix_relationships/StixRelationshipsPolarArea'));
+const StixCoreObjectsList = lazy(() => import('./common/stix_core_objects/StixCoreObjectsList'));
+const StixRelationshipsMultiAreaChart = lazy(() => import('./common/stix_relationships/StixRelationshipsMultiAreaChart'));
+const StixRelationshipsHorizontalBars = lazy(() => import('./common/stix_relationships/StixRelationshipsHorizontalBars'));
+const CustomDashboard = lazy(() => import('./workspaces/dashboards/CustomDashboard'));
 
 // region styles
 // endregion
@@ -31,10 +32,10 @@ const DefaultDashboard = ({ timeField }) => {
   const noAccessMessage = settings.platform_no_access_message
     ?? t_i18n('You do not have any access to the knowledge of this OpenCTI instance.');
 
-  const config = {
+  const config = useMemo(() => ({
     startDate: null,
     endDate: null,
-  };
+  }), []);
 
   return (
     <Security
@@ -43,8 +44,8 @@ const DefaultDashboard = ({ timeField }) => {
     >
 
 
-      <div className="flex flex-1 flex-col gap-4 p-4 md:p-6">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+      <div className="flex flex-1 flex-col gap-4 p-4 px-2">
+        <div className="dashboard-grid grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             <StixCoreObjectsNumber
               entityType="Intrusion-Set"
               config={config}
@@ -148,7 +149,8 @@ const DefaultDashboard = ({ timeField }) => {
 
         </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>
+        <div className="dashboard-grid grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <StixRelationshipsMultiAreaChart
               height={380}
               config={{
@@ -303,7 +305,7 @@ const DefaultDashboard = ({ timeField }) => {
               config={config}
               height={400}
               widgetId="default_latest_reports_widget"
-              className="lg:col-span-3"
+              className="md:col-span-2 lg:col-span-3"
               dataSelection={[{
                 filters: {
                   mode: 'and',
@@ -356,6 +358,7 @@ const DefaultDashboard = ({ timeField }) => {
               }]}
             />
         </div>
+        </Suspense>
       </div>
 
     </Security>
@@ -385,7 +388,7 @@ const WorkspaceDashboard = ({ dashboard, timeField }) => {
   return (
     <>
       {queryRef && (
-        <React.Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>
+        <React.Suspense fallback={<div aria-busy="true"><Loader variant={LoaderVariant.inElement} /></div>}>
           <WorkspaceDashboardComponent
             timeField={timeField}
             queryRef={queryRef}
@@ -460,7 +463,8 @@ const HomeDashboardComponent = ({ queryRef }) => {
 
   return (
     <UserContext.Provider value={dashboardContextValue}>
-      <div data-testid="dashboard-page" className="flex flex-col h-full">
+      <div data-testid="dashboard-page" role="main" aria-label={t_i18n('Dashboard')} className="flex flex-col h-full">
+        <h1 className="sr-only">{t_i18n('Dashboard')}</h1>
         {defaultDashboard !== PLATFORM_DASHBOARD ? (
           <CustomHomeDashboard
             dashboard={defaultDashboard}
@@ -475,11 +479,12 @@ const HomeDashboardComponent = ({ queryRef }) => {
 };
 
 const HomeDashboard = () => {
+  const { t_i18n } = useFormatter();
   const queryRef = useQueryLoading(dashboardQuery, {});
   return (
     <>
       {queryRef && (
-        <React.Suspense fallback={<div />}>
+        <React.Suspense fallback={<div aria-busy="true" aria-label={t_i18n('Loading dashboard')} />}>
           <HomeDashboardComponent queryRef={queryRef} />
         </React.Suspense>
       )}

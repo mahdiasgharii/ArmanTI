@@ -145,7 +145,7 @@ const FintelDesignComponent: FunctionComponent<FintelDesignComponentProps> = ({
               />
             </Card>
           </Grid>
-          <Grid size={{ xs: 8 }} sx={{ height: 'calc(100vh - 250px)' }}>
+          <Grid size={{ xs: 8 }} sx={{ height: 'calc(100dvh - 250px)' }}>
             <Card title={t_i18n('Preview')}>
               {pdf && (
                 <PdfViewer pdf={pdf} />

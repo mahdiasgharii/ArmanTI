@@ -282,7 +282,7 @@ const StixCoreObjectOrStixCoreRelationshipContainersGraphComponent = ({
   const graphContainerStyle: CSSProperties = {
     margin: `-${theme.spacing(3)}`,
     marginTop: 0,
-    height: `calc(100vh - ${totalHeight}px)`,
+    height: `calc(100dvh - ${totalHeight}px)`,
   };
 
   return (

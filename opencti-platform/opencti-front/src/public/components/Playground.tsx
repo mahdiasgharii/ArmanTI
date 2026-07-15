@@ -87,7 +87,7 @@ const Playground: React.FC = () => {
   return (
     <Box
       sx={{
-        height: '100vh',
+        height: '100dvh',
         display: 'flex',
         flexDirection: 'column',
         pre: {

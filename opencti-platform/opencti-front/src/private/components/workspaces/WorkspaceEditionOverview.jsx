@@ -13,7 +13,7 @@ import MarkdownField from '../../../components/fields/markdownField/MarkdownFiel
 
 const styles = (theme) => ({
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
     position: 'fixed',
     overflow: 'hidden',

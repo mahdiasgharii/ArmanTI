@@ -19,7 +19,7 @@ import useTopBanner from '../../../../utils/hooks/useTopBanner';
 
 const StyledDrawer = styled(Drawer)(() => ({
   '& .MuiDrawer-paper': {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: 200,
     position: 'fixed',
     overflow: 'auto',

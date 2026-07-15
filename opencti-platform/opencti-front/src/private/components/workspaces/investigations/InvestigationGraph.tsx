@@ -456,7 +456,7 @@ const InvestigationGraphComponent = ({
   const totalHeight = bannerHeight + headerHeight + paddingHeight + titleHeight + toolbarHeight;
   const graphContainerStyle: CSSProperties = {
     margin: `0 -${theme.spacing(3)}`,
-    height: `calc(100vh - ${totalHeight}px)`,
+    height: `calc(100dvh - ${totalHeight}px)`,
   };
 
   const savePositions = (positions: OctiGraphPositions) => {

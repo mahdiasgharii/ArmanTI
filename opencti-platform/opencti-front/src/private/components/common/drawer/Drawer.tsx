@@ -230,7 +230,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
           paper: {
             ref,
             sx: {
-              minHeight: '100vh',
+              minHeight: '100dvh',
               width: getDrawerWidth(size),
               position: 'fixed',
               overflow: 'auto',

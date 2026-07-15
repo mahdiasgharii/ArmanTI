@@ -28,7 +28,7 @@ import { fieldSpacingContainerStyle } from '../../../../utils/field';
 
 const styles = (theme) => ({
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
 
     padding: 0,

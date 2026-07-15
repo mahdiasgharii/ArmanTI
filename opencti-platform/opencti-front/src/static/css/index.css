@@ -44,7 +44,7 @@ body[data-theme='dark'] {
   --ravin-bg: #0a0a0a;
   --ravin-surface: #0a0a0a;
   --ravin-elevated: #171717;
-  background-color: #171717;
+  background-color: var(--ravin-elevated);
   --ravin-surface-2: #27272A;
   --ravin-border: #27272A;
   --ravin-border-strong: #3F3F46;
@@ -58,6 +58,7 @@ body[data-theme='dark'] {
   --ravin-danger-light: #FF6B6B;
   --ravin-danger-dark: #881106;
   --ravin-success: #17AB1F;
+  --ravin-success-light: #4ADE80;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
   --ravin-text: #FAFAFA;
@@ -69,6 +70,7 @@ body[data-theme='light'] {
   --ravin-bg: #FFFFFF;
   --ravin-surface: #FFFFFF;
   --ravin-elevated: #FAFAFA;
+  background-color: #FAFAFA;
   --ravin-surface-2: #F4F4F5;
   --ravin-border: #E4E4E7;
   --ravin-border-strong: #D4D4D8;
@@ -82,6 +84,7 @@ body[data-theme='light'] {
   --ravin-danger-light: #FF6B6B;
   --ravin-danger-dark: #881106;
   --ravin-success: #17AB1F;
+  --ravin-success-light: #16A34A;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
   --ravin-text: #09090B;
@@ -107,6 +110,7 @@ body[data-theme='light'] {
   --ravin-danger-light: #FF6B6B;
   --ravin-danger-dark: #881106;
   --ravin-success: #17AB1F;
+  --ravin-success-light: #4ADE80;
   --ravin-success-dark: #094E0B;
   --ravin-warning: #E6700F;
   --ravin-text: #FAFAFA;
@@ -120,7 +124,9 @@ body[data-theme='light'] {
 
 #root{
   max-height: 100vh;
+  max-height: 100dvh;
   height: 100vh;
+  height: 100dvh;
 }
 
 :focus {
@@ -295,6 +301,10 @@ input[type="file"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+.dashboard-grid > * {
+  min-width: 0;
 }
 
 .ravin-card-hover {

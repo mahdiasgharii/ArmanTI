@@ -38,7 +38,7 @@ const WidgetNumber = ({
       <div className="flex flex-row items-center justify-between">
         <div className="flex items-center gap-1.5">
           {entityType && (entityTypeIconMap[entityType] ?? null) && (
-            <span className="text-primary">
+            <span className="text-primary" aria-hidden="true">
               {entityTypeIconMap[entityType]}
             </span>
           )}

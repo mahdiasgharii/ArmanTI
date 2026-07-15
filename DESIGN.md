@@ -7,25 +7,32 @@ colors:
   electric-blue-dark: "#1A8A73"
   signal-red: "#F20F0F"
   signal-red-light: "#FF6B6B"
-  signal-red-dark: "#990000"
+  signal-red-dark: "#881106"
   violet-accent: "#860EFE"
-  violet-accent-light: "#B266FF"
-  violet-accent-dark: "#4D0099"
-  black-canvas: "#09090B"
-  dark-surface: "#09090B"
-  dark-elevated: "#18181B"
+  violet-accent-light: "#B88DFF"
+  violet-accent-dark: "#4A08A0"
+  black-canvas: "#0a0a0a"
+  dark-surface: "#0a0a0a"
+  dark-elevated: "#171717"
   dark-surface-2: "#27272A"
   dark-border: "#27272A"
   dark-border-strong: "#3F3F46"
+  dark-text-muted: "#A1A1AA"
+  dark-text-light: "#A1A1AA"
   light-canvas: "#FFFFFF"
   light-surface: "#FFFFFF"
+  light-elevated: "#FAFAFA"
+  light-surface-2: "#F4F4F5"
   light-text: "#09090B"
+  light-text-muted: "#71717A"
+  light-text-light: "#71717A"
   light-border: "#E4E4E7"
   light-border-strong: "#D4D4D8"
   white-text: "#FAFAFA"
-  error: "#F14337"
+  error: "#F20F0F"
   error-dark: "#881106"
   success: "#17AB1F"
+  success-light: "#4ADE80"
   success-dark: "#094E0B"
   warning: "#E6700F"
   severity-critical: "#EE3838"
@@ -163,7 +170,7 @@ components:
 
 ArmanCTI is a precision instrument panel for cyber threat intelligence. Every element is calibrated — dark surfaces with electric accents, where blue is the operational frequency, red is the threat indicator, and purple is the intelligence layer. The interface speaks with expert confidence: no hand-holding, no decorative softness, no ornamentation without purpose.
 
-The system is dark-first. The canvas (`#09090B`) is not a background — it is the instrument's housing. Surfaces layer upward through a tight grey scale (`#18181B` → `#27272A`), each step a deliberate elevation. Borders are thin and functional (`#27272A` → `#3F3F46`), never decorative. The Ravin Style palette — electric blue, signal red, violet accent — carries the brand through conviction, not coverage. Accents are used surgically: blue for action and focus, red for danger and alert, purple for AI and intelligence features.
+The system is dark-first. The canvas (`#0a0a0a`) is not a background — it is the instrument's housing. Surfaces layer upward through a tight grey scale (`#171717` → `#27272A`), each step a deliberate elevation. Borders are thin and functional (`#27272A` → `#3F3F46`), never decorative. The Ravin Style palette — electric blue, signal red, violet accent — carries the brand through conviction, not coverage. Accents are used surgically: blue for action and focus, red for danger and alert, purple for AI and intelligence features.
 
 This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d19` with cyan/teal accents). The departure must be unmistakable. It also rejects generic SaaS dashboards — bland blue/gray, cookie-cutter card grids, no personality. It rejects the AI-generated aesthetic — purple gradients everywhere, glassmorphism as default, emoji icons in rounded cards, "powered by AI" badges. ArmanCTI uses AI features (Ask Arman, Twitter Monitor) but they must feel like professional instruments, not novelty demos. ArmanCTI is not a template; it is an instrument.
 
@@ -187,15 +194,15 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 - **Electric Blue** (#29CCB1): The operational frequency. Used for primary actions, focus rings, links, active navigation states, and interactive element emphasis. This is the brand's signature color — confident, technical, never decorative. Light variant `#7FE0CC` for hover/focus glows; dark variant `#1A8A73` for pressed/active states.
 
 ### Secondary
-- **Signal Red** (#F20F0F): The threat indicator. Used for destructive actions, danger zones, severity-critical indicators, and error states. Never used for decoration or general emphasis. Light variant `#FF6B6B` for hover; dark variant `#990000` for pressed.
+- **Signal Red** (#F20F0F): The threat indicator. Used for destructive actions, danger zones, severity-critical indicators, and error states. Never used for decoration or general emphasis. Light variant `#FF6B6B` for hover; dark variant `#881106` for pressed.
 
 ### Tertiary
-- **Violet Accent** (#860EFE): The intelligence layer. Used for AI features ("Ask Arman"), intelligence analysis highlights, and gradient accents. Light variant `#B266FF` for hover; dark variant `#4D0099` for pressed. Appears in gradient borders (blue→purple for focus, purple→red for intelligence analysis).
+- **Violet Accent** (#860EFE): The intelligence layer. Used for AI features ("Ask Arman"), intelligence analysis highlights, and gradient accents. Light variant `#B88DFF` for hover; dark variant `#4A08A0` for pressed. Appears in gradient borders (blue→purple for focus, purple→red for intelligence analysis).
 
 ### Neutral (shadcn zinc dark)
-- **Canvas** (#09090B): The primary background — the instrument's housing. Pure, confident, not navy, not charcoal.
-- **Surface** (#09090B): Same as canvas. Cards sit on the page background — depth comes from borders, not a different fill.
-- **Elevated** (#18181B): Sidebar background, dialog backgrounds, popover backgrounds. One step up from canvas.
+- **Canvas** (#0a0a0a): The primary background — the instrument's housing. Pure, confident, not navy, not charcoal.
+- **Surface** (#0a0a0a): Same as canvas. Cards sit on the page background — depth comes from borders, not a different fill.
+- **Elevated** (#171717): Sidebar background, dialog backgrounds, popover backgrounds. One step up from canvas.
 - **Surface-2** (#27272A): Hover/active states for sidebar items, sub-areas within elevated surfaces.
 - **Border** (#27272A): Default borders and dividers. Functional, not decorative. Same value as surface-2.
 - **Border Strong** (#3F3F46): Emphasized borders, toggle groups, input outlines on focus.
@@ -249,7 +256,7 @@ The palette operates as a precision instrument: a black housing, a tight grey sc
 
 ## 4. Elevation
 
-The system uses a hybrid approach: tonal layering as the primary depth mechanism, with subtle ambient shadows reserved for floating elements (menus, dialogs, popovers, tooltips). Cards and surfaces are flat at rest — depth comes from the background scale (`#09090B` → `#18181B` → `#27272A`), not from shadows. In dark mode, the main content container has no border — depth comes from the tonal difference between the sidebar (`#18181B`) and the canvas (`#09090B`).
+The system uses a hybrid approach: tonal layering as the primary depth mechanism, with subtle ambient shadows reserved for floating elements (menus, dialogs, popovers, tooltips). Cards and surfaces are flat at rest — depth comes from the background scale (`#0a0a0a` → `#171717` → `#27272A`), not from shadows. In dark mode, the main content container has no border — depth comes from the tonal difference between the sidebar (`#171717`) and the canvas (`#0a0a0a`).
 
 ### Shadow Vocabulary
 - **Floating Shadow** (`rgba(200, 200, 200, 0.15)`): Applied to dialogs, menus, popovers. Subtle, ambient, never sharp. The shadow is functional — it tells the user "this is above the surface" — not decorative.
@@ -261,7 +268,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ### Named Rules
 **The Flat-By-Default Rule.** Surfaces are flat at rest. Shadows appear only on floating elements (menus, dialogs, popovers) and as response to state (hover, focus). Never apply shadows to cards, list items, or static surfaces to "elevate" them — use the tonal background scale instead.
 
-**The No-Card-Shadow Rule.** Cards and containers convey depth through borders, not shadows. Cards use the same background as the canvas (`#09090B` in dark, `#FFFFFF` in light) with a 1px border (`#27272A` in dark, `#E4E4E7` in light). No `box-shadow` on static cards.
+**The No-Card-Shadow Rule.** Cards and containers convey depth through borders, not shadows. Cards use the same background as the canvas (`#0a0a0a` in dark, `#FFFFFF` in light) with a 1px border (`#27272A` in dark, `#E4E4E7` in light). No `box-shadow` on static cards.
 
 **The Edge-Fade Blur Exception.** The main content container may use a layered `backdrop-filter` blur at its bottom edge as a scroll boundary cue. This is a functional signal, not decoration. It must not be applied to cards or panels.
 
@@ -274,7 +281,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Primary:** Solid Electric Blue (`#29CCB1`) background, white text. Hover → dark blue (`#1A8A73`). Focus → 2px blue glow ring. Disabled → grey background, muted text.
 - **Secondary:** Transparent background, blue text, 1px blue border. Hover → 15% blue tint background. Active → 25% blue tint.
 - **Tertiary:** Transparent background, blue text, no border. Hover → 15% blue tint. Active → 15% tint + focus ring.
-- **Destructive:** Solid error red (`#F14337`) background, white text. Hover → dark red (`#881106`).
+- **Destructive:** Solid error red (`#F20F0F`) background, white text. Hover → dark red (`#881106`).
 - **Gradient (Extra):** Transparent background with 2px gradient border (blue→purple or custom). Text uses gradient clip. Hover → gradient glow shadow. Reserved for premium/AI features.
 - **Sizes:** Default (36px height, 8px 16px padding, 14px font, 600 weight). Small (26px height, 4px 12px padding, 13px font, 600 weight).
 - **Transition:** `all 0.2s ease-in-out` for solid variants; `box-shadow 0.3s ease-out` for gradient variants.
@@ -285,7 +292,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 
 ### Cards / Containers
 - **Corner Style:** 8px radius for cards and widgets (`rounded-lg`); 12px for the main content container frame (`rounded-xl`)
-- **Background:** Same as canvas (`#09090B` dark / `#FFFFFF` light) — depth from borders, not fill
+- **Background:** Same as canvas (`#0a0a0a` dark / `#FFFFFF` light) — depth from borders, not fill
 - **Shadow Strategy:** None at rest (see Elevation: The No-Card-Shadow Rule). Subtle tonal hover shift on interactive cards.
 - **Border:** 1px `var(--ravin-border)` (`#27272A` dark / `#E4E4E7` light). The main content container has no border in dark mode, 1px border in light mode.
 - **Internal Padding:** 16px default (`spacing.md`)
@@ -294,13 +301,13 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ### Inputs / Fields
 - **Style:** Standard variant (underline) by default. Outlined variant uses elevated background (`var(--ravin-elevated)`) with transparent border. 4px radius.
 - **Focus:** Bottom border shifts to Electric Blue (`#29CCB1`). 2px solid blue underline.
-- **Error:** Bottom border shifts to Error Red (`#F14337`). 2px solid red underline.
+- **Error:** Bottom border shifts to Error Red (`#F20F0F`). 2px solid red underline.
 - **Disabled:** Grey background (`#363B46`), muted text.
 - **Placeholder:** Must maintain ≥4.5:1 contrast. Use `var(--ravin-text-muted)` (`#A1A1AA`) on dark surfaces, not pure grey.
 
 ### Navigation (LeftBar)
 - **Width:** 240px expanded, 56px collapsed. Smooth width transition.
-- **Background:** Elevated (`var(--ravin-elevated)`, `#18181B` dark / `#FAFAFA` light) — one step above canvas for inset shell feel. 1px right border (`var(--ravin-border)`).
+- **Background:** Elevated (`var(--ravin-elevated)`, `#171717` dark / `#FAFAFA` light) — one step above canvas for inset shell feel. 1px right border (`var(--ravin-border)`).
 - **Group labels:** Peyda 11px, 600 weight, `var(--ravin-text-muted)`, lowercase first-letter uppercase. Appear above each nav section (Overview, Knowledge, Data, Settings). Hidden when collapsed.
 - **Item height:** 40px. 4px border radius. No horizontal margin (flush to sidebar padding).
 - **Icons:** 18px. Tertiary color when inactive, light color when active.
@@ -325,7 +332,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Focus:** 2px light blue glow ring.
 
 ### Dialogs
-- **Background:** Elevated (`var(--ravin-elevated)`, `#18181B` dark / `#FAFAFA` light) — not canvas. One step above.
+- **Background:** Elevated (`var(--ravin-elevated)`, `#171717` dark / `#FAFAFA` light) — not canvas. One step above.
 - **Radius:** 4px
 - **Title:** h5 variant (Peyda, 16px, 700 weight, lowercase first-letter uppercase)
 - **Actions:** Right-aligned, gap 16px, no left margin. Buttons use `textTransform: none`.
@@ -341,8 +348,8 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** use the black canvas (`#09090B`) as the primary background. It is the instrument's housing.
-- **Do** layer surfaces through the tonal scale (`#09090B` → `#18181B` → `#27272A`) for depth, not shadows.
+- **Do** use the black canvas (`#0a0a0a`) as the primary background. It is the instrument's housing.
+- **Do** layer surfaces through the tonal scale (`#0a0a0a` → `#171717` → `#27272A`) for depth, not shadows.
 - **Do** use Electric Blue (`#29CCB1`) for primary actions, focus, and interactive emphasis.
 - **Do** use Signal Red (`#F20F0F`) exclusively for destructive actions, danger, and critical severity.
 - **Do** use Violet Accent (`#860EFE`) for AI features and intelligence analysis highlights.

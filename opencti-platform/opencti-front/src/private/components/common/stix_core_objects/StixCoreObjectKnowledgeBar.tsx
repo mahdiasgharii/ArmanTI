@@ -396,7 +396,7 @@ const StixCoreObjectKnowledgeBar = ({
       anchor="right"
       sx={{
         '& .MuiPaper-root': {
-          minHeight: '100vh',
+          minHeight: '100dvh',
           width: 200,
           position: 'fixed',
           overflow: 'auto',

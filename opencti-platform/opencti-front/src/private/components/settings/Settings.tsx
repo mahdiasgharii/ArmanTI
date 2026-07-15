@@ -314,6 +314,11 @@ const SettingsComponent = ({ queryRef }: SettingsComponentProps) => {
             if (isLtsPlatform && !data.settingsEdit?.fieldPatch?.platform_enterprise_edition.license_validated) {
               window.location.reload();
             }
+            // Theme changes affect the entire app shell (MUI theme + CSS variables).
+            // The root query is not refetched on mutation, so reload to apply the new theme.
+            if (name === 'platform_theme') {
+              window.location.reload();
+            }
           },
         });
       })

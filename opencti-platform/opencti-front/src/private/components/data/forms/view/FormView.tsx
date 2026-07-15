@@ -63,7 +63,7 @@ const useStyles = makeStyles<Theme>(() => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh',
+    height: '100dvh',
   },
   pollingLoader: {
     marginBottom: 20,

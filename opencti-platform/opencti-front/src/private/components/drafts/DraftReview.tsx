@@ -23,7 +23,7 @@ const DraftReview: FunctionComponent<DraftReviewProps> = ({ draftId }) => {
       sx={{
         display: 'flex',
         gap: 2,
-        height: 'calc(100vh - 250px)',
+        height: 'calc(100dvh - 250px)',
         minHeight: 400,
       }}
     >

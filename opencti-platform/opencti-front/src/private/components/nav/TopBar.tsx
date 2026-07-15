@@ -248,7 +248,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           justifyContent: 'space-between',
           borderRadius: '4px',
           backgroundColor: 'var(--ravin-bg)',
-          border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
+          border: 'none',
           overflow: 'hidden',
         }}
       >

@@ -26,7 +26,7 @@ const styles = (theme) => ({
     margin: 0,
   },
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
     position: 'fixed',
     overflow: 'auto',

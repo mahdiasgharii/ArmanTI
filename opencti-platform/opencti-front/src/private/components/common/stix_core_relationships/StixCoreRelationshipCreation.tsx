@@ -30,7 +30,7 @@ import useApiMutation from '../../../../utils/hooks/useApiMutation';
 
 const useStyles = makeStyles<Theme>((theme) => ({
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
     padding: 0,
   },

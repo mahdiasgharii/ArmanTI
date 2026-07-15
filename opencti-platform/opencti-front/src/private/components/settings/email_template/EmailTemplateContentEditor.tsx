@@ -36,7 +36,7 @@ const EmailTemplateContentEditor = ({
         <Field
           component={RichTextField}
           name="template_body"
-          style={{ height: 'calc(100vh - 280px)' }}
+          style={{ height: 'calc(100dvh - 280px)' }}
           fullWidth
           hasFullScreen={false}
           onChange={(_: string, val: string) => setEditorValue(val)}

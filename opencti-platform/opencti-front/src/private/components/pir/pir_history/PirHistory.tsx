@@ -200,7 +200,7 @@ const PirHistory = ({ data }: PirHistoryProps) => {
   };
 
   return queryRef && (
-    <div style={{ height: 'calc(100vh - 250px)' }} ref={(r) => setRef(r)}>
+    <div style={{ height: 'calc(100dvh - 250px)' }} ref={(r) => setRef(r)}>
       <DataTable
         rootRef={ref ?? undefined}
         removeSelectAll

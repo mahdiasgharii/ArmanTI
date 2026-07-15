@@ -108,7 +108,7 @@ const FintelTemplatePreview = ({
 
   return (
     <div style={{
-      height: 'calc(100vh - 280px)',
+      height: 'calc(100dvh - 280px)',
       display: 'flex',
       gap: theme.spacing(3),
     }}

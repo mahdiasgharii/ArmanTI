@@ -126,12 +126,12 @@ export const OPEN_BAR_WIDTH = 256;
 const useStyles = makeStyles((theme) => createStyles({
   drawerPaper: {
     width: SMALL_BAR_WIDTH + 4,
-    minHeight: '100vh',
+    minHeight: '100dvh',
     overflowX: 'hidden',
   },
   drawerPaperOpen: {
     width: OPEN_BAR_WIDTH + 4,
-    minHeight: '100vh',
+    minHeight: '100dvh',
     overflowX: 'hidden',
   },
   menuItemIcon: {
@@ -463,7 +463,7 @@ const LeftBarComponent = ({ queryRef }) => {
         width: drawerWidth,
         zIndex: isMobile ? 1200 : 999,
         top: 0,
-        height: '100vh',
+        height: '100dvh',
         overflow: 'hidden',
         transition: 'width 250ms cubic-bezier(0.25, 1, 0.5, 1)',
       }}
@@ -475,7 +475,7 @@ const LeftBarComponent = ({ queryRef }) => {
           height: '100%',
           borderRadius: '4px',
           backgroundColor: 'var(--ravin-bg)',
-          border: theme.palette.mode === 'light' ? '1px solid var(--ravin-border)' : 'none',
+          border: 'none',
           overflow: 'hidden',
           transition: 'border-radius 250ms cubic-bezier(0.25, 1, 0.5, 1)',
         }}

@@ -11,7 +11,7 @@ import Loader from '../../../../components/Loader';
 
 const styles = (theme) => ({
   drawerPaperInGraph: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '30%',
     position: 'fixed',
     overflow: 'auto',

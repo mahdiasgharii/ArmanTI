@@ -47,6 +47,7 @@ export default {
         },
         success: {
           DEFAULT: 'var(--ravin-success)',
+          light: 'var(--ravin-success-light)',
           dark: 'var(--ravin-success-dark)',
         },
         warning: {

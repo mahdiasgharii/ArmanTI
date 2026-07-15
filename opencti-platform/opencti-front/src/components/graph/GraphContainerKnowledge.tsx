@@ -497,7 +497,7 @@ const GraphContainerKnowledgeComponent = ({
   const toolbarHeight = 54;
   const totalHeight = bannerHeight + headerHeight + paddingHeight + breadcrumbHeight + titleHeight + tabsHeight + toolbarHeight;
   const graphContainerStyle: CSSProperties = {
-    height: `calc(100vh - ${totalHeight}px)`,
+    height: `calc(100dvh - ${totalHeight}px)`,
     position: 'relative',
   };
 

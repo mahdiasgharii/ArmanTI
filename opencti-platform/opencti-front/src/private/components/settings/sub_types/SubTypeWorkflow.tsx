@@ -154,7 +154,7 @@ const SubTypeWorkflow = () => {
   return (
     <Suspense fallback={<Loader />}>
       <ErrorBoundary>
-        <div style={{ width: '100%', height: 'calc(100vh - 250px)', marginBottom: '-50px' }}>
+        <div style={{ width: '100%', height: 'calc(100dvh - 250px)', marginBottom: '-50px' }}>
           <ReactFlowProvider>
             <WorkflowWithDependencies queryRef={workflowQueryRef} />
           </ReactFlowProvider>

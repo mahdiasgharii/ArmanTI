@@ -249,6 +249,13 @@ const ProfileOverviewComponent = (props) => {
         commitMutation({
           mutation: profileOverviewFieldPatch,
           variables: { input: { key: name, value } },
+          onCompleted: () => {
+            // Theme changes affect the entire app shell (MUI theme + CSS variables).
+            // The root query's me.theme is not refetched on mutation, so reload to apply.
+            if (name === 'theme') {
+              window.location.reload();
+            }
+          },
         });
       })
       .catch(() => false);

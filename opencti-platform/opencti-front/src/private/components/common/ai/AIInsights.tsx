@@ -39,7 +39,7 @@ import Drawer from '../drawer/Drawer';
 // Do not use it for new code.
 const useStyles = makeStyles<Theme, { bannerHeightNumber: number }>((theme) => createStyles({
   drawerPaper: {
-    minHeight: '100vh',
+    minHeight: '100dvh',
     width: '50%',
     position: 'fixed',
     overflow: 'auto',

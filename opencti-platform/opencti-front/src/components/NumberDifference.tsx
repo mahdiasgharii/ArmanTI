@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowUp, ArrowDown, ArrowRight } from 'lucide-react';
 import { useFormatter } from './i18n';
 interface ItemNumberDifferenceProps {
@@ -9,11 +8,11 @@ interface ItemNumberDifferenceProps {
 const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => {
   const { t_i18n } = useFormatter();
 
-  const color = value > 0
-    ? { color: 'var(--ravin-success)' }
+  const colorClass = value > 0
+    ? 'text-success-light'
     : value < 0
-      ? { color: 'var(--ravin-danger)' }
-      : { color: 'var(--ravin-text-muted)' };
+      ? 'text-danger-light'
+      : 'text-text-muted';
 
   let Icon = ArrowUp;
   if (value < 0) Icon = ArrowDown;
@@ -21,19 +20,12 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
 
   return (
     <div
-      className="text-xs"
-      style={{
-      ...color,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 3,
-      whiteSpace: 'nowrap',
-    }}
+      className={`flex items-center gap-0.5 whitespace-nowrap text-xs ${colorClass}`}
     >
-      <Icon size={13} />
-      <span style={{ fontVariantNumeric: 'tabular-nums' }}>{value}</span>
+      <Icon size={13} aria-hidden="true" />
+      <span className="tabular-nums">{value}</span>
       {description && (
-        <span style={{ color: 'var(--ravin-text-muted)' }}>
+        <span className="text-text-muted">
           ({t_i18n(description)})
         </span>
       )}
