@@ -61,7 +61,7 @@ const WidgetContainer: FunctionComponent<WidgetContainerProps> = ({
     : title;
   const contentPaddingClass = padding === 'none' ? '' : padding === 'small' ? 'p-2' : padding === 'horizontal' ? 'px-4' : padding === 'medium' ? 'px-4 py-3' : 'p-4';
   return (
-    <div className={className} style={{ height: height || '100%' }}>
+    <div className={className} style={{ height: '100%', minHeight: height }}>
       {variant !== 'inLine' && variant !== 'inEntity'
         ? (
             <ShadcnCard className={`flex h-full flex-col overflow-hidden ${kpi ? 'ravin-card-hover min-h-[120px] border border-border bg-canvas p-4' : ''}`}>

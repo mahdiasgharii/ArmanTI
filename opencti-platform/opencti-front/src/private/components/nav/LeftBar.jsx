@@ -473,7 +473,7 @@ const LeftBarComponent = ({ queryRef }) => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          borderRadius: '4px',
+          borderRadius: '0.625rem',
           backgroundColor: 'var(--ravin-bg)',
           border: 'none',
           overflow: 'hidden',

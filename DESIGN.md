@@ -92,6 +92,7 @@ rounded:
   none: "0px"
   sm: "4px"
   container: "8px"
+  shell: "0.625rem"
 spacing:
   xs: "4px"
   sm: "8px"
@@ -178,7 +179,7 @@ This system explicitly rejects the original OpenCTI aesthetic (dark navy `#070d1
 - Dark-first, black canvas with tight grey-scale tonal layering
 - Three accent colors with surgical application (blue = action, red = alert, purple = intelligence)
 - Peyda for all typography — clean, technical, no-nonsense
-- 4px border radius for components; 8px for cards; 12px for the main content container — sharp but with a subtle frame separation
+- 4px border radius for components (buttons, chips, inputs, nav items); 8px for cards and widgets; 0.625rem (10px) for shell containers (sidebar, header, page content) — sharp but with a subtle frame separation
 - Lowercase typography with first-letter uppercase as a signature voice
 - Gradient borders for premium/feature actions (blue→purple, purple→red)
 - Flat by default with subtle ambient shadows on elevated/floating elements only
@@ -291,7 +292,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **State:** Selected chips use accent color at 15-25% opacity background. Filter chips, status chips, and category chips follow the same pattern.
 
 ### Cards / Containers
-- **Corner Style:** 8px radius for cards and widgets (`rounded-lg`); 12px for the main content container frame (`rounded-xl`)
+- **Corner Style:** 8px radius for cards and widgets (`rounded-lg`); 0.625rem (10px) for shell containers — sidebar, header (TopBar), and page content frame (`rounded-shell`)
 - **Background:** Same as canvas (`#0a0a0a` dark / `#FFFFFF` light) — depth from borders, not fill
 - **Shadow Strategy:** None at rest (see Elevation: The No-Card-Shadow Rule). Subtle tonal hover shift on interactive cards.
 - **Border:** 1px `var(--ravin-border)` (`#27272A` dark / `#E4E4E7` light). The main content container has no border in dark mode, 1px border in light mode.
@@ -323,7 +324,11 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Container:** `rounded-lg border border-border bg-canvas p-4` — 8px radius, 1px border, same background as canvas, 16px padding.
 - **Grid:** `grid-cols-2 gap-4 p-px lg:grid-cols-4` — 2 columns on small screens, 4 on large. 16px gap. `p-px` prevents border clipping.
 - **No shadows:** Depth comes from borders and tonal layering, not box-shadow.
-- **Main content frame:** 12px border radius (rounded-xl), no border in dark mode (depth from tonal difference), 1px border in light mode. Background same as canvas (`var(--ravin-bg)`).
+- **Main content frame:** 0.625rem (10px) border radius (`rounded-shell`), no border in dark mode (depth from tonal difference), 1px border in light mode. Background same as canvas (`var(--ravin-bg)`).
+- **Shell containers:** Sidebar, header (TopBar), and page content frame all share 0.625rem (10px) border radius for consistent visual rounding across the app shell.
+- **Responsive content padding:** 8px horizontal on mobile (xs), 12px on sm+ — total offset from sidebar edge is 20px (8px main + 12px content), matching header alignment.
+- **Progressive blur footer:** 32px gradient mask at the bottom of the content container, using `position: sticky` with `linear-gradient(to bottom, transparent 0%, var(--ravin-bg) 100%)`. Content bottom padding is 32px (`pb: 4`) to prevent overlap.
+- **Header height:** Shared `TOP_BAR_HEIGHT` constant (60px = 8px AppBar top padding + 4px bottom padding + 48px Toolbar minHeight), imported by the content area for `paddingTop` calc.
 
 ### Toggle Button Groups
 - **Style:** 36px height, 1px Border Strong (`var(--ravin-border-strong)`, `#3F3F46` dark / `#D4D4D8` light) border between buttons.
@@ -366,7 +371,7 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Don't** use border-left or border-right greater than 1px as a colored stripe accent on cards or list items.
 - **Don't** use gradient text (`background-clip: text` with gradient) except in gradient-bordered buttons where it is the component's defining feature.
 - **Don't** use glassmorphism on cards, panels, or surfaces — blurs and glass cards as decoration. The instrument is solid, not translucent. (Exceptions: the main content container's edge-fade blur and the fixed TopBar's header glass — see Elevation: Named Rules.)
-- **Don't** introduce rounded corners beyond 4px on components. Cards use 8px (`rounded-lg`) and the main content container uses 12px (`rounded-xl`) as frame separation exceptions.
+- **Don't** introduce rounded corners beyond 4px on components. Cards use 8px (`rounded-lg`) and shell containers (sidebar, header, page content) use 0.625rem (`rounded-shell`) as frame separation exceptions.
 - **Don't** use generic SaaS patterns — cookie-cutter card grids, hero-metric templates, identical icon+heading+text cards repeated endlessly.
 - **Don't** use tiny uppercase tracked eyebrows above every section. The lowercase + first-letter uppercase pattern is the voice; all-caps eyebrows are a different, rejected aesthetic.
 - **Don't** apply shadows to cards to "elevate" them. Use the background tonal scale.

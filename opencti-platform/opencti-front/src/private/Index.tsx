@@ -6,7 +6,7 @@ import { useTheme } from '@mui/styles';
 import { boundaryWrapper, NoMatch } from '@components/Error';
 import PlatformCriticalAlertDialog from '@components/settings/platform_alerts/PlatformCriticalAlertDialog';
 import TopBannersManager from '@components/TopBannersManager';
-import TopBar from './components/nav/TopBar';
+import TopBar, { TOP_BAR_HEIGHT } from './components/nav/TopBar';
 import LeftBar from './components/nav/LeftBar';
 import Message from '../components/Message';
 import NewsFeedToastManager from './components/nav/NewsFeedToastManager';
@@ -80,7 +80,7 @@ const Index = ({ settings }: IndexProps) => {
     flexGrow: 1,
     overflowY: 'hidden',
     height: '100dvh',
-    paddingTop: `calc(8px + 60px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
+    paddingTop: `calc(8px + ${TOP_BAR_HEIGHT}px + ${settingsMessagesBannerHeight ?? 0}px + ${topBannerHeight}px)`,
     marginRight: 'var(--chatbot-sidebar-width, 0px)',
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
@@ -88,16 +88,30 @@ const Index = ({ settings }: IndexProps) => {
   };
 
   const boxSx: SxProps = {
-    px: 0.5,
+    px: { xs: 1, sm: 1.5 },
     py: 1,
+    pb: 4,
     flex: 1,
     overflowY: 'auto',
     minHeight: 0,
-    borderRadius: '4px',
+    borderRadius: '0.625rem',
     border: 'none',
     position: 'relative',
     backgroundColor: 'var(--ravin-bg)',
     transition: 'border-radius 250ms cubic-bezier(0.25, 1, 0.5, 1)',
+    '&::after': {
+      content: '""',
+      position: 'sticky',
+      display: 'block',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: '32px',
+      marginTop: '-32px',
+      pointerEvents: 'none',
+      background: `linear-gradient(to bottom, transparent 0%, var(--ravin-bg) 100%)`,
+      zIndex: 1,
+    },
   };
 
   return (
@@ -120,7 +134,7 @@ const Index = ({ settings }: IndexProps) => {
         <Message />
         <NewsFeedToastManager />
         <Stack component="main" sx={mainSx}>
-          <Box sx={boxSx} className={theme.palette.mode === 'dark' ? 'hide-scrollbar' : ''}>
+          <Box sx={boxSx} className="hide-scrollbar">
             <Suspense fallback={<Loader />}>
               <Routes>
                 <Route

@@ -36,6 +36,8 @@ import { TopBarNewsFeedNumberSubscription$data } from './__generated__/TopBarNew
 import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
 import { useAINLQ } from '../common/ai/AINLQ';
 
+export const TOP_BAR_HEIGHT = 60;
+
 const headerIconSx = {
   color: 'var(--ravin-primary)',
   '&:hover': {
@@ -246,7 +248,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           paddingRight: theme.spacing(1.5),
           display: 'flex',
           justifyContent: 'space-between',
-          borderRadius: '4px',
+          borderRadius: '0.625rem',
           backgroundColor: 'var(--ravin-bg)',
           border: 'none',
           overflow: 'hidden',
