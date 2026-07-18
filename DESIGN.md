@@ -350,6 +350,21 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Borders:** `1px solid rgba(255, 255, 255, 0.15)` — subtle white at 15% opacity.
 - **Header:** Same border treatment. No special background.
 
+### Listing Pages (Investigations, Custom Dashboards, Public Dashboards)
+- **Page header container:** Wraps the entire listing content (header + DataTable) in a single container with `padding: '24px 24px 0 24px'` — 24px on top, left, and right; 0 bottom (the DataTable's own padding handles the bottom). This is the canonical inner padding for all listing pages.
+- **Header layout:** Flex row with `justifyContent: space-between` — title group on the left, action buttons on the right. 16px bottom margin (`marginBottom: 2`).
+- **Title:** `Typography` variant h1, 22–24px, 600 weight, Peyda, lowercase with first-letter uppercase. Followed by an optional subtitle in muted text (`var(--ravin-text-muted)`, 0.8125rem) with 4px top margin.
+- **Count badge:** Inline `Box` next to the title — 12px font, 500 weight, `var(--ravin-text-muted)` text on `var(--ravin-surface-2)` background, 4px radius, `2px 8px` padding, 20px line-height.
+- **Create button:** Positioned at the right of the header via `space-between`. Uses the standard `CreateEntityControlledDial` with Ravin Style primary button treatment.
+- **Filter container:** DataTable's internal filter section uses `var(--ravin-elevated)` background, 8px radius, `12px 16px` padding, 8px bottom margin. No border — depth comes from the tonal difference between elevated and canvas backgrounds, avoiding a visible "white shadow" artifact in light mode.
+- **Data columns (Investigations):**
+  - **Name:** Primary clickable link in `var(--ravin-primary)` (electric blue), 500 weight, with `Truncate` + `Tooltip`.
+  - **Tags:** `TagsOverflow` with `Tag` components at `lowercase` text transform. Empty tags show `—`.
+  - **Creator:** Muted text via `var(--ravin-text-muted)` color wrapper.
+  - **Dates (created_at, updated_at):** Relative format (`rd`) with full datetime tooltip (`nsdt`).
+- **Empty state:** Purposeful message with direct create CTA — "No investigations yet. Create one to start graphing threat relationships." Rendered via DataTable's `emptyStateMessage` prop.
+- **Grid view (Custom Dashboards only):** Toggle between table and grid view via `ToggleButtonGroup`. Grid uses `auto-fill, minmax(320px, 1fr)` with 16px gap. Cards have 1px border, 8px radius, 16px padding, hover shifts background to 8% blue tint.
+
 ## 6. Do's and Don'ts
 
 ### Do:

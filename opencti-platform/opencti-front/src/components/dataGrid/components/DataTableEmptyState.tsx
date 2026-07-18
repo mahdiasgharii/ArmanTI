@@ -7,11 +7,15 @@ type DataTableEmptyStateProps = {
 const DataTableEmptyState = ({ message }: DataTableEmptyStateProps) => {
   return (
     <Box sx={{
-      display: 'table',
-      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       width: '100%',
+      minHeight: '200px',
       textAlign: 'center',
-      color: 'text.disabled',
+      color: 'var(--ravin-text-muted)',
+      position: 'relative',
+      zIndex: 2,
     }}
     >
       {message}

@@ -14,8 +14,15 @@ import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
 import DataTable from '../../../components/dataGrid/DataTable';
 import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
-import { defaultRender } from '../../../components/dataGrid/dataTableUtils';
+import { defaultRender, Truncate } from '../../../components/dataGrid/dataTableUtils';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
+import { resolveLink } from '../../../utils/Entity';
+import { EMPTY_VALUE } from '../../../utils/String';
+import Tag from '../../../components/common/tag/Tag';
+import TagsOverflow from '../../../components/common/tag/TagsOverflow';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 export const workspaceLineFragment = graphql`
   fragment WorkspacesLine_node on Workspace {
@@ -146,26 +153,80 @@ const Workspaces: FunctionComponent<WorkspacesProps> = ({
     workspacePaginationOptions,
   );
 
+  const isInvestigation = type === 'investigation';
+
   const dataColumns: DataTableProps['dataColumns'] = {
     name: {
       id: 'name',
       percentWidth: 33,
+      ...(isInvestigation ? {
+        render: (data) => {
+          const name = data.name || data.id;
+          const link = `${resolveLink('Investigation')}/${data.id}`;
+          return (
+            <Tooltip title={name}>
+              <a
+                href={link}
+                style={{
+                  color: 'var(--ravin-primary)',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                }}
+              >
+                <Truncate>{name}</Truncate>
+              </a>
+            </Tooltip>
+          );
+        },
+      } : {}),
     },
     tags: {
       id: 'tags',
+      ...(isInvestigation ? {
+        render: ({ tags }) => {
+          if (!tags || tags.length === 0) return EMPTY_VALUE;
+          return (
+            <TagsOverflow
+              items={tags}
+              getKey={(tag: string) => tag}
+              renderTag={(tag: string) => (
+                <Tag label={tag} labelTextTransform="lowercase" />
+              )}
+            />
+          );
+        },
+      } : {}),
     },
     creator: {
       id: 'creator',
       isSortable: true,
-      render: ({ owner }) => defaultRender(owner.name),
+      render: ({ owner }) => (
+        <span style={{ color: isInvestigation ? 'var(--ravin-text-muted)' : undefined }}>
+          {defaultRender(owner.name)}
+        </span>
+      ),
     },
     created_at: {
       id: 'created_at',
       percentWidth: 16,
+      ...(isInvestigation ? {
+        render: ({ created_at }, { rd, nsdt }) => (
+          <Tooltip title={nsdt(created_at)}>
+            <span>{rd(created_at)}</span>
+          </Tooltip>
+        ),
+      } : {}),
     },
     updated_at: {
       id: 'updated_at',
-      percentWidth: type === 'dashboard' ? 16 : 24,
+      percentWidth: isInvestigation ? 20 : 16,
+      ...(isInvestigation ? {
+        render: ({ updated_at }, { rd, nsdt }) => (
+          <Tooltip title={nsdt(updated_at)}>
+            <span>{rd(updated_at)}</span>
+          </Tooltip>
+        ),
+      } : {}),
     },
     ...(type === 'dashboard' ? {
       isShared: {
@@ -173,6 +234,15 @@ const Workspaces: FunctionComponent<WorkspacesProps> = ({
       },
     } : {}),
   };
+
+  const createButton = (
+    <Security needs={[EXPLORE_EXUPDATE, INVESTIGATION_INUPDATE]}>
+      <WorkspaceCreation
+        paginationOptions={workspacePaginationOptions}
+        type={type}
+      />
+    </Security>
+  );
 
   return (
     <>
@@ -183,7 +253,82 @@ const Workspaces: FunctionComponent<WorkspacesProps> = ({
         }
       />
 
-      {queryRef && (
+      {isInvestigation && (
+        <Box sx={{ padding: '24px 24px 0 24px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: 2,
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: 24,
+                  fontWeight: 600,
+                }}
+              >
+                {t_i18n('Investigations')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            {createButton}
+          </Box>
+
+          {queryRef && (
+            <DataTable
+              dataColumns={dataColumns}
+              resolvePath={(data: WorkspacesLines_data$data) => {
+                return data.workspaces?.edges?.map((n) => n?.node);
+              }}
+              storageKey={LOCAL_STORAGE_KEY}
+              initialValues={initialStorageValues}
+              contextFilters={filters}
+              preloadedPaginationProps={{
+                linesQuery: workspacesLinesQuery,
+                linesFragment: workspacesLineFragment,
+                queryRef,
+                nodePath: ['workspaces', 'pageInfo', 'globalCount'],
+                setNumberOfElements: storageHelpers.handleSetNumberOfElements,
+              }}
+              lineFragment={workspaceLineFragment}
+              entityTypes={['Workspace']}
+              searchContextFinal={{ entityTypes: ['Workspace'] }}
+              emptyStateMessage={t_i18n('No investigations yet. Create one to start graphing threat relationships.')}
+              taskScope="INVESTIGATION"
+              actions={(row) => (
+                <Security needs={[INVESTIGATION_INUPDATE]}>
+                  <ErrorBoundary display={() => null}>
+                    <WorkspacePopover
+                      data={row}
+                      paginationOptions={workspacePaginationOptions}
+                    />
+                  </ErrorBoundary>
+                </Security>
+              )}
+            />
+          )}
+        </Box>
+      )}
+
+      {!isInvestigation && queryRef && (
         <DataTable
           dataColumns={dataColumns}
           resolvePath={(data: WorkspacesLines_data$data) => {
@@ -202,14 +347,7 @@ const Workspaces: FunctionComponent<WorkspacesProps> = ({
           lineFragment={workspaceLineFragment}
           entityTypes={['Workspace']}
           searchContextFinal={{ entityTypes: ['Workspace'] }}
-          createButton={(
-            <Security needs={[EXPLORE_EXUPDATE, INVESTIGATION_INUPDATE]}>
-              <WorkspaceCreation
-                paginationOptions={workspacePaginationOptions}
-                type={type}
-              />
-            </Security>
-          )}
+          createButton={createButton}
           taskScope={type === 'dashboard' ? 'DASHBOARD' : 'INVESTIGATION'}
           actions={(row) => (
             <Security needs={row.type === 'dashboard' ? [EXPLORE] : [INVESTIGATION_INUPDATE]}>

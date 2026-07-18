@@ -295,7 +295,6 @@ const DataTableComponent = ({
         <div
           style={{
             backgroundColor: 'var(--ravin-elevated)',
-            border: '1px solid var(--ravin-border)',
             borderRadius: '8px',
             padding: '12px 16px',
             marginBottom: '8px',
@@ -306,7 +305,7 @@ const DataTableComponent = ({
       )}
       <div
         className="datatable-container"
-        style={{ width: '100%', overflow: 'auto hidden' }}
+        style={{ width: '100%', overflow: 'auto hidden', position: 'relative', zIndex: 2 }}
         ref={tableRef}
       >
         <React.Suspense
