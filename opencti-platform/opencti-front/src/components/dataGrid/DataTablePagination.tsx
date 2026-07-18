@@ -139,9 +139,9 @@ const DataTablePagination = ({
     <Box
       sx={{
         display: 'flex',
-        borderRadius: 1,
+        borderRadius: '4px',
         border: 1,
-        borderColor: 'divider',
+        borderColor: 'var(--ravin-border)',
         height: 36,
       }}
     >
@@ -161,7 +161,7 @@ const DataTablePagination = ({
             minWidth: 24,
           }}
         >
-          <ArrowLeft />
+          <ArrowLeft size={16} />
         </IconButton>
         <Tooltip
           title={(
@@ -194,7 +194,7 @@ const DataTablePagination = ({
           disabled={lastItem === numberOfElements.original}
           style={{ paddingLeft: 0, paddingRight: 0, minWidth: 24 }}
         >
-          <ArrowRight />
+          <ArrowRight size={16} />
         </IconButton>
       </ButtonGroup>
       <Suspense>

@@ -2,7 +2,6 @@ import Button from '@common/button/Button';
 import { FileUp as FileUploadOutlined } from 'lucide-react';
 import { Field, Form, Formik } from 'formik';
 import { FormikConfig } from 'formik/dist/types';
-import { useContext } from 'react';
 import { graphql } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -16,11 +15,9 @@ import { handleError, handleErrorInForm } from '../../../relay/environment';
 import { resolveLink } from '../../../utils/Entity';
 import Security from '../../../utils/Security';
 import useApiMutation from '../../../utils/hooks/useApiMutation';
-import { UserContext } from '../../../utils/hooks/useAuth';
 import { EXPLORE_EXUPDATE, INVESTIGATION_INUPDATE } from '../../../utils/hooks/useGranted';
 import useMarkdownCreationFilesInput from '../../../utils/markdown/useMarkdownCreationFilesInput';
 import { insertNode } from '../../../utils/store';
-import { isNotEmptyField } from '../../../utils/utils';
 import Drawer from '../common/drawer/Drawer';
 import { WorkspaceCreationImportMutation } from './__generated__/WorkspaceCreationImportMutation.graphql';
 import { WorkspacesLinesPaginationQuery$variables } from './__generated__/WorkspacesLinesPaginationQuery.graphql';
@@ -59,10 +56,6 @@ interface WorkspaceCreationProps {
 
 const WorkspaceCreation = ({ paginationOptions, type }: WorkspaceCreationProps) => {
   const { t_i18n } = useFormatter();
-  const { settings, isXTMHubAccessible } = useContext(UserContext);
-  const importFromHubUrl = isNotEmptyField(settings?.platform_xtmhub_url)
-    ? `${settings.platform_xtmhub_url}/redirect/opencti_custom_dashboards?platform_id=${settings.id}`
-    : '';
   const [commitImportMutation] = useApiMutation<WorkspaceCreationImportMutation>(importMutation);
   const navigate = useNavigate();
 
@@ -136,16 +129,6 @@ const WorkspaceCreation = ({ paginationOptions, type }: WorkspaceCreationProps) 
         >
           <FileUploadOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
         </IconButton>
-        {isXTMHubAccessible && isNotEmptyField(importFromHubUrl) && (
-          <Button
-            gradient
-            href={importFromHubUrl}
-            target="_blank"
-            title={t_i18n('Import from Hub')}
-          >
-            {t_i18n('Import from Hub')}
-          </Button>
-        )}
         <CreateEntityControlledDial entityType="Dashboard" {...props} />
       </>
     </Security>

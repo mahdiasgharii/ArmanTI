@@ -42,6 +42,9 @@ const useStyles = makeStyles<MuiTheme, { column: DataTableColumn }>((theme) => c
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     fontSize: '12px',
+    fontWeight: 500,
+    fontFamily: '"Peyda", sans-serif',
+    color: 'var(--ravin-text-muted)',
     flexGrow: 1,
     cursor: ({ column: { isSortable } }) => (isSortable ? 'pointer' : 'unset'),
   },
@@ -111,7 +114,7 @@ const DataTableHeader: FunctionComponent<DataTableHeaderProps> = ({
         <Tooltip title={t_i18n(column.label)}>
           <span>{t_i18n(column.label)}</span>
         </Tooltip>
-        {sortBy && column.isSortable && (orderAsc ? <ArrowDropUp /> : <ArrowDropDown />)}
+        {sortBy && column.isSortable && (orderAsc ? <ArrowDropUp size={16} color="var(--ravin-primary)" /> : <ArrowDropDown size={16} color="var(--ravin-primary)" />)}
       </div>
 
       {hasColumnMenu && (
@@ -131,7 +134,7 @@ const DataTableHeader: FunctionComponent<DataTableHeaderProps> = ({
             },
           }}
         >
-          <MoreVert />
+          <MoreVert size={16} />
         </IconButton>
       )}
 

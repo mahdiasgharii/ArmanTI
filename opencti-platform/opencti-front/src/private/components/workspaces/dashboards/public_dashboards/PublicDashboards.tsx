@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql } from 'react-relay';
+import Typography from '@mui/material/Typography';
 import PublicDashboardLineActions from './PublicDashboardLineActions';
 import PublicDashboardCreation from './PublicDashboardCreation';
 import { useFormatter } from '../../../../../components/i18n';
 import { emptyFilterGroup, useBuildEntityTypeBasedFilterContext } from '../../../../../utils/filters/filtersUtils';
 import DataTable from '../../../../../components/dataGrid/DataTable';
-import Breadcrumbs from '../../../../../components/Breadcrumbs';
 import useQueryLoading from '../../../../../utils/hooks/useQueryLoading';
 import { usePaginationLocalStorage } from '../../../../../utils/hooks/useLocalStorage';
 import ItemBoolean from '../../../../../components/ItemBoolean';
@@ -177,14 +177,32 @@ const PublicDashboards = () => {
   };
 
   return (
-    <>
-      <Breadcrumbs
-        elements={[
-          { label: t_i18n('Dashboards') },
-          { label: t_i18n('Public dashboards'), current: true },
-        ]}
-
-      />
+    <div style={{ padding: '24px 24px 0 24px', borderRadius: '0.625rem' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '16px',
+        }}
+      >
+        <Typography
+          variant="h1"
+          sx={{
+            fontFamily: '"Peyda", sans-serif',
+            fontWeight: 600,
+            fontSize: '22px',
+            lineHeight: '1.3',
+            color: 'var(--ravin-text)',
+            textTransform: 'lowercase',
+            '&::first-letter': { textTransform: 'uppercase' },
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {t_i18n('Public dashboards')}
+        </Typography>
+      </div>
       {queryRef && (
         <DataTable
           disableNavigation
@@ -219,7 +237,7 @@ const PublicDashboards = () => {
           taskScope="PUBLIC_DASHBOARD"
         />
       )}
-    </>
+    </div>
   );
 };
 

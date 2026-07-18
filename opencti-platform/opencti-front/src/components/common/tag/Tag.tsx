@@ -35,6 +35,10 @@ const Tag = ({
       return defaultColor;
     }
 
+    if (color.startsWith('var(')) {
+      return `color-mix(in srgb, ${color} 20%, transparent)`;
+    }
+
     try {
       return alpha(color, 0.2);
     } catch {
@@ -53,10 +57,24 @@ const Tag = ({
     textTransform: labelTextTransform,
   };
 
+  const getHoverBackgroundColor = () => {
+    if (!color || color === defaultColor) {
+      return lighten(defaultColor, 0.2);
+    }
+    if (color.startsWith('var(')) {
+      return `color-mix(in srgb, ${color} 30%, transparent)`;
+    }
+    try {
+      return lighten(bgColor, 0.2);
+    } catch {
+      return defaultColor;
+    }
+  };
+
   const sxStyles: SxProps<Theme> = {
     backgroundColor: bgColor,
     '&:hover': {
-      backgroundColor: onClick ? lighten(bgColor, 0.2) : undefined,
+      backgroundColor: onClick ? getHoverBackgroundColor() : undefined,
     },
     maxWidth: typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth,
     height: 25,

@@ -31,7 +31,7 @@ const ItemBoolean = ({
       return (
         <Tag
           label={label}
-          color={reverse ? theme.palette.error.main : theme.palette.success.main}
+          color={reverse ? 'var(--ravin-danger)' : 'var(--ravin-success)'}
           labelTextTransform={labelTextTransform}
         />
       );
@@ -72,7 +72,7 @@ const ItemBoolean = ({
     return (
       <Tag
         label={label}
-        color={reverse ? theme.palette.success.main : theme.palette.error.main}
+        color={reverse ? 'var(--ravin-success)' : 'var(--ravin-danger)'}
         labelTextTransform={labelTextTransform}
       />
     );

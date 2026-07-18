@@ -291,7 +291,19 @@ const DataTableComponent = ({
         enableInfiniteScroll,
       }}
     >
-      {filtersComponent && <div>{filtersComponent}</div>}
+      {filtersComponent && (
+        <div
+          style={{
+            backgroundColor: 'var(--ravin-elevated)',
+            border: '1px solid var(--ravin-border)',
+            borderRadius: '8px',
+            padding: '12px 16px',
+            marginBottom: '8px',
+          }}
+        >
+          {filtersComponent}
+        </div>
+      )}
       <div
         className="datatable-container"
         style={{ width: '100%', overflow: 'auto hidden' }}

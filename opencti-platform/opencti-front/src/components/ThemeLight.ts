@@ -8,8 +8,8 @@ import { alpha, darken, lighten } from '@mui/material';
 
 const EE_COLOR = '#29CCB1';
 
-export const THEME_LIGHT_DEFAULT_BACKGROUND = '#FFFFFF';
-export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#FFFFFF';
+export const THEME_LIGHT_DEFAULT_BACKGROUND = '#FAFAFA';
+export const THEME_LIGHT_DEFAULT_BODY_END_GRADIENT = '#FAFAFA';
 export const THEME_LIGHT_DEFAULT_PRIMARY = '#29CCB1';
 const THEME_LIGHT_DEFAULT_SECONDARY = '#860EFE';
 const THEME_LIGHT_DEFAULT_ACCENT = '#F4F4F5';
@@ -543,13 +543,10 @@ const ThemeLight = (
         html: {
           scrollbarColor: `${accent || THEME_LIGHT_DEFAULT_ACCENT} ${paper || THEME_LIGHT_DEFAULT_PAPER}`,
           scrollbarWidth: 'thin',
-          background: `linear-gradient(100deg, ${background || THEME_LIGHT_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
-          backgroundAttachment: 'fixed',
           backgroundColor: background || THEME_LIGHT_DEFAULT_BACKGROUND,
         },
         body: {
-          background: `linear-gradient(100deg, ${background || THEME_LIGHT_DEFAULT_BACKGROUND} 0%, ${getAppBodyGradientEndColor(background)} 100%)`,
-          backgroundAttachment: 'fixed',
+          backgroundColor: background || THEME_LIGHT_DEFAULT_BACKGROUND,
           scrollbarColor: `${accent || THEME_LIGHT_DEFAULT_ACCENT} ${paper || THEME_LIGHT_DEFAULT_PAPER}`,
           scrollbarWidth: 'thin',
           html: {

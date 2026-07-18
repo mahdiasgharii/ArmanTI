@@ -78,7 +78,6 @@ const Dialog = ({
           }),
           ...(glass ? GLASS_PAPER_SX : {}),
         },
-        '& .MuiBackdrop-root': glass ? GLASS_BACKDROP_SX : {},
 
         ...dialogProps.sx,
       }}

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'react-relay';
+import { ErrorBoundary } from '@components/Error';
 import { WorkspacesLinesPaginationQuery, WorkspacesLinesPaginationQuery$variables } from '@components/workspaces/__generated__/WorkspacesLinesPaginationQuery.graphql';
 import { WorkspacesLines_data$data } from '@components/workspaces/__generated__/WorkspacesLines_data.graphql';
 import WorkspacePopover from '@components/workspaces/WorkspacePopover';
@@ -212,10 +213,12 @@ const Workspaces: FunctionComponent<WorkspacesProps> = ({
           taskScope={type === 'dashboard' ? 'DASHBOARD' : 'INVESTIGATION'}
           actions={(row) => (
             <Security needs={row.type === 'dashboard' ? [EXPLORE] : [INVESTIGATION_INUPDATE]}>
-              <WorkspacePopover
-                data={row}
-                paginationOptions={workspacePaginationOptions}
-              />
+              <ErrorBoundary display={() => null}>
+                <WorkspacePopover
+                  data={row}
+                  paginationOptions={workspacePaginationOptions}
+                />
+              </ErrorBoundary>
             </Security>
           )}
         />

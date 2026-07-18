@@ -14,6 +14,9 @@ export const serializeDashboardManifestForBackend = (
   const widgetIds = manifest.widgets ? Object.keys(manifest.widgets) : [];
   widgetIds.forEach((id) => {
     const widget = manifest.widgets[id];
+    if (!widget || !Array.isArray(widget.dataSelection)) {
+      return;
+    }
     newWidgets[id] = {
       ...widget,
       dataSelection: widget.dataSelection.map(

@@ -53,7 +53,7 @@ function useDashboard({
   useEffect(() => {
     setWidgetsLayouts(
       widgetsArray.reduce((res, widget) => {
-        res[widget.id] = widget.layout;
+        res[widget.id] = widget.layout ?? { i: widget.id, x: 0, y: 0, w: 4, h: 2, moved: false, static: false };
         return res;
       }, {} as Record<string, WidgetLayout>),
     );

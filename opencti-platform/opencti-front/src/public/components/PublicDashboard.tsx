@@ -38,7 +38,12 @@ const PublicDashboardComponent = ({
 
   const { publicDashboardByUriKey } = usePreloadedQuery(publicDashboardQuery, queryRef);
   const manifest = publicDashboardByUriKey?.public_manifest;
-  const parsedManifest: DashboardManifest = JSON.parse(manifest ? fromB64(manifest) : '{}');
+  let parsedManifest: DashboardManifest = { widgets: {}, config: {} };
+  try {
+    parsedManifest = JSON.parse(manifest ? fromB64(manifest) : '{}');
+  } catch {
+    // manifest is corrupted or invalid, use empty manifest
+  }
   const { widgets, config } = parsedManifest;
 
   useEffect(() => {
@@ -76,28 +81,48 @@ const PublicDashboardComponent = ({
         onChangeEndDate={onChangeEndDate}
       />
 
-      <div ref={containerRef}>
-        <ReactGridLayout
-          className="layout"
-          width={width}
-          layout={widgetsWithLayout.map((w) => w.layout!)}
-          gridConfig={{ margin: [20, 20], rowHeight: 50, cols: 12 }}
-          dragConfig={{ enabled: false }}
-          resizeConfig={{ enabled: false }}
-        >
-          {widgetsWithLayout.map((widget) => (
-            <div
-              key={widget.id}
-            >
-              <ErrorBoundary>
-                {widget.perspective === 'entities' && entityWidget(widget)}
-                {widget.perspective === 'relationships' && relationshipWidget(widget)}
-                {widget.perspective === 'audits' && auditWidget(widget)}
-                {widget.perspective === null && rawWidget(widget)}
-              </ErrorBoundary>
-            </div>
-          ))}
-        </ReactGridLayout>
+      <div
+        style={{
+          position: 'relative',
+          backgroundColor: 'var(--ravin-bg)',
+          padding: '24px',
+          paddingBottom: '48px',
+          minHeight: 'calc(100vh - 200px)',
+        }}
+      >
+        <div ref={containerRef}>
+          <ReactGridLayout
+            className="layout"
+            width={width}
+            layout={widgetsWithLayout.map((w) => w.layout!)}
+            gridConfig={{ margin: [16, 16], rowHeight: 50, cols: 12 }}
+            dragConfig={{ enabled: false }}
+            resizeConfig={{ enabled: false }}
+          >
+            {widgetsWithLayout.map((widget) => (
+              <div
+                key={widget.id}
+              >
+                <ErrorBoundary>
+                  {widget.perspective === 'entities' && entityWidget(widget)}
+                  {widget.perspective === 'relationships' && relationshipWidget(widget)}
+                  {widget.perspective === 'audits' && auditWidget(widget)}
+                  {widget.perspective === null && rawWidget(widget)}
+                </ErrorBoundary>
+              </div>
+            ))}
+          </ReactGridLayout>
+        </div>
+        <div className="ravin-blur-footer">
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+          <div className="ravin-blur-footer-layer" />
+        </div>
       </div>
 
     </>

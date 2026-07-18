@@ -84,6 +84,7 @@ const PublicStixCoreRelationshipsNumber = ({
     <WidgetContainer
       padding="medium"
       title={t_i18n('Relationships number')}
+      kpi
     >
       {queryRef ? (
         <React.Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>

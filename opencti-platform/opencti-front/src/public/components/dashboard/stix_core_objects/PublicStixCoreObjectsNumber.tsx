@@ -84,6 +84,7 @@ const PublicStixCoreObjectsNumber = ({
     <WidgetContainer
       padding="medium"
       title={t_i18n('Entities number')}
+      kpi
     >
       {queryRef ? (
         <Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>

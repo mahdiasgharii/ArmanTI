@@ -86,19 +86,19 @@ const ListFilters = ({
   const getParameters = (relationshipType?: string): ParametersType => {
     switch (relationshipType) {
       case 'from': return {
-        icon: <RayStartArrow size={20} />,
+        icon: <RayStartArrow sx={{ fontSize: 16 }} />,
         tooltip: t_i18n('Dynamic source filters'),
         placeholder: t_i18n('Dynamic source filters'),
         color: 'primary',
       };
       case 'to': return {
-        icon: <RayEndArrow size={20} />,
+        icon: <RayEndArrow sx={{ fontSize: 16 }} />,
         tooltip: t_i18n('Dynamic target filters'),
         placeholder: t_i18n('Dynamic target filters'),
         color: 'primary',
       };
       default: return {
-        icon: <FilterListOutlined size={20} />,
+        icon: <FilterListOutlined size={16} />,
         tooltip: t_i18n('Filters'),
         placeholder: t_i18n('Add filter'),
         color: 'primary',
@@ -202,7 +202,37 @@ const ListFilters = ({
             disabled={disabled}
             options={options as OptionType[]}
             groupBy={isNotUniqEntityTypes ? (option) => option?.groupLabel ?? '' : undefined}
-            sx={{ width: 200 }}
+            sx={{
+              width: 200,
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: 'var(--ravin-elevated)',
+                borderRadius: '4px',
+                '& fieldset': {
+                  borderColor: 'var(--ravin-border)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--ravin-border-strong)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--ravin-primary)',
+                  borderWidth: '2px',
+                },
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--ravin-text-muted)',
+                fontSize: '12px',
+                fontWeight: 500,
+                fontFamily: '"Peyda", sans-serif',
+                '&.Mui-focused': {
+                  color: 'var(--ravin-primary)',
+                },
+              },
+              '& .MuiInputBase-input': {
+                fontFamily: '"Peyda", sans-serif',
+                fontSize: '13px',
+                color: 'var(--ravin-text)',
+              },
+            }}
             value={null}
             onChange={(_, selectOptionValue) => {
               if (selectOptionValue?.value) handleChange(selectOptionValue.value);
@@ -233,7 +263,7 @@ const ListFilters = ({
           )}
           <Tooltip title={t_i18n('Clear filters')}>
             <IconButton
-              style={{ color: color }}
+              style={{ color: 'var(--ravin-text-muted)' }}
               onClick={handleClearFilters}
               size="small"
               disabled={disabled}

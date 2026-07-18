@@ -1,7 +1,10 @@
-import React, { Suspense, useMemo, useState, useRef, useCallback } from 'react';
+import React, { Suspense, useMemo, useState, useRef, useCallback, useEffect } from 'react';
 import { usePreloadedQuery, usePaginationFragment } from 'react-relay';
 import { useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Table as TableIcon, Search } from 'lucide-react';
+import { KeyboardArrowRightOutlined } from '@mui/icons-material';
+import IconButton from '@common/button/IconButton';
+import { ErrorBoundary } from '@components/Error';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -60,7 +63,7 @@ const DashboardCard = ({
   paginationOptions: WorkspacesLinesPaginationQuery$variables;
 }) => {
   const navigate = useNavigate();
-  const { fd, rd } = useFormatter();
+  const { t_i18n, fd, rd } = useFormatter();
 
   const handleClick = () => {
     navigate(`/dashboard/workspaces/dashboards/${workspace.id}`);
@@ -130,10 +133,12 @@ const DashboardCard = ({
         </Typography>
         <Box onClick={(e) => e.stopPropagation()} sx={{ flexShrink: 0 }}>
           <Security needs={[EXPLORE]}>
-            <WorkspacePopover
-              data={workspace}
-              paginationOptions={paginationOptions}
-            />
+            <IconButton
+              onClick={handleClick}
+              title={t_i18n('Open dashboard')}
+            >
+              <KeyboardArrowRightOutlined fontSize="small" />
+            </IconButton>
           </Security>
         </Box>
       </Stack>
@@ -427,6 +432,12 @@ const CustomDashboards = () => {
     }, 300);
   }, [handleSearch]);
 
+  useEffect(() => () => {
+    if (searchTimerRef.current) {
+      clearTimeout(searchTimerRef.current);
+    }
+  }, []);
+
   const filters = useBuildEntityTypeBasedFilterContext(
     'Workspace',
     {
@@ -587,10 +598,12 @@ const CustomDashboards = () => {
           taskScope="DASHBOARD"
           actions={(row) => (
             <Security needs={[EXPLORE]}>
-              <WorkspacePopover
-                data={row}
-                paginationOptions={workspacePaginationOptions}
-              />
+              <ErrorBoundary display={() => null}>
+                <WorkspacePopover
+                  data={row}
+                  paginationOptions={workspacePaginationOptions}
+                />
+              </ErrorBoundary>
             </Security>
           )}
         />

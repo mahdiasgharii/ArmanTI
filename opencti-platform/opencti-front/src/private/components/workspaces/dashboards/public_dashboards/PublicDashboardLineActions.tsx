@@ -1,7 +1,7 @@
 import { MoreVertical as MoreVert } from 'lucide-react';
 import { PublicDashboards_PublicDashboard$data } from '@components/workspaces/dashboards/public_dashboards/__generated__/PublicDashboards_PublicDashboard.graphql';
-;
-import { IconButton, Menu, MenuItem, MenuProps } from '@mui/material';
+import IconButton from '@common/button/IconButton';
+import { Menu, MenuItem, MenuProps } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { graphql } from 'react-relay';
@@ -90,9 +90,9 @@ const PublicDashboardLineActions = ({ publicDashboard, paginationOptions }: Publ
     <>
       <IconButton
         onClick={(event) => setAnchor(event.currentTarget)}
-        style={{ color: 'var(--mui-palette-primary-main)' }}
+        style={{ color: 'var(--ravin-text-muted)' }}
       >
-        <MoreVert />
+        <MoreVert size={16} />
       </IconButton>
 
       <Menu
@@ -100,6 +100,22 @@ const PublicDashboardLineActions = ({ publicDashboard, paginationOptions }: Publ
         anchorEl={anchor}
         open={!!anchor}
         onClose={() => setAnchor(undefined)}
+        sx={{
+          '& .MuiPaper-root': {
+            backgroundColor: 'var(--ravin-elevated)',
+            border: '1px solid var(--ravin-border)',
+            borderRadius: '4px',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
+          },
+          '& .MuiMenuItem-root': {
+            fontFamily: '"Peyda", sans-serif',
+            fontSize: '13px',
+            color: 'var(--ravin-text)',
+            '&:hover': {
+              backgroundColor: 'var(--ravin-surface-2)',
+            },
+          },
+        }}
       >
         <MenuItem
           onClick={() => goToDashboard()}

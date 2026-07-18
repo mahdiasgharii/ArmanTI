@@ -6,7 +6,7 @@ interface ItemNumberDifferenceProps {
 }
 
 const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => {
-  const { t_i18n } = useFormatter();
+  const { t_i18n, n } = useFormatter();
 
   const colorClass = value > 0
     ? 'text-success-light'
@@ -23,7 +23,7 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
       className={`flex items-center gap-0.5 whitespace-nowrap text-xs ${colorClass}`}
     >
       <Icon size={13} aria-hidden="true" />
-      <span className="tabular-nums">{value}</span>
+      <span className="tabular-nums">{n(value)}</span>
       {description && (
         <span className="text-text-muted">
           ({t_i18n(description)})

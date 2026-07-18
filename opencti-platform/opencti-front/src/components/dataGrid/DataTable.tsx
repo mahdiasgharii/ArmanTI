@@ -70,6 +70,7 @@ const DataTableInternalFilters = ({
         <div
           style={{
             display: 'flex',
+            alignItems: 'center',
             gap: theme.spacing(1),
             marginBottom: theme.spacing(2),
           }}

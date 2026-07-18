@@ -74,7 +74,7 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
     || (storageKey === UNKNOWN_ENTITIES_LOCAL_STORAGE_KEY && selectAll); // case of DataTableWithoutFragment
 
   return (
-    <div ref={containerRef} style={{ display: 'flex', height: 42 }}>
+    <div ref={containerRef} style={{ display: 'flex', height: 42, borderBottom: '1px solid var(--ravin-border)' }}>
       {(startsWithAction || startsWithIcon) && (
         <div data-testid="dataTableCheckAll" style={checkboxStyle}>
           {(startsWithAction && !removeSelectAll) && (

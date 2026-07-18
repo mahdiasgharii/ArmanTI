@@ -111,7 +111,7 @@ export function GradientBorderTextField({
           },
 
           '& fieldset': {
-            borderColor: 'transparent',
+            borderColor: 'var(--ravin-border)',
           },
 
           '&.Mui-focused fieldset': {
@@ -378,10 +378,22 @@ const SearchInput = (props) => {
             }
           }}
           isActive={false}
+          sx={{
+            '& .MuiInputBase-input::placeholder': {
+              opacity: 1,
+              color: 'var(--ravin-text-muted)',
+              fontSize: '13px',
+            },
+            '& .MuiInputBase-input': {
+              fontFamily: '"Peyda", sans-serif',
+              fontSize: '13px',
+              color: 'var(--ravin-text)',
+            },
+          }}
           slotProps={{
             input: {
               startAdornment: (
-                <Search size={16} style={{ marginRight: 2 }} />
+                <Search size={16} style={{ marginRight: 2, color: 'var(--ravin-text-muted)' }} />
               ),
               classes: {
                 root: classRoot,
@@ -396,80 +408,107 @@ const SearchInput = (props) => {
     );
   }
 
-  // ── TopBar variant: segmented control + search input ───────────────────
+  // ── TopBar variant: unified command-palette search bar ────────────────
 
-  // Styles for toggle buttons — matching the standard IconButton (size="default": 36×36)
-  const toggleButtonSx = {
-    height: 36,
-    minWidth: 36,
-    width: 36,
-    textTransform: 'none',
-    fontSize: '0.875rem',
-    fontWeight: 600,
+  const isCGUStatusPending = useXtmOne && !fullyActive;
+  const nlqNoAgentAvailable = useXtmOne && nlqAgentsFetched && nlqAgents.length === 0;
+  const aiColor = theme.palette.ai?.main;
+
+  // Internal toggle button styles — no individual borders, rely on container
+  const toggleBtnSx = {
+    height: 30,
+    minWidth: 30,
+    width: 30,
     px: 0,
     py: 0,
-    lineHeight: 1,
-    borderRadius: 1,
-    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: '4px',
+    border: 'none',
     color: 'var(--ravin-text-muted)',
+    transition: 'background-color 150ms ease, color 150ms ease',
     '&:hover': {
       color: 'var(--ravin-text)',
       backgroundColor: 'var(--ravin-surface-2)',
-      borderColor: 'var(--ravin-border-strong)',
     },
     '&.Mui-selected': {
-      backgroundColor: 'var(--ravin-surface-2)',
       color: 'var(--ravin-text)',
-      borderColor: 'var(--ravin-border-strong)',
+      backgroundColor: 'var(--ravin-surface-2)',
       '&:hover': {
         backgroundColor: 'var(--ravin-surface-2)',
       },
     },
   };
 
-  const isCGUStatusPending = useXtmOne && !fullyActive;
-  const nlqNoAgentAvailable = useXtmOne && nlqAgentsFetched && nlqAgents.length === 0;
-
-  const aiColor = theme.palette.ai?.main;
-  const nlqToggleButtonSx = {
-    ...toggleButtonSx,
-    width: 'auto', // wider than standard because it contains icon + caret
-    minWidth: 36,
-    px: 1,
-    // Always show AI/pink color on the NLQ button — use !important to beat MUI's default ToggleButton color
+  const nlqToggleSx = {
+    ...toggleBtnSx,
+    width: 'auto',
+    minWidth: 30,
+    px: 0.75,
     color: `${aiColor} !important`,
     '&.Mui-selected': {
-      backgroundColor: aiColor ? `${aiColor}24` : undefined,
+      backgroundColor: aiColor ? `${aiColor}1A` : undefined,
       color: `${aiColor} !important`,
-      borderColor: aiColor,
       '&:hover': {
-        backgroundColor: aiColor ? `${aiColor}30` : undefined,
+        backgroundColor: aiColor ? `${aiColor}26` : undefined,
       },
     },
     '&:hover': {
       backgroundColor: aiColor ? `${aiColor}12` : undefined,
     },
     ...(isNLQActivated && {
-      backgroundColor: aiColor ? `${aiColor}18` : undefined,
-      borderColor: aiColor,
+      backgroundColor: aiColor ? `${aiColor}14` : undefined,
     }),
-    // Keep AI/pink color even when disabled (no agents available)
     '&.Mui-disabled': {
       color: `${aiColor} !important`,
       opacity: 0.5,
     },
   };
 
+  // Container styles: unified pill with shared border and focus state
+  const containerSx = {
+    display: 'flex',
+    alignItems: 'center',
+    width: '50%',
+    minWidth: 480,
+    maxWidth: 640,
+    height: 38,
+    borderRadius: '6px',
+    backgroundColor: 'var(--ravin-elevated)',
+    border: '1px solid var(--ravin-border)',
+    transition: 'border-color 200ms ease, box-shadow 200ms ease',
+    '&:hover': {
+      borderColor: 'var(--ravin-border-strong)',
+    },
+    '&:focus-within': {
+      borderColor: 'var(--ravin-primary)',
+      boxShadow: '0 0 0 1px var(--ravin-primary)',
+    },
+    ...(isNLQActivated && aiColor && {
+      borderColor: aiColor,
+      '&:focus-within': {
+        borderColor: aiColor,
+        boxShadow: `0 0 0 1px ${aiColor}`,
+      },
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        inset: -1,
+        borderRadius: 'inherit',
+        padding: 1,
+        background: `linear-gradient(90deg, ${theme.palette.ai?.light}, ${theme.palette.ai?.dark})`,
+        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+        maskComposite: 'exclude',
+        pointerEvents: 'none',
+        opacity: 0.7,
+      },
+    }),
+    position: 'relative',
+  };
+
   return (
     <>
-      <Stack
-        direction="row"
-        alignItems="center"
-        spacing={1}
-        sx={{ minWidth: 480, width: '50%', maxWidth: 640 }}
-      >
-        {/* ── Search Input Field (left, fills remaining space) ──── */}
-        <GradientBorderTextField
+      <Box sx={containerSx}>
+        {/* ── Search Input (fills remaining space) ─────────────────── */}
+        <TextField
           name="keyword"
           value={searchValue}
           variant="outlined"
@@ -481,7 +520,32 @@ const SearchInput = (props) => {
             setSearchValue(value);
           }}
           onKeyDown={handleKeyDown}
-          isActive={isNLQActivated}
+          {...otherProps}
+          autoComplete="off"
+          sx={{
+            flex: 1,
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '6px 0 0 6px',
+              backgroundColor: 'transparent',
+              height: 36,
+              '& fieldset': { border: 'none' },
+              '&:hover fieldset': { border: 'none' },
+              '&.Mui-focused fieldset': { border: 'none' },
+              '& input': {
+                padding: '0 8px 0 0',
+                height: 36,
+                boxSizing: 'border-box',
+                fontSize: '0.875rem',
+                fontFamily: '"Peyda", sans-serif',
+                color: 'var(--ravin-text)',
+              },
+              '& .MuiInputBase-input::placeholder': {
+                opacity: 1,
+                color: 'var(--ravin-text-muted)',
+                fontSize: '0.875rem',
+              },
+            },
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -489,58 +553,64 @@ const SearchInput = (props) => {
                   size={16}
                   style={{
                     color: isNLQActivated ? theme.palette.ai.main : 'var(--ravin-text-muted)',
-                    marginRight: 2,
+                    margin: '0 6px 0 10px',
+                    flexShrink: 0,
                   }}
                 />
               ),
               endAdornment: isNLQActivated && isNLQLoading ? (
-                <InputAdornment position="end">
+                <InputAdornment position="end" sx={{ mr: 0.5 }}>
                   <Loader variant="inline" />
                 </InputAdornment>
               ) : null,
-              classes: {
-                root: classRoot,
-                input: classInput,
-              },
             },
           }}
-          {...otherProps}
-          autoComplete="off"
         />
 
-        {/* ── Mode Toggles (right) ────────────────────────────────── */}
+        {/* ── Divider between input and toggles ────────────────────── */}
+        <Box
+          sx={{
+            width: '1px',
+            height: 22,
+            backgroundColor: 'var(--ravin-border)',
+            flexShrink: 0,
+            mx: 0.5,
+          }}
+        />
+
+        {/* ── Mode Toggles (right side, no individual borders) ─────── */}
         <ToggleButtonGroup
           value={mode}
           exclusive
           onChange={handleModeChange}
           size="small"
           sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5,
+            pr: 0.5,
             flexShrink: 0,
-            // Remove the default grouped border behavior so each button has its own border
             '& .MuiToggleButtonGroup-grouped': {
               border: 'none',
-              borderRadius: `${theme.shape.borderRadius}px !important`,
+              borderRadius: '4px !important',
               '&:not(:first-of-type)': {
                 marginLeft: 0,
               },
             },
           }}
         >
-          {/* Search mode */}
           <Tooltip title={t_i18n('Advanced search')}>
-            <ToggleButton value={MODE_SEARCH} sx={{ ...toggleButtonSx, mr: 0.75 }}>
-              <TuneOutlined size={18} />
+            <ToggleButton value={MODE_SEARCH} sx={toggleBtnSx}>
+              <TuneOutlined size={16} />
             </ToggleButton>
           </Tooltip>
 
-          {/* Bulk mode */}
           <Tooltip title={t_i18n('Bulk search')}>
-            <ToggleButton value={MODE_BULK} sx={{ ...toggleButtonSx, mr: 0.75 }}>
-              <ManageSearchOutlined size={18} />
+            <ToggleButton value={MODE_BULK} sx={toggleBtnSx}>
+              <ManageSearchOutlined size={16} />
             </ToggleButton>
           </Tooltip>
 
-          {/* NLQ split button — icon toggles NLQ, caret opens agent selector */}
           {isAIEnabled && (
             <Tooltip
               title={(isCGUStatusPending && !isAdmin)
@@ -555,7 +625,7 @@ const SearchInput = (props) => {
                 <ToggleButton
                   value={mode}
                   selected={isNLQActivated}
-                  sx={nlqToggleButtonSx}
+                  sx={nlqToggleSx}
                   onClick={handleNlqToggleClick}
                   disabled={nlqNoAgentAvailable || (isCGUStatusPending && !isAdmin)}
                 >
@@ -565,7 +635,6 @@ const SearchInput = (props) => {
                       size="small"
                       color="ai"
                     />
-                    {/* Caret click zone — larger hit area with visual separator */}
                     {useXtmOne && nlqAgents.length > 0 && (
                       <Box
                         component="span"
@@ -573,9 +642,9 @@ const SearchInput = (props) => {
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          ml: 0.5,
-                          pl: 0.5,
-                          borderLeft: `1px solid ${isNLQActivated ? theme.palette.ai?.main + '40' : theme.palette.divider}`,
+                          ml: 0.25,
+                          pl: 0.25,
+                          borderLeft: `1px solid ${isNLQActivated ? theme.palette.ai?.main + '40' : 'var(--ravin-border)'}`,
                           cursor: 'pointer',
                         }}
                         onClick={(e) => {
@@ -583,7 +652,7 @@ const SearchInput = (props) => {
                           handleOpenNlqMenu(e);
                         }}
                       >
-                        <KeyboardArrowDownOutlined size={18} style={{ color: 'inherit' }} />
+                        <KeyboardArrowDownOutlined size={14} style={{ color: 'inherit' }} />
                       </Box>
                     )}
                   </Stack>
@@ -652,7 +721,7 @@ const SearchInput = (props) => {
             </MenuItem>
           ))}
         </Menu>
-      </Stack>
+      </Box>
 
       {isAdmin ? (
         <EnterpriseEditionAgreement

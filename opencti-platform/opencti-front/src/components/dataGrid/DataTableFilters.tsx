@@ -113,7 +113,7 @@ const DataTableFilters = ({
 
   return (
     <ExportContext.Provider value={{ selectedIds: Object.keys(selectedElements) }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', flex: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -139,7 +139,7 @@ const DataTableFilters = ({
             />
           )}
         </div>
-        <div style={{ display: 'flex', gap: theme.spacing(1), flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: theme.spacing(1), flexShrink: 0 }}>
           {(variant === DataTableVariant.default) && (
             <DataTablePagination
               page={page}
@@ -169,7 +169,27 @@ const DataTableFilters = ({
           >
             {additionalToggleButtons && [...additionalToggleButtons]}
             {!exportDisabled && (
-              <ToggleButton value="export" aria-label="export">
+              <ToggleButton
+                value="export"
+                aria-label="export"
+                sx={{
+                  color: 'var(--ravin-text-muted)',
+                  borderColor: 'var(--ravin-border)',
+                  '&:hover': {
+                    color: 'var(--ravin-text)',
+                    backgroundColor: 'var(--ravin-surface-2)',
+                    borderColor: 'var(--ravin-border-strong)',
+                  },
+                  '&.Mui-selected': {
+                    color: 'var(--ravin-primary)',
+                    backgroundColor: 'var(--ravin-surface-2)',
+                    borderColor: 'var(--ravin-primary)',
+                    '&:hover': {
+                      backgroundColor: 'var(--ravin-surface-2)',
+                    },
+                  },
+                }}
+              >
                 <Tooltip title={t_i18n('Open export panel')}>
                   <FileDownloadOutlined
                     size={16}
