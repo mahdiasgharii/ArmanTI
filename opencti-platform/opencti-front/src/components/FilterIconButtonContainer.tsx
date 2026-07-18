@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import { ChipOwnProps } from '@mui/material/Chip/Chip';
 import Tooltip from '@mui/material/Tooltip';
-import React, { CSSProperties, Fragment, FunctionComponent, useContext, useEffect, useRef } from 'react';
+import React, { CSSProperties, Fragment, FunctionComponent, useEffect, useRef } from 'react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import { convertOperatorToIcon, filterOperatorsWithIcon, FilterSearchContext, FiltersRestrictions, isFilterEditable, useFilterDefinition } from '../utils/filters/filtersUtils';
 import { truncate } from '../utils/String';
@@ -18,7 +18,6 @@ import DisplayFilterGroup from './filters/DisplayFilterGroup';
 import { FilterChipPopover, FilterChipsParameter } from './filters/FilterChipPopover';
 import { FilterRepresentative } from './filters/FiltersModel';
 import { filterValuesContentQuery } from './FilterValuesContent';
-import { PageContainerContext } from './PageContainer';
 import { useTheme } from '@mui/material/styles';
 import { Stack } from '@mui/material';
 
@@ -81,8 +80,6 @@ const FilterIconButtonContainer: FunctionComponent<
 }) => {
   const { t_i18n } = useFormatter();
   const theme = useTheme();
-
-  const { inPageContainer } = useContext(PageContainerContext);
 
   const { filtersRepresentatives } = usePreloadedQuery<FilterValuesContentQuery>(
     filterValuesContentQuery,
@@ -168,7 +165,7 @@ const FilterIconButtonContainer: FunctionComponent<
     display: 'flex',
     alignItems: 'center',
   };
-  let margin = inPageContainer ? '0 0 0 0' : '0 0 8px 0';
+  let margin = '0 0 0 0';
 
   if (variant === 'small') {
     filterStyle = {
@@ -270,6 +267,7 @@ const FilterIconButtonContainer: FunctionComponent<
               }
             >
               <Box
+                className={helpers?.getLatestAddFilterId() === currentFilter.id ? 'filter-chip-animate' : undefined}
                 sx={{
                   padding: '0',
                   display: 'flex',

@@ -70,45 +70,52 @@ const DataTableInternalFilters = ({
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'column',
             gap: theme.spacing(1),
-            marginBottom: theme.spacing(2),
           }}
         >
-          {!hideSearch && (
-            <SearchInput
-              variant="small"
-              onSubmit={helpers.handleSearch}
-              keyword={searchTerm}
-            />
-          )}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: theme.spacing(1),
+            }}
+          >
+            {!hideSearch && (
+              <SearchInput
+                variant="small"
+                onSubmit={helpers.handleSearch}
+                keyword={searchTerm}
+              />
+            )}
 
+            {!hideFilters && (
+              <DataTableFilters
+                contextFilters={contextFilters}
+                availableFilterKeys={availableFilterKeys}
+                searchContextFinal={searchContextFinal}
+                availableEntityTypes={availableEntityTypes}
+                availableRelationshipTypes={availableRelationshipTypes}
+                availableRelationFilterTypes={availableRelationFilterTypes}
+                exportContext={exportContext}
+                paginationOptions={paginationOptions}
+                additionalHeaderButtons={additionalHeaderButtons}
+                additionalHeaderToggleButtons={additionalToggleButtons}
+                currentView={currentView}
+                hideSavedFilters={hideSavedFilters}
+              />
+            )}
+          </div>
           {!hideFilters && (
-            <DataTableFilters
-              contextFilters={contextFilters}
+            <DataTableDisplayFilters
               availableFilterKeys={availableFilterKeys}
-              searchContextFinal={searchContextFinal}
-              availableEntityTypes={availableEntityTypes}
-              availableRelationshipTypes={availableRelationshipTypes}
               availableRelationFilterTypes={availableRelationFilterTypes}
-              exportContext={exportContext}
-              paginationOptions={paginationOptions}
-              additionalHeaderButtons={additionalHeaderButtons}
-              additionalHeaderToggleButtons={additionalToggleButtons}
-              currentView={currentView}
-              hideSavedFilters={hideSavedFilters}
+              availableEntityTypes={availableEntityTypes}
+              entityTypes={computedEntityTypes}
+              searchContext={searchContextFinal}
             />
           )}
         </div>
-      )}
-      {!hideFilters && (
-        <DataTableDisplayFilters
-          availableFilterKeys={availableFilterKeys}
-          availableRelationFilterTypes={availableRelationFilterTypes}
-          availableEntityTypes={availableEntityTypes}
-          entityTypes={computedEntityTypes}
-          searchContext={searchContextFinal}
-        />
       )}
     </>
   );

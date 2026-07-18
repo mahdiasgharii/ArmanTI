@@ -497,15 +497,14 @@ const CustomDashboards = () => {
         ]}
       />
 
+      <Box sx={{ padding: '24px 24px 24px 24px' }}>
+
       <Stack
         direction="row"
         justifyContent="space-between"
         alignItems="center"
         flexWrap="wrap"
         gap={2}
-        sx={{
-          padding: '0 0 16px 0',
-        }}
       >
         <Box>
           <Typography
@@ -642,6 +641,7 @@ const CustomDashboards = () => {
           </Suspense>
         </Box>
       )}
+      </Box>
     </>
   );
 };

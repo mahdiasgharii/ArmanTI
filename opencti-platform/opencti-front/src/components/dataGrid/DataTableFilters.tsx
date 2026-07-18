@@ -37,7 +37,7 @@ export const DataTableDisplayFilters = ({
   } = useDataTableContext();
 
   return (
-    <div id="filter-container" style={{ display: 'flex', alignItems: 'center' }}>
+    <div id="filter-container" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 4, minHeight: 0, overflow: 'hidden', transition: 'max-height 250ms cubic-bezier(0.16, 1, 0.3, 1), opacity 250ms ease' }}>
       <FilterIconButton
         helpers={helpers}
         availableFilterKeys={availableFilterKeys}
