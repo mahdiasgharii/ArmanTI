@@ -114,14 +114,9 @@ const PublicDashboardComponent = ({
           </ReactGridLayout>
         </div>
         <div className="ravin-blur-footer">
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
-          <div className="ravin-blur-footer-layer" />
+          {Array.from({ length: 8 }, (_, i) => (
+            <div key={i} className="ravin-blur-footer-layer" />
+          ))}
         </div>
       </div>
 

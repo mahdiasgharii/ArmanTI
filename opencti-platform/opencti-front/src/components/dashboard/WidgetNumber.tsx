@@ -48,7 +48,7 @@ const WidgetNumber = ({
       </div>
 
       <div className="flex flex-row items-end justify-between">
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-1">
           <div
             data-testid={`card-number-${label}`}
             className="font-display text-metric tabular-nums text-text-base"

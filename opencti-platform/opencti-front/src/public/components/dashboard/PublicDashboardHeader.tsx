@@ -9,6 +9,30 @@ import type { DashboardConfig } from '../../../components/dashboard/dashboard-ty
 import { buildDate } from '../../../utils/Time';
 import { TOP_BAR_HEIGHT } from '../PublicTopBar';
 
+const inputSx = {
+  minWidth: 200,
+  flex: '1 1 200px',
+  '& .MuiOutlinedInput-root': {
+    backgroundColor: 'var(--ravin-elevated)',
+    borderRadius: '4px',
+    '& fieldset': {
+      borderColor: 'var(--ravin-border)',
+    },
+    '&:hover fieldset': {
+      borderColor: 'var(--ravin-border-strong)',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'var(--ravin-primary)',
+      borderWidth: '2px',
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: 'var(--ravin-text-muted)',
+    fontSize: '12px',
+    fontWeight: 500,
+  },
+};
+
 interface PublicDashboardHeaderProps {
   title: string;
   manifestConfig: DashboardConfig;
@@ -59,29 +83,7 @@ const PublicDashboardHeader = ({
       <FormControl
         variant="outlined"
         size="small"
-        sx={{
-          minWidth: 200,
-          flex: '1 1 200px',
-          '& .MuiOutlinedInput-root': {
-            backgroundColor: 'var(--ravin-elevated)',
-            borderRadius: '4px',
-            '& fieldset': {
-              borderColor: 'var(--ravin-border)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--ravin-border-strong)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--ravin-primary)',
-              borderWidth: '2px',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--ravin-text-muted)',
-            fontSize: '12px',
-            fontWeight: 500,
-          },
-        }}
+        sx={inputSx}
       >
         <InputLabel id="relative" variant="outlined">
           {t_i18n('Relative time')}
@@ -107,29 +109,7 @@ const PublicDashboardHeader = ({
         disabled
         value={buildDate(startDate)}
         label={t_i18n('Start date')}
-        sx={{
-          minWidth: 200,
-          flex: '1 1 200px',
-          '& .MuiOutlinedInput-root': {
-            backgroundColor: 'var(--ravin-elevated)',
-            borderRadius: '4px',
-            '& fieldset': {
-              borderColor: 'var(--ravin-border)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--ravin-border-strong)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--ravin-primary)',
-              borderWidth: '2px',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--ravin-text-muted)',
-            fontSize: '12px',
-            fontWeight: 500,
-          },
-        }}
+        sx={inputSx}
         disableFuture
         onChange={(value, context) => !context.validationError && onChangeStartDate(value?.toString() ?? null)}
         slotProps={{
@@ -151,29 +131,7 @@ const PublicDashboardHeader = ({
         label={t_i18n('End date')}
         disableFuture
         onChange={(value, context) => !context.validationError && onChangeEndDate(value?.toString() ?? null)}
-        sx={{
-          minWidth: 200,
-          flex: '1 1 200px',
-          '& .MuiOutlinedInput-root': {
-            backgroundColor: 'var(--ravin-elevated)',
-            borderRadius: '4px',
-            '& fieldset': {
-              borderColor: 'var(--ravin-border)',
-            },
-            '&:hover fieldset': {
-              borderColor: 'var(--ravin-border-strong)',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'var(--ravin-primary)',
-              borderWidth: '2px',
-            },
-          },
-          '& .MuiInputLabel-root': {
-            color: 'var(--ravin-text-muted)',
-            fontSize: '12px',
-            fontWeight: 500,
-          },
-        }}
+        sx={inputSx}
         slotProps={{
           field: {
             clearable: true,

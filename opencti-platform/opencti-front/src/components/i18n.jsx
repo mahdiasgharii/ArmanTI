@@ -36,13 +36,13 @@ const inject18n = (WrappedComponent) => {
         if (number === null || number === '') {
           return EMPTY_VALUE;
         }
-        return `${this.props.intl.formatNumber(numberFormat(number).number)}${
-          numberFormat(number).symbol
-        }`;
+        const formatted = numberFormat(number);
+        return `${this.props.intl.formatNumber(formatted.number)}${formatted.symbol}`;
       };
-      const formatBytes = (number) => `${this.props.intl.formatNumber(bytesFormat(number).number)}${
-        bytesFormat(number).symbol
-      }`;
+      const formatBytes = (number) => {
+        const formatted = bytesFormat(number);
+        return `${this.props.intl.formatNumber(formatted.number)}${formatted.symbol}`;
+      };
       const longDate = (date) => {
         if (isNone(date)) {
           return EMPTY_VALUE;
@@ -171,13 +171,13 @@ export const useFormatter = () => {
     if (number === null || number === '') {
       return EMPTY_VALUE;
     }
-    return `${intl.formatNumber(numberFormat(number).number)}${
-      numberFormat(number).symbol
-    }`;
+    const formatted = numberFormat(number);
+    return `${intl.formatNumber(formatted.number)}${formatted.symbol}`;
   };
-  const formatBytes = (number) => `${intl.formatNumber(bytesFormat(number).number)}${
-    bytesFormat(number).symbol
-  }`;
+  const formatBytes = (number) => {
+    const formatted = bytesFormat(number);
+    return `${intl.formatNumber(formatted.number)}${formatted.symbol}`;
+  };
   const longDate = (date) => {
     if (isNone(date)) {
       return EMPTY_VALUE;

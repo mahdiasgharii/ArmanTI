@@ -81,7 +81,7 @@ export default {
         container: '8px',
       },
       fontSize: {
-        'metric': ['28px', { lineHeight: '1', fontWeight: '600' }],
+        'metric': ['32px', { lineHeight: '1', fontWeight: '600' }],
         'display': ['22px', { lineHeight: '1.3', fontWeight: '600' }],
       },
     },

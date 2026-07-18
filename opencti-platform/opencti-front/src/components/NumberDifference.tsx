@@ -22,10 +22,10 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
     <div
       className={`flex items-center gap-0.5 whitespace-nowrap text-xs ${colorClass}`}
     >
-      <Icon size={13} aria-hidden="true" />
-      <span className="tabular-nums">{n(value)}</span>
+      <Icon size={14} aria-hidden="true" />
+      <span className="font-display tabular-nums">{n(value)}</span>
       {description && (
-        <span className="text-text-muted">
+        <span className="ml-1 text-text-muted">
           ({t_i18n(description)})
         </span>
       )}
