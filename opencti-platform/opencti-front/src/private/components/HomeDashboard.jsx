@@ -451,7 +451,7 @@ const HomeDashboardComponent = ({ queryRef }) => {
   const { dashboard } = localTimeFieldPreferences;
   let defaultDashboard = default_dashboard?.id;
   if (!defaultDashboard) {
-    defaultDashboard = dashboards[0]?.id ?? PLATFORM_DASHBOARD;
+    defaultDashboard = dashboards?.[0]?.id ?? PLATFORM_DASHBOARD;
   } else if (dashboard && dashboard !== 'default') {
     // Handle old conf
     defaultDashboard = dashboard;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Workspaces from './Workspaces';
+import CustomDashboards from './CustomDashboards';
 import RootDashboard from './dashboards/Root';
 import RootInvestigation from './investigations/Root';
 import { EXPLORE, INVESTIGATION } from '../../../utils/hooks/useGranted';
@@ -9,7 +10,7 @@ import PublicDashboard from './dashboards/public_dashboards/PublicDashboards';
 
 const DashboardRoute = () => (
   <Security needs={[EXPLORE]} placeholder={<Navigate to="/dashboard" />}>
-    <Workspaces type="dashboard" />
+    <CustomDashboards />
   </Security>
 );
 

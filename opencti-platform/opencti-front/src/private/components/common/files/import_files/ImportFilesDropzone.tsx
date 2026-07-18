@@ -1,11 +1,8 @@
-import { alpha } from '@mui/material/styles';
 import { CloudUpload as CloudUploadOutlined } from 'lucide-react';
 import { Box, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import Button from '@common/button/Button';
-import { useTheme } from '@mui/styles';
 import { useImportFilesContext } from '@components/common/files/import_files/ImportFilesContext';
-import type { Theme } from '../../../../../components/Theme';
 import { useFormatter } from '../../../../../components/i18n';
 
 interface ImportFilesDropzoneProps {
@@ -19,7 +16,6 @@ const ImportFilesDropzone = ({
   onChange,
   openFreeText,
 }: ImportFilesDropzoneProps) => {
-  const theme = useTheme<Theme>();
   const { t_i18n } = useFormatter();
   const [isDragging, setIsDragging] = useState(false);
   const { guessMimeType } = useImportFilesContext();
@@ -58,35 +54,99 @@ const ImportFilesDropzone = ({
       onDragLeave={() => setIsDragging(false)}
       onDrop={handleDrop}
       sx={{
-        height: fullSize ? 300 : 150,
+        height: fullSize ? 280 : 140,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        background: isDragging ? alpha(theme.palette.primary.light as string, 0.1) : theme.palette.background.paper,
-        borderRadius: 4,
-        borderColor: isDragging ? theme.palette.primary.main : theme.palette.common.lightGrey,
+        gap: 2,
+        background: isDragging
+          ? 'color-mix(in srgb, var(--ravin-primary) 10%, color-mix(in srgb, var(--ravin-surface-2) 12%, transparent))'
+          : 'color-mix(in srgb, var(--ravin-surface-2) 12%, transparent)',
+        borderRadius: '8px',
+        borderColor: isDragging
+          ? 'var(--ravin-primary)'
+          : 'color-mix(in srgb, var(--ravin-border) 50%, transparent)',
         borderWidth: isDragging ? '2px' : '1px',
         borderStyle: 'dashed',
         boxSizing: 'border-box',
-        padding: isDragging ? '19.5px' : '20px',
+        padding: isDragging ? '19px' : '20px',
         textAlign: 'center',
         marginBottom: 2,
         cursor: 'default',
-        transition: 'height 0.2s, background 0.1s, border 0.1s, padding 0.1s',
+        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': isDragging ? {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle at center, color-mix(in srgb, var(--ravin-primary) 8%, transparent) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        } : {},
+        ...(isDragging ? {
+          boxShadow: '0 0 0 1px var(--ravin-primary) inset, 0 0 20px color-mix(in srgb, var(--ravin-primary) 12%, transparent)',
+        } : {}),
       }}
     >
-      <CloudUploadOutlined style={{ color: 'var(--mui-palette-primary-main)' }} size={24} />
-      <Typography variant="h3" sx={{ marginBlock: 2 }}>
-        {t_i18n('Drag and drop files to import')}
-      </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 48,
+          height: 48,
+          borderRadius: '8px',
+          background: isDragging
+            ? 'color-mix(in srgb, var(--ravin-primary) 12%, transparent)'
+            : 'color-mix(in srgb, var(--ravin-surface-2) 30%, transparent)',
+          border: '1px solid',
+          borderColor: isDragging
+            ? 'color-mix(in srgb, var(--ravin-primary) 30%, transparent)'
+            : 'color-mix(in srgb, var(--ravin-border) 40%, transparent)',
+          transition: 'all 0.2s ease',
+          ...(isDragging ? {
+            transform: 'scale(1.08)',
+          } : {}),
+        }}
+      >
+        <CloudUploadOutlined
+          style={{
+            color: isDragging ? 'var(--ravin-primary)' : 'var(--ravin-text-muted)',
+            transition: 'color 0.2s ease',
+          }}
+          size={24}
+        />
+      </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, alignItems: 'center' }}>
+        <Typography
+          variant="h3"
+          sx={{
+            marginBlock: 0,
+            color: isDragging ? 'var(--ravin-primary)' : 'var(--ravin-text)',
+            transition: 'color 0.2s ease',
+          }}
+        >
+          {isDragging ? t_i18n('Release to upload') : t_i18n('Drag and drop files to import')}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'var(--ravin-text-muted)' }}>
+          {t_i18n('or')}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 1.5,
+          paddingTop: 1,
+        }}
+      >
         <Button component="label" size="small">
           {t_i18n('Browse files')}
           <input type="file" hidden multiple onChange={handleFileChange} />
         </Button>
         {openFreeText && (
-          <Button variant="secondary" component="label" size="small" onClick={() => openFreeText?.(true)}>
+          <Button variant="secondary" color="primary" component="label" size="small" onClick={() => openFreeText?.(true)}>
             {t_i18n('Copy/paste mode')}
           </Button>
         )}

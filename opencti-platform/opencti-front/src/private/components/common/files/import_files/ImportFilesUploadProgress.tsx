@@ -20,16 +20,36 @@ const ImportFilesUploadProgress: React.FC<ImportFilesUploadProgressProps> = ({
 
   return (
     <div style={{ display: 'flex', height: '100%', justifyContent: 'center', flexDirection: 'column' }}>
-      <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center', mb: 3 }}>
         <LinearProgress
           variant="buffer"
-          sx={{ flex: 1 }}
+          sx={{
+            flex: 1,
+            backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 40%, transparent)',
+            borderRadius: '4px',
+            '& .MuiLinearProgress-bar': {
+              backgroundColor: 'var(--ravin-primary)',
+            },
+          }}
           value={(currentCount / totalCount) * 100}
           valueBuffer={((currentCount / totalCount) * 100) + 10}
         />
         <Typography style={{ flexShrink: 0 }}>{`${currentCount}/${totalCount}`}</Typography>
       </Box>
-      <List>
+      <List
+        sx={{
+          '& .MuiListItem-root': {
+            backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 15%, transparent)',
+            borderRadius: '4px',
+            marginBottom: 1,
+            paddingInline: 2,
+            border: '1px solid color-mix(in srgb, var(--ravin-border) 30%, transparent)',
+            '&:hover': {
+              backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 25%, transparent)',
+            },
+          },
+        }}
+      >
         {uploadedFiles.map((file) => (
           <ListItem
             key={file.name}

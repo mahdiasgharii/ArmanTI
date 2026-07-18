@@ -12,7 +12,36 @@ const ImportFilesStepper = () => {
   return (
     // If canSelectImportMode is true activeStep is initialised to 1 instead of 0 (we have 2 step instead of 3)
     // we decrease 'activeStep' by 1 to adjust the stepper and skip the first step.
-    <Stepper nonLinear activeStep={canSelectImportMode ? activeStep : activeStep - 1} sx={{ marginInline: 10 }}>
+    <Stepper
+      nonLinear
+      activeStep={canSelectImportMode ? activeStep : activeStep - 1}
+      sx={{
+        marginInline: 10,
+        '& .MuiStepLabel-label': {
+          fontSize: '0.85rem',
+          fontWeight: 500,
+        },
+        '& .MuiStepLabel-label.Mui-active': {
+          color: 'var(--ravin-primary)',
+          fontWeight: 600,
+        },
+        '& .MuiStepLabel-label.Mui-completed': {
+          color: 'var(--ravin-text-muted)',
+        },
+        '& .Mui-active .MuiStepIcon-root': {
+          color: 'var(--ravin-primary)',
+        },
+        '& .Mui-completed .MuiStepIcon-root': {
+          color: 'var(--ravin-primary-dark)',
+        },
+        '& .MuiStepIcon-root': {
+          color: 'var(--ravin-border-strong)',
+        },
+        '& .MuiStepConnector-line': {
+          borderColor: 'color-mix(in srgb, var(--ravin-border) 50%, transparent)',
+        },
+      }}
+    >
       {canSelectImportMode && (
         <Step key="import_mode">
           <StepButton color="inherit" onClick={() => setActiveStep(0)}>

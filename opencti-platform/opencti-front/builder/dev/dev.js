@@ -157,7 +157,7 @@ const middleware = (target, ws = false) => createProxyMiddleware({
       .replace(/%APP_SCRIPT_SNIPPET%/g,  '')
       .replace(/%APP_TITLE%/g, "OpenCTI Dev")
       .replace(/%APP_DESCRIPTION%/g, "OpenCTI Development platform")
-      .replace(/%APP_FAVICON%/g, `${basePath}/static/ext/favicon.png`)
+      .replace(/%APP_FAVICON%/g, `${basePath}/static/ext/favicon.svg`)
       .replace(/%APP_MANIFEST%/g, `${basePath}/static/ext/manifest.json`);
     if (!process.env.E2E_TEST) {
       res.header(

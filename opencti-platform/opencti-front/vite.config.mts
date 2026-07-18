@@ -253,7 +253,7 @@ export default defineConfig({
           .replace(/%APP_SCRIPT_SNIPPET%/g,  '')
           .replace(/%APP_TITLE%/g, "ArmanCTI")
           .replace(/%APP_DESCRIPTION%/g, "ArmanCTI Platform")
-          .replace(/%APP_FAVICON%/g, `${basePath}/static/ext/favicon.png`)
+          .replace(/%APP_FAVICON%/g, `${basePath}/static/ext/favicon.svg`)
           .replace(/%APP_MANIFEST%/g, `${basePath}/static/ext/manifest.json`)
       }
     },

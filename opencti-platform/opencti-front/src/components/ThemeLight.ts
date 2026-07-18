@@ -57,7 +57,7 @@ const ThemeLight = (
       text: { primary: '#881106' },
     },
     success: { main: '#17AB1F', dark: '#094E0B' },
-    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#7FE0CC' },
+    primary: { main: primary || THEME_LIGHT_DEFAULT_PRIMARY, light: primary ? alpha(primary, 0.08) : '#7FE0CC', dark: primary ? darken(primary, 0.2) : '#1A8A73', contrastText: '#ffffff' },
     secondary: { main: secondary || THEME_LIGHT_DEFAULT_SECONDARY },
     gradient: { main: '#860EFE' },
     border: {
@@ -376,6 +376,40 @@ const ThemeLight = (
             },
           },
         },
+        containedPrimary: {
+          backgroundColor: primary || THEME_LIGHT_DEFAULT_PRIMARY,
+          color: '#ffffff',
+          '&:hover': {
+            backgroundColor: '#1A8A73',
+          },
+          '&.Mui-disabled': {
+            backgroundColor: '#E4E4E7',
+            color: '#A1A1AA',
+          },
+        },
+        outlinedPrimary: {
+          backgroundColor: 'transparent',
+          color: primary || THEME_LIGHT_DEFAULT_PRIMARY,
+          borderColor: primary || THEME_LIGHT_DEFAULT_PRIMARY,
+          '&:hover': {
+            backgroundColor: alpha(primary || THEME_LIGHT_DEFAULT_PRIMARY, 0.15),
+            borderColor: primary || THEME_LIGHT_DEFAULT_PRIMARY,
+          },
+        },
+        textPrimary: {
+          backgroundColor: 'transparent',
+          color: primary || THEME_LIGHT_DEFAULT_PRIMARY,
+          '&:hover': {
+            backgroundColor: alpha(primary || THEME_LIGHT_DEFAULT_PRIMARY, 0.15),
+          },
+        },
+        containedError: {
+          backgroundColor: '#F20F0F',
+          color: '#ffffff',
+          '&:hover': {
+            backgroundColor: '#881106',
+          },
+        },
       },
     },
     MuiDialog: {
@@ -385,7 +419,7 @@ const ThemeLight = (
           backgroundColor: paper === THEME_LIGHT_DEFAULT_PAPER
             ? '#FAFAFA'
             : (paper ?? '#FAFAFA'),
-          borderRadius: 4,
+          borderRadius: 12,
         },
       },
     },
@@ -401,9 +435,6 @@ const ThemeLight = (
           padding: 0,
           marginTop: theme.spacing(4),
           marginLeft: 0,
-          '& .MuiButton-root': {
-            textTransform: 'none',
-          },
           '& > :not(style) ~ :not(style)': {
             marginLeft: 0,
           },

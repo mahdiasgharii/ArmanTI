@@ -20,14 +20,10 @@ import {
 import { AssociatedEntityOption } from '@components/common/form/AssociatedEntityField';
 import { AuthorizedMembersFieldValue } from '@components/common/form/AuthorizedMembersField';
 import { Box, DialogActions } from '@mui/material';
-import { useTheme } from '@mui/styles';
 import { FormikConfig, FormikErrors, useFormik } from 'formik';
 import { useMemo, useState } from 'react';
 import { graphql, UseMutationConfig } from 'react-relay';
 import { Link } from 'react-router-dom';
-import { Theme } from '../../../../../components/Theme';
-import { THEME_DARK_DIALOG_BACKGROUND } from '../../../../../components/ThemeDark';
-import { THEME_LIGHT_DIALOG_BACKGROUND } from '../../../../../components/ThemeLight';
 import Button from '../../../../../components/common/button/Button';
 import Dialog from '../../../../../components/common/dialog/Dialog';
 import { useFormatter } from '../../../../../components/i18n';
@@ -40,7 +36,6 @@ import useApiMutation from '../../../../../utils/hooks/useApiMutation';
 import useBulkCommit from '../../../../../utils/hooks/useBulkCommit';
 import useDraftContext from '../../../../../utils/hooks/useDraftContext';
 import { KNOWLEDGE_KNASKIMPORT } from '../../../../../utils/hooks/useGranted';
-import { hasCustomColor } from '../../../../../utils/theme';
 import { useIsMandatoryAttribute } from '../../../../../utils/hooks/useEntitySettings';
 import useDefaultValues from '../../../../../utils/hooks/useDefaultValues';
 import useSwitchDraft from '../../../drafts/useSwitchDraft';
@@ -130,8 +125,6 @@ export type OptionsFormValues = {
 const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
   const { t_i18n } = useFormatter();
   const { mandatoryAttributes } = useIsMandatoryAttribute(DRAFTWORKSPACE_TYPE);
-
-  const theme = useTheme<Theme>();
 
   const draftContext = useDraftContext();
   const {
@@ -362,7 +355,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         // Next button to move to the next step
         <Button
           onClick={() => setActiveStep(activeStep + 1)}
-          color="secondary"
           disabled={!isValid}
         >
           {t_i18n('Next')}
@@ -372,7 +364,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         // Import button for file import mode
           <Button
             onClick={optionsContext.submitForm}
-            color="secondary"
             disabled={!isValidImport}
           >
             {t_i18n('Import')}
@@ -391,7 +382,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         if (optionsContext.values.associatedEntity?.value) {
           return (
             <Button
-              color="secondary"
               onClick={() => setDraftContext()}
               component={Link}
               to={`${resolveLink(optionsContext.values.associatedEntity.type)}/${optionsContext.values.associatedEntity.value}/files`}
@@ -404,7 +394,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         return (
           // Switch to draft mode and navigate to files draft
           <Button
-            color="secondary"
             onClick={() => setDraftContext()}
             component={Link}
             to={`/dashboard/data/import/draft/${draftId}/files`}
@@ -419,7 +408,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         // Navigate to entity button (if associated entity exists)
         optionsContext.values.associatedEntity?.value ? !entityId && (
           <Button
-            color="secondary"
             onClick={() => handleClose()}
             component={Link}
             to={`${resolveLink(optionsContext.values.associatedEntity.type)}/${optionsContext.values.associatedEntity.value}/files`}
@@ -429,7 +417,6 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         ) : (
           <Security needs={[KNOWLEDGE_KNASKIMPORT]}>
             <Button
-              color="secondary"
               onClick={() => handleClose()}
               component={Link}
               to="/dashboard/data/import/file"
@@ -460,22 +447,11 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
     t_i18n,
   ]);
 
-  const getStepperBackgroundColor = () => {
-    if (hasCustomColor(theme, 'theme_paper')) {
-      return theme.palette.background.paper;
-    }
-
-    return theme.palette.mode === 'dark'
-      ? THEME_DARK_DIALOG_BACKGROUND
-      : THEME_LIGHT_DIALOG_BACKGROUND;
-  };
-
-  const stepperBackgroundColor = getStepperBackgroundColor();
-
   return (
     <Dialog
       open={open}
       size="large"
+      glass
       title={t_i18n('Import data')}
       onClose={handleClose}
     >
@@ -485,16 +461,20 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
             sx={{
               position: 'sticky',
               top: 0,
-              backgroundColor: stepperBackgroundColor,
+              backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 30%, transparent)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
               zIndex: 1,
               pt: 1,
               pb: 3,
+              borderBottom: '1px solid color-mix(in srgb, var(--ravin-border) 40%, transparent)',
+              mb: 3,
             }}
           >
             <ImportFilesStepper />
           </Box>
 
-          <Box sx={{ py: 1 }}>
+          <Box sx={{ py: 1, minHeight: 300 }}>
             {
               activeStep === 0 && (
                 <ImportFilesToggleMode />
@@ -527,11 +507,25 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         />
       )}
 
-      <DialogActions>
+      <DialogActions
+        sx={{
+          borderTop: '1px solid color-mix(in srgb, var(--ravin-border) 40%, transparent)',
+          backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 20%, transparent)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          padding: 2,
+          marginTop: 3,
+          gap: 2,
+          '& .MuiButton-root': {
+            textTransform: 'none',
+          },
+        }}
+      >
         {(!uploadStatus || uploadStatus === 'success') && (
           <Button
             onClick={() => handleClose()}
             variant="secondary"
+            color="primary"
           >
             {uploadStatus === 'success' ? t_i18n('Close') : t_i18n('Cancel')}
           </Button>

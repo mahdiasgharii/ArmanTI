@@ -554,7 +554,7 @@ export const normalizeFilterGroupForFrontend = (
       ...f,
       id: uuid(),
       key: Array.isArray(f.key) ? f.key[0] : f.key,
-      values: f.values.map((v) => v || 'todo: delete this'),
+      values: Array.isArray(f.values) ? f.values.map((v) => v || 'todo: delete this') : [],
     })),
     filterGroups: filterGroup?.filterGroups?.map((fg) => normalizeFilterGroupForFrontend(fg)),
   } as FilterGroup;

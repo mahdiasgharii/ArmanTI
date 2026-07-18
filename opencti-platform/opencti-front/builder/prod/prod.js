@@ -85,7 +85,7 @@ const buildPath = "./builder/prod/build";
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <meta name="dеѕсrірtіоn" content="%APP_DESCRIPTION%">
-            <link id="favicon" rel="shortcut icon" href="%APP_FAVICON%">
+            <link id="favicon" rel="icon" type="image/svg+xml" href="%APP_FAVICON%">
             <link id="manifest" rel="manifest" href="%APP_MANIFEST%">
             %APP_SCRIPT_SNIPPET%
             <script>window.BASE_PATH = "%BASE_PATH%"</script>

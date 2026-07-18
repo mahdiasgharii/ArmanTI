@@ -10,6 +10,7 @@ type DialogProps = {
   actionsProps?: DialogActionsProps;
   size?: DialogSize;
   showCloseButton?: boolean;
+  glass?: boolean;
 } & Omit<MUIDialogProps, 'title'>;
 
 type DialogSize = 'small' | 'medium' | 'large';
@@ -20,12 +21,34 @@ const DIALOG_SIZES: Record<DialogSize, string> = {
   large: '960px',
 };
 
+const GLASS_PAPER_SX = {
+  backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 65%, transparent)',
+  backdropFilter: 'blur(40px) saturate(200%)',
+  WebkitBackdropFilter: 'blur(40px) saturate(200%)',
+  border: '1px solid color-mix(in srgb, var(--ravin-border-strong) 50%, transparent)',
+  borderRadius: '12px',
+  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04) inset',
+  '@supports not (backdrop-filter: blur(40px))': {
+    backgroundColor: 'var(--ravin-elevated)',
+  },
+};
+
+const GLASS_BACKDROP_SX = {
+  backgroundColor: 'color-mix(in srgb, var(--ravin-bg) 60%, transparent)',
+  backdropFilter: 'blur(8px)',
+  WebkitBackdropFilter: 'blur(8px)',
+  '@supports not (backdrop-filter: blur(8px))': {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+};
+
 const Dialog = ({
   title,
   children,
   contentProps,
   size = 'medium',
   showCloseButton = false,
+  glass = false,
   onClose,
   fullScreen = false,
   ...dialogProps
@@ -41,14 +64,21 @@ const Dialog = ({
             paddingTop: 3,
           },
         },
+        backdrop: {
+          sx: {
+            ...(glass ? GLASS_BACKDROP_SX : {}),
+          },
+        },
       }}
       sx={{
-        ...(!fullScreen && {
-          '& .MuiDialog-paper': {
+        '& .MuiDialog-paper': {
+          ...(!fullScreen && {
             maxWidth: DIALOG_SIZES[size],
             width: '100%',
-          },
-        }),
+          }),
+          ...(glass ? GLASS_PAPER_SX : {}),
+        },
+        '& .MuiBackdrop-root': glass ? GLASS_BACKDROP_SX : {},
 
         ...dialogProps.sx,
       }}

@@ -2,14 +2,11 @@ import { ImportMode, useImportFilesContext } from '@components/common/files/impo
 import { FileText as DescriptionOutlined, Route as RouteOutlined, FileUp as UploadFileOutlined } from 'lucide-react';
 import { Box, CardContent } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/styles';
 import React from 'react';
 import Card from '../../../../../components/common/card/Card';
 import { useFormatter } from '../../../../../components/i18n';
-import { Theme } from '../../../../../components/Theme';
 
 const ImportFilesToggleMode = () => {
-  const theme = useTheme<Theme>();
   const { t_i18n } = useFormatter();
   const { setActiveStep, importMode, setImportMode, entityId, isForcedImportToDraft } = useImportFilesContext();
 
@@ -51,42 +48,90 @@ const ImportFilesToggleMode = () => {
       sx={{
         display: 'grid',
         gridTemplateColumns: `repeat(${modes.length}, 1fr)`,
-        gap: 1,
+        gap: 2,
       }}
     >
-      {modes.map(({ mode, title, description, icon }) => (
-        <Card
-          aria-label={title}
-          variant="outlined"
-          onClick={() => onSelectMode(mode)}
-          key={mode}
-          sx={{
-            minWidth: 0,
-            textAlign: 'center',
-            ...(importMode === mode
-              ? { borderColor: theme.palette.primary.main }
-              : {}),
-          }}
-        >
-          <CardContent
+      {modes.map(({ mode, title, description, icon }) => {
+        const isSelected = importMode === mode;
+        return (
+          <Card
+            aria-label={title}
+            variant="outlined"
+            onClick={() => onSelectMode(mode)}
+            key={mode}
             sx={{
-              height: '100%',
+              minWidth: 0,
+              textAlign: 'center',
+              borderRadius: '8px',
+              backgroundColor: isSelected
+                ? 'color-mix(in srgb, var(--ravin-primary) 6%, color-mix(in srgb, var(--ravin-surface-2) 15%, transparent))'
+                : 'color-mix(in srgb, var(--ravin-surface-2) 12%, transparent)',
+              borderColor: isSelected
+                ? 'var(--ravin-primary)'
+                : 'color-mix(in srgb, var(--ravin-border) 50%, transparent)',
+              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              '&:hover': {
+                borderColor: 'var(--ravin-border-strong)',
+                backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 25%, transparent)',
+              },
+              ...(isSelected ? {
+                boxShadow: '0 0 0 1px var(--ravin-primary), 0 0 20px color-mix(in srgb, var(--ravin-primary) 12%, transparent)',
+              } : {}),
             }}
           >
-            <Box>{icon}</Box>
-            <Typography
-              gutterBottom
-              variant="h2"
-              sx={{ marginBlock: 2 }}
+            <CardContent
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 1.5,
+              }}
             >
-              {title}
-            </Typography>
-            <Typography variant="body1">
-              {description}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 48,
+                  height: 48,
+                  borderRadius: '8px',
+                  background: isSelected
+                    ? 'color-mix(in srgb, var(--ravin-primary) 12%, transparent)'
+                    : 'color-mix(in srgb, var(--ravin-surface-2) 30%, transparent)',
+                  border: '1px solid',
+                  borderColor: isSelected
+                    ? 'color-mix(in srgb, var(--ravin-primary) 30%, transparent)'
+                    : 'color-mix(in srgb, var(--ravin-border) 40%, transparent)',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {icon}
+              </Box>
+              <Typography
+                gutterBottom
+                variant="h2"
+                sx={{
+                  marginBlock: 0,
+                  color: isSelected ? 'var(--ravin-primary)' : 'var(--ravin-text)',
+                }}
+              >
+                {title}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'var(--ravin-text-muted)',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.5,
+                }}
+              >
+                {description}
+              </Typography>
+            </CardContent>
+          </Card>
+        );
+      })}
     </Box>
   );
 };

@@ -16,7 +16,7 @@ import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
 import { defaultRender } from '../../../components/dataGrid/dataTableUtils';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 
-const workspaceLineFragment = graphql`
+export const workspaceLineFragment = graphql`
   fragment WorkspacesLine_node on Workspace {
     id
     name
@@ -37,7 +37,7 @@ const workspaceLineFragment = graphql`
   }
 `;
 
-const workspacesLinesQuery = graphql`
+export const workspacesLinesQuery = graphql`
   query WorkspacesLinesPaginationQuery(
     $search: String
     $count: Int!
@@ -58,7 +58,7 @@ const workspacesLinesQuery = graphql`
   }
 `;
 
-const workspacesLineFragment = graphql`
+export const workspacesLineFragment = graphql`
   fragment WorkspacesLines_data on Query
   @argumentDefinitions(
     search: { type: "String" }
@@ -91,6 +91,7 @@ const workspacesLineFragment = graphql`
     }
   }
 `;
+
 interface WorkspacesProps {
   type: string;
 }

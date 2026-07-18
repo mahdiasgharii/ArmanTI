@@ -36,24 +36,37 @@ export const serializeDashboardManifestForBackend = (
 export const deserializeDashboardManifestForFrontend = (
   manifestB64Str: string | undefined | null,
 ): DashboardManifest => {
-  const widgets: Record<string, DashboardWidget> = {};
+  const emptyManifest: DashboardManifest = {
+    widgets: {},
+    config: {},
+  };
   if (!manifestB64Str) {
-    return {
-      widgets,
-      config: {},
-    };
+    return emptyManifest;
   }
-  const manifestStr = fromB64(manifestB64Str);
+  let manifestStr: string;
+  try {
+    manifestStr = fromB64(manifestB64Str);
+  } catch {
+    return emptyManifest;
+  }
   if (!manifestStr) {
-    return {
-      widgets,
-      config: {},
-    };
+    return emptyManifest;
   }
-  const manifest = JSON.parse(manifestStr);
-  const widgetIds = manifest.widgets ? Object.keys(manifest.widgets) : [];
+  let manifest: Record<string, unknown>;
+  try {
+    manifest = JSON.parse(manifestStr);
+  } catch {
+    return emptyManifest;
+  }
+  const widgets: Record<string, DashboardWidget> = {};
+  const widgetIds = manifest.widgets && typeof manifest.widgets === 'object'
+    ? Object.keys(manifest.widgets as Record<string, unknown>)
+    : [];
   widgetIds.forEach((id) => {
-    const widget = manifest.widgets[id];
+    const widget = (manifest.widgets as Record<string, Record<string, unknown>>)[id];
+    if (!widget || !Array.isArray(widget.dataSelection)) {
+      return;
+    }
     widgets[id] = {
       ...widget,
       dataSelection: widget.dataSelection.map(
@@ -71,12 +84,12 @@ export const deserializeDashboardManifestForFrontend = (
             : undefined,
         }),
       ),
-    };
+    } as DashboardWidget;
   });
 
   return {
     config: {},
-    ...manifest,
+    ...(manifest as Partial<DashboardManifest>),
     widgets,
   };
 };
