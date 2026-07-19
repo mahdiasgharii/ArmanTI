@@ -854,6 +854,18 @@ input[type="file"] {
   color: var(--ravin-text-muted);
 }
 
+/* ── Row action icons (3-dot menu, navigate arrow) ── */
+.datatable-container a .MuiIconButton-root,
+.datatable-container a .MuiButton-root {
+  padding: 2px;
+  min-width: unset;
+}
+.datatable-container a .MuiIconButton-root svg,
+.datatable-container a .MuiButton-root svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* ── Toolbar background (when rows selected) ── */
 .datatable-container + div > div,
 .datatable-container > div > div[style*="background"] {

@@ -14,6 +14,7 @@ import { useFormatter } from '../../../../components/i18n';
 import useAuth from '../../../../utils/hooks/useAuth';
 import { useSettingsMessagesBannerHeight } from '../../settings/settings_messages/SettingsMessagesBanner';
 import useTopBanner from '../../../../utils/hooks/useTopBanner';
+import { TOP_BAR_HEIGHT } from '../../nav/TopBar';
 
 const StyledDrawer = styled(Drawer)(() => ({
   '& .MuiDrawer-paper': {
@@ -21,7 +22,7 @@ const StyledDrawer = styled(Drawer)(() => ({
     width: 200,
     position: 'fixed',
     overflow: 'hidden',
-    padding: '8px 4px',
+    padding: '8px 12px 8px 4px',
     zIndex: 998,
     right: 'var(--chatbot-sidebar-width, 0px)',
     transition: 'right 225ms cubic-bezier(0.4, 0, 0.2, 1)',
@@ -29,10 +30,6 @@ const StyledDrawer = styled(Drawer)(() => ({
     border: 'none',
     boxShadow: 'none',
   },
-}));
-
-const ToolbarSpacer = styled('div')(({ theme }) => ({
-  ...theme.mixins.toolbar,
 }));
 
 export interface MenuEntry {
@@ -105,7 +102,7 @@ const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }
 
   return (
     <StyledDrawer variant="permanent" anchor="right">
-      <ToolbarSpacer />
+      <div style={{ minHeight: TOP_BAR_HEIGHT }} />
       <div
         data-right-menu="true"
         style={{

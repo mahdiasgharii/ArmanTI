@@ -253,7 +253,7 @@ const DataTableLine = ({
                 size="small"
                 sx={{ padding: 0 }}
               >
-                <KeyboardArrowRightOutlined size={12} color="var(--ravin-text-muted)" />
+                <KeyboardArrowRightOutlined size={8} color="var(--ravin-text-muted)" />
               </IconButton>
             )}
           </div>
