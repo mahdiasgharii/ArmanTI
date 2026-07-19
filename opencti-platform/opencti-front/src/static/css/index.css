@@ -388,3 +388,265 @@ input[type="file"] {
 .filter-chip-animate {
   animation: filterChipIn 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* ── Drawer field styling ─────────────────────────────────────── */
+/* Scoped to .ravin-drawer-fields — styles text inputs and            */
+/* autocomplete fields inside the glassmorphism drawer.                */
+/* Autocomplete popper styles use global .ravin-autocomplete-popper    */
+/* because MUI portals the popper to document root.                    */
+
+/* ── Standard variant → input box conversion ── */
+/* Hide the underline and give standard-variant inputs a full border    */
+/* so they look like outlined input boxes inside the drawer.            */
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline {
+  border: 1px solid var(--ravin-border);
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--ravin-surface-2) 30%, transparent);
+  padding: 6px 12px;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root::before,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline::before,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root::after,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline::after {
+  display: none;
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root:hover:not(.Mui-disabled),
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline:hover:not(.Mui-disabled) {
+  border-color: var(--ravin-border-strong);
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root.Mui-focused,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline.Mui-focused {
+  border-color: var(--ravin-primary);
+  border-width: 2px;
+  padding: 5px 11px;
+  outline: none;
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root.Mui-focused .MuiInputBase-input,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline.Mui-focused .MuiInputBase-input {
+  outline: none;
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root.Mui-error,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline.Mui-error {
+  border-color: var(--ravin-danger);
+  border-width: 2px;
+  padding: 5px 11px;
+}
+
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root.Mui-disabled,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline.Mui-disabled {
+  border-color: var(--ravin-border);
+  background-color: var(--ravin-surface-2);
+  opacity: 0.5;
+}
+
+/* ── MarkdownField textarea (react-mde) — remove underline, apply box ── */
+/* Theme sets borderBottom with !important, so we need !important too.    */
+
+.ravin-drawer-fields .mde-textarea-wrapper textarea {
+  border: 1px solid var(--ravin-border) !important;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--ravin-surface-2) 30%, transparent);
+  padding: 6px 12px;
+  transition: border-color 150ms ease;
+  border-bottom: 1px solid var(--ravin-border) !important;
+}
+
+.ravin-drawer-fields .mde-textarea-wrapper textarea:hover {
+  border-color: var(--ravin-border-strong) !important;
+  border-bottom: 1px solid var(--ravin-border-strong) !important;
+}
+
+.ravin-drawer-fields .mde-textarea-wrapper textarea:focus {
+  border-color: var(--ravin-primary) !important;
+  border-bottom: 1px solid var(--ravin-primary) !important;
+  outline: none !important;
+}
+
+.ravin-drawer-fields .error .react-mde textarea {
+  border-color: var(--ravin-danger) !important;
+  border-bottom: 1px solid var(--ravin-danger) !important;
+}
+
+/* ── Outlined variant (autocomplete + outlined text fields) ── */
+/* Chain .MuiAutocomplete-root to beat MUI theme emotion overrides      */
+/* that set borderColor: 'transparent' and hardcoded backgroundColor.  */
+
+.ravin-drawer-fields .MuiOutlinedInput-root,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root {
+  background-color: color-mix(in srgb, var(--ravin-surface-2) 30%, transparent);
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root fieldset,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root fieldset {
+  border-color: var(--ravin-border);
+  transition: border-color 150ms ease;
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root:hover:not(.Mui-disabled) fieldset,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root:hover:not(.Mui-disabled) fieldset {
+  border-color: var(--ravin-border-strong);
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root.Mui-focused fieldset,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--ravin-primary);
+  border-width: 2px;
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root.Mui-focused .MuiInputBase-input,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root.Mui-focused .MuiInputBase-input {
+  outline: none;
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root.Mui-error fieldset,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root.Mui-error fieldset {
+  border-color: var(--ravin-danger);
+  border-width: 2px;
+}
+
+.ravin-drawer-fields .MuiOutlinedInput-root.Mui-disabled,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiOutlinedInput-root.Mui-disabled {
+  background-color: var(--ravin-surface-2);
+  opacity: 0.5;
+}
+
+/* ── Autocomplete dropdown popup (global — portaled to document root) ── */
+
+.ravin-autocomplete-popper .ravin-autocomplete-paper {
+  background-color: var(--ravin-elevated);
+  border: 1px solid var(--ravin-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.ravin-autocomplete-popper .MuiMenuItem-root {
+  padding: 8px 12px;
+  min-height: 36px;
+  border-radius: 4px;
+  transition: background-color 100ms ease;
+}
+
+.ravin-autocomplete-popper .MuiMenuItem-root:hover,
+.ravin-autocomplete-popper .MuiMenuItem-root.Mui-selected {
+  background-color: color-mix(in srgb, var(--ravin-primary) 15%, transparent);
+}
+
+.ravin-autocomplete-popper .MuiMenuItem-root.Mui-selected:hover {
+  background-color: color-mix(in srgb, var(--ravin-primary) 25%, transparent);
+}
+
+.ravin-autocomplete-popper .MuiMenuItem-root:active {
+  background-color: color-mix(in srgb, var(--ravin-primary) 30%, transparent);
+}
+
+.ravin-autocomplete-popper .MuiAutocomplete-listbox {
+  padding: 4px;
+}
+
+.ravin-autocomplete-popper .MuiAutocomplete-groupLabel {
+  color: var(--ravin-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.ravin-autocomplete-popper .MuiAutocomplete-groupLabel::first-letter {
+  text-transform: uppercase;
+}
+
+.ravin-autocomplete-popper .MuiAutocomplete-noOptions {
+  color: var(--ravin-text-muted);
+  padding: 12px;
+}
+
+/* ── Autocomplete indicators ── */
+
+.ravin-drawer-fields .MuiAutocomplete-root .MuiAutocomplete-popupIndicator,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiAutocomplete-clearIndicator {
+  color: var(--ravin-text-muted);
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.ravin-drawer-fields .MuiAutocomplete-root .MuiAutocomplete-popupIndicator:hover,
+.ravin-drawer-fields .MuiAutocomplete-root .MuiAutocomplete-clearIndicator:hover {
+  background-color: color-mix(in srgb, var(--ravin-primary) 15%, transparent);
+  color: var(--ravin-primary);
+}
+
+/* ── Autocomplete selected tags ── */
+
+.ravin-drawer-fields .MuiAutocomplete-root .MuiChip-root {
+  border-radius: 4px;
+  font-size: 12px;
+  height: 25px;
+}
+
+.ravin-drawer-fields .MuiAutocomplete-root .MuiChip-root .MuiChip-deleteIcon {
+  color: var(--ravin-text-muted);
+  font-size: 16px;
+  transition: color 150ms ease;
+}
+
+.ravin-drawer-fields .MuiAutocomplete-root .MuiChip-root .MuiChip-deleteIcon:hover {
+  color: var(--ravin-text);
+}
+
+/* ── Labels ── */
+/* Force labels above the input box (not inside or on the border).      */
+/* Works for both standard and outlined variants.                       */
+
+.ravin-drawer-fields .MuiFormControl-root .MuiInputLabel-root {
+  transform: translateY(-12px) scale(0.75);
+  transform-origin: top left;
+  color: var(--ravin-text-muted);
+}
+
+.ravin-drawer-fields .MuiFormControl-root.Mui-focused .MuiInputLabel-root {
+  color: var(--ravin-primary);
+}
+
+.ravin-drawer-fields .MuiFormControl-root .MuiInputLabel-root.Mui-error {
+  color: var(--ravin-danger);
+}
+
+/* Remove notch gap on outlined inputs — label is above, not on border */
+.ravin-drawer-fields .MuiOutlinedInput-notchedOutline legend {
+  max-width: 0;
+  padding: 0;
+}
+
+/* Add space above inputs for the label */
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-root,
+.ravin-drawer-fields .MuiInputBase-root.MuiInput-multiline,
+.ravin-drawer-fields .MuiOutlinedInput-root {
+  margin-top: 8px;
+}
+
+/* ── Placeholder text ── */
+
+.ravin-drawer-fields .MuiInputBase-input::placeholder {
+  color: var(--ravin-text-muted);
+  opacity: 1;
+}
+
+/* ── Helper text ── */
+
+.ravin-drawer-fields .MuiFormHelperText-root.Mui-error {
+  color: var(--ravin-danger);
+  margin-left: 0;
+}
+
+.ravin-drawer-fields .MuiFormHelperText-root:not(.Mui-error) {
+  color: var(--ravin-text-muted);
+  margin-left: 0;
+}

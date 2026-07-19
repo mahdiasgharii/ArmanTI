@@ -1,5 +1,3 @@
-import { useTheme } from '@mui/styles';
-import { Theme } from '../../Theme';
 import { Stack, Typography } from '@mui/material';
 import IconButton from '../button/IconButton';
 import { X as Close } from 'lucide-react';
@@ -12,12 +10,11 @@ interface DrawerHeaderProps {
 }
 
 const DrawerHeader = ({ title, onClose, endContent }: DrawerHeaderProps) => {
-  const theme = useTheme<Theme>();
   return (
     <Stack
       direction="row"
       sx={{
-        backgroundColor: theme.palette.background.secondary,
+        backgroundColor: 'transparent',
         paddingX: 3,
         paddingY: 2,
         alignItems: 'center',

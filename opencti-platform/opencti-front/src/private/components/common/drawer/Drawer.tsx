@@ -1,10 +1,9 @@
 import DrawerHeader from '@common/drawer/DrawerHeader';
 import { Plus as Add, Pencil as Edit } from 'lucide-react';
-import DrawerMUI from '@mui/material/Drawer';
+import Dialog from '@mui/material/Dialog';
 import Fab from '@mui/material/Fab';
-import { createStyles, useTheme } from '@mui/styles';
+import { createStyles } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
-import classNames from 'classnames';
 import React, { CSSProperties, forwardRef, isValidElement, useEffect, useState } from 'react';
 import { SubscriptionAvatars } from '../../../../components/Subscription';
 import type { Theme } from '../../../../components/Theme';
@@ -25,12 +24,6 @@ export type DrawerSize = 'small' | 'medium' | 'large' | 'extraLarge';
 // Deprecated - https://mui.com/system/styles/basics/
 // Do not use it for new code.
 const useStyles = makeStyles<Theme, { bannerHeightNumber: number }>((theme) => createStyles({
-  header: {
-    backgroundColor: theme.palette.mode === 'light' ? theme.palette.background.default : theme.palette.background.nav,
-    padding: '10px 0',
-    display: 'inline-flex',
-    alignItems: 'center',
-  },
   container: {
     padding: theme.spacing(3),
     height: '100%',
@@ -42,16 +35,8 @@ const useStyles = makeStyles<Theme, { bannerHeightNumber: number }>((theme) => c
   mainButton: ({ bannerHeightNumber }) => ({
     position: 'fixed',
     bottom: `${bannerHeightNumber + 30}px`,
-  }),
-  withLargePanel: {
-    right: 280,
-  },
-  withPanel: {
-    right: 230,
-  },
-  noPanel: {
     right: 30,
-  },
+  }),
 }));
 
 export interface DrawerControlledDialProps {
@@ -112,7 +97,6 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
     bannerSettings: { bannerHeightNumber },
   } = useAuth();
 
-  const theme = useTheme<Theme>();
   const classes = useStyles({ bannerHeightNumber });
   const [open, setOpen] = useState(defaultOpen);
   useEffect(() => {
@@ -193,28 +177,14 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
           style={{ color: 'var(--mui-palette-primary-main)' }}
           aria-label={update ? 'Edit' : 'Add'}
           disabled={disabled}
-          className={classNames({
-            [classes.mainButton]: true,
-            [classes.withPanel]: [
-              DrawerVariant.createWithPanel,
-              DrawerVariant.updateWithPanel,
-            ].includes(variant),
-            [classes.withLargePanel]: [
-              DrawerVariant.createWithLargePanel,
-            ].includes(variant),
-            [classes.noPanel]: [
-              DrawerVariant.create,
-              DrawerVariant.update,
-            ].includes(variant),
-          })}
+          className={classes.mainButton}
         >
           {update ? <Edit /> : <Add />}
         </Fab>
       )}
-      <DrawerMUI
+      <Dialog
         open={open}
-        anchor="right"
-        elevation={1}
+        maxWidth={false}
         onClose={disableBackdropClose
           ? (_, reason) => {
               if (reason !== 'backdropClick') {
@@ -230,16 +200,18 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
           paper: {
             ref,
             sx: {
-              minHeight: '100dvh',
-              width: getDrawerWidth(size),
-              position: 'fixed',
-              overflow: 'auto',
-              transition: theme.transitions.create('width', {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.enteringScreen,
-              }),
-              paddingTop: `${bannerHeightNumber}px`,
-              paddingBottom: `${bannerHeightNumber}px`,
+              maxWidth: getDrawerWidth(size),
+              width: '100%',
+              maxHeight: '85vh',
+              overflow: 'hidden',
+              borderRadius: '8px',
+              border: '1px solid var(--ravin-border)',
+              backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 72%, transparent)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+              '@supports not (backdrop-filter: blur(16px))': {
+                backgroundColor: 'var(--ravin-elevated)',
+              },
             },
           },
         }}
@@ -256,16 +228,15 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
         />
 
         <div
-          className={classes.container}
+          className={`${classes.container} ravin-drawer-fields`}
           style={{
             ...containerStyle,
-            backgroundColor: theme.palette.background.drawer,
           }}
         >
           {renderSubHeader()}
           {component}
         </div>
-      </DrawerMUI>
+      </Dialog>
     </>
   );
 });

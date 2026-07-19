@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode, useCallback, useRef } from 'react';
 import IconButton from '@common/button/IconButton';
 import { Plus as Add } from 'lucide-react';
 import { Autocomplete, AutocompleteProps, AutocompleteValue, TextField, TextFieldProps } from '@mui/material';
@@ -63,6 +63,8 @@ const AutocompleteField = <
 
   const [, meta] = useField(name);
   const { t_i18n } = useFormatter();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inDrawer = containerRef.current?.closest('.ravin-drawer-fields') != null;
 
   const internalOnChange = useCallback<NonNullable<MuiProps['onChange']>>((_, value) => {
     if (onInternalChange) {
@@ -145,7 +147,7 @@ const AutocompleteField = <
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div ref={containerRef} style={{ position: 'relative' }}>
       <Autocomplete
         size="small"
         selectOnFocus
@@ -163,6 +165,10 @@ const AutocompleteField = <
         slotProps={{
           paper: {
             elevation: 2,
+            className: inDrawer ? 'ravin-autocomplete-paper' : undefined,
+          },
+          popper: {
+            className: inDrawer ? 'ravin-autocomplete-popper' : undefined,
           },
         }}
       />

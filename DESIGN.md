@@ -275,6 +275,8 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 
 **The Header Glass Exception.** The fixed TopBar may use `backdrop-filter: blur(16px) saturate(180%)` with a 72% opaque canvas background. This is functional — content scrolls behind the header and the blur maintains legibility without full opacity. It must not be applied to cards, panels, or any other surface.
 
+**The Drawer Glass Exception.** The centered Drawer popup (MUI Dialog) may use `backdrop-filter: blur(16px) saturate(180%)` with a 72% opaque elevated background (`color-mix(in srgb, var(--ravin-elevated) 72%, transparent)`). This is functional — content behind the popup is blurred and saturated, creating depth without full opacity. A `@supports` fallback renders solid `var(--ravin-elevated)` for browsers without `backdrop-filter`. The drawer header and container use transparent backgrounds to inherit the glass effect. A 1px border (`var(--ravin-border)`) with 8px radius provides edge definition.
+
 ## 5. Components
 
 ### Buttons
@@ -338,9 +340,28 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 
 ### Dialogs
 - **Background:** Elevated (`var(--ravin-elevated)`, `#171717` dark / `#FAFAFA` light) — not canvas. One step above.
-- **Radius:** 4px
+- **Radius:** 8px (widgets/cards per design system).
 - **Title:** h5 variant (Peyda, 16px, 700 weight, lowercase first-letter uppercase)
 - **Actions:** Right-aligned, gap 16px, no left margin. Buttons use `textTransform: none`.
+
+### Drawer (Centered Popup)
+- **Implementation:** MUI `Dialog` with `maxWidth={false}` — centered in viewport, not anchored to any edge.
+- **Glass effect:** `backdrop-filter: blur(16px) saturate(180%)` with 72% opaque elevated background via `color-mix(in srgb, var(--ravin-elevated) 72%, transparent)`. Content behind the popup is blurred and saturated, creating depth without full opacity.
+- **Fallback:** `@supports not (backdrop-filter: blur(16px))` renders solid `var(--ravin-elevated)` background.
+- **Border:** 1px solid border (`var(--ravin-border)`) on all sides with 8px border radius. No box-shadow — depth from blur + border.
+- **Header:** Transparent background (inherits glass from paper). 1px bottom border (`var(--ravin-border)`) for separation from content. Peyda h5, 700 weight, lowercase first-letter uppercase.
+- **Container:** Transparent background (inherits glass from paper). 24px padding, flex column, 16px gap. Has `.ravin-drawer-fields` class for scoped input styling.
+- **Input fields (standard variant → input box):** Underline pseudo-elements hidden. Full 1px border using `var(--ravin-border)`, 4px radius, semi-transparent `var(--ravin-surface-2)` at 30% background, 6px 12px padding. Hover: `var(--ravin-border-strong)`. Focus: `var(--ravin-primary)` (2px, padding compensated to 5px 11px). Error: `var(--ravin-danger)` (2px, padding compensated). Disabled: `var(--ravin-surface-2)` at 50% opacity. 150ms ease transition.
+- **Input fields (outlined variant):** Semi-transparent `var(--ravin-surface-2)` at 30% background, 4px radius, `var(--ravin-border)` fieldset at rest, `var(--ravin-border-strong)` on hover, `var(--ravin-primary)` on focus (2px), `var(--ravin-danger)` on error (2px). 150ms ease transition. Disabled uses `var(--ravin-surface-2)` at 50% opacity.
+- **Choosable fields (autocomplete):** Dropdown popup uses global `.ravin-autocomplete-popper` + `.ravin-autocomplete-paper` classes (MUI portals popper to document root, so scoped selectors don't work). Elevated background, 1px border, 4px radius, shadow. Menu items: 36px min-height, 8px 12px padding, 4px radius, 100ms transition. Hover/selected: 15% primary tint. Selected+hover: 25% tint. Active/pressed: 30% tint. Group labels: 11px, 600 weight, muted, lowercase first-letter uppercase. No-options: muted text, 12px padding.
+- **Autocomplete indicators:** Popup and clear indicators use `var(--ravin-text-muted)` at rest, `var(--ravin-primary)` on hover with 15% primary tint background. 150ms transition.
+- **Selected tags:** 4px radius, 12px font, 25px height. Delete icon: `var(--ravin-text-muted)` at rest, `var(--ravin-text)` on hover. 150ms transition.
+- **Labels:** Always positioned above the input box (not inside or on the border). 12px font, `var(--ravin-text-muted)` at rest, `var(--ravin-primary)` on focus, `var(--ravin-danger)` on error. 8px gap between label and input. Outlined variant notch is disabled (continuous border).
+- **Placeholder:** `var(--ravin-text-muted)` at full opacity per contrast guidelines.
+- **Helper text:** Error uses `var(--ravin-danger)`, non-error uses `var(--ravin-text-muted)`. Zero left margin (flush with field).
+- **Sizes:** Small (420px), Medium (640px), Large (960px), Extra Large (90vw).
+- **Max height:** 85vh with overflow auto.
+- **zIndex:** 1202.
 
 ### Tooltips
 - **Background:** `rgba(0, 0, 0, 0.7)` — darker than canvas.
