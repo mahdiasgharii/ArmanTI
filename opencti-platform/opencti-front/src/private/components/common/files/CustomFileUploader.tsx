@@ -37,18 +37,9 @@ const useStyles = makeStyles<Theme>((theme) => ({
     width: '100%',
     marginTop: '0.2rem',
     paddingBottom: '0.35rem',
-    borderBottom: `0.1rem solid ${theme.palette.grey['400']}`,
     cursor: 'default',
-    '&:hover': {
-      borderBottom: '0.1rem solid white',
-    },
-    '&:active': {
-      borderBottom: `0.1rem solid ${theme.palette.primary.main}`,
-    },
   },
-  boxError: {
-    borderBottom: `0.1rem solid ${theme.palette.error.main}`,
-  },
+  boxError: {},
   button: {
     lineHeight: '0.65rem',
   },
@@ -76,7 +67,7 @@ const CustomFileUploader: FunctionComponent<CustomFileUploadProps> = ({
   field,
   noFileSelectedLabel,
   noMargin = false,
-  required = false,
+  required: _required = false,
   onChange,
 }) => {
   const { t_i18n } = useFormatter();
@@ -149,12 +140,13 @@ const CustomFileUploader: FunctionComponent<CustomFileUploadProps> = ({
   return (
     <div className={classes.div} style={noMargin ? { margin: 0 } : {}}>
       <InputLabel shrink={true} variant="standard" className={classNames({ [classes.error]: !!errorText })}>
-        {label ? t_i18n(label) : t_i18n('Associated file')} {required && '*'}
+        {label ? t_i18n(label) : t_i18n('Associated file')}
       </InputLabel>
       <Box
         className={classNames({
           [classes.box]: true,
           [classes.boxError]: !!errorText,
+          'ravin-file-uploader': true,
         })}
       >
         <Button

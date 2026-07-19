@@ -195,6 +195,8 @@ const defaultContextValues = {
   inDraftContext: false,
   queryRef: {} as never,
   selectedFormId: undefined,
+  setSelectedFormId: vi.fn(),
+  setFiles: vi.fn(),
   canSelectImportMode: true,
   isForcedImportToDraft: false,
 };

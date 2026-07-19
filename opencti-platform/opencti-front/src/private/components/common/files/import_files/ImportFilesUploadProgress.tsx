@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, LinearProgress, List, ListItem, Typography } from '@mui/material';
+import { Alert, Box, LinearProgress, List, ListItem, Typography } from '@mui/material';
 import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as UploadFileOutlined } from 'lucide-react';
 import { useImportFilesContext } from '@components/common/files/import_files/ImportFilesContext';
+import { useFormatter } from '../../../../../components/i18n';
 
 interface ImportFilesUploadProgressProps {
   currentCount: number;
@@ -17,9 +18,18 @@ const ImportFilesUploadProgress: React.FC<ImportFilesUploadProgressProps> = ({
   BulkResult,
 }) => {
   const { uploadStatus } = useImportFilesContext();
+  const { t_i18n } = useFormatter();
+  const hasError = uploadStatus === 'error';
+  const errorCount = uploadedFiles.filter((f) => f.status === 'error').length;
+  const successCount = uploadedFiles.filter((f) => f.status === 'success').length;
 
   return (
     <div style={{ display: 'flex', height: '100%', justifyContent: 'center', flexDirection: 'column' }}>
+      {hasError && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {t_i18n('Some files failed to upload ({errorCount} of {totalCount})', { values: { errorCount, totalCount } })}
+        </Alert>
+      )}
       <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center', mb: 3 }}>
         <LinearProgress
           variant="buffer"
@@ -28,7 +38,7 @@ const ImportFilesUploadProgress: React.FC<ImportFilesUploadProgressProps> = ({
             backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 40%, transparent)',
             borderRadius: '4px',
             '& .MuiLinearProgress-bar': {
-              backgroundColor: 'var(--ravin-primary)',
+              backgroundColor: hasError ? 'var(--ravin-error)' : 'var(--ravin-primary)',
             },
           }}
           value={(currentCount / totalCount) * 100}
@@ -71,7 +81,7 @@ const ImportFilesUploadProgress: React.FC<ImportFilesUploadProgressProps> = ({
           </ListItem>
         ))}
       </List>
-      {uploadStatus === 'success' && <BulkResult variablesToString={(v) => v.file.name} />}
+      {(uploadStatus === 'success' || (hasError && successCount > 0)) && <BulkResult variablesToString={(v) => v.file.name} />}
     </div>
   );
 };

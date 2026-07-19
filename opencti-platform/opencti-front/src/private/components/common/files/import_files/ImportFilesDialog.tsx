@@ -21,7 +21,8 @@ import { AssociatedEntityOption } from '@components/common/form/AssociatedEntity
 import { AuthorizedMembersFieldValue } from '@components/common/form/AuthorizedMembersField';
 import { Box, DialogActions } from '@mui/material';
 import { FormikConfig, FormikErrors, useFormik } from 'formik';
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowRight as ArrowRightIcon } from 'lucide-react';
 import { graphql, UseMutationConfig } from 'react-relay';
 import { Link } from 'react-router-dom';
 import Button from '../../../../../components/common/button/Button';
@@ -140,6 +141,8 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
     inDraftContext,
     queryRef,
     selectedFormId,
+    setFiles,
+    setSelectedFormId,
   } = useImportFilesContext();
   const { xtmOneConfigured } = useChatbot();
 
@@ -185,7 +188,20 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
 
   const createDraft = useCreateDraft(commitCreationMutation, setDraftId);
 
-  const setDraftContext = () => {
+  const errorCountRef = useRef(0);
+
+  useEffect(() => {
+    if (open) {
+      setFiles([]);
+      setUploadStatus(undefined);
+      setDraftId(draftContext?.id);
+      setSelectedFormId(undefined);
+      setUploadedFiles([]);
+      errorCountRef.current = 0;
+    }
+  }, [open, setFiles, setUploadStatus, setDraftId, setSelectedFormId, draftContext?.id]);
+
+  const setDraftContext = useCallback(() => {
     if (draftId) {
       enterDraft(draftId, {
         onCompleted: () => {
@@ -197,7 +213,7 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         },
       });
     }
-  };
+  }, [draftId, enterDraft, handleClose]);
 
   const importFiles = (
     {
@@ -243,6 +259,7 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
     ));
 
     setUploadedFiles(files.map(({ file: { name } }) => ({ name })));
+    errorCountRef.current = 0;
 
     bulkCommit({
       commit: (args) => (
@@ -253,12 +270,12 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
       variables,
       onStepError: (error, { file: { name } }) => {
         handleErrorInForm(error, setErrors);
+        errorCountRef.current += 1;
         setUploadedFiles((prevUploadedFiles) => {
           return prevUploadedFiles.map((prevFile) => {
             return prevFile.name === name ? { name, status: 'error' } : prevFile;
           });
         });
-        setUploadStatus('success');
       },
       onStepCompleted: ({ file: { name } }) => {
         setUploadedFiles((prevUploadedFiles) => {
@@ -268,7 +285,7 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         });
       },
       onCompleted: () => {
-        setUploadStatus('success');
+        setUploadStatus(errorCountRef.current > 0 ? 'error' : 'success');
       },
     });
   };
@@ -347,7 +364,7 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
       else if (key === 'createdBy') return values.createdBy;
     });
     return (values.validationMode === 'draft' && isValidDraft) || draftId || values.validationMode === 'workbench' || importMode === 'auto';
-  }, [optionsContext.values, importMode]);
+  }, [optionsContext.values, importMode, draftId, mandatoryAttributes]);
 
   const renderActions = useMemo(() => {
     if (!uploadStatus) {
@@ -356,6 +373,16 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
         <Button
           onClick={() => setActiveStep(activeStep + 1)}
           disabled={!isValid}
+          endIcon={<ArrowRightIcon size={16} />}
+          sx={{
+            boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+            '&:hover': {
+              boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+            },
+            '&.Mui-disabled': {
+              boxShadow: 'none',
+            },
+          }}
         >
           {t_i18n('Next')}
         </Button>
@@ -365,6 +392,15 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
           <Button
             onClick={optionsContext.submitForm}
             disabled={!isValidImport}
+            sx={{
+              boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+              '&:hover': {
+                boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+              },
+              '&.Mui-disabled': {
+                boxShadow: 'none',
+              },
+            }}
           >
             {t_i18n('Import')}
           </Button>
@@ -385,6 +421,16 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
               onClick={() => setDraftContext()}
               component={Link}
               to={`${resolveLink(optionsContext.values.associatedEntity.type)}/${optionsContext.values.associatedEntity.value}/files`}
+              endIcon={<ArrowRightIcon size={16} />}
+              sx={{
+                boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+                '&:hover': {
+                  boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+                },
+                '&.Mui-disabled': {
+                  boxShadow: 'none',
+                },
+              }}
             >
               {t_i18n('Navigate to draft')}
             </Button>
@@ -397,6 +443,16 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
             onClick={() => setDraftContext()}
             component={Link}
             to={`/dashboard/data/import/draft/${draftId}/files`}
+            endIcon={<ArrowRightIcon size={16} />}
+            sx={{
+              boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+              '&:hover': {
+                boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+              },
+              '&.Mui-disabled': {
+                boxShadow: 'none',
+              },
+            }}
           >
             {t_i18n('Navigate to draft')}
           </Button>
@@ -411,6 +467,16 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
             onClick={() => handleClose()}
             component={Link}
             to={`${resolveLink(optionsContext.values.associatedEntity.type)}/${optionsContext.values.associatedEntity.value}/files`}
+            endIcon={<ArrowRightIcon size={16} />}
+            sx={{
+              boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+              '&:hover': {
+                boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+              },
+              '&.Mui-disabled': {
+                boxShadow: 'none',
+              },
+            }}
           >
             {t_i18n('Navigate to entity')}
           </Button>
@@ -420,11 +486,47 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
               onClick={() => handleClose()}
               component={Link}
               to="/dashboard/data/import/file"
+              endIcon={<ArrowRightIcon size={16} />}
+              sx={{
+                boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+                '&:hover': {
+                  boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+                },
+                '&.Mui-disabled': {
+                  boxShadow: 'none',
+                },
+              }}
             >
               {t_i18n('Navigate to import')}
             </Button>
           </Security>
         )
+      );
+    }
+
+    // If upload completed with errors, offer retry
+    if (uploadStatus === 'error') {
+      return (
+        <Button
+          onClick={() => {
+            setUploadStatus(undefined);
+            setUploadedFiles([]);
+            errorCountRef.current = 0;
+            setActiveStep(2);
+          }}
+          endIcon={<ArrowRightIcon size={16} />}
+          sx={{
+            boxShadow: '0 0 20px color-mix(in srgb, var(--ravin-primary) 20%, transparent)',
+            '&:hover': {
+              boxShadow: '0 0 28px color-mix(in srgb, var(--ravin-primary) 35%, transparent)',
+            },
+            '&.Mui-disabled': {
+              boxShadow: 'none',
+            },
+          }}
+        >
+          {t_i18n('Retry')}
+        </Button>
       );
     }
 
@@ -452,6 +554,7 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
       open={open}
       size="large"
       glass
+      showCloseButton
       title={t_i18n('Import data')}
       onClose={handleClose}
     >
@@ -461,13 +564,13 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
             sx={{
               position: 'sticky',
               top: 0,
-              backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 30%, transparent)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
+              backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 25%, transparent)',
+              backdropFilter: 'blur(16px) saturate(150%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(150%)',
               zIndex: 1,
               pt: 1,
               pb: 3,
-              borderBottom: '1px solid color-mix(in srgb, var(--ravin-border) 40%, transparent)',
+              borderBottom: '1px solid color-mix(in srgb, var(--ravin-border) 30%, transparent)',
               mb: 3,
             }}
           >
@@ -509,10 +612,10 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
 
       <DialogActions
         sx={{
-          borderTop: '1px solid color-mix(in srgb, var(--ravin-border) 40%, transparent)',
-          backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 20%, transparent)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
+          borderTop: '1px solid color-mix(in srgb, var(--ravin-border) 30%, transparent)',
+          backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 15%, transparent)',
+          backdropFilter: 'blur(16px) saturate(150%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(150%)',
           padding: 2,
           marginTop: 3,
           gap: 2,
@@ -521,13 +624,23 @@ const ImportFiles = ({ open, handleClose }: ImportFilesDialogProps) => {
           },
         }}
       >
-        {(!uploadStatus || uploadStatus === 'success') && (
+        {(!uploadStatus || uploadStatus === 'success' || uploadStatus === 'error') && (
           <Button
             onClick={() => handleClose()}
             variant="secondary"
             color="primary"
+            sx={{
+              backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 30%, transparent)',
+              borderColor: 'color-mix(in srgb, var(--ravin-border-strong) 50%, transparent)',
+              color: 'var(--ravin-text-muted)',
+              '&:hover': {
+                backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 50%, transparent)',
+                borderColor: 'color-mix(in srgb, var(--ravin-border-strong) 70%, transparent)',
+                color: 'var(--ravin-text)',
+              },
+            }}
           >
-            {uploadStatus === 'success' ? t_i18n('Close') : t_i18n('Cancel')}
+            {uploadStatus === 'success' || uploadStatus === 'error' ? t_i18n('Close') : t_i18n('Cancel')}
           </Button>
         )}
         {renderActions}

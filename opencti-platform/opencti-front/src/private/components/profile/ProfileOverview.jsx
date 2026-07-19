@@ -1,16 +1,15 @@
 import Button from '@common/button/Button';
 import Card from '@common/card/Card';
 import { Lock as LockOutlined, Unlock as NoEncryptionOutlined } from 'lucide-react';
-import { ListItem, ListItemText, Stack, Switch } from '@mui/material';
+import { Box, ListItem, ListItemText, Stack, Switch, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Dialog from '@common/dialog/Dialog';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/styles';
-import withStyles from '@mui/styles/withStyles';
 import { Field, Form, Formik } from 'formik';
 import * as PropTypes from 'prop-types';
 import qrcode from 'qrcode';
-import { compose, pick } from 'ramda';
+import { pick } from 'ramda';
 import { useEffect, useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { Link } from 'react-router-dom';
@@ -22,7 +21,7 @@ import inject18n, { useFormatter } from '../../../components/i18n';
 import Loader from '../../../components/Loader';
 import TextField from '../../../components/TextField';
 import OtpInputField, { OTP_CODE_SIZE } from '../../../public/components/login/OtpInputField';
-import { commitMutation, MESSAGING$, QueryRenderer } from '../../../relay/environment';
+import { commitMutation, QueryRenderer } from '../../../relay/environment';
 import { convertOrganizations } from '../../../utils/edition';
 import { fieldSpacingContainerStyle } from '../../../utils/field';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
@@ -30,31 +29,26 @@ import useGranted, { APIACCESS_USETOKEN, KNOWLEDGE } from '../../../utils/hooks/
 import useHelper from '../../../utils/hooks/useHelper';
 import NotifierField from '../common/form/NotifierField';
 import ObjectOrganizationField from '../common/form/ObjectOrganizationField';
-import PasswordPolicies from '../common/form/PasswordPolicies';
 import HomeDashboardSettings from '../HomeDashboardSettings';
 import TokenCreationDrawer from './api_tokens/TokenCreationDrawer';
 import TokenList from './api_tokens/TokenList';
 import ProfileLocalStorage from './ProfileLocalStorage';
 import ProfileOverviewNewsFeed from './ProfileOverviewNewsFeed';
 
-const styles = () => ({
-  container: {
-    width: 900,
-    margin: '0 auto',
-  },
-  paper: {
-    width: '100%',
-    margin: '0 auto',
-    marginBottom: 24,
-    padding: 20,
-    textAlign: 'left',
-    borderRadius: 4,
-    position: 'relative',
-  },
-  switchField: {
-    padding: '20px 0 0',
-  },
-});
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+};
+
+const ravinCardSx = {
+  borderRadius: '8px',
+  border: '1px solid var(--ravin-border)',
+  borderColor: 'var(--ravin-border)',
+  background: 'var(--ravin-bg)',
+  padding: '16px',
+  height: '100%',
+  width: '100%',
+};
 
 const profileOverviewFieldPatch = graphql`
   mutation ProfileOverviewFieldPatchMutation(
@@ -111,14 +105,6 @@ const userValidation = (t) => Yup.object().shape({
   unsubscribed_news_feed_types: Yup.array().of(Yup.string()),
 });
 
-const passwordValidation = (t) => Yup.object().shape({
-  current_password: Yup.string().required(t('This field is required')),
-  password: Yup.string().required(t('This field is required')),
-  confirmation: Yup.string()
-    .oneOf([Yup.ref('password'), null], t('The values do not match'))
-    .required(t('This field is required')),
-});
-
 const Otp = ({ closeFunction, secret, uri }) => {
   const { t_i18n } = useFormatter();
   const theme = useTheme();
@@ -162,7 +148,18 @@ const Otp = ({ closeFunction, secret, uri }) => {
         <Alert
           severity="error"
           variant="outlined"
-          style={{ margin: '15px 0' }}
+          sx={{
+            margin: '15px 0',
+            borderColor: 'var(--ravin-danger)',
+            color: 'var(--ravin-text)',
+            '& .MuiAlert-icon': {
+              color: 'var(--ravin-danger)',
+            },
+            '& .MuiTypography-root': {
+              fontFamily: '"Peyda", sans-serif',
+              fontSize: '0.8rem',
+            },
+          }}
         >
           {error}
         </Alert>
@@ -170,7 +167,18 @@ const Otp = ({ closeFunction, secret, uri }) => {
         <Alert
           severity="info"
           variant="outlined"
-          style={{ margin: '15px 0' }}
+          sx={{
+            margin: '15px 0',
+            borderColor: 'var(--ravin-primary)',
+            color: 'var(--ravin-text)',
+            '& .MuiAlert-icon': {
+              color: 'var(--ravin-primary)',
+            },
+            '& .MuiTypography-root': {
+              fontFamily: '"Peyda", sans-serif',
+              fontSize: '0.8rem',
+            },
+          }}
         >
           {t_i18n('Type the code generated in your application')}
         </Alert>
@@ -203,7 +211,7 @@ const OtpComponent = ({ closeFunction }) => (
 );
 
 const ProfileOverviewComponent = (props) => {
-  const { t, me, classes, about, settings, themes } = props;
+  const { t, me, about, settings, themes } = props;
   const { external, otp_activated: useOtp } = me;
   const { t_i18n } = useFormatter();
   const { isPlaygroundEnable } = useHelper();
@@ -261,33 +269,13 @@ const ProfileOverviewComponent = (props) => {
       .catch(() => false);
   };
 
-  const handleSubmitPasswords = (values, { setSubmitting, resetForm }) => {
-    const field = { key: 'password', value: values.password };
-    commitMutation({
-      mutation: profileOverviewFieldPatch,
-      variables: {
-        input: field,
-        password: values.current_password,
-      },
-      setSubmitting,
-      onCompleted: () => {
-        setSubmitting(false);
-        MESSAGING$.notifySuccess('The password has been updated');
-        resetForm();
-      },
-    });
-  };
-
   const themeList = themes?.edges
     ?.filter((node) => !!node)
     .map((node) => node.node)
     ?? [];
 
   return (
-    <Stack
-      gap={2}
-      sx={{ width: 900, margin: '0 auto' }}
-    >
+    <Box sx={{ padding: '24px 24px 24px 24px' }}>
       <TokenCreationDrawer
         userId={me.id}
         open={displayTokenCreation}
@@ -301,319 +289,354 @@ const ProfileOverviewComponent = (props) => {
       >
         <OtpComponent closeFunction={() => setDisplay2FA(false)} />
       </Dialog>
-      <Card title={`${t('Profile')} ${external && `(${t('external')})`}`}>
-        <Formik
-          enableReinitialize={true}
-          initialValues={initialValues}
-          validationSchema={userValidation(t)}
+      <Typography
+        variant="h1"
+        sx={{
+          fontFamily: '"Peyda", sans-serif',
+          fontSize: '22px',
+          fontWeight: 600,
+          color: 'var(--ravin-text)',
+          lineHeight: 1.3,
+          ...lowercaseVoiceSx,
+          mb: 3,
+        }}
+      >
+        {t('User profile')}
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+        }}
+      >
+        <Box
+          className="ravin-drawer-fields"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+            gap: '16px',
+          }}
         >
-          {() => (
-            <Form>
-              <Field
-                component={TextField}
-                variant="standard"
-                name="name"
-                disabled={external}
-                label={t('Name')}
-                fullWidth={true}
-                onSubmit={handleSubmitField}
-              />
-              <Field
-                component={TextField}
-                variant="standard"
-                name="user_email"
-                disabled={external}
-                label={t('Email address')}
-                fullWidth={true}
-                style={{ marginTop: 16 }}
-                onSubmit={handleSubmitField}
-              />
-              <ObjectOrganizationField
-                name="objectOrganization"
-                label="Organizations"
-                disabled={true}
-                style={fieldSpacingContainerStyle}
-                outlined={false}
-              />
-              <Field
-                component={TextField}
-                variant="standard"
-                name="firstname"
-                label={t('Firstname')}
-                fullWidth={true}
-                style={{ marginTop: 16 }}
-                onSubmit={handleSubmitField}
-              />
-              <Field
-                component={TextField}
-                variant="standard"
-                name="lastname"
-                label={t('Lastname')}
-                fullWidth={true}
-                style={{ marginTop: 16 }}
-                onSubmit={handleSubmitField}
-              />
-              <Field
-                component={TextField}
-                variant="standard"
-                name="description"
-                label={t('Description')}
-                fullWidth={true}
-                multiline={true}
-                rows={4}
-                style={{ marginTop: 16 }}
-                onSubmit={handleSubmitField}
-              />
-            </Form>
-          )}
-        </Formik>
-      </Card>
-      <Card title={t('User experience')}>
-        <Formik
-          enableReinitialize={true}
-          initialValues={initialValues}
-          validationSchema={userValidation(t)}
-        >
-          {() => (
-            <Form>
-              <Field
-                component={SelectField}
-                variant="standard"
-                name="theme"
-                label={t('Theme')}
-                fullWidth={true}
-                inputProps={{
-                  name: 'theme',
-                  id: 'theme',
-                }}
-                containerstyle={{ width: '100%' }}
-                onChange={handleSubmitField}
-              >
-                <MenuItem value="default">{t('Default')}</MenuItem>
-                {themeList.map(({ id, name }) => (
-                  <MenuItem key={id} value={id}>{name}</MenuItem>
-                ))}
-              </Field>
-              <Field
-                component={SelectField}
-                variant="standard"
-                name="language"
-                label={t('Language')}
-                fullWidth={true}
-                inputProps={{
-                  name: 'language',
-                  id: 'language',
-                }}
-                containerstyle={fieldSpacingContainerStyle}
-                onChange={handleSubmitField}
-              >
-                <MenuItem value="auto"><em>{t('Automatic')}</em></MenuItem>
-                {
-                  availableLanguage.map(({ value, label }) => <MenuItem key={value} value={value}>{label}</MenuItem>)
-                }
-              </Field>
-              <Field
-                component={SelectField}
-                variant="standard"
-                name="unit_system"
-                label={t('Unit system')}
-                fullWidth={true}
-                inputProps={{ name: 'unit_system', id: 'unit_system' }}
-                containerstyle={fieldSpacingContainerStyle}
-                onChange={handleSubmitField}
-              >
-                <MenuItem value="auto"><em>{t('Automatic')}</em></MenuItem>
-                <MenuItem value="Imperial">{t('Imperial')}</MenuItem>
-                <MenuItem value="Metric">{t('Metric')}</MenuItem>
-              </Field>
-              <ListItem style={{ padding: '20px 0 0 0' }}>
-                <ListItemText
-                  primary={t('Show left navigation submenu icons')}
-                />
-                <Field
-                  component={Switch}
-                  variant="standard"
-                  name="submenu_show_icons"
-                  checked={initialValues.submenu_show_icons}
-                  onChange={(_, value) => handleSubmitField('submenu_show_icons', value)}
-                />
-              </ListItem>
-              <ListItem style={{ padding: '10px 0 0 0' }}>
-                <ListItemText
-                  primary={t('Auto collapse submenus in left navigation')}
-                />
-                <Field
-                  component={Switch}
-                  variant="standard"
-                  name="submenu_auto_collapse"
-                  checked={initialValues.submenu_auto_collapse}
-                  onChange={(_, value) => handleSubmitField('submenu_auto_collapse', value)}
-                />
-              </ListItem>
-              {/* <ListItem style={{ padding: '10px 0 0 0' }}>
-                <ListItemText
-                  primary={t('Monochrome labels and entity types')}
-                />
-                <Field
-                  component={Switch}
-                  variant="standard"
-                  name="monochrome_labels"
-                  checked={initialValues.monochrome_labels}
-                  onChange={(_, value) => handleSubmitField('monochrome_labels', value)}
-                />
-              </ListItem> */}
-              <Alert
-                severity="info"
-                variant="outlined"
-                style={{ margin: '10px 0 0 0' }}
-              >
-                {settings.platform_notifier_auto_trigger_assignee
-                  ? t_i18n('When an event happens on a knowledge your participate, you will receive notification through your personal notifiers')
-                  : t_i18n('Automatic notifications for assignees and participants have been disabled by your platform administrator')
-                }
-              </Alert>
-              {settings.platform_notifier_auto_trigger_assignee && (
-                <NotifierField
-                  label={t('Personal notifiers')}
-                  name="personal_notifiers"
-                  onChange={(name, values) => handleSubmitField(name, values.map(({ value }) => value))}
-                />
+          <Card sx={ravinCardSx} padding="none">
+            <Formik
+              enableReinitialize={true}
+              initialValues={initialValues}
+              validationSchema={userValidation(t)}
+            >
+              {() => (
+                <Form>
+                  <Field
+                    component={TextField}
+                    variant="standard"
+                    name="name"
+                    disabled={external}
+                    label={t('Name')}
+                    fullWidth={true}
+                    style={{ marginTop: 8 }}
+                    onSubmit={handleSubmitField}
+                  />
+                  <Field
+                    component={TextField}
+                    variant="standard"
+                    name="user_email"
+                    disabled={external}
+                    label={t('Email address')}
+                    fullWidth={true}
+                    style={{ marginTop: 20 }}
+                    onSubmit={handleSubmitField}
+                  />
+                  <ObjectOrganizationField
+                    name="objectOrganization"
+                    label="Organizations"
+                    disabled={true}
+                    style={{ ...fieldSpacingContainerStyle, marginTop: 20 }}
+                    outlined={false}
+                  />
+                  <Field
+                    component={TextField}
+                    variant="standard"
+                    name="firstname"
+                    label={t('Firstname')}
+                    fullWidth={true}
+                    style={{ marginTop: 20 }}
+                    onSubmit={handleSubmitField}
+                  />
+                  <Field
+                    component={TextField}
+                    variant="standard"
+                    name="lastname"
+                    label={t('Lastname')}
+                    fullWidth={true}
+                    style={{ marginTop: 20 }}
+                    onSubmit={handleSubmitField}
+                  />
+                  <Field
+                    component={TextField}
+                    variant="standard"
+                    name="description"
+                    label={t('Description')}
+                    fullWidth={true}
+                    multiline={true}
+                    rows={4}
+                    style={{ marginTop: 20 }}
+                    onSubmit={handleSubmitField}
+                  />
+                </Form>
               )}
-            </Form>
-          )}
-        </Formik>
-      </Card>
-      {hasKnowledgeAccess ? (
-        <Card title={t('Dashboard settings')}>
-          <HomeDashboardSettings />
-        </Card>
-      ) : null}
-      {settings.xtm_hub_registration_status === 'registered' && settings.xtm_hub_available_news_feed_types?.length > 0 && (
-        <ProfileOverviewNewsFeed
-          availableNewsFeedTypes={settings.xtm_hub_available_news_feed_types}
-          unsubscribedNewsFeedTypes={me.unsubscribed_news_feed_types}
-          onSubmitField={handleSubmitField}
-        />
-      )}
-      <Card title={t('Authentication')}>
-        <div style={{ float: 'right', marginTop: -5 }}>
-          {useOtp && (
-            <Button
-              type="button"
-              startIcon={<NoEncryptionOutlined />}
-              onClick={disableOtp}
-              classes={{ root: classes.button }}
-              disabled={settings.otp_mandatory}
-            >
-              {t('Disable two-factor authentication')}
-            </Button>
-          )}
-          {!useOtp && (
-            <Button
-              type="button"
-              style={{ color: 'var(--mui-palette-secondary-main)' }}
-              startIcon={<LockOutlined />}
-              onClick={() => setDisplay2FA(true)}
-              classes={{ root: classes.button }}
-            >
-              {t('Enable two-factor authentication')}
-            </Button>
-          )}
-        </div>
-        <div className="clearfix" />
-        {!external && (
-          <Formik
-            enableReinitialize={true}
-            initialValues={{
-              current_password: '',
-              password: '',
-              confirmation: '',
-            }}
-            validationSchema={passwordValidation(t)}
-            onSubmit={handleSubmitPasswords}
-          >
-            {({ submitForm, isSubmitting, values }) => (
-              <Form style={{ margin: '20px 0 20px 0' }}>
-                <Stack gap={2}>
-                  <Field
-                    component={TextField}
-                    variant="standard"
-                    name="current_password"
-                    label={t('Current password')}
-                    type="password"
-                    fullWidth={true}
-                    disabled={external}
-                  />
-                  <PasswordPolicies value={values.password} />
-                  <Field
-                    component={TextField}
-                    variant="standard"
-                    name="password"
-                    label={t('New password')}
-                    type="password"
-                    fullWidth={true}
-                    disabled={external}
-                  />
-                  <Field
-                    component={TextField}
-                    variant="standard"
-                    name="confirmation"
-                    label={t('Confirmation')}
-                    type="password"
-                    fullWidth={true}
-                    disabled={external}
-                  />
-                </Stack>
-                <div style={{ display: 'flex', justifyContent: 'end', marginTop: 16 }}>
-                  <Button
-                    type="button"
-                    onClick={submitForm}
-                    disabled={external || isSubmitting}
-                    classes={{ root: classes.button }}
-                  >
-                    {t('Update')}
-                  </Button>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        )}
-      </Card>
-      <Card title={t('API access')}>
-        <div>
-          <Label>{t('OpenCTI version')}</Label>
-          <pre>{about.version}</pre>
-          <Stack gap={2}>
-            <Stack direction="row" justifyContent="flex-end" gap={1}>
-              {hasAccessTokenCapability && isPlaygroundEnable() && (
+            </Formik>
+            <Stack direction="row" sx={{ mt: 2 }}>
+              {useOtp && (
                 <Button
+                  type="button"
                   variant="secondary"
-                  component={Link}
-                  to="/public/graphql"
-                  target="_blank"
+                  fullWidth
+                  startIcon={<NoEncryptionOutlined />}
+                  onClick={disableOtp}
+                  disabled={settings.otp_mandatory}
                 >
-                  {t('Playground')}
+                  {t('Disable two-factor authentication')}
                 </Button>
               )}
-              {hasAccessTokenCapability && (
+              {!useOtp && (
                 <Button
-                  onClick={() => setDisplayTokenCreation(true)}
+                  type="button"
+                  variant="secondary"
+                  fullWidth
+                  startIcon={<LockOutlined />}
+                  onClick={() => setDisplay2FA(true)}
                 >
-                  {t('Generate Token')}
+                  {t('Enable two-factor authentication')}
                 </Button>
               )}
             </Stack>
-            <TokenList node={me} />
-          </Stack>
-        </div>
-      </Card>
-      <ProfileLocalStorage />
-    </Stack>
+          </Card>
+          <Card sx={ravinCardSx} padding="none">
+            <Formik
+              enableReinitialize={true}
+              initialValues={initialValues}
+              validationSchema={userValidation(t)}
+            >
+              {() => (
+                <Form>
+                  <Field
+                    component={SelectField}
+                    variant="standard"
+                    name="theme"
+                    label={t('Theme')}
+                    fullWidth={true}
+                    inputProps={{
+                      name: 'theme',
+                      id: 'theme',
+                    }}
+                    containerstyle={{ width: '100%', marginTop: 8 }}
+                    onChange={handleSubmitField}
+                    MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
+                  >
+                    <MenuItem value="default">{t('Default')}</MenuItem>
+                    {themeList.map(({ id, name }) => (
+                      <MenuItem key={id} value={id}>{name}</MenuItem>
+                    ))}
+                  </Field>
+                  <Field
+                    component={SelectField}
+                    variant="standard"
+                    name="language"
+                    label={t('Language')}
+                    fullWidth={true}
+                    inputProps={{
+                      name: 'language',
+                      id: 'language',
+                    }}
+                    containerstyle={fieldSpacingContainerStyle}
+                    onChange={handleSubmitField}
+                    MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
+                  >
+                    <MenuItem value="auto"><em>{t('Automatic')}</em></MenuItem>
+                    {
+                      availableLanguage.map(({ value, label }) => <MenuItem key={value} value={value}>{label}</MenuItem>)
+                    }
+                  </Field>
+                  <Field
+                    component={SelectField}
+                    variant="standard"
+                    name="unit_system"
+                    label={t('Unit system')}
+                    fullWidth={true}
+                    inputProps={{ name: 'unit_system', id: 'unit_system' }}
+                    containerstyle={fieldSpacingContainerStyle}
+                    onChange={handleSubmitField}
+                    MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
+                  >
+                    <MenuItem value="auto"><em>{t('Automatic')}</em></MenuItem>
+                    <MenuItem value="Imperial">{t('Imperial')}</MenuItem>
+                    <MenuItem value="Metric">{t('Metric')}</MenuItem>
+                  </Field>
+                  <ListItem sx={{ padding: '20px 0 0 0' }}>
+                    <ListItemText
+                      primary={t('Show left navigation submenu icons')}
+                      sx={{
+                        '& .MuiTypography-root': {
+                          fontFamily: '"Peyda", sans-serif',
+                          fontSize: '0.9rem',
+                          color: 'var(--ravin-text)',
+                        },
+                      }}
+                    />
+                    <Field
+                      component={Switch}
+                      variant="standard"
+                      name="submenu_show_icons"
+                      checked={initialValues.submenu_show_icons}
+                      onChange={(_, value) => handleSubmitField('submenu_show_icons', value)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                          backgroundColor: 'var(--ravin-primary)',
+                          opacity: 0.3,
+                        },
+                        '& .MuiSwitch-switchBase.Mui-checked .MuiSwitch-thumb': {
+                          color: 'var(--ravin-primary)',
+                        },
+                      }}
+                    />
+                  </ListItem>
+                  <ListItem sx={{ padding: '10px 0 0 0' }}>
+                    <ListItemText
+                      primary={t('Auto collapse submenus in left navigation')}
+                      sx={{
+                        '& .MuiTypography-root': {
+                          fontFamily: '"Peyda", sans-serif',
+                          fontSize: '0.9rem',
+                          color: 'var(--ravin-text)',
+                        },
+                      }}
+                    />
+                    <Field
+                      component={Switch}
+                      variant="standard"
+                      name="submenu_auto_collapse"
+                      checked={initialValues.submenu_auto_collapse}
+                      onChange={(_, value) => handleSubmitField('submenu_auto_collapse', value)}
+                      sx={{
+                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                          backgroundColor: 'var(--ravin-primary)',
+                          opacity: 0.3,
+                        },
+                        '& .MuiSwitch-switchBase.Mui-checked .MuiSwitch-thumb': {
+                          color: 'var(--ravin-primary)',
+                        },
+                      }}
+                    />
+                  </ListItem>
+                  {/* <ListItem sx={{ padding: '10px 0 0 0' }}>
+                  <ListItemText
+                    primary={t('Monochrome labels and entity types')}
+                  />
+                  <Field
+                    component={Switch}
+                    variant="standard"
+                    name="monochrome_labels"
+                    checked={initialValues.monochrome_labels}
+                    onChange={(_, value) => handleSubmitField('monochrome_labels', value)}
+                  />
+                </ListItem> */}
+                  <Alert
+                    severity="info"
+                    variant="outlined"
+                    sx={{
+                      mt: '10px',
+                      borderColor: 'var(--ravin-primary)',
+                      color: 'var(--ravin-text)',
+                      '& .MuiAlert-icon': {
+                        color: 'var(--ravin-primary)',
+                      },
+                      '& .MuiTypography-root': {
+                        fontFamily: '"Peyda", sans-serif',
+                        fontSize: '0.8rem',
+                      },
+                    }}
+                  >
+                    {settings.platform_notifier_auto_trigger_assignee
+                      ? t_i18n('When an event happens on a knowledge your participate, you will receive notification through your personal notifiers')
+                      : t_i18n('Automatic notifications for assignees and participants have been disabled by your platform administrator')
+                    }
+                  </Alert>
+                  {settings.platform_notifier_auto_trigger_assignee && (
+                    <NotifierField
+                      label={t('Personal notifiers')}
+                      name="personal_notifiers"
+                      onChange={(name, values) => handleSubmitField(name, values.map(({ value }) => value))}
+                    />
+                  )}
+                </Form>
+              )}
+            </Formik>
+          </Card>
+          {hasKnowledgeAccess ? (
+            <Card sx={ravinCardSx} padding="none">
+              <HomeDashboardSettings />
+            </Card>
+          ) : null}
+          <ProfileLocalStorage />
+          <Box sx={{ gridColumn: '1 / -1' }}>
+            <Card sx={ravinCardSx} padding="none">
+              <Box>
+                <Label>{t('ArmanCTI Platform version')}</Label>
+                <Box
+                  component="pre"
+                  sx={{
+                    fontFamily: 'Consolas, monaco, monospace',
+                    fontSize: '12px',
+                    color: 'var(--ravin-text-muted)',
+                    margin: '8px 0 16px 0',
+                    padding: '8px 12px',
+                    backgroundColor: 'color-mix(in srgb, var(--ravin-surface-2) 30%, transparent)',
+                    border: '1px solid var(--ravin-border)',
+                    borderRadius: '4px',
+                    overflow: 'auto',
+                  }}
+                >
+                  {about.version}
+                </Box>
+              </Box>
+              <Stack gap={2}>
+                <Stack direction="row" justifyContent="flex-end" gap={1}>
+                  {hasAccessTokenCapability && isPlaygroundEnable() && (
+                    <Button
+                      variant="secondary"
+                      component={Link}
+                      to="/public/graphql"
+                      target="_blank"
+                    >
+                      {t('Playground')}
+                    </Button>
+                  )}
+                  {hasAccessTokenCapability && (
+                    <Button
+                      onClick={() => setDisplayTokenCreation(true)}
+                    >
+                      {t('Generate Token')}
+                    </Button>
+                  )}
+                </Stack>
+                <TokenList node={me} />
+              </Stack>
+            </Card>
+          </Box>
+          {settings.xtm_hub_registration_status === 'registered' && settings.xtm_hub_available_news_feed_types?.length > 0 && (
+            <ProfileOverviewNewsFeed
+              availableNewsFeedTypes={settings.xtm_hub_available_news_feed_types}
+              unsubscribedNewsFeedTypes={me.unsubscribed_news_feed_types}
+              onSubmitField={handleSubmitField}
+            />
+          )}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 ProfileOverviewComponent.propTypes = {
-  classes: PropTypes.object,
   theme: PropTypes.object,
   t: PropTypes.func,
   me: PropTypes.object,
@@ -670,4 +693,4 @@ const ProfileOverview = createFragmentContainer(ProfileOverviewComponent, {
   `,
 });
 
-export default compose(inject18n, withStyles(styles))(ProfileOverview);
+export default inject18n(ProfileOverview);

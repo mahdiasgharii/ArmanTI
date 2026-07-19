@@ -22,22 +22,26 @@ const DIALOG_SIZES: Record<DialogSize, string> = {
 };
 
 const GLASS_PAPER_SX = {
-  backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 65%, transparent)',
-  backdropFilter: 'blur(40px) saturate(200%)',
-  WebkitBackdropFilter: 'blur(40px) saturate(200%)',
-  border: '1px solid color-mix(in srgb, var(--ravin-border-strong) 50%, transparent)',
+  backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 52%, transparent)',
+  backdropFilter: 'blur(48px) saturate(180%)',
+  WebkitBackdropFilter: 'blur(48px) saturate(180%)',
+  border: '1px solid color-mix(in srgb, var(--ravin-border-strong) 35%, transparent)',
   borderRadius: '12px',
-  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04) inset',
-  '@supports not (backdrop-filter: blur(40px))': {
+  boxShadow: [
+    '0 32px 64px rgba(0, 0, 0, 0.5)',
+    '0 0 0 1px rgba(255, 255, 255, 0.06) inset',
+    '0 1px 0 0 rgba(255, 255, 255, 0.08) inset',
+  ].join(', '),
+  '@supports not (backdrop-filter: blur(48px))': {
     backgroundColor: 'var(--ravin-elevated)',
   },
 };
 
 const GLASS_BACKDROP_SX = {
-  backgroundColor: 'color-mix(in srgb, var(--ravin-bg) 60%, transparent)',
-  backdropFilter: 'blur(8px)',
-  WebkitBackdropFilter: 'blur(8px)',
-  '@supports not (backdrop-filter: blur(8px))': {
+  backgroundColor: 'color-mix(in srgb, var(--ravin-bg) 48%, transparent)',
+  backdropFilter: 'blur(12px)',
+  WebkitBackdropFilter: 'blur(12px)',
+  '@supports not (backdrop-filter: blur(12px))': {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
 };

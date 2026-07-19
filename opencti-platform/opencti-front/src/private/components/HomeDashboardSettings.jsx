@@ -96,7 +96,7 @@ const HomeDashboardSettings = () => {
     <Security
       needs={[EXPLORE]}
       placeholder={(
-        <FormControl style={{ width: '100%' }}>
+        <FormControl style={{ width: '100%', marginTop: 8 }}>
           <InputLabel id="timeField">{t_i18n('Date reference')}</InputLabel>
           <Select
             labelId="timeField"
@@ -104,6 +104,7 @@ const HomeDashboardSettings = () => {
             onChange={(event) => handleUpdate('default_time_field', event.target.value)
             }
             fullWidth={true}
+            MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
           >
             <MenuItem value="technical">{t_i18n('Technical date')}</MenuItem>
             <MenuItem value="functional">{t_i18n('Functional date')}</MenuItem>
@@ -130,7 +131,7 @@ const HomeDashboardSettings = () => {
             );
             return (
               <>
-                <FormControl style={{ width: '100%' }}>
+                <FormControl style={{ width: '100%', marginTop: 8 }}>
                   <InputLabel id="timeField">
                     {t_i18n('Date reference')}
                   </InputLabel>
@@ -143,6 +144,7 @@ const HomeDashboardSettings = () => {
                     )
                     }
                     fullWidth={true}
+                    MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
                   >
                     <MenuItem value="technical">
                       {t_i18n('Technical date')}
@@ -165,6 +167,7 @@ const HomeDashboardSettings = () => {
                     )
                     }
                     fullWidth={true}
+                    MenuProps={{ slotProps: { paper: { className: 'ravin-select-paper' } } }}
                     classes={{
                       select: classes.muiSelect,
                     }}

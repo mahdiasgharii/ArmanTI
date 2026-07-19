@@ -22,7 +22,14 @@ const TokenDeleteDialog = ({ open, token, onDelete, onClose }: TokenDeleteDialog
       title={t_i18n('Revoke API Token')}
       size="small"
     >
-      <DialogContentText id="alert-dialog-description">
+      <DialogContentText
+        id="alert-dialog-description"
+        sx={{
+          fontFamily: '"Peyda", sans-serif',
+          fontSize: '0.9rem',
+          color: 'var(--ravin-text-muted)',
+        }}
+      >
         {t_i18n('Do you want to revoke the token')} <strong>{token?.name}</strong>?
       </DialogContentText>
       <DialogActions>

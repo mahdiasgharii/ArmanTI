@@ -11,19 +11,21 @@ import useGranted, { APIACCESS_USETOKEN } from '../../../../utils/hooks/useGrant
 import { TokenList_node$data } from './__generated__/TokenList_node.graphql';
 import TokenDeleteDialog from './TokenDeleteDialog';
 
-const useStyles = makeStyles<Theme>((theme) => ({
+const useStyles = makeStyles<Theme>(() => ({
   empty: {
     textAlign: 'center',
     padding: 20,
-    color: theme.palette.text?.secondary,
+    color: 'var(--ravin-text-muted)',
+    fontFamily: '"Peyda", sans-serif',
+    fontSize: '0.9rem',
   },
   warning: {
-    color: '#faa05a', // Orange/Yellow manually or use theme warning if available
-    fontWeight: 'bold',
+    color: 'var(--ravin-warning)',
+    fontWeight: 600,
   },
   error: {
-    color: '#f44336',
-    fontWeight: 'bold',
+    color: 'var(--ravin-danger)',
+    fontWeight: 600,
   },
 }));
 
@@ -111,7 +113,14 @@ export const TokenListBase: React.FC<TokenListProps> = ({ node }) => {
 
   if (tokens.length === 0) {
     return (
-      <Paper variant="outlined">
+      <Paper
+        variant="outlined"
+        sx={{
+          border: '1px solid var(--ravin-border)',
+          borderRadius: '8px',
+          backgroundColor: 'var(--ravin-bg)',
+        }}
+      >
         <div className={classes.empty}>
           {t_i18n('No tokens found. Click "Generate Token" to create one.')}
         </div>
@@ -121,11 +130,32 @@ export const TokenListBase: React.FC<TokenListProps> = ({ node }) => {
 
   return (
     <div>
-      <TableContainer component={Paper} variant="outlined" sx={{ border: 'none' }}>
+      <TableContainer
+        component={Paper}
+        variant="outlined"
+        sx={{
+          border: '1px solid var(--ravin-border)',
+          borderRadius: '8px',
+          backgroundColor: 'var(--ravin-bg)',
+          overflow: 'hidden',
+        }}
+      >
         <Table
           size="small"
           aria-label="token list"
           sx={{
+            '& .MuiTableCell-root': {
+              borderColor: 'var(--ravin-border)',
+              fontFamily: '"Peyda", sans-serif',
+              fontSize: '0.8rem',
+              color: 'var(--ravin-text)',
+            },
+            '& .MuiTableCell-head': {
+              fontWeight: 600,
+              color: 'var(--ravin-text-muted)',
+              textTransform: 'lowercase',
+              '&::first-letter': { textTransform: 'uppercase' },
+            },
             '& .MuiTableRow-root:last-child .MuiTableCell-root': {
               borderBottom: 'none',
             },
@@ -159,7 +189,7 @@ export const TokenListBase: React.FC<TokenListProps> = ({ node }) => {
                   <Tooltip title={t_i18n('Revoke')}>
                     <IconButton
                       aria-label="revoke"
-                      style={{ color: 'var(--mui-palette-primary-main)' }}
+                      sx={{ color: 'var(--ravin-danger)' }}
                       onClick={() => handleOpenDelete({ id: token.id, name: token.name || '' })}
                       size="small"
                     >

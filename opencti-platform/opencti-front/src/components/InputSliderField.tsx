@@ -1,5 +1,5 @@
 import { Field, FieldProps } from 'formik';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useRef, useState } from 'react';
 import { Grid, MenuItem, Select, SelectChangeEvent, Slider } from '@mui/material';
 import FormHelperText from '@mui/material/FormHelperText';
 import SimpleTextField from './SimpleTextField';
@@ -39,6 +39,8 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
   maxLimit,
   helperText,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inDrawer = containerRef.current?.closest('.ravin-drawer-fields') != null;
   const {
     level: { color },
     marks: defaultMarks,
@@ -67,7 +69,7 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
     // disabled prop is "forced", be it true or false
     const finalDisabled = (disabled === true || disabled === false) ? disabled : initialValue > max;
     return (
-      <>
+      <div ref={containerRef}>
         <Grid container={true} spacing={3}>
           <Grid item xs={6}>
             <Field
@@ -92,6 +94,7 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
               onChange={updateFromSelect}
               disabled={finalDisabled}
               sx={{ marginTop: 2 }} // to align field with the number input, that has a label
+              MenuProps={inDrawer ? { slotProps: { paper: { className: 'ravin-select-paper' } } } : undefined}
             >
               {marks.map((mark, i: number) => {
                 return (
@@ -120,11 +123,11 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
           disabled={finalDisabled}
         />
         {helperText && <FormHelperText sx={{ marginBottom: 1 }}>{helperText}</FormHelperText>}
-      </>
+      </div>
     );
   }
   return (
-    <>
+    <div ref={containerRef}>
       <Grid container={true} spacing={3}>
         <Grid item xs={6}>
           <Field
@@ -144,6 +147,7 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
             onChange={(event) => setFieldValue(name, event.target.value)}
             disabled={disabled}
             sx={{ marginTop: 2 }}
+            MenuProps={inDrawer ? { slotProps: { paper: { className: 'ravin-select-paper' } } } : undefined}
           >
             {marks.map((mark, i: number) => {
               return (
@@ -171,7 +175,7 @@ const InputSliderField: FunctionComponent<InputSliderFieldProps & FieldProps> = 
         disabled={disabled}
       />
       {helperText && <FormHelperText sx={{ marginBottom: 1 }}>{helperText}</FormHelperText>}
-    </>
+    </div>
   );
 };
 

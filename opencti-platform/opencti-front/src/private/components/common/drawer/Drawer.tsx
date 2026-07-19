@@ -8,6 +8,7 @@ import React, { CSSProperties, forwardRef, isValidElement, useEffect, useState }
 import { SubscriptionAvatars } from '../../../../components/Subscription';
 import type { Theme } from '../../../../components/Theme';
 import useAuth from '../../../../utils/hooks/useAuth';
+import { useRavinTheme } from '../../../../lib/useRavinTheme';
 import { GenericContext } from '../model/GenericContextModel';
 import { SxProps, Stack } from '@mui/material';
 
@@ -96,6 +97,8 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
   const {
     bannerSettings: { bannerHeightNumber },
   } = useAuth();
+  const { mode } = useRavinTheme();
+  const isDark = mode === 'dark';
 
   const classes = useStyles({ bannerHeightNumber });
   const [open, setOpen] = useState(defaultOpen);
@@ -206,12 +209,19 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(({
               overflow: 'hidden',
               borderRadius: '8px',
               border: '1px solid var(--ravin-border)',
-              backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 72%, transparent)',
-              backdropFilter: 'blur(16px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-              '@supports not (backdrop-filter: blur(16px))': {
-                backgroundColor: 'var(--ravin-elevated)',
-              },
+              ...(isDark
+                ? {
+                    backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 72%, transparent)',
+                    backdropFilter: 'blur(16px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                    '@supports not (backdrop-filter: blur(16px))': {
+                      backgroundColor: 'var(--ravin-elevated)',
+                    },
+                  }
+                : {
+                    backgroundColor: 'var(--ravin-elevated)',
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.12)',
+                  }),
             },
           },
         }}
