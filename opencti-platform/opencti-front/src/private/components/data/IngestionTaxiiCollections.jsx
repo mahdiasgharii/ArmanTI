@@ -1,29 +1,20 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { QueryRenderer } from '../../../relay/environment';
 import ListLines from '../../../components/list_lines/ListLines';
 import IngestionTaxiiCollectionLines, { IngestionTaxiiCollectionLinesQuery } from './ingestionTaxiiCollection/IngestionTaxiiCollectionLines';
 import IngestionTaxiiCollectionCreation from './ingestionTaxiiCollection/IngestionTaxiiCollectionCreation';
 import { usePaginationLocalStorage } from '../../../utils/hooks/useLocalStorage';
 import { useFormatter } from '../../../components/i18n';
-import IngestionMenu from './IngestionMenu';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import Security from '../../../utils/Security';
 import { INGESTION_SETINGESTIONS } from '../../../utils/hooks/useGranted';
+import PageContainer from '../../../components/PageContainer';
 
 const LOCAL_STORAGE_KEY = 'ingestionTaxii';
 
-// Deprecated - https://mui.com/system/styles/basics/
-// Do not use it for new code.
-const useStyles = makeStyles(() => ({
-  container: {
-    margin: 0,
-    padding: '0 200px 50px 0',
-  },
-}));
-
 const IngestionTaxiiCollections = () => {
-  const classes = useStyles();
   const { t_i18n } = useFormatter();
   const {
     viewStorage,
@@ -52,40 +43,70 @@ const IngestionTaxiiCollections = () => {
     },
   };
   return (
-    <div className={classes.container} data-testid="taxii-push-page">
-      <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('TAXII push'), current: true }]} />
-      <IngestionMenu />
-      <ListLines
-        helpers={storageHelpers}
-        sortBy={viewStorage.sortBy}
-        orderAsc={viewStorage.orderAsc}
-        dataColumns={dataColumns}
-        handleSort={storageHelpers.handleSort}
-        handleSearch={storageHelpers.handleSearch}
-        displayImport={false}
-        secondaryAction={true}
-        keyword={viewStorage.searchTerm}
-        createButton={(
+    <div data-testid="taxii-push-page">
+      <PageContainer withRightMenu>
+        <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('TAXII push'), current: true }]} />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('TAXII push')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
           <Security needs={[INGESTION_SETINGESTIONS]}>
             <IngestionTaxiiCollectionCreation paginationOptions={paginationOptions} />
           </Security>
-        )}
-        iconExtension
-      >
-        <QueryRenderer
-          query={IngestionTaxiiCollectionLinesQuery}
-          variables={{ count: 200, ...paginationOptions }}
-          render={({ props }) => (
-            <IngestionTaxiiCollectionLines
-              data={props}
-              paginationOptions={paginationOptions}
-              refetchPaginationOptions={{ count: 200, ...paginationOptions }}
-              dataColumns={dataColumns}
-              initialLoading={props === null}
-            />
-          )}
-        />
-      </ListLines>
+        </Box>
+        <ListLines
+          helpers={storageHelpers}
+          sortBy={viewStorage.sortBy}
+          orderAsc={viewStorage.orderAsc}
+          dataColumns={dataColumns}
+          handleSort={storageHelpers.handleSort}
+          handleSearch={storageHelpers.handleSearch}
+          displayImport={false}
+          secondaryAction={true}
+          keyword={viewStorage.searchTerm}
+          iconExtension
+        >
+          <QueryRenderer
+            query={IngestionTaxiiCollectionLinesQuery}
+            variables={{ count: 200, ...paginationOptions }}
+            render={({ props }) => (
+              <IngestionTaxiiCollectionLines
+                data={props}
+                paginationOptions={paginationOptions}
+                refetchPaginationOptions={{ count: 200, ...paginationOptions }}
+                dataColumns={dataColumns}
+                initialLoading={props === null}
+              />
+            )}
+          />
+        </ListLines>
+      </PageContainer>
     </div>
   );
 };

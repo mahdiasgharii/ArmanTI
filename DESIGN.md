@@ -376,8 +376,17 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Text:** White. Lowercase with first-letter uppercase.
 
 ### Table Cells
-- **Borders:** `1px solid rgba(255, 255, 255, 0.15)` — subtle white at 15% opacity.
-- **Header:** Same border treatment. No special background.
+- **Container:** Card-like wrapper with `1px solid var(--ravin-border)`, 8px border-radius, `overflow: clip`. Matches the clean MUI Table look from User Profile page (UserTokenList).
+- **Borders:** `1px solid var(--ravin-border)` — subtle border using Ravin border token. Adapts to light/dark mode automatically. Applied to both DataTable (custom) and MUI Table (theme overrides for `MuiTableCell`).
+- **Header:** Subtle `var(--ravin-elevated)` background. 42px height. Column dividers: `1px solid var(--ravin-border)` on the right of each header cell, none on the last. Labels: Peyda, 12px, 600 weight, `var(--ravin-text)`. Sort icons: `ChevronUp`/`ChevronDown` (12px, `var(--ravin-primary)`) when actively sorted; `ChevronsUpDown` (11px, `var(--ravin-text-muted)` at 50% opacity) as inactive indicator on sortable columns. Column menu icon (MoreVertical) in `var(--ravin-text-muted)`, visible on hover or active. Drag-to-resize handle: 2px wide bar at column edge, transparent at rest, no hover/drag color change.
+- **Rows:** 48px height (`theme.spacing(6)`). Border bottom: `1px solid var(--ravin-border)`. Last row: no bottom border. No hover background. Clickable rows show `pointer` cursor.
+- **Cell text:** Peyda, 13px, 400 weight, `var(--ravin-text)`. Cell padding: `theme.spacing(1)` left/right. Text overflow: ellipsis with nowrap.
+- **Checkboxes:** `var(--ravin-text-muted)` at rest, `var(--ravin-primary)` when checked. Select-all header checkbox background: `color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))` when rows are selected.
+- **Toolbar (rows selected):** Full-width bar replacing headers when rows are selected. Background: `color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))`.
+- **Filter container:** `var(--ravin-elevated)` background, 8px radius, `12px 16px` padding, 8px bottom margin. No border — depth from tonal difference.
+- **Empty state:** Centered text, `var(--ravin-text-muted)`, 200px min-height.
+- **Scrollbar:** 6px width/height. Track: transparent. Thumb: `var(--ravin-border-strong)`, 3px radius. Thumb hover: `var(--ravin-text-muted)`.
+- **Column header menu:** MUI `Menu` portaled to document root with `.ravin-column-menu-paper` class. Glassmorphism: 80% elevated background with `backdrop-filter: blur(8px) saturate(140%)`, 60% border opacity, 8px radius, `0 8px 32px` shadow at 15% opacity. `@supports` fallback to solid elevated background. Menu items: Peyda 13px, `var(--ravin-text)`, 4px radius, 8px 12px padding, 36px min-height, 2px 4px margin, 100ms transition. Hover: 12% primary tint. Divider between sections: 1px `var(--ravin-border)` with 4px 8px margin. Sort Asc icon: `ArrowUpNarrowWide` (14px, muted). Sort Desc icon: `ArrowDownWideNarrow` (14px, muted). Filter icon: `Filter` (14px, muted). Column reorder items: `GripVertical` drag handle (14px, muted) + small Checkbox + label.
 
 ### Listing Pages (Investigations, Custom Dashboards, Public Dashboards)
 - **Page header container:** Wraps the entire listing content (header + DataTable) in a single container with `padding: '24px 24px 0 24px'` — 24px on top, left, and right; 0 bottom (the DataTable's own padding handles the bottom). This is the canonical inner padding for all listing pages.

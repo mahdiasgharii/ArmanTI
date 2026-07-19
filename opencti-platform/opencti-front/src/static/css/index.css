@@ -624,6 +624,45 @@ input[type="file"] {
   padding: 4px;
 }
 
+/* ── Column header menu (global — portaled to document root) ── */
+.ravin-column-menu-paper {
+  background-color: color-mix(in srgb, var(--ravin-elevated) 80%, transparent);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--ravin-border) 60%, transparent);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+@supports not (backdrop-filter: blur(8px)) {
+  .ravin-column-menu-paper {
+    background-color: var(--ravin-elevated);
+  }
+}
+
+.ravin-column-menu-paper .MuiMenuItem-root {
+  font-family: "Peyda", sans-serif !important;
+  font-size: 13px !important;
+  color: var(--ravin-text);
+  border-radius: 4px;
+  padding: 8px 12px;
+  min-height: 36px;
+  margin: 2px 4px;
+  transition: background-color 100ms ease;
+}
+
+.ravin-column-menu-list {
+  padding: 4px;
+}
+
+.ravin-column-menu-paper .MuiMenuItem-root:hover {
+  background-color: color-mix(in srgb, var(--ravin-primary) 12%, transparent);
+}
+
+.ravin-column-menu-paper .MuiDivider-root {
+  border-color: var(--ravin-border);
+}
+
 .ravin-autocomplete-popper .MuiMenuItem-root {
   padding: 8px 12px;
   min-height: 36px;
@@ -764,4 +803,122 @@ input[type="file"] {
   color: var(--ravin-text-muted);
   margin-left: 0;
   font-size: 12px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RAVIN TABLE DESIGN
+   Applied globally to all DataTable instances via .datatable-container
+   Matches the clean MUI Table look from User Profile page (UserTokenList)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Table container: clean card-like wrapper ── */
+.datatable-container {
+  border: 1px solid var(--ravin-border);
+  border-radius: 8px;
+  overflow: clip;
+}
+
+/* ── Header row ── */
+.datatable-sticky-header {
+  border-bottom: 1px solid var(--ravin-border);
+  background-color: var(--ravin-elevated);
+}
+
+/* ── Row borders ── */
+.datatable-container a[href],
+.datatable-container a:not([href]) {
+  border-bottom: 1px solid var(--ravin-border);
+}
+
+/* ── Last row: no bottom border (like UserTokenList) ── */
+.datatable-container > div:last-child > a:last-child,
+.datatable-container > div:last-child > div:last-child > a:last-child {
+  border-bottom: none;
+}
+
+/* ── Cell text ── */
+.datatable-container [data-testid] > div > div {
+  font-family: "Peyda", sans-serif;
+  font-size: 13px;
+  color: var(--ravin-text);
+}
+
+/* ── Sort arrows ── */
+.datatable-container svg.lucide-chevron-up,
+.datatable-container svg.lucide-chevron-down {
+  color: var(--ravin-primary);
+}
+
+/* ── Column menu icon ── */
+.datatable-container .MuiIconButton-root svg {
+  color: var(--ravin-text-muted);
+}
+
+/* ── Toolbar background (when rows selected) ── */
+.datatable-container + div > div,
+.datatable-container > div > div[style*="background"] {
+  background-color: color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated)) !important;
+}
+
+/* ── Empty state ── */
+.datatable-container .MuiBox-root:empty + div,
+.datatable-container > div:last-child > div:first-child {
+  color: var(--ravin-text-muted);
+}
+
+/* ── Scrollbar styling ── */
+.datatable-container::-webkit-scrollbar,
+.datatable-container > div::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.datatable-container::-webkit-scrollbar-track,
+.datatable-container > div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.datatable-container::-webkit-scrollbar-thumb,
+.datatable-container > div::-webkit-scrollbar-thumb {
+  background: var(--ravin-border-strong);
+  border-radius: 3px;
+}
+
+.datatable-container::-webkit-scrollbar-thumb:hover,
+.datatable-container > div::-webkit-scrollbar-thumb:hover {
+  background: var(--ravin-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RAVIN LOWERCASE VOICE
+   Signature typographic pattern: lowercase text with first-letter uppercase.
+   Used on headings, chips, tabs, labels, and tooltips per DESIGN.md.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.ravin-lowercase-voice {
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+.ravin-lowercase-voice::first-letter {
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RAVIN BULK SEARCH PAGE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.ravin-bulk-textarea::placeholder {
+  color: var(--ravin-text-light);
+  opacity: 1;
+}
+
+@media (max-width: 960px) {
+  .ravin-bulk-layout {
+    flex-direction: column !important;
+  }
+  .ravin-bulk-input-panel {
+    width: 100% !important;
+    max-height: 280px;
+  }
 }

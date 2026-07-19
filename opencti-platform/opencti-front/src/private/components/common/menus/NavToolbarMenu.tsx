@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import MenuList from '@mui/material/MenuList';
@@ -13,8 +13,6 @@ import Box from '@mui/material/Box';
 import { useFormatter } from '../../../../components/i18n';
 import useAuth from '../../../../utils/hooks/useAuth';
 import { useSettingsMessagesBannerHeight } from '../../settings/settings_messages/SettingsMessagesBanner';
-import { Theme } from '../../../../components/Theme';
-import { useTheme } from '@mui/styles';
 import useTopBanner from '../../../../utils/hooks/useTopBanner';
 
 const StyledDrawer = styled(Drawer)(() => ({
@@ -22,11 +20,14 @@ const StyledDrawer = styled(Drawer)(() => ({
     minHeight: '100dvh',
     width: 200,
     position: 'fixed',
-    overflow: 'auto',
-    padding: 0,
+    overflow: 'hidden',
+    padding: '8px 4px',
     zIndex: 998,
     right: 'var(--chatbot-sidebar-width, 0px)',
     transition: 'right 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+    background: 'transparent',
+    border: 'none',
+    boxShadow: 'none',
   },
 }));
 
@@ -72,6 +73,8 @@ const TruncatedText: FunctionComponent<{ children: React.ReactNode }> = ({ child
   return content;
 };
 
+const RIGHT_MENU_WIDTH = 204;
+
 const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }) => {
   const { t_i18n } = useFormatter();
   const location = useLocation();
@@ -80,6 +83,10 @@ const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }
   const { height: topBannerHeight } = useTopBanner();
 
   const bannerHeight = bannerSettings.bannerHeightNumber;
+
+  useLayoutEffect(() => {
+    document.documentElement.style.setProperty('--right-menu-width', `${RIGHT_MENU_WIDTH}px`);
+  }, []);
 
   const renderLabel = (entry: MenuEntry) => {
     const translatedLabel = t_i18n(entry.label);
@@ -96,43 +103,118 @@ const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }
     return <TruncatedText>{translatedLabel}</TruncatedText>;
   };
 
-  const theme = useTheme<Theme>();
   return (
     <StyledDrawer variant="permanent" anchor="right">
       <ToolbarSpacer />
-      <MenuList component="nav" style={{ marginTop: bannerHeight + settingsMessagesBannerHeight + topBannerHeight, marginBottom: bannerHeight }}>
-        {entries.map((entry, idx) => {
-          const isSelected = location.pathname.startsWith(entry.path);
-          const iconColor = isSelected ? theme.palette.text.light : theme.palette.text.tertiary;
-          const iconOpacity = isSelected ? 1 : 0.5;
-          return (
-            <MenuItem
-              key={idx}
-              component={Link}
-              to={entry.path}
-              selected={isSelected}
-              dense={false}
-              sx={{ paddingRight: 0 }}
-            >
-              {entry.icon && (
-                <ListItemIcon
+      <div
+        data-right-menu="true"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          borderRadius: '0.625rem',
+          backgroundColor: 'var(--ravin-bg)',
+          border: 'none',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          className="hide-scrollbar"
+          style={{
+            overflow: 'auto',
+            overflowX: 'hidden',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: 0,
+            marginTop: bannerHeight + settingsMessagesBannerHeight + topBannerHeight,
+            marginBottom: bannerHeight,
+          }}
+        >
+          <MenuList component="nav" disablePadding sx={{ px: 1.5, py: 1 }}>
+            {entries.map((entry, idx) => {
+              const isSelected = location.pathname.startsWith(entry.path);
+              const iconColor = isSelected ? 'var(--ravin-primary)' : 'var(--ravin-text-muted)';
+              const iconOpacity = isSelected ? 1 : 0.7;
+              const textColor = isSelected ? 'var(--ravin-primary)' : 'var(--ravin-text)';
+              return (
+                <MenuItem
+                  key={idx}
+                  component={Link}
+                  to={entry.path}
+                  dense
                   sx={{
-                    minWidth: '0px!important',
-                    mr: 1,
-                    opacity: iconOpacity,
-                    color: iconColor,
-                    '& svg': {
-                      fontSize: '16px!important',
+                    px: 1.5,
+                    py: 0,
+                    height: '40px',
+                    borderRadius: '4px',
+                    mx: 0,
+                    mb: 0.5,
+                    backgroundColor: isSelected ? 'var(--ravin-surface-2)' : 'transparent',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    transition: 'background-color 150ms cubic-bezier(0.25, 1, 0.5, 1), transform 150ms cubic-bezier(0.25, 1, 0.5, 1)',
+                    position: 'relative',
+                    '&:hover': {
+                      backgroundColor: 'var(--ravin-surface-2)',
+                      transform: 'scale(1.02)',
+                    },
+                    '&:active': {
+                      transform: 'scale(0.98)',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      right: 0,
+                      top: '50%',
+                      transform: isSelected ? 'translateY(-50%) scaleY(1)' : 'translateY(-50%) scaleY(0)',
+                      width: '2px',
+                      height: '20px',
+                      backgroundColor: 'var(--ravin-primary)',
+                      borderRadius: '1px',
+                      transition: 'transform 200ms cubic-bezier(0.25, 1, 0.5, 1)',
                     },
                   }}
-                >{entry.icon}
-                </ListItemIcon>
-              )}
-              <ListItemText primary={renderLabel(entry)} />
-            </MenuItem>
-          );
-        })}
-      </MenuList>
+                >
+                  {entry.icon && (
+                    <ListItemIcon
+                      sx={{
+                        minWidth: '0px!important',
+                        mr: 1,
+                        opacity: iconOpacity,
+                        color: iconColor,
+                        transition: 'color 200ms cubic-bezier(0.25, 1, 0.5, 1), opacity 200ms cubic-bezier(0.25, 1, 0.5, 1)',
+                        '& svg': {
+                          fontSize: '18px',
+                        },
+                      }}
+                    >{entry.icon}
+                    </ListItemIcon>
+                  )}
+                  <ListItemText
+                    primary={renderLabel(entry)}
+                    slotProps={{
+                      primary: {
+                        sx: {
+                          fontFamily: 'Peyda, sans-serif',
+                          fontSize: '14px',
+                          color: textColor,
+                          textTransform: 'lowercase',
+                          transition: 'color 200ms cubic-bezier(0.25, 1, 0.5, 1)',
+                          '&::first-letter': {
+                            textTransform: 'uppercase',
+                          },
+                        },
+                      },
+                    }}
+                  />
+                </MenuItem>
+              );
+            })}
+          </MenuList>
+        </div>
+      </div>
     </StyledDrawer>
   );
 };

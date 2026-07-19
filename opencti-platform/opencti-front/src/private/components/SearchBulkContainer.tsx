@@ -1,20 +1,15 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import React, { ChangeEvent, useEffect, useMemo, useState, CSSProperties } from 'react';
 import { isEmpty } from 'ramda';
 import { useSearchParams } from 'react-router-dom';
 import SearchBulkUnknownEntities from './SearchBulkUnknownEntities';
 import { useFormatter } from '../../components/i18n';
-import Breadcrumbs from '../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../utils/hooks/useConnectedDocumentModifier';
-import SearchBulk, { BULK_SEARCH_LOCAL_STORAGE_KEY } from './SearchBulk';
-import DataTableWithoutFragment from '../../components/dataGrid/DataTableWithoutFragment';
+import SearchBulk from './SearchBulk';
 import { DataTableProps } from '../../components/dataGrid/dataTableTypes';
 import useDebounceCallback from '../../utils/hooks/useDebounceCallback';
 import { splitIntoLines } from '../../utils/String';
+import { Search as SearchIcon } from 'lucide-react';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 const SearchBulkContainer = () => {
   const { t_i18n } = useFormatter();
@@ -29,23 +24,21 @@ const SearchBulkContainer = () => {
   const [numberOfUnknownEntities, setNumberOfUnknownEntities] = useState(0);
   const [numberOfKnownEntities, setNumberOfKnownEntities] = useState(0);
 
-  const setValuesAfterDebounce = useDebounceCallback(setValues, 500); // set values with a 500ms debounce
+  const setValuesAfterDebounce = useDebounceCallback(setValues, 500);
 
   const bulkTextToValues = (text: string) => {
     return text
       .split('\n')
       .filter((o) => o.length > 1)
-      .map((val) => val.trim()) ?? [];
+      .map((val) => val.trim());
   };
 
-  // Pre-fill from ?q= query parameter (e.g. when coming from the top bar search)
   useEffect(() => {
     const q = searchParams.get('q');
     if (q) {
       const text = splitIntoLines(q);
       setTextFieldValue(text);
       setValues(bulkTextToValues(text));
-      // Clean up the query param so it doesn't persist on refresh
       searchParams.delete('q');
       setSearchParams(searchParams, { replace: true });
     }
@@ -55,14 +48,14 @@ const SearchBulkContainer = () => {
     setCurrentTab(value);
   };
 
-  const handleChangeTextField = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTextField = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
     const text = splitIntoLines(value);
     setTextFieldValue(text);
     setValuesAfterDebounce(bulkTextToValues(text));
   };
 
-  const dataColumns: DataTableProps['dataColumns'] = {
+  const dataColumns = useMemo<DataTableProps['dataColumns']>(() => ({
     entity_type: {
       isSortable: true,
     },
@@ -79,57 +72,241 @@ const SearchBulkContainer = () => {
       percentWidth: 7,
     },
     objectMarking: {},
-  };
+  }), []);
+
+  const keywordCount = values.length;
+
+  const tabs = [
+    { label: t_i18n('Known entities'), count: numberOfKnownEntities },
+    { label: t_i18n('Unknown entities'), count: numberOfUnknownEntities },
+  ];
 
   return (
     <>
       <Breadcrumbs elements={[{ label: t_i18n('Search') }, { label: t_i18n('Bulk search'), current: true }]} />
-      <div className="clearfix" />
-      <Grid
-        container={true}
-        spacing={3}
-        style={{ marginBottom: 20, marginTop: 0 }}
-      >
-        <Grid item xs={2} style={{ marginTop: -20 }}>
-          <TextField
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        minHeight: 0,
+        padding: '24px 24px 0 24px',
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          gap: '12px',
+          marginBottom: '4px',
+        }}>
+          <h1 className="ravin-lowercase-voice" style={{
+            margin: 0,
+            fontSize: '22px',
+            fontWeight: 600,
+            color: 'var(--ravin-text)',
+            lineHeight: 1.3,
+          }}>
+            {t_i18n('Bulk search')}
+          </h1>
+          <span style={{
+            fontSize: '13px',
+            color: 'var(--ravin-text-muted)',
+          }}>
+            {t_i18n('Search multiple IOCs or keywords across the knowledge base')}
+          </span>
+        </div>
+
+        <div className="ravin-bulk-layout" style={{
+          display: 'flex',
+          flex: 1,
+          minHeight: 0,
+          gap: '16px',
+          marginTop: '16px',
+        }}>
+        <div className="ravin-bulk-input-panel" style={{
+          width: '300px',
+          flexShrink: 0,
+          backgroundColor: 'var(--ravin-surface)',
+          borderRadius: '4px',
+          border: '1px solid var(--ravin-border)',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 0,
+        }}>
+          <div style={{
+            padding: '12px 16px 8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <span className="ravin-lowercase-voice" style={{
+              fontSize: '12px',
+              fontWeight: 500,
+              color: 'var(--ravin-text-muted)',
+              letterSpacing: '0.02em',
+            }}>
+              {t_i18n('Keywords')}
+            </span>
+            {keywordCount > 0 && (
+              <span className="ravin-lowercase-voice" style={{
+                fontSize: '11px',
+                fontWeight: 500,
+                color: 'var(--ravin-text-light)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                padding: '2px 8px',
+                borderRadius: '4px',
+              }}>
+                {keywordCount} {keywordCount === 1 ? t_i18n('item') : t_i18n('items')}
+              </span>
+            )}
+          </div>
+          <textarea
+            className="ravin-bulk-textarea"
             onChange={handleChangeTextField}
             value={textFieldValue}
-            multiline={true}
-            fullWidth={true}
-            minRows={20}
             placeholder={t_i18n('One keyword by line or separated by commas')}
-            variant="outlined"
+            spellCheck={false}
+            style={{
+              flex: 1,
+              minHeight: 0,
+              margin: '0 12px 12px',
+              padding: '12px',
+              backgroundColor: 'var(--ravin-elevated)',
+              border: '1px solid var(--ravin-border)',
+              borderRadius: '4px',
+              color: 'var(--ravin-text)',
+              fontSize: '13px',
+              fontFamily: 'Consolas, monaco, monospace',
+              lineHeight: 1.6,
+              resize: 'none',
+              outline: 'none',
+              transition: 'border-color 150ms ease',
+            } as CSSProperties}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = 'var(--ravin-primary)';
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = 'var(--ravin-border)';
+            }}
           />
-        </Grid>
-        <Grid item xs={10}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 3, marginTop: -3 }}>
-            <Tabs
-              value={currentTab}
-              onChange={(_, value) => handleChangeTab(value)}
-            >
-              <Tab label={`${t_i18n('Known entities')} (${numberOfKnownEntities})`} />
-              <Tab label={`${t_i18n('Unknown entities')} (${numberOfUnknownEntities})`} />
-            </Tabs>
-          </Box>
-          {currentTab === 0 && values.length > 0
-            && (
-              <SearchBulk
-                inputValues={values}
-                dataColumns={dataColumns}
-                setNumberOfEntities={setNumberOfKnownEntities}
-              />
-            )
-          }
-          {currentTab === 0 && isEmpty(textFieldValue)
-            && <DataTableWithoutFragment data={[]} globalCount={0} dataColumns={dataColumns} storageKey={BULK_SEARCH_LOCAL_STORAGE_KEY} />
-          }
-          <SearchBulkUnknownEntities
-            values={values}
-            setNumberOfEntities={setNumberOfUnknownEntities}
-            isDisplayed={currentTab === 1}
-          />
-        </Grid>
-      </Grid>
+        </div>
+
+        <div style={{
+          flex: 1,
+          minWidth: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 0,
+        }}>
+          <div style={{
+            display: 'flex',
+            gap: '0',
+            borderBottom: '1px solid var(--ravin-border)',
+            marginBottom: '0',
+          }}>
+            {tabs.map((tab, index) => {
+              const isActive = currentTab === index;
+              return (
+                <button
+                  key={tab.label}
+                  onClick={() => handleChangeTab(index)}
+                  className="ravin-lowercase-voice"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    borderBottom: isActive ? '2px solid var(--ravin-primary)' : '2px solid transparent',
+                    color: isActive ? 'var(--ravin-text)' : 'var(--ravin-text-muted)',
+                    fontSize: '13px',
+                    fontWeight: isActive ? 500 : 400,
+                    padding: '10px 16px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'color 150ms ease, border-color 150ms ease',
+                  } as CSSProperties}
+                  onMouseEnter={(e) => {
+                    if (!isActive) e.currentTarget.style.color = 'var(--ravin-text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = 'var(--ravin-text-muted)';
+                  }}
+                >
+                  {tab.label}
+                  <span style={{
+                    fontSize: '11px',
+                    color: isActive ? 'var(--ravin-primary)' : 'var(--ravin-text-light)',
+                    backgroundColor: 'var(--ravin-surface-2)',
+                    padding: '1px 7px',
+                    borderRadius: '4px',
+                    fontWeight: 500,
+                  }}>
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div style={{
+            flex: 1,
+            minHeight: 0,
+            overflow: 'auto',
+          }}>
+            {currentTab === 0 && (
+              <div style={{ display: values.length > 0 ? 'block' : 'none' }}>
+                <SearchBulk
+                  inputValues={values}
+                  dataColumns={dataColumns}
+                  setNumberOfEntities={setNumberOfKnownEntities}
+                />
+              </div>
+            )}
+            {currentTab === 0 && values.length === 0 && isEmpty(textFieldValue) && (
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                minHeight: '300px',
+                gap: '12px',
+                color: 'var(--ravin-text-light)',
+              }}>
+                <SearchIcon size={28} strokeWidth={1.5} />
+                <span className="ravin-lowercase-voice" style={{
+                  fontSize: '14px',
+                }}>
+                  {t_i18n('Enter keywords to begin search')}
+                </span>
+              </div>
+            )}
+            {currentTab === 0 && values.length === 0 && !isEmpty(textFieldValue) && (
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                minHeight: '300px',
+                gap: '12px',
+                color: 'var(--ravin-text-light)',
+              }}>
+                <SearchIcon size={28} strokeWidth={1.5} />
+                <span className="ravin-lowercase-voice" style={{
+                  fontSize: '14px',
+                }}>
+                  {t_i18n('Each keyword must be at least 2 characters')}
+                </span>
+              </div>
+            )}
+            <SearchBulkUnknownEntities
+              values={values}
+              setNumberOfEntities={setNumberOfUnknownEntities}
+              isDisplayed={currentTab === 1}
+            />
+          </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

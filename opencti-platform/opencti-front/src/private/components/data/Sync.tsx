@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import MuiAlert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { SyncLinesPaginationQuery$data, SyncLinesPaginationQuery$variables } from '@components/data/sync/__generated__/SyncLinesPaginationQuery.graphql';
 import { QueryRenderer } from '../../../relay/environment';
 import ListLines from '../../../components/list_lines/ListLines';
@@ -9,7 +11,6 @@ import { usePaginationLocalStorage } from '../../../utils/hooks/useLocalStorage'
 import useAuth, { UserContext } from '../../../utils/hooks/useAuth';
 import { useFormatter } from '../../../components/i18n';
 import { SYNC_MANAGER } from '../../../utils/platformModulesHelper';
-import IngestionMenu from './IngestionMenu';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import Security from '../../../utils/Security';
 import { INGESTION_SETINGESTIONS } from '../../../utils/hooks/useGranted';
@@ -84,26 +85,67 @@ const Sync = () => {
 
   if (!platformModuleHelpers.isSyncManagerEnable()) {
     return (
-      <div style={{
-        margin: 0,
-        padding: '0 200px 50px 0',
-      }}
-      >
+      <div>
         <MuiAlert severity="info">
           {t_i18n(platformModuleHelpers.generateDisableMessage(SYNC_MANAGER))}
         </MuiAlert>
-        <IngestionMenu />
       </div>
     );
   }
 
   return (
     <div data-testid="streams-page">
-      <IngestionMenu />
       <PageContainer withRightMenu>
         <Breadcrumbs
           elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('OpenCTI Streams'), current: true }]}
         />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('OpenCTI Streams')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
+          <Security needs={[INGESTION_SETINGESTIONS]}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <SyncImport paginationOptions={paginationOptions} />
+              {isXTMHubAccessible && isNotEmptyField(importFromHubUrl) && (
+                <Button
+                  gradient
+                  href={importFromHubUrl}
+                  target="_blank"
+                  title={t_i18n('Import from Hub')}
+                >
+                  {t_i18n('Import from Hub')}
+                </Button>
+              )}
+              <SyncCreation triggerButton paginationOptions={paginationOptions} />
+            </Box>
+          </Security>
+        </Box>
         <ListLines
           sortBy={viewStorage.sortBy}
           orderAsc={viewStorage.orderAsc}
@@ -113,25 +155,6 @@ const Sync = () => {
           displayImport={false}
           secondaryAction={true}
           keyword={viewStorage.searchTerm}
-          createButton={(
-            <Security needs={[INGESTION_SETINGESTIONS]}>
-              <>
-                <SyncImport paginationOptions={paginationOptions} />
-                {isXTMHubAccessible && isNotEmptyField(importFromHubUrl) && (
-                  <Button
-                    gradient
-                    sx={{ marginLeft: 1 }}
-                    href={importFromHubUrl}
-                    target="_blank"
-                    title={t_i18n('Import from Hub')}
-                  >
-                    {t_i18n('Import from Hub')}
-                  </Button>
-                )}
-                <SyncCreation triggerButton paginationOptions={paginationOptions} />
-              </>
-            </Security>
-          )}
           iconExtension
         >
           <QueryRenderer

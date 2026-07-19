@@ -653,11 +653,35 @@ const ThemeDark = (
     MuiTableCell: {
       styleOverrides: {
         head: {
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          borderBottom: '1px solid var(--ravin-border)',
+          fontWeight: 600,
         },
         body: {
-          borderTop: '1px solid rgba(255, 255, 255, 0.15)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          borderTop: '1px solid var(--ravin-border)',
+          borderBottom: '1px solid var(--ravin-border)',
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: 'var(--ravin-border-strong)',
+          padding: '6px',
+          '&:hover': {
+            backgroundColor: 'transparent',
+            color: 'var(--ravin-text-muted)',
+          },
+          '&.Mui-checked': {
+            color: 'var(--ravin-primary)',
+          },
+          '&.Mui-checked:hover': {
+            backgroundColor: 'transparent',
+            color: 'var(--ravin-primary)',
+          },
+          '& .MuiSvgIcon-root': {
+            fontSize: '18px',
+            borderRadius: '3px',
+          },
         },
       },
     },

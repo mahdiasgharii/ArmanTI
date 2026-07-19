@@ -24,7 +24,7 @@ const PageContainer: FunctionComponent<PageContainerProps> = ({
         style={{
           margin: 0,
           padding: 0,
-          paddingRight: withRightMenu ? '200px' : undefined,
+          paddingRight: withRightMenu ? '0px' : undefined,
           display: 'flex',
           flexDirection: 'column',
           gap: withGap ? theme.spacing(3) : undefined,

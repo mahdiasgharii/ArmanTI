@@ -13,10 +13,10 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 */
 
-import makeStyles from '@mui/styles/makeStyles';
 import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import React from 'react';
-import IngestionMenu from '@components/data/IngestionMenu';
 import IngestionJsonLines, { ingestionJsonLinesQuery } from '@components/data/ingestionJson/IngestionJsonLines';
 import {
   IngestionJsonLinesPaginationQuery,
@@ -34,20 +34,11 @@ import { INGESTION_SETINGESTIONS } from '../../../utils/hooks/useGranted';
 import Security from '../../../utils/Security';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
+import PageContainer from '../../../components/PageContainer';
 
 const LOCAL_STORAGE_KEY = 'ingestionJsons';
 
-// Deprecated - https://mui.com/system/styles/basics/
-// Do not use it for new code.
-const useStyles = makeStyles(() => ({
-  container: {
-    margin: 0,
-    padding: '0 200px 50px 0',
-  },
-}));
-
 const IngestionJson = () => {
-  const classes = useStyles();
   const { t_i18n } = useFormatter();
   const { setTitle } = useConnectedDocumentModifier();
   setTitle(t_i18n('JSON Feeds | Ingestion | Data'));
@@ -112,16 +103,6 @@ const IngestionJson = () => {
         paginationOptions={paginationOptions}
         numberOfElements={numberOfElements}
         keyword={searchTerm}
-        createButton={(
-          <Security needs={[INGESTION_SETINGESTIONS]}>
-            <IngestionJsonCreationContainer
-              open={false}
-              handleClose={() => { }}
-              paginationOptions={paginationOptions}
-              isDuplicated={false}
-            />
-          </Security>
-        )}
         iconExtension
       >
         {queryRef && (
@@ -149,20 +130,59 @@ const IngestionJson = () => {
   };
   if (!platformModuleHelpers.isIngestionManagerEnable()) {
     return (
-      <div className={classes.container}>
+      <div>
         <Alert severity="info">
           {t_i18n(platformModuleHelpers.generateDisableMessage(INGESTION_MANAGER))}
         </Alert>
-        <IngestionMenu />
       </div>
     );
   }
 
   return (
-    <div className={classes.container} data-testid="json-feeds-page">
-      <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('JSON Feeds'), current: true }]} />
-      <IngestionMenu />
-      <>{renderLines()}</>
+    <div data-testid="json-feeds-page">
+      <PageContainer withRightMenu>
+        <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('JSON Feeds'), current: true }]} />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('JSON Feeds')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
+          <Security needs={[INGESTION_SETINGESTIONS]}>
+            <IngestionJsonCreationContainer
+              open={false}
+              handleClose={() => { }}
+              paginationOptions={paginationOptions}
+              isDuplicated={false}
+            />
+          </Security>
+        </Box>
+        <>{renderLines()}</>
+      </PageContainer>
     </div>
   );
 };

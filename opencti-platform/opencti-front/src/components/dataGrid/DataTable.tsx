@@ -153,8 +153,6 @@ const DataTableInternalToolbar = ({
   deleteDisable,
   container,
 }: DataTableInternalToolbarProps) => {
-  const theme = useTheme<Theme>();
-
   const {
     useDataTableToggle: {
       selectedElements,
@@ -171,7 +169,7 @@ const DataTableInternalToolbar = ({
   return (
     <div
       style={{
-        background: theme.palette.background.accent,
+        background: 'color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))',
         flex: 1,
       }}
     >

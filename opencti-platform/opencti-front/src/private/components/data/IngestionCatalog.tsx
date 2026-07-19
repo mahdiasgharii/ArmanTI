@@ -1,5 +1,6 @@
 import React, { Suspense, useContext, useEffect } from 'react';
-import IngestionMenu from '@components/data/IngestionMenu';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { useQueryLoader } from 'react-relay';
 import IngestionCatalogCard from '@components/data/IngestionCatalog/IngestionCatalogCard';
 import useIngestionCatalogFilters from '@components/data/IngestionCatalog/hooks/useIngestionCatalogFilters';
@@ -171,9 +172,25 @@ const IngestionCatalogComponent = ({
 
   return (
     <div data-testid="catalog-page">
-      <IngestionMenu />
       <PageContainer withRightMenu withGap>
         <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('Connector catalog'), current: true }]} />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 1,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('Connector catalog')}
+            </Typography>
+          </Box>
+        </Box>
         <ConnectorDeploymentBanner hasActiveManagers={hasActiveManagers} />
         <Stack flexDirection="row">
           <IngestionCatalogFilters

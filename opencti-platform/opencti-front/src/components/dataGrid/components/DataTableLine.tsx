@@ -18,21 +18,21 @@ const cellContainerStyle = (theme: Theme) => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-  flex: '0 0 auto',
+  flex: '1 1 auto',
 });
 
 const DataTableLineDummy = () => {
   const theme = useTheme<Theme>();
   const { columns, tableWidthState: [tableWidth] } = useDataTableContext();
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       {columns.map((column) => (
         <div
           key={column.id}
           style={{
-            paddingLeft: theme.spacing(0.5),
+            paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
-            flex: '0 0 auto',
+            flex: '1 1 auto',
             width: column.percentWidth
               ? Math.round(tableWidth * (column.percentWidth / 100))
               : SELECT_COLUMN_SIZE,
@@ -69,6 +69,8 @@ const DataTableCell = ({
     alignItems: 'center',
     gap: theme.spacing(0.5),
     fontSize: '13px',
+    fontFamily: '"Peyda", sans-serif',
+    color: 'var(--ravin-text)',
   };
 
   return (
@@ -168,8 +170,10 @@ const DataTableLine = ({
 
   const linkStyle: CSSProperties = {
     display: 'flex',
+    alignItems: 'center',
+    width: '100%',
     color: 'inherit',
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderBottom: '1px solid var(--ravin-border)',
     cursor: clickable ? 'pointer' : 'unset',
   };
 
@@ -179,14 +183,7 @@ const DataTableLine = ({
   );
 
   return (
-    <Box sx={{
-      '&:hover > a': {
-        backgroundColor: theme.palette.mode === 'dark'
-          ? 'rgba(255, 255, 255, .1)'
-          : 'rgba(0, 0, 0, .1)',
-      },
-    }}
-    >
+    <Box>
       <a
         style={linkStyle}
         href={navigable ? link : undefined}
@@ -202,6 +199,8 @@ const DataTableLine = ({
             style={{
               ...cellContainerStyle(theme),
               width: startColumnWidth,
+              paddingLeft: theme.spacing(1),
+              flex: '0 0 auto',
             }}
           >
             {startsWithAction && (
@@ -210,10 +209,6 @@ const DataTableLine = ({
                 sx={{
                   marginRight: 1,
                   flex: '0 0 auto',
-                  paddingLeft: 0,
-                  '&:hover': {
-                    background: 'transparent',
-                  },
                 }}
                 checked={
                   (selectAll
@@ -223,7 +218,7 @@ const DataTableLine = ({
               />
             )}
             {(startsWithIcon && icon) && (
-              <div style={{ display: 'flex', paddingLeft: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
                 {icon(data)}
               </div>
             )}
@@ -244,13 +239,21 @@ const DataTableLine = ({
             style={{
               ...cellContainerStyle(theme),
               width: actionsColumnWidth ?? SELECT_COLUMN_SIZE,
+              paddingLeft: theme.spacing(1),
+              paddingRight: theme.spacing(1),
+              justifyContent: 'center',
               overflow: 'initial',
+              flex: '0 0 auto',
             }}
           >
             {actions && actions(data)}
             {endsWithNavigate && (
-              <IconButton onClick={() => (link ? navigate(link) : undefined)}>
-                <KeyboardArrowRightOutlined />
+              <IconButton
+                onClick={() => (link ? navigate(link) : undefined)}
+                size="small"
+                sx={{ padding: 0 }}
+              >
+                <KeyboardArrowRightOutlined size={12} color="var(--ravin-text-muted)" />
               </IconButton>
             )}
           </div>

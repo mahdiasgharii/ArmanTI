@@ -1,5 +1,6 @@
 import React from 'react';
-import IngestionMenu from './IngestionMenu';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { useFormatter } from '../../../components/i18n';
 import { QueryRenderer } from '../../../relay/environment';
 import WorkersStatus, { workersStatusQuery } from './connectors/WorkersStatus';
@@ -17,12 +18,28 @@ const Connectors = () => {
 
   return (
     <div data-testid="connectors-page">
-      <IngestionMenu />
       <PageContainer withRightMenu withGap>
         <Breadcrumbs
           elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('Monitoring'), current: true }]}
           noMargin
         />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 1,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('Monitoring')}
+            </Typography>
+          </Box>
+        </Box>
         <QueryRenderer
           query={workersStatusQuery}
           render={({ props }: { props: WorkersStatusQuery$data }) => {

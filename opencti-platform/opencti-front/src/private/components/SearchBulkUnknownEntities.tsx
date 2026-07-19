@@ -34,7 +34,7 @@ const SearchBulkUnknownEntitiesContent = ({ queryRef, setNumberOfEntities, isDis
   const unknownValues = data.unknownStixCoreObjects;
   useEffect(() => {
     setNumberOfEntities(unknownValues.length ?? 0);
-  }, [unknownValues.length]);
+  }, [unknownValues.length, setNumberOfEntities]);
 
   const unknownEntities = unknownValues.map((value) => ({
     id: value.trim(),

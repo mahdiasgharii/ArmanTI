@@ -1,7 +1,7 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
-import IngestionMenu from '@components/data/IngestionMenu';
 import { FormLinesPaginationQuery, FormLinesPaginationQuery$variables } from '@components/data/forms/__generated__/FormLinesPaginationQuery.graphql';
 import FormLines, { formLinesQuery } from '@components/data/forms/FormLines';
 import FormCreationContainer from '@components/data/forms/FormCreationContainer';
@@ -15,18 +15,11 @@ import Security from '../../../utils/Security';
 import useGranted, { INGESTION_SETINGESTIONS, KNOWLEDGE_KNASKIMPORT, KNOWLEDGE_KNUPDATE } from '../../../utils/hooks/useGranted';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
-
-const useStyles = makeStyles(() => ({
-  container: {
-    margin: 0,
-    padding: '0 200px 50px 0',
-  },
-}));
+import PageContainer from '../../../components/PageContainer';
 
 const LOCAL_STORAGE_KEY = 'forms';
 
 const Forms = () => {
-  const classes = useStyles();
   const { t_i18n } = useFormatter();
   const { setTitle } = useConnectedDocumentModifier();
   setTitle(t_i18n('Form intakes | Ingestion | Data'));
@@ -98,14 +91,6 @@ const Forms = () => {
         paginationOptions={paginationOptions}
         numberOfElements={numberOfElements}
         keyword={searchTerm}
-        createButton={(
-          <Security needs={[INGESTION_SETINGESTIONS]}>
-            <FormCreationContainer
-              paginationOptions={paginationOptions}
-              triggerButton={true}
-            />
-          </Security>
-        )}
         iconExtension
       >
         {queryRef && (
@@ -134,7 +119,7 @@ const Forms = () => {
 
   if (!platformModuleHelpers.isIngestionManagerEnable()) {
     return (
-      <div className={classes.container}>
+      <div>
         <Alert severity="info">
           {t_i18n('Ingestion manager is disabled or not configured, please go to the platform settings to enable it.')}
         </Alert>
@@ -145,7 +130,7 @@ const Forms = () => {
   // Check if user has permission to view forms
   if (!hasIngestionCapability && !hasKnowledgeUpdateCapability) {
     return (
-      <div className={classes.container}>
+      <div>
         <Breadcrumbs elements={[
           { label: t_i18n('Data') },
           { label: t_i18n('Ingestion') },
@@ -160,15 +145,53 @@ const Forms = () => {
   }
 
   return (
-    <div className={classes.container}>
-      <IngestionMenu />
-      <Breadcrumbs elements={[
-        { label: t_i18n('Data') },
-        { label: t_i18n('Ingestion') },
-        { label: t_i18n('Form intakes'), current: true },
-      ]}
-      />
-      {renderLines()}
+    <div>
+      <PageContainer withRightMenu>
+        <Breadcrumbs elements={[
+          { label: t_i18n('Data') },
+          { label: t_i18n('Ingestion') },
+          { label: t_i18n('Form intakes'), current: true },
+        ]}
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+            >
+              {t_i18n('Form intakes')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
+          <Security needs={[INGESTION_SETINGESTIONS]}>
+            <FormCreationContainer
+              paginationOptions={paginationOptions}
+              triggerButton={true}
+            />
+          </Security>
+        </Box>
+        {renderLines()}
+      </PageContainer>
     </div>
   );
 };

@@ -305,15 +305,17 @@ const DataTableComponent = ({
       )}
       <div
         className="datatable-container"
-        style={{ width: '100%', overflow: 'auto hidden', position: 'relative', zIndex: 2 }}
+        style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden', position: 'relative', zIndex: 2 }}
         ref={tableRef}
       >
         <React.Suspense
           fallback={(
-            <>
-              <DataTableHeaders dataTableToolBarComponent={dataTableToolBarComponent} />
+            <div style={{ overflow: 'hidden auto', width: '100%' }}>
+              <div className="datatable-sticky-header" style={{ position: 'sticky', top: 0, zIndex: 2, width: '100%' }}>
+                <DataTableHeaders dataTableToolBarComponent={dataTableToolBarComponent} />
+              </div>
               <DataTableLinesDummy number={Math.max(currentPageSize, 10)} />
-            </>
+            </div>
           )}
         >
           <DataTableBody

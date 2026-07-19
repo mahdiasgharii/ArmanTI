@@ -148,8 +148,9 @@ const DataTableBody = ({
 
   const containerLinesStyle: CSSProperties = {
     overflow: 'hidden auto',
-    maxHeight: `calc(${tableHeight}px - ${hideHeaders ? 0 : SELECT_COLUMN_SIZE}px)`,
-    width: rowWidth,
+    maxHeight: hideHeaders ? undefined : `calc(${tableHeight}px)`,
+    minWidth: rowWidth,
+    width: '100%',
   };
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -181,67 +182,64 @@ const DataTableBody = ({
   }
 
   return (
-    <>
-      <div style={{ width: rowWidth }}>
-        {!hideHeaders && (
+    <div ref={scrollContainerRef} style={containerLinesStyle}>
+      {!hideHeaders && (
+        <div className="datatable-sticky-header" style={{ position: 'sticky', top: 0, zIndex: 2, minWidth: rowWidth, width: '100%' }}>
           <DataTableHeaders dataTableToolBarComponent={dataTableToolBarComponent} />
-        )}
-      </div>
-
-      <div ref={scrollContainerRef} style={containerLinesStyle}>
-        {resolvedData.length === 0 && !!emptyStateMessage && (
-          <DataTableEmptyState message={emptyStateMessage} />
-        )}
-        {enableInfiniteScroll ? (() => {
-          const visibleHeight = tableHeight - (hideHeaders ? 0 : SELECT_COLUMN_SIZE);
-          const firstVisible = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
-          const lastVisible = Math.min(
-            resolvedData.length,
-            Math.ceil((scrollTop + visibleHeight) / ROW_HEIGHT) + OVERSCAN,
-          );
-          const loadedHeight = resolvedData.length * ROW_HEIGHT;
-          const rowsMissingInViewport = Math.max(
-            0,
-            Math.floor((scrollTop + visibleHeight - loadedHeight) / ROW_HEIGHT),
-          );
-          const loadingRowsToShow = (isLoading && lastVisible >= resolvedData.length)
-            ? Math.min(Math.max(pageSize, 10), rowsMissingInViewport)
-            : 0;
-          const totalHeight = loadedHeight + loadingRowsToShow * ROW_HEIGHT;
-          const offsetY = firstVisible * ROW_HEIGHT;
-          return (
-            <div style={{ height: totalHeight, position: 'relative' }}>
-              <div style={{ position: 'absolute', top: offsetY, width: '100%' }}>
-                {resolvedData.slice(firstVisible, lastVisible).map((row: { id: string }, i: number) => (
-                  <DataTableLine
-                    key={row.id}
-                    row={row}
-                    index={firstVisible + i}
-                    onToggleShiftEntity={onToggleShiftEntity}
-                  />
-                ))}
-                {loadingRowsToShow > 0 && (
-                  <DataTableLinesDummy number={loadingRowsToShow} />
-                )}
-              </div>
+        </div>
+      )}
+      {resolvedData.length === 0 && !!emptyStateMessage && (
+        <DataTableEmptyState message={emptyStateMessage} />
+      )}
+      {enableInfiniteScroll ? (() => {
+        const visibleHeight = tableHeight - (hideHeaders ? 0 : SELECT_COLUMN_SIZE);
+        const firstVisible = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
+        const lastVisible = Math.min(
+          resolvedData.length,
+          Math.ceil((scrollTop + visibleHeight) / ROW_HEIGHT) + OVERSCAN,
+        );
+        const loadedHeight = resolvedData.length * ROW_HEIGHT;
+        const rowsMissingInViewport = Math.max(
+          0,
+          Math.floor((scrollTop + visibleHeight - loadedHeight) / ROW_HEIGHT),
+        );
+        const loadingRowsToShow = (isLoading && lastVisible >= resolvedData.length)
+          ? Math.min(Math.max(pageSize, 10), rowsMissingInViewport)
+          : 0;
+        const totalHeight = loadedHeight + loadingRowsToShow * ROW_HEIGHT;
+        const offsetY = firstVisible * ROW_HEIGHT;
+        return (
+          <div style={{ height: totalHeight, position: 'relative' }}>
+            <div style={{ position: 'absolute', top: offsetY, width: '100%' }}>
+              {resolvedData.slice(firstVisible, lastVisible).map((row: { id: string }, i: number) => (
+                <DataTableLine
+                  key={row.id}
+                  row={row}
+                  index={firstVisible + i}
+                  onToggleShiftEntity={onToggleShiftEntity}
+                />
+              ))}
+              {loadingRowsToShow > 0 && (
+                <DataTableLinesDummy number={loadingRowsToShow} />
+              )}
             </div>
-          );
-        })() : (
-          <>
-            {/* If we have perf issues we should find a way to memoize this */}
-            {resolvedData.map((row: { id: string }, index: number) => (
-              <DataTableLine
-                key={row.id}
-                row={row}
-                index={index}
-                onToggleShiftEntity={onToggleShiftEntity}
-              />
-            ))}
-            {isLoading && <DataTableLinesDummy number={Math.max(pageSize, 10)} />}
-          </>
-        )}
-      </div>
-    </>
+          </div>
+        );
+      })() : (
+        <>
+          {/* If we have perf issues we should find a way to memoize this */}
+          {resolvedData.map((row: { id: string }, index: number) => (
+            <DataTableLine
+              key={row.id}
+              row={row}
+              index={index}
+              onToggleShiftEntity={onToggleShiftEntity}
+            />
+          ))}
+          {isLoading && <DataTableLinesDummy number={Math.max(pageSize, 10)} />}
+        </>
+      )}
+    </div>
   );
 };
 

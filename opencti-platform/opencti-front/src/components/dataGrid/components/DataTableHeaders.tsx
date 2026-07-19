@@ -1,22 +1,20 @@
 import React, { CSSProperties, FunctionComponent, useMemo, useRef, useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import { GripVertical as DragIndicatorOutlined } from 'lucide-react';
+import { GripVertical as DragIndicatorOutlined, ArrowUpNarrowWide, ArrowDownWideNarrow, Filter } from 'lucide-react';
 import Menu from '@mui/material/Menu';
 import { DragDropContext, Draggable, DraggableLocation, Droppable } from '@hello-pangea/dnd';
 import MenuItem from '@mui/material/MenuItem';
 import { PopoverProps } from '@mui/material/Popover/Popover';
-import { useTheme } from '@mui/styles';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import { UNKNOWN_ENTITIES_LOCAL_STORAGE_KEY } from '@components/SearchBulkUnknownEntities';
 import { DataTableColumn, DataTableColumns, DataTableHeadersProps } from '../dataTableTypes';
 import DataTableHeader, { SELECT_COLUMN_SIZE } from './DataTableHeader';
-import type { Theme } from '../../Theme';
 import { useDataTableContext } from './DataTableContext';
 
 const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
   dataTableToolBarComponent,
 }) => {
-  const theme = useTheme<Theme>();
   const {
     columns,
     setColumns,
@@ -64,8 +62,13 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
 
   const hasSelectedElements = numberOfSelectedElements > 0 || selectAll;
   const checkboxStyle: CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    height: '100%',
+    paddingLeft: '8px',
+    flex: '0 0 auto',
     background: hasSelectedElements && !removeSelectAll
-      ? theme.palette.background.accent
+      ? 'color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))'
       : 'transparent',
     minWidth: startColumnWidth,
   };
@@ -74,7 +77,7 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
     || (storageKey === UNKNOWN_ENTITIES_LOCAL_STORAGE_KEY && selectAll); // case of DataTableWithoutFragment
 
   return (
-    <div ref={containerRef} style={{ display: 'flex', height: 42, borderBottom: '1px solid var(--ravin-border)' }}>
+    <div ref={containerRef} style={{ display: 'flex', height: 42, alignItems: 'center', borderBottom: '1px solid var(--ravin-border)', width: '100%' }}>
       {(startsWithAction || startsWithIcon) && (
         <div data-testid="dataTableCheckAll" style={checkboxStyle}>
           {(startsWithAction && !removeSelectAll) && (
@@ -83,10 +86,6 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
               sx={{
                 marginRight: 1,
                 flex: '0 0 auto',
-                paddingLeft: 0,
-                '&:hover': {
-                  background: 'transparent',
-                },
               }}
               onChange={handleToggleSelectAll}
               disabled={!handleToggleSelectAll}
@@ -106,7 +105,39 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
       {showToolbar ? dataTableToolBarComponent : (
         <>
           {anchorEl && (
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              PaperProps={{
+                className: 'ravin-column-menu-paper',
+                sx: {
+                  '& .MuiMenuItem-root': {
+                    fontFamily: '"Peyda", sans-serif',
+                    fontSize: '13px',
+                    color: 'var(--ravin-text)',
+                    borderRadius: '4px',
+                    padding: '8px 12px',
+                    minHeight: '36px',
+                    margin: '2px 4px',
+                    transition: 'background-color 100ms ease',
+                    '&:hover': {
+                      backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 12%, transparent)',
+                    },
+                  },
+                  '& .MuiDivider-root': {
+                    borderColor: 'var(--ravin-border)',
+                  },
+                },
+              }}
+              MenuListProps={{
+                className: 'ravin-column-menu-list',
+                sx: {
+                  padding: '4px',
+                  fontFamily: '"Peyda", sans-serif',
+                },
+              }}
+            >
               {columns.some(({ id }) => id === 'todo-navigate') && (
                 <DragDropContext
                   key={(new Date()).toString()}
@@ -141,11 +172,13 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
                                 ref={item.innerRef}
                                 {...item.draggableProps}
                                 {...item.dragHandleProps}
+                                sx={{ gap: 1 }}
                               >
-                                <DragIndicatorOutlined size={16} />
+                                <DragIndicatorOutlined size={14} color="var(--ravin-text-muted)" />
                                 <Checkbox
                                   onClick={() => handleToggleVisibility(c.id)}
                                   checked={c.visible}
+                                  size="small"
                                 />
                                 {c.label}
                               </MenuItem>
@@ -158,15 +191,34 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
                   </Droppable>
                 </DragDropContext>
               )}
-              {activeColumn?.isSortable && (<MenuItem onClick={() => onSort(activeColumn.id, true)}>{t_i18n('Sort Asc')}</MenuItem>)}
-              {activeColumn?.isSortable && (<MenuItem onClick={() => onSort(activeColumn.id, false)}>{t_i18n('Sort Desc')}</MenuItem>)}
+              {activeColumn?.isSortable && (<Divider sx={{ borderColor: 'var(--ravin-border)', margin: '4px 8px' }} />)}
+              {activeColumn?.isSortable && (
+                <MenuItem
+                  onClick={() => onSort(activeColumn.id, true)}
+                  sx={{ gap: 1.5 }}
+                >
+                  <ArrowUpNarrowWide size={14} color="var(--ravin-text-muted)" />
+                  {t_i18n('Sort Asc')}
+                </MenuItem>
+              )}
+              {activeColumn?.isSortable && (
+                <MenuItem
+                  onClick={() => onSort(activeColumn.id, false)}
+                  sx={{ gap: 1.5 }}
+                >
+                  <ArrowDownWideNarrow size={14} color="var(--ravin-text-muted)" />
+                  {t_i18n('Sort Desc')}
+                </MenuItem>
+              )}
               {(activeColumn && availableFilterKeys?.includes(activeColumn.id)) && (
                 <MenuItem
                   onClick={() => {
                     onAddFilter(activeColumn.id);
                     handleClose();
                   }}
+                  sx={{ gap: 1.5 }}
                 >
+                  <Filter size={14} color="var(--ravin-text-muted)" />
                   {t_i18n('Add filtering')}
                 </MenuItem>
               )}
@@ -188,7 +240,7 @@ const DataTableHeaders: FunctionComponent<DataTableHeadersProps> = ({
               />
             ))}
 
-          {(endsWithAction) && <div style={{ width: actionsColumnWidth ?? SELECT_COLUMN_SIZE, flex: '0 0 auto' }} />}
+          {(endsWithAction) && <div style={{ width: actionsColumnWidth ?? SELECT_COLUMN_SIZE, flex: '0 0 auto', paddingLeft: 8, paddingRight: 8 }} />}
         </>
       )}
     </div>

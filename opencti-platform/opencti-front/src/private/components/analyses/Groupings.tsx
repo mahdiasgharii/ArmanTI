@@ -1,5 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'react-relay';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 import { GroupingsLinesPaginationQuery, GroupingsLinesPaginationQuery$variables } from '@components/analyses/__generated__/GroupingsLinesPaginationQuery.graphql';
 import { GroupingsLines_data$data } from '@components/analyses/__generated__/GroupingsLines_data.graphql';
 import StixCoreObjectForms from '@components/common/stix_core_objects/StixCoreObjectForms';
@@ -13,9 +16,14 @@ import Breadcrumbs from '../../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
 import DataTable from '../../../components/dataGrid/DataTable';
+import { Truncate } from '../../../components/dataGrid/dataTableUtils';
 import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloadedPaginationFragment';
 import { KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNASKIMPORT } from '../../../utils/hooks/useGranted';
 import Security from '../../../utils/Security';
+import { resolveLink } from '../../../utils/Entity';
+import { EMPTY_VALUE } from '../../../utils/String';
+import Tag from '../../../components/common/tag/Tag';
+import StixCoreObjectLabels from '../common/stix_core_objects/StixCoreObjectLabels';
 
 const LOCAL_STORAGE_KEY = 'groupings';
 
@@ -182,14 +190,101 @@ const Groupings: FunctionComponent<GroupingsProps> = () => {
 
   const isRuntimeSort = isRuntimeFieldEnable() ?? false;
   const dataColumns: DataTableProps['dataColumns'] = {
-    name: { percentWidth: 25 },
-    context: {},
-    createdBy: { isSortable: isRuntimeSort },
-    creator: { isSortable: isRuntimeSort },
-    objectLabel: {},
-    created: { percentWidth: 10 },
-    x_opencti_workflow_id: {},
-    objectMarking: { isSortable: isRuntimeSort },
+    name: {
+      id: 'name',
+      percentWidth: 25,
+      isSortable: true,
+      render: (data) => {
+        const name = data.name || data.id;
+        const link = `${resolveLink('Grouping')}/${data.id}`;
+        return (
+          <Tooltip title={name}>
+            <a
+              href={link}
+              style={{
+                color: 'var(--ravin-primary)',
+                textDecoration: 'none',
+                fontWeight: 500,
+              }}
+            >
+              <Truncate>{name}</Truncate>
+            </a>
+          </Tooltip>
+        );
+      },
+    },
+    context: {
+      id: 'context',
+      render: ({ context }, { storageHelpers: { handleAddFilter } }) => {
+        if (!context) return EMPTY_VALUE;
+        return (
+          <Tag
+            label={context}
+            labelTextTransform="lowercase"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleAddFilter('context', context, 'eq');
+            }}
+          />
+        );
+      },
+    },
+    createdBy: {
+      id: 'createdBy',
+      percentWidth: 12,
+      isSortable: isRuntimeSort,
+      render: ({ createdBy }) => (
+        <span style={{ color: 'var(--ravin-text-muted)' }}>
+          {createdBy?.name ?? EMPTY_VALUE}
+        </span>
+      ),
+    },
+    creator: {
+      id: 'creator',
+      percentWidth: 12,
+      isSortable: isRuntimeSort,
+      render: ({ creators }) => {
+        if (!creators || creators.length === 0) return EMPTY_VALUE;
+        const value = creators.map((c: { name: string }) => c.name).join(', ');
+        return (
+          <span style={{ color: 'var(--ravin-text-muted)' }}>
+            {value}
+          </span>
+        );
+      },
+    },
+    objectLabel: {
+      id: 'objectLabel',
+      percentWidth: 15,
+      render: ({ objectLabel }, { storageHelpers: { handleAddFilter } }) => {
+        return (
+          <StixCoreObjectLabels
+            variant="inList"
+            labels={objectLabel}
+            onClick={handleAddFilter}
+          />
+        );
+      },
+    },
+    created: {
+      id: 'created',
+      percentWidth: 10,
+      render: ({ created }, { rd, nsdt }) => (
+        <Tooltip title={nsdt(created)}>
+          <span>{rd(created)}</span>
+        </Tooltip>
+      ),
+    },
+    x_opencti_workflow_id: {
+      id: 'x_opencti_workflow_id',
+      percentWidth: 8,
+    },
+    objectMarking: {
+      id: 'objectMarking',
+      isSortable: isRuntimeSort,
+      percentWidth: 8,
+    },
   };
 
   const preloadedPaginationProps = {
@@ -200,31 +295,71 @@ const Groupings: FunctionComponent<GroupingsProps> = () => {
     setNumberOfElements: storageHelpers.handleSetNumberOfElements,
   } as UsePreloadedPaginationFragment<GroupingsLinesPaginationQuery>;
 
+  const createButton = (
+    <Security needs={[KNOWLEDGE_KNUPDATE]}>
+      <GroupingCreation paginationOptions={queryPaginationOptions} />
+    </Security>
+  );
   return (
     <span data-testid="groupings-page">
       <Breadcrumbs elements={[{ label: t_i18n('Analyses') }, { label: t_i18n('Groupings'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: GroupingsLines_data$data) => data.groupings?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={groupingLineFragment}
-          exportContext={{ entity_type: 'Grouping' }}
-          additionalHeaderButtons={[
-            <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
-              <StixCoreObjectForms entityType="Grouping" />
-            </Security>,
-          ]}
-          createButton={(
-            <Security needs={[KNOWLEDGE_KNUPDATE]}>
-              <GroupingCreation paginationOptions={queryPaginationOptions} />
-            </Security>
-          )}
-        />
-      )}
+      <Box sx={{ padding: '24px 24px 0 24px', borderRadius: '0.625rem' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                margin: 0,
+                fontSize: 24,
+                fontWeight: 600,
+              }}
+            >
+              {t_i18n('Groupings')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
+          {createButton}
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: GroupingsLines_data$data) => data.groupings?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            preloadedPaginationProps={preloadedPaginationProps}
+            lineFragment={groupingLineFragment}
+            exportContext={{ entity_type: 'Grouping' }}
+            redirectionModeEnabled
+            additionalHeaderButtons={[
+              <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
+                <StixCoreObjectForms entityType="Grouping" />
+              </Security>,
+            ]}
+            emptyStateMessage={t_i18n('No groupings yet. Create one to organize and correlate related threat intelligence entities.')}
+          />
+        )}
+      </Box>
     </span>
   );
 };

@@ -497,150 +497,150 @@ const CustomDashboards = () => {
         ]}
       />
 
-      <Box sx={{ padding: '24px 24px 24px 24px' }}>
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
 
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        flexWrap="wrap"
-        gap={2}
-      >
-        <Box>
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: '22px',
-              fontWeight: 600,
-              color: 'var(--ravin-text)',
-              lineHeight: 1.3,
-              ...lowercaseVoiceSx,
-            }}
-          >
-            {t_i18n('Custom dashboards')}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: '0.8125rem',
-              color: 'var(--ravin-text-muted)',
-              marginTop: '4px',
-              ...lowercaseVoiceSx,
-            }}
-          >
-            {t_i18n('Build and manage visual dashboards for threat intelligence analysis')}
-          </Typography>
-        </Box>
-
-        <Stack direction="row" gap={1} alignItems="center">
-          <ToggleButtonGroup
-            value={viewMode}
-            exclusive
-            onChange={handleViewModeChange}
-            size="small"
-            sx={{
-              '& .MuiToggleButton-root': {
-                border: '1px solid var(--ravin-border-strong)',
-                borderRadius: '4px',
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          flexWrap="wrap"
+          gap={2}
+        >
+          <Box>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: '22px',
+                fontWeight: 600,
+                color: 'var(--ravin-text)',
+                lineHeight: 1.3,
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Custom dashboards')}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
                 color: 'var(--ravin-text-muted)',
-                padding: '8px 12px',
-                minHeight: 36,
-                '&.Mui-selected': {
-                  backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 25%, transparent)',
-                  color: 'var(--ravin-text)',
-                  borderColor: 'var(--ravin-border-strong)',
-                },
-                '&:hover': {
-                  backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 15%, transparent)',
-                },
-                '&.Mui-selected:hover': {
-                  backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 25%, transparent)',
-                },
-              },
-            }}
-          >
-            <ToggleButton value="table" aria-label={t_i18n('Table view')}>
-              <TableIcon size={16} />
-            </ToggleButton>
-            <ToggleButton value="grid" aria-label={t_i18n('Grid view')}>
-              <LayoutDashboard size={16} />
-            </ToggleButton>
-          </ToggleButtonGroup>
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Build and manage visual dashboards for threat intelligence analysis')}
+            </Typography>
+          </Box>
 
-          <Security needs={[EXPLORE_EXUPDATE]}>
-            <WorkspaceCreation
-              paginationOptions={workspacePaginationOptions}
-              type="dashboard"
-            />
-          </Security>
+          <Stack direction="row" gap={1} alignItems="center">
+            <ToggleButtonGroup
+              value={viewMode}
+              exclusive
+              onChange={handleViewModeChange}
+              size="small"
+              sx={{
+                '& .MuiToggleButton-root': {
+                  border: '1px solid var(--ravin-border-strong)',
+                  borderRadius: '4px',
+                  color: 'var(--ravin-text-muted)',
+                  padding: '8px 12px',
+                  minHeight: 36,
+                  '&.Mui-selected': {
+                    backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 25%, transparent)',
+                    color: 'var(--ravin-text)',
+                    borderColor: 'var(--ravin-border-strong)',
+                  },
+                  '&:hover': {
+                    backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 15%, transparent)',
+                  },
+                  '&.Mui-selected:hover': {
+                    backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 25%, transparent)',
+                  },
+                },
+              }}
+            >
+              <ToggleButton value="table" aria-label={t_i18n('Table view')}>
+                <TableIcon size={16} />
+              </ToggleButton>
+              <ToggleButton value="grid" aria-label={t_i18n('Grid view')}>
+                <LayoutDashboard size={16} />
+              </ToggleButton>
+            </ToggleButtonGroup>
+
+            <Security needs={[EXPLORE_EXUPDATE]}>
+              <WorkspaceCreation
+                paginationOptions={workspacePaginationOptions}
+                type="dashboard"
+              />
+            </Security>
+          </Stack>
         </Stack>
-      </Stack>
 
-      {viewMode === 'table' && queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: WorkspacesLines_data$data) => {
-            return data.workspaces?.edges?.map((n) => n?.node);
-          }}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialStorageValues}
-          contextFilters={filters}
-          preloadedPaginationProps={{
-            linesQuery: workspacesLinesQuery,
-            linesFragment: workspacesLineFragment,
-            queryRef,
-            nodePath: ['workspaces', 'pageInfo', 'globalCount'],
-            setNumberOfElements: storageHelpers.handleSetNumberOfElements,
-          }}
-          lineFragment={workspaceLineFragment}
-          entityTypes={['Workspace']}
-          searchContextFinal={{ entityTypes: ['Workspace'] }}
-          taskScope="DASHBOARD"
-          actions={(row) => (
-            <Security needs={[EXPLORE]}>
-              <ErrorBoundary display={() => null}>
-                <WorkspacePopover
-                  data={row}
+        {viewMode === 'table' && queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: WorkspacesLines_data$data) => {
+              return data.workspaces?.edges?.map((n) => n?.node);
+            }}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialStorageValues}
+            contextFilters={filters}
+            preloadedPaginationProps={{
+              linesQuery: workspacesLinesQuery,
+              linesFragment: workspacesLineFragment,
+              queryRef,
+              nodePath: ['workspaces', 'pageInfo', 'globalCount'],
+              setNumberOfElements: storageHelpers.handleSetNumberOfElements,
+            }}
+            lineFragment={workspaceLineFragment}
+            entityTypes={['Workspace']}
+            searchContextFinal={{ entityTypes: ['Workspace'] }}
+            taskScope="DASHBOARD"
+            actions={(row) => (
+              <Security needs={[EXPLORE]}>
+                <ErrorBoundary display={() => null}>
+                  <WorkspacePopover
+                    data={row}
+                    paginationOptions={workspacePaginationOptions}
+                  />
+                </ErrorBoundary>
+              </Security>
+            )}
+          />
+        )}
+
+        {viewMode === 'grid' && (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <TextField
+              placeholder={t_i18n('Search dashboards...')}
+              defaultValue={viewStorage.searchTerm ?? ''}
+              onChange={(e) => handleGridSearch(e.target.value)}
+              size="small"
+              aria-label={t_i18n('Search dashboards')}
+              sx={{
+                maxWidth: 400,
+                '& .MuiOutlinedInput-root': {
+                  backgroundColor: 'var(--ravin-elevated)',
+                  borderRadius: '4px',
+                },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search size={16} style={{ color: 'var(--ravin-text-muted)' }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Suspense fallback={<GridViewSkeleton />}>
+              {queryRef && (
+                <GridView
+                  queryRef={queryRef}
                   paginationOptions={workspacePaginationOptions}
                 />
-              </ErrorBoundary>
-            </Security>
-          )}
-        />
-      )}
-
-      {viewMode === 'grid' && (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <TextField
-            placeholder={t_i18n('Search dashboards...')}
-            defaultValue={viewStorage.searchTerm ?? ''}
-            onChange={(e) => handleGridSearch(e.target.value)}
-            size="small"
-            aria-label={t_i18n('Search dashboards')}
-            sx={{
-              maxWidth: 400,
-              '& .MuiOutlinedInput-root': {
-                backgroundColor: 'var(--ravin-elevated)',
-                borderRadius: '4px',
-              },
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search size={16} style={{ color: 'var(--ravin-text-muted)' }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Suspense fallback={<GridViewSkeleton />}>
-            {queryRef && (
-              <GridView
-                queryRef={queryRef}
-                paginationOptions={workspacePaginationOptions}
-              />
-            )}
-          </Suspense>
-        </Box>
-      )}
+              )}
+            </Suspense>
+          </Box>
+        )}
       </Box>
     </>
   );

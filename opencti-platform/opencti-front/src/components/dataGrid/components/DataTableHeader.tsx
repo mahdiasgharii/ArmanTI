@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEvent, RefObject, useRef } from 'react';
-import { ChevronDown as ArrowDropDown, ChevronUp as ArrowDropUp, MoreVertical as MoreVert } from 'lucide-react';
+import { ChevronDown, ChevronUp, ChevronsUpDown, MoreVertical } from 'lucide-react';
 import IconButton from '@common/button/IconButton';
 import SimpleDraggrable from 'react-draggable';
 import makeStyles from '@mui/styles/makeStyles';
@@ -16,19 +16,16 @@ export const ICON_COLUMN_SIZE = 56;
 // Do not use it for new code.
 const useStyles = makeStyles<MuiTheme, { column: DataTableColumn }>((theme) => createStyles({
   headerContainer: {
-    flex: '0 0 auto',
+    flex: '1 1 auto',
     position: 'relative',
     display: 'flex',
-    fontWeight: 'bold',
     justifyContent: 'space-between',
     alignItems: 'center',
-    '& .react-draggable-dragging': {
-      backgroundColor: theme.palette.primary.main,
+    borderRight: '1px solid var(--ravin-border)',
+    '&:last-of-type': {
+      borderRight: 'none',
     },
     '&:hover': {
-      '& $draggable': {
-        backgroundColor: theme.palette.primary.main,
-      },
       '& $icon': {
         visibility: 'visible',
       },
@@ -42,23 +39,24 @@ const useStyles = makeStyles<MuiTheme, { column: DataTableColumn }>((theme) => c
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     fontSize: '12px',
-    fontWeight: 500,
+    fontWeight: 600,
     fontFamily: '"Peyda", sans-serif',
-    color: 'var(--ravin-text-muted)',
+    color: 'var(--ravin-text)',
     flexGrow: 1,
     cursor: ({ column: { isSortable } }) => (isSortable ? 'pointer' : 'unset'),
   },
   draggable: {
     position: 'absolute',
-    top: '8px',
-    right: 3,
-    height: theme.spacing(4),
-    width: 10,
-    paddingLeft: 4,
-    paddingRight: 4,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    right: 0,
+    height: theme.spacing(5),
+    width: 2,
     backgroundClip: 'content-box',
-    borderRadius: 2,
+    borderRadius: 1,
     cursor: 'col-resize',
+    backgroundColor: 'transparent',
+    transition: 'background-color 0.15s ease',
   },
   icon: {
     visibility: 'hidden',
@@ -114,7 +112,11 @@ const DataTableHeader: FunctionComponent<DataTableHeaderProps> = ({
         <Tooltip title={t_i18n(column.label)}>
           <span>{t_i18n(column.label)}</span>
         </Tooltip>
-        {sortBy && column.isSortable && (orderAsc ? <ArrowDropUp size={16} color="var(--ravin-primary)" /> : <ArrowDropDown size={16} color="var(--ravin-primary)" />)}
+        {column.isSortable && (sortBy
+          ? (orderAsc
+              ? <ChevronUp size={12} color="var(--ravin-primary)" />
+              : <ChevronDown size={12} color="var(--ravin-primary)" />)
+          : <ChevronsUpDown size={11} color="var(--ravin-text-muted)" style={{ opacity: 0.5 }} />)}
       </div>
 
       {hasColumnMenu && (
@@ -127,23 +129,22 @@ const DataTableHeader: FunctionComponent<DataTableHeaderProps> = ({
           }}
           sx={{
             marginRight: 1,
-            opacity: 0.5,
             width: 24,
             '&:hover': {
               background: 'transparent',
             },
           }}
         >
-          <MoreVert size={16} />
+          <MoreVertical size={16} />
         </IconButton>
       )}
 
-      <div className={classes.aligner} />
+      <div style={{ flex: '0 0 auto' }} />
 
       {variant !== DataTableVariant.inline && variant !== DataTableVariant.widget && (
         <SimpleDraggrable
           nodeRef={draggableRef as unknown as RefObject<HTMLDivElement>}
-          position={{ x: 3, y: -3 }}
+          position={{ x: 0, y: 0 }}
           axis="x"
           onStop={(_, { lastX }) => {
             if (containerRef?.current) {

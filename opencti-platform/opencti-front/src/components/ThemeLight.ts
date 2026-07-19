@@ -654,11 +654,35 @@ const ThemeLight = (
     MuiTableCell: {
       styleOverrides: {
         head: {
-          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+          borderBottom: '1px solid var(--ravin-border)',
+          fontWeight: 600,
         },
         body: {
-          borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+          borderTop: '1px solid var(--ravin-border)',
+          borderBottom: '1px solid var(--ravin-border)',
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: 'var(--ravin-border-strong)',
+          padding: '6px',
+          '&:hover': {
+            backgroundColor: 'transparent',
+            color: 'var(--ravin-text-muted)',
+          },
+          '&.Mui-checked': {
+            color: 'var(--ravin-primary)',
+          },
+          '&.Mui-checked:hover': {
+            backgroundColor: 'transparent',
+            color: 'var(--ravin-primary)',
+          },
+          '& .MuiSvgIcon-root': {
+            fontSize: '18px',
+            borderRadius: '3px',
+          },
         },
       },
     },

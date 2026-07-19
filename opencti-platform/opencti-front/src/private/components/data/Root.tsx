@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { boundaryWrapper } from '../Error';
 import useGranted, {
   AUTOMATION_AUTMANAGE,
@@ -40,6 +40,16 @@ const Playbooks = lazy(() => import('./Playbooks'));
 const RootPlaybook = lazy(() => import('./playbooks/Root'));
 const RootImport = lazy(() => import('./import/Root'));
 const Management = lazy(() => import('./restriction/Root'));
+const IngestionMenu = lazy(() => import('./IngestionMenu'));
+
+const IngestionLayout = () => (
+  <>
+    <IngestionMenu />
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  </>
+);
 
 const Root = () => {
   const isGrantedToKnowledge = useGranted([KNOWLEDGE]);
@@ -101,41 +111,47 @@ const Root = () => {
             </Security>
           )}
         />
-        <Route
-          path="/ingestion/sync"
-          element={boundaryWrapper(Sync)}
-        />
-        <Route
-          path="/ingestion/rss"
-          element={boundaryWrapper(IngestionRss)}
-        />
-        <Route
-          path="/ingestion/taxii"
-          element={boundaryWrapper(IngestionTaxiis)}
-        />
-        <Route
-          path="/ingestion/catalog"
-          element={boundaryWrapper(IngestionCatalog)}
-        />
+        <Route element={<IngestionLayout />}>
+          <Route
+            path="/ingestion/sync"
+            element={boundaryWrapper(Sync)}
+          />
+          <Route
+            path="/ingestion/rss"
+            element={boundaryWrapper(IngestionRss)}
+          />
+          <Route
+            path="/ingestion/taxii"
+            element={boundaryWrapper(IngestionTaxiis)}
+          />
+          <Route
+            path="/ingestion/catalog"
+            element={boundaryWrapper(IngestionCatalog)}
+          />
+          <Route
+            path="/ingestion/collection"
+            element={boundaryWrapper(IngestionTaxiiCollections)}
+          />
+          <Route
+            path="/ingestion/csv"
+            element={boundaryWrapper(IngestionCsv)}
+          />
+          <Route
+            path="/ingestion/json"
+            element={boundaryWrapper(IngestionJson)}
+          />
+          <Route
+            path="/ingestion/forms"
+            element={boundaryWrapper(Forms)}
+          />
+          <Route
+            path="/ingestion/connectors"
+            element={boundaryWrapper(Connectors)}
+          />
+        </Route>
         <Route
           path="/ingestion/catalog/:connectorSlug"
           element={boundaryWrapper(IngestionCatalogConnector)}
-        />
-        <Route
-          path="/ingestion/collection"
-          element={boundaryWrapper(IngestionTaxiiCollections)}
-        />
-        <Route
-          path="/ingestion/csv"
-          element={boundaryWrapper(IngestionCsv)}
-        />
-        <Route
-          path="/ingestion/json"
-          element={boundaryWrapper(IngestionJson)}
-        />
-        <Route
-          path="/ingestion/forms"
-          element={boundaryWrapper(Forms)}
         />
         <Route
           path="/ingestion/forms/:formId"
@@ -148,10 +164,6 @@ const Root = () => {
               <FormView />
             </Security>
           )}
-        />
-        <Route
-          path="/ingestion/connectors"
-          element={boundaryWrapper(Connectors)}
         />
         <Route
           path="/ingestion/connectors/:connectorId/*"
