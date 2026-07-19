@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import { SearchCheck as ManageSearchOutlined, Search, SlidersHorizontal as TuneOutlined, ChevronDown as KeyboardArrowDownOutlined } from 'lucide-react';
@@ -188,6 +188,7 @@ const SearchInput = (props) => {
   const [displayEEDialog, setDisplayEEDialog] = useState(false);
   const [displayCGUDialog, setDisplayCGUDialog] = useState(false);
   const [searchValue, setSearchValue] = useState(keyword);
+  const searchTimeoutRef = useRef(null);
 
   // Current mode: 'search', 'bulk', or 'nlq:<slug>'
   const [mode, setMode] = useState(MODE_SEARCH);
@@ -207,6 +208,10 @@ const SearchInput = (props) => {
       setSearchValue(keyword);
     }
   }, [keyword]);
+
+  useEffect(() => () => {
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+  }, []);
 
   const isAIEnabled = variant === 'topBar' && isEnterpriseEdition && enabled && configured;
   const isNLQActivated = isAIEnabled && isNlqMode(mode);
@@ -370,10 +375,15 @@ const SearchInput = (props) => {
           onChange={(event) => {
             const { value } = event.target;
             setSearchValue(value);
+            if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+            searchTimeoutRef.current = setTimeout(() => {
+              if (typeof onSubmit === 'function') onSubmit(value);
+            }, 300);
           }}
           onKeyDown={(event) => {
             const { value } = event.target;
             if (typeof onSubmit === 'function' && event.key === 'Enter') {
+              if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
               onSubmit(value);
             }
           }}

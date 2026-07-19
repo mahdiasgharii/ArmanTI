@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { filter, map, pathOr, pipe, union } from 'ramda';
 import { Field } from 'formik';
 import makeStyles from '@mui/styles/makeStyles';
@@ -50,10 +50,10 @@ const CreatedByField = (props) => {
   const [debouncedKeyword, setDebouncedKeyword] = useState(keyword); // Debounced value
 
   useEffect(() => {
-    // Set a timeout to update debounced value after 500ms
+    // Set a timeout to update debounced value after 200ms
     const handler = setTimeout(() => {
       setDebouncedKeyword(keyword);
-    }, 1500);
+    }, 200);
 
     // Cleanup the timeout if `query` changes before 500ms
     return () => {
@@ -71,8 +71,10 @@ const CreatedByField = (props) => {
         },
       ]
     : []);
+  const searchIdRef = useRef(0);
 
   const searchIdentities = () => {
+    const searchId = ++searchIdRef.current;
     fetchQuery(identitySearchIdentitiesSearchQuery, {
       types: ['Individual', 'Organization', 'System'],
       search: debouncedKeyword,
@@ -80,6 +82,7 @@ const CreatedByField = (props) => {
     })
       .toPromise()
       .then((data) => {
+        if (searchId !== searchIdRef.current) return;
         if (featureFlagAccessRestriction) {
           const resultIdentities = pipe(
             pathOr([], ['identities', 'edges']),

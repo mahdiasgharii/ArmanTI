@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, useCallback, useRef, useMemo } from 'react';
+import React, { useState, FunctionComponent, useCallback, useRef, useMemo, useEffect } from 'react';
 import * as R from 'ramda';
 import { v4 as uuidv4 } from 'uuid';
 import { Field, useFormikContext } from 'formik';
@@ -288,6 +288,9 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
   const [stixCoreObjects, setStixCoreObjects] = useState<StixCoreObjectOption[]>([]);
   const [searchScope, setSearchScope] = useState<Record<string, string[]>>({});
   const [currentSearchTerm, setCurrentSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
+  const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const latestSearchIdRef = useRef(0);
 
   // Creation dialog states
   const [openSDOCreation, setOpenSDOCreation] = useState(false);
@@ -556,12 +559,9 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
     }
   }, [buildPendingOption, currentSearchTerm, deferCreation, getCreationType, multiple, name, searchScope, setFieldValue, shouldShowCreateOption, t_i18n, types, values]);
 
-  const searchStixCoreObjects = useCallback((event: React.SyntheticEvent | null, newInputValue?: string, reason?: string) => {
-    const searchValue = newInputValue ?? '';
-
-    if (reason === 'input' || reason === undefined) {
-      setCurrentSearchTerm(searchValue);
-    }
+  const performSearch = useCallback((searchValue: string) => {
+    const searchId = ++latestSearchIdRef.current;
+    setLoading(true);
 
     fetchQuery(stixCoreObjectsFieldSearchQuery, {
       search: searchValue,
@@ -569,6 +569,8 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
     })
       .toPromise()
       .then((data: unknown) => {
+        if (searchId !== latestSearchIdRef.current) return;
+
         const typedData = data as { stixCoreObjects?: { edges?: Array<{ node: Record<string, unknown> }> } };
         const results = R.pipe(
           R.pathOr([], ['stixCoreObjects', 'edges']),
@@ -595,8 +597,29 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
         }
 
         setStixCoreObjects(finalResults);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (searchId === latestSearchIdRef.current) setLoading(false);
       });
   }, [getCreationType, name, searchScope, shouldShowCreateOption, t_i18n, types]);
+
+  const searchStixCoreObjects = useCallback((event: React.SyntheticEvent | null, newInputValue?: string, reason?: string) => {
+    const searchValue = newInputValue ?? '';
+
+    if (reason === 'input' || reason === undefined) {
+      setCurrentSearchTerm(searchValue);
+    }
+
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    searchTimeoutRef.current = setTimeout(() => {
+      performSearch(searchValue);
+    }, 200);
+  }, [performSearch]);
+
+  useEffect(() => () => {
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+  }, []);
 
   const entitiesTypes = R.pipe(
     R.map((n: string) => ({
@@ -698,10 +721,11 @@ const StixCoreObjectsField: FunctionComponent<StixCoreObjectsFieldProps> = ({
           </InputAdornment>
         )}
         groupBy={(option: StixCoreObjectOption) => option.isCreateOption ? '' : option.type}
-        noOptionsText={t_i18n('No available options')}
+        noOptionsText={loading ? t_i18n('Searching...') : t_i18n('No available options')}
         options={stixCoreObjects}
         onInputChange={searchStixCoreObjects}
         onChange={handleChange}
+        loading={loading}
         filterOptions={(options: StixCoreObjectOption[]) => options}
         renderOption={(innerProps: React.HTMLAttributes<HTMLLIElement>, option: StixCoreObjectOption) => {
           if (option.isCreateOption) {

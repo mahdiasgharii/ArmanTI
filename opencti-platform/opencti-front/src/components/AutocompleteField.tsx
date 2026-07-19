@@ -59,6 +59,7 @@ const AutocompleteField = <
     endAdornment,
     disabled,
     renderTags,
+    loading,
   } = muiProps;
 
   const [, meta] = useField(name);
@@ -161,6 +162,7 @@ const AutocompleteField = <
         onChange={internalOnChange}
         onFocus={internalOnFocus}
         onBlur={internalOnBlur}
+        loading={loading}
         isOptionEqualToValue={isOptionEqualToValue ?? defaultOptionToValue}
         slotProps={{
           paper: {
