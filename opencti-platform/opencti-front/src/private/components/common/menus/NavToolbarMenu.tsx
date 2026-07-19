@@ -29,6 +29,15 @@ const StyledDrawer = styled(Drawer)(() => ({
     background: 'transparent',
     border: 'none',
     boxShadow: 'none',
+    animation: 'rightMenuSlideIn 250ms cubic-bezier(0.25, 1, 0.5, 1)',
+  },
+  '@keyframes rightMenuSlideIn': {
+    from: { transform: 'translateX(100%)', opacity: 0 },
+    to: { transform: 'translateX(0)', opacity: 1 },
+  },
+  '@keyframes rightMenuFadeIn': {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
   },
 }));
 
@@ -113,6 +122,7 @@ const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }
           backgroundColor: 'var(--ravin-bg)',
           border: 'none',
           overflow: 'hidden',
+          animation: 'rightMenuFadeIn 300ms cubic-bezier(0.25, 1, 0.5, 1) 100ms both',
         }}
       >
         <div

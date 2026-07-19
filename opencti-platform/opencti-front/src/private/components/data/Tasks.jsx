@@ -7,7 +7,6 @@ import TasksList, { tasksListQuery } from './tasks/TasksList';
 import Loader from '../../../components/Loader';
 import useAuth from '../../../utils/hooks/useAuth';
 import { TASK_MANAGER } from '../../../utils/platformModulesHelper';
-import ProcessingMenu from './ProcessingMenu';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 
@@ -38,7 +37,6 @@ const Tasks = () => {
         <Alert severity="info">
           {t_i18n(platformModuleHelpers.generateDisableMessage(TASK_MANAGER))}
         </Alert>
-        <ProcessingMenu />
       </div>
     );
   }
@@ -48,7 +46,6 @@ const Tasks = () => {
       data-testid="processing-tasks-page"
     >
       <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Processing') }, { label: t_i18n('Tasks'), current: true }]} />
-      <ProcessingMenu />
       <QueryRenderer
         query={tasksListQuery}
         variables={optionsInTasks}

@@ -7,7 +7,6 @@ import { buildViewParamsFromUrlAndStorage, saveViewParameters } from '../../../u
 import ListLines from '../../../components/list_lines/ListLines';
 import FeedLines, { FeedLinesQuery } from './feeds/FeedLines';
 import FeedCreation from './feeds/FeedCreation';
-import SharingMenu from './SharingMenu';
 import { OrderMode, PaginationOptions } from '../../../components/list_lines';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
@@ -128,7 +127,6 @@ const Feed = () => {
       }}
       >
         <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Data sharing') }, { label: t_i18n('CSV feeds'), current: true }]} />
-        <SharingMenu />
         {feedState.view === 'lines' ? renderLines(paginationOptions) : ''}
       </Box>
     </div>

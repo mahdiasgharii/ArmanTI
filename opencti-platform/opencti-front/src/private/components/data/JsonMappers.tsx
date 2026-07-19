@@ -2,7 +2,6 @@ import React, { BaseSyntheticEvent, Suspense, useRef, useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import JsonMapperLines from '@components/data/jsonMapper/JsonMapperLines';
 import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as FileUploadOutlined } from 'lucide-react';
-import ProcessingMenu from '@components/data/ProcessingMenu';
 import JsonMappersProvider, { mappersQuery } from '@components/data/jsonMapper/jsonMappers.data';
 import VisuallyHiddenInput from '@components/common/VisuallyHiddenInput';
 import { JsonMapperLine_jsonMapper$data } from '@components/data/jsonMapper/__generated__/JsonMapperLine_jsonMapper.graphql';
@@ -117,7 +116,6 @@ const JsonMappers = () => {
         <JsonMappersProvider mappersQueryRef={queryRefMappers} schemaAttributesQueryRef={queryRefSchemaAttributes}>
           <div className={classes.container} data-testid="json-mapper-page">
             <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Processing') }, { label: t_i18n('JSON mappers'), current: true }]} />
-            <ProcessingMenu />
             <ListLines
               helpers={helpers}
               sortBy={viewStorage.sortBy}

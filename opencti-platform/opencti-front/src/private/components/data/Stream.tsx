@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import { Waves as StreamIcon } from 'lucide-react';
 import { useFormatter } from '../../../components/i18n';
-import SharingMenu from './SharingMenu';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 import { graphql } from 'react-relay';
@@ -243,7 +242,6 @@ const Stream = () => {
   return (
     <div className={classes.container} data-testid="sharing-streams-page">
       <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Data sharing') }, { label: t_i18n('Live streams'), current: true }]} />
-      <SharingMenu />
       {queryRef && (
         <DataTable
           dataColumns={dataColumns}

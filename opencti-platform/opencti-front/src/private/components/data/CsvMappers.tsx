@@ -4,7 +4,6 @@ import CsvMapperLines from '@components/data/csvMapper/CsvMapperLines';
 import CsvMapperCreationContainer from '@components/data/csvMapper/CsvMapperCreationContainer';
 import { CsvMapperLine_csvMapper$data } from '@components/data/csvMapper/__generated__/CsvMapperLine_csvMapper.graphql';
 import { XCircle as CancelOutlined, CheckCircle as CheckCircleOutlined, FileUp as FileUploadOutlined } from 'lucide-react';
-import ProcessingMenu from '@components/data/ProcessingMenu';
 import CsvMappersProvider, { mappersQuery, schemaAttributesQuery } from '@components/data/csvMapper/csvMappers.data';
 import { csvMappers_MappersQuery, csvMappers_MappersQuery$variables } from '@components/data/csvMapper/__generated__/csvMappers_MappersQuery.graphql';
 import { csvMappers_SchemaAttributesQuery } from '@components/data/csvMapper/__generated__/csvMappers_SchemaAttributesQuery.graphql';
@@ -153,7 +152,6 @@ const CsvMappers = () => {
         >
           <div className={classes.container} data-testid="csv-mapper-page">
             <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Processing') }, { label: t_i18n('CSV Mappers'), current: true }]} />
-            <ProcessingMenu />
             <ListLines
               helpers={helpers}
               sortBy={viewStorage.sortBy}

@@ -41,10 +41,30 @@ const RootPlaybook = lazy(() => import('./playbooks/Root'));
 const RootImport = lazy(() => import('./import/Root'));
 const Management = lazy(() => import('./restriction/Root'));
 const IngestionMenu = lazy(() => import('./IngestionMenu'));
+const ProcessingMenu = lazy(() => import('./ProcessingMenu'));
+const SharingMenu = lazy(() => import('./SharingMenu'));
 
 const IngestionLayout = () => (
   <>
     <IngestionMenu />
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  </>
+);
+
+const ProcessingLayout = () => (
+  <>
+    <ProcessingMenu />
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  </>
+);
+
+const SharingLayout = () => (
+  <>
+    <SharingMenu />
     <Suspense fallback={<Loader />}>
       <Outlet />
     </Suspense>
@@ -177,18 +197,20 @@ const Root = () => {
           path="/sharing"
           element={<Navigate to="/dashboard/data/sharing/streams" replace={true} />}
         />
-        <Route
-          path="/sharing/streams"
-          element={boundaryWrapper(Stream)}
-        />
-        <Route
-          path="/sharing/feeds"
-          element={boundaryWrapper(Feed)}
-        />
-        <Route
-          path="/sharing/taxii"
-          element={boundaryWrapper(Taxii)}
-        />
+        <Route element={<SharingLayout />}>
+          <Route
+            path="/sharing/streams"
+            element={boundaryWrapper(Stream)}
+          />
+          <Route
+            path="/sharing/feeds"
+            element={boundaryWrapper(Feed)}
+          />
+          <Route
+            path="/sharing/taxii"
+            element={boundaryWrapper(Taxii)}
+          />
+        </Route>
         <Route
           path="/processing"
           element={(
@@ -207,46 +229,48 @@ const Root = () => {
             </Security>
           )}
         />
-        <Route
-          path="/processing/automation"
-          element={boundaryWrapper(Playbooks)}
-        />
+        <Route element={<ProcessingLayout />}>
+          <Route
+            path="/processing/automation"
+            element={boundaryWrapper(Playbooks)}
+          />
+          <Route
+            path="/processing/csv_mapper"
+            element={(
+              <Security
+                needs={[CSVMAPPERS]}
+                placeholder={<Navigate to="/dashboard" />}
+              >
+                <CsvMappers />
+              </Security>
+            )}
+          />
+          <Route
+            path="/processing/json_mapper"
+            element={(
+              <Security
+                needs={[CSVMAPPERS]}
+                placeholder={<Navigate to="/dashboard" />}
+              >
+                <JsonMappers />
+              </Security>
+            )}
+          />
+          <Route
+            path="/processing/tasks"
+            element={(
+              <Security
+                needs={[KNOWLEDGE_KNUPDATE]}
+                placeholder={<Navigate to="/dashboard" />}
+              >
+                <Tasks />
+              </Security>
+            )}
+          />
+        </Route>
         <Route
           path="/processing/automation/:playbookId"
           element={boundaryWrapper(RootPlaybook)}
-        />
-        <Route
-          path="/processing/csv_mapper"
-          element={(
-            <Security
-              needs={[CSVMAPPERS]}
-              placeholder={<Navigate to="/dashboard" />}
-            >
-              <CsvMappers />
-            </Security>
-          )}
-        />
-        <Route
-          path="/processing/json_mapper"
-          element={(
-            <Security
-              needs={[CSVMAPPERS]}
-              placeholder={<Navigate to="/dashboard" />}
-            >
-              <JsonMappers />
-            </Security>
-          )}
-        />
-        <Route
-          path="/processing/tasks"
-          element={(
-            <Security
-              needs={[KNOWLEDGE_KNUPDATE]}
-              placeholder={<Navigate to="/dashboard" />}
-            >
-              <Tasks />
-            </Security>
-          )}
         />
         <Route
           path="/restriction/*"

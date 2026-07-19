@@ -7,7 +7,6 @@ import { buildViewParamsFromUrlAndStorage, saveViewParameters } from '../../../u
 import ListLines from '../../../components/list_lines/ListLines';
 import TaxiiLines, { TaxiiLinesQuery } from './taxii/TaxiiLines';
 import TaxiiCollectionCreation from './taxii/TaxiiCollectionCreation';
-import SharingMenu from './SharingMenu';
 import { OrderMode, PaginationOptions } from '../../../components/list_lines';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
@@ -131,7 +130,6 @@ const Taxii = () => {
         aria-label="TaxiiCollections"
       >
         <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Data sharing') }, { label: t_i18n('TAXII collections'), current: true }]} />
-        <SharingMenu />
         {taxiiState.view === 'lines' ? renderLines(paginationOptions) : null}
       </Box>
     </div>
