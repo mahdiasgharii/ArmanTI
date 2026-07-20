@@ -4,9 +4,8 @@ import { dayAgo } from '../../../../utils/Time';
 import { buildFiltersAndOptionsForWidgets, normalizeFilterGroupForBackend } from '../../../../utils/filters/filtersUtils';
 import WidgetNoData from '../../../../components/dashboard/WidgetNoData';
 import WidgetContainer from '../../../../components/dashboard/WidgetContainer';
-import Loader, { LoaderVariant } from '../../../../components/Loader';
 import useEntityTranslation from '../../../../utils/hooks/useEntityTranslation';
-import WidgetNumber from '../../../../components/dashboard/WidgetNumber';
+import WidgetNumber, { WidgetNumberSkeleton } from '../../../../components/dashboard/WidgetNumber';
 import useDashboardViz from '../../../../components/dashboard/useDashboardViz';
 import WidgetNoHostEntity from '../../../../components/dashboard/WidgetNoHostEntity';
 import type { Widget, WidgetDataSelection, WidgetHost } from '../../../../utils/widget/widget';
@@ -139,7 +138,7 @@ const StixCoreObjectsNumber = ({
     if (!queryRef) return null;
 
     return (
-      <Suspense fallback={<Loader variant={LoaderVariant.inElement} />}>
+      <Suspense fallback={<WidgetNumberSkeleton />}>
         <StixCoreObjectsNumberComponent
           queryRef={queryRef}
           entityType={entityType}

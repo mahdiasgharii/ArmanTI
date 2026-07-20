@@ -1,5 +1,5 @@
 import React, { CSSProperties, MouseEvent, useState } from 'react';
-import FeedbackCreation from '@components/cases/feedbacks/FeedbackCreation';
+import { FeedbackCreationDrawer } from '@components/cases/feedbacks/FeedbackCreation';
 import EnterpriseEditionAgreement from '@components/common/entreprise_edition/EnterpriseEditionAgreement';
 import { useFormatter } from '../../../../components/i18n';
 import type { Theme } from '../../../../components/Theme';
@@ -69,7 +69,7 @@ const EEChip = React.forwardRef<HTMLDivElement, { feature?: string; clickable?: 
           settingsId={settingsId}
         />
       ) : (
-        <FeedbackCreation
+        <FeedbackCreationDrawer
           openDrawer={displayDialog}
           handleCloseDrawer={() => setDisplayDialog(false)}
           initialValue={{

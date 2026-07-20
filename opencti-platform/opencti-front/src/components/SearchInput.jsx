@@ -23,7 +23,7 @@ import useAuth from '../utils/hooks/useAuth';
 import FiligranIcon from '../private/components/common/FiligranIcon';
 import EnterpriseEditionAgreement from '../private/components/common/entreprise_edition/EnterpriseEditionAgreement';
 import ValidateTermsOfUseDialog from '../private/components/settings/ValidateTermsOfUseDialog';
-import FeedbackCreation from '../private/components/cases/feedbacks/FeedbackCreation';
+import { FeedbackCreationDrawer } from '../private/components/cases/feedbacks/FeedbackCreation';
 import Loader from './Loader';
 import useAI from '../utils/hooks/useAI';
 import { fetchAgentsForIntent } from '../utils/ai/agentApi';
@@ -740,7 +740,7 @@ const SearchInput = (props) => {
           settingsId={settingsId}
         />
       ) : (
-        <FeedbackCreation
+        <FeedbackCreationDrawer
           openDrawer={displayEEDialog}
           handleCloseDrawer={() => setDisplayEEDialog(false)}
           initialValue={{

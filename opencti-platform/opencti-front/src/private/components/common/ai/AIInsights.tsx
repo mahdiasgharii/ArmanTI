@@ -1,7 +1,7 @@
 import Button from '@common/button/Button';
 import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
-import FeedbackCreation from '@components/cases/feedbacks/FeedbackCreation';
+import { FeedbackCreationDrawer } from '@components/cases/feedbacks/FeedbackCreation';
 import AISummaryActivity from '@components/common/ai/AISummaryActivity';
 import AISummaryContainers from '@components/common/ai/AISummaryContainers';
 import AISummaryForecast from '@components/common/ai/AISummaryForecast';
@@ -282,7 +282,7 @@ const AIInsights = ({
             settingsId={settingsId}
           />
         ) : (
-          <FeedbackCreation
+          <FeedbackCreationDrawer
             openDrawer={displayEEDialog}
             handleCloseDrawer={() => setDisplayEEDialog(false)}
             initialValue={{

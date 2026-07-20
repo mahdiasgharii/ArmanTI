@@ -26,7 +26,7 @@ import useGranted, { KNOWLEDGE, KNOWLEDGE_KNASKIMPORT } from '../../../utils/hoo
 import useQueryLoading from '../../../utils/hooks/useQueryLoading';
 import { decodeSearchKeyword, handleSearchByFilter, handleSearchByKeyword } from '../../../utils/SearchUtils';
 import Security from '../../../utils/Security';
-import FeedbackCreation from '../cases/feedbacks/FeedbackCreation';
+import { FeedbackCreationDrawer } from '../cases/feedbacks/FeedbackCreation';
 import CtemCommandCenterButton from '../chatbox/CtemCommandCenterButton';
 import { CGUStatus } from '../settings/Experience';
 import { useSettingsMessagesBannerHeight } from '../settings/settings_messages/SettingsMessagesBanner';
@@ -391,7 +391,7 @@ const TopBarComponent: FunctionComponent<TopBarProps> = ({
           </Stack>
         </div>
       </Toolbar>
-      <FeedbackCreation
+      <FeedbackCreationDrawer
         openDrawer={openDrawer}
         handleCloseDrawer={handleCloseDrawer}
       />

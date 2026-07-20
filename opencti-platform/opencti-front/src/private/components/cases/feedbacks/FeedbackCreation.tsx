@@ -1,9 +1,11 @@
 import Button from '@common/button/Button';
 import FormButtonContainer from '@common/form/FormButtonContainer';
+import CreateEntityControlledDial from '../../../../components/CreateEntityControlledDial';
 import { Field, Form, Formik } from 'formik';
 import { FormikConfig } from 'formik/dist/types';
 import { FunctionComponent } from 'react';
 import { graphql } from 'react-relay';
+import { RecordSourceSelectorProxy } from 'relay-runtime';
 import * as Yup from 'yup';
 import RatingField from '../../../../components/fields/RatingField';
 import MarkdownField from '../../../../components/fields/markdownField/MarkdownField';
@@ -15,12 +17,14 @@ import useDefaultValues from '../../../../utils/hooks/useDefaultValues';
 import { useDynamicSchemaCreationValidation, useIsMandatoryAttribute, yupShapeConditionalRequired } from '../../../../utils/hooks/useEntitySettings';
 import useGranted, { KNOWLEDGE_KNUPDATE } from '../../../../utils/hooks/useGranted';
 import useMarkdownCreationFilesInput from '../../../../utils/markdown/useMarkdownCreationFilesInput';
-import Drawer from '../../common/drawer/Drawer';
+import { insertNode } from '../../../../utils/store';
+import Drawer, { DrawerControlledDialProps } from '../../common/drawer/Drawer';
 import CustomFileUploader from '../../common/files/CustomFileUploader';
 import ConfidenceField from '../../common/form/ConfidenceField';
 import ObjectLabelField from '../../common/form/ObjectLabelField';
 import StixCoreObjectsField from '../../common/form/StixCoreObjectsField';
 import { FeedbackCreationMutation, FeedbackCreationMutation$variables } from './__generated__/FeedbackCreationMutation.graphql';
+import { FeedbacksLinesPaginationQuery$variables } from '@components/cases/__generated__/FeedbacksLinesPaginationQuery.graphql';
 
 const feedbackMutation = graphql`
   mutation FeedbackCreationMutation($input: FeedbackAddInput!) {
@@ -43,11 +47,11 @@ interface FormikFeedbackAddInput {
 
 const FEEDBACK_TYPE = 'Feedback';
 
-const FeedbackCreation: FunctionComponent<{
-  openDrawer: boolean;
-  handleCloseDrawer: () => void;
+const FeedbackCreationForm: FunctionComponent<{
+  updater?: (store: RecordSourceSelectorProxy) => void;
+  onCompleted?: () => void;
   initialValue?: Partial<FormikFeedbackAddInput>;
-}> = ({ openDrawer, handleCloseDrawer, initialValue }) => {
+}> = ({ updater, onCompleted, initialValue }) => {
   const { t_i18n } = useFormatter();
   const { me } = useAuth();
   const [commit] = useApiMutation<FeedbackCreationMutation>(
@@ -85,10 +89,11 @@ const FeedbackCreation: FunctionComponent<{
       variables: {
         input,
       },
+      updater,
       onCompleted: () => {
         setSubmitting(false);
         resetForm();
-        handleCloseDrawer();
+        onCompleted?.();
       },
     });
   };
@@ -109,19 +114,14 @@ const FeedbackCreation: FunctionComponent<{
   );
 
   return (
-    <Drawer
-      title={t_i18n('Submit a feedback')}
-      open={openDrawer}
-      onClose={handleCloseDrawer}
+    <Formik<FormikFeedbackAddInput>
+      initialValues={initialValues}
+      validationSchema={validator}
+      onSubmit={onSubmit}
+      validateOnChange={true}
+      validateOnBlur={true}
+      onReset={onCompleted}
     >
-      <Formik<FormikFeedbackAddInput>
-        initialValues={initialValues}
-        validationSchema={validator}
-        onSubmit={onSubmit}
-        validateOnChange={true}
-        validateOnBlur={true}
-        onReset={handleCloseDrawer}
-      >
         {({
           submitForm,
           handleReset,
@@ -192,6 +192,47 @@ const FeedbackCreation: FunctionComponent<{
           </Form>
         )}
       </Formik>
+  );
+};
+
+const FeedbackCreation = ({
+  paginationOptions,
+}: {
+  paginationOptions: FeedbacksLinesPaginationQuery$variables;
+}) => {
+  const { t_i18n } = useFormatter();
+  const updater = (store: RecordSourceSelectorProxy) => insertNode(
+    store,
+    'Pagination_feedbacks',
+    paginationOptions,
+    'feedbackAdd',
+  );
+  const CreateFeedbackControlledDial = (props: DrawerControlledDialProps) => (
+    <CreateEntityControlledDial entityType="Feedback" {...props} />
+  );
+  return (
+    <Drawer
+      title={t_i18n('Submit a feedback')}
+      controlledDial={CreateFeedbackControlledDial}
+    >
+      <FeedbackCreationForm updater={updater} />
+    </Drawer>
+  );
+};
+
+export const FeedbackCreationDrawer: FunctionComponent<{
+  openDrawer: boolean;
+  handleCloseDrawer: () => void;
+  initialValue?: Partial<FormikFeedbackAddInput>;
+}> = ({ openDrawer, handleCloseDrawer, initialValue }) => {
+  const { t_i18n } = useFormatter();
+  return (
+    <Drawer
+      title={t_i18n('Submit a feedback')}
+      open={openDrawer}
+      onClose={handleCloseDrawer}
+    >
+      <FeedbackCreationForm onCompleted={handleCloseDrawer} initialValue={initialValue} />
     </Drawer>
   );
 };

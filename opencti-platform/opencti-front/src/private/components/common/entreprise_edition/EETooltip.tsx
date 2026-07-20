@@ -9,7 +9,7 @@ import useAI from '../../../../utils/hooks/useAI';
 import useAuth from '../../../../utils/hooks/useAuth';
 import useEnterpriseEdition from '../../../../utils/hooks/useEnterpriseEdition';
 import useGranted, { SETTINGS_SETPARAMETERS } from '../../../../utils/hooks/useGranted';
-import FeedbackCreation from '../../cases/feedbacks/FeedbackCreation';
+import { FeedbackCreationDrawer } from '../../cases/feedbacks/FeedbackCreation';
 import EnterpriseEditionAgreement from './EnterpriseEditionAgreement';
 
 const EETooltipComponent = ({ children, ...tooltipProps }: TooltipProps) => {
@@ -106,7 +106,7 @@ const EETooltip = ({
           settingsId={settingsId}
         />
       ) : (
-        <FeedbackCreation
+        <FeedbackCreationDrawer
           openDrawer={feedbackCreation}
           handleCloseDrawer={() => setFeedbackCreation(false)}
           initialValue={{
