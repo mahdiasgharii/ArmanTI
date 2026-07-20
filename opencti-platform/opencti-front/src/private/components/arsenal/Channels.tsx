@@ -1,5 +1,8 @@
 import React from 'react';
 import { graphql } from 'react-relay';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 import { ChannelsLines_data$data } from '@components/arsenal/__generated__/ChannelsLines_data.graphql';
 import { ChannelsLinesPaginationQuery, ChannelsLinesPaginationQuery$variables } from '@components/arsenal/__generated__/ChannelsLinesPaginationQuery.graphql';
 import ChannelCreation from './channels/ChannelCreation';
@@ -11,8 +14,19 @@ import { emptyFilterGroup, useBuildEntityTypeBasedFilterContext, useGetDefaultFi
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
 import DataTable from '../../../components/dataGrid/DataTable';
+import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
 import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloadedPaginationFragment';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
+import { resolveLink } from '../../../utils/Entity';
+import { EMPTY_VALUE } from '../../../utils/String';
+import { Truncate } from '../../../components/dataGrid/dataTableUtils';
+import Tag from '../../../components/common/tag/Tag';
+import TagsOverflow from '../../../components/common/tag/TagsOverflow';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const LOCAL_STORAGE_KEY = 'channels';
 
@@ -130,16 +144,92 @@ const Channels = () => {
     filters: contextFilters,
   } as unknown as ChannelsLinesPaginationQuery$variables;
 
-  const dataColumns = {
+  const dataColumns: DataTableProps['dataColumns'] = {
     name: {
       percentWidth: 30,
+      render: (data) => {
+        const name = data.name || data.id;
+        const link = `${resolveLink('Channel')}/${data.id}`;
+        return (
+          <Tooltip title={name}>
+            <a
+              href={link}
+              style={{
+                color: 'var(--ravin-primary)',
+                textDecoration: 'none',
+                fontWeight: 500,
+              }}
+            >
+              <Truncate>{name}</Truncate>
+            </a>
+          </Tooltip>
+        );
+      },
     },
-    channel_types: {},
+    channel_types: {
+      percentWidth: 15,
+      render: ({ channel_types }) => {
+        if (!channel_types || channel_types.length === 0) return EMPTY_VALUE;
+        return (
+          <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+            {channel_types.map((type: string) => (
+              <Box
+                key={type}
+                component="span"
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {type}
+              </Box>
+            ))}
+          </Box>
+        );
+      },
+    },
     objectLabel: {
       percentWidth: 20,
+      render: ({ objectLabel }) => {
+        if (!objectLabel || objectLabel.length === 0) return EMPTY_VALUE;
+        return (
+          <TagsOverflow
+            items={objectLabel}
+            getKey={(label: { id: string }) => label.id}
+            renderTag={(label: { id: string; value: string }) => (
+              <Tag label={label.value} labelTextTransform="lowercase" />
+            )}
+          />
+        );
+      },
     },
-    created: {},
-    modified: {},
+    created: {
+      percentWidth: 12,
+      render: ({ created }, { rd, nsdt }) => (
+        <Tooltip title={nsdt(created)}>
+          <span style={{ color: 'var(--ravin-text-muted)' }}>{rd(created)}</span>
+        </Tooltip>
+      ),
+    },
+    modified: {
+      percentWidth: 12,
+      render: ({ modified }, { rd, nsdt }) => (
+        <Tooltip title={nsdt(modified)}>
+          <span style={{ color: 'var(--ravin-text-muted)' }}>{rd(modified)}</span>
+        </Tooltip>
+      ),
+    },
+    objectMarking: {
+      percentWidth: 10,
+    },
   };
   const queryRef = useQueryLoading<ChannelsLinesPaginationQuery>(
     channelsLinesQuery,
@@ -154,27 +244,83 @@ const Channels = () => {
     setNumberOfElements: storageHelpers.handleSetNumberOfElements,
   } as UsePreloadedPaginationFragment<ChannelsLinesPaginationQuery>;
 
+  const createButton = (
+    <Security needs={[KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNPARTICIPATE]}>
+      <ChannelCreation paginationOptions={queryPaginationOptions} />
+    </Security>
+  );
+
   return (
     <div data-testid="channel-page">
       <Breadcrumbs elements={[{ label: t_i18n('Arsenal') }, { label: t_i18n('Channels'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: ChannelsLines_data$data) => data.channels?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={channelLineFragment}
-          exportContext={{ entity_type: 'Channel' }}
-          createButton={(
-            <Security needs={[KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNPARTICIPATE]}>
-              <ChannelCreation paginationOptions={queryPaginationOptions} />
-            </Security>
-          )}
-        />
-      )}
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Channels')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track communication channels used in threat campaigns')}
+            </Typography>
+          </Box>
+          {createButton}
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: ChannelsLines_data$data) => data.channels?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            preloadedPaginationProps={preloadedPaginationProps}
+            lineFragment={channelLineFragment}
+            exportContext={{ entity_type: 'Channel' }}
+            emptyStateMessage={t_i18n('No channels yet. Create one to start tracking communication channels.')}
+          />
+        )}
+      </Box>
     </div>
   );
 };
+
 export default Channels;
