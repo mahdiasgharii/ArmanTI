@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import { Box, Stack, Typography } from '@mui/material';
 import { GenericAttackCardDummy } from '@components/common/cards/GenericAttackCard';
 import ToggleButton from '@mui/material/ToggleButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -18,11 +19,19 @@ import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
 import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloadedPaginationFragment';
 import DataTable from '../../../components/dataGrid/DataTable';
+import { defaultRender, Truncate } from '../../../components/dataGrid/dataTableUtils';
+import { DraftChip } from '@components/common/draft/DraftChip';
+import { getMainRepresentative } from '../../../utils/defaultRepresentatives';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 import { KNOWLEDGE_KNUPDATE } from '../../../utils/hooks/useGranted';
 import Security from '../../../utils/Security';
 
 const LOCAL_STORAGE_KEY = 'campaigns';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const Campaigns = () => {
   const { t_i18n } = useFormatter();
@@ -92,16 +101,6 @@ const Campaigns = () => {
         paginationOptions={queryPaginationOptions}
         numberOfElements={numberOfElements}
         handleChangeView={helpers.handleChangeView}
-        additionalHeaderButtons={[
-          <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
-            <StixCoreObjectForms entityType="Campaign" />
-          </Security>,
-        ]}
-        createButton={(
-          <Security needs={[KNOWLEDGE_KNUPDATE]}>
-            <CampaignCreation paginationOptions={queryPaginationOptions} />
-          </Security>
-        )}
       >
         {queryRef && (
           <React.Suspense
@@ -138,10 +137,58 @@ const Campaigns = () => {
 
   const renderList = () => {
     const dataColumns = {
-      name: { percentWidth: 15 },
-      creator: { percentWidth: 13 },
-      created: { percentWidth: 10 },
-      modified: {}, // 15
+      name: {
+        percentWidth: 15,
+        render: (data: { name?: string; id: string; draftVersion?: { draft_id: string } | null }) => {
+          const name = getMainRepresentative(data);
+          const link = `/dashboard/threats/campaigns/${data.id}`;
+          const displayDraftChip = !!data.draftVersion;
+          return (
+            <Tooltip title={name}>
+              <Stack direction="row" gap={1} alignItems="center" sx={{ maxWidth: '100%' }}>
+                <a
+                  href={link}
+                  style={{
+                    color: 'var(--ravin-primary)',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}
+                >
+                  <Truncate>{name}</Truncate>
+                </a>
+                {displayDraftChip && <DraftChip />}
+              </Stack>
+            </Tooltip>
+          );
+        },
+      },
+      creator: {
+        percentWidth: 13,
+        render: ({ creators }) => {
+          const value = creators?.map((c: { name: string }) => c.name);
+          return (
+            <span style={{ color: 'var(--ravin-text-muted)' }}>
+              {defaultRender(value)}
+            </span>
+          );
+        },
+      },
+      created: {
+        percentWidth: 10,
+        render: ({ created }, { rd, nsdt }) => (
+          <Tooltip title={nsdt(created)}>
+            <span>{rd(created)}</span>
+          </Tooltip>
+        ),
+      },
+      modified: {
+        percentWidth: 15,
+        render: ({ modified }, { rd, nsdt }) => (
+          <Tooltip title={nsdt(modified)}>
+            <span>{rd(modified)}</span>
+          </Tooltip>
+        ),
+      },
       createdBy: {}, // 12
       objectLabel: {}, // 15
       x_opencti_workflow_id: {
@@ -183,16 +230,7 @@ const Campaigns = () => {
                 </Tooltip>
               </ToggleButton>,
             ]}
-            additionalHeaderButtons={[
-              <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
-                <StixCoreObjectForms entityType="Campaign" />
-              </Security>,
-            ]}
-            createButton={(
-              <Security needs={[KNOWLEDGE_KNUPDATE]}>
-                <CampaignCreation paginationOptions={queryPaginationOptions} />
-              </Security>
-            )}
+            emptyStateMessage={t_i18n('No campaigns yet. Create one to start tracking threat campaign activities.')}
           />
         )}
       </>
@@ -202,7 +240,67 @@ const Campaigns = () => {
   return (
     <div data-testid="campaign-page">
       <Breadcrumbs elements={[{ label: t_i18n('Threats') }, { label: t_i18n('Campaigns'), current: true }]} />
-      {viewStorage.view !== 'lines' ? renderCards() : renderList()}
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Campaigns')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track and manage threat campaigns and their attack activities')}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
+            <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
+              <StixCoreObjectForms entityType="Campaign" />
+            </Security>
+            <Security needs={[KNOWLEDGE_KNUPDATE]}>
+              <CampaignCreation paginationOptions={queryPaginationOptions} />
+            </Security>
+          </Box>
+        </Box>
+        {viewStorage.view !== 'lines' ? renderCards() : renderList()}
+      </Box>
     </div>
   );
 };

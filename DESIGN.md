@@ -385,14 +385,14 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
 - **Cell text:** Peyda, 13px, 400 weight, `var(--ravin-text)`. Cell padding: `theme.spacing(1)` left/right. Text overflow: ellipsis with nowrap.
 - **Row action icons:** 3-dot menu (MoreVertical) and navigation arrow (ChevronRight) inside table rows are sized to 20px via CSS targeting `.datatable-container a .MuiIconButton-root svg` and `.datatable-container a .MuiButton-root svg` (custom IconButton renders MuiButton, not MuiIconButton). Button padding: 2px. `min-width: unset`. Color: `var(--ravin-text-muted)`. Navigation arrow IconButton uses `size="small"` with `padding: 0`.
 - **Checkboxes:** `var(--ravin-text-muted)` at rest, `var(--ravin-primary)` when checked. Select-all header checkbox background: `color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))` when rows are selected. Header checkbox column uses `flex: '0 0 auto'` with `minWidth: startColumnWidth`.
-- **Toolbar (rows selected):** Full-width bar replacing headers when rows are selected. Background: `color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))`.
+- **Toolbar (rows selected):** Full-width bar replacing headers when rows are selected. Background: `color-mix(in srgb, var(--ravin-primary) 10%, var(--ravin-elevated))`. Selected count text: Peyda 13px, 500 weight, `var(--ravin-text)`, lowercase. Clear button uses `IconButton` (tertiary variant). Action buttons container: `display: flex`, `alignItems: center`, `gap: 4px`. All action icons are 18px via `& svg: { width: '18px', height: '18px' }` on the container. Icons sourced exclusively from `lucide-react` — no `mdi-material-ui`. Color tokens: `var(--ravin-primary)` for action, `var(--ravin-signal-red)` for destructive/warning, `var(--ravin-success, var(--ravin-primary))` for success states, `var(--ravin-text-disabled)` for disabled/EE-locked. No raw MUI palette variables (`var(--mui-palette-*)`). No explicit `size` props on icons — sizing is handled by the container CSS selector for consistent dimensions.
 - **Filter container:** `var(--ravin-elevated)` background, 8px radius, `12px 16px` padding, 8px bottom margin. No border — depth from tonal difference.
 - **Empty state:** Centered text, `var(--ravin-text-muted)`, 200px min-height.
 - **Scrollbar:** 6px width/height. Track: transparent. Thumb: `var(--ravin-border-strong)`, 3px radius. Thumb hover: `var(--ravin-text-muted)`.
 - **Column header menu:** MUI `Menu` portaled to document root with `.ravin-column-menu-paper` class applied via `PaperProps`. Glassmorphism: 80% elevated background with `backdrop-filter: blur(8px) saturate(140%)`, 60% border opacity, 8px radius, `0 8px 32px` shadow at 15% opacity. `@supports` fallback to solid elevated background. Menu items: Peyda 13px (`!important` to override MUI emotion-injected Typography styles), `var(--ravin-text)`, 4px radius, 8px 12px padding, 36px min-height, 2px 4px margin, 100ms transition. Hover: 12% primary tint. MenuList padding: 4px (via `.ravin-column-menu-list` class). Divider between sections: 1px `var(--ravin-border)` with 4px 8px margin. Sort Asc icon: `ArrowUpNarrowWide` (14px, muted). Sort Desc icon: `ArrowDownWideNarrow` (14px, muted). Filter icon: `Filter` (14px, muted). Column reorder items: `GripVertical` drag handle (14px, muted) + small Checkbox + label. All icons from `lucide-react`.
 - **Suspense fallback:** Loading state wraps `DataTableHeaders` in a sticky div with `.datatable-sticky-header` class inside a scroll container, matching the real `DataTableBody` structure for consistent styling during data fetch.
 
-### Listing Pages (Investigations, Custom Dashboards, Public Dashboards)
+### Listing Pages (Investigations, Indicators, Custom Dashboards, Public Dashboards)
 - **Page header container:** Wraps the entire listing content (header + DataTable) in a single container with `padding: '24px 24px 0 24px'` — 24px on top, left, and right; 0 bottom (the DataTable's own padding handles the bottom). This is the canonical inner padding for all listing pages.
 - **Header layout:** Flex row with `justifyContent: space-between` — title group on the left, action buttons on the right. 16px bottom margin (`marginBottom: 2`).
 - **Title:** `Typography` variant h1, 22–24px, 600 weight, Peyda, lowercase with first-letter uppercase. Followed by an optional subtitle in muted text (`var(--ravin-text-muted)`, 0.8125rem) with 4px top margin.
@@ -404,7 +404,15 @@ The system uses a hybrid approach: tonal layering as the primary depth mechanism
   - **Tags:** `TagsOverflow` with `Tag` components at `lowercase` text transform. Empty tags show `—`.
   - **Creator:** Muted text via `var(--ravin-text-muted)` color wrapper.
   - **Dates (created_at, updated_at):** Relative format (`rd`) with full datetime tooltip (`nsdt`).
-- **Empty state:** Purposeful message with direct create CTA — "No investigations yet. Create one to start graphing threat relationships." Rendered via DataTable's `emptyStateMessage` prop.
+- **Data columns (Indicators):**
+  - **Pattern type:** Chip-style badge — `var(--ravin-surface-2)` background, `var(--ravin-text-muted)` text, 12px font, 500 weight, 4px radius, `2px 8px` padding, lowercase with first-letter uppercase. Empty shows `—`.
+  - **Name:** Primary clickable link in `var(--ravin-primary)`, 500 weight, with `Truncate` + `Tooltip`. Links to indicator detail via `resolveLink('Indicator')`.
+  - **Created by:** Muted text via `var(--ravin-text-muted)` wrapper, using `defaultRender`.
+  - **Creator:** Muted text via `var(--ravin-text-muted)`, renders first creator name. Empty shows `—`.
+  - **Labels:** `TagsOverflow` with `Tag` components at `lowercase` text transform. Empty shows `—`.
+  - **Created:** Relative format (`rd`) with full datetime tooltip (`nsdt`), muted text.
+  - **Marking definitions:** Default DataTable rendering (no custom render).
+- **Empty state:** Purposeful message with direct create CTA — "No investigations yet. Create one to start graphing threat relationships." for Investigations, "No indicators yet. Create one to start tracking threat patterns." for Indicators. Rendered via DataTable's `emptyStateMessage` prop.
 - **Grid view (Custom Dashboards only):** Toggle between table and grid view via `ToggleButtonGroup`. Grid uses `auto-fill, minmax(320px, 1fr)` with 16px gap. Cards have 1px border, 8px radius, 16px padding, hover shifts background to 8% blue tint.
 
 ## 6. Do's and Don'ts

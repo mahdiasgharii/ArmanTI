@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-relay';
+import { Box, Typography } from '@mui/material';
 import { InfrastructuresLines_data$data } from '@components/observations/__generated__/InfrastructuresLines_data.graphql';
 import {
   InfrastructuresLinesPaginationQuery,
@@ -18,6 +19,11 @@ import Breadcrumbs from '../../../components/Breadcrumbs';
 import DataTable from '../../../components/dataGrid/DataTable';
 import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloadedPaginationFragment';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 export const LOCAL_STORAGE_KEY_INFRASTRUCTURES = 'infrastructures';
 
@@ -130,10 +136,11 @@ const Infrastructures = () => {
     openExports: false,
     filters: emptyFilterGroup,
   };
-  const { viewStorage: { filters }, helpers: storageHelpers, paginationOptions } = usePaginationLocalStorage<InfrastructuresLinesPaginationQuery$variables>(
+  const { viewStorage, helpers: storageHelpers, paginationOptions } = usePaginationLocalStorage<InfrastructuresLinesPaginationQuery$variables>(
     LOCAL_STORAGE_KEY_INFRASTRUCTURES,
     initialValues,
   );
+  const { filters } = viewStorage;
 
   const contextFilters = useBuildEntityTypeBasedFilterContext('Infrastructure', filters);
   const queryPaginationOptions = {
@@ -168,23 +175,76 @@ const Infrastructures = () => {
     <ExportContextProvider>
       <div data-testid="infrastructures-page">
         <Breadcrumbs elements={[{ label: t_i18n('Observations') }, { label: t_i18n('Infrastructures'), current: true }]} />
-        {queryRef && (
-          <DataTable
-            dataColumns={dataColumns}
-            resolvePath={(data: InfrastructuresLines_data$data) => data.infrastructures?.edges?.map((n) => n?.node)}
-            storageKey={LOCAL_STORAGE_KEY_INFRASTRUCTURES}
-            initialValues={initialValues}
-            contextFilters={contextFilters}
-            lineFragment={infrastructureFragment}
-            preloadedPaginationProps={preloadedPaginationOptions}
-            exportContext={{ entity_type: 'Infrastructure' }}
-            createButton={(
+        <Box sx={{ padding: '24px 24px 0 24px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: 2,
+            }}
+          >
+            <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography
+                  variant="h1"
+                  sx={{
+                    margin: 0,
+                    fontSize: '22px',
+                    fontWeight: 600,
+                    color: 'var(--ravin-text)',
+                    lineHeight: 1.3,
+                    ...lowercaseVoiceSx,
+                  }}
+                >
+                  {t_i18n('Infrastructures')}
+                </Typography>
+                <Box
+                  component="span"
+                  sx={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                    color: 'var(--ravin-text-muted)',
+                    backgroundColor: 'var(--ravin-surface-2)',
+                    borderRadius: '4px',
+                    padding: '2px 8px',
+                    lineHeight: '20px',
+                  }}
+                >
+                  {viewStorage.numberOfElements?.number ?? 0}
+                </Box>
+              </Box>
+              <Typography
+                sx={{
+                  fontSize: '0.8125rem',
+                  color: 'var(--ravin-text-muted)',
+                  marginTop: '4px',
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Track and manage infrastructure used by threat actors')}
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
               <Security needs={[KNOWLEDGE_KNUPDATE]}>
                 <InfrastructureCreation paginationOptions={queryPaginationOptions} />
               </Security>
-            )}
-          />
-        )}
+            </Box>
+          </Box>
+          {queryRef && (
+            <DataTable
+              dataColumns={dataColumns}
+              resolvePath={(data: InfrastructuresLines_data$data) => data.infrastructures?.edges?.map((n) => n?.node)}
+              storageKey={LOCAL_STORAGE_KEY_INFRASTRUCTURES}
+              initialValues={initialValues}
+              contextFilters={contextFilters}
+              lineFragment={infrastructureFragment}
+              preloadedPaginationProps={preloadedPaginationOptions}
+              exportContext={{ entity_type: 'Infrastructure' }}
+              emptyStateMessage={t_i18n('No infrastructures yet. Create one to start tracking infrastructure used by threat actors.')}
+            />
+          )}
+        </Box>
       </div>
     </ExportContextProvider>
   );

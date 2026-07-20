@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import { Box, Typography } from '@mui/material';
 import { GenericAttackCardDummy } from '@components/common/cards/GenericAttackCard';
 import {
   ThreatActorsGroupCardsPaginationQuery,
@@ -24,6 +25,11 @@ import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloade
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 import { KNOWLEDGE_KNUPDATE } from '../../../utils/hooks/useGranted';
 import Security from '../../../utils/Security';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const LOCAL_STORAGE_KEY = 'threatActorsGroups';
 
@@ -95,16 +101,6 @@ const ThreatActorsGroup = () => {
         paginationOptions={paginationOptions}
         numberOfElements={numberOfElements}
         handleChangeView={helpers.handleChangeView}
-        additionalHeaderButtons={[
-          <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
-            <StixCoreObjectForms entityType="Threat-Actor-Group" />
-          </Security>,
-        ]}
-        createButton={(
-          <Security needs={[KNOWLEDGE_KNUPDATE]}>
-            <ThreatActorGroupCreation paginationOptions={queryPaginationOptions} />
-          </Security>
-        )}
       >
         {queryRef && (
           <React.Suspense
@@ -172,11 +168,6 @@ const ThreatActorsGroup = () => {
             preloadedPaginationProps={preloadedPaginationProps}
             lineFragment={ThreatActorGroupCardFragment}
             exportContext={{ entity_type: 'Threat-Actor-Group' }}
-            additionalHeaderButtons={[
-              <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
-                <StixCoreObjectForms entityType="Threat-Actor-Group" />
-              </Security>,
-            ]}
             additionalHeaderToggleButtons={[
               <Tooltip key="cards" title={t_i18n('Cards view')}>
                 <ToggleButton value="cards" aria-label="cards">
@@ -189,11 +180,7 @@ const ThreatActorsGroup = () => {
                 </ToggleButton>
               </Tooltip>,
             ]}
-            createButton={(
-              <Security needs={[KNOWLEDGE_KNUPDATE]}>
-                <ThreatActorGroupCreation paginationOptions={queryPaginationOptions} />
-              </Security>
-            )}
+            emptyStateMessage={t_i18n('No threat actors (group) yet. Create one to start tracking a threat actor group.')}
           />
         )}
       </>
@@ -203,7 +190,67 @@ const ThreatActorsGroup = () => {
   return (
     <div data-testid="threat-actor-group-page">
       <Breadcrumbs elements={[{ label: t_i18n('Threats') }, { label: t_i18n('Threat actors (group)'), current: true }]} />
-      {viewStorage.view !== 'lines' ? renderCards() : renderList()}
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Threat actors (group)')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track and manage threat actor groups targeting organizations and individuals')}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
+            <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]}>
+              <StixCoreObjectForms entityType="Threat-Actor-Group" />
+            </Security>
+            <Security needs={[KNOWLEDGE_KNUPDATE]}>
+              <ThreatActorGroupCreation paginationOptions={queryPaginationOptions} />
+            </Security>
+          </Box>
+        </Box>
+        {viewStorage.view !== 'lines' ? renderCards() : renderList()}
+      </Box>
     </div>
   );
 };

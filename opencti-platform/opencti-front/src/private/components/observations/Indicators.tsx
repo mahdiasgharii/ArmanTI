@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-relay';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import { IndicatorsLinesPaginationQuery, IndicatorsLinesPaginationQuery$variables } from '@components/observations/__generated__/IndicatorsLinesPaginationQuery.graphql';
 import { IndicatorsLines_data$data } from '@components/observations/__generated__/IndicatorsLines_data.graphql';
@@ -17,6 +19,16 @@ import { UsePreloadedPaginationFragment } from '../../../utils/hooks/usePreloade
 import DataTable from '../../../components/dataGrid/DataTable';
 import { DataTableProps } from '../../../components/dataGrid/dataTableTypes';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
+import { resolveLink } from '../../../utils/Entity';
+import { EMPTY_VALUE } from '../../../utils/String';
+import { Truncate, defaultRender } from '../../../components/dataGrid/dataTableUtils';
+import Tag from '../../../components/common/tag/Tag';
+import TagsOverflow from '../../../components/common/tag/TagsOverflow';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const LOCAL_STORAGE_KEY = 'indicators-list';
 
@@ -140,13 +152,14 @@ const Indicators = () => {
     count: 25,
   };
   const {
-    viewStorage: { filters },
+    viewStorage,
     paginationOptions,
     helpers: storageHelpers,
   } = usePaginationLocalStorage<IndicatorsLinesPaginationQuery$variables>(
     LOCAL_STORAGE_KEY,
     initialValues,
   );
+  const { filters } = viewStorage;
 
   const contextFilters = useBuildEntityTypeBasedFilterContext('Indicator', filters);
   const queryPaginationOptions = {
@@ -161,24 +174,93 @@ const Indicators = () => {
   const dataColumns: DataTableProps['dataColumns'] = {
     pattern_type: {
       percentWidth: 11,
+      render: ({ pattern_type }) => {
+        if (!pattern_type) return EMPTY_VALUE;
+        return (
+          <Box
+            component="span"
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              fontSize: 12,
+              fontWeight: 500,
+              color: 'var(--ravin-text-muted)',
+              backgroundColor: 'var(--ravin-surface-2)',
+              borderRadius: '4px',
+              padding: '2px 8px',
+              lineHeight: '20px',
+              ...lowercaseVoiceSx,
+            }}
+          >
+            {pattern_type}
+          </Box>
+        );
+      },
     },
     name: {
       percentWidth: 24,
+      render: (data) => {
+        const name = data.name || data.id;
+        const link = `${resolveLink('Indicator')}/${data.id}`;
+        return (
+          <Tooltip title={name}>
+            <a
+              href={link}
+              style={{
+                color: 'var(--ravin-primary)',
+                textDecoration: 'none',
+                fontWeight: 500,
+              }}
+            >
+              <Truncate>{name}</Truncate>
+            </a>
+          </Tooltip>
+        );
+      },
     },
     createdBy: {
       isSortable: isRuntimeSort ?? false,
       percentWidth: 12,
+      render: ({ createdBy }) => (
+        <span style={{ color: 'var(--ravin-text-muted)' }}>
+          {defaultRender(createdBy?.name)}
+        </span>
+      ),
     },
     creator: {
       isSortable: isRuntimeSort ?? false,
       percentWidth: 12,
+      render: ({ creators }) => {
+        if (!creators || creators.length === 0) return EMPTY_VALUE;
+        return (
+          <span style={{ color: 'var(--ravin-text-muted)' }}>
+            {defaultRender(creators[0]?.name)}
+          </span>
+        );
+      },
     },
     objectLabel: {
       percentWidth: 15,
+      render: ({ objectLabel }) => {
+        if (!objectLabel || objectLabel.length === 0) return EMPTY_VALUE;
+        return (
+          <TagsOverflow
+            items={objectLabel}
+            getKey={(label: { id: string }) => label.id}
+            renderTag={(label: { id: string; value: string }) => (
+              <Tag label={label.value} labelTextTransform="lowercase" />
+            )}
+          />
+        );
+      },
     },
     created: {
       percentWidth: 15,
-      render: ({ created }, { nsdt }) => <Tooltip title={nsdt(created)}>{nsdt(created)}</Tooltip>,
+      render: ({ created }, { rd, nsdt }) => (
+        <Tooltip title={nsdt(created)}>
+          <span style={{ color: 'var(--ravin-text-muted)' }}>{rd(created)}</span>
+        </Tooltip>
+      ),
     },
     objectMarking: {
       percentWidth: 10,
@@ -194,31 +276,86 @@ const Indicators = () => {
     setNumberOfElements: storageHelpers.handleSetNumberOfElements,
   } as UsePreloadedPaginationFragment<IndicatorsLinesPaginationQuery>;
 
+  const createButton = (
+    <Security needs={[KNOWLEDGE_KNUPDATE]}>
+      <IndicatorCreation paginationOptions={queryPaginationOptions} />
+    </Security>
+  );
+
   return (
     <div data-testid="indicator-page">
       <Breadcrumbs elements={[{ label: t_i18n('Observations') }, { label: t_i18n('Indicators'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: IndicatorsLines_data$data) => data.indicators?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          lineFragment={indicatorLineFragment}
-          preloadedPaginationProps={preloadedPaginationOptions}
-          exportContext={{ entity_type: 'Indicator' }}
-          additionalHeaderButtons={[
-            <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
-              <StixCoreObjectForms entityType="Threat-Actor-Group" />
-            </Security>,
-          ]}
-          createButton={(
-            <Security needs={[KNOWLEDGE_KNUPDATE]}>
-              <IndicatorCreation paginationOptions={queryPaginationOptions} />
-            </Security>
-          )}
-        />
-      )}
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Indicators')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track patterns that identify malicious activity')}
+            </Typography>
+          </Box>
+          {createButton}
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: IndicatorsLines_data$data) => data.indicators?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            lineFragment={indicatorLineFragment}
+            preloadedPaginationProps={preloadedPaginationOptions}
+            exportContext={{ entity_type: 'Indicator' }}
+            additionalHeaderButtons={[
+              <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
+                <StixCoreObjectForms entityType="Threat-Actor-Group" />
+              </Security>,
+            ]}
+            emptyStateMessage={t_i18n('No indicators yet. Create one to start tracking threat patterns.')}
+          />
+        )}
+      </Box>
     </div>
   );
 };

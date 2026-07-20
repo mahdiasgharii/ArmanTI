@@ -37,6 +37,11 @@ export const createBaseStyles = (params: StyleFactoryParams): SxProps<Theme> => 
       },
     },
 
+    '& > svg': {
+      width: sizeConfig.iconSize,
+      height: sizeConfig.iconSize,
+    },
+
     '&:focus-visible': {
       outline: 'none',
       boxShadow: `0 0 0 2px ${currentColor.focus}`,
