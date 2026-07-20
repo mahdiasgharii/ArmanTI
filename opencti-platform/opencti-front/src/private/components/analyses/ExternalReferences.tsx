@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'react-relay';
+import { Box, Typography } from '@mui/material';
 import {
   ExternalReferencesLinesPaginationQuery,
   ExternalReferencesLinesPaginationQuery$variables,
@@ -149,30 +150,72 @@ const ExternalReferences: FunctionComponent<ExternalReferencesProps> = () => {
     nodePath: ['externalReferences', 'pageInfo', 'globalCount'],
     setNumberOfElements: storageHelpers.handleSetNumberOfElements,
   } as UsePreloadedPaginationFragment<ExternalReferencesLinesPaginationQuery>;
+  const createButton = (
+    <Security needs={[KNOWLEDGE_KNUPDATE]}>
+      <ExternalReferenceCreation
+        paginationOptions={queryPaginationOptions}
+        openContextual={false}
+      />
+    </Security>
+  );
   return (
-    <div data-testid="external-reference-page">
+    <span data-testid="external-reference-page">
       <Breadcrumbs elements={[{ label: t_i18n('Analyses') }, { label: t_i18n('External references'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: ExternalReferencesLines_data$data) => data.externalReferences?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={externalReferencesLineFragment}
-          entityTypes={['External-Reference']}
-          createButton={(
-            <Security needs={[KNOWLEDGE_KNUPDATE]}>
-              <ExternalReferenceCreation
-                paginationOptions={queryPaginationOptions}
-                openContextual={false}
-              />
-            </Security>
-          )}
-        />
-      )}
-    </div>
+      <Box sx={{ padding: '24px 24px 0 24px', borderRadius: '0.625rem' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                margin: 0,
+                fontSize: 24,
+                fontWeight: 600,
+                textTransform: 'lowercase',
+                '&::first-letter': { textTransform: 'uppercase' },
+              }}
+            >
+              {t_i18n('External references')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {viewStorage.numberOfElements?.number ?? 0}
+            </Box>
+          </Box>
+          {createButton}
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: ExternalReferencesLines_data$data) => data.externalReferences?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            preloadedPaginationProps={preloadedPaginationProps}
+            lineFragment={externalReferencesLineFragment}
+            entityTypes={['External-Reference']}
+            exportContext={{ entity_type: 'External-Reference' }}
+            emptyStateMessage={t_i18n('No external references yet. Create one to link threat intelligence to external sources.')}
+          />
+        )}
+      </Box>
+    </span>
   );
 };
 

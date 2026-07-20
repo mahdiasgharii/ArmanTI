@@ -19,34 +19,33 @@ const ExternalReferenceOverviewComponent: FunctionComponent<
 
   return (
     <div style={{ height: '100%' }}>
-      <Card title={t_i18n('Overview')}>
-        <Grid container={true} spacing={3}>
-          <Grid item xs={12}>
-            <Label>
-              {t_i18n('Description')}
-            </Label>
-            <ExpandableMarkdown
-              source={externalReference.description}
-              limit={400}
-            />
+      <Card
+        title={t_i18n('Overview')}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <div>
+          <Label>{t_i18n('Source name')}</Label>
+          <span>{truncate(externalReference.source_name, 40)}</span>
+        </div>
+        <div>
+          <Label>{t_i18n('Description')}</Label>
+          <ExpandableMarkdown
+            source={externalReference.description}
+            limit={400}
+          />
+        </div>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <Label>{t_i18n('Original creation date')}</Label>
+            <span>{fldt(externalReference.created)}</span>
           </Grid>
           <Grid item xs={6}>
-            <Label>
-              {t_i18n('Source name')}
-            </Label>
-            {truncate(externalReference.source_name, 40)}
-          </Grid>
-          <Grid item xs={6}>
-            <Label>
-              {t_i18n('Original creation date')}
-            </Label>
-            {fldt(externalReference.created)}
-            <Label
-              sx={{ marginTop: 2 }}
-            >
-              {t_i18n('Modification date')}
-            </Label>
-            {fldt(externalReference.modified)}
+            <Label>{t_i18n('Modification date')}</Label>
+            <span>{fldt(externalReference.modified)}</span>
           </Grid>
         </Grid>
       </Card>

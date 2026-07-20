@@ -76,7 +76,7 @@ const ExternalReferenceDetailsComponent = ({
           </Label>
           {
             externalReference.url
-              ? <pre style={{ minHeight: 35 }}>{externalReference.url}</pre>
+              ? <span style={{ fontFamily: 'Consolas, monaco, monospace', fontSize: 13, wordBreak: 'break-all' }}>{externalReference.url}</span>
               : <span>{EMPTY_VALUE}</span>
           }
         </div>

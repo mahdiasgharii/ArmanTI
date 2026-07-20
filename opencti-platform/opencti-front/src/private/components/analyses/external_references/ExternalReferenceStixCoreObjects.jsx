@@ -4,7 +4,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import { Link } from 'react-router-dom';
-import { ListItemButton } from '@mui/material';
+import { ListItemButton, Box, Typography } from '@mui/material';
+import { Link2Off } from 'lucide-react';
 import { truncate } from '../../../../utils/String';
 import ItemIcon from '../../../../components/ItemIcon';
 import { useFormatter } from '../../../../components/i18n';
@@ -21,27 +22,51 @@ const ExternalReferenceStixCoreObjectsComponent = ({ externalReference }) => {
   return (
     <div style={{ height: '100%' }}>
       <Card title={t_i18n('Linked objects')}>
-        <List>
-          {stixCoreObjects.map((stixCoreObjectOrRelationship) => (
-            <ListItemButton
-              key={stixCoreObjectOrRelationship.id}
-              divider={true}
-              component={Link}
-              to={`${computeLink(stixCoreObjectOrRelationship)}`}
+        {stixCoreObjects.length > 0 ? (
+          <List>
+            {stixCoreObjects.map((stixCoreObjectOrRelationship) => (
+              <ListItemButton
+                key={stixCoreObjectOrRelationship.id}
+                divider={true}
+                component={Link}
+                to={`${computeLink(stixCoreObjectOrRelationship)}`}
+              >
+                <ListItemIcon>
+                  <ItemIcon type={stixCoreObjectOrRelationship.entity_type} />
+                </ListItemIcon>
+                <ListItemText
+                  primary={stixCoreObjectOrRelationship.representative?.main}
+                  secondary={truncate(stixCoreObjectOrRelationship.representative?.secondary, 150)}
+                  slotProps={{
+                    primary: { style: { wordWrap: 'break-word' } },
+                  }}
+                />
+              </ListItemButton>
+            ))}
+          </List>
+        ) : (
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 1,
+            padding: 3,
+            color: 'var(--ravin-text-muted)',
+          }}
+          >
+            <Link2Off size={20} />
+            <Typography sx={{
+              fontSize: 13,
+              color: 'var(--ravin-text-muted)',
+              textTransform: 'lowercase',
+              '&::first-letter': { textTransform: 'uppercase' },
+            }}
             >
-              <ListItemIcon>
-                <ItemIcon type={stixCoreObjectOrRelationship.entity_type} />
-              </ListItemIcon>
-              <ListItemText
-                primary={stixCoreObjectOrRelationship.representative?.main}
-                secondary={truncate(stixCoreObjectOrRelationship.representative?.secondary, 150)}
-                slotProps={{
-                  primary: { style: { wordWrap: 'break-word' } },
-                }}
-              />
-            </ListItemButton>
-          ))}
-        </List>
+              {t_i18n('No linked objects yet')}
+            </Typography>
+          </Box>
+        )}
       </Card>
     </div>
   );

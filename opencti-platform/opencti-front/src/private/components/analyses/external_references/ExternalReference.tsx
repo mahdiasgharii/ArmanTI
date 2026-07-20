@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import Grid from '@mui/material/Grid';
-import makeStyles from '@mui/styles/makeStyles';
 import ExternalReferenceOverview from './ExternalReferenceOverview';
 import ExternalReferenceDetails from './ExternalReferenceDetails';
 import ExternalReferenceEdition from './ExternalReferenceEdition';
@@ -12,17 +11,6 @@ import ExternalReferenceStixCoreObjects from './ExternalReferenceStixCoreObjects
 import { ExternalReference_externalReference$data } from './__generated__/ExternalReference_externalReference.graphql';
 import { KNOWLEDGE_KNUPDATE } from '../../../../utils/hooks/useGranted';
 import useOverviewLayoutCustomization from '../../../../utils/hooks/useOverviewLayoutCustomization';
-
-// Deprecated - https://mui.com/system/styles/basics/
-// Do not use it for new code.
-const useStyles = makeStyles(() => ({
-  container: {
-    margin: 0,
-  },
-  gridContainer: {
-    marginBottom: 20,
-  },
-}));
 
 interface ExternalReferenceComponentProps {
   externalReference: ExternalReference_externalReference$data;
@@ -38,10 +26,9 @@ interface ExternalReferenceComponentProps {
 const ExternalReferenceComponent: FunctionComponent<
   ExternalReferenceComponentProps
 > = ({ externalReference, connectorsImport }) => {
-  const classes = useStyles();
   const overviewLayoutCustomization = useOverviewLayoutCustomization('External-Reference');
   return (
-    <div className={classes.container} data-testid="external-reference-details-page">
+    <div data-testid="external-reference-details-page">
       <ExternalReferenceHeader
         externalReference={externalReference}
         EditComponent={(
@@ -54,7 +41,7 @@ const ExternalReferenceComponent: FunctionComponent<
       <Grid
         container={true}
         spacing={3}
-        classes={{ container: classes.gridContainer }}
+        sx={{ marginBottom: 2.5 }}
       >
         {overviewLayoutCustomization.map(({ key, width }) => {
           switch (key) {

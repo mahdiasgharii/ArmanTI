@@ -203,23 +203,59 @@ const Notes: FunctionComponent = () => {
   return (
     <span data-testid="notes-page">
       <Breadcrumbs elements={[{ label: t_i18n('Analyses') }, { label: t_i18n('Notes'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: NotesLines_data$data) => data.notes?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={notesLineFragment}
-          exportContext={{ entity_type: 'Note' }}
-          createButton={(
-            <Security needs={[KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNPARTICIPATE]}>
-              <NoteCreation paginationOptions={queryPaginationOptions} />
-            </Security>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        minHeight: 0,
+        padding: '24px 24px 0 24px',
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          gap: '12px',
+          marginBottom: '4px',
+        }}>
+          <h1 className="ravin-lowercase-voice" style={{
+            margin: 0,
+            fontSize: '22px',
+            fontWeight: 600,
+            color: 'var(--ravin-text)',
+            lineHeight: 1.3,
+          }}>
+            {t_i18n('Notes')}
+          </h1>
+          <span style={{
+            fontSize: '13px',
+            color: 'var(--ravin-text-muted)',
+          }}>
+            {t_i18n('Analysis notes and observations')}
+          </span>
+        </div>
+        <div style={{
+          flex: 1,
+          minHeight: 0,
+          marginTop: '16px',
+        }}>
+          {queryRef && (
+            <DataTable
+              dataColumns={dataColumns}
+              resolvePath={(data: NotesLines_data$data) => data.notes?.edges?.map((n) => n?.node)}
+              storageKey={LOCAL_STORAGE_KEY}
+              initialValues={initialValues}
+              contextFilters={contextFilters}
+              preloadedPaginationProps={preloadedPaginationProps}
+              lineFragment={notesLineFragment}
+              exportContext={{ entity_type: 'Note' }}
+              createButton={(
+                <Security needs={[KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNPARTICIPATE]}>
+                  <NoteCreation paginationOptions={queryPaginationOptions} />
+                </Security>
+              )}
+            />
           )}
-        />
-      )}
+        </div>
+      </div>
     </span>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import ExternalReferenceDeletion from '@components/analyses/external_references/ExternalReferenceDeletion';
 import { truncate } from '../../../../utils/String';
@@ -37,11 +37,27 @@ const ExternalReferenceHeaderComponent = ({
   const displayPopoverMenu = canDelete || enableEnrollPlaybook;
 
   return (
-    <Stack direction="row" justifyContent="space-between" marginBottom={3}>
-      <TitleMainEntity>
-        {truncate(externalReference.source_name, 80)}
-      </TitleMainEntity>
-      <Stack direction="row" gap={1}>
+    <Stack direction="row" justifyContent="space-between" alignItems="flex-start" marginBottom={3}>
+      <Box>
+        <TitleMainEntity>
+          {truncate(externalReference.source_name, 80)}
+        </TitleMainEntity>
+        {externalReference.url && (
+          <Typography
+            sx={{
+              fontSize: 13,
+              color: 'var(--ravin-text-muted)',
+              marginTop: 0.5,
+              fontFamily: 'Consolas, monaco, monospace',
+              wordBreak: 'break-all',
+              maxWidth: 600,
+            }}
+          >
+            {externalReference.url}
+          </Typography>
+        )}
+      </Box>
+      <Stack direction="row" gap={1} alignItems="center">
         {enableEnrollPlaybook
           && (
             <StixCoreObjectEnrollPlaybook
@@ -97,6 +113,7 @@ const ExternalReferenceHeader = createFragmentContainer(
         id
         source_name
         description
+        url
       }
     `,
   },

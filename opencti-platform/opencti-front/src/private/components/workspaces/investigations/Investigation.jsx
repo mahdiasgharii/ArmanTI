@@ -9,11 +9,10 @@ import InvestigationGraph, { investigationGraphQuery } from './InvestigationGrap
 import Loader from '../../../../components/Loader';
 import ErrorNotFound from '../../../../components/ErrorNotFound';
 
-const styles = (theme) => ({
+const styles = () => ({
   container: {
     width: '100%',
     height: '100%',
-    marginTop: theme.spacing(1),
     padding: 0,
   },
 });

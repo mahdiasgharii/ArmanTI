@@ -1,5 +1,6 @@
 import { graphql, PreloadedQuery, useFragment } from 'react-relay';
 import React, { CSSProperties, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import Stack from '@mui/material/Stack';
 import { useSettingsMessagesBannerHeight } from '@components/settings/settings_messages/SettingsMessagesBanner';
 import { useTheme } from '@mui/material/styles';
 import { knowledgeGraphStixCoreObjectQuery, knowledgeGraphStixRelationshipQuery } from '@components/common/containers/KnowledgeGraphQuery';
@@ -453,10 +454,36 @@ const InvestigationGraphComponent = ({
   const paddingHeight = 24;
   const titleHeight = 36;
   const toolbarHeight = 54;
-  const totalHeight = bannerHeight + headerHeight + paddingHeight + titleHeight + toolbarHeight;
+  const cardBorder = 2; // 1px top + 1px bottom
+  const stackGap = 16; // Stack gap={2} = 16px between header and graph card
+  const outerPaddingTop = 5; // Root.jsx outer wrapper paddingTop
+  const totalHeight = bannerHeight + outerPaddingTop + headerHeight + paddingHeight + titleHeight + toolbarHeight + cardBorder + stackGap;
   const graphContainerStyle: CSSProperties = {
-    margin: `0 -${theme.spacing(3)}`,
+    flex: '1 1 auto',
+    display: 'flex',
+    flexFlow: 'column',
     height: `calc(100dvh - ${totalHeight}px)`,
+    borderRadius: 8,
+    border: '1px solid var(--ravin-border)',
+    backgroundColor: 'var(--ravin-surface)',
+    overflow: 'hidden',
+  };
+
+  // Toolbar sits inside the graph card as a top bar with glassmorphism.
+  // Uses backdrop-blur so the graph canvas subtly shows through, creating
+  // depth without full opacity — matching DESIGN.md's Header Glass exception.
+  const toolbarSectionStyle: CSSProperties = {
+    flex: '0 0 auto',
+    borderBottom: '1px solid var(--ravin-border)',
+    backgroundColor: 'color-mix(in srgb, var(--ravin-elevated) 72%, transparent)',
+    backdropFilter: 'blur(16px) saturate(180%)',
+    WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+    overflow: 'hidden',
+  };
+
+  const graphCanvasStyle: CSSProperties = {
+    flex: '1 1 auto',
+    overflow: 'hidden',
   };
 
   const savePositions = (positions: OctiGraphPositions) => {
@@ -495,9 +522,11 @@ const InvestigationGraphComponent = ({
 
   const addInGraph: GraphToolbarProps['onInvestigationExpand'] = async (newObjects) => {
     updateInvestigationEntitiesGraph(newObjects.map((o) => o.id), 'add');
+    const existingIds = new Set(rawObjects.map((o) => o.id));
+    const objectsToAdd = newObjects.filter((o) => !existingIds.has(o.id));
     rebuildGraphData([
       ...rawObjects,
-      ...await fetchMetaObjectsCount(newObjects),
+      ...await fetchMetaObjectsCount(objectsToAdd),
     ]);
   };
 
@@ -558,16 +587,19 @@ const InvestigationGraphComponent = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexFlow: 'column' }}>
-      <WorkspaceHeader
-        data={investigation}
-        variant="investigation"
-        handleAddWidget={undefined}
-        adjust={undefined}
-      />
-      <div style={graphContainerStyle} ref={ref}>
-        <Graph parentRef={ref} onPositionsChanged={savePositions}>
+    <Stack gap={2}>
+      <Stack gap={1}>
+        <WorkspaceHeader
+          data={investigation}
+          variant="investigation"
+          handleAddWidget={undefined}
+          adjust={undefined}
+        />
+      </Stack>
+      <div style={graphContainerStyle}>
+        <section style={toolbarSectionStyle}>
           <GraphToolbar
+            inline
             onUnfixNodes={() => savePositions({})}
             stixCoreObjectRefetchQuery={knowledgeGraphStixCoreObjectQuery}
             relationshipRefetchQuery={knowledgeGraphStixRelationshipQuery}
@@ -577,9 +609,12 @@ const InvestigationGraphComponent = ({
             onInvestigationExpand={expand}
             onInvestigationRollback={rollback}
           />
-        </Graph>
+        </section>
+        <div style={graphCanvasStyle} ref={ref}>
+          <Graph parentRef={ref} onPositionsChanged={savePositions} />
+        </div>
       </div>
-    </div>
+    </Stack>
   );
 };
 
@@ -639,11 +674,16 @@ const InvestigationGraphLoader = ({
 
   const [objects, setObjects] = useState<ObjectToParse[]>([]);
   useEffect(() => {
+    let cancelled = false;
     const workspaceObjects = workspace ? getObjectsToParse(workspace) : [];
     async function fetchCounts() {
-      setObjects(await fetchMetaObjectsCount(workspaceObjects));
+      const objectsWithCount = await fetchMetaObjectsCount(workspaceObjects);
+      if (!cancelled) setObjects(objectsWithCount);
     }
     fetchCounts();
+    return () => {
+      cancelled = true;
+    };
   }, [workspace]);
 
   const positions = useMemo(() => deserializeObjectB64(graph_data), [graph_data]);

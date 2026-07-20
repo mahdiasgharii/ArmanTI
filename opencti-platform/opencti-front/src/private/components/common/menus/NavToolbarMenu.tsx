@@ -92,6 +92,9 @@ const NavToolbarMenu: FunctionComponent<{ entries: MenuEntry[] }> = ({ entries }
 
   useLayoutEffect(() => {
     document.documentElement.style.setProperty('--right-menu-width', `${RIGHT_MENU_WIDTH}px`);
+    return () => {
+      document.documentElement.style.removeProperty('--right-menu-width');
+    };
   }, []);
 
   const renderLabel = (entry: MenuEntry) => {

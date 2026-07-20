@@ -24,6 +24,19 @@ const GraphToolbarItem = ({
           color={color}
           onClick={onClick}
           disabled={disabled}
+          size="small"
+          sx={{
+            color: disabled ? 'var(--ravin-text-muted)' : undefined,
+            padding: '8px',
+            '&:hover': {
+              backgroundColor: 'var(--ravin-surface-2)',
+            },
+            '& .MuiSvgIcon-root, & svg': {
+              fontSize: 20,
+              width: 20,
+              height: 20,
+            },
+          }}
         >
           {Icon}
         </IconButton>

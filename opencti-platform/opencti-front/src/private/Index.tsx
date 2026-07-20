@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useEffect, useLayoutEffect } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from '@mui/styles';
@@ -75,8 +75,6 @@ const Index = ({ settings }: IndexProps) => {
     }
   }, [theme]);
 
-  const location = useLocation();
-
   const mainSx: SxProps = {
     transition: 'margin-right 250ms cubic-bezier(0.25, 1, 0.5, 1), padding 250ms cubic-bezier(0.25, 1, 0.5, 1)',
     flexGrow: 1,
@@ -88,13 +86,6 @@ const Index = ({ settings }: IndexProps) => {
     paddingRight: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   };
-
-  useLayoutEffect(() => {
-    const rightMenu = document.querySelector('[data-right-menu]');
-    if (!rightMenu) {
-      document.documentElement.style.removeProperty('--right-menu-width');
-    }
-  }, [location.pathname]);
 
   const boxSx: SxProps = {
     px: { xs: 1, sm: 1.5 },

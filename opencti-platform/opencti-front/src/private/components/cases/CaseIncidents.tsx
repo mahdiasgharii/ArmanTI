@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'react-relay';
+import { Box, Typography } from '@mui/material';
 import {
   CaseIncidentsLinesCasesPaginationQuery,
   CaseIncidentsLinesCasesPaginationQuery$variables,
@@ -129,6 +130,11 @@ const caseIncidentsLinesFragment = graphql`
 
 export const LOCAL_STORAGE_KEY_CASE_INCIDENT = 'caseIncidents';
 
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
+
 const CaseIncidents: FunctionComponent<CaseIncidentsProps> = () => {
   const { t_i18n } = useFormatter();
   const { setTitle } = useConnectedDocumentModifier();
@@ -163,21 +169,22 @@ const CaseIncidents: FunctionComponent<CaseIncidentsProps> = () => {
 
   const isRuntimeSort = isRuntimeFieldEnable() ?? false;
   const dataColumns: DataTableProps['dataColumns'] = {
-    name: { percentWidth: 20 },
-    priority: {},
-    severity: {},
+    name: { percentWidth: 16 },
+    response_types: { percentWidth: 9 },
+    priority: { percentWidth: 8 },
+    severity: { percentWidth: 8 },
     objectAssignee: {
       label: 'Assignees',
-      percentWidth: 14,
+      percentWidth: 12,
       isSortable: isRuntimeSort,
     },
     creator: {
-      percentWidth: 10,
+      percentWidth: 8,
       isSortable: isRuntimeSort,
     },
-    objectLabel: { percentWidth: 10 },
-    created: { percentWidth: 10 },
-    x_opencti_workflow_id: {},
+    objectLabel: { percentWidth: 8 },
+    created: { percentWidth: 8 },
+    x_opencti_workflow_id: { percentWidth: 8 },
     objectMarking: {
       isSortable: isRuntimeSort,
     },
@@ -194,28 +201,79 @@ const CaseIncidents: FunctionComponent<CaseIncidentsProps> = () => {
   return (
     <div data-testid="incident-response-page">
       <Breadcrumbs elements={[{ label: t_i18n('Cases') }, { label: t_i18n('Incident responses'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: CaseIncidentsLinesCases_data$data) => data.caseIncidents?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY_CASE_INCIDENT}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={caseIncidentFragment}
-          exportContext={{ entity_type: 'Case-Incident' }}
-          additionalHeaderButtons={[
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Incident responses')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track and manage security incident response cases')}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
             <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
               <StixCoreObjectForms entityType="Case-Incident" />
-            </Security>,
-          ]}
-          createButton={(
+            </Security>
             <Security needs={[KNOWLEDGE_KNUPDATE]}>
               <CaseIncidentCreation paginationOptions={queryPaginationOptions} />
             </Security>
-          )}
-        />
-      )}
+          </Box>
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: CaseIncidentsLinesCases_data$data) => data.caseIncidents?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY_CASE_INCIDENT}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            preloadedPaginationProps={preloadedPaginationProps}
+            lineFragment={caseIncidentFragment}
+            exportContext={{ entity_type: 'Case-Incident' }}
+            emptyStateMessage={t_i18n('No incident responses yet. Create one to start tracking a security incident.')}
+          />
+        )}
+      </Box>
     </div>
   );
 };
