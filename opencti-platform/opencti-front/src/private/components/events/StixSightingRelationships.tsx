@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 import { graphql } from 'react-relay';
 import {
   StixSightingRelationshipsLinesPaginationQuery,
@@ -274,6 +275,11 @@ const stixSightingRelationshipsLinesFragment = graphql`
 
 const LOCAL_STORAGE_KEY = 'stixSightingRelationships';
 
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
+
 const StixSightingRelationships = () => {
   const { t_i18n } = useFormatter();
   const { setTitle } = useConnectedDocumentModifier();
@@ -361,21 +367,74 @@ const StixSightingRelationships = () => {
   };
 
   return (
-    <span data-testid="sightings-page">
+    <div data-testid="sightings-page">
       <Breadcrumbs elements={[{ label: t_i18n('Events') }, { label: t_i18n('Sightings'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          dataColumns={dataColumns}
-          resolvePath={(data: StixSightingRelationshipsLines_data$data) => data.stixSightingRelationships?.edges?.map((n) => n?.node)}
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          contextFilters={contextFilters}
-          preloadedPaginationProps={preloadedPaginationProps}
-          lineFragment={stixSightingsLineFragment}
-          exportContext={{ entity_type: 'stix-sighting-relationship' }}
-        />
-      )}
-    </span>
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Sightings')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track and manage sightings of threat entities across locations and time')}
+            </Typography>
+          </Box>
+        </Box>
+        {queryRef && (
+          <DataTable
+            dataColumns={dataColumns}
+            resolvePath={(data: StixSightingRelationshipsLines_data$data) => data.stixSightingRelationships?.edges?.map((n) => n?.node)}
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            contextFilters={contextFilters}
+            preloadedPaginationProps={preloadedPaginationProps}
+            lineFragment={stixSightingsLineFragment}
+            exportContext={{ entity_type: 'stix-sighting-relationship' }}
+            emptyStateMessage={t_i18n('No sightings yet. Sightings are created from within an entity or relationship.')}
+          />
+        )}
+      </Box>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { React } from 'mdi-material-ui';
+import { Box, Typography } from '@mui/material';
 import { StixCyberObservablesLines_data$data } from '@components/observations/stix_cyber_observables/__generated__/StixCyberObservablesLines_data.graphql';
 import { stixCyberObservableLineFragment } from '@components/observations/stix_cyber_observables/StixCyberObservableLine';
 import { StixCyberObservablesLinesSearchQuery$data } from '@components/observations/stix_cyber_observables/__generated__/StixCyberObservablesLinesSearchQuery.graphql';
@@ -26,6 +26,11 @@ import useEntityToggle from '../../../utils/hooks/useEntityToggle';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 
 const LOCAL_STORAGE_KEY = 'stixCyberObservables';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const StixCyberObservables: FunctionComponent = () => {
   const { t_i18n } = useFormatter();
@@ -130,23 +135,60 @@ const StixCyberObservables: FunctionComponent = () => {
   );
 
   return (
-    <span data-testid="observables-page">
+    <div data-testid="observables-page">
       <ExportContextProvider>
         <Breadcrumbs elements={[{ label: t_i18n('Observations') }, { label: t_i18n('Observables'), current: true }]} />
-        {queryRef && (
-          <DataTable
-            storageKey={LOCAL_STORAGE_KEY}
-            initialValues={initialValues}
-            preloadedPaginationProps={preloadedPaginationProps}
-            resolvePath={(data: StixCyberObservablesLines_data$data) => data.stixCyberObservables?.edges?.map?.((n) => n?.node)}
-            dataColumns={dataColumns}
-            lineFragment={stixCyberObservableLineFragment}
-            contextFilters={contextFilters}
-            handleCopy={handleCopy}
-            exportContext={{ entity_type: 'Stix-Cyber-Observable' }}
-            availableEntityTypes={['Stix-Cyber-Observable']}
-            searchContextFinal={{ entityTypes: ['Stix-Cyber-Observable'] }} // ???? for entity_type fileter
-            createButton={(
+        <Box sx={{ padding: '24px 24px 0 24px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: 2,
+            }}
+          >
+            <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography
+                  variant="h1"
+                  sx={{
+                    margin: 0,
+                    fontSize: '22px',
+                    fontWeight: 600,
+                    color: 'var(--ravin-text)',
+                    lineHeight: 1.3,
+                    ...lowercaseVoiceSx,
+                  }}
+                >
+                  {t_i18n('Observables')}
+                </Typography>
+                <Box
+                  component="span"
+                  sx={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                    color: 'var(--ravin-text-muted)',
+                    backgroundColor: 'var(--ravin-surface-2)',
+                    borderRadius: '4px',
+                    padding: '2px 8px',
+                    lineHeight: '20px',
+                  }}
+                >
+                  {viewStorage.numberOfElements?.number ?? 0}
+                </Box>
+              </Box>
+              <Typography
+                sx={{
+                  fontSize: '0.8125rem',
+                  color: 'var(--ravin-text-muted)',
+                  marginTop: '4px',
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Track and manage cyber observables — IPs, domains, hashes, files, and more')}
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
               <Security needs={[KNOWLEDGE_KNUPDATE]}>
                 <StixCyberObservableCreation
                   paginationKey="Pagination_stixCyberObservables"
@@ -160,11 +202,27 @@ const StixCyberObservables: FunctionComponent = () => {
                   inputValue=""
                 />
               </Security>
-            )}
-          />
-        )}
+            </Box>
+          </Box>
+          {queryRef && (
+            <DataTable
+              storageKey={LOCAL_STORAGE_KEY}
+              initialValues={initialValues}
+              preloadedPaginationProps={preloadedPaginationProps}
+              resolvePath={(data: StixCyberObservablesLines_data$data) => data.stixCyberObservables?.edges?.map?.((n) => n?.node)}
+              dataColumns={dataColumns}
+              lineFragment={stixCyberObservableLineFragment}
+              contextFilters={contextFilters}
+              handleCopy={handleCopy}
+              exportContext={{ entity_type: 'Stix-Cyber-Observable' }}
+              availableEntityTypes={['Stix-Cyber-Observable']}
+              searchContextFinal={{ entityTypes: ['Stix-Cyber-Observable'] }}
+              emptyStateMessage={t_i18n('No observables yet. Create one to start tracking a cyber observable.')}
+            />
+          )}
+        </Box>
       </ExportContextProvider>
-    </span>
+    </div>
   );
 };
 

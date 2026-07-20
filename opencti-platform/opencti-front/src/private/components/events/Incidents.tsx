@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { Box, Typography } from '@mui/material';
 import StixCoreObjectForms from '@components/common/stix_core_objects/StixCoreObjectForms';
 import { IncidentsLinesQuery, IncidentsLinesQuery$variables } from './incidents/__generated__/IncidentsLinesQuery.graphql';
 import { IncidentsLines_data$data } from './incidents/__generated__/IncidentsLines_data.graphql';
@@ -19,6 +20,11 @@ import Security from '../../../utils/Security';
 import { KNOWLEDGE_KNUPDATE, KNOWLEDGE_KNASKIMPORT } from '../../../utils/hooks/useGranted';
 
 export const LOCAL_STORAGE_KEY = 'incidents';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 const Incidents: FunctionComponent = () => {
   const { t_i18n } = useFormatter();
@@ -77,29 +83,80 @@ const Incidents: FunctionComponent = () => {
   return (
     <div data-testid="incident-page">
       <Breadcrumbs elements={[{ label: t_i18n('Events') }, { label: t_i18n('Incidents'), current: true }]} />
-      {queryRef && (
-        <DataTable
-          storageKey={LOCAL_STORAGE_KEY}
-          initialValues={initialValues}
-          preloadedPaginationProps={preloadedPaginationProps}
-          resolvePath={(data: IncidentsLines_data$data) => data.incidents?.edges?.map((n) => n?.node)}
-          dataColumns={dataColumns}
-          lineFragment={incidentLineFragment}
-          contextFilters={contextFilters}
-          exportContext={{ entity_type: 'Incident' }}
-          availableEntityTypes={['Incident']}
-          additionalHeaderButtons={[
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 2,
+          }}
+        >
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Incidents')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {viewStorage.numberOfElements?.number ?? 0}
+              </Box>
+            </Box>
+            <Typography
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
+            >
+              {t_i18n('Track and manage security incidents and their severity')}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
             <Security key="form-intake" needs={[KNOWLEDGE_KNUPDATE]} capabilitiesInDraft={[KNOWLEDGE_KNASKIMPORT]}>
               <StixCoreObjectForms entityType="Incident" />
-            </Security>,
-          ]}
-          createButton={(
+            </Security>
             <Security needs={[KNOWLEDGE_KNUPDATE]}>
               <IncidentCreation paginationOptions={queryPaginationOptions} />
             </Security>
-          )}
-        />
-      )}
+          </Box>
+        </Box>
+        {queryRef && (
+          <DataTable
+            storageKey={LOCAL_STORAGE_KEY}
+            initialValues={initialValues}
+            preloadedPaginationProps={preloadedPaginationProps}
+            resolvePath={(data: IncidentsLines_data$data) => data.incidents?.edges?.map((n) => n?.node)}
+            dataColumns={dataColumns}
+            lineFragment={incidentLineFragment}
+            contextFilters={contextFilters}
+            exportContext={{ entity_type: 'Incident' }}
+            availableEntityTypes={['Incident']}
+            emptyStateMessage={t_i18n('No incidents yet. Create one to start tracking a security incident.')}
+          />
+        )}
+      </Box>
     </div>
   );
 };

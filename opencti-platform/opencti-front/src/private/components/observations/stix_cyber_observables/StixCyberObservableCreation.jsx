@@ -2,11 +2,12 @@ import Button from '@common/button/Button';
 import Dialog from '@common/dialog/Dialog';
 import FormButtonContainer from '@common/form/FormButtonContainer';
 import Drawer from '@components/common/drawer/Drawer';
-import { Plus as Add } from 'lucide-react';
+import { Plus as Add, Search as SearchIcon } from 'lucide-react';
 import Alert from '@mui/lab/Alert';
-import { ListItemButton, Stack } from '@mui/material';
+import { Box, InputAdornment, ListItemButton, Stack, TextField as MuiTextField, Typography } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import List from '@mui/material/List';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
@@ -18,6 +19,7 @@ import { graphql } from 'react-relay';
 import * as Yup from 'yup';
 import CreateEntityControlledDial from '../../../../components/CreateEntityControlledDial';
 import DateTimePickerField from '../../../../components/DateTimePickerField';
+import ItemIcon from '../../../../components/ItemIcon';
 import ProgressBar from '../../../../components/ProgressBar';
 import TextField from '../../../../components/TextField';
 import BulkTextField from '../../../../components/fields/BulkTextField/BulkTextField';
@@ -277,6 +279,7 @@ const StixCyberObservableCreation = ({
   const [bulkOpen, setBulkOpen] = useState(false);
   const [progressBarOpen, setProgressBarOpen] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
   const [bulkSelectedKey, setBulkSelectedKey] = useState(null);
   const bulkConf = useMemo(() => BULK_OBSERVABLES.find(({ type: obsType }) => obsType === status.type), [status]);
   // Store the latest created observable for callback
@@ -323,7 +326,10 @@ const StixCyberObservableCreation = ({
   }, [bulkCount]);
 
   const handleOpen = () => setStatus({ open: true, type: status.type });
-  const localHandleClose = () => setStatus({ open: false, type: type ?? null });
+  const localHandleClose = () => {
+    setSearchTerm('');
+    setStatus({ open: false, type: type ?? null });
+  };
   const selectType = (selected) => setStatus({ open: status.open, type: selected });
 
   const onSubmit = (values, { setSubmitting, setErrors, resetForm }) => {
@@ -452,6 +458,11 @@ const StixCyberObservableCreation = ({
   };
 
   const renderList = () => {
+    const lowercaseVoiceSx = {
+      textTransform: 'lowercase',
+      '&::first-letter': { textTransform: 'uppercase' },
+    };
+
     return (
       <QueryRenderer
         query={stixCyberObservablesLinesSubTypesQuery}
@@ -469,19 +480,91 @@ const StixCyberObservableCreation = ({
               }))
               .sort((a, b) => a.tlabel.toLowerCase().localeCompare(b.tlabel.toLowerCase()));
 
+            const filteredList = searchTerm
+              ? translatedOrderedList.filter((subType) =>
+                subType.tlabel.toLowerCase().includes(searchTerm.toLowerCase())
+                || subType.label.toLowerCase().includes(searchTerm.toLowerCase()))
+              : translatedOrderedList;
+
             return (
-              <List disablePadding>
-                {translatedOrderedList.map((subType) => (
-                  <ListItemButton
-                    key={subType.label}
-                    divider={true}
-                    dense={true}
-                    onClick={() => selectType(subType.label)}
+              <Box>
+                <MuiTextField
+                  variant="standard"
+                  placeholder={t_i18n('Search observable types...')}
+                  fullWidth={true}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon size={16} style={{ color: 'var(--ravin-text-muted)' }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                  style={{ marginBottom: 12 }}
+                />
+                {filteredList.length === 0 && (
+                  <Typography
+                    sx={{
+                      padding: '24px 0',
+                      textAlign: 'center',
+                      color: 'var(--ravin-text-muted)',
+                      fontSize: '0.8125rem',
+                      ...lowercaseVoiceSx,
+                    }}
                   >
-                    <ListItemText primary={subType.tlabel} />
-                  </ListItemButton>
-                ))}
-              </List>
+                    {t_i18n('No observable type found')}
+                  </Typography>
+                )}
+                <List
+                  disablePadding
+                  sx={{
+                    maxHeight: '50vh',
+                    overflowY: 'auto',
+                    '&::-webkit-scrollbar': { width: 6 },
+                    '&::-webkit-scrollbar-thumb': {
+                      backgroundColor: 'var(--ravin-border)',
+                      borderRadius: 3,
+                    },
+                  }}
+                >
+                  {filteredList.map((subType) => (
+                    <ListItemButton
+                      key={subType.label}
+                      onClick={() => selectType(subType.label)}
+                      sx={{
+                        borderRadius: '4px',
+                        marginBottom: 0.5,
+                        padding: '6px 12px',
+                        transition: 'background-color 0.15s ease',
+                        '&:hover': {
+                          backgroundColor: 'var(--ravin-surface-2)',
+                        },
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 36,
+                          color: 'var(--ravin-text-muted)',
+                        }}
+                      >
+                        <ItemIcon type={subType.label} size="small" />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={subType.tlabel}
+                        slotProps={{
+                          primary: {
+                            sx: {
+                              fontSize: '0.8125rem',
+                              ...lowercaseVoiceSx,
+                            },
+                          },
+                        }}
+                      />
+                    </ListItemButton>
+                  ))}
+                </List>
+              </Box>
             );
           }
           return <div />;
