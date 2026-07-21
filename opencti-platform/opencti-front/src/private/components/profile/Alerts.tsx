@@ -8,7 +8,6 @@ import DigestNotificationDrawer from '@components/profile/notifications/DigestNo
 import { CheckCircle as CheckCircleOutlined, Trash2 as DeleteOutlined, CircleSlash as UnpublishedOutlined } from 'lucide-react';
 import { Badge, Tooltip } from '@mui/material';
 import Chip from '@mui/material/Chip';
-import { indigo } from '@mui/material/colors';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import { FunctionComponent, Suspense, useState } from 'react';
@@ -20,7 +19,6 @@ import { defaultRender } from '../../../components/dataGrid/dataTableUtils';
 import { useFormatter } from '../../../components/i18n';
 import Loader, { LoaderVariant } from '../../../components/Loader';
 import { chipInListBasicStyle } from '../../../utils/chipStyle';
-import { hexToRGB } from '../../../utils/Colors';
 import { FilterGroup } from '../../../utils/filters/filtersHelpers-types';
 import { emptyFilterGroup, isFilterGroupNotEmpty, useGetDefaultFilterObject, useRemoveIdAndIncorrectKeysFromFilterGroupObject } from '../../../utils/filters/filtersUtils';
 import useApiMutation from '../../../utils/hooks/useApiMutation';
@@ -170,7 +168,7 @@ const AlertsLineActions: FunctionComponent<AlertsLineActionsProps> = ({
             handleRead(data.id, !data.is_read);
           }}
           size="small"
-          style={{ color: data.is_read ? 'primary' : 'success' }}
+          style={{ color: data.is_read ? 'var(--ravin-text-muted)' : 'var(--ravin-success)' }}
         >
           {data.is_read
             ? <UnpublishedOutlined size={16} />
@@ -188,7 +186,7 @@ const AlertsLineActions: FunctionComponent<AlertsLineActionsProps> = ({
               handleOpenDelete();
             }}
             size="small"
-            style={{ color: 'var(--mui-palette-primary-main)' }}
+            style={{ color: 'var(--ravin-danger)' }}
           >
             <DeleteOutlined size={16} />
           </IconButton>
@@ -286,9 +284,9 @@ const AlertsComponent: FunctionComponent<AlertsComponentProps> = ({
                 width: 150,
                 textTransform: 'uppercase',
                 borderRadius: 4,
-                backgroundColor: hexToRGB(colors[firstOperation] ?? indigo[500], 0.08),
-                color: colors[firstOperation] ?? indigo[500],
-                border: `1px solid ${colors[firstOperation] ?? indigo[500]}`,
+                backgroundColor: `color-mix(in srgb, ${colors[firstOperation] ?? 'var(--ravin-primary)'} 8%, transparent)`,
+                color: colors[firstOperation] ?? 'var(--ravin-primary)',
+                border: `1px solid ${colors[firstOperation] ?? 'var(--ravin-primary)'}`,
               }}
               label={
                 events.length > 1
@@ -354,10 +352,10 @@ const AlertsComponent: FunctionComponent<AlertsComponentProps> = ({
                   ...chipInListBasicStyle,
                   width: 100,
                   marginRight: 10,
+                  color: notification_type === 'live'
+                    ? 'var(--ravin-warning)'
+                    : 'var(--ravin-secondary)',
                 }}
-                style={{ color: notification_type === 'live'
-                  ? 'warning'
-                  : 'secondary' }}
                 variant="outlined"
                 label={name ?? EMPTY_VALUE}
                 onClick={(e) => {
@@ -393,7 +391,7 @@ const AlertsComponent: FunctionComponent<AlertsComponentProps> = ({
         icon={(data) => {
           const operation = getFirstOperation(data);
           return (
-            <Badge style={{ color: 'var(--mui-palette-warning-main)' }} variant="dot" invisible={data.is_read}>
+            <Badge style={{ color: 'var(--ravin-primary)' }} variant="dot" invisible={data.is_read}>
               {iconSelector(operation)}
             </Badge>
           );

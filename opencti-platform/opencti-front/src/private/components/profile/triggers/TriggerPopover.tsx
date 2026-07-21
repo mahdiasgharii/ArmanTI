@@ -70,16 +70,30 @@ const TriggerPopover = ({
         <IconButton
           onClick={handleOpen}
           aria-haspopup="true"
-          style={{ marginTop: 3 }}
           disabled={disabled}
-          style={{ color: 'var(--mui-palette-primary-main)' }}
+          style={{ marginTop: 3, color: 'var(--ravin-text-muted)' }}
         >
           <MoreVert />
         </IconButton>
       </Tooltip>
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleOpenEdit}>{t_i18n('Update')}</MenuItem>
-        <MenuItem onClick={handleOpenDelete}>{t_i18n('Delete')}</MenuItem>
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        PaperProps={{ className: 'ravin-select-paper' }}
+      >
+        <MenuItem
+          onClick={handleOpenEdit}
+          sx={{ textTransform: 'lowercase', '&::first-letter': { textTransform: 'uppercase' } }}
+        >
+          {t_i18n('Update')}
+        </MenuItem>
+        <MenuItem
+          onClick={handleOpenDelete}
+          sx={{ textTransform: 'lowercase', '&::first-letter': { textTransform: 'uppercase' }, color: 'var(--ravin-danger)' }}
+        >
+          {t_i18n('Delete')}
+        </MenuItem>
       </Menu>
       <DeleteDialog
         deletion={deletion}

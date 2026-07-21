@@ -12,10 +12,12 @@ const NumberDifference = ({ value, description }: ItemNumberDifferenceProps) => 
 
   const pillStyle = tone === 'muted'
     ? { backgroundColor: 'color-mix(in srgb, var(--ravin-text-muted) 14%, transparent)' }
-    : { backgroundColor: `color-mix(in srgb, var(--ravin-${tone}) 14%, transparent)` };
+    : tone === 'success'
+      ? { backgroundColor: 'color-mix(in srgb, var(--ravin-primary) 14%, transparent)' }
+      : { backgroundColor: `color-mix(in srgb, var(--ravin-${tone}) 14%, transparent)` };
 
   const textClass = tone === 'success'
-    ? 'text-success-light'
+    ? 'text-primary'
     : tone === 'danger'
       ? 'text-danger-light'
       : 'text-text-muted';

@@ -61,9 +61,10 @@ interface TriggerLineProps {
   paginationOptions?: TriggersLinesPaginationQuery$variables;
 }
 
-const triggerLineFragment = graphql`
+export const triggerLineFragment = graphql`
   fragment TriggerLine_node on Trigger {
     id
+    entity_type
     name
     trigger_type
     event_types

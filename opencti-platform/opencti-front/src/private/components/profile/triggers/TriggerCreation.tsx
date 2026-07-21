@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { Zap, Mail } from 'lucide-react';
 import Button from '@common/button/Button';
 import { useTheme } from '@mui/styles';
 import type { Theme } from '../../../../components/Theme';
@@ -41,8 +42,9 @@ const TriggerCreation: FunctionComponent<TriggerCreationProps> = ({
   return (
     <>
       <Button
-        sx={{ marginRight: theme.spacing(1) }}
+        sx={{ marginRight: theme.spacing(1), textTransform: 'lowercase', '&::first-letter': { textTransform: 'uppercase' } }}
         onClick={handleOpenCreateDigest}
+        startIcon={<Mail size={16} />}
       >
         {t_i18n('', {
           id: 'Create ...',
@@ -51,6 +53,8 @@ const TriggerCreation: FunctionComponent<TriggerCreationProps> = ({
       </Button>
       <Button
         onClick={handleOpenCreateLive}
+        startIcon={<Zap size={16} />}
+        sx={{ textTransform: 'lowercase', '&::first-letter': { textTransform: 'uppercase' } }}
       >
         {t_i18n('', {
           id: 'Create ...',

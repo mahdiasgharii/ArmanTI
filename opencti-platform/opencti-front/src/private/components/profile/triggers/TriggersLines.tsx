@@ -44,7 +44,7 @@ export const triggersLinesQuery = graphql`
   }
 `;
 
-const triggersLinesFragment = graphql`
+export const triggersLinesFragment = graphql`
   fragment TriggersLines_data on Query
   @argumentDefinitions(
     search: { type: "String" }

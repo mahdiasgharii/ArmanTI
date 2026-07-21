@@ -1,12 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { AlertsLine_node$data } from '@components/profile/__generated__/AlertsLine_node.graphql';
 import Chip from '@mui/material/Chip';
-import { deepPurple, green, red } from '@mui/material/colors';
 import { iconSelector } from './notificationUtils';
 import { DataTableProps, DataTableVariant } from '../../../../components/dataGrid/dataTableTypes';
 import DataTableWithoutFragment from '../../../../components/dataGrid/DataTableWithoutFragment';
 import { defaultRender } from '../../../../components/dataGrid/dataTableUtils';
-import { hexToRGB } from '../../../../utils/Colors';
 import { useFormatter } from '../../../../components/i18n';
 
 const LOCAL_STORAGE_KEY = 'digest_notification';
@@ -31,13 +29,13 @@ const DigestNotification: FunctionComponent<DigestNotificationProps> = ({ notifi
         const getChipOperationColor = () => {
           switch (operation) {
             case 'create':
-              return green[500];
+              return 'var(--ravin-success)';
             case 'update':
-              return deepPurple[500];
+              return 'var(--ravin-warning)';
             case 'delete':
-              return red[500];
+              return 'var(--ravin-danger)';
             default:
-              return green[500];
+              return 'var(--ravin-success)';
           }
         };
         return (
@@ -48,7 +46,7 @@ const DigestNotification: FunctionComponent<DigestNotificationProps> = ({ notifi
               width: 150,
               textTransform: 'uppercase',
               borderRadius: 4,
-              backgroundColor: hexToRGB(getChipOperationColor(), 0.08),
+              backgroundColor: `color-mix(in srgb, ${getChipOperationColor()} 8%, transparent)`,
               color: getChipOperationColor(),
               border: `1px solid ${getChipOperationColor()}`,
             }}

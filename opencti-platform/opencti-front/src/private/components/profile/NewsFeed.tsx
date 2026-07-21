@@ -1,7 +1,7 @@
 import { NewsFeedLine_node$data } from '@components/profile/__generated__/NewsFeedLine_node.graphql';
 import { NewsFeedLines_data$data } from '@components/profile/__generated__/NewsFeedLines_data.graphql';
 import { NewsFeedLinesPaginationQuery, NewsFeedLinesPaginationQuery$variables } from '@components/profile/__generated__/NewsFeedLinesPaginationQuery.graphql';
-import { Alert, IconButton, Stack, Tooltip } from '@mui/material';
+import { IconButton, Stack, Tooltip } from '@mui/material';
 import { ExternalLink as OpenInNewOutlined } from 'lucide-react';
 import React, { FunctionComponent, Suspense, useCallback, useEffect, useMemo } from 'react';
 import { graphql, PreloadedQuery, useMutation, useSubscription } from 'react-relay';
@@ -185,7 +185,7 @@ const NewsFeedLineActions: FunctionComponent<{ data: NewsFeedLine_node$data }> =
         rel="noopener noreferrer"
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
-        <OpenInNewOutlined size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />
+        <OpenInNewOutlined size={16} style={{ color: 'var(--ravin-primary)' }} />
       </IconButton>
     </Tooltip>
   );
@@ -270,12 +270,16 @@ const NewsFeedComponent: FunctionComponent<NewsFeedComponentProps> = ({ queryRef
 
   return (
     <div>
-      <Alert severity="info" style={{ marginBottom: 16, backgroundColor: 'transparent', border: '1px solid #1976d2' }}>
-        {t_i18n('Want to control which news appear here?')}{' '}
-        <strong>{t_i18n('Manage your News Feed preferences')}</strong>{' '}
-        {t_i18n('in your')}{' '}
-        <Link to="/dashboard/profile/me">{t_i18n('profile settings')}</Link>.
-      </Alert>
+      <div
+        className="mb-4 flex items-center gap-2 rounded-[4px] border border-primary/30 bg-primary/5 px-4 py-3 text-sm text-text-muted"
+      >
+        <span>
+          {t_i18n('Want to control which news appear here?')}{' '}
+          <strong className="font-medium text-text-base">{t_i18n('Manage your News Feed preferences')}</strong>{' '}
+          {t_i18n('in your')}{' '}
+          <Link to="/dashboard/profile/me" className="text-primary hover:underline">{t_i18n('profile settings')}</Link>.
+        </span>
+      </div>
       <DataTable
         storageKey={LOCAL_STORAGE_KEY}
         initialValues={newsFeedInitialValues}
@@ -284,7 +288,7 @@ const NewsFeedComponent: FunctionComponent<NewsFeedComponentProps> = ({ queryRef
         dataColumns={dataColumns}
         icon={(row: NewsFeedLine_node$data) => {
           const Icon = getNewsFeedIcon(row.news_feed_type);
-          return <Icon size={16} style={{ color: 'var(--mui-palette-primary-main)' }} />;
+          return <Icon size={16} style={{ color: 'var(--ravin-primary)' }} />;
         }}
         actions={(row: NewsFeedLine_node$data) => <NewsFeedLineActions data={row} />}
         lineFragment={newsFeedLineFragment}

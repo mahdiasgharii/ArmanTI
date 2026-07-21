@@ -1,14 +1,14 @@
-import { Badge } from '@mui/material';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { graphql, useLazyLoadQuery, useSubscription } from 'react-relay';
 import { Navigate, Outlet, useMatch, useNavigate } from 'react-router-dom';
-import Breadcrumbs from '../../../components/Breadcrumbs';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { Tabs, TabsList, TabsTrigger } from '../../../components/ui/tabs';
 import { useFormatter } from '../../../components/i18n';
 import useAuth from '../../../utils/hooks/useAuth';
 import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocumentModifier';
 import { requestSubscription } from '../../../relay/environment';
+import { cn } from '../../../lib/utils';
 import type { NotificationsUnreadNewsFeedsCountQuery } from './__generated__/NotificationsUnreadNewsFeedsCountQuery.graphql';
 import { NotificationsNotificationNumberSubscription$data } from '@components/profile/__generated__/NotificationsNotificationNumberSubscription.graphql';
 import { NotificationsNewsFeedNumberSubscription$data } from './__generated__/NotificationsNewsFeedNumberSubscription.graphql';
@@ -88,47 +88,94 @@ const Notifications: FunctionComponent = () => {
 
   const activeTab = useMatch('/dashboard/profile/notifications/news-feed') ? 'news-feed' : 'alerts';
 
-  const handleTabChange = (_: React.SyntheticEvent, value: string) => {
+  const handleTabChange = (value: string) => {
     navigate(value);
   };
 
+  const UnreadBadge = ({ count }: { count: number }) => {
+    if (count === 0) return null;
+    return (
+      <span
+        className={cn(
+          'ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-[4px]',
+          'bg-danger/15 px-1 text-[10px] font-medium leading-none text-danger',
+        )}
+      >
+        {count > 99 ? '99+' : count}
+      </span>
+    );
+  };
+
+  const lowercaseVoiceSx = {
+    textTransform: 'lowercase',
+    '&::first-letter': { textTransform: 'uppercase' },
+  } as const;
+
   if (!isNewsFeedTabVisible) {
     return (
-      <div>
-        <Breadcrumbs elements={[{ label: t_i18n('Notifications'), current: true }]} />
+      <Box sx={{ padding: '24px 24px 0 24px' }}>
+        <Typography
+          variant="h1"
+          sx={{
+            margin: 0,
+            fontSize: '22px',
+            fontWeight: 600,
+            color: 'var(--ravin-text)',
+            lineHeight: 1.3,
+            ...lowercaseVoiceSx,
+          }}
+        >
+          {t_i18n('Notifications')}
+        </Typography>
         {activeTab === 'news-feed' && <Navigate to="alerts" replace />}
         <Outlet />
-      </div>
+      </Box>
     );
   }
 
   return (
-    <div>
-      <Breadcrumbs elements={[{ label: t_i18n('Notifications'), current: true }]} />
-      <Tabs value={activeTab} onChange={handleTabChange}>
-        <Tab
-          value="alerts"
-          sx={{ textTransform: 'none' }}
-          label={(
-            <Badge color="error" badgeContent={unreadNotificationsCount} max={99} invisible={unreadNotificationsCount === 0}>
-              {t_i18n('Alerts')}
-            </Badge>
-          )}
-        />
-        <Tab
-          value="news-feed"
-          sx={{ textTransform: 'none' }}
-          label={(
-            <Badge color="error" badgeContent={unreadNewsFeedsCount} max={99} invisible={unreadNewsFeedsCount === 0}>
-              {t_i18n('XTM Hub News Feed')}
-            </Badge>
-          )}
-        />
+    <Box sx={{ padding: '24px 24px 0 24px' }}>
+      <Box sx={{ marginBottom: 2 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Typography
+            variant="h1"
+            sx={{
+              margin: 0,
+              fontSize: '22px',
+              fontWeight: 600,
+              color: 'var(--ravin-text)',
+              lineHeight: 1.3,
+              ...lowercaseVoiceSx,
+            }}
+          >
+            {t_i18n('Notifications')}
+          </Typography>
+        </Box>
+        <Typography
+          sx={{
+            fontSize: '0.8125rem',
+            color: 'var(--ravin-text-muted)',
+            marginTop: '4px',
+            ...lowercaseVoiceSx,
+          }}
+        >
+          {t_i18n('Stay informed on threat intelligence activity')}
+        </Typography>
+      </Box>
+      <Tabs value={activeTab} onValueChange={handleTabChange}>
+        <TabsList>
+          <TabsTrigger value="alerts">
+            {t_i18n('Alerts')}
+            <UnreadBadge count={unreadNotificationsCount} />
+          </TabsTrigger>
+          <TabsTrigger value="news-feed">
+            {t_i18n('XTM Hub News Feed')}
+            <UnreadBadge count={unreadNewsFeedsCount} />
+          </TabsTrigger>
+        </TabsList>
       </Tabs>
-      <div style={{ marginTop: 20 }}>
-        <Outlet />
-      </div>
-    </div>
+      <Outlet />
+    </Box>
   );
 };
 

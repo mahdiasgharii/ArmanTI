@@ -1,14 +1,13 @@
-import { deepPurple, green, indigo, red } from '@mui/material/colors';
 import { BellCogOutline, BellOutline, BellPlusOutline, BellRemoveOutline, FileTableBoxMultipleOutline } from 'mdi-material-ui';
 import React from 'react';
 import { AlertsLine_node$data } from '@components/profile/__generated__/AlertsLine_node.graphql';
 
 export const colors: Record<string, string> = {
-  none: green[500],
-  create: green[500],
-  update: deepPurple[500],
-  delete: red[500],
-  multiple: indigo[500],
+  none: 'var(--ravin-success)',
+  create: 'var(--ravin-success)',
+  update: 'var(--ravin-warning)',
+  delete: 'var(--ravin-danger)',
+  multiple: 'var(--ravin-primary)',
 };
 
 export const getFirstOperation = ({ notification_content, notification_type }: Pick<AlertsLine_node$data, 'notification_content' | 'notification_type'>) => {
