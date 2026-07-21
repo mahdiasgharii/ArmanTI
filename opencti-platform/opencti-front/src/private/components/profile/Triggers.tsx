@@ -74,6 +74,7 @@ const Triggers = () => {
   const dataColumns: DataTableProps['dataColumns'] = {
     trigger_type: {
       id: 'trigger_type',
+      label: 'Type',
       percentWidth: 10,
       isSortable: true,
       render: ({ trigger_type }) => {
@@ -117,6 +118,7 @@ const Triggers = () => {
     },
     notifiers: {
       id: 'notifiers',
+      label: 'Notifiers',
       percentWidth: 20,
       render: ({ notifiers }) => {
         if (!notifiers || notifiers.length === 0) return EMPTY_VALUE;
@@ -159,6 +161,7 @@ const Triggers = () => {
     },
     filters: {
       id: 'filters',
+      label: 'Filters',
       percentWidth: 35,
       render: (data) => {
         if (data.trigger_type === 'live') {
@@ -282,7 +285,9 @@ const Triggers = () => {
               {t_i18n('Get notified on threat intelligence changes')}
             </Typography>
           </Box>
-          {createButton}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            {createButton}
+          </Box>
         </Box>
 
         {queryRef && (
