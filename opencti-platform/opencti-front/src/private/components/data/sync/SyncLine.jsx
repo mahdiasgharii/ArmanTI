@@ -24,13 +24,13 @@ const Transition = React.forwardRef((props, ref) => (
 ));
 Transition.displayName = 'TransitionSlide';
 
-const styles = (theme) => ({
+const styles = () => ({
   item: {
     paddingLeft: 10,
     height: 50,
   },
   itemIcon: {
-    color: theme.palette.primary.main,
+    color: 'var(--ravin-primary)',
   },
   bodyItem: {
     display: 'flex',
@@ -42,6 +42,7 @@ const styles = (theme) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     paddingRight: 10,
+    color: 'var(--ravin-text)',
   },
   producerItem: {
     height: 40,
@@ -56,12 +57,12 @@ const styles = (theme) => ({
     right: -10,
   },
   itemIconDisabled: {
-    color: theme.palette.grey[700],
+    color: 'var(--ravin-text-light)',
   },
   placeholder: {
     display: 'inline-block',
     height: '1em',
-    backgroundColor: theme.palette.grey[700],
+    backgroundColor: 'var(--ravin-surface-2)',
   },
   filter: {
     fontSize: 12,
@@ -72,7 +73,7 @@ const styles = (theme) => ({
   },
   operator: {
     fontFamily: 'Consolas, monaco, monospace',
-    backgroundColor: theme.palette.background.accent,
+    backgroundColor: 'var(--ravin-surface-2)',
     height: 20,
     marginRight: 10,
   },
@@ -179,7 +180,7 @@ class SyncLineLineComponent extends Component {
                     style={{ width: dataColumns.producer.width }}
                   >
                     {!health.hexColor
-                      ? <span style={{ color: '#9e9e9e' }}>-</span>
+                      ? <span style={{ color: 'var(--ravin-text-light)' }}>-</span>
                       : (
                           <Chip
                             label={health.label}
