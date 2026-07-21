@@ -18,7 +18,7 @@ import { FieldOption, fieldSpacingContainerStyle } from '../../../../utils/field
 import { useDynamicSchemaCreationValidation, useIsMandatoryAttribute, yupShapeConditionalRequired } from '../../../../utils/hooks/useEntitySettings';
 import { insertNode } from '../../../../utils/store';
 import { SectorCreationMutation, SectorCreationMutation$variables } from './__generated__/SectorCreationMutation.graphql';
-import { SectorsLinesPaginationQuery$variables } from './__generated__/SectorsLinesPaginationQuery.graphql';
+import { SectorsLinesPaginationQuery$variables } from '../__generated__/SectorsLinesPaginationQuery.graphql';
 import useDefaultValues from '../../../../utils/hooks/useDefaultValues';
 import CustomFileUploader from '../../common/files/CustomFileUploader';
 import useApiMutation from '../../../../utils/hooks/useApiMutation';

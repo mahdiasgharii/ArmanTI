@@ -11,7 +11,7 @@ import TriggerPopover from './triggers/TriggerPopover';
 import Loader, { LoaderVariant } from '../../../components/Loader';
 import { usePaginationLocalStorage } from '../../../utils/hooks/useLocalStorage';
 import useQueryLoading from '../../../utils/hooks/useQueryLoading';
-import { emptyFilterGroup, useGetDefaultFilterObject } from '../../../utils/filters/filtersUtils';
+import { emptyFilterGroup, useBuildEntityTypeBasedFilterContext, useGetDefaultFilterObject } from '../../../utils/filters/filtersUtils';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import { useFormatter } from '../../../components/i18n';
 import DataTable from '../../../components/dataGrid/DataTable';
@@ -60,8 +60,10 @@ const Triggers = () => {
     initialValues,
   );
 
+  const contextFilters = useBuildEntityTypeBasedFilterContext('Trigger', viewStorage.filters);
   const triggerPaginationOptions = {
     ...paginationOptions,
+    filters: contextFilters,
   } as unknown as TriggersLinesPaginationQuery$variables;
 
   const queryRef = useQueryLoading<TriggersLinesPaginationQuery>(
@@ -295,6 +297,7 @@ const Triggers = () => {
               lineFragment={triggerLineFragment}
               preloadedPaginationProps={preloadedPaginationProps}
               entityTypes={['Trigger']}
+              contextFilters={contextFilters}
               searchContextFinal={{ entityTypes: ['Trigger'] }}
               disableNavigation
               emptyStateMessage={t_i18n('No triggers yet. Create one to start monitoring threat intelligence changes.')}
