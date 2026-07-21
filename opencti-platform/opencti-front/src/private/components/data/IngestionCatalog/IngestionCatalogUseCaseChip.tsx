@@ -1,8 +1,6 @@
 import { Tooltip } from '@mui/material';
 import Chip, { ChipProps } from '@mui/material/Chip';
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
-import type { Theme } from '../../../../components/Theme';
 
 interface IngestionCatalogChipProps {
   label: string;
@@ -12,6 +10,7 @@ interface IngestionCatalogChipProps {
   withTooltip?: boolean;
   isInTooltip?: boolean;
   isInlist?: boolean;
+  style?: React.CSSProperties;
 }
 
 interface CustomChipProps extends Omit<ChipProps, 'color'> {
@@ -44,10 +43,12 @@ const IngestionCatalogChip = ({
   color,
   withTooltip = false,
   isInlist = false,
+  style,
 }: IngestionCatalogChipProps) => {
-  const theme = useTheme<Theme>();
-
   const tooltipContent = withTooltip ? (tooltipLabel || label) : undefined;
+
+  const isPrimary = color === 'primary';
+  const chipColor = isPrimary ? 'var(--ravin-primary)' : (color && !['primary', 'secondary', 'error', 'warning', 'success', 'info', 'default'].includes(color) ? color : 'var(--ravin-text-muted)');
 
   return (
     <Tooltip title={tooltipContent}>
@@ -56,14 +57,15 @@ const IngestionCatalogChip = ({
         size="small"
         color={color ?? 'default'}
         sx={{
-          fontSize: 12,
+          fontSize: 11,
           lineHeight: '14px',
-          borderRadius: 1,
-          marginRight: isInlist ? theme.spacing(1) : 0,
-          border: `1px solid ${color || theme.palette.chip.main}`,
-          backgroundColor: 'rgba(0, 0, 0, 0.1)',
-          color,
+          borderRadius: '4px',
+          marginRight: isInlist ? 0.5 : 0,
+          border: `1px solid ${chipColor}`,
+          backgroundColor: 'var(--ravin-surface-2)',
+          color: chipColor,
         }}
+        style={style}
         label={label}
       />
     </Tooltip>

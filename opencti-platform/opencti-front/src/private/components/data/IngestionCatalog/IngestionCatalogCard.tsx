@@ -3,7 +3,6 @@ import CardContent from '@mui/material/CardContent';
 import { CardActions, Stack, Typography } from '@mui/material';
 import { Verified as VerifiedOutlined } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '@mui/styles';
 import { IngestionConnector } from '@components/data/IngestionCatalog';
 import EnterpriseEditionButton from '@components/common/entreprise_edition/EnterpriseEditionButton';
 import { getConnectorMetadata } from '@components/data/IngestionCatalog/utils/ingestionConnectorTypeMetadata';
@@ -14,8 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import { useFormatter } from '../../../../components/i18n';
 import { INGESTION_SETINGESTIONS } from '../../../../utils/hooks/useGranted';
 import Security from '../../../../utils/Security';
-import type { Theme } from '../../../../components/Theme';
 import Card from '../../../../components/common/card/Card';
+
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
 
 export interface IngestionCatalogCardProps {
   node: IngestionConnector;
@@ -125,7 +128,6 @@ const IngestionCatalogCard = ({
   deploymentCount = 0,
 }: IngestionCatalogCardProps) => {
   const { t_i18n } = useFormatter();
-  const theme = useTheme<Theme>();
 
   const navigate = useNavigate();
 
@@ -145,13 +147,16 @@ const IngestionCatalogCard = ({
       onClick={handleCardClick}
       sx={{
         height: 330,
-        borderRadius: 1,
+        borderRadius: '4px',
         display: 'flex',
         flexDirection: 'column',
         cursor: 'pointer',
-        transition: 'background-color 0.2s ease-in-out',
+        backgroundColor: 'var(--ravin-surface)',
+        border: '1px solid var(--ravin-border)',
+        transition: 'background-color 200ms cubic-bezier(0.25, 1, 0.5, 1), border-color 200ms cubic-bezier(0.25, 1, 0.5, 1)',
         '&:hover': {
-          backgroundColor: theme.palette.action?.hover,
+          backgroundColor: 'var(--ravin-surface-2)',
+          borderColor: 'var(--ravin-border-strong)',
         },
       }}
     >
@@ -175,8 +180,13 @@ const IngestionCatalogCard = ({
           <>
             <Typography
               variant="body2"
-              style={{ color: theme.palette.primary.main }}
-              gutterBottom
+              sx={{
+                color: 'var(--ravin-primary)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                marginBottom: 0.5,
+                ...lowercaseVoiceSx,
+              }}
             >
               {connectorMetadata.label}
             </Typography>
@@ -188,7 +198,7 @@ const IngestionCatalogCard = ({
             title={connector.verified ? t_i18n('Verified by Filigran') : t_i18n('Not verified by Filigran')}
             slotProps={{ popper: { sx: { textTransform: 'none' } } }}
           >
-            <VerifiedOutlined style={{ color: connector.verified ? 'success' : 'disabled' }} />
+            <VerifiedOutlined style={{ color: connector.verified ? 'var(--ravin-primary)' : 'var(--ravin-text-light)' }} />
           </Tooltip>
         )}
       />
@@ -211,7 +221,8 @@ const IngestionCatalogCard = ({
             WebkitLineClamp: 5,
             WebkitBoxOrient: 'vertical',
             lineHeight: 1.5,
-            opacity: 0.8,
+            color: 'var(--ravin-text-muted)',
+            fontSize: '0.8125rem',
           }}
         >
           {connector.short_description}

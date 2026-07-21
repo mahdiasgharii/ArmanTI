@@ -31,6 +31,11 @@ import useEnterpriseEdition from '../../../utils/hooks/useEnterpriseEdition';
 import { UserContext } from '../../../utils/hooks/useAuth';
 import { isNotEmptyField } from '../../../utils/utils';
 
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
+
 interface IngestionCatalogComponentProps {
   catalogsData: IngestionConnectorsCatalogsQuery['response'];
   deploymentData: IngestionConnectorsQuery['response'];
@@ -170,29 +175,64 @@ const IngestionCatalogComponent = ({
 
   const deploymentCounts = createDeploymentCountMap(connectors);
 
+  const connectorCount = allContracts.length;
+
   return (
-    <div data-testid="catalog-page">
-      <PageContainer withRightMenu withGap>
+    <div data-testid="catalog-page" style={{ padding: '24px 12px 32px 12px' }}>
+      <PageContainer withRightMenu withGap style={{ paddingTop: 16 }}>
         <Breadcrumbs elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('Connector catalog'), current: true }]} />
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: 1,
+            marginBottom: 2,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Connector catalog')}
+              </Typography>
+              <Box
+                component="span"
+                sx={{
+                  fontSize: 12,
+                  fontWeight: 500,
+                  color: 'var(--ravin-text-muted)',
+                  backgroundColor: 'var(--ravin-surface-2)',
+                  borderRadius: '4px',
+                  padding: '2px 8px',
+                  lineHeight: '20px',
+                }}
+              >
+                {connectorCount}
+              </Box>
+            </Box>
             <Typography
-              variant="h1"
-              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
             >
-              {t_i18n('Connector catalog')}
+              {t_i18n('Browse and deploy certified connectors from the Filigran ecosystem')}
             </Typography>
           </Box>
         </Box>
         <ConnectorDeploymentBanner hasActiveManagers={hasActiveManagers} />
-        <Stack flexDirection="row">
+        <Stack flexDirection="row" sx={{ marginBottom: 2 }}>
           <IngestionCatalogFilters
             contracts={allContracts}
             filters={filters}
@@ -201,7 +241,7 @@ const IngestionCatalogComponent = ({
           <BrowseMoreButton />
         </Stack>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ marginTop: 0 }}>
           {filteredCatalogs.map((catalog) => {
             return catalog.contracts.map((contract) => {
               const deploymentCount = deploymentCounts.get(contract.container_image) ?? 0;
