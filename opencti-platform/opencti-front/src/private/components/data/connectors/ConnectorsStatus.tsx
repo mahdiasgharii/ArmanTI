@@ -12,7 +12,7 @@ import { ConnectorsListQuery } from '@components/data/connectors/__generated__/C
 import { ConnectorsStateQuery } from '@components/data/connectors/__generated__/ConnectorsStateQuery.graphql';
 import useConnectorsStatusFilters from '@components/data/connectors/hooks/useConnectorsStatusFilters';
 import { Trash2 as DeleteOutlined, Cpu as DeveloperBoardOutlined, Puzzle as ExtensionOutlined, ListMinus as PlaylistRemoveOutlined } from 'lucide-react';
-import { ListItemButton } from '@mui/material';
+import { Box, ListItemButton, Typography } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import List from '@mui/material/List';
@@ -292,7 +292,27 @@ const ConnectorsStatusContent: FunctionComponent<ConnectorsStatusContentProps> =
       </Dialog>
 
       <Card
-        title={t_i18n('Registered connectors')}
+        title={(
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Typography variant="h3" sx={{ margin: 0, fontWeight: 600, color: 'var(--ravin-text)' }}>
+              {t_i18n('Registered connectors')}
+            </Typography>
+            <Box
+              component="span"
+              sx={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--ravin-text-muted)',
+                backgroundColor: 'var(--ravin-surface-2)',
+                borderRadius: '4px',
+                padding: '2px 8px',
+                lineHeight: '20px',
+              }}
+            >
+              {sortedConnectors.filter((c) => c.connector_type !== 'internal').length}
+            </Box>
+          </Box>
+        )}
         titleAlignItems="end"
         action={(
           <ConnectorsStatusFilters
@@ -434,13 +454,13 @@ const ConnectorsStatusContent: FunctionComponent<ConnectorsStatusContentProps> =
                           >
                             <Tooltip title={connector.title} placement="top">
                               <div className={classes.bodyItem}>
-                                <span className={classes.bodyItemText}>
+                                <span className={classes.bodyItemText} style={{ color: 'var(--ravin-primary)', fontWeight: 500 }}>
                                   {connector.title}
                                 </span>
                               </div>
                             </Tooltip>
                             <div className={classes.bodyItem}>
-                              <span className={classes.bodyItemText}>
+                              <span className={classes.bodyItemText} style={{ color: 'var(--ravin-text-muted)' }}>
                                 {connectorType}
                               </span>
                             </div>
@@ -451,13 +471,13 @@ const ConnectorsStatusContent: FunctionComponent<ConnectorsStatusContentProps> =
                               />
                             </div>
                             <div className={classes.bodyItem}>
-                              {n(connector.messages)}
+                              <span style={{ color: 'var(--ravin-text-muted)' }}>{n(connector.messages)}</span>
                             </div>
                             <div className={classes.bodyItem}>
                               <ConnectorStatusChip connector={connector} />
                             </div>
                             <div className={classes.bodyItem}>
-                              <span className={classes.bodyItemText}>
+                              <span className={classes.bodyItemText} style={{ color: 'var(--ravin-text-muted)' }}>
                                 {nsdt(connector.updated_at)}
                               </span>
                             </div>

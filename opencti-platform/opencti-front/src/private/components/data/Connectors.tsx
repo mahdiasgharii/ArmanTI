@@ -10,6 +10,11 @@ import useConnectedDocumentModifier from '../../../utils/hooks/useConnectedDocum
 import PageContainer from '../../../components/PageContainer';
 import { WorkersStatusQuery$data } from './connectors/__generated__/WorkersStatusQuery.graphql';
 
+const lowercaseVoiceSx = {
+  textTransform: 'lowercase',
+  '&::first-letter': { textTransform: 'uppercase' },
+} as const;
+
 const Connectors = () => {
   const { t_i18n } = useFormatter();
   const { setTitle } = useConnectedDocumentModifier();
@@ -17,7 +22,7 @@ const Connectors = () => {
   setTitle(t_i18n('Monitoring | Ingestion | Data'));
 
   return (
-    <div data-testid="connectors-page">
+    <div data-testid="connectors-page" style={{ padding: '8px 12px 32px 12px' }}>
       <PageContainer withRightMenu withGap>
         <Breadcrumbs
           elements={[{ label: t_i18n('Data') }, { label: t_i18n('Ingestion') }, { label: t_i18n('Monitoring'), current: true }]}
@@ -28,15 +33,34 @@ const Connectors = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: 1,
+            marginBottom: 2,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  margin: 0,
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: 'var(--ravin-text)',
+                  lineHeight: 1.3,
+                  ...lowercaseVoiceSx,
+                }}
+              >
+                {t_i18n('Monitoring')}
+              </Typography>
+            </Box>
             <Typography
-              variant="h1"
-              sx={{ margin: 0, fontSize: 24, fontWeight: 600 }}
+              sx={{
+                fontSize: '0.8125rem',
+                color: 'var(--ravin-text-muted)',
+                marginTop: '4px',
+                ...lowercaseVoiceSx,
+              }}
             >
-              {t_i18n('Monitoring')}
+              {t_i18n('Platform health, connector status and ingestion metrics')}
             </Typography>
           </Box>
         </Box>
