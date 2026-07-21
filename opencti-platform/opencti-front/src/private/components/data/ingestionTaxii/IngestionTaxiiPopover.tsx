@@ -4,7 +4,6 @@ import IconButton from '@common/button/IconButton';
 import Dialog from '@common/dialog/Dialog';
 import IngestionTaxiiEditionContainer, { ingestionTaxiiEditionContainerQuery } from '@components/data/ingestionTaxii/IngestionTaxiiEditionContainer';
 import { IngestionTaxiiEditionContainerQuery } from '@components/data/ingestionTaxii/__generated__/IngestionTaxiiEditionContainerQuery.graphql';
-import { IngestionTaxiiLinesPaginationQuery$variables } from '@components/data/ingestionTaxii/__generated__/IngestionTaxiiLinesPaginationQuery.graphql';
 import { IngestionTaxiiPopoverExportQuery$data } from '@components/data/ingestionTaxii/__generated__/IngestionTaxiiPopoverExportQuery.graphql';
 ;
 import DialogActions from '@mui/material/DialogActions';
@@ -23,6 +22,7 @@ import useApiMutation from '../../../../utils/hooks/useApiMutation';
 import useDeletion from '../../../../utils/hooks/useDeletion';
 import { deleteNode } from '../../../../utils/store';
 import { ingestionTaxiiMutationFieldPatch } from './IngestionTaxiiEdition';
+import { PaginationOptions } from '../../../../components/list_lines';
 
 const ingestionTaxiiPopoverDeletionMutation = graphql`
   mutation IngestionTaxiiPopoverDeletionMutation($id: ID!) {
@@ -49,8 +49,8 @@ const ingestionTaxiiPopoverExportQuery = graphql`
 interface IngestionTaxiiPopoverProps {
   ingestionTaxiiId: string;
   running?: boolean | null;
-  paginationOptions?: IngestionTaxiiLinesPaginationQuery$variables | null | undefined;
-  setStateValue: Dispatch<string>;
+  paginationOptions?: PaginationOptions | null | undefined;
+  setStateValue?: Dispatch<string>;
 }
 
 const IngestionTaxiiPopover: FunctionComponent<IngestionTaxiiPopoverProps> = ({
@@ -145,7 +145,7 @@ const IngestionTaxiiPopover: FunctionComponent<IngestionTaxiiPopoverProps> = ({
       },
       onCompleted: () => {
         setResettingState(false);
-        setStateValue('-');
+        setStateValue?.('-');
         handleCloseResetState();
       },
     });
@@ -205,8 +205,7 @@ const IngestionTaxiiPopover: FunctionComponent<IngestionTaxiiPopoverProps> = ({
       <IconButton
         onClick={handleOpen}
         aria-haspopup="true"
-        style={{ marginTop: 3 }}
-        style={{ color: 'var(--mui-palette-primary-main)' }}
+        style={{ marginTop: 3, color: 'var(--ravin-primary)' }}
       >
         <MoreVert />
       </IconButton>

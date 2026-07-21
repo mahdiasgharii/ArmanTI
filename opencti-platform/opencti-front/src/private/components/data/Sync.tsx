@@ -9,8 +9,8 @@ import { ErrorBoundary } from '@components/Error';
 import {
   SyncDataTablePaginationQuery,
   SyncDataTablePaginationQuery$variables,
-} from '@components/data/sync/__generated__/SyncDataTablePaginationQuery.graphql';
-import { SyncDataTable_data$data } from '@components/data/sync/__generated__/SyncDataTable_data.graphql';
+} from '@components/data/__generated__/SyncDataTablePaginationQuery.graphql';
+import { SyncDataTable_data$data } from '@components/data/__generated__/SyncDataTable_data.graphql';
 import { DatabaseImportOutline } from 'mdi-material-ui';
 import Security from '../../../utils/Security';
 import { INGESTION_SETINGESTIONS } from '../../../utils/hooks/useGranted';

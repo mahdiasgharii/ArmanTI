@@ -8,7 +8,7 @@ import { AccessPoint } from 'mdi-material-ui';
 import Skeleton from '@mui/material/Skeleton';
 import makeStyles from '@mui/styles/makeStyles';
 import { IngestionTaxiiLine_node$key } from '@components/data/ingestionTaxii/__generated__/IngestionTaxiiLine_node.graphql';
-import { IngestionTaxiiLinesPaginationQuery$variables } from '@components/data/ingestionTaxii/__generated__/IngestionTaxiiLinesPaginationQuery.graphql';
+import { PaginationOptions } from '../../../../components/list_lines';
 import IngestionTaxiiPopover from './IngestionTaxiiPopover';
 import { useFormatter } from '../../../../components/i18n';
 import ItemBoolean from '../../../../components/ItemBoolean';
@@ -46,7 +46,7 @@ interface IngestionTaxiiLineProps {
   node: IngestionTaxiiLine_node$key;
   dataColumns: DataColumns;
   onLabelClick: HandleAddFilter;
-  paginationOptions?: IngestionTaxiiLinesPaginationQuery$variables;
+  paginationOptions?: PaginationOptions;
 }
 
 const ingestionTaxiiLineFragment = graphql`

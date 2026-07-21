@@ -154,8 +154,7 @@ const IngestionTaxiiPopover: FunctionComponent<IngestionTaxiiPopoverProps> = ({
       <IconButton
         onClick={handleOpen}
         aria-haspopup="true"
-        style={{ marginTop: 3 }}
-        style={{ color: 'var(--mui-palette-primary-main)' }}
+        style={{ marginTop: 3, color: 'var(--ravin-primary)' }}
       >
         <MoreVert />
       </IconButton>
